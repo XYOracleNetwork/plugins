@@ -30,8 +30,6 @@
     "typescript": "^5.2.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
-  "docs": "dist/docs.json",
-  "types": "dist/browser/index.d.ts",
   "exports": {
     ".": {
       "browser": {
@@ -43,12 +41,24 @@
           "types": "./dist/browser/index.d.mts",
           "default": "./dist/browser/index.js"
         }
+      },
+      "node": {
+        "require": {
+          "types": "./dist/node/index.d.cts",
+          "default": "./dist/node/stub.cjs"
+        },
+        "import": {
+          "types": "./dist/node/index.d.mts",
+          "default": "./dist/node/stub.js"
+        }
       }
     },
     "./package.json": "./package.json"
   },
   "main": "dist/browser/index.cjs",
   "module": "dist/browser/index.js",
+  "types": "dist/browser/index.d.mts",
+  "type": "module",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

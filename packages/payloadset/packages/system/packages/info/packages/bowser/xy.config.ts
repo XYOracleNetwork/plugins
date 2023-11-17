@@ -5,7 +5,9 @@ const config: XyTsupConfig = {
       src: true,
     },
     entryMode: 'single',
-    node: {},
+    node: {
+      src: { entry: ['./src/stub.ts'] },
+    },
   },
 }
 

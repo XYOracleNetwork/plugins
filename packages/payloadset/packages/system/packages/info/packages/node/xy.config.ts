@@ -1,7 +1,9 @@
 import { XyTsupConfig } from '@xylabs/ts-scripts-yarn3'
 const config: XyTsupConfig = {
   compile: {
-    browser: {},
+    browser: {
+      src: { entry: ['./src/stub.ts'] },
+    },
     node: {
       src: true,
     },
