@@ -31,11 +31,11 @@
       "browser": {
         "require": {
           "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/stub.cjs"
+          "default": "./dist/browser/index.cjs"
         },
         "import": {
           "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/stub.js"
+          "default": "./dist/browser/index.js"
         }
       },
       "node": {
@@ -65,5 +65,5 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.80.4"
+  "version": "2.80.5"
 }
