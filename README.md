@@ -1,6 +1,6 @@
 [![logo][]](https://xyo.network)
 
-# sdk-xyo-client-js
+# plugins
 
 [![main-build][]][main-build-link]
 [![npm-badge][]][npm-link]
@@ -14,7 +14,7 @@
 > We continue to maintain this software in the interest of developer education.
 
 ## Table of Contents
--   [Title](#sdk-xyo-client-js)
+-   [Title](#plugins)
 -   [Table of Contents](#table-of-contents)
 -   [Description](#description)
 -   [Install](#install)
@@ -24,7 +24,7 @@
 
 ## Description
 
-> Primary SDK for using the XYO Protocol 2.0 from TypeScript/JavaScript.
+> Plugins (Witnesses, Diviners, etc...) to be used with the XYO Platform
 > Designed to work in both browser based and Node JS based solutions.
 
 ## Use the sdk in another project
@@ -32,13 +32,13 @@
 Using npm:
 
 ```sh
-npm i --save @xyo-network/sdk-xyo-client-js
+npm i --save @xyo-network/plugins
 ```
 
 Using yarn:
 
 ```sh
-yarn add @xyo-network/sdk-xyo-client-js
+yarn add @xyo-network/plugins
 ```
 
 ## Building the sdk locally
@@ -66,7 +66,7 @@ yarn xy compile
 
 ## License
 
-> See the [LICENSE](https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/LICENSE)
+> See the [LICENSE](https://raw.githubusercontent.com/XYOracleNetwork/plugins/main/LICENSE)
 > file for license details
 
 ## Credits
@@ -75,20 +75,20 @@ yarn xy compile
 
 [logo]: https://cdn.xy.company/img/brand/XYO_full_colored.png
 
-[main-build]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/actions/workflows/build.yml/badge.svg
-[main-build-link]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/actions/workflows/build.yml
+[main-build]: https://github.com/XYOracleNetwork/plugins/actions/workflows/build.yml/badge.svg
+[main-build-link]: https://github.com/XYOracleNetwork/plugins/actions/workflows/build.yml
 
-[npm-badge]: https://img.shields.io/npm/v/@xyo-network/sdk-xyo-client-js.svg
-[npm-link]: https://www.npmjs.com/package/@xyo-network/sdk-xyo-client-js
+[npm-badge]: https://img.shields.io/npm/v/@xyo-network/plugins.svg
+[npm-link]: https://www.npmjs.com/package/@xyo-network/plugins
 
 [codacy-badge]: https://app.codacy.com/project/badge/Grade/ba1f344ae34e4bfe999331cf4e27b9f5
-[codacy-link]: https://www.codacy.com/gh/XYOracleNetwork/sdk-xyo-client-js/dashboard?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/sdk-xyo-client-js&utm_campaign=Badge_Grade
+[codacy-link]: https://www.codacy.com/gh/XYOracleNetwork/plugins/dashboard?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/plugins&utm_campaign=Badge_Grade
 
 [codeclimate-badge]: https://api.codeclimate.com/v1/badges/0e76349c9541f3866948/maintainability
-[codeclimate-link]: https://codeclimate.com/github/XYOracleNetwork/sdk-xyo-client-js/maintainability
+[codeclimate-link]: https://codeclimate.com/github/XYOracleNetwork/plugins/maintainability
 
-[snyk-badge]: https://snyk.io/test/github/XYOracleNetwork/sdk-xyo-client-js/badge.svg?targetFile=package.json
-[snyk-link]: https://snyk.io/test/github/XYOracleNetwork/sdk-xyo-client-js?targetFile=package.json
+[snyk-badge]: https://snyk.io/test/github/XYOracleNetwork/plugins/badge.svg?targetFile=package.json
+[snyk-link]: https://snyk.io/test/github/XYOracleNetwork/plugins?targetFile=package.json
 
-[license-badge]: https://img.shields.io/github/license/XYOracleNetwork/sdk-xyo-client-js
-[license-link]: https://github.com/XYOracleNetwork/sdk-xyo-client-js/blob/main/LICENSE
+[license-badge]: https://img.shields.io/github/license/XYOracleNetwork/plugins
+[license-link]: https://github.com/XYOracleNetwork/plugins/blob/main/LICENSE
