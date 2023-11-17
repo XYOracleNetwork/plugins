@@ -7,7 +7,7 @@
   },
   "bugs": {
     "email": "support@xyo.network",
-    "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
+    "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
     "@xyo-network/abstract-diviner": "^2.79.8",
@@ -29,9 +29,7 @@
     "@xyo-network/module-resolver": "^2.79.8",
     "typescript": "^5.2.2"
   },
-  "description": "Primary SDK for using XYO Protocol 2.0",
-  "docs": "dist/docs.json",
-  "types": "dist/node/index.d.ts",
+  "description": "Typescript/Javascript Plugins for XYO Platform",
   "exports": {
     ".": {
       "browser": {
@@ -46,19 +44,21 @@
       },
       "node": {
         "require": {
-          "types": "./dist/node/index.d.ts",
-          "default": "./dist/node/index.js"
+          "types": "./dist/node/index.d.cts",
+          "default": "./dist/node/index.cjs"
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
+          "default": "./dist/node/index.js"
         }
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.js",
-  "module": "dist/node/index.mjs",
+  "main": "dist/node/index.cjs",
+  "module": "dist/node/index.js",
+  "types": "dist/node/index.d.mts",
+  "type": "module",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {
@@ -66,7 +66,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
+    "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
   "version": "2.80.0"
