@@ -15,17 +15,23 @@
     "@xyo-network/config-payload-plugin": "workspace:~",
     "@xyo-network/crypto-payload-plugins": "workspace:~",
     "@xyo-network/domain-payload-plugin": "workspace:~",
+    "@xyo-network/elevation-payload-plugin": "workspace:~",
     "@xyo-network/id-payload-plugin": "workspace:~",
+    "@xyo-network/image-thumbnail-payload-plugin": "workspace:~",
     "@xyo-network/location-certainty-payload-plugin": "workspace:~",
     "@xyo-network/location-payload-plugin": "workspace:~",
     "@xyo-network/module-instance-payload-plugin": "workspace:~",
     "@xyo-network/payload-plugin": "^2.79.8",
+    "@xyo-network/pentair-payload-plugin": "workspace:~",
     "@xyo-network/query-payload-plugin": "workspace:~",
-    "@xyo-network/schema-payload-plugin": "workspace:~"
+    "@xyo-network/schema-payload-plugin": "workspace:~",
+    "@xyo-network/url-payload-plugin": "workspace:~",
+    "@xyo-network/url-safety-payload-plugin": "workspace:~",
+    "@xyo-network/value-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.0",
-    "@xylabs/tsconfig": "^3.2.0",
+    "@xylabs/ts-scripts-yarn3": "^3.2.2",
+    "@xylabs/tsconfig": "^3.2.2",
     "typescript": "^5.2.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -68,5 +74,5 @@
   },
   "sideEffects": false,
   "types": "dist/node/index.d.ts",
-  "version": "2.80.0"
+  "version": "2.80.3"
 }
