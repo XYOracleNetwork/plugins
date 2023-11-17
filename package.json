@@ -7,7 +7,7 @@
   },
   "bugs": {
     "email": "support@xyo.network",
-    "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js/issues"
+    "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "workspaces": [
     "packages/**/*"
@@ -84,10 +84,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
+    "url": "https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "scripts": {
+    "coverage": "yarn jest --coverage --forceExit",
+    "compile": "./scripts/clear-scrollback-buffer.sh && yarn xy compile",
+    "build": "xy build && xy statics",
+    "deploy": "xy deploy",
+    "lint-pkg": "npmPkgJsonLint .",
+    "test-esm": "node $(yarn jest --no-cache --forceExit)",
+    "test": "jest --no-cache --forceExit",
+    "build-typedoc-site": "xy gen-docs @xyo-network/plugins"
   },
   "sideEffects": false,
-  "version": "2.79.8",
+  "version": "2.80.0",
   "packageManager": "yarn@3.6.3",
   "volta": {
     "node": "18.17.1",

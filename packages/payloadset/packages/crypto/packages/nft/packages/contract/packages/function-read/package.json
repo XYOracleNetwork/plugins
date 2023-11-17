@@ -19,11 +19,11 @@
     "@xyo-network/crypto-contract-function-read-payload-plugin": "workspace:~",
     "@xyo-network/crypto-nft-payload-plugin": "workspace:~",
     "@xyo-network/diviner-indexing": "^2.79.8",
-    "@xyo-network/diviner-model": "^2.79.6",
-    "@xyo-network/module-model": "^2.79.6",
-    "@xyo-network/payload-model": "^2.79.7",
+    "@xyo-network/diviner-model": "^2.79.8",
+    "@xyo-network/module-model": "^2.79.8",
+    "@xyo-network/payload-model": "^2.79.8",
     "@xyo-network/payloadset-plugin": "^2.79.8",
-    "@xyo-network/witness-model": "^2.79.6"
+    "@xyo-network/witness-model": "^2.79.8"
   },
   "devDependencies": {
     "@ethersproject/providers": "^5.7.2",
@@ -34,7 +34,7 @@
     "@xyo-network/account": "^2.79.8",
     "@xyo-network/manifest": "^2.79.8",
     "@xyo-network/open-zeppelin-typechain": "^2.2.11",
-    "@xyo-network/sentinel-model": "^2.79.6",
+    "@xyo-network/sentinel-model": "^2.79.8",
     "@xyo-network/witness-blockchain-abstract": "^2.79.8",
     "async-mutex": "^0.4.0",
     "ethers": "^5.7.2",
@@ -81,5 +81,5 @@
     "url": "https://github.com/XYOracleNetwork/sdk-xyo-client-js.git"
   },
   "sideEffects": false,
-  "version": "2.79.7"
+  "version": "2.80.0"
 }
