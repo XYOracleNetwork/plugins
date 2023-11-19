@@ -1,4 +1,4 @@
-import { Provider } from '@ethersproject/providers'
+import { Provider } from 'ethers'
 
 import { logErrors } from '../logErrors'
 import { EthersUniSwap3Pair } from './UniSwap3Pair'

@@ -37,7 +37,7 @@ export class BlockchainContractWitness<
           const observation: BlockchainContract = {
             address: validatedAddress,
             block,
-            chainId: provider.network.chainId,
+            chainId: Number((await provider.getNetwork()).chainId),
             code,
             schema: BlockchainContractSchema,
           }

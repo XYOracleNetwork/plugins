@@ -1,6 +1,5 @@
 /* eslint-disable max-statements */
 
-import { BaseProvider } from '@ethersproject/providers'
 import { HDWallet } from '@xyo-network/account'
 import { CryptoContractFunctionCall, CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -11,6 +10,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import { Provider } from 'ethers'
 
 import { ContractInfo, ContractInfoSchema, CryptoContractDiviner } from '../CryptoContractDiviner'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
@@ -55,7 +55,7 @@ describe('Erc721Sentinel', () => {
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
 
   const getProviders = () => {
-    const providers: BaseProvider[] = []
+    const providers: Provider[] = []
     for (let i = 0; i < maxProviders; i++) {
       providers.push(getProviderFromEnv())
     }

@@ -1,4 +1,3 @@
-import { BaseProvider } from '@ethersproject/providers'
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
 
@@ -17,7 +16,7 @@ interface OpenSeaNFT {
   updated_at: string
 }
 
-export const getNftsFromWalletFromOpenSea = async (providers: BaseProvider[], address: string, maxNfts = 200, timeout = 2000) => {
+export const getNftsFromWalletFromOpenSea = async (address: string, maxNfts = 200, timeout = 2000) => {
   const apiKey = assertEx(process.env.OPENSEA_API_KEY, 'No opensea key found')
 
   const axios = new AxiosJson({ headers: { 'x-api-key': apiKey }, timeout })

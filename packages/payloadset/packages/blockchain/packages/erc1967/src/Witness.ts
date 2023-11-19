@@ -42,7 +42,7 @@ export class BlockchainErc1967Witness<
             address: validatedAddress,
             beacon,
             block,
-            chainId: provider.network.chainId,
+            chainId: Number((await provider.getNetwork()).chainId),
             implementation,
             schema: BlockchainErc1967StatusSchema,
             slots,

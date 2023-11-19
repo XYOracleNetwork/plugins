@@ -11,7 +11,6 @@ export interface EthereumGasEthersResponse {
    * not support EIP-1559.
    */
   gasPrice: null | number
-  lastBaseFeePerGas: null | number
   /**
    * The maxFeePerGas to use for a transaction. This is based on the
    * most recent block's baseFee.

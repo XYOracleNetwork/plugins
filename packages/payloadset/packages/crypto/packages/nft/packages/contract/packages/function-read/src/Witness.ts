@@ -1,6 +1,3 @@
-import { BigNumber } from '@ethersproject/bignumber'
-import { Contract } from '@ethersproject/contracts'
-import { BaseProvider } from '@ethersproject/providers'
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import {
@@ -16,11 +13,12 @@ import {
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
+import { Contract, Provider } from 'ethers'
 
 export type CryptoContractFunctionReadWitnessParams = WitnessParams<
   AnyConfigSchema<CryptoContractFunctionReadWitnessConfig>,
   {
-    providers: BaseProvider[]
+    providers: Provider[]
   }
 >
 
@@ -28,6 +26,10 @@ export class CryptoContractFunctionReadWitness<
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
   static override configSchemas = [CryptoContractFunctionReadWitnessConfigSchema]
+
+  get abi() {
+    return assertEx(this.config.abi, 'Missing abi')
+  }
 
   protected override async observeHandler(inPayloads: CryptoContractFunctionCall[] = []): Promise<CryptoContractFunctionCallResult[]> {
     await this.started('throw')
@@ -40,14 +42,14 @@ export class CryptoContractFunctionReadWitness<
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]
 
-          const contract = new Contract(validatedAddress, this.config.contract, provider)
+          const contract = new Contract(validatedAddress, this.abi, provider)
           try {
-            const result = await contract.callStatic[validatedFunctionName](...mergedArgs)
-            const transformedResult = BigNumber.isBigNumber(result) ? result.toHexString() : result
+            const result = await contract[validatedFunctionName](...mergedArgs)
+            const transformedResult = typeof result === 'bigint' ? result.toString(16) : result
             const observation: CryptoContractFunctionCallSuccess = {
               address: validatedAddress,
               args: mergedArgs,
-              chainId: provider.network.chainId,
+              chainId: Number((await provider.getNetwork()).chainId),
               functionName: validatedFunctionName,
               result: transformedResult,
               schema: CryptoContractFunctionCallResultSchema,
@@ -59,7 +61,7 @@ export class CryptoContractFunctionReadWitness<
             const observation: CryptoContractFunctionCallFailure = {
               address: validatedAddress,
               args: mergedArgs,
-              chainId: provider.network.chainId,
+              chainId: Number((await provider.getNetwork()).chainId),
               error: error.code,
               functionName: validatedFunctionName,
               schema: CryptoContractFunctionCallResultSchema,

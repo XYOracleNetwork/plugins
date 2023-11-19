@@ -1,11 +1,12 @@
-import { Interface } from '@ethersproject/abi'
-import { Provider } from '@ethersproject/providers'
+import { assertEx } from '@xylabs/assert'
+import { Interface, Provider } from 'ethers'
 
 export const contractHasFunctions = async (provider: Provider, address: string, contractInterface: Interface, functionNames: string[]) => {
   try {
     const bytecode = await provider.getCode(address, 'latest')
     for (let i = 0; i < functionNames.length; i++) {
-      const nameSig = contractInterface.getSighash(functionNames[i]).substring(2)
+      contractInterface.getAbiCoder().encode
+      const nameSig = assertEx(contractInterface.getFunction(functionNames[i])?.selector, 'Function not found on interface')
       if (!bytecode.includes(nameSig)) {
         return false
       }

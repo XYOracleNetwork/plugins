@@ -2,13 +2,13 @@
 const now = new Date()
 jest.useFakeTimers().setSystemTime(now)
 
-import { EtherscanProvider } from '@ethersproject/providers'
 import { describeIf } from '@xylabs/jest-helpers'
 import {
   AddressTransactionHistoryWitnessConfigSchema,
   isAddressTransactionHistoryPayload,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { EtherscanProvider } from 'ethers'
 
 import { AddressTransactionHistoryWitness } from '../Witness'
 

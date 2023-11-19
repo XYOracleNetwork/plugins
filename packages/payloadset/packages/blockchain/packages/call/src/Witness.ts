@@ -1,11 +1,10 @@
-import { Contract, ContractInterface } from '@ethersproject/contracts'
 import { assertEx } from '@xylabs/assert'
 import { BigNumber as XyBigNumber } from '@xylabs/bignumber'
 import { getErc1822Status } from '@xyo-network/blockchain-erc1822-witness'
 import { getErc1967Status } from '@xyo-network/blockchain-erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractBlockchainWitness, BlockchainWitnessConfig, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
-import { BigNumber } from 'ethers'
+import { Contract, JsonFragment } from 'ethers'
 
 import {
   BlockchainContractCall,
@@ -15,15 +14,17 @@ import {
   BlockchainContractCallSuccess,
 } from './Payload'
 
+export type Abi = string | ReadonlyArray<JsonFragment | string>
+
 export const BlockchainContractCallWitnessConfigSchema = 'network.xyo.blockchain.contract.call.witness.config'
 export type BlockchainContractCallWitnessConfigSchema = typeof BlockchainContractCallWitnessConfigSchema
 
 export type BlockchainContractCallWitnessConfig = BlockchainWitnessConfig<
   {
+    abi?: Abi
     address?: string
     args?: unknown[]
     block?: number
-    contract?: ContractInterface
     functionName?: string
   },
   BlockchainContractCallWitnessConfigSchema
@@ -44,8 +45,8 @@ export class BlockchainContractCallWitness<
 > extends AbstractBlockchainWitness<TParams, BlockchainContractCall, BlockchainContractCallResult> {
   static override configSchemas = [BlockchainContractCallWitnessConfigSchema]
 
-  get contract() {
-    return assertEx(this.config.contract, 'Missing contract')
+  get abi() {
+    return assertEx(this.config.abi, 'Missing abi')
   }
 
   protected override async observeHandler(inPayloads: BlockchainContractCall[] = []): Promise<BlockchainContractCallResult[]> {
@@ -71,11 +72,11 @@ export class BlockchainContractCallWitness<
 
           const implementation = isHexZero(erc1967Status.slots.implementation) ? erc1822Status.implementation : erc1967Status.implementation
 
-          const contract = new Contract(implementation, this.contract, provider)
+          const contract = new Contract(implementation, this.abi, provider)
           let transformedResult: unknown
           try {
-            const result = await contract.callStatic[validatedFunctionName](...mergedArgs)
-            transformedResult = BigNumber.isBigNumber(result) ? result.toHexString() : result
+            const result = await contract[validatedFunctionName](...mergedArgs)
+            transformedResult = typeof result === 'bigint' ? `0x${result.toString(16)}` : result
           } catch (ex) {
             //const error = ex as Error & { code: string }
             //this.logger.error(`Error [${this.config.name}]: ${error.code} : ${error.message}`)
@@ -84,7 +85,7 @@ export class BlockchainContractCallWitness<
             address: validatedAddress,
             args: mergedArgs,
             block,
-            chainId: provider.network.chainId,
+            chainId: Number((await provider.getNetwork()).chainId),
             functionName: validatedFunctionName,
             result: transformedResult,
             schema: BlockchainContractCallResultSchema,

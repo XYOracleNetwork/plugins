@@ -1,11 +1,13 @@
-import { Interface } from '@ethersproject/abi'
-import { Provider } from '@ethersproject/providers'
+import { Interface, Provider } from 'ethers'
 
 export const contractHasFunctions = async (provider: Provider, address: string, contractInterface: Interface, functionNames: string[]) => {
   try {
     const bytecode = await provider.getCode(address, 'latest')
     for (let i = 0; i < functionNames.length; i++) {
-      const nameSig = contractInterface.getSighash(functionNames[i]).substring(2)
+      const nameSig = contractInterface.getFunction(functionNames[i])?.selector
+      if (!nameSig) {
+        return false
+      }
       if (!bytecode.includes(nameSig)) {
         return false
       }

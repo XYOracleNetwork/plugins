@@ -1,4 +1,3 @@
-import { Provider } from '@ethersproject/providers'
 import { ChainId } from '@uniswap/sdk'
 import { Token } from '@uniswap/sdk-core'
 import { Pool } from '@uniswap/v3-sdk'
@@ -6,6 +5,7 @@ import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { IERC20Metadata, IERC20Metadata__factory } from '@xyo-network/typechain'
 import * as UniswapTypechain from '@xyo-network/uniswap-typechain'
+import { Provider } from 'ethers'
 
 import { logErrors, logErrorsAsync } from '../logErrors'
 import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper'
@@ -42,10 +42,10 @@ export class EthersUniSwap3Pair {
         new Pool(
           await this.token(0),
           await this.token(1),
-          slot0.feeProtocol,
-          slot0.sqrtPriceX96.toHexString(),
-          (await this.poolContract().liquidity()).toHexString(),
-          slot0.tick,
+          Number(slot0.feeProtocol),
+          slot0.sqrtPriceX96.toString(16),
+          (await this.poolContract().liquidity()).toString(16),
+          Number(slot0.tick),
         )
       return assertEx(this._pool)
     })
@@ -67,9 +67,11 @@ export class EthersUniSwap3Pair {
       const tokenPrices = tokens.map((token) => parseFloat(pool.priceOf(token).toSignificant()))
       const tokenSymbols = tokens.map((token, index) => assertEx(token.symbol, `Token[${index}] Missing Symbols`).toLowerCase())
       const result = {
-        tokens: tokenIndexes.map((value) => {
-          return { address: tokenContracts[value].address, symbol: tokenSymbols[value], value: tokenPrices[value] }
-        }),
+        tokens: await Promise.all(
+          tokenIndexes.map(async (value) => {
+            return { address: await tokenContracts[value].getAddress(), symbol: tokenSymbols[value], value: tokenPrices[value] }
+          }),
+        ),
       }
       return result
     })
@@ -91,7 +93,13 @@ export class EthersUniSwap3Pair {
       const tokenContract = await this.tokenContract(index)
       this._tokens[index] =
         this._tokens[index] ??
-        new Token(ChainId.MAINNET, tokenContract.address, await tokenContract.decimals(), await tokenContract.symbol(), await tokenContract.name())
+        new Token(
+          ChainId.MAINNET,
+          await tokenContract.getAddress(),
+          Number(await tokenContract.decimals()),
+          await tokenContract.symbol(),
+          await tokenContract.name(),
+        )
       return assertEx(this._tokens[index])
     })
   }

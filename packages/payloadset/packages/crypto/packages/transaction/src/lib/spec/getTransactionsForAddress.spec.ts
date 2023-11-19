@@ -1,6 +1,6 @@
-import { EtherscanProvider } from '@ethersproject/providers'
 import { describeIf } from '@xylabs/jest-helpers'
 import { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import { EtherscanProvider } from 'ethers'
 
 import { getTransactionsForAddress } from '../getTransactionsForAddress'
 

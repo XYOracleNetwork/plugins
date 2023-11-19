@@ -2,7 +2,6 @@ import { EthereumGasEthersPayload, EthereumGasEthersSchema } from '@xyo-network/
 
 export const sampleEthersGas: EthereumGasEthersPayload = {
   gasPrice: 13547863640,
-  lastBaseFeePerGas: 13447862081,
   maxFeePerGas: 28395724162,
   maxPriorityFeePerGas: 1500000000,
   schema: EthereumGasEthersSchema,

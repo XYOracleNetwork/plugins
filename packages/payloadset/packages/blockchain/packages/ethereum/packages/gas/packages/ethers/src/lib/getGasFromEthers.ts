@@ -1,8 +1,8 @@
-import { Provider } from '@ethersproject/providers'
 import { EthereumGasEthersResponse } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import { Provider } from 'ethers'
 
-const formatFeeDataValue = (value: { toNumber(): number } | null): number | null => {
-  return value ? value.toNumber() : null
+const formatFeeDataValue = (value: bigint | null) => {
+  return value ? Number(value) : null
 }
 
 export const getGasFromEthers = async (provider: Provider): Promise<EthereumGasEthersResponse> => {
@@ -10,7 +10,6 @@ export const getGasFromEthers = async (provider: Provider): Promise<EthereumGasE
   const feeData = await provider.getFeeData()
   const formattedFeeData: EthereumGasEthersResponse = {
     gasPrice: formatFeeDataValue(feeData.gasPrice),
-    lastBaseFeePerGas: formatFeeDataValue(feeData.lastBaseFeePerGas),
     maxFeePerGas: formatFeeDataValue(feeData.maxFeePerGas),
     maxPriorityFeePerGas: formatFeeDataValue(feeData.maxPriorityFeePerGas),
   }

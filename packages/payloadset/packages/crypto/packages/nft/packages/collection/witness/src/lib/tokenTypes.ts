@@ -1,6 +1,6 @@
-import { Provider } from '@ethersproject/providers'
 import { TokenType } from '@xyo-network/crypto-nft-payload-plugin'
 import { ERC1155URIStorage__factory, IERC721Metadata__factory } from '@xyo-network/open-zeppelin-typechain'
+import { Provider } from 'ethers'
 
 import { contractHasFunctions } from './contractHasFunctions'
 

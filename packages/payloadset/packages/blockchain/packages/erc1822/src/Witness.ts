@@ -41,7 +41,7 @@ export class BlockchainErc1822Witness<
           const observation: BlockchainErc1822Status = {
             address: validatedAddress,
             block,
-            chainId: provider.network.chainId,
+            chainId: Number((await provider.getNetwork()).chainId),
             implementation,
             schema: BlockchainErc1822StatusSchema,
             slots,

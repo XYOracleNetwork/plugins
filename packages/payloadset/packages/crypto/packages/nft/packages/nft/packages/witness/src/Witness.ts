@@ -45,7 +45,7 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
           const addressValue = assertEx(query?.address ?? this.config.address, 'params.address is required')
           const parsedAddressValue = EthAddress.parse(addressValue)
           const address = assertEx(parsedAddressValue?.toString(), 'Failed to parse params.address')
-          const network = provider.network
+          const network = await provider.getNetwork()
           const chainId = assertEx(network.chainId, 'params.chainId is required')
           const maxNfts = query?.maxNfts || defaultMaxNfts
           try {

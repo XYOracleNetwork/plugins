@@ -2,8 +2,8 @@ import { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-paylo
 import { FeeData, FeePerGas, PriorityFeePerGas } from '@xyo-network/gas-price-payload-plugin'
 
 const getBaseFee = (payload: EthereumGasEthersPayload): number | undefined => {
-  const { lastBaseFeePerGas } = payload
-  return lastBaseFeePerGas ? lastBaseFeePerGas / 1_000_000_000 : undefined
+  const { gasPrice } = payload
+  return gasPrice ? gasPrice / 1_000_000_000 : undefined
 }
 
 const getFeePerGas = (payload: EthereumGasEthersPayload): Partial<FeePerGas> => {

@@ -1,14 +1,16 @@
-import { ContractInterface } from '@ethersproject/contracts'
 import { Payload } from '@xyo-network/payload-model'
 import { WitnessConfig } from '@xyo-network/witness-model'
+import { JsonFragment } from 'ethers'
 
 export const CryptoContractFunctionReadWitnessConfigSchema = 'network.xyo.crypto.contract.function.read.config'
 export type CryptoContractFunctionReadWitnessConfigSchema = typeof CryptoContractFunctionReadWitnessConfigSchema
 
+export type Abi = string | ReadonlyArray<JsonFragment | string>
+
 export type CryptoContractFunctionReadWitnessConfig = WitnessConfig<{
+  abi: Abi
   address?: string
   args?: unknown[]
-  contract: ContractInterface
   functionName?: string
   schema: CryptoContractFunctionReadWitnessConfigSchema
 }>

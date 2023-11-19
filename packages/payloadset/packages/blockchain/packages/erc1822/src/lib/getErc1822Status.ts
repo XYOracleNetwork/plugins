@@ -1,6 +1,6 @@
-import { BaseProvider } from '@ethersproject/providers'
 import { BigNumber } from '@xylabs/bignumber'
 import { Address } from '@xyo-network/address'
+import { Provider } from 'ethers'
 
 export const ERC1822_PROXY_LOGIC_SLOT = '0xc5f16f0fcc639fa48a6947836d9850f504798523bf8c9a3a87d5876cf622bcf7'
 
@@ -26,16 +26,16 @@ const isHexZero = (value?: string) => {
   return value === undefined ? true : new BigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
 }
 
-export const readAddressFromSlot = async (provider: BaseProvider, address: string, slot: string, block?: number) => {
+export const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
   try {
-    const slotValue = await provider.getStorageAt(address, slot, block)
+    const slotValue = await provider.getStorage(address, slot, block)
     return addressFromHex(slotValue)
   } catch (ex) {
     return undefined
   }
 }
 
-export const getErc1822Status = async (provider: BaseProvider, address: string, block?: number): Promise<Erc1822Status> => {
+export const getErc1822Status = async (provider: Provider, address: string, block?: number): Promise<Erc1822Status> => {
   const status: Erc1822Status = {
     address,
     implementation: address,

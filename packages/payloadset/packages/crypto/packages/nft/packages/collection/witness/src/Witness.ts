@@ -58,7 +58,7 @@ export class CryptoNftCollectionWitness<
         const [name, symbol, total, typesSettled, archivistSettled] = await Promise.allSettled([
           await erc721Enumerable.name(),
           await erc721Enumerable.symbol(),
-          (await erc721Enumerable.totalSupply()).toNumber(),
+          await erc721Enumerable.totalSupply(),
           await tokenTypes(provider, address),
           await this.writeArchivist(),
         ])
@@ -80,7 +80,7 @@ export class CryptoNftCollectionWitness<
           schema: NftCollectionSchema,
           sources,
           symbol: resolvedValue(symbol, true),
-          total: resolvedValue(total, true),
+          total: Number(resolvedValue(total, true)),
           type: types.at(0),
           types,
         }
