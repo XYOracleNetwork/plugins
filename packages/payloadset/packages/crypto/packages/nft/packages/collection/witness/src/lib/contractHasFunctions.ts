@@ -5,9 +5,8 @@ export const contractHasFunctions = async (provider: Provider, address: string, 
   try {
     const bytecode = await provider.getCode(address, 'latest')
     for (let i = 0; i < functionNames.length; i++) {
-      contractInterface.getAbiCoder().encode
-      const nameSig = assertEx(contractInterface.getFunction(functionNames[i])?.selector, 'Function not found on interface')
-      if (!bytecode.includes(nameSig)) {
+      const selector = assertEx(contractInterface.getFunction(functionNames[i])?.selector, 'Function not found on interface')
+      if (!bytecode.includes(selector.substring(2))) {
         return false
       }
       return true

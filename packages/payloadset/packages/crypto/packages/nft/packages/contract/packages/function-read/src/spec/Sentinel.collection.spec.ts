@@ -72,7 +72,7 @@ describe('Erc721Sentinel', () => {
 
       locator.register(
         new ModuleFactory(CryptoContractFunctionReadWitness, {
-          config: { contract: ERC721__factory.abi },
+          config: { abi: ERC721__factory.abi },
           providers: getProviders(),
         }),
         { 'network.xyo.crypto.contract.interface': 'Erc721' },
@@ -80,7 +80,7 @@ describe('Erc721Sentinel', () => {
 
       locator.register(
         new ModuleFactory(CryptoContractFunctionReadWitness, {
-          config: { contract: ERC721Enumerable__factory.abi },
+          config: { abi: ERC721Enumerable__factory.abi },
           providers: getProviders(),
         }),
         { 'network.xyo.crypto.contract.interface': 'Erc721Enumerable' },
@@ -88,7 +88,7 @@ describe('Erc721Sentinel', () => {
 
       locator.register(
         new ModuleFactory(CryptoContractFunctionReadWitness, {
-          config: { contract: ERC1155__factory.abi },
+          config: { abi: ERC1155__factory.abi },
           providers: getProviders(),
         }),
         { 'network.xyo.crypto.contract.interface': 'Erc1155' },

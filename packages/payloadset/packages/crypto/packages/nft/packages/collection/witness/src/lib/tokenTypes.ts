@@ -1,5 +1,5 @@
 import { TokenType } from '@xyo-network/crypto-nft-payload-plugin'
-import { ERC1155URIStorage__factory, IERC721Metadata__factory } from '@xyo-network/open-zeppelin-typechain'
+import { ERC721__factory, ERC1155URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { Provider } from 'ethers'
 
 import { contractHasFunctions } from './contractHasFunctions'
@@ -9,7 +9,7 @@ export const isErc1155 = async (provider: Provider, address: string) => {
 }
 
 export const isErc721 = async (provider: Provider, address: string) => {
-  return await contractHasFunctions(provider, address, IERC721Metadata__factory.createInterface(), ['name', 'symbol', 'tokenURI'])
+  return await contractHasFunctions(provider, address, ERC721__factory.createInterface(), ['name', 'symbol', 'tokenURI'])
 }
 
 export const tokenTypes = async (provider: Provider, address: string) => {

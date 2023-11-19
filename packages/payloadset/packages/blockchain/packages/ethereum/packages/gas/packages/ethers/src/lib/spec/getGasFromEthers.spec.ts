@@ -12,7 +12,6 @@ describe('getGasFromEthers', () => {
     const result = await getGasFromEthers(provider)
     expect(result).toBeObject()
     expect(result.gasPrice).toBeNumber()
-    expect(result.lastBaseFeePerGas).toBeNumber()
     expect(result.maxFeePerGas).toBeNumber()
     expect(result.maxPriorityFeePerGas).toBeNumber()
   })

@@ -26,7 +26,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
     describe('with no address or chainId in query', () => {
       it('uses values from config', async () => {
         const witness = await CryptoContractFunctionReadWitness.create({
-          config: { contract: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },
+          config: { abi: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },
           providers: [provider],
         })
         const call: CryptoContractFunctionCall = { address, args, functionName, schema: CryptoContractFunctionCallSchema }

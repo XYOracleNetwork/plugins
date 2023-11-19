@@ -4,7 +4,7 @@ import { Pool } from '@uniswap/v3-sdk'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { IERC20Metadata, IERC20Metadata__factory } from '@xyo-network/typechain'
-import * as UniswapTypechain from '@xyo-network/uniswap-typechain'
+import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-typechain'
 import { Provider } from 'ethers'
 
 import { logErrors, logErrorsAsync } from '../logErrors'
@@ -22,7 +22,7 @@ export class EthersUniSwap3Pair {
   protected provider: Provider
 
   private _pool?: Pool | null
-  private _poolContract?: UniswapTypechain.IUniswapV3Pool
+  private _poolContract?: IUniswapV3Pool
   private _slot0?: EthersUniswap3PoolSlot0Wrapper | null
   private _tokenContracts: (IERC20Metadata | null | undefined)[] = [undefined, undefined]
   private _tokens: (Token | null | undefined)[] = [undefined, undefined]
@@ -43,17 +43,17 @@ export class EthersUniSwap3Pair {
           await this.token(0),
           await this.token(1),
           Number(slot0.feeProtocol),
-          slot0.sqrtPriceX96.toString(16),
-          (await this.poolContract().liquidity()).toString(16),
+          `0x${slot0.sqrtPriceX96.toString(16)}`,
+          `0x${(await this.poolContract().liquidity()).toString(16)}`,
           Number(slot0.tick),
         )
       return assertEx(this._pool)
     })
   }
 
-  poolContract(): UniswapTypechain.IUniswapV3Pool {
+  poolContract() {
     return logErrors(() => {
-      this._poolContract = this._poolContract ?? UniswapTypechain.IUniswapV3Pool__factory.connect(this.address, this.provider)
+      this._poolContract = this._poolContract ?? IUniswapV3Pool__factory.connect(this.address, this.provider)
       return assertEx(this._poolContract)
     })
   }
@@ -81,7 +81,11 @@ export class EthersUniSwap3Pair {
     return await logErrorsAsync(async () => {
       await waitNotNull(() => this._slot0)
       this._slot0 = this._slot0 || null
-      this._slot0 = this._slot0 ?? new EthersUniswap3PoolSlot0Wrapper(await this.poolContract().slot0())
+      if (this._slot0 === null) {
+        const poolContract = this.poolContract()
+        const slot = await poolContract.slot0()
+        this._slot0 = this._slot0 ?? new EthersUniswap3PoolSlot0Wrapper(slot)
+      }
       return assertEx(this._slot0)
     })
   }

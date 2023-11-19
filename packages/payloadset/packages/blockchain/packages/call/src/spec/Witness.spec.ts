@@ -21,7 +21,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
       it('uses values from config', async () => {
         const witness = await BlockchainContractCallWitness.create({
           account: 'random',
-          config: { contract: ERC20__factory.abi, schema: BlockchainContractCallWitnessConfigSchema },
+          config: { abi: ERC20__factory.abi, schema: BlockchainContractCallWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
         const call: BlockchainContractCall = { address, args, functionName, schema: BlockchainContractCallSchema }
