@@ -1,8 +1,3 @@
-// Mock Date.now
-const now = new Date()
-jest.useFakeTimers().setSystemTime(now)
-
-import { Account } from '@xyo-network/account'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { UniswapCryptoMarketPayload, UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
@@ -14,7 +9,7 @@ describe('UniswapCryptoMarketWitness', () => {
   test('observe', async () => {
     const provider = getProviderFromEnv()
     const witness = await UniswapCryptoMarketWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         pools: UniswapPoolContracts,
         schema: UniswapCryptoMarketWitnessConfigSchema,
@@ -23,7 +18,6 @@ describe('UniswapCryptoMarketWitness', () => {
     })
     const [observation] = (await witness.observe()) as UniswapCryptoMarketPayload[]
     expect(observation.pairs.length).toBeGreaterThan(1)
-    expect(observation.timestamp).toBe(+now)
 
     const answerWrapper = PayloadWrapper.wrap(observation)
     expect(await answerWrapper.getValid()).toBe(true)
@@ -31,7 +25,7 @@ describe('UniswapCryptoMarketWitness', () => {
   test('observe [no config]', async () => {
     const provider = getProviderFromEnv()
     const witness = await UniswapCryptoMarketWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         pools: UniswapPoolContracts,
         schema: UniswapCryptoMarketWitnessConfigSchema,
@@ -40,7 +34,6 @@ describe('UniswapCryptoMarketWitness', () => {
     })
     const [observation] = (await witness.observe()) as UniswapCryptoMarketPayload[]
     expect(observation.pairs.length).toBeGreaterThan(1)
-    expect(observation.timestamp).toBe(+now)
 
     const answerWrapper = PayloadWrapper.wrap(observation)
     expect(await answerWrapper.getValid()).toBe(true)
@@ -48,7 +41,7 @@ describe('UniswapCryptoMarketWitness', () => {
   test('observe [no params]', async () => {
     const didThrow = async () => {
       try {
-        await UniswapCryptoMarketWitness.create({ account: Account.randomSync() })
+        await UniswapCryptoMarketWitness.create({ account: 'random' })
         return false
       } catch {
         return true

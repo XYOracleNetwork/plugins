@@ -1,20 +1,25 @@
-import { ChainId } from '@uniswap/sdk'
-import { Token } from '@uniswap/sdk-core'
-import { Pool } from '@uniswap/v3-sdk'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { IERC20Metadata, IERC20Metadata__factory } from '@xyo-network/typechain'
-import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-typechain'
+import { Token } from '@xyo-network/uniswap-sdk-core'
+import { IUniswapV3Pool, IUniswapV3Pool__factory, IUniswapV3PoolState, IUniswapV3PoolState__factory } from '@xyo-network/uniswap-typechain'
+import { Pool } from '@xyo-network/uniswap-v3-sdk'
 import { Provider } from 'ethers'
 
 import { logErrors, logErrorsAsync } from '../logErrors'
 import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper'
 
+export enum ChainId {
+  MAINNET = 1,
+  ROPSTEN = 3,
+  RINKEBY = 4,
+  GÖRLI = 5,
+  KOVAN = 42,
+}
+
 //null is used as 'in-progress'
 const waitNotNull = async (closure: () => unknown) => {
-  while (closure() === null) {
-    await delay(10)
-  }
+  while (closure() === null) await delay(10)
 }
 
 export class EthersUniSwap3Pair {
@@ -38,15 +43,16 @@ export class EthersUniSwap3Pair {
       this._pool = this._pool || null
       const slot0 = await this.slot0()
       this._pool =
-        this._pool ??
-        new Pool(
-          await this.token(0),
-          await this.token(1),
-          Number(slot0.feeProtocol),
-          `0x${slot0.sqrtPriceX96.toString(16)}`,
-          `0x${(await this.poolContract().liquidity()).toString(16)}`,
-          Number(slot0.tick),
-        )
+        this._pool !== null
+          ? this._pool
+          : new Pool(
+              await this.token(0),
+              await this.token(1),
+              Number(slot0.feeProtocol),
+              `0x${slot0.sqrtPriceX96.toString(16)}`,
+              `0x${(await this.poolContract().liquidity()).toString(16)}`,
+              Number(slot0.tick),
+            )
       return assertEx(this._pool)
     })
   }
