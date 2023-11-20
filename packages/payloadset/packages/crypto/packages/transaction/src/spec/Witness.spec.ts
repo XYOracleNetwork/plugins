@@ -1,7 +1,3 @@
-// Mock Date.now
-const now = new Date()
-jest.useFakeTimers().setSystemTime(now)
-
 import { describeIf } from '@xylabs/jest-helpers'
 import {
   AddressTransactionHistoryWitnessConfigSchema,
