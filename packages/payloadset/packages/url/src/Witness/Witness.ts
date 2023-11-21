@@ -1,8 +1,8 @@
+import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { Payload } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { hashUrl } from '../util'
 import { UrlWitnessConfigSchema } from './Config'
 import { UrlWitnessParams } from './Params'
 
@@ -28,7 +28,7 @@ export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> ext
     const hashed = await Promise.all(
       urls.map(async (url) => {
         // TODO: Different schema for hashed url
-        return { ...url, hash: await hashUrl(url.url) }
+        return { ...url, hash: await assertEx(UrlWitness.hashUrl, 'Set UrlWitness.hashUrl before using')(url.url) }
       }),
     )
     // TODO: Handle partial success
