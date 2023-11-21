@@ -1,6 +1,6 @@
 import { NftCollectionMetadata } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { ERC721Enumerable__factory, ERC1155__factory, IERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
-import { Interface, JsonRpcProvider } from 'ethers'
+import { ERC721Enumerable__factory, IERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
+import { JsonRpcProvider } from 'ethers'
 
 import { contractHasFunctions } from './contractHasFunctions'
 

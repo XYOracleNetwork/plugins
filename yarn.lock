@@ -5819,6 +5819,7 @@ __metadata:
     "@xyo-network/location-plugin": "workspace:~"
     "@xyo-network/module-instance-plugin": "workspace:~"
     "@xyo-network/payloadset-plugin": "npm:^2.81.5"
+    "@xyo-network/prometheus-node-plugin": "workspace:~"
     "@xyo-network/schema-plugin": "workspace:~"
     "@xyo-network/system-plugins": "workspace:~"
     "@xyo-network/url-plugin": "workspace:~"
@@ -5909,7 +5910,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/prometheus-node-plugin@workspace:packages/payloadset/packages/prometheus":
+"@xyo-network/prometheus-node-plugin@workspace:packages/payloadset/packages/prometheus, @xyo-network/prometheus-node-plugin@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/prometheus-node-plugin@workspace:packages/payloadset/packages/prometheus"
   dependencies:

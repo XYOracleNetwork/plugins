@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { IERC20Metadata, IERC20Metadata__factory } from '@xyo-network/typechain'
 import { Token } from '@xyo-network/uniswap-sdk-core'
-import { IUniswapV3Pool, IUniswapV3Pool__factory, IUniswapV3PoolState, IUniswapV3PoolState__factory } from '@xyo-network/uniswap-typechain'
+import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-typechain'
 import { Pool } from '@xyo-network/uniswap-v3-sdk'
 import { Provider } from 'ethers'
 
