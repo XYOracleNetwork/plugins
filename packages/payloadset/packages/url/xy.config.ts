@@ -2,10 +2,14 @@ import { XyTsupConfig } from '@xylabs/ts-scripts-yarn3'
 const config: XyTsupConfig = {
   compile: {
     browser: {
-      src: true,
+      src: {
+        entry: ['src/indexBrowser.ts'],
+      },
     },
     node: {
-      src: true,
+      src: {
+        entry: ['src/indexNode.ts'],
+      },
     },
   },
 }

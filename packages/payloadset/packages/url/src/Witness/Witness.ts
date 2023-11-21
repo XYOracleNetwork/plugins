@@ -8,12 +8,16 @@ import { UrlWitnessParams } from './Params'
 
 export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> extends AbstractWitness<TParams> {
   static override configSchemas = [UrlWitnessConfigSchema]
+  static hashUrl: ((url: string) => Promise<string>) | undefined = undefined
 
   get urls() {
     return this.config?.urls
   }
 
   protected override async observeHandler(payloads: Payload[] = []): Promise<Payload[]> {
+    if (UrlWitness.hashUrl === undefined) {
+      throw Error('Set UrlWitness.hashUrl before using')
+    }
     const urls: UrlPayload[] =
       this.urls?.map((url) => ({ schema: UrlSchema, url })) ??
       payloads
