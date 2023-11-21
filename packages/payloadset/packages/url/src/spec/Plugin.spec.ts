@@ -1,7 +1,7 @@
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { UrlPlugin } from '../Plugin'
+import { UrlPlugin } from '../PluginNode'
 
 describe('UrlPlugin', () => {
   test('Add to Resolver', async () => {
