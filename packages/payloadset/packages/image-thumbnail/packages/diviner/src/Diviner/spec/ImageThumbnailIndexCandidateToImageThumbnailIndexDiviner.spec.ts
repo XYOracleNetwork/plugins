@@ -37,7 +37,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     const [index] = result.filter(isImageThumbnailResultIndex)
     const key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: thumbnail.sourceUrl })
     expect(index.key).toBe(key)
-    expect(index.sources).toEqual(Object.keys(payloadDictionary))
+    expect(index.sources.sort()).toEqual(Object.keys(payloadDictionary).sort())
     expect(index.success).toBe(thumbnail.http?.status === 200)
     expect(index.timestamp).toBe(timestamp.timestamp)
     expect(index.status).toBe(thumbnail.http?.status)

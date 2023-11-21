@@ -43,7 +43,7 @@ describe('Erc721Sentinel', () => {
     it('specifying address', async () => {
       profile(profiler, 'setup')
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
-      const wallet = await HDWallet.fromMnemonic(mnemonic)
+      const wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
       locator.register(BlockchainContractCallDiviner)
 
