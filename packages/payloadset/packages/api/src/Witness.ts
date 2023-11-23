@@ -1,6 +1,5 @@
 import { assertEx } from '@xylabs/assert'
 import { Axios, AxiosError, AxiosJson } from '@xylabs/axios'
-import { Buffer } from '@xylabs/buffer'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { Hash, PayloadHasher } from '@xyo-network/hash'
 import { JsonArray, JsonObject } from '@xyo-network/object'
