@@ -1,4 +1,4 @@
-import { Hash } from '@xyo-network/hash'
+import { Hash } from '@xylabs/hex'
 import { AsObjectFactory } from '@xyo-network/object'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 

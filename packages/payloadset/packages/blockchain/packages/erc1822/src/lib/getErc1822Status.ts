@@ -1,5 +1,5 @@
 import { BigNumber } from '@xylabs/bignumber'
-import { Address } from '@xyo-network/address'
+import { Address } from '@xylabs/hex'
 import { Provider } from 'ethers'
 
 export const ERC1822_PROXY_LOGIC_SLOT = '0xc5f16f0fcc639fa48a6947836d9850f504798523bf8c9a3a87d5876cf622bcf7'

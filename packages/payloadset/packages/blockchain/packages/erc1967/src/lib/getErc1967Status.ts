@@ -1,5 +1,5 @@
 import { BigNumber } from '@xylabs/bignumber'
-import { Address } from '@xyo-network/address'
+import { Address } from '@xylabs/hex'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
 import { Provider } from 'ethers'
 
