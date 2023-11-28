@@ -1,4 +1,4 @@
-import { Address } from '@xyo-network/address'
+import { Address } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
 import { Erc1967Status } from './lib'

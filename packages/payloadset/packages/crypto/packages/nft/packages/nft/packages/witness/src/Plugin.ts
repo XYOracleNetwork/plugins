@@ -1,10 +1,10 @@
 import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
-import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
+import { createPayloadSetWitnessPlugin, PayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
 import { CryptoWalletNftWitness } from './Witness'
 
-export const CryptoWalletNftWitnessPlugin = () =>
+export const CryptoWalletNftWitnessPlugin = (): PayloadSetWitnessPlugin<CryptoWalletNftWitness> =>
   createPayloadSetWitnessPlugin<CryptoWalletNftWitness>(
     { required: { [NftSchema]: 1 }, schema: PayloadSetSchema },
     {

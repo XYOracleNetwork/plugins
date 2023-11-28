@@ -1,5 +1,4 @@
 import { assertEx } from '@xylabs/assert'
-import { BigNumber as XyBigNumber } from '@xylabs/bignumber'
 import { getErc1822Status } from '@xyo-network/blockchain-erc1822-witness'
 import { getErc1967Status } from '@xyo-network/blockchain-erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
@@ -32,12 +31,16 @@ export type BlockchainContractCallWitnessConfig = BlockchainWitnessConfig<
 
 export type BlockchainContractCallWitnessParams = BlockchainWitnessParams<BlockchainContractCallWitnessConfig>
 
-const hexBytesOnlyOnly = (value: string) => {
-  return value.startsWith('0x') ? value.substring(2) : value
+const prefixHex = (value?: string) => {
+  if (value !== undefined) {
+    const lowerValue = value.toLowerCase()
+    return lowerValue.startsWith('0x') ? lowerValue : `0x${lowerValue}`
+  }
 }
 
 const isHexZero = (value?: string) => {
-  return value === undefined ? true : new XyBigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
+  const prefixedValue = prefixHex(value)
+  return prefixedValue === undefined ? true : BigInt(prefixedValue) === 0n
 }
 
 export class BlockchainContractCallWitness<
