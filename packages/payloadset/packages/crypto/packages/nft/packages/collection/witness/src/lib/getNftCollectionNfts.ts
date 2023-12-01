@@ -1,6 +1,6 @@
 import { AxiosJson } from '@xylabs/axios'
-import { BigNumber as XyBigNumber } from '@xylabs/bignumber'
 import { exists } from '@xylabs/exists'
+import { isHexZero } from '@xylabs/hex'
 import { getErc1822Status } from '@xyo-network/blockchain-erc1822-witness'
 import { getErc1967Status } from '@xyo-network/blockchain-erc1967-witness'
 import { NftInfo, NftMetadata, NftSchema, TokenType, toTokenType } from '@xyo-network/crypto-nft-payload-plugin'
@@ -12,14 +12,6 @@ import { tokenTypes } from './tokenTypes'
 import { tryCall } from './tryCall'
 
 const ipfsGateway = '5d7b6582.beta.decentralnetworkservices.com'
-
-const hexBytesOnlyOnly = (value: string) => {
-  return value.startsWith('0x') ? value.substring(2) : value
-}
-
-const isHexZero = (value?: string) => {
-  return value === undefined ? true : new XyBigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
-}
 
 function range(size: number, startAt: number = 0): ReadonlyArray<number> {
   return [...Array(size).keys()].map((i) => i + startAt)
@@ -51,7 +43,10 @@ export const getNftCollectionNfts = async (
     //Check if ERC-1822 Upgradeable
     const erc1822Status = await getErc1822Status(provider, contractAddress, block)
 
-    const implementation = isHexZero(erc1967Status.slots.implementation) ? erc1822Status.implementation : erc1967Status.implementation
+    const implementation =
+      !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
+        ? erc1822Status.implementation
+        : erc1967Status.implementation
 
     const axios = new AxiosJson({ timeout: 2000 })
     const enumerable = ERC721Enumerable__factory.connect(implementation, provider)

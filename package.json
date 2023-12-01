@@ -17,15 +17,15 @@
     "@xyo-network/payloadset-plugins": "workspace:~"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.3",
-    "@babel/preset-env": "^7.23.3",
+    "@babel/core": "^7.23.5",
+    "@babel/preset-env": "^7.23.5",
     "@babel/preset-typescript": "^7.23.3",
     "@types/jest": "^29.5.10",
     "@types/supertest": "^2.0.16",
-    "@typescript-eslint/eslint-plugin": "^6.13.0",
-    "@typescript-eslint/parser": "^6.13.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
     "@xylabs/eslint-config": "^3.2.10",
-    "@xylabs/forget": "^2.13.18",
+    "@xylabs/forget": "^2.13.20",
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
     "@xylabs/tsconfig-dom-jest": "^3.2.10",
@@ -52,6 +52,7 @@
   "resolutions": {
     "axios": "^1",
     "bn.js": "^5",
+    "mapbox-gl": "^2",
     "quick-lru": "^5",
     "typescript": "5.2.2"
   },

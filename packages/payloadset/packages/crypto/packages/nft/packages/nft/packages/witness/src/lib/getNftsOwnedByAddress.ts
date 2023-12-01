@@ -1,4 +1,4 @@
-import { BigNumber as XyBigNumber } from '@xylabs/bignumber'
+import { isHexZero } from '@xylabs/hex'
 import { getErc1822Status } from '@xyo-network/blockchain-erc1822-witness'
 import { getErc1967Status } from '@xyo-network/blockchain-erc1967-witness'
 import { NftInfoFields, TokenType } from '@xyo-network/crypto-nft-payload-plugin'
@@ -13,14 +13,6 @@ import { tokenTypes } from './tokenTypes'
 import { tryCall } from './tryCall'
 
 const tokenTypeCache = new LRUCache<string, TokenType[]>({ max: 100 })
-
-const hexBytesOnlyOnly = (value: string) => {
-  return value.startsWith('0x') ? value.substring(2) : value
-}
-
-const isHexZero = (value?: string) => {
-  return value === undefined ? true : new XyBigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
-}
 
 export const getTokenTypes = async (provider: Provider, address: string) => {
   const key = `${address}|${(await provider.getNetwork()).chainId}`
@@ -131,7 +123,10 @@ export const getNftsOwnedByAddress = async (
         //Check if ERC-1822 Upgradeable
         const erc1822Status = await getErc1822Status(provider, contract, block)
 
-        const implementation = isHexZero(erc1967Status.slots.implementation) ? erc1822Status.implementation : erc1967Status.implementation
+        const implementation =
+          !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
+            ? erc1822Status.implementation
+            : erc1967Status.implementation
 
         let supply = 1n
         const types = await getTokenTypes(provider, implementation)

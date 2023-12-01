@@ -1,5 +1,4 @@
-import { BigNumber } from '@xylabs/bignumber'
-import { Address } from '@xylabs/hex'
+import { Address, hexFromHexString, isHexZero } from '@xylabs/hex'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
 import { Provider } from 'ethers'
 
@@ -24,22 +23,10 @@ export interface Erc1967Status {
   slots: Erc1967DataSlots
 }
 
-const hexBytesOnlyOnly = (value: string) => {
-  return value.startsWith('0x') ? value.substring(2) : value
-}
-
-const addressFromHex = (value: string) => {
-  return `0x${hexBytesOnlyOnly(value).substring(24)}`
-}
-
-const isHexZero = (value?: string) => {
-  return value === undefined ? true : new BigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
-}
-
 export const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
   try {
     const slotValue = await provider.getStorage(address, slot, block)
-    return addressFromHex(slotValue)
+    return hexFromHexString(slotValue, { prefix: true })
   } catch (ex) {
     return undefined
   }
@@ -57,10 +44,10 @@ export const getErc1967Status = async (provider: Provider, address: string, bloc
     },
   }
 
-  if (!isHexZero(status.slots.implementation)) {
+  if (status.slots.implementation && !isHexZero(status.slots.implementation)) {
     status.implementation = status.slots.implementation as string
   } else {
-    if (!isHexZero(status.slots.beacon)) {
+    if (status.slots.beacon && !isHexZero(status.slots.beacon)) {
       const beacon = UpgradeableBeacon__factory.connect(status.slots.beacon as string, { provider })
       try {
         const implementation = await beacon.implementation(block ? { blockTag: block } : {})

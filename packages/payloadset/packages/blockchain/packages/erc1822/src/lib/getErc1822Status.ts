@@ -1,5 +1,4 @@
-import { BigNumber } from '@xylabs/bignumber'
-import { Address } from '@xylabs/hex'
+import { Address, hexFromHexString, isHexZero } from '@xylabs/hex'
 import { Provider } from 'ethers'
 
 export const ERC1822_PROXY_LOGIC_SLOT = '0xc5f16f0fcc639fa48a6947836d9850f504798523bf8c9a3a87d5876cf622bcf7'
@@ -14,22 +13,10 @@ export interface Erc1822Status {
   slots: Erc1822DataSlots
 }
 
-const hexBytesOnlyOnly = (value: string) => {
-  return value.startsWith('0x') ? value.substring(2) : value
-}
-
-const addressFromHex = (value: string) => {
-  return `0x${hexBytesOnlyOnly(value).substring(24)}`
-}
-
-const isHexZero = (value?: string) => {
-  return value === undefined ? true : new BigNumber(hexBytesOnlyOnly(value), 'hex').eqn(0)
-}
-
 export const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
   try {
     const slotValue = await provider.getStorage(address, slot, block)
-    return addressFromHex(slotValue)
+    return hexFromHexString(slotValue, { prefix: true })
   } catch (ex) {
     return undefined
   }
@@ -44,7 +31,7 @@ export const getErc1822Status = async (provider: Provider, address: string, bloc
     },
   }
 
-  if (!isHexZero(status.slots.implementation)) {
+  if (status.slots.implementation && !isHexZero(status.slots.implementation)) {
     status.implementation = status.slots.implementation as string
   }
 

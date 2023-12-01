@@ -32,7 +32,7 @@ class FfmpegOutputStream extends Writable {
  * @param videoBuffer Input video buffer.
  * @returns Output buffer containing the video thumbnail image.
  */
-export const getVideoFrameAsImageFluent = async (videoBuffer: Buffer) => {
+export const getVideoFrameAsImageFluent = async (videoBuffer: ArrayBuffer) => {
   // Get a temp file name
   const tmpFile = `/${tmpdir()}/${uuid()}`
   try {
@@ -40,7 +40,7 @@ export const getVideoFrameAsImageFluent = async (videoBuffer: Buffer) => {
     // avoid issues with ffmpeg inferring premature EOF from buffer
     // passed via stdin (happens when ffmpeg is trying to infer
     // input video format)
-    await writeFile(tmpFile, videoBuffer, { encoding: 'binary' })
+    await writeFile(tmpFile, new Uint8Array(videoBuffer), { encoding: 'binary' })
     const imageBuffer = await new Promise<Buffer>((resolve, reject) => {
       // Create a Writable stream to collect PNG output from ffmpeg
       const ffmpegOutput = new FfmpegOutputStream()

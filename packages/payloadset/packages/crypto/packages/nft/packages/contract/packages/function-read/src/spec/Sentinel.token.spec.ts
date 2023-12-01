@@ -1,6 +1,6 @@
 /* eslint-disable max-statements */
 
-import { BigNumber } from '@xylabs/bignumber'
+import { hexFromHexString } from '@xylabs/hex'
 import { HDWallet } from '@xyo-network/account'
 import {
   CryptoContractFunctionCall,
@@ -133,23 +133,23 @@ describe('Erc721Sentinel', () => {
       profile('tokenCallSetup')
       const info = report?.find(isPayloadOfSchemaType(ContractInfoSchema)) as ContractInfo | undefined
 
-      const totalSupply = new BigNumber((info?.results?.totalSupply as string | undefined)?.replace('0x', '') ?? '0', 16).toNumber()
-      expect(totalSupply).toBeGreaterThan(0)
+      const totalSupply = info?.results?.totalSupply ? BigInt(hexFromHexString(info.results.totalSupply as string, { prefix: true })) : 0n
+      expect(totalSupply).toBeGreaterThan(0n)
 
-      const chunkSize = 100
+      const chunkSize = 100n
       const maxChunks = totalSupply / chunkSize
       const chunks: CryptoContractFunctionCall[][] = []
 
-      let offset = 0
+      let offset = 0n
       while (offset < totalSupply && chunks.length < maxChunks) {
-        offset = chunks.length * chunkSize
+        offset = BigInt(chunks.length) * chunkSize
 
         const chunkList: CryptoContractFunctionCall[] = []
 
         for (let i = offset; i < offset + chunkSize && i < totalSupply; i++) {
           const call: CryptoContractFunctionCall = {
             address,
-            args: [`0x${new BigNumber(i).toString('hex')}`],
+            args: [`0x${BigInt(i).toString(16)}`],
             functionName: 'tokenByIndex',
             schema: CryptoContractFunctionCallSchema,
           }

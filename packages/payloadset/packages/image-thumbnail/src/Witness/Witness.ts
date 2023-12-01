@@ -1,4 +1,5 @@
 /* eslint-disable max-statements */
+import { Buffer } from 'node:buffer'
 import { promises as dnsPromises } from 'node:dns'
 
 import { axios, AxiosError, AxiosResponse } from '@xylabs/axios'
@@ -65,24 +66,25 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     return this.config.width ?? 128
   }
 
-  private static async binaryToSha256(data: Uint8Array) {
+  private static async binaryToSha256(data: ArrayBuffer) {
+    const viewData = new Uint8Array(data)
     await PayloadHasher.wasmInitialized
     if (PayloadHasher.wasmSupport.canUseWasm) {
       try {
-        return await sha256(data)
+        return await sha256(viewData)
       } catch (ex) {
         PayloadHasher.wasmSupport.allowWasm = false
       }
     }
 
-    return shajs('sha256').update(data).digest().toString()
+    return shajs('sha256').update(viewData).digest().toString()
   }
 
-  private static bufferFromDataUrl(url: string): Buffer | undefined {
+  private static bufferFromDataUrl(url: string): ArrayBuffer | undefined {
     if (url.startsWith('data:image')) {
       const data = url.split(',')[1]
       if (data) {
-        return Buffer.from(Uint8Array.from(atob(data), (c) => c.charCodeAt(0)))
+        return Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
       } else {
         const error: ImageThumbnailWitnessError = {
           message: 'Invalid data Url',
@@ -151,9 +153,9 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     return this.config.runExclusive ? await this._semaphore.runExclusive(() => process()) : process()
   }
 
-  private async createThumbnailDataUrl(sourceBuffer: Buffer, encoding?: ImageThumbnailEncoding) {
+  private async createThumbnailDataUrl(sourceBuffer: ArrayBuffer, encoding?: ImageThumbnailEncoding) {
     const thumb = await new Promise<Buffer>((resolve, reject) => {
-      gm(sourceBuffer)
+      gm(Buffer.from(sourceBuffer))
         .quality(this.quality)
         .resize(this.width, this.height)
         .flatten()
@@ -173,7 +175,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
    * @param videoBuffer The input video buffer.
    * @returns An buffer containing an image thumbnail for the video.
    */
-  private async createThumbnailFromVideo(videoBuffer: Buffer) {
+  private async createThumbnailFromVideo(videoBuffer: ArrayBuffer) {
     const imageBuffer = await getVideoFrameAsImageFluent(videoBuffer)
     return this.createThumbnailDataUrl(imageBuffer)
   }
@@ -242,7 +244,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     return result
   }
 
-  private async processMedia(sourceBuffer: Buffer, imageThumbnail: ImageThumbnail, contentType?: string): Promise<ImageThumbnail> {
+  private async processMedia(sourceBuffer: ArrayBuffer, imageThumbnail: ImageThumbnail, contentType?: string): Promise<ImageThumbnail> {
     const [mediaType, fileType] = contentType?.split('/') ?? ['', '']
     imageThumbnail.mime = imageThumbnail.mime ?? {}
     imageThumbnail.mime.returned = mediaType
