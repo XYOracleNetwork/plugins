@@ -174,7 +174,7 @@ describe('Erc721Sentinel', () => {
         const tokenReport = tokenReportArrays.flat()
         tokenCount = tokenReport.length
         const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema)) as ContractInfo[]
-        expect(tokenInfoPayloads.length).toBe(totalSupply)
+        expect(BigInt(tokenInfoPayloads.length)).toBe(totalSupply)
       }
     })
     afterAll(() => {
