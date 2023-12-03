@@ -38,7 +38,9 @@ export interface HttpMeta {
   status?: number
 }
 
-export type ApiCallJsonResult<T extends JsonArray | JsonObject = JsonArray | JsonObject> = Payload<
+export type ApiCallJsonResultType = JsonArray | JsonObject
+
+export type ApiCallJsonResult<T extends ApiCallJsonResultType = ApiCallJsonResultType> = Payload<
   {
     call: Hash
     contentType: 'application/json'
@@ -64,7 +66,10 @@ export type ApiCallErrorResult = Payload<
   ApiCallResultSchema
 >
 
-export type ApiCallResult = ApiCallBase64Result | ApiCallJsonResult | ApiCallErrorResult
+export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | JsonObject> =
+  | ApiCallBase64Result
+  | ApiCallJsonResult<TJson>
+  | ApiCallErrorResult
 
 export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
 export const asApiCall = AsObjectFactory.create(isApiCall)
