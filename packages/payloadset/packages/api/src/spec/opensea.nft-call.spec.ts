@@ -1,5 +1,4 @@
 /* eslint-disable max-statements */
-
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
@@ -8,7 +7,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { ApiCallJsonResult, ApiCallResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../Payload'
+import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../Payload'
 import { ApiCallWitness } from '../Witness'
 import openseaNftsManifest from './opensea.nft-call.json'
 
@@ -19,6 +18,60 @@ describe('OpenSeaApi', () => {
 
   describeIf(apiKey)('report', () => {
     it('specifying address', async () => {
+      type OpenSeaNft = {
+        /*
+         * Collection slug. A unique string to identify a collection on OpenSea
+         */
+        collection: string
+        /*
+         * The unique public blockchain identifier for the contract
+         */
+        contract: string
+        /**
+         * @deprecated
+         */
+        created_at: string
+        /*
+         * Description of the NFT
+         */
+        description: string
+        /*
+         * The NFT's unique identifier within the smart contract (also referred to as token_id)
+         */
+        identifier: string
+        /*
+         * Link to the image associated with the NFT
+         */
+        image_url: string
+        /*
+         * If the item is currently able to be bought or sold using OpenSea
+         */
+        is_disabled: boolean
+        /*
+         * If the item is currently classified as 'Not Safe for Work' by OpenSea as defined in OpenSea's NSFW Policy.
+         */
+        is_nsfw: boolean
+        /*
+         * Link to the offchain metadata store
+         */
+        metadata_url: string
+        /*
+         * Name of the NFT
+         */
+        name: string
+        /*
+         * ERC standard of the token (erc721, erc1155)
+         */
+        token_standard: string
+        /*
+         * Last time that the NFT's metadata was updated by OpenSea
+         */
+        updated_at: string
+      }
+      type OpenSeaListNftsByAccountResponse = {
+        next: string
+        nfts: OpenSeaNft[]
+      }
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
       const wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
@@ -51,11 +104,11 @@ describe('OpenSeaApi', () => {
 
       const report = await sentinel?.report([call])
 
-      const apiCallResult = report?.find(isPayloadOfSchemaType(ApiCallResultSchema)) as ApiCallResult | undefined
-
+      const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<OpenSeaListNftsByAccountResponse>>(ApiCallResultSchema))
+      expect(apiCallResult).toBeDefined()
       expect(apiCallResult?.schema).toBeString()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      expect((apiCallResult as ApiCallJsonResult<any>)?.data.nfts).toBeArrayOfSize(1)
+      expect(apiCallResult?.data.nfts).toBeArrayOfSize(1)
+      expect(apiCallResult?.data.nfts[0].collection).toBeString()
     })
   })
 })
