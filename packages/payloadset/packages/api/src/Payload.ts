@@ -1,5 +1,5 @@
 import { Hash } from '@xylabs/hex'
-import { AsObjectFactory } from '@xyo-network/object'
+import { AsObjectFactory, JsonArray, JsonObject } from '@xyo-network/object'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 export const ApiCallSchema = 'network.xyo.api.call'
@@ -38,7 +38,9 @@ export interface HttpMeta {
   status?: number
 }
 
-export type ApiCallJsonResult<T extends object | [] = object> = Payload<
+export type ApiCallJsonResultType = JsonArray | JsonObject
+
+export type ApiCallJsonResult<T extends ApiCallJsonResultType = ApiCallJsonResultType> = Payload<
   {
     call: Hash
     contentType: 'application/json'
@@ -64,7 +66,10 @@ export type ApiCallErrorResult = Payload<
   ApiCallResultSchema
 >
 
-export type ApiCallResult = ApiCallBase64Result | ApiCallJsonResult | ApiCallErrorResult
+export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | JsonObject> =
+  | ApiCallBase64Result
+  | ApiCallJsonResult<TJson>
+  | ApiCallErrorResult
 
 export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
 export const asApiCall = AsObjectFactory.create(isApiCall)

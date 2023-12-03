@@ -3,7 +3,6 @@ import { Axios, AxiosError, AxiosJson } from '@xylabs/axios'
 import { Hash } from '@xylabs/hex'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
-import { JsonArray, JsonObject } from '@xyo-network/object'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
@@ -16,6 +15,7 @@ import {
   ApiCallBase64Result,
   ApiCallErrorResult,
   ApiCallJsonResult,
+  ApiCallJsonResultType,
   ApiCallResult,
   ApiCallResultSchema,
   ApiCallSchema,
@@ -116,7 +116,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
       switch (this.accept) {
         case 'application/json': {
           const axios = new AxiosJson({ headers: this.params.headers, timeout: this.timeout })
-          const response = await axios.get<JsonArray | JsonObject>(url)
+          const response = await axios.get<ApiCallJsonResultType>(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as ApiCallJsonResult
             jsonResult.data = response.data
