@@ -1,5 +1,5 @@
 import { Hash } from '@xylabs/hex'
-import { AsObjectFactory } from '@xyo-network/object'
+import { AsObjectFactory, JsonArray, JsonObject } from '@xyo-network/object'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 export const ApiCallSchema = 'network.xyo.api.call'
@@ -38,7 +38,7 @@ export interface HttpMeta {
   status?: number
 }
 
-export type ApiCallJsonResult<T extends object | [] = object> = Payload<
+export type ApiCallJsonResult<T extends JsonArray | JsonObject = JsonArray | JsonObject> = Payload<
   {
     call: Hash
     contentType: 'application/json'
