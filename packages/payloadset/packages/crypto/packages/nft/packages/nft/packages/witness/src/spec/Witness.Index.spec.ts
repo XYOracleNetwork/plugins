@@ -33,7 +33,7 @@ describe('CryptoWalletNftWitness Index', () => {
   let sut: TemporalIndexingDiviner
   beforeAll(async () => {
     const labels: Labels = {
-      'network.xyo.image.thumbnail': 'diviner',
+      'network.xyo.crypto.nft': 'diviner',
     }
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
