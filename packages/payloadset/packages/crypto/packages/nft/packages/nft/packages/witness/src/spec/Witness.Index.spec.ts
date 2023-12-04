@@ -157,4 +157,16 @@ describe('CryptoWalletNftWitness Index', () => {
       expect(statePayload.state?.offset).toBe(data.length)
     })
   })
+  describe('diviner index', () => {
+    let indexArchivist: MemoryArchivist
+    beforeAll(async () => {
+      const mod = await node.resolve('NftDivinerIndexArchivist')
+      indexArchivist = assertEx(asArchivistInstance<MemoryArchivist>(mod))
+    })
+    it('has expected index', async () => {
+      const payloads = await indexArchivist.all()
+      const indexPayloads = payloads.filter(isTemporalIndexingDivinerResultIndex)
+      expect(indexPayloads).toBeArrayOfSize(data.length)
+    })
+  })
 })
