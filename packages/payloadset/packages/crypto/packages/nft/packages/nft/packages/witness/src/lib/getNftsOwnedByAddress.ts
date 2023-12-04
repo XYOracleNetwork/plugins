@@ -110,16 +110,19 @@ export const getNftsOwnedByAddress = async (
   const nftResult = await Promise.all(
     nfts.map(async (nft) => {
       try {
-        const { contract, identifier } = nft
+        const { contract, identifier, metadata_url } = nft
         const provider = getProvider(providers)
 
         const block = await provider.getBlockNumber()
 
-        // Check if ERC-1967 Upgradeable
-        const erc1967Status = await getErc1967Status(provider, contract, block)
+        // Check if Upgradeable
+        const [erc1967Status, erc1822Status] = await Promise.all([
+          // Check if ERC-1967 Upgradeable
+          await getErc1967Status(provider, contract, block),
 
-        // Check if ERC-1822 Upgradeable
-        const erc1822Status = await getErc1822Status(provider, contract, block)
+          // Check if ERC-1822 Upgradeable
+          await getErc1822Status(provider, contract, block),
+        ])
 
         const implementation =
           !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
@@ -134,8 +137,8 @@ export const getNftsOwnedByAddress = async (
         }
         const fields: NftInfoFields = {
           address: contract,
-          chainId: Number((await getProvider(providers).getNetwork()).chainId),
-          metadataUri: nft.metadata_url ?? undefined,
+          chainId: Number((await provider.getNetwork()).chainId),
+          metadataUri: metadata_url ?? undefined,
           supply: `0x${supply.toString(16)}`,
           tokenId: identifier,
           type: types.at(0),
