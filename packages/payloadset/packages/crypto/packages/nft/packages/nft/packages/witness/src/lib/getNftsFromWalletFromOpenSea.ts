@@ -2,17 +2,53 @@ import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
 
 interface OpenSeaNFT {
+  /*
+   * Collection slug. A unique string to identify a collection on OpenSea
+   */
   collection: string
+  /*
+   * The unique public blockchain identifier for the contract
+   */
   contract: string
+  /**
+   * @deprecated
+   */
   created_at: string
+  /*
+   * Description of the NFT
+   */
   description: string | null
+  /*
+   * The NFT's unique identifier within the smart contract (also referred to as token_id)
+   */
   identifier: string
+  /*
+   * Link to the image associated with the NFT
+   */
   image_url: string | null
+  /*
+   * If the item is currently able to be bought or sold using OpenSea
+   */
   is_disabled: boolean
+  /*
+   * If the item is currently classified as 'Not Safe for Work' by OpenSea as defined in OpenSea's NSFW Policy.
+   */
   is_nsfw: boolean
+  /*
+   * Link to the offchain metadata store
+   */
   metadata_url: string | null
+  /*
+   * Name of the NFT
+   */
   name: string | null
+  /*
+   * ERC standard of the token (erc721, erc1155)
+   */
   token_standard: string
+  /*
+   * Last time that the NFT's metadata was updated by OpenSea
+   */
   updated_at: string
 }
 

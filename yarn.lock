@@ -4582,17 +4582,34 @@ __metadata:
   resolution: "@xyo-network/crypto-nft-witness-wallet-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/nft/packages/witness"
   dependencies:
     "@types/parse-data-url": "npm:^3.0.2"
+    "@xylabs/array": "npm:^2.13.20"
     "@xylabs/assert": "npm:^2.13.20"
     "@xylabs/axios": "npm:^2.13.20"
+    "@xylabs/delay": "npm:^2.13.20"
     "@xylabs/eth-address": "npm:^2.13.20"
+    "@xylabs/exists": "npm:^2.13.20"
     "@xylabs/hex": "npm:^2.13.20"
     "@xylabs/jest-helpers": "npm:^2.13.20"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
     "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/account": "npm:^2.82.0"
+    "@xyo-network/archivist-model": "npm:^2.82.0"
     "@xyo-network/blockchain-erc1822-witness": "workspace:~"
     "@xyo-network/blockchain-erc1967-witness": "workspace:~"
+    "@xyo-network/boundwitness-builder": "npm:^2.82.0"
+    "@xyo-network/boundwitness-model": "npm:^2.82.0"
+    "@xyo-network/core": "npm:^2.82.0"
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:~"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:~"
+    "@xyo-network/diviner-boundwitness-memory": "npm:^2.82.0"
+    "@xyo-network/diviner-model": "npm:^2.82.0"
+    "@xyo-network/diviner-payload-memory": "npm:^2.82.0"
+    "@xyo-network/diviner-payload-model": "npm:^2.82.0"
+    "@xyo-network/diviner-temporal-indexing": "npm:^2.81.0"
+    "@xyo-network/manifest": "npm:^2.82.0"
+    "@xyo-network/memory-archivist": "npm:^2.82.0"
+    "@xyo-network/module-model": "npm:^2.82.0"
+    "@xyo-network/node-memory": "npm:^2.82.0"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.82.0"
     "@xyo-network/payload-wrapper": "npm:^2.82.0"
@@ -4794,6 +4811,59 @@ __metadata:
     "@xyo-network/module-model": "npm:~2.82.0"
     "@xyo-network/payload-model": "npm:~2.82.0"
   checksum: 4955dff8630e326ba57d398b9e11eab1f79fdffa5f958471d73ec419cb33110b4864b90d84bddbfd0da755d0060cb534a3b92b493039238e4d403f4fe27a2f01
+  languageName: node
+  linkType: hard
+
+"@xyo-network/diviner-temporal-indexing-memory@npm:~2.81.0":
+  version: 2.81.0
+  resolution: "@xyo-network/diviner-temporal-indexing-memory@npm:2.81.0"
+  dependencies:
+    "@xylabs/array": "npm:^2.13.20"
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/exists": "npm:^2.13.20"
+    "@xyo-network/abstract-diviner": "npm:~2.82.0"
+    "@xyo-network/archivist-model": "npm:~2.82.0"
+    "@xyo-network/archivist-wrapper": "npm:~2.82.0"
+    "@xyo-network/boundwitness-model": "npm:~2.82.0"
+    "@xyo-network/core": "npm:~2.82.0"
+    "@xyo-network/diviner-boundwitness-model": "npm:~2.82.0"
+    "@xyo-network/diviner-indexing-memory": "npm:~2.82.0"
+    "@xyo-network/diviner-indexing-model": "npm:~2.82.0"
+    "@xyo-network/diviner-model": "npm:~2.82.0"
+    "@xyo-network/diviner-payload-model": "npm:~2.82.0"
+    "@xyo-network/diviner-temporal-indexing-model": "npm:~2.81.0"
+    "@xyo-network/diviner-wrapper": "npm:~2.82.0"
+    "@xyo-network/module-model": "npm:~2.82.0"
+    "@xyo-network/node-model": "npm:~2.82.0"
+    "@xyo-network/payload-builder": "npm:~2.82.0"
+    "@xyo-network/payload-model": "npm:~2.82.0"
+    "@xyo-network/witness-timestamp": "npm:~2.82.0"
+    jsonpath: "npm:^1.1.1"
+  checksum: 9a9be43b949309de6794e4d67e73db64d14f50d3ec8acc0a3b9f99dfd1f44961f012f5ab0f16beaa1303ce0b8a0aeb930c2bd958a1720fbac44a5a97a47d03a4
+  languageName: node
+  linkType: hard
+
+"@xyo-network/diviner-temporal-indexing-model@npm:~2.81.0":
+  version: 2.81.0
+  resolution: "@xyo-network/diviner-temporal-indexing-model@npm:2.81.0"
+  dependencies:
+    "@xyo-network/core": "npm:~2.82.0"
+    "@xyo-network/diviner-boundwitness-model": "npm:~2.82.0"
+    "@xyo-network/diviner-indexing-model": "npm:~2.82.0"
+    "@xyo-network/diviner-model": "npm:~2.82.0"
+    "@xyo-network/module-model": "npm:~2.82.0"
+    "@xyo-network/payload-model": "npm:~2.82.0"
+  checksum: 6409bbe2ab457172933186c7b952e1f9b69c47c2de2b93e47d48d21613e8910c82acf02bba9b213743051dcbde1f9b362a794d0700776d32525be4b73185ee8a
+  languageName: node
+  linkType: hard
+
+"@xyo-network/diviner-temporal-indexing@npm:^2.81.0":
+  version: 2.81.0
+  resolution: "@xyo-network/diviner-temporal-indexing@npm:2.81.0"
+  dependencies:
+    "@xyo-network/diviner-temporal-indexing-memory": "npm:~2.81.0"
+    "@xyo-network/diviner-temporal-indexing-model": "npm:~2.81.0"
+  checksum: 9c8d8e3353eb96b22db4e7fdd2386998049eaec24f2fc4bf1784e21b2dc38c36f505eb6d7caa3081f81bac93ddc5a494e83e86e4dab39aa92ff192829c792431
   languageName: node
   linkType: hard
 
@@ -6327,7 +6397,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/witness-timestamp@npm:^2.82.0":
+"@xyo-network/witness-timestamp@npm:^2.82.0, @xyo-network/witness-timestamp@npm:~2.82.0":
   version: 2.82.0
   resolution: "@xyo-network/witness-timestamp@npm:2.82.0"
   dependencies:
@@ -8741,6 +8811,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"escodegen@npm:^1.8.1":
+  version: 1.14.3
+  resolution: "escodegen@npm:1.14.3"
+  dependencies:
+    esprima: "npm:^4.0.1"
+    estraverse: "npm:^4.2.0"
+    esutils: "npm:^2.0.2"
+    optionator: "npm:^0.8.1"
+    source-map: "npm:~0.6.1"
+  dependenciesMeta:
+    source-map:
+      optional: true
+  bin:
+    escodegen: bin/escodegen.js
+    esgenerate: bin/esgenerate.js
+  checksum: 70f095ca9393535f9f1c145ef99dc0b3ff14cca6bc4a79d90ff3352f90c3f2e07f75af6d6c05174ea67c45271f75e80dd440dd7d04ed2cf44c9452c3042fa84a
+  languageName: node
+  linkType: hard
+
 "escodegen@npm:^2.0.0":
   version: 2.1.0
   resolution: "escodegen@npm:2.1.0"
@@ -9116,6 +9205,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"esprima@npm:1.2.2":
+  version: 1.2.2
+  resolution: "esprima@npm:1.2.2"
+  bin:
+    esparse: ./bin/esparse.js
+    esvalidate: ./bin/esvalidate.js
+  checksum: 7ed9274abb1fed861354239f0da8fa3ec6592617ad0fd2aab16b0beb0425137c46f05c82faa0de89b3bb3d704054815c2657658c7e221b1fb550e88c237eefd2
+  languageName: node
+  linkType: hard
+
 "esprima@npm:^4.0.0, esprima@npm:^4.0.1":
   version: 4.0.1
   resolution: "esprima@npm:4.0.1"
@@ -9144,7 +9243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estraverse@npm:^4.1.1":
+"estraverse@npm:^4.1.1, estraverse@npm:^4.2.0":
   version: 4.3.0
   resolution: "estraverse@npm:4.3.0"
   checksum: 3f67ad02b6dbfaddd9ea459cf2b6ef4ecff9a6082a7af9d22e445b9abc082ad9ca47e1825557b293fcdae477f4714e561123e30bb6a5b2f184fb2bad4a9497eb
@@ -12024,6 +12123,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsonpath@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "jsonpath@npm:1.1.1"
+  dependencies:
+    esprima: "npm:1.2.2"
+    static-eval: "npm:2.0.2"
+    underscore: "npm:1.12.1"
+  checksum: aa6c2fea9c05eeba4a37870cbbcf30c20de5211d0fd967786b6c59b8546c9f80182328ee2428daf989c8d5c6e6bf97fed28eefc790144258b1238707c30706eb
+  languageName: node
+  linkType: hard
+
 "junk@npm:^3.1.0":
   version: 3.1.0
   resolution: "junk@npm:3.1.0"
@@ -13909,7 +14019,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"optionator@npm:^0.8.3":
+"optionator@npm:^0.8.1, optionator@npm:^0.8.3":
   version: 0.8.3
   resolution: "optionator@npm:0.8.3"
   dependencies:
@@ -17212,6 +17322,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"static-eval@npm:2.0.2":
+  version: 2.0.2
+  resolution: "static-eval@npm:2.0.2"
+  dependencies:
+    escodegen: "npm:^1.8.1"
+  checksum: 2e2faf1b23bad5d9d5b2407b18945c7b97f8706b6d65f06bb3583a2d4fd1994cf5890c5779a1bfa2a02905dc860e077e4f045d7413d289d8993f605758f8992f
+  languageName: node
+  linkType: hard
+
 "static-extend@npm:^0.1.1":
   version: 0.1.2
   resolution: "static-extend@npm:0.1.2"
@@ -18276,6 +18395,13 @@ __metadata:
   version: 2.0.5
   resolution: "undefsafe@npm:2.0.5"
   checksum: f42ab3b5770fedd4ada175fc1b2eb775b78f609156f7c389106aafd231bfc210813ee49f54483d7191d7b76e483bc7f537b5d92d19ded27156baf57592eb02cc
+  languageName: node
+  linkType: hard
+
+"underscore@npm:1.12.1":
+  version: 1.12.1
+  resolution: "underscore@npm:1.12.1"
+  checksum: c3bb50c61ef7dea4b9add6d48f98316f65de1075801dc8cd01ecd82122b99eb17ce0f068f00f6cc10245d5cf75c443ce96f8efc5458d7773b44af9bd7c2ccc56
   languageName: node
   linkType: hard
 
