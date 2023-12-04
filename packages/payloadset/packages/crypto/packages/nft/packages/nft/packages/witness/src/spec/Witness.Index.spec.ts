@@ -211,25 +211,24 @@ describe('CryptoWalletNftWitness Index', () => {
   })
   describe('with Nfts for the provided Address', () => {
     const schema = PayloadDivinerQuerySchema
-    describe('with no filter criteria', () => {
-      const addresses = data
-        .filter((nft) => nft.chainId === 1)
-        .map((nft) => nft.address)
-        .filter(distinct)
-      const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
-      it.each(cases)('uses chainId 1', async (payload) => {
-        const { address } = payload
-        const query: Query = { address, schema }
-        const results = await sut.divine([query])
-        const result = results.find(isTemporalIndexingDivinerResultIndex)
-        expect(result).toBeDefined()
-        await verifyIsExpectedNft(result, payload)
-      })
-    })
     describe('with filter criteria', () => {
-      const addresses = data.map((nft) => nft.address).filter(distinct)
-      const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+      describe('for address', () => {
+        const addresses = data
+          .filter((nft) => nft.chainId === 1)
+          .map((nft) => nft.address)
+          .filter(distinct)
+        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+        it.each(cases)('returns the most recent instance of that address using the default chainId', async (payload) => {
+          const { address } = payload
+          const query: Query = { address, schema }
+          const results = await sut.divine([query])
+          const result = results.find(isTemporalIndexingDivinerResultIndex)
+          await verifyIsExpectedNft(result, payload)
+        })
+      })
       describe('for address & chainId', () => {
+        const addresses = data.map((nft) => nft.address).filter(distinct)
+        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address & chainId', async (payload) => {
           const { address, chainId } = payload
           const query: Query = { address, chainId, schema }
