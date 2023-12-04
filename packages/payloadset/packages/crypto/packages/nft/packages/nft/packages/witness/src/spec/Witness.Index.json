@@ -115,6 +115,10 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.tokenId"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -148,6 +152,10 @@
                     "defaultValue": 1,
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.tokenId"
                   },
                   {
                     "defaultValue": 1,
