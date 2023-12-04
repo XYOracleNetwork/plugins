@@ -1,5 +1,7 @@
+import { distinct } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
+import { exists } from '@xylabs/exists'
 import { HDWallet } from '@xyo-network/account'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -22,9 +24,10 @@ import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
 import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { isModuleState, Labels, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { Payload } from '@xyo-network/payload-model'
 
 import imageThumbnailDivinerManifest from './Witness.Index.json'
+
+type Query = PayloadDivinerQueryPayload & { status?: number; success?: boolean; url?: string }
 
 /**
  * @group slow
@@ -123,8 +126,8 @@ describe('CryptoWalletNftWitness Index', () => {
       )
     ).flat()
 
-    const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('NftArchivist')))
-    await thumbnailArchivist.insert(payloads)
+    const NftArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('NftArchivist')))
+    await NftArchivist.insert(payloads)
 
     sut = assertEx(asDivinerInstance<TemporalIndexingDiviner>(await node.resolve('NftDiviner')))
 
@@ -167,6 +170,44 @@ describe('CryptoWalletNftWitness Index', () => {
       const payloads = await indexArchivist.all()
       const indexPayloads = payloads.filter(isTemporalIndexingDivinerResultIndex)
       expect(indexPayloads).toBeArrayOfSize(data.length)
+    })
+  })
+  describe('with no Nft for the provided Address', () => {
+    const address = '0x9000000000000000000000000000000000000000'
+    const schema = PayloadDivinerQuerySchema
+    it('returns nothing', async () => {
+      const query: Query = { address, schema }
+      const result = await sut.divine([query])
+      expect(result).toBeArrayOfSize(0)
+    })
+  })
+  describe('with Nfts for the provided Address', () => {
+    const schema = PayloadDivinerQuerySchema
+    describe('with no filter criteria', () => {
+      it('returns the most recent result', async () => {
+        const query: Query = { schema }
+        const results = await sut.divine([query])
+        const result = results.find(isTemporalIndexingDivinerResultIndex)
+        expect(result).toBeDefined()
+        const last = data.at(-1)
+        const expected = await PayloadHasher.hashAsync(assertEx(last))
+        expect(result?.sources).toContain(expected)
+      })
+    })
+    describe('with filter criteria', () => {
+      describe('for address', () => {
+        const addresses = data.map((nft) => nft.address).filter(distinct)
+        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+        it.each(cases)('returns the most recent instance of that address', async (payload) => {
+          const { address } = payload
+          const query: Query = { address, schema }
+          const results = await sut.divine([query])
+          const result = results.find(isTemporalIndexingDivinerResultIndex)
+          expect(result).toBeDefined()
+          const expected = await PayloadHasher.hashAsync(payload)
+          expect(result?.sources).toContain(expected)
+        })
+      })
     })
   })
 })
