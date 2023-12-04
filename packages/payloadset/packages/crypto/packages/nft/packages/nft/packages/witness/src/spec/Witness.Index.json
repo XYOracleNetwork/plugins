@@ -84,8 +84,8 @@
                 "payload_schemas": ["network.xyo.crypto.nft"]
               },
               "labels": {
-                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner",
-                "network.xyo.crypto.nft": "diviner"
+                "network.xyo.crypto.nft": "diviner",
+                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
               },
               "language": "javascript",
               "name": "NftStateToIndexCandidateDiviner",
@@ -100,8 +100,8 @@
           {
             "config": {
               "labels": {
-                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner",
-                "network.xyo.crypto.nft": "diviner"
+                "network.xyo.crypto.nft": "diviner",
+                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
               },
               "language": "javascript",
               "name": "NftIndexCandidateToNftIndexDiviner",
@@ -136,8 +136,8 @@
               "indexQuerySchema": "network.xyo.diviner.payload.query",
               "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
               "labels": {
-                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner",
-                "network.xyo.crypto.nft": "diviner"
+                "network.xyo.crypto.nft": "diviner",
+                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
               },
               "language": "javascript",
               "name": "NftQueryToNftIndexQueryDiviner",
@@ -179,8 +179,8 @@
           {
             "config": {
               "labels": {
-                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner",
-                "network.xyo.crypto.nft": "diviner"
+                "network.xyo.crypto.nft": "diviner",
+                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
               },
               "language": "javascript",
               "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
@@ -189,16 +189,16 @@
           },
           {
             "config": {
+              "indexStore": {
+                "archivist": "NftDivinerIndexArchivist",
+                "boundWitnessDiviner": "NftDivinerIndexBoundWitnessDiviner",
+                "payloadDiviner": "NftDivinerIndexPayloadDiviner"
+              },
               "indexingDivinerStages": {
                 "divinerQueryToIndexQueryDiviner": "NftQueryToNftIndexQueryDiviner",
                 "indexCandidateToIndexDiviner": "NftIndexCandidateToNftIndexDiviner",
                 "indexQueryResponseToDivinerQueryResponseDiviner": "NftIndexQueryResponseToNftQueryResponseDiviner",
                 "stateToIndexCandidateDiviner": "NftStateToIndexCandidateDiviner"
-              },
-              "indexStore": {
-                "archivist": "NftDivinerIndexArchivist",
-                "boundWitnessDiviner": "NftDivinerIndexBoundWitnessDiviner",
-                "payloadDiviner": "NftDivinerIndexPayloadDiviner"
               },
               "language": "javascript",
               "name": "NftDiviner",
