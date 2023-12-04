@@ -69,7 +69,6 @@ export const getNftsOwnedByAddressWithMetadata = async (
 ): Promise<NftInfoFields[]> => {
   const nfts = await getNftsOwnedByAddress(publicAddress, providers, maxNfts, timeout)
   const nftResult = await Promise.all(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     nfts.map(async (nft) => {
       try {
         if (!nft.metadataUri || !nft.metadata) {
@@ -109,7 +108,6 @@ export const getNftsOwnedByAddress = async (
   const nfts = await getNftsFromWalletFromOpenSea(publicAddress, maxNfts, timeout)
 
   const nftResult = await Promise.all(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     nfts.map(async (nft) => {
       try {
         const { contract, identifier } = nft
@@ -117,10 +115,10 @@ export const getNftsOwnedByAddress = async (
 
         const block = await provider.getBlockNumber()
 
-        //Check if ERC-1967 Upgradeable
+        // Check if ERC-1967 Upgradeable
         const erc1967Status = await getErc1967Status(provider, contract, block)
 
-        //Check if ERC-1822 Upgradeable
+        // Check if ERC-1822 Upgradeable
         const erc1822Status = await getErc1822Status(provider, contract, block)
 
         const implementation =
