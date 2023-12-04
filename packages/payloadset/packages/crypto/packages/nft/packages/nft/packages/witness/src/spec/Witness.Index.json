@@ -35,46 +35,46 @@
           {
             "config": {
               "language": "javascript",
-              "name": "ImageThumbnailArchivist",
+              "name": "NftArchivist",
               "schema": "network.xyo.archivist.config"
             }
           },
           {
             "config": {
-              "archivist": "ImageThumbnailArchivist",
+              "archivist": "NftArchivist",
               "language": "javascript",
-              "name": "ImageThumbnailBoundWitnessDiviner",
+              "name": "NftBoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
           },
           {
             "config": {
-              "archivist": "ImageThumbnailArchivist",
+              "archivist": "NftArchivist",
               "language": "javascript",
-              "name": "ImageThumbnailPayloadDiviner",
+              "name": "NftPayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
           },
           {
             "config": {
               "language": "javascript",
-              "name": "ImageThumbnailDivinerIndexArchivist",
+              "name": "NftDivinerIndexArchivist",
               "schema": "network.xyo.archivist.config"
             }
           },
           {
             "config": {
-              "archivist": "ImageThumbnailDivinerIndexArchivist",
+              "archivist": "NftDivinerIndexArchivist",
               "language": "javascript",
-              "name": "ImageThumbnailDivinerIndexBoundWitnessDiviner",
+              "name": "NftDivinerIndexBoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
           },
           {
             "config": {
-              "archivist": "ImageThumbnailDivinerIndexArchivist",
+              "archivist": "NftDivinerIndexArchivist",
               "language": "javascript",
-              "name": "ImageThumbnailDivinerIndexPayloadDiviner",
+              "name": "NftDivinerIndexPayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
           },
@@ -88,11 +88,11 @@
                 "network.xyo.image.thumbnail": "diviner"
               },
               "language": "javascript",
-              "name": "ImageThumbnailStateToIndexCandidateDiviner",
+              "name": "NftStateToIndexCandidateDiviner",
               "payloadStore": {
-                "archivist": "ImageThumbnailArchivist",
-                "boundWitnessDiviner": "ImageThumbnailBoundWitnessDiviner",
-                "payloadDiviner": "ImageThumbnailPayloadDiviner"
+                "archivist": "NftArchivist",
+                "boundWitnessDiviner": "NftBoundWitnessDiviner",
+                "payloadDiviner": "NftPayloadDiviner"
               },
               "schema": "network.xyo.diviner.config"
             }
@@ -104,7 +104,7 @@
                 "network.xyo.image.thumbnail": "diviner"
               },
               "language": "javascript",
-              "name": "ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner",
+              "name": "NftIndexCandidateToNftIndexDiviner",
               "schema": "network.xyo.diviner.config",
               "schemaTransforms": {
                 "network.xyo.image.thumbnail": [
@@ -136,7 +136,7 @@
                 "network.xyo.image.thumbnail": "diviner"
               },
               "language": "javascript",
-              "name": "ImageThumbnailQueryToImageThumbnailIndexQueryDiviner",
+              "name": "NftQueryToNftIndexQueryDiviner",
               "schema": "network.xyo.diviner.config",
               "schemaTransforms": {
                 "network.xyo.diviner.payload.query": [
@@ -178,25 +178,25 @@
                 "network.xyo.image.thumbnail": "diviner"
               },
               "language": "javascript",
-              "name": "ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner",
+              "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
               "schema": "network.xyo.diviner.config"
             }
           },
           {
             "config": {
               "indexingDivinerStages": {
-                "divinerQueryToIndexQueryDiviner": "ImageThumbnailQueryToImageThumbnailIndexQueryDiviner",
-                "indexCandidateToIndexDiviner": "ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner",
-                "indexQueryResponseToDivinerQueryResponseDiviner": "ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner",
-                "stateToIndexCandidateDiviner": "ImageThumbnailStateToIndexCandidateDiviner"
+                "divinerQueryToIndexQueryDiviner": "NftQueryToNftIndexQueryDiviner",
+                "indexCandidateToIndexDiviner": "NftIndexCandidateToNftIndexDiviner",
+                "indexQueryResponseToDivinerQueryResponseDiviner": "NftIndexQueryResponseToNftQueryResponseDiviner",
+                "stateToIndexCandidateDiviner": "NftStateToIndexCandidateDiviner"
               },
               "indexStore": {
-                "archivist": "ImageThumbnailDivinerIndexArchivist",
-                "boundWitnessDiviner": "ImageThumbnailDivinerIndexBoundWitnessDiviner",
-                "payloadDiviner": "ImageThumbnailDivinerIndexPayloadDiviner"
+                "archivist": "NftDivinerIndexArchivist",
+                "boundWitnessDiviner": "NftDivinerIndexBoundWitnessDiviner",
+                "payloadDiviner": "NftDivinerIndexPayloadDiviner"
               },
               "language": "javascript",
-              "name": "ImageThumbnailDiviner",
+              "name": "NftDiviner",
               "pollFrequency": 1000,
               "schema": "network.xyo.diviner.indexing.config",
               "stateStore": {

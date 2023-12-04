@@ -56,10 +56,10 @@ describe('CryptoWalletNftWitness Index', () => {
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
 
     // Insert NFTS into archivist
-    const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('ImageThumbnailArchivist')))
+    const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('NftArchivist')))
     await thumbnailArchivist.insert([])
 
-    sut = assertEx(asDivinerInstance<TemporalIndexingDiviner>(await node.resolve('ImageThumbnailDiviner')))
+    sut = assertEx(asDivinerInstance<TemporalIndexingDiviner>(await node.resolve('NftDiviner')))
 
     // Allow enough time for diviner to divine
     await delay(5000)
