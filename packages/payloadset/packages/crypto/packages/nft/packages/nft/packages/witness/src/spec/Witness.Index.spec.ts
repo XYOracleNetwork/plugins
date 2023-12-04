@@ -18,6 +18,7 @@ import {
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
   TemporalIndexingDivinerIndexCandidateToIndexDiviner,
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
+  TemporalIndexingDivinerResultIndex,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
@@ -27,7 +28,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 
 import imageThumbnailDivinerManifest from './Witness.Index.json'
 
-type Query = PayloadDivinerQueryPayload & { status?: number; success?: boolean; url?: string }
+type Query = PayloadDivinerQueryPayload & { address: string; chainId?: number }
 
 /**
  * @group slow
@@ -40,11 +41,6 @@ describe('CryptoWalletNftWitness Index', () => {
     {
       address: '0x0000000000000000000000000000000000000000',
       chainId: 1,
-      metadata: {
-        description: 'Test NFT Description',
-        image: 'https://example.com/image.png',
-        name: 'Test NFT',
-      },
       schema: NftSchema,
       supply: '1',
       tokenId: '0',
@@ -61,9 +57,19 @@ describe('CryptoWalletNftWitness Index', () => {
       types: ['ERC721'],
     },
     // 0x0000000000000000000000000000000000000001
+    // chainId: 2
     {
       address: '0x0000000000000000000000000000000000000001',
-      chainId: 1,
+      chainId: 2,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '0',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    {
+      address: '0x0000000000000000000000000000000000000001',
+      chainId: 2,
       schema: NftSchema,
       supply: '1',
       tokenId: '1',
@@ -71,22 +77,44 @@ describe('CryptoWalletNftWitness Index', () => {
       types: ['ERC721'],
     },
     // 0x0000000000000000000000000000000000000002
+    // ERC1155
+    {
+      address: '0x0000000000000000000000000000000000000002',
+      chainId: 1,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '0',
+      type: 'ERC1155',
+      types: ['ERC1155'],
+    },
     {
       address: '0x0000000000000000000000000000000000000002',
       chainId: 1,
       schema: NftSchema,
       supply: '1',
       tokenId: '1',
-      type: 'ERC721',
-      types: ['ERC721'],
+      type: 'ERC1155',
+      types: ['ERC1155'],
     },
     // 0x0000000000000000000000000000000000000003
+    // Duplicate observations
     {
       address: '0x0000000000000000000000000000000000000003',
       chainId: 1,
+      metadata: { foo: 'bar' },
       schema: NftSchema,
       supply: '1',
-      tokenId: '1',
+      tokenId: '0',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    {
+      address: '0x0000000000000000000000000000000000000003',
+      chainId: 1,
+      metadata: { baz: 'qix' },
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '0',
       type: 'ERC721',
       types: ['ERC721'],
     },
@@ -184,30 +212,38 @@ describe('CryptoWalletNftWitness Index', () => {
   describe('with Nfts for the provided Address', () => {
     const schema = PayloadDivinerQuerySchema
     describe('with no filter criteria', () => {
-      it('returns the most recent result', async () => {
-        const query: Query = { schema }
+      const addresses = data
+        .filter((nft) => nft.chainId === 1)
+        .map((nft) => nft.address)
+        .filter(distinct)
+      const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+      it.each(cases)('uses chainId 1', async (payload) => {
+        const { address } = payload
+        const query: Query = { address, schema }
         const results = await sut.divine([query])
         const result = results.find(isTemporalIndexingDivinerResultIndex)
         expect(result).toBeDefined()
-        const last = data.at(-1)
-        const expected = await PayloadHasher.hashAsync(assertEx(last))
-        expect(result?.sources).toContain(expected)
+        await verifyIsExpectedNft(result, payload)
       })
     })
     describe('with filter criteria', () => {
-      describe('for address', () => {
-        const addresses = data.map((nft) => nft.address).filter(distinct)
-        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
-        it.each(cases)('returns the most recent instance of that address', async (payload) => {
-          const { address } = payload
-          const query: Query = { address, schema }
+      const addresses = data.map((nft) => nft.address).filter(distinct)
+      const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+      describe('for address & chainId', () => {
+        it.each(cases)('returns the most recent instance of that address & chainId', async (payload) => {
+          const { address, chainId } = payload
+          const query: Query = { address, chainId, schema }
           const results = await sut.divine([query])
           const result = results.find(isTemporalIndexingDivinerResultIndex)
-          expect(result).toBeDefined()
-          const expected = await PayloadHasher.hashAsync(payload)
-          expect(result?.sources).toContain(expected)
+          await verifyIsExpectedNft(result, payload)
         })
       })
     })
   })
+  const verifyIsExpectedNft = async (result: TemporalIndexingDivinerResultIndex | undefined, payload: NftInfo | undefined) => {
+    expect(result).toBeDefined()
+    expect(payload).toBeDefined()
+    const expected = await PayloadHasher.hashAsync(assertEx(payload))
+    expect(result?.sources).toContain(expected)
+  }
 })
