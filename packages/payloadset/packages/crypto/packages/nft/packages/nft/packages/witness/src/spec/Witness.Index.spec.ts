@@ -113,17 +113,48 @@ describe('CryptoWalletNftWitness Index', () => {
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
 
     // Insert NFTS into archivist
+    const payloads = (
+      await Promise.all(
+        data.map(async (nft) => {
+          const timestamp = { schema: 'network.xyo.timestamp', timestamp: Date.now() }
+          const [bw, payloads] = await new BoundWitnessBuilder().payloads([nft, timestamp]).build()
+          return [bw, ...payloads]
+        }),
+      )
+    ).flat()
+
     const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('NftArchivist')))
-    await thumbnailArchivist.insert([])
+    await thumbnailArchivist.insert(payloads)
 
     sut = assertEx(asDivinerInstance<TemporalIndexingDiviner>(await node.resolve('NftDiviner')))
 
     // Allow enough time for diviner to divine
     await delay(5000)
   }, 40000)
-  describe('Indexed NFT Info', () => {
-    it('has tests', async () => {
-      // TODO
+  describe('diviner state', () => {
+    let stateArchivist: MemoryArchivist
+    beforeAll(async () => {
+      const mod = await node.resolve('AddressStateArchivist')
+      stateArchivist = assertEx(asArchivistInstance<MemoryArchivist>(mod))
+    })
+    it('has expected bound witnesses', async () => {
+      const payloads = await stateArchivist.all()
+      const stateBoundWitnesses = payloads.filter(isBoundWitness)
+      expect(stateBoundWitnesses).toBeArrayOfSize(2)
+      stateBoundWitnesses.forEach((stateBoundWitness) => {
+        expect(stateBoundWitness).toBeObject()
+        expect(stateBoundWitness.addresses).toBeArrayOfSize(1)
+        expect(stateBoundWitness.addresses).toContain(sut.address)
+      })
+    })
+    it('has expected state', async () => {
+      const payloads = await stateArchivist.all()
+      const statePayloads = payloads.filter(isModuleState)
+      expect(statePayloads).toBeArrayOfSize(2)
+      expect(statePayloads.at(-1)).toBeObject()
+      const statePayload = assertEx(statePayloads.at(-1))
+      expect(statePayload.state).toBeObject()
+      expect(statePayload.state?.offset).toBe(data.length)
     })
   })
 })
