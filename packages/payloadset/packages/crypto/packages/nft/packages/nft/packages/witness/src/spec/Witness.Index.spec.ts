@@ -5,6 +5,7 @@ import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadHasher } from '@xyo-network/core'
+import { NftInfo, NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -31,6 +32,62 @@ import imageThumbnailDivinerManifest from './Witness.Index.json'
 describe('CryptoWalletNftWitness Index', () => {
   let node: MemoryNode
   let sut: TemporalIndexingDiviner
+  const data: NftInfo[] = [
+    // 0x0000000000000000000000000000000000000000
+    {
+      address: '0x0000000000000000000000000000000000000000',
+      chainId: 1,
+      metadata: {
+        description: 'Test NFT Description',
+        image: 'https://example.com/image.png',
+        name: 'Test NFT',
+      },
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '0',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    {
+      address: '0x0000000000000000000000000000000000000000',
+      chainId: 1,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '1',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    // 0x0000000000000000000000000000000000000001
+    {
+      address: '0x0000000000000000000000000000000000000001',
+      chainId: 1,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '1',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    // 0x0000000000000000000000000000000000000002
+    {
+      address: '0x0000000000000000000000000000000000000002',
+      chainId: 1,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '1',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+    // 0x0000000000000000000000000000000000000003
+    {
+      address: '0x0000000000000000000000000000000000000003',
+      chainId: 1,
+      schema: NftSchema,
+      supply: '1',
+      tokenId: '1',
+      type: 'ERC721',
+      types: ['ERC721'],
+    },
+  ]
   beforeAll(async () => {
     const labels: Labels = {
       'network.xyo.crypto.nft': 'diviner',
