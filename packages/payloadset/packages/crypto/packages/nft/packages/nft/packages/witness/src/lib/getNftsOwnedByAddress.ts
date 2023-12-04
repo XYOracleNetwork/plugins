@@ -6,8 +6,8 @@ import { ERC721__factory, ERC1155__factory, ERC1155Supply__factory } from '@xyo-
 import { Provider } from 'ethers'
 import { LRUCache } from 'lru-cache'
 
-import { getNftsFromWalletFromOpenSea } from './getAssetsFromWalletFromOpenSea'
 import { getNftMetadata } from './getNftMetadata'
+import { getNftsFromWalletFromOpenSea } from './getNftsFromWalletFromOpenSea'
 import { getProvider } from './getProvider'
 import { tokenTypes } from './tokenTypes'
 import { tryCall } from './tryCall'
