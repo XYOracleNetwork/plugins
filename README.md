@@ -81,10 +81,10 @@ yarn xy compile
 [npm-badge]: https://img.shields.io/npm/v/@xyo-network/plugins.svg
 [npm-link]: https://www.npmjs.com/package/@xyo-network/plugins
 
-[codacy-badge]: https://app.codacy.com/project/badge/Grade/ba1f344ae34e4bfe999331cf4e27b9f5
+[codacy-badge]: https://app.codacy.com/project/badge/Grade/a373daece4d749d8a347f102114005ec
 [codacy-link]: https://www.codacy.com/gh/XYOracleNetwork/plugins/dashboard?utm_source=github.com&utm_medium=referral&utm_content=XYOracleNetwork/plugins&utm_campaign=Badge_Grade
 
-[codeclimate-badge]: https://api.codeclimate.com/v1/badges/0e76349c9541f3866948/maintainability
+[codeclimate-badge]: https://api.codeclimate.com/v1/badges/4cf4262de096948cae12/maintainability
 [codeclimate-link]: https://codeclimate.com/github/XYOracleNetwork/plugins/maintainability
 
 [snyk-badge]: https://snyk.io/test/github/XYOracleNetwork/plugins/badge.svg?targetFile=package.json
