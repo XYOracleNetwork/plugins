@@ -1,7 +1,7 @@
 import { UrlPlugin } from './PluginNode'
-import { UrlWitness } from './Witness'
+export * from './Witness'
 
-export { UrlPlugin, UrlWitness }
+export { UrlPlugin }
 
 // eslint-disable-next-line import/no-default-export
 export default UrlPlugin

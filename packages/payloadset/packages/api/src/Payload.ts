@@ -5,8 +5,8 @@ import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 export const ApiCallSchema = 'network.xyo.api.call'
 export type ApiCallSchema = typeof ApiCallSchema
 
-type Verb = 'get' | 'post'
-type Queries = Record<string, string>
+export type Verb = 'get' | 'post'
+export type Queries = Record<string, string>
 
 export interface ApiCallFields {
   queries?: Queries
