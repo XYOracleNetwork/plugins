@@ -1,8 +1,8 @@
-import { uuid } from '@xyo-network/core'
 import ffmpeg from 'fluent-ffmpeg'
 import { unlink, writeFile } from 'fs/promises'
 import { tmpdir } from 'os'
 import { Writable, WritableOptions } from 'stream'
+import { v4 as uuid } from 'uuid'
 
 /**
  * A Writable stream that collects output from ffmpeg.

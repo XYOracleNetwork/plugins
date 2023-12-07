@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xyo-network/object'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessConfig } from '@xyo-network/witness-model'
 
 import { ApiCall, ApiUriCall, ApiUriTemplateCall } from './Payload'
@@ -33,10 +33,10 @@ export type ApiCallWitnessConfig = ApiUriCallWitnessConfig | ApiUriTemplateCallW
 export const isApiCallWitnessConfig = isPayloadOfSchemaType(ApiCallWitnessConfigSchema)
 export const asApiCallWitnessConfig = AsObjectFactory.create(isApiCallWitnessConfig)
 
-export const isApiUriCallWitnessConfig = (payload?: Payload): payload is ApiUriCallWitnessConfig =>
-  isApiCallWitnessConfig(payload) && !!(payload as ApiUriCallWitnessConfig).uri
+export const isApiUriCallWitnessConfig = (value?: unknown): value is ApiUriCallWitnessConfig =>
+  isApiCallWitnessConfig(value) && !!(value as ApiUriCallWitnessConfig).uri
 export const asApiUriCallWitnessConfig = AsObjectFactory.create(isApiUriCallWitnessConfig)
 
-export const isApiUriTemplateCallWitnessConfig = (payload?: Payload): payload is ApiUriTemplateCallWitnessConfig =>
-  isApiCallWitnessConfig(payload) && !!(payload as ApiUriTemplateCallWitnessConfig).uriTemplate
+export const isApiUriTemplateCallWitnessConfig = (value?: unknown): value is ApiUriTemplateCallWitnessConfig =>
+  isApiCallWitnessConfig(value) && !!(value as ApiUriTemplateCallWitnessConfig).uriTemplate
 export const asApiUriTemplateCallWitnessConfig = AsObjectFactory.create(isApiUriTemplateCallWitnessConfig)

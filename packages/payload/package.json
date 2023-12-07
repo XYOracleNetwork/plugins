@@ -21,7 +21,7 @@
     "@xyo-network/location-certainty-payload-plugin": "workspace:~",
     "@xyo-network/location-payload-plugin": "workspace:~",
     "@xyo-network/module-instance-payload-plugin": "workspace:~",
-    "@xyo-network/payload-plugin": "^2.82.0",
+    "@xyo-network/payload-plugin": "^2.83.2",
     "@xyo-network/pentair-payload-plugin": "workspace:~",
     "@xyo-network/query-payload-plugin": "workspace:~",
     "@xyo-network/schema-payload-plugin": "workspace:~",
@@ -32,7 +32,7 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.10",
     "@xylabs/tsconfig": "^3.2.10",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "docs": "dist/docs.json",
@@ -74,5 +74,5 @@
   },
   "sideEffects": false,
   "types": "dist/node/index.d.ts",
-  "version": "2.82.2"
+  "version": "2.83.0"
 }

@@ -74,9 +74,9 @@ export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | Jso
 export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
 export const asApiCall = AsObjectFactory.create(isApiCall)
 
-export const isApiUriCall = (payload?: Payload): payload is ApiUriCall => isApiCall(payload) && !!(payload as ApiUriCall).uri
+export const isApiUriCall = (value?: unknown): value is ApiUriCall => isApiCall(value) && !!(value as ApiUriCall).uri
 export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
 
-export const isApiUriTemplateCall = (payload?: Payload): payload is ApiUriTemplateCall =>
-  isApiCall(payload) && !!((payload as ApiUriTemplateCall).uriTemplate || (payload as ApiUriTemplateCall).params)
+export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>
+  isApiCall(value) && !!((value as ApiUriTemplateCall).uriTemplate || (value as ApiUriTemplateCall).params)
 export const asApiUriTemplateCall = AsObjectFactory.create(isApiUriTemplateCall)
