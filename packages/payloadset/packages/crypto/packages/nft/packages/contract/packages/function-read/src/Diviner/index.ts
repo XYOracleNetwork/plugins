@@ -1,1 +1,1 @@
-export * from './CryptoContractDiviner'
+export * from './Diviner'
