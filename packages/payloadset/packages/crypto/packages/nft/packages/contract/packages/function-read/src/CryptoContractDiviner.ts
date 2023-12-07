@@ -31,6 +31,22 @@ export type ContractInfo = Payload<
   ContractInfoSchema
 >
 
+export type Erc771ContractInfo = ContractInfo & {
+  results: {
+    name: string
+    symbol: string
+    totalSupply: string
+  }
+  schema: 'network.xyo.crypto.contract.info.erc721'
+}
+
+export type Erc1155ContractInfo = ContractInfo & {
+  results: {
+    url: string
+  }
+  schema: 'network.xyo.crypto.contract.info.erc1155'
+}
+
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
   static override configSchemas = [CryptoContractDivinerConfigSchema]
 
