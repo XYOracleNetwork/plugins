@@ -12,7 +12,7 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { ContractInfo, ContractInfoSchema, CryptoContractDiviner } from '../CryptoContractDiviner'
+import { ContractInfo, ContractInfoSchema, CryptoContractDiviner } from '../Diviner'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 import { CryptoContractFunctionReadWitness } from '../Witness'
 

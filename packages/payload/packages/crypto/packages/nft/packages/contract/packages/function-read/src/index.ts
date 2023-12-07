@@ -1,5 +1,6 @@
 import { CryptoContractFunctionCallPayloadPlugin } from './Plugin'
 
+export * from './Diviner'
 export * from './Payload'
 
 export { CryptoContractFunctionCallPayloadPlugin }

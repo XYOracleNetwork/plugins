@@ -3,33 +3,16 @@ import { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import {
   asCryptoContractFunctionCallSuccess,
+  ContractInfo,
+  ContractInfoSchema,
+  CryptoContractDivinerConfigSchema,
+  CryptoContractDivinerParams,
   CryptoContractFunctionCallResult,
   CryptoContractFunctionCallResultSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
-import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
-
-export const CryptoContractDivinerConfigSchema = 'network.xyo.crypto.contract.diviner.config'
-export type CryptoContractDivinerConfigSchema = typeof CryptoContractDivinerConfigSchema
-
-export type CryptoContractDivinerConfig = DivinerConfig<{
-  schema: CryptoContractDivinerConfigSchema
-}>
-export type CryptoContractDivinerParams = DivinerParams<CryptoContractDivinerConfig>
-
-export const ContractInfoSchema = 'network.xyo.crypto.contract.info'
-export type ContractInfoSchema = typeof ContractInfoSchema
-
-export type ContractInfo = Payload<
-  {
-    address: string
-    chainId: string
-    results?: Record<string, unknown>
-  },
-  ContractInfoSchema
->
 
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
   static override configSchemas = [CryptoContractDivinerConfigSchema]
