@@ -14,20 +14,20 @@ export type ContractInfo = Payload<BaseContractInfo, ContractInfoSchema>
 export const Erc721ContractInfoSchema = `${ContractInfoSchema}.erc721`
 export type Erc721ContractInfoSchema = typeof Erc721ContractInfoSchema
 
-export type Erc771ContractInfo = ContractInfo & {
-  results: {
+export type Erc771ContractInfo = Payload<
+  BaseContractInfo<{
     name: string
     symbol: string
     totalSupply: string
-  }
-  schema: Erc721ContractInfoSchema
-}
+  }>,
+  Erc721ContractInfoSchema
+>
 
 export const Erc1155ContractInfoSchema = `${ContractInfoSchema}.erc1155`
 export type Erc1155ContractInfoSchema = typeof Erc1155ContractInfoSchema
-export type Erc1155ContractInfo = ContractInfo & {
-  results: {
+export type Erc1155ContractInfo = Payload<
+  BaseContractInfo<{
     url: string
-  }
-  schema: Erc1155ContractInfoSchema
-}
+  }>,
+  Erc1155ContractInfoSchema
+>
