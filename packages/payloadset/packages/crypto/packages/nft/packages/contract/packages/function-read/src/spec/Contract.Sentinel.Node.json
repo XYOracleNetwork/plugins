@@ -1,0 +1,233 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "accountPath": "m/44'/60'/0",
+        "name": "NftInfo",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TimestampWitness",
+              "schema": "network.xyo.witness.timestamp.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "name",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721"
+              },
+              "language": "javascript",
+              "name": "Erc721NameWitness",
+              "params": [],
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "symbol",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721"
+              },
+              "language": "javascript",
+              "name": "Erc721SymbolWitness",
+              "params": [],
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "tokenURI",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721"
+              },
+              "language": "javascript",
+              "name": "Erc721TokenURIWitness",
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "ownerOf",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721"
+              },
+              "language": "javascript",
+              "name": "Erc721OwnerOfWitness",
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "totalSupply",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+              },
+              "language": "javascript",
+              "name": "Erc721TotalSupplyWitness",
+              "params": [],
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "args": ["0x1"],
+              "functionName": "uri",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc1155"
+              },
+              "language": "javascript",
+              "name": "Erc1155UriWitness",
+              "params": [],
+              "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc721ContractInfoDiviner",
+              "schema": "network.xyo.crypto.contract.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc1155ContractInfoDiviner",
+              "schema": "network.xyo.crypto.contract.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc721ContractInfoTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info"
+                },
+                { "op": "defined", "path": "/results/name" },
+                { "op": "defined", "path": "/results/symbol" },
+                { "op": "defined", "path": "/results/totalSupply" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info.erc721"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc1155ContractInfoTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info"
+                },
+                { "op": "defined", "path": "/results/uri" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info.erc1155"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "NftArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "NftArchivist",
+              "language": "javascript",
+              "name": "NftBoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "NftArchivist",
+              "language": "javascript",
+              "name": "NftPayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["NftArchivist"]
+              },
+              "language": "javascript",
+              "name": "NftInfoSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "Erc721NameWitness"
+                },
+                {
+                  "input": true,
+                  "module": "Erc721SymbolWitness"
+                },
+                {
+                  "input": true,
+                  "module": "Erc721TotalSupplyWitness"
+                },
+                {
+                  "input": true,
+                  "module": "Erc1155UriWitness"
+                },
+                {
+                  "input": [
+                    "Erc721NameWitness",
+                    "Erc721SymbolWitness",
+                    "Erc721TotalSupplyWitness"
+                  ],
+                  "module": "Erc721ContractInfoDiviner"
+                },
+                {
+                  "input": ["Erc1155UriWitness"],
+                  "module": "Erc1155ContractInfoDiviner"
+                },
+                {
+                  "input": ["Erc721ContractInfoDiviner"],
+                  "module": "Erc721ContractInfoTransformDiviner"
+                },
+                {
+                  "input": ["Erc721ContractInfoDiviner"],
+                  "module": "TimestampWitness"
+                },
+                {
+                  "input": ["Erc1155ContractInfoDiviner"],
+                  "module": "Erc1155ContractInfoTransformDiviner"
+                },
+                {
+                  "input": ["Erc1155ContractInfoDiviner"],
+                  "module": "TimestampWitness"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}
