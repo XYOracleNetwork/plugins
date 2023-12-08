@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 /**
  * The schema for the contract info
@@ -31,3 +31,11 @@ export interface SmartContractInfo<T extends Record<string, unknown> = Record<st
  * The smart contract info payload
  */
 export type ContractInfo = Payload<SmartContractInfo, ContractInfoSchema>
+
+/**
+ * Checks if the payload is a crypto contract info payload
+ *
+ * @param payload The payload to check
+ * @returns True if the payload is a contract info payload
+ */
+export const isCryptoContractInfo = isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema)
