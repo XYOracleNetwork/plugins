@@ -11,6 +11,13 @@
         "private": [
           {
             "config": {
+              "language": "javascript",
+              "name": "TimestampWitness",
+              "schema": "network.xyo.witness.timestamp.config"
+            }
+          },
+          {
+            "config": {
               "functionName": "name",
               "labels": {
                 "network.xyo.crypto.contract.interface": "Erc721"
@@ -186,6 +193,10 @@
                 {
                   "input": true,
                   "module": "Erc1155UriWitness"
+                },
+                {
+                  "input": true,
+                  "module": "TimestampWitness"
                 },
                 {
                   "input": [
