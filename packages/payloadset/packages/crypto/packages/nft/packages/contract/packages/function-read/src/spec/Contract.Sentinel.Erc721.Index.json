@@ -72,7 +72,7 @@
                 "boundWitnessDiviner": "NftBoundWitnessDiviner",
                 "payloadDiviner": "NftPayloadDiviner"
               },
-              "schema": "network.xyo.diviner.config"
+              "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
             }
           },
           {
@@ -83,7 +83,7 @@
               },
               "language": "javascript",
               "name": "NftIndexCandidateToNftIndexDiviner",
-              "schema": "network.xyo.diviner.config",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
                 "network.xyo.crypto.contract.info.erc721": [
                   {
@@ -154,7 +154,7 @@
               },
               "language": "javascript",
               "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
-              "schema": "network.xyo.diviner.config"
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
             }
           }
         ],
