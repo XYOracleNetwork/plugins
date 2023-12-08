@@ -6,9 +6,18 @@ import {
   isErc721ContractInfo,
   isErc1155ContractInfo,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
-import { TemporalIndexingDiviner } from '@xyo-network/diviner-temporal-indexing'
+import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import {
+  TemporalIndexingDiviner,
+  TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
+  TemporalIndexingDivinerIndexCandidateToIndexDiviner,
+  TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
+  TemporalIndexingDivinerStateToIndexCandidateDiviner,
+} from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
@@ -46,7 +55,15 @@ describe('Sentinel', () => {
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
       wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
+      locator.register(MemoryArchivist)
+      locator.register(MemoryBoundWitnessDiviner)
+      locator.register(MemoryPayloadDiviner)
       locator.register(CryptoContractDiviner)
+      locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, CryptoContractDiviner.labels)
+      locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, CryptoContractDiviner.labels)
+      locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, CryptoContractDiviner.labels)
+      locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, CryptoContractDiviner.labels)
+      locator.register(TemporalIndexingDiviner, CryptoContractDiviner.labels)
       locator.register(
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC721__factory.abi },
