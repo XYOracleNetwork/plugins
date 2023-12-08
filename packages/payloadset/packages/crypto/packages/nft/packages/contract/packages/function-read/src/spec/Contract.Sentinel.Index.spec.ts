@@ -31,6 +31,7 @@ import { Provider } from 'ethers'
 import { CryptoContractDiviner } from '../Diviner'
 import { CryptoContractFunctionReadWitness } from '../Witness'
 import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json'
+import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json'
 import sentinelNodeManifest from './Contract.Sentinel.Node.json'
 
 const maxProviders = 32
@@ -92,7 +93,10 @@ describe('Contract Node', () => {
     )
     locator.register(JsonPatchDiviner)
     locator.register(TemporalIndexingDiviner)
-    const publicChildren: PackageManifestPayload[] = [erc721IndexNodeManifest as PackageManifestPayload]
+    const publicChildren: PackageManifestPayload[] = [
+      erc721IndexNodeManifest as PackageManifestPayload,
+      erc1155IndexNodeManifest as PackageManifestPayload,
+    ]
     const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)
   })
@@ -128,10 +132,10 @@ describe('Contract Node', () => {
       expect(result).toBeArrayOfSize(1)
     })
   })
-  describe.skip('ERC1155 Index', () => {
+  describe('ERC1155 Index', () => {
     const erc1155 = cases.filter(([type]) => type === 'ERC1155')
     it.each(erc1155)('With %s (%s)', async (_, address) => {
-      const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
+      const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
       expect(diviner).toBeDefined()
       const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
