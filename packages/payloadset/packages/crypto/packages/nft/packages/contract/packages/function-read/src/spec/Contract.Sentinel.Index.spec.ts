@@ -25,6 +25,12 @@ describe('Sentinel', () => {
   const cases: [string, string][] = [
     ['With ERC-721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
     ['With ERC-1155', '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452'],
+    ['With ERC-1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
+    ['With ERC-1155', '0x33FD426905F149f8376e227d0C9D3340AaD17aF1'],
+    ['With ERC-1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
+    ['With ERC-1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
+    ['With ERC-1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'],
+    ['With ERC-1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'],
   ]
   const getProviders = () => {
     const providers: Provider[] = []
