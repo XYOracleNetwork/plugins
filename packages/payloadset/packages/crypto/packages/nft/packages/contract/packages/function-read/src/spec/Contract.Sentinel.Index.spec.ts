@@ -1,6 +1,5 @@
 /* eslint-disable max-statements */
 import { HDWallet } from '@xyo-network/account'
-import { asArchivistInstance } from '@xyo-network/archivist-model'
 import {
   CryptoContractFunctionCall,
   CryptoContractFunctionCallSchema,
@@ -118,20 +117,26 @@ describe('Contract Node', () => {
       expect(foundAny).toBe(true)
     })
   })
-  describe('Erc721 Index', () => {
+  describe('ERC721 Index', () => {
     const erc721Cases = cases.filter(([type]) => type === 'ERC721')
     it.each(erc721Cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
-
-      // const archivist = asArchivistInstance(await node.resolve('NftDivinerIndexArchivist'))
-      const archivist = asArchivistInstance(await node.resolve('NftArchivist'))
-      expect(archivist).toBeDefined()
-      const all = await archivist?.all?.()
-
       const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
+      expect(result).toBeArrayOfSize(1)
+    })
+  })
+  describe.skip('ERC1155 Index', () => {
+    const erc1155 = cases.filter(([type]) => type === 'ERC1155')
+    it.each(erc1155)('With %s (%s)', async (_, address) => {
+      const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
+      expect(diviner).toBeDefined()
+      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const result = await diviner?.divine([query])
+      expect(result).toBeDefined()
+      expect(result).toBeArrayOfSize(1)
     })
   })
 })
