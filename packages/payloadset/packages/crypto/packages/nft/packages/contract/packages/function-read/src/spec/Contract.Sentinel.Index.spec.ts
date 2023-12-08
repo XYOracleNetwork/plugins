@@ -28,7 +28,6 @@ describe('Sentinel', () => {
     ['With ERC-1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
     ['With ERC-1155', '0x33FD426905F149f8376e227d0C9D3340AaD17aF1'],
     ['With ERC-1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
-    ['With ERC-1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
     ['With ERC-1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'],
     ['With ERC-1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'],
   ]
@@ -72,7 +71,7 @@ describe('Sentinel', () => {
       const manifest = new ManifestWrapper(manifestFile as PackageManifestPayload, wallet, locator)
       node = await manifest.loadNodeFromIndex(0)
     })
-    it.each(cases)('%s', async (_, address) => {
+    it.each(cases)('%s (%s)', async (_, address) => {
       const collectionSentinel = asSentinelInstance(await node.resolve('NftInfoSentinel'))
       expect(collectionSentinel).toBeDefined()
       const collectionCallPayload: CryptoContractFunctionCall = { address, schema: CryptoContractFunctionCallSchema }
