@@ -4351,10 +4351,12 @@ __metadata:
     "@xyo-network/account": "npm:^2.83.5"
     "@xyo-network/crypto-contract-function-read-payload-plugin": "workspace:~"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:~"
-    "@xyo-network/diviner-indexing": "npm:^2.83.5"
+    "@xyo-network/diviner-jsonpatch": "npm:^2.83.5"
     "@xyo-network/diviner-model": "npm:^2.83.5"
+    "@xyo-network/diviner-temporal-indexing": "npm:^2.82.5"
     "@xyo-network/manifest": "npm:^2.83.5"
     "@xyo-network/module-model": "npm:^2.83.5"
+    "@xyo-network/node-memory": "npm:^2.83.5"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.83.5"
     "@xyo-network/payloadset-plugin": "npm:^2.83.5"
@@ -4607,7 +4609,6 @@ __metadata:
     "@xyo-network/diviner-model": "npm:^2.83.5"
     "@xyo-network/diviner-payload-memory": "npm:^2.83.5"
     "@xyo-network/diviner-payload-model": "npm:^2.83.5"
-    "@xyo-network/diviner-temporal-indexing": "npm:^2.82.5"
     "@xyo-network/manifest": "npm:^2.83.5"
     "@xyo-network/memory-archivist": "npm:^2.83.5"
     "@xyo-network/module-model": "npm:^2.83.5"
@@ -4815,81 +4816,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/diviner-jsonpath-aggregate-memory@npm:~2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath-aggregate-memory@npm:2.83.5"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xyo-network/abstract-diviner": "npm:~2.83.5"
-    "@xyo-network/diviner-jsonpath-aggregate-model": "npm:~2.83.5"
-    "@xyo-network/diviner-model": "npm:~2.83.5"
-    "@xyo-network/hash": "npm:~2.83.5"
-    "@xyo-network/payload-builder": "npm:~2.83.5"
-    "@xyo-network/payload-model": "npm:~2.83.5"
-  checksum: d138bec66af7ca7d282430ccf08ace33dfa45ab99c2bd13ba794089dbd069224876241e4dab9ef0d0e425e1039fae9e4298e6b0617bfb75d15ef26e23f43a67a
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-jsonpath-aggregate-model@npm:~2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath-aggregate-model@npm:2.83.5"
-  dependencies:
-    "@xyo-network/diviner-model": "npm:~2.83.5"
-    "@xyo-network/module-model": "npm:~2.83.5"
-    "@xyo-network/object": "npm:~2.83.5"
-    "@xyo-network/payload-model": "npm:~2.83.5"
-  checksum: 27a8df40a133394602705b15b4bf495c9588de1e5d8de3138aeb1cf52b058d29228c7a47a9aee37fe98cd04dd674eb63ac3c5aaeb560fbf2ac6d1db05ce82e74
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-jsonpath-aggregate@npm:^2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath-aggregate@npm:2.83.5"
-  dependencies:
-    "@xyo-network/diviner-jsonpath-aggregate-memory": "npm:~2.83.5"
-    "@xyo-network/diviner-jsonpath-aggregate-model": "npm:~2.83.5"
-  checksum: da2acd0ecd8e506c264ec11a4be6a180752bfd147eb7825eda0cdf16690b1330c8231a1fbd56e0ac6c49fc4b94c32e27f389386e83b446760429bd433c481de4
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-jsonpath-memory@npm:~2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath-memory@npm:2.83.5"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xyo-network/abstract-diviner": "npm:~2.83.5"
-    "@xyo-network/diviner-jsonpath-model": "npm:~2.83.5"
-    "@xyo-network/diviner-model": "npm:~2.83.5"
-    "@xyo-network/hash": "npm:~2.83.5"
-    "@xyo-network/payload-builder": "npm:~2.83.5"
-    "@xyo-network/payload-model": "npm:~2.83.5"
-    jsonpath: "npm:^1.1.1"
-  checksum: 4f662d4176cfc66e2d87464d1ec964043935ba248329e3f48c975b4c71bcbe3a29e630952a57abf3f48148fd0fda9ca6f6ccb9206281ea49c7640d2eb291df8d
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-jsonpath-model@npm:~2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath-model@npm:2.83.5"
-  dependencies:
-    "@xyo-network/diviner-model": "npm:~2.83.5"
-    "@xyo-network/module-model": "npm:~2.83.5"
-    "@xyo-network/object": "npm:~2.83.5"
-    "@xyo-network/payload-model": "npm:~2.83.5"
-  checksum: eea9084454ece3babf619b9c0c2d3220dec484f6784122dc6b5f8e9e706f48a22a15473265a7e3e5896aef69a21c28edb9ee92b2a747f8a9834027ba80faa8b9
-  languageName: node
-  linkType: hard
-
-"@xyo-network/diviner-jsonpath@npm:^2.83.5":
-  version: 2.83.5
-  resolution: "@xyo-network/diviner-jsonpath@npm:2.83.5"
-  dependencies:
-    "@xyo-network/diviner-jsonpath-memory": "npm:~2.83.5"
-    "@xyo-network/diviner-jsonpath-model": "npm:~2.83.5"
-  checksum: c9e8c9652a38872fe0199bef63517775029b4034f13407a998e5f7e43ae122501a21e0e6a4ab02d65fcf7b9de795928d32c824ef7e02f3dfc849fbce0366882d
-  languageName: node
-  linkType: hard
-
 "@xyo-network/diviner-model@npm:^2.83.5, @xyo-network/diviner-model@npm:~2.83.5":
   version: 2.83.5
   resolution: "@xyo-network/diviner-model@npm:2.83.5"
@@ -4941,7 +4867,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/diviner-temporal-indexing-memory@npm:^2.82.5, @xyo-network/diviner-temporal-indexing-memory@npm:~2.82.5":
+"@xyo-network/diviner-temporal-indexing-memory@npm:~2.82.5":
   version: 2.82.5
   resolution: "@xyo-network/diviner-temporal-indexing-memory@npm:2.82.5"
   dependencies:
@@ -6089,10 +6015,6 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
     "@xylabs/tsconfig": "npm:^3.2.10"
     "@xylabs/tsconfig-dom-jest": "npm:^3.2.10"
-    "@xyo-network/diviner-jsonpatch": "npm:^2.83.5"
-    "@xyo-network/diviner-jsonpath": "npm:^2.83.5"
-    "@xyo-network/diviner-jsonpath-aggregate": "npm:^2.83.5"
-    "@xyo-network/diviner-temporal-indexing-memory": "npm:^2.82.5"
     "@xyo-network/payload-plugins": "workspace:~"
     "@xyo-network/payloadset-plugins": "workspace:~"
     babel-jest: "npm:^29.7.0"
