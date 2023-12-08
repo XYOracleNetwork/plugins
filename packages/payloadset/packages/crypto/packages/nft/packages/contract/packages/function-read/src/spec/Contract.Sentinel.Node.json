@@ -195,10 +195,6 @@
                   "module": "Erc1155UriWitness"
                 },
                 {
-                  "input": true,
-                  "module": "TimestampWitness"
-                },
-                {
                   "input": [
                     "Erc721NameWitness",
                     "Erc721SymbolWitness",
@@ -215,8 +211,16 @@
                   "module": "Erc721ContractInfoTransformDiviner"
                 },
                 {
+                  "input": ["Erc721ContractInfoDiviner"],
+                  "module": "TimestampWitness"
+                },
+                {
                   "input": ["Erc1155ContractInfoDiviner"],
                   "module": "Erc1155ContractInfoTransformDiviner"
+                },
+                {
+                  "input": ["Erc1155ContractInfoDiviner"],
+                  "module": "TimestampWitness"
                 }
               ]
             }
