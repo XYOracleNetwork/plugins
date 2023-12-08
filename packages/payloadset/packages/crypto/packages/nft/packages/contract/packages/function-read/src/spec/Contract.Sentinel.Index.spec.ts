@@ -27,7 +27,8 @@ import { Provider } from 'ethers'
 
 import { CryptoContractDiviner } from '../Diviner'
 import { CryptoContractFunctionReadWitness } from '../Witness'
-import manifestFile from './Contract.Sentinel.Index.json'
+import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json'
+import sentinelNodeManifest from './Contract.Sentinel.Node.json'
 
 const maxProviders = 32
 
@@ -87,7 +88,8 @@ describe('Sentinel', () => {
       )
       locator.register(JsonPatchDiviner)
       locator.register(TemporalIndexingDiviner)
-      const manifest = new ManifestWrapper(manifestFile as PackageManifestPayload, wallet, locator)
+      const publicChildren: PackageManifestPayload[] = [erc721IndexNodeManifest as PackageManifestPayload]
+      const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
       node = await manifest.loadNodeFromIndex(0)
     })
     it.each(cases)('%s (%s)', async (_, address) => {
