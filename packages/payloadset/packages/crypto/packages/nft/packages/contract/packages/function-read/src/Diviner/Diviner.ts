@@ -6,6 +6,7 @@ import {
   ContractInfo,
   ContractInfoSchema,
   CryptoContractDivinerConfigSchema,
+  CryptoContractDivinerLabels,
   CryptoContractDivinerParams,
   CryptoContractFunctionCallResult,
   CryptoContractFunctionCallResultSchema,
@@ -16,6 +17,7 @@ export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPa
 
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
   static override configSchemas = [CryptoContractDivinerConfigSchema]
+  static labels: CryptoContractDivinerLabels = CryptoContractDivinerLabels
 
   protected static findCallResult<TResult = string>(
     address: string,

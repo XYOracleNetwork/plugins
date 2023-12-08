@@ -1,4 +1,5 @@
 export * from './Config'
+export * from './Labels'
 export * from './Params'
 export * from './Payload'
 export * from './Schema'

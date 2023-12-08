@@ -1,7 +1,12 @@
 /* eslint-disable max-statements */
 
 import { HDWallet } from '@xyo-network/account'
-import { CryptoContractFunctionCall, CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import {
+  ContractInfo,
+  ContractInfoSchema,
+  CryptoContractFunctionCall,
+  CryptoContractFunctionCallSchema,
+} from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
@@ -12,9 +17,9 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { ContractInfo, ContractInfoSchema, CryptoContractDiviner } from '../Diviner'
-import erc721SentinelManifest from '../Erc721Sentinel.json'
+import { CryptoContractDiviner } from '../Diviner'
 import { CryptoContractFunctionReadWitness } from '../Witness'
+import erc721SentinelManifest from './Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}
 
