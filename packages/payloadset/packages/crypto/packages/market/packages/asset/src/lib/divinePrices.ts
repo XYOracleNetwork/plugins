@@ -10,14 +10,14 @@ import { divineUniswapPrices } from './divineUniswapPrices'
 
 const schema = CryptoMarketAssetSchema
 
-export const divinePrices = (
+export const divinePrices = async (
   coinGeckoPayload: CoingeckoCryptoMarketPayload | undefined,
   uniswapPayload: UniswapCryptoMarketPayload | undefined,
-): CryptoMarketAssetPayload => {
-  const coinGeckoPrices = divineCoinGeckoPrices(coinGeckoPayload)
-  const uniswapPrices = divineUniswapPrices(uniswapPayload)
+): Promise<CryptoMarketAssetPayload> => {
+  const coinGeckoPrices = await divineCoinGeckoPrices(coinGeckoPayload)
+  const uniswapPrices = await divineUniswapPrices(uniswapPayload)
   const prices = [uniswapPayload, coinGeckoPayload].some(exists)
   const assets = prices ? average(coinGeckoPrices, uniswapPrices) : {}
   const timestamp = Date.now()
-  return new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
+  return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }

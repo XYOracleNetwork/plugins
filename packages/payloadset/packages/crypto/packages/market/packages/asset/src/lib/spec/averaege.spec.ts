@@ -5,26 +5,26 @@ import { average } from '../average'
 
 const schema = CryptoMarketAssetSchema
 
-const getPayloadWithPrice = (price: number): CryptoMarketAssetPayload => {
+const getPayloadWithPrice = async (price: number): Promise<CryptoMarketAssetPayload> => {
   const assets: Record<string, AssetInfo> = { xyo: { value: { usd: price.toString() } } }
   const timestamp = Date.now()
-  return new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
+  return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }
 
 describe('average', () => {
-  it('averages numbers', () => {
-    const payloads = [getPayloadWithPrice(1), getPayloadWithPrice(2), getPayloadWithPrice(3)]
+  it('averages numbers', async () => {
+    const payloads = await Promise.all([getPayloadWithPrice(1), getPayloadWithPrice(2), getPayloadWithPrice(3)])
     expect(average(...payloads)?.xyo?.value?.usd).toBe('2')
   })
-  it('handles single value', () => {
-    const payloads = [getPayloadWithPrice(1)]
+  it('handles single value', async () => {
+    const payloads = await Promise.all([getPayloadWithPrice(1)])
     expect(average(...payloads)?.xyo?.value?.usd).toBe('1')
   })
   it('handles no values', () => {
     expect(average()?.xyo?.value?.usd).toBeUndefined()
   })
-  it('handles undefined values', () => {
-    const payloads = [getPayloadWithPrice(1), undefined, getPayloadWithPrice(3)]
+  it('handles undefined values', async () => {
+    const payloads = await Promise.all([getPayloadWithPrice(1), undefined, getPayloadWithPrice(3)])
     expect(average(...payloads)?.xyo?.value?.usd).toBe('2')
   })
 })

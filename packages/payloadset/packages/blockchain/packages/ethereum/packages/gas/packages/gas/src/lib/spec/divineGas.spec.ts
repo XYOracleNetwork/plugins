@@ -3,22 +3,22 @@ import { divineGas } from '../divineGas'
 
 describe('divineGas', () => {
   describe('with no payloads supplied', () => {
-    it('divines gas', () => {
-      const result = divineGas([])
+    it('divines gas', async () => {
+      const result = await divineGas([])
       expect(result).toBeObject()
       expect(result.timestamp).toBeNumber()
     })
   })
   describe('with sparse payloads supplied', () => {
-    it.each([[sampleEtherscanGas], [sampleEtherchainGasV2], [sampleEtherchainGasV2, sampleEtherscanGas]])('divines gas', (...payloads) => {
-      const result = divineGas(payloads)
+    it.each([[sampleEtherscanGas], [sampleEtherchainGasV2], [sampleEtherchainGasV2, sampleEtherscanGas]])('divines gas', async (...payloads) => {
+      const result = await divineGas(payloads)
       expect(result).toBeObject()
       expect(result.timestamp).toBeNumber()
     })
   })
   describe('with one of each supported payload supplied', () => {
-    it('divines gas', () => {
-      const result = divineGas([sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas])
+    it('divines gas', async () => {
+      const result = await divineGas([sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas])
       expect(result).toBeObject()
       expect(result.baseFee).toBeNumber()
       expect(result.feePerGas).toBeObject()
@@ -35,8 +35,8 @@ describe('divineGas', () => {
     })
   })
   describe('with multiple of each supported payload supplied', () => {
-    it('divines gas', () => {
-      const result = divineGas([
+    it('divines gas', async () => {
+      const result = await divineGas([
         sampleBlocknativeGas,
         sampleBlocknativeGas,
         sampleEtherchainGasV2,

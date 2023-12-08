@@ -57,7 +57,7 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const key = await PayloadHasher.hashAsync(urlPayload)
           const fields: ImageThumbnailResultIndexFields = { key, sources, success, timestamp }
           if (status) fields.status = status
-          const result: ImageThumbnailResultIndex = new PayloadBuilder<ImageThumbnailResultIndex>({ schema: ImageThumbnailResultIndexSchema })
+          const result: ImageThumbnailResultIndex = await new PayloadBuilder<ImageThumbnailResultIndex>({ schema: ImageThumbnailResultIndexSchema })
             .fields(fields)
             .build()
           return [result]

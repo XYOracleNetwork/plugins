@@ -4,8 +4,8 @@ import { sampleCoinGeckoPayload } from '../../test'
 import { divineCoinGeckoPrices } from '../divineCoinGeckoPrices'
 
 describe('divineCoinGeckoPrices', () => {
-  it('divines prices from CoinGecko', () => {
-    const result = divineCoinGeckoPrices(sampleCoinGeckoPayload)
+  it('divines prices from CoinGecko', async () => {
+    const result = await divineCoinGeckoPrices(sampleCoinGeckoPayload)
     expect(result.assets).toBeObject()
     const assets = assertEx(result.assets)
     Object.entries(assets).map(([token, assetInfo]) => {

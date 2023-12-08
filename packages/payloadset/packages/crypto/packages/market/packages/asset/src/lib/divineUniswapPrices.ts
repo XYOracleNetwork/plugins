@@ -40,7 +40,7 @@ const valuesFromTokenPairs = (tokensPairs: UniswapCryptoToken[][], token: Token)
   )
 }
 
-export const divineUniswapPrices = (uniswapPayload: UniswapCryptoMarketPayload | undefined): CryptoMarketAssetPayload => {
+export const divineUniswapPrices = async (uniswapPayload: UniswapCryptoMarketPayload | undefined): Promise<CryptoMarketAssetPayload> => {
   let assets: Partial<Record<Token, AssetInfo | undefined>> = {}
   if (uniswapPayload) {
     const tokens: Set<Token> = new Set(tokensFromPairs(uniswapPayload.pairs))
@@ -54,5 +54,5 @@ export const divineUniswapPrices = (uniswapPayload: UniswapCryptoMarketPayload |
     )
   }
   const timestamp = Date.now()
-  return new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
+  return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }

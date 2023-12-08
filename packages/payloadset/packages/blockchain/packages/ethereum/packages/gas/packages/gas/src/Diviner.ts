@@ -18,8 +18,8 @@ export class EthereumGasDiviner<TParams extends EthereumGasDivinerParams = Ether
   static override readonly configSchemas: string[] = [EthereumGasDivinerConfigSchema]
   static override targetSchema: string = EthereumGasSchema
 
-  protected override divineHandler(payloads?: Payload[]): Promisable<Payload[]> {
-    const cost = divineGas(payloads ?? [])
+  protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
+    const cost = await divineGas(payloads ?? [])
     return [cost]
   }
 }

@@ -37,24 +37,26 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
         await Promise.all(
           imageThumbnailDivinerQueries.map(async (imageThumbnailDivinerQuery) => {
             const { url } = imageThumbnailDivinerQuery
-            const urlPayload = new PayloadBuilder<ImageThumbnailResult>({ schema: UrlSchema }).fields({ url }).build()
+            const urlPayload = await new PayloadBuilder<ImageThumbnailResult>({ schema: UrlSchema }).fields({ url }).build()
             const key = await PayloadHasher.hashAsync(urlPayload)
             return [key, url] as const
           }),
         ),
       )
       // Map the indexes to responses using the dictionary
-      return imageThumbnailResultIndexes
-        .map((imageThumbnailResultIndex) => {
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const { key, schema, ...commonFields } = imageThumbnailResultIndex
-          const url = keyToUrlDictionary?.[key]
-          if (url) {
-            const fields: ImageThumbnailResultFields = { ...commonFields, url }
-            return new PayloadBuilder<ImageThumbnailResult>({ schema: ImageThumbnailResultSchema }).fields(fields).build()
-          }
-        })
-        .filter(exists)
+      return (
+        await Promise.all(
+          imageThumbnailResultIndexes.map(async (imageThumbnailResultIndex) => {
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
+            const { key, schema, ...commonFields } = imageThumbnailResultIndex
+            const url = keyToUrlDictionary?.[key]
+            if (url) {
+              const fields: ImageThumbnailResultFields = { ...commonFields, url }
+              return await new PayloadBuilder<ImageThumbnailResult>({ schema: ImageThumbnailResultSchema }).fields(fields).build()
+            }
+          }),
+        )
+      ).filter(exists)
     }
     return []
   }

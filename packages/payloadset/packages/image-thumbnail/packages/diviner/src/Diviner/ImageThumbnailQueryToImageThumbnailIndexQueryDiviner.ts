@@ -33,7 +33,7 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
           const fields: Partial<ImageThumbnailResultQuery> = { key, limit, offset, order }
           if (payloadSuccess !== undefined) fields.success = payloadSuccess
           if (payloadStatus !== undefined) fields.status = payloadStatus
-          return new PayloadBuilder<ImageThumbnailResultQuery>({ schema: PayloadDivinerQuerySchema }).fields(fields).build()
+          return await new PayloadBuilder<ImageThumbnailResultQuery>({ schema: PayloadDivinerQuerySchema }).fields(fields).build()
         }),
       )
       return results

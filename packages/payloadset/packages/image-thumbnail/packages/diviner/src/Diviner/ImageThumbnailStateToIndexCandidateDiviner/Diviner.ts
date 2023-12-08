@@ -92,7 +92,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const { offset } = lastState.state
     // Get next batch of results starting from the offset
     const boundWitnessDiviner = await this.getBoundWitnessDivinerForStore()
-    const query = new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
+    const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
       .fields({ limit: this.payloadDivinerLimit, offset, order, payload_schemas })
       .build()
     const batch = await boundWitnessDiviner.divine([query])
