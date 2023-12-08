@@ -24,9 +24,8 @@ const maxProviders = 32
 describe('Sentinel', () => {
   const cases: [string, string][] = [
     ['With ERC-721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
-    // ['With ERC-1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'],
+    ['With ERC-1155', '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452'],
   ]
-
   const getProviders = () => {
     const providers: Provider[] = []
     for (let i = 0; i < maxProviders; i++) {
@@ -34,7 +33,6 @@ describe('Sentinel', () => {
     }
     return providers
   }
-
   describe('report', () => {
     let wallet: HDWallet
     let node: MemoryNode
@@ -83,7 +81,7 @@ describe('Sentinel', () => {
       const erc1155 = report?.find(isErc1155ContractInfo)
       if (erc1155) {
         foundAny = true
-        expect(erc1155?.results?.url).toBeDefined()
+        expect(erc1155?.results?.uri).toBeDefined()
       }
       expect(foundAny).toBe(true)
     })
