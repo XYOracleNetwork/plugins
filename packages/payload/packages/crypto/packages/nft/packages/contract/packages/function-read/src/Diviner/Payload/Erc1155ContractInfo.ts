@@ -17,9 +17,9 @@ export type Erc1155ContractInfoSchema = typeof Erc1155ContractInfoSchema
 export type Erc1155ContractInfo = Payload<
   ContractInfoFields<{
     /**
-     * The url of the ERC1155 token
+     * The uri of the ERC1155 token
      */
-    url: string
+    uri: string
   }>,
   Erc1155ContractInfoSchema
 >
