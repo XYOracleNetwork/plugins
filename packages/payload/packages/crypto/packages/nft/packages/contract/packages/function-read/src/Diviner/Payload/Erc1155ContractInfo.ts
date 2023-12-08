@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { ContractInfoFields, ContractInfoSchema } from './ContractInfo'
 
@@ -23,3 +23,8 @@ export type Erc1155ContractInfo = Payload<
   }>,
   Erc1155ContractInfoSchema
 >
+
+/**
+ * Identity function for ERC-1155 crypto contract info payload
+ */
+export const isErc1155ContractInfo = isPayloadOfSchemaType<Erc1155ContractInfo>(Erc1155ContractInfoSchema)

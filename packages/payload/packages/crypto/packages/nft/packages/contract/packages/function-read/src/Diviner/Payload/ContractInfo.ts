@@ -33,9 +33,6 @@ export interface ContractInfoFields<T extends Record<string, unknown> = Record<s
 export type ContractInfo = Payload<ContractInfoFields, ContractInfoSchema>
 
 /**
- * Checks if the payload is a crypto contract info payload
- *
- * @param payload The payload to check
- * @returns True if the payload is a contract info payload
+ * Identity function for crypto contract info payload
  */
 export const isContractInfo = isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema)
