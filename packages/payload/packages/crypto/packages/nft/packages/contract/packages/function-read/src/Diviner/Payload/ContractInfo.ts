@@ -12,7 +12,7 @@ export type ContractInfoSchema = typeof ContractInfoSchema
 /**
  * The base smart contract info
  */
-export interface SmartContractInfo<T extends Record<string, unknown> = Record<string, unknown>> {
+export interface ContractInfoFields<T extends Record<string, unknown> = Record<string, unknown>> {
   /**
    * The address of the smart contract
    */
@@ -30,7 +30,7 @@ export interface SmartContractInfo<T extends Record<string, unknown> = Record<st
 /**
  * The smart contract info payload
  */
-export type ContractInfo = Payload<SmartContractInfo, ContractInfoSchema>
+export type ContractInfo = Payload<ContractInfoFields, ContractInfoSchema>
 
 /**
  * Checks if the payload is a crypto contract info payload

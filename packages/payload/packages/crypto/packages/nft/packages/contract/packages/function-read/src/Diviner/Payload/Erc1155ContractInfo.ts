@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { ContractInfoSchema, SmartContractInfo } from './ContractInfo'
+import { ContractInfoFields, ContractInfoSchema } from './ContractInfo'
 
 /**
  * The schema for the ERC1155 contract info
@@ -15,7 +15,7 @@ export type Erc1155ContractInfoSchema = typeof Erc1155ContractInfoSchema
  * The ERC1155 smart contract info payload
  */
 export type Erc1155ContractInfo = Payload<
-  SmartContractInfo<{
+  ContractInfoFields<{
     /**
      * The url of the ERC1155 token
      */
