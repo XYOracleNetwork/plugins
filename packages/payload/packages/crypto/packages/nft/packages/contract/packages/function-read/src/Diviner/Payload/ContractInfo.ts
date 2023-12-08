@@ -38,4 +38,4 @@ export type ContractInfo = Payload<ContractInfoFields, ContractInfoSchema>
  * @param payload The payload to check
  * @returns True if the payload is a contract info payload
  */
-export const isCryptoContractInfo = isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema)
+export const isContractInfo = isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema)
