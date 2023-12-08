@@ -7,6 +7,7 @@ import {
   isErc1155ContractInfo,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
+import { TemporalIndexingDiviner } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -68,6 +69,7 @@ describe('Sentinel', () => {
         { 'network.xyo.crypto.contract.interface': 'Erc1155' },
       )
       locator.register(JsonPatchDiviner)
+      locator.register(TemporalIndexingDiviner)
       const manifest = new ManifestWrapper(manifestFile as PackageManifestPayload, wallet, locator)
       node = await manifest.loadNodeFromIndex(0)
     })

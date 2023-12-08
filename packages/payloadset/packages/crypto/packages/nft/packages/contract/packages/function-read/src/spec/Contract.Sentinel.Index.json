@@ -7,7 +7,7 @@
         "schema": "network.xyo.node.config"
       },
       "modules": {
-        "public": [
+        "private": [
           {
             "config": {
               "functionName": "name",
@@ -134,7 +134,9 @@
               ],
               "schema": "network.xyo.diviner.jsonpatch.config"
             }
-          },
+          }
+        ],
+        "public": [
           {
             "config": {
               "language": "javascript",
