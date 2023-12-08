@@ -95,6 +95,28 @@
           {
             "config": {
               "language": "javascript",
+              "name": "Erc721ContractInfoTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info"
+                },
+                { "op": "defined", "path": "/results/name" },
+                { "op": "defined", "path": "/results/symbol" },
+                { "op": "defined", "path": "/results/totalSupply" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.info.erc721"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
               "name": "NftInfoSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
@@ -126,6 +148,10 @@
                 {
                   "input": ["Erc1155UriWitness"],
                   "module": "Erc1155ContractInfoDiviner"
+                },
+                {
+                  "input": ["Erc721ContractInfoDiviner"],
+                  "module": "Erc721ContractInfoTransformDiviner"
                 }
               ]
             }
