@@ -6,6 +6,7 @@ import {
   CryptoContractFunctionCall,
   CryptoContractFunctionCallSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
@@ -62,6 +63,7 @@ describe('Erc721Sentinel', () => {
         }),
         { 'network.xyo.crypto.contract.interface': 'Erc1155' },
       )
+      locator.register(JsonPatchDiviner)
       const manifest = new ManifestWrapper(manifestFile as PackageManifestPayload, wallet, locator)
       const node = await manifest.loadNodeFromIndex(0)
       const collectionSentinel = asSentinelInstance(await node.resolve('NftInfoSentinel'))
