@@ -1,4 +1,3 @@
-import { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { DivinerConfig, DivinerModule, DivinerParams } from '@xyo-network/diviner'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
