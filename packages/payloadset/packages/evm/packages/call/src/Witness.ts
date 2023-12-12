@@ -1,24 +1,18 @@
 import { assertEx } from '@xylabs/assert'
-import { getErc1822Status } from '@xyo-network/erc1822-witness'
-import { getErc1967Status } from '@xyo-network/erc1967-witness'
+import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
+import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractBlockchainWitness, BlockchainWitnessConfig, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
 import { Contract, JsonFragment } from 'ethers'
 
-import {
-  BlockchainContractCall,
-  BlockchainContractCallResult,
-  BlockchainContractCallResultSchema,
-  BlockchainContractCallSchema,
-  BlockchainContractCallSuccess,
-} from './Payload'
+import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
 
 export type Abi = string | ReadonlyArray<JsonFragment | string>
 
-export const BlockchainContractCallWitnessConfigSchema = 'network.xyo.blockchain.contract.call.witness.config'
-export type BlockchainContractCallWitnessConfigSchema = typeof BlockchainContractCallWitnessConfigSchema
+export const EvmCallWitnessConfigSchema = 'network.xyo.evm.call.witness.config'
+export type EvmCallWitnessConfigSchema = typeof EvmCallWitnessConfigSchema
 
-export type BlockchainContractCallWitnessConfig = BlockchainWitnessConfig<
+export type EvmCallWitnessConfig = BlockchainWitnessConfig<
   {
     abi?: Abi
     address?: string
@@ -26,10 +20,10 @@ export type BlockchainContractCallWitnessConfig = BlockchainWitnessConfig<
     block?: number
     functionName?: string
   },
-  BlockchainContractCallWitnessConfigSchema
+  EvmCallWitnessConfigSchema
 >
 
-export type BlockchainContractCallWitnessParams = BlockchainWitnessParams<BlockchainContractCallWitnessConfig>
+export type EvmCallWitnessParams = BlockchainWitnessParams<EvmCallWitnessConfig>
 
 const prefixHex = (value?: string) => {
   if (value !== undefined) {
@@ -43,22 +37,24 @@ const isHexZero = (value?: string) => {
   return prefixedValue === undefined ? true : BigInt(prefixedValue) === 0n
 }
 
-export class BlockchainContractCallWitness<
-  TParams extends BlockchainContractCallWitnessParams = BlockchainContractCallWitnessParams,
-> extends AbstractBlockchainWitness<TParams, BlockchainContractCall, BlockchainContractCallResult> {
-  static override configSchemas = [BlockchainContractCallWitnessConfigSchema]
+export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractBlockchainWitness<
+  TParams,
+  EvmCall,
+  EvmCallResult
+> {
+  static override configSchemas = [EvmCallWitnessConfigSchema]
 
   get abi() {
     return assertEx(this.config.abi, 'Missing abi')
   }
 
-  protected override async observeHandler(inPayloads: BlockchainContractCall[] = []): Promise<BlockchainContractCallResult[]> {
+  protected override async observeHandler(inPayloads: EvmCall[] = []): Promise<EvmCallResult[]> {
     await this.started('throw')
     //calling it here to make sure we rests the cache
     await this.getProviders()
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(BlockchainContractCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
+        inPayloads.filter(isPayloadOfSchemaType(EvmCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
           const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]
@@ -68,10 +64,10 @@ export class BlockchainContractCallWitness<
           const block = this.config.block ?? payloadBlock ?? (await provider.getBlockNumber())
 
           //Check if ERC-1967 Upgradeable
-          const erc1967Status = await getErc1967Status(provider, validatedAddress, block)
+          const erc1967Status = await getErc1967SlotStatus(provider, validatedAddress, block)
 
           //Check if ERC-1822 Upgradeable
-          const erc1822Status = await getErc1822Status(provider, validatedAddress, block)
+          const erc1822Status = await getErc1822SlotStatus(provider, validatedAddress, block)
 
           const implementation = isHexZero(erc1967Status.slots.implementation) ? erc1822Status.implementation : erc1967Status.implementation
 
@@ -84,14 +80,14 @@ export class BlockchainContractCallWitness<
             //const error = ex as Error & { code: string }
             //this.logger.error(`Error [${this.config.name}]: ${error.code} : ${error.message}`)
           }
-          const observation: BlockchainContractCallSuccess = {
+          const observation: EvmCallSuccess = {
             address: validatedAddress,
             args: mergedArgs,
             block,
             chainId: Number((await provider.getNetwork()).chainId),
             functionName: validatedFunctionName,
             result: transformedResult,
-            schema: BlockchainContractCallResultSchema,
+            schema: EvmCallResultSchema,
           }
           if (implementation !== validatedAddress) {
             observation.implementation = implementation

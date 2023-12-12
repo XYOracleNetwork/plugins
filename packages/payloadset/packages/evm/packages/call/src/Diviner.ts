@@ -4,22 +4,22 @@ import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { asBlockchainContractCallSuccess, BlockchainContractCallResult, BlockchainContractCallResultSchema } from './Payload'
+import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 
-export const BlockchainContractCallDivinerConfigSchema = 'network.xyo.blockchain.contract.call.diviner.config'
-export type BlockchainContractCallDivinerConfigSchema = typeof BlockchainContractCallDivinerConfigSchema
+export const EvmCallDivinerConfigSchema = 'network.xyo.evm.call.diviner.config'
+export type EvmCallDivinerConfigSchema = typeof EvmCallDivinerConfigSchema
 
-export type BlockchainContractCallDivinerConfig = DivinerConfig<{
-  schema: BlockchainContractCallDivinerConfigSchema
+export type EvmCallDivinerConfig = DivinerConfig<{
+  schema: EvmCallDivinerConfigSchema
 }>
-export type BlockchainContractCallDivinerParams = DivinerParams<BlockchainContractCallDivinerConfig>
+export type EvmCallDivinerParams = DivinerParams<EvmCallDivinerConfig>
 
-export const BlockchainContractCallResultsSchema = 'network.xyo.blockchain.contract.call.results'
-export type BlockchainContractCallResultsSchema = typeof BlockchainContractCallResultsSchema
+export const EvmCallResultsSchema = 'network.xyo.evm.call.results'
+export type EvmCallResultsSchema = typeof EvmCallResultsSchema
 
-export type BlockchainContractCallResults = Payload<
+export type EvmCallResults = Payload<
   {
     address: string
     chainId: string
@@ -31,21 +31,15 @@ export type BlockchainContractCallResults = Payload<
       }
     >
   },
-  BlockchainContractCallResultsSchema
+  EvmCallResultsSchema
 >
 
-export class BlockchainContractCallDiviner<
-  TParams extends BlockchainContractCallDivinerParams = BlockchainContractCallDivinerParams,
-> extends AbstractDiviner<TParams> {
-  static override configSchemas = [BlockchainContractCallDivinerConfigSchema]
+export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivinerParams> extends AbstractDiviner<TParams> {
+  static override configSchemas = [EvmCallDivinerConfigSchema]
 
-  protected static findCallResult<TResult = string>(
-    address: string,
-    functionName: string,
-    payloads: BlockchainContractCallResult[],
-  ): TResult | undefined {
+  protected static findCallResult<TResult = string>(address: string, functionName: string, payloads: EvmCallResult[]): TResult | undefined {
     const foundPayload = payloads.find((payload) => payload.functionName === functionName && payload.address === address)
-    return asBlockchainContractCallSuccess(foundPayload)?.result as TResult | undefined
+    return asEvmCallSuccess(foundPayload)?.result as TResult | undefined
   }
 
   protected static matchingExistingField<R = string, T extends Payload = Payload>(objs: T[], field: keyof T): R | undefined {
@@ -56,16 +50,16 @@ export class BlockchainContractCallDiviner<
     return didNotMatch ? undefined : expectedValue
   }
 
-  protected contractInfoRequiredFields(callResults: BlockchainContractCallResult[]): BlockchainContractCallResults {
+  protected contractInfoRequiredFields(callResults: EvmCallResult[]): EvmCallResults {
     return {
-      address: assertEx(BlockchainContractCallDiviner.matchingExistingField(callResults, 'address'), 'Mismatched address'),
-      chainId: assertEx(BlockchainContractCallDiviner.matchingExistingField(callResults, 'chainId'), 'Mismatched chainId'),
-      schema: BlockchainContractCallResultsSchema,
+      address: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'address'), 'Mismatched address'),
+      chainId: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'chainId'), 'Mismatched chainId'),
+      schema: EvmCallResultsSchema,
     }
   }
 
-  protected override async divineHandler(inPayloads: BlockchainContractCallResult[] = []): Promise<BlockchainContractCallResults[]> {
-    const callResults = inPayloads.filter(isPayloadOfSchemaType<BlockchainContractCallResult>(BlockchainContractCallResultSchema))
+  protected override async divineHandler(inPayloads: EvmCallResult[] = []): Promise<EvmCallResults[]> {
+    const callResults = inPayloads.filter(isPayloadOfSchemaType<EvmCallResult>(EvmCallResultSchema))
     const addresses = Object.keys(
       callResults.reduce<Record<string, boolean>>((prev, result) => {
         if (result.address) {
@@ -77,7 +71,7 @@ export class BlockchainContractCallDiviner<
     const result = await Promise.all(
       addresses.map(async (address) => {
         const foundCallResults = callResults.filter((callResult) => callResult.address === address)
-        const results: BlockchainContractCallResults = {
+        const results: EvmCallResults = {
           ...{ results: await this.reduceResults(foundCallResults) },
           ...this.contractInfoRequiredFields(foundCallResults),
         }
@@ -88,7 +82,7 @@ export class BlockchainContractCallDiviner<
     return result
   }
 
-  protected reduceResults(callResults: BlockchainContractCallResult[]): Promisable<BlockchainContractCallResults['results']> {
+  protected reduceResults(callResults: EvmCallResult[]): Promisable<EvmCallResults['results']> {
     return callResults.reduce<
       Record<
         string,
@@ -98,7 +92,7 @@ export class BlockchainContractCallDiviner<
         }
       >
     >((prev, callResult) => {
-      const typedCallResult = asBlockchainContractCallSuccess(callResult)
+      const typedCallResult = asEvmCallSuccess(callResult)
       if (typedCallResult) {
         prev[callResult.functionName] = { args: typedCallResult.args, result: typedCallResult?.result }
       }

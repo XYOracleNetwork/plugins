@@ -12,9 +12,9 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { BlockchainContractCallDiviner, BlockchainContractCallResults, BlockchainContractCallResultsSchema } from '../Diviner'
-import { BlockchainContractCall, BlockchainContractCallSchema } from '../Payload'
-import { BlockchainContractCallWitness } from '../Witness'
+import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../Diviner'
+import { EvmCall, EvmCallSchema } from '../Payload'
+import { EvmCallWitness } from '../Witness'
 import erc721TokenSentinelManifest from './Erc721TokenSentinel.json'
 
 const profiler = createProfiler()
@@ -37,38 +37,38 @@ describe('Erc721Sentinel', () => {
       profile(profiler, 'setup')
       const wallet = await HDWallet.random()
       const locator = new ModuleFactoryLocator()
-      locator.register(BlockchainContractCallDiviner)
+      locator.register(EvmCallDiviner)
 
       locator.register(
-        new ModuleFactory(BlockchainContractCallWitness, {
+        new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
         }),
-        { 'network.xyo.blockchain.contract.interface': 'Erc721' },
+        { 'network.xyo.evm.interface': 'Erc721' },
       )
 
       locator.register(
-        new ModuleFactory(BlockchainContractCallWitness, {
+        new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
         }),
-        { 'network.xyo.blockchain.contract.interface': 'Erc721Enumerable' },
+        { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
       locator.register(
-        new ModuleFactory(BlockchainContractCallWitness, {
+        new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721URIStorage__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
         }),
-        { 'network.xyo.blockchain.contract.interface': 'ERC721URIStorage' },
+        { 'network.xyo.evm.interface': 'ERC721URIStorage' },
       )
 
       locator.register(
-        new ModuleFactory(BlockchainContractCallWitness, {
+        new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC1155__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
         }),
-        { 'network.xyo.blockchain.contract.interface': 'Erc1155' },
+        { 'network.xyo.evm.interface': 'Erc1155' },
       )
 
       profile(profiler, 'setup')
@@ -98,10 +98,10 @@ describe('Erc721Sentinel', () => {
       const diviner = asDivinerInstance(await node.resolve('TokenInfoDiviner'))
       expect(diviner).toBeDefined()
 
-      const tokenCallPayload: BlockchainContractCall = { address, args: [tokenId], schema: BlockchainContractCallSchema }
+      const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
       profile(profiler, 'tokenReport')
       const report = await tokenSentinel?.report([tokenCallPayload])
-      const info = report?.find(isPayloadOfSchemaType(BlockchainContractCallResultsSchema)) as BlockchainContractCallResults | undefined
+      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
       console.log(`info: ${JSON.stringify(info, null, 2)}`)
       expect(info?.results?.['ownerOf']?.result).toBeString()
       expect(info?.results?.['tokenURI']?.result).toBeString()

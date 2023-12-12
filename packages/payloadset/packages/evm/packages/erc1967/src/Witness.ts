@@ -8,8 +8,8 @@ import {
   BlockchainWitnessParams,
 } from '@xyo-network/witness-blockchain-abstract'
 
-import { getErc1967Status } from './lib'
-import { BlockchainErc1967Status, BlockchainErc1967StatusSchema } from './Payload'
+import { getErc1967SlotStatus } from './lib'
+import { Erc1967Status, Erc1967StatusSchema } from './Payload'
 
 export const BlockchainErc1967WitnessConfigSchema = 'network.xyo.blockchain.Erc1967.witness.config'
 export type BlockchainErc1967WitnessConfigSchema = typeof BlockchainErc1967WitnessConfigSchema
@@ -20,10 +20,10 @@ export type BlockchainErc1967WitnessParams = BlockchainWitnessParams<BlockchainE
 
 export class BlockchainErc1967Witness<
   TParams extends BlockchainErc1967WitnessParams = BlockchainErc1967WitnessParams,
-> extends AbstractBlockchainWitness<TParams, BlockchainAddress, BlockchainErc1967Status> {
+> extends AbstractBlockchainWitness<TParams, BlockchainAddress, Erc1967Status> {
   static override configSchemas = [BlockchainErc1967WitnessConfigSchema]
 
-  protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<BlockchainErc1967Status[]> {
+  protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<Erc1967Status[]> {
     await this.started('throw')
     //calling it here to make sure we rests the cache
     await this.getProviders()
@@ -36,15 +36,15 @@ export class BlockchainErc1967Witness<
 
           const block = await provider.getBlockNumber()
 
-          const { beacon, implementation, slots } = await getErc1967Status(provider, validatedAddress, block)
+          const { beacon, implementation, slots } = await getErc1967SlotStatus(provider, validatedAddress, block)
 
-          const observation: BlockchainErc1967Status = {
+          const observation: Erc1967Status = {
             address: validatedAddress,
             beacon,
             block,
             chainId: Number((await provider.getNetwork()).chainId),
             implementation,
-            schema: BlockchainErc1967StatusSchema,
+            schema: Erc1967StatusSchema,
             slots,
           }
           return observation

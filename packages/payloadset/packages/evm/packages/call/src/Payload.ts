@@ -1,22 +1,22 @@
 import { Payload } from '@xyo-network/payload-model'
 
-export const BlockchainContractCallSchema = 'network.xyo.blockchain.contract.call'
-export type BlockchainContractCallSchema = typeof BlockchainContractCallSchema
+export const EvmCallSchema = 'network.xyo.blockchain.contract.call'
+export type EvmCallSchema = typeof EvmCallSchema
 
-export type BlockchainContractCall = Payload<
+export type EvmCall = Payload<
   {
     address?: string
     args?: unknown[]
     block?: number
     functionName?: string
   },
-  BlockchainContractCallSchema
+  EvmCallSchema
 >
 
-export const BlockchainContractCallResultSchema = 'network.xyo.blockchain.contract.call.result'
-export type BlockchainContractCallResultSchema = typeof BlockchainContractCallResultSchema
+export const EvmCallResultSchema = 'network.xyo.blockchain.contract.call.result'
+export type EvmCallResultSchema = typeof EvmCallResultSchema
 
-export type BlockchainContractCallResultBase = Payload<
+export type EvmCallResultBase = Payload<
   {
     address: string
     args: unknown[]
@@ -25,29 +25,27 @@ export type BlockchainContractCallResultBase = Payload<
     functionName: string
     implementation?: string
   },
-  BlockchainContractCallResultSchema
+  EvmCallResultSchema
 >
 
-export type BlockchainContractCallSuccess = BlockchainContractCallResultBase & {
+export type EvmCallSuccess = EvmCallResultBase & {
   result: unknown
 }
 
-export type BlockchainContractCallFailure = BlockchainContractCallResultBase & {
+export type EvmCallFailure = EvmCallResultBase & {
   error: string
 }
 
-export type BlockchainContractCallResult = BlockchainContractCallSuccess | BlockchainContractCallFailure
+export type EvmCallResult = EvmCallSuccess | EvmCallFailure
 
-export const isBlockchainContractCallSuccess = (payload?: BlockchainContractCallResult): payload is BlockchainContractCallSuccess => {
-  return (payload as BlockchainContractCallSuccess | undefined)?.result !== undefined
+export const isEvmCallSuccess = (payload?: EvmCallResult): payload is EvmCallSuccess => {
+  return (payload as EvmCallSuccess | undefined)?.result !== undefined
 }
 
-export const isBlockchainContractCallFailure = (payload?: BlockchainContractCallResult): payload is BlockchainContractCallFailure => {
-  return (payload as BlockchainContractCallFailure | undefined)?.error !== undefined
+export const isEvmCallFailure = (payload?: EvmCallResult): payload is EvmCallFailure => {
+  return (payload as EvmCallFailure | undefined)?.error !== undefined
 }
 
-export const asBlockchainContractCallSuccess = (payload?: BlockchainContractCallResult) =>
-  isBlockchainContractCallSuccess(payload) ? payload : undefined
+export const asEvmCallSuccess = (payload?: EvmCallResult) => (isEvmCallSuccess(payload) ? payload : undefined)
 
-export const asBlockchainContractCallFailure = (payload?: BlockchainContractCallResult) =>
-  isBlockchainContractCallFailure(payload) ? payload : undefined
+export const asEvmCallFailure = (payload?: EvmCallResult) => (isEvmCallFailure(payload) ? payload : undefined)

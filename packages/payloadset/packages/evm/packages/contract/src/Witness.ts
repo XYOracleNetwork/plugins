@@ -8,21 +8,23 @@ import {
   BlockchainWitnessParams,
 } from '@xyo-network/witness-blockchain-abstract'
 
-import { BlockchainContract, BlockchainContractSchema } from './Payload'
+import { EvmContract, EvmContractSchema } from './Payload'
 
-export const BlockchainContractWitnessConfigSchema = 'network.xyo.blockchain.contract.witness.config'
-export type BlockchainContractWitnessConfigSchema = typeof BlockchainContractWitnessConfigSchema
+export const EvmContractWitnessConfigSchema = 'network.xyo.evm.contract.witness.config'
+export type EvmContractWitnessConfigSchema = typeof EvmContractWitnessConfigSchema
 
-export type BlockchainContractWitnessConfig = BlockchainWitnessConfig<{ address?: string }, BlockchainContractWitnessConfigSchema>
+export type EvmContractWitnessConfig = BlockchainWitnessConfig<{ address?: string }, EvmContractWitnessConfigSchema>
 
-export type BlockchainContractWitnessParams = BlockchainWitnessParams<BlockchainContractWitnessConfig>
+export type EvmContractWitnessParams = BlockchainWitnessParams<EvmContractWitnessConfig>
 
-export class BlockchainContractWitness<
-  TParams extends BlockchainContractWitnessParams = BlockchainContractWitnessParams,
-> extends AbstractBlockchainWitness<TParams, BlockchainAddress, BlockchainContract> {
-  static override configSchemas = [BlockchainContractWitnessConfigSchema]
+export class EvmContractWitness<TParams extends EvmContractWitnessParams = EvmContractWitnessParams> extends AbstractBlockchainWitness<
+  TParams,
+  BlockchainAddress,
+  EvmContract
+> {
+  static override configSchemas = [EvmContractWitnessConfigSchema]
 
-  protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<BlockchainContract[]> {
+  protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<EvmContract[]> {
     await this.started('throw')
     try {
       const observations = await Promise.all(
@@ -34,12 +36,12 @@ export class BlockchainContractWitness<
           const block = await provider.getBlockNumber()
           const code = await provider.getCode(validatedAddress, block)
 
-          const observation: BlockchainContract = {
+          const observation: EvmContract = {
             address: validatedAddress,
             block,
             chainId: Number((await provider.getNetwork()).chainId),
             code,
-            schema: BlockchainContractSchema,
+            schema: EvmContractSchema,
           }
           return observation
         }),

@@ -14,7 +14,7 @@ export interface Erc1967DataSlots {
   rollback?: Address
 }
 
-export interface Erc1967Status {
+export interface Erc1967SlotStatus {
   address: Address
   beacon?: {
     implementation?: Address
@@ -32,8 +32,8 @@ const readAddressFromSlot = async (provider: Provider, address: string, slot: st
   }
 }
 
-export const getErc1967Status = async (provider: Provider, address: string, block?: number): Promise<Erc1967Status> => {
-  const status: Erc1967Status = {
+export const getErc1967SlotStatus = async (provider: Provider, address: string, block?: number): Promise<Erc1967SlotStatus> => {
+  const status: Erc1967SlotStatus = {
     address,
     implementation: address,
     slots: {

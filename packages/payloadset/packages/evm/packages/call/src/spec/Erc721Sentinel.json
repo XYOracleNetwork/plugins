@@ -12,88 +12,88 @@
             "config": {
               "functionName": "name",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721NameWitness",
               "params": [],
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "symbol",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721SymbolWitness",
               "params": [],
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "tokenURI",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "ownerOf",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721OwnerOfWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "totalSupply",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721Enumerable"
+                "network.xyo.evm.interface": "Erc721Enumerable"
               },
               "language": "javascript",
               "name": "Erc721TotalSupplyWitness",
               "params": [],
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "tokenByIndex",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721Enumerable"
+                "network.xyo.evm.interface": "Erc721Enumerable"
               },
               "language": "javascript",
               "name": "Erc721TokenByIndexWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "uri",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc1155"
+                "network.xyo.evm.interface": "Erc1155"
               },
               "language": "javascript",
               "name": "Erc1155UriWitness",
               "params": [],
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "language": "javascript",
               "name": "ContractInfoDiviner",
-              "schema": "network.xyo.blockchain.contract.call.diviner.config"
+              "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {

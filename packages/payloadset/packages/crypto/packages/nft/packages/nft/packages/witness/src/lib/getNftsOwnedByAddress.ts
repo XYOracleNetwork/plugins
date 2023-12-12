@@ -1,7 +1,7 @@
 import { isHexZero } from '@xylabs/hex'
 import { NftInfoFields, TokenType } from '@xyo-network/crypto-nft-payload-plugin'
-import { getErc1822Status } from '@xyo-network/erc1822-witness'
-import { getErc1967Status } from '@xyo-network/erc1967-witness'
+import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
+import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import { ERC721__factory, ERC1155__factory, ERC1155Supply__factory } from '@xyo-network/open-zeppelin-typechain'
 import { Provider } from 'ethers'
 import { LRUCache } from 'lru-cache'
@@ -118,10 +118,10 @@ export const getNftsOwnedByAddress = async (
         // Check if Upgradeable
         const [erc1967Status, erc1822Status] = await Promise.all([
           // Check if ERC-1967 Upgradeable
-          await getErc1967Status(provider, contract, block),
+          await getErc1967SlotStatus(provider, contract, block),
 
           // Check if ERC-1822 Upgradeable
-          await getErc1822Status(provider, contract, block),
+          await getErc1822SlotStatus(provider, contract, block),
         ])
 
         const implementation =

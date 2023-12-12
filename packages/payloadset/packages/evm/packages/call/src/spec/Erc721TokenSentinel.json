@@ -12,40 +12,40 @@
             "config": {
               "functionName": "tokenURI",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "ERC721URIStorage"
+                "network.xyo.evm.interface": "ERC721URIStorage"
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "ownerOf",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721OwnerOfWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "functionName": "uri",
               "labels": {
-                "network.xyo.blockchain.contract.interface": "Erc1155"
+                "network.xyo.evm.interface": "Erc1155"
               },
               "language": "javascript",
               "name": "Erc1155UriWitness",
-              "schema": "network.xyo.blockchain.contract.call.witness.config"
+              "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
               "language": "javascript",
               "name": "TokenInfoDiviner",
-              "schema": "network.xyo.blockchain.contract.call.diviner.config"
+              "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {

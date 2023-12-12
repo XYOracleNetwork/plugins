@@ -1,18 +1,18 @@
 import { Address } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
-import { Erc1822Status } from './lib'
+import { Erc1822SlotStatus } from './lib'
 
-export const BlockchainErc1822StatusSchema = 'network.xyo.blockchain.erc1822.status'
-export type BlockchainErc1822StatusSchema = typeof BlockchainErc1822StatusSchema
+export const Erc1822StatusSchema = 'network.xyo.erc1822.status'
+export type Erc1822StatusSchema = typeof Erc1822StatusSchema
 
-export type BlockchainErc1822Status = Payload<
+export type Erc1822Status = Payload<
   {
     address: Address
     block: number
     chainId: number
-    implementation?: Erc1822Status['implementation']
-    slots?: Erc1822Status['slots']
+    implementation?: Erc1822SlotStatus['implementation']
+    slots?: Erc1822SlotStatus['slots']
   },
-  BlockchainErc1822StatusSchema
+  Erc1822StatusSchema
 >

@@ -1,1 +1,1 @@
-export * from './getErc1967Status'
+export * from './getErc1967SlotStatus'

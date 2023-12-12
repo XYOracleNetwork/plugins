@@ -1,15 +1,15 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { BlockchainContractWitness, BlockchainContractWitnessConfigSchema } from '../Witness'
+import { EvmContractWitness, EvmContractWitnessConfigSchema } from '../Witness'
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
   describe('observe', () => {
     it('get code from contract', async () => {
-      const witness = await BlockchainContractWitness.create({
+      const witness = await EvmContractWitness.create({
         account: 'random',
-        config: { schema: BlockchainContractWitnessConfigSchema },
+        config: { schema: EvmContractWitnessConfigSchema },
         providers: getProvidersFromEnv,
       })
       const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])

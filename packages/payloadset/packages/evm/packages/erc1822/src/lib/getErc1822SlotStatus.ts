@@ -7,7 +7,7 @@ export interface Erc1822DataSlots {
   implementation?: Address
 }
 
-export interface Erc1822Status {
+export interface Erc1822SlotStatus {
   address: Address
   implementation: Address
   slots: Erc1822DataSlots
@@ -22,8 +22,8 @@ const readAddressFromSlot = async (provider: Provider, address: string, slot: st
   }
 }
 
-export const getErc1822Status = async (provider: Provider, address: string, block?: number): Promise<Erc1822Status> => {
-  const status: Erc1822Status = {
+export const getErc1822SlotStatus = async (provider: Provider, address: string, block?: number): Promise<Erc1822SlotStatus> => {
+  const status: Erc1822SlotStatus = {
     address,
     implementation: address,
     slots: {

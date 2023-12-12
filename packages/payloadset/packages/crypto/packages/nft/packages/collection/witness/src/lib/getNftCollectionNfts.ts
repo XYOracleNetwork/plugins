@@ -2,8 +2,8 @@ import { AxiosJson } from '@xylabs/axios'
 import { exists } from '@xylabs/exists'
 import { isHexZero } from '@xylabs/hex'
 import { NftInfo, NftMetadata, NftSchema, TokenType, toTokenType } from '@xyo-network/crypto-nft-payload-plugin'
-import { getErc1822Status } from '@xyo-network/erc1822-witness'
-import { getErc1967Status } from '@xyo-network/erc1967-witness'
+import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
+import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import { ERC721Enumerable__factory, ERC721URIStorage__factory, ERC1155Supply__factory } from '@xyo-network/open-zeppelin-typechain'
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
 import { Provider } from 'ethers'
@@ -38,10 +38,10 @@ export const getNftCollectionNfts = async (
     const block = await provider.getBlockNumber()
 
     //Check if ERC-1967 Upgradeable
-    const erc1967Status = await getErc1967Status(provider, contractAddress, block)
+    const erc1967Status = await getErc1967SlotStatus(provider, contractAddress, block)
 
     //Check if ERC-1822 Upgradeable
-    const erc1822Status = await getErc1822Status(provider, contractAddress, block)
+    const erc1822Status = await getErc1822SlotStatus(provider, contractAddress, block)
 
     const implementation =
       !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)

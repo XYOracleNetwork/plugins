@@ -1,14 +1,14 @@
 import { Payload } from '@xyo-network/payload-model'
 
-export const BlockchainContractSchema = 'network.xyo.blockchain.contract'
-export type BlockchainContractSchema = typeof BlockchainContractSchema
+export const EvmContractSchema = 'network.xyo.evm.contract'
+export type EvmContractSchema = typeof EvmContractSchema
 
-export type BlockchainContract = Payload<
+export type EvmContract = Payload<
   {
     address: string
     block: number
     chainId: number
     code?: string
   },
-  BlockchainContractSchema
+  EvmContractSchema
 >

@@ -3,11 +3,11 @@ import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { BlockchainContractCall, BlockchainContractCallResultSchema, BlockchainContractCallSchema } from '../Payload'
-import { BlockchainContractCallWitness, BlockchainContractCallWitnessConfigSchema } from '../Witness'
+import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../Payload'
+import { EvmCallWitness, EvmCallWitnessConfigSchema } from '../Witness'
 
 const validateObservation = (observation: Payload[]) => {
-  const results = observation.filter(isPayloadOfSchemaType(BlockchainContractCallResultSchema))
+  const results = observation.filter(isPayloadOfSchemaType(EvmCallResultSchema))
   expect(results.length).toBeGreaterThan(0)
   expect(observation.length).toEqual(results.length)
 }
@@ -19,12 +19,12 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   describe('observe', () => {
     describe('with no address or chainId in query', () => {
       it('uses values from config', async () => {
-        const witness = await BlockchainContractCallWitness.create({
+        const witness = await EvmCallWitness.create({
           account: 'random',
-          config: { abi: ERC20__factory.abi, schema: BlockchainContractCallWitnessConfigSchema },
+          config: { abi: ERC20__factory.abi, schema: EvmCallWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
-        const call: BlockchainContractCall = { address, args, functionName, schema: BlockchainContractCallSchema }
+        const call: EvmCall = { address, args, functionName, schema: EvmCallSchema }
         const observation = await witness.observe([call])
         validateObservation(observation)
       })
