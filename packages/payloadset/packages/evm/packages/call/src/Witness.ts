@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
-import { getErc1822Status } from '@xyo-network/blockchain-erc1822-witness'
-import { getErc1967Status } from '@xyo-network/blockchain-erc1967-witness'
+import { getErc1822Status } from '@xyo-network/erc1822-witness'
+import { getErc1967Status } from '@xyo-network/erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractBlockchainWitness, BlockchainWitnessConfig, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
 import { Contract, JsonFragment } from 'ethers'

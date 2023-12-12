@@ -13,7 +13,7 @@ export interface Erc1822Status {
   slots: Erc1822DataSlots
 }
 
-export const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
+const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
   try {
     const slotValue = await provider.getStorage(address, slot, block)
     return hexFromHexString(slotValue, { prefix: true })

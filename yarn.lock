@@ -3835,85 +3835,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/blockchain-call-witness@workspace:packages/payloadset/packages/blockchain/packages/call, @xyo-network/blockchain-call-witness@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/blockchain-call-witness@workspace:packages/payloadset/packages/blockchain/packages/call"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xylabs/jest-helpers": "npm:^2.13.20"
-    "@xylabs/profile": "npm:^2.13.20"
-    "@xylabs/promise": "npm:^2.13.20"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
-    "@xylabs/tsconfig": "npm:^3.2.10"
-    "@xyo-network/abstract-diviner": "npm:^2.84.0"
-    "@xyo-network/account": "npm:^2.84.0"
-    "@xyo-network/blockchain-erc1822-witness": "workspace:~"
-    "@xyo-network/blockchain-erc1967-witness": "workspace:~"
-    "@xyo-network/diviner-model": "npm:^2.84.0"
-    "@xyo-network/manifest": "npm:^2.84.0"
-    "@xyo-network/module-model": "npm:^2.84.0"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
-    "@xyo-network/payload-model": "npm:^2.84.0"
-    "@xyo-network/sentinel-model": "npm:^2.84.0"
-    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
-    "@xyo-network/witness-model": "npm:^2.84.0"
-    ethers: "npm:^6.9.0"
-    jest: "npm:^29.7.0"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"@xyo-network/blockchain-contract-witness@workspace:packages/payloadset/packages/blockchain/packages/contract, @xyo-network/blockchain-contract-witness@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/blockchain-contract-witness@workspace:packages/payloadset/packages/blockchain/packages/contract"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xylabs/jest-helpers": "npm:^2.13.20"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
-    "@xylabs/tsconfig": "npm:^3.2.10"
-    "@xyo-network/payload-model": "npm:^2.84.0"
-    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
-    ethers: "npm:^6.9.0"
-    jest: "npm:^29.7.0"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"@xyo-network/blockchain-erc1822-witness@workspace:packages/payloadset/packages/blockchain/packages/erc1822, @xyo-network/blockchain-erc1822-witness@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/blockchain-erc1822-witness@workspace:packages/payloadset/packages/blockchain/packages/erc1822"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xylabs/hex": "npm:^2.13.20"
-    "@xylabs/jest-helpers": "npm:^2.13.20"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
-    "@xylabs/tsconfig": "npm:^3.2.10"
-    "@xyo-network/payload-model": "npm:^2.84.0"
-    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
-    ethers: "npm:^6.9.0"
-    jest: "npm:^29.7.0"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"@xyo-network/blockchain-erc1967-witness@workspace:packages/payloadset/packages/blockchain/packages/erc1967, @xyo-network/blockchain-erc1967-witness@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/blockchain-erc1967-witness@workspace:packages/payloadset/packages/blockchain/packages/erc1967"
-  dependencies:
-    "@xylabs/assert": "npm:^2.13.20"
-    "@xylabs/hex": "npm:^2.13.20"
-    "@xylabs/jest-helpers": "npm:^2.13.20"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
-    "@xylabs/tsconfig": "npm:^3.2.10"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
-    "@xyo-network/payload-model": "npm:^2.84.0"
-    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
-    ethers: "npm:^6.9.0"
-    jest: "npm:^29.7.0"
-    typescript: "npm:^5.3.3"
-  languageName: unknown
-  linkType: soft
-
 "@xyo-network/blockchain-payload-plugins@workspace:packages/payload/packages/blockchain, @xyo-network/blockchain-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/blockchain-payload-plugins@workspace:packages/payload/packages/blockchain"
@@ -3932,9 +3853,6 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
     "@xylabs/tsconfig": "npm:^3.2.10"
-    "@xyo-network/blockchain-call-witness": "workspace:~"
-    "@xyo-network/blockchain-contract-witness": "workspace:~"
-    "@xyo-network/blockchain-erc1967-witness": "workspace:~"
     "@xyo-network/ethereum-blockchain-plugins": "workspace:~"
     "@xyo-network/payloadset-plugin": "npm:^2.84.0"
     typescript: "npm:^5.3.3"
@@ -4490,11 +4408,11 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.10"
     "@xyo-network/account": "npm:^2.84.0"
     "@xyo-network/account-model": "npm:^2.84.0"
-    "@xyo-network/blockchain-erc1822-witness": "workspace:~"
-    "@xyo-network/blockchain-erc1967-witness": "workspace:~"
     "@xyo-network/core": "npm:^2.84.0"
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:~"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:~"
+    "@xyo-network/erc1822-witness": "workspace:~"
+    "@xyo-network/erc1967-witness": "workspace:~"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.84.0"
     "@xyo-network/payloadset-plugin": "npm:^2.84.0"
@@ -4613,8 +4531,6 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.10"
     "@xyo-network/account": "npm:^2.84.0"
     "@xyo-network/archivist-model": "npm:^2.84.0"
-    "@xyo-network/blockchain-erc1822-witness": "workspace:~"
-    "@xyo-network/blockchain-erc1967-witness": "workspace:~"
     "@xyo-network/boundwitness-builder": "npm:^2.84.0"
     "@xyo-network/boundwitness-model": "npm:^2.84.0"
     "@xyo-network/core": "npm:^2.84.0"
@@ -4625,6 +4541,8 @@ __metadata:
     "@xyo-network/diviner-payload-memory": "npm:^2.84.0"
     "@xyo-network/diviner-payload-model": "npm:^2.84.0"
     "@xyo-network/diviner-temporal-indexing": "npm:^2.83.0"
+    "@xyo-network/erc1822-witness": "workspace:~"
+    "@xyo-network/erc1967-witness": "workspace:~"
     "@xyo-network/manifest": "npm:^2.84.0"
     "@xyo-network/memory-archivist": "npm:^2.84.0"
     "@xyo-network/module-model": "npm:^2.84.0"
@@ -5089,6 +5007,41 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xyo-network/erc1822-witness@workspace:packages/payloadset/packages/evm/packages/erc1822, @xyo-network/erc1822-witness@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/erc1822-witness@workspace:packages/payloadset/packages/evm/packages/erc1822"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/hex": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/payload-model": "npm:^2.84.0"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/erc1967-witness@workspace:packages/payloadset/packages/evm/packages/erc1967, @xyo-network/erc1967-witness@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/erc1967-witness@workspace:packages/payloadset/packages/evm/packages/erc1967"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/hex": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/payload-model": "npm:^2.84.0"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain/packages/v2, @xyo-network/etherchain-ethereum-gas-v2-payload-plugin@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain/packages/v2"
@@ -5246,6 +5199,65 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.10"
     "@xyo-network/payload-model": "npm:^2.84.0"
     "@xyo-network/payload-plugin": "npm:^2.84.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-call-witness@workspace:packages/payloadset/packages/evm/packages/call, @xyo-network/evm-call-witness@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-call-witness@workspace:packages/payloadset/packages/evm/packages/call"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/profile": "npm:^2.13.20"
+    "@xylabs/promise": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/abstract-diviner": "npm:^2.84.0"
+    "@xyo-network/account": "npm:^2.84.0"
+    "@xyo-network/diviner-model": "npm:^2.84.0"
+    "@xyo-network/erc1822-witness": "workspace:~"
+    "@xyo-network/erc1967-witness": "workspace:~"
+    "@xyo-network/manifest": "npm:^2.84.0"
+    "@xyo-network/module-model": "npm:^2.84.0"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/payload-model": "npm:^2.84.0"
+    "@xyo-network/sentinel-model": "npm:^2.84.0"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
+    "@xyo-network/witness-model": "npm:^2.84.0"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-contract-witness@workspace:packages/payloadset/packages/evm/packages/contract, @xyo-network/evm-contract-witness@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-contract-witness@workspace:packages/payloadset/packages/evm/packages/contract"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/payload-model": "npm:^2.84.0"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.0"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-plugins@workspace:packages/payloadset/packages/evm":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-plugins@workspace:packages/payloadset/packages/evm"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.10"
+    "@xylabs/tsconfig": "npm:^3.2.10"
+    "@xyo-network/erc1822-witness": "workspace:~"
+    "@xyo-network/erc1967-witness": "workspace:~"
+    "@xyo-network/evm-call-witness": "workspace:~"
+    "@xyo-network/evm-contract-witness": "workspace:~"
+    "@xyo-network/payloadset-plugin": "npm:^2.84.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft

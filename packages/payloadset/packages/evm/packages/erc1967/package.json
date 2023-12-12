@@ -1,5 +1,5 @@
 {
-  "name": "@xyo-network/blockchain-contract-witness",
+  "name": "@xyo-network/erc1967-witness",
   "author": {
     "email": "support@xyo.network",
     "name": "XYO Development Team",
@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@xylabs/assert": "^2.13.20",
+    "@xylabs/hex": "^2.13.20",
+    "@xyo-network/open-zeppelin-typechain": "^3.0.5",
     "@xyo-network/payload-model": "^2.84.0",
     "@xyo-network/witness-blockchain-abstract": "^2.84.0"
   },
