@@ -1,16 +1,22 @@
-{
+module.exports = {
   "root": true,
   "extends": [
     "@xylabs"
   ],
   "ignorePatterns": [
-    "**/dist",
-    "**/node_modules",
-    "**/docs",
-    "**/coverage",
+    "dist",
+    "node_modules",
+    "docs",
+    "coverage",
+    "docker",
+    "nftData",
     "testData.json",
-    ".yarn"
+    "*.stories.*",
+    "swagger.json",
+    ".yarn",
+    ".*"
   ],
+  parserOptions: { ecmaVersion: 'latest', project: './tsconfig.json', tsconfigRootDir: __dirname },
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
     "no-restricted-imports": [
@@ -18,6 +24,7 @@
       {
         "paths": [
           "@xyo-network/bridge",
+          "@xyo-network/core",
           "@xyo-network/module",
           "@xyo-network/modules",
           "@xyo-network/node",
