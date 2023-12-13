@@ -5210,7 +5210,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address":
+"@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address, @xyo-network/evm-address-payload-plugin@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address"
   dependencies:
@@ -5272,6 +5272,7 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.19"
     "@xylabs/tsconfig": "npm:^3.2.19"
+    "@xyo-network/evm-address-payload-plugin": "workspace:~"
     "@xyo-network/payload-plugin": "npm:^2.84.2"
     typescript: "npm:^5.3.3"
   languageName: unknown
