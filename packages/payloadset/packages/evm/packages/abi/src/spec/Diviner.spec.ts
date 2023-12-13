@@ -3,10 +3,10 @@ import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema }
 import {
   ERC20__factory,
   ERC721__factory,
-  ERC1155__factory,
-  ERC1155Burnable__factory,
+  // ERC1155__factory,
+  // ERC1155Burnable__factory,
   ERC1155Holder__factory,
-  ERC1155URIStorage__factory,
+  // ERC1155URIStorage__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 

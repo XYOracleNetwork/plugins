@@ -5204,8 +5204,21 @@ __metadata:
     "@xyo-network/module-model": "npm:^2.84.2"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.84.2"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.2"
     ethers: "npm:^6.9.0"
     jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address, @xyo-network/evm-address-payload-plugin@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.19"
+    "@xylabs/tsconfig": "npm:^3.2.19"
+    "@xyo-network/payload-model": "npm:^2.84.2"
+    "@xyo-network/payload-plugin": "npm:^2.84.2"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
@@ -5250,6 +5263,18 @@ __metadata:
     "@xyo-network/witness-blockchain-abstract": "npm:^2.84.2"
     ethers: "npm:^6.9.0"
     jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-payload-plugins@workspace:packages/payload/packages/evm":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-payload-plugins@workspace:packages/payload/packages/evm"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.19"
+    "@xylabs/tsconfig": "npm:^3.2.19"
+    "@xyo-network/evm-address-payload-plugin": "workspace:~"
+    "@xyo-network/payload-plugin": "npm:^2.84.2"
     typescript: "npm:^5.3.3"
   languageName: unknown
   linkType: soft
