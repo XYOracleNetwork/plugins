@@ -13,9 +13,9 @@ export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivin
 
 export type EvmAbiImplementedDivinerConfig = DivinerConfig<{ abi?: InterfaceAbi; schema: EvmAbiImplementedDivinerConfigSchema }>
 
-export type EvmAbiImplementedWitnessParams = DivinerParams<AnyConfigSchema<EvmAbiImplementedDivinerConfig>>
+export type EvmAbiImplementedDivinerParams = DivinerParams<AnyConfigSchema<EvmAbiImplementedDivinerConfig>>
 
-export class EvmAbiImplementedWitness<TParams extends EvmAbiImplementedWitnessParams = EvmAbiImplementedWitnessParams> extends AbstractDiviner<
+export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerParams = EvmAbiImplementedDivinerParams> extends AbstractDiviner<
   TParams,
   EvmContract,
   EvmFunctionImplemented
