@@ -1,4 +1,4 @@
-import { PayloadHasher } from '@xyo-network/core'
+import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnailDivinerQuery,
   ImageThumbnailDivinerQuerySchema,

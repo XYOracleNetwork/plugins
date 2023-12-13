@@ -1,8 +1,8 @@
-module.exports = {
+const finalConfig = {
+  "extends": ["@xylabs", "@xylabs/react"],
+  parser: '@typescript-eslint/parser',
+  parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
   "root": true,
-  "extends": [
-    "@xylabs"
-  ],
   "ignorePatterns": [
     "dist",
     "node_modules",
@@ -16,7 +16,6 @@ module.exports = {
     ".yarn",
     ".*"
   ],
-  parserOptions: { ecmaVersion: 'latest', project: './tsconfig.json', tsconfigRootDir: __dirname },
   "rules": {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
     "no-restricted-imports": [
@@ -59,3 +58,5 @@ module.exports = {
     ]
   }
 }
+
+module.exports = finalConfig

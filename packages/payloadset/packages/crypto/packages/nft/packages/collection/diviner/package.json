@@ -11,19 +11,19 @@
   },
   "dependencies": {
     "@xyo-network/abstract-diviner": "^2.84.2",
-    "@xyo-network/core": "^2.84.2",
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:~",
     "@xyo-network/crypto-nft-payload-plugin": "workspace:~",
     "@xyo-network/crypto-nft-score-model": "workspace:~",
     "@xyo-network/diviner-model": "^2.84.2",
+    "@xyo-network/hash": "^2.84.2",
     "@xyo-network/module-model": "^2.84.2",
     "@xyo-network/payload-model": "^2.84.2",
     "@xyo-network/payloadset-plugin": "^2.84.2"
   },
   "devDependencies": {
     "@xylabs/jest-helpers": "^2.13.20",
-    "@xylabs/ts-scripts-yarn3": "^3.2.13",
-    "@xylabs/tsconfig": "^3.2.13",
+    "@xylabs/ts-scripts-yarn3": "^3.2.19",
+    "@xylabs/tsconfig": "^3.2.19",
     "@xyo-network/account": "^2.84.2",
     "@xyo-network/payload-wrapper": "^2.84.2",
     "ethers": "^6.9.0",

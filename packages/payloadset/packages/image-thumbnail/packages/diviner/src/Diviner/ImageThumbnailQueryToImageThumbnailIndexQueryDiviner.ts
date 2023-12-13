@@ -1,7 +1,7 @@
 import { AbstractDiviner } from '@xyo-network/abstract-diviner'
-import { PayloadHasher } from '@xyo-network/core'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { PayloadHasher } from '@xyo-network/hash'
 import { isImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'

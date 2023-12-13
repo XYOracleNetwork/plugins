@@ -1,6 +1,5 @@
 import { assertEx } from '@xylabs/assert'
 import { EthAddress } from '@xylabs/eth-address'
-import { PayloadHasher } from '@xyo-network/core'
 import {
   isNftCollectionWitnessQuery,
   NftCollectionInfo,
@@ -9,6 +8,7 @@ import {
   NftCollectionWitnessConfigSchema,
   NftCollectionWitnessQuery,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { PayloadHasher } from '@xyo-network/hash'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { AbstractBlockchainWitness, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
 

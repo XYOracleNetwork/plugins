@@ -1,7 +1,7 @@
 import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { PayloadHasher } from '@xyo-network/core'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
+import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnail,
   ImageThumbnailResultIndex,
