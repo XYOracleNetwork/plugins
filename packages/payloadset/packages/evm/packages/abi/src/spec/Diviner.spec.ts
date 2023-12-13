@@ -1,5 +1,6 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema } from '@xyo-network/evm-contract-witness'
+import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 
 import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
 
@@ -10,7 +11,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
       it('get code from contract', async () => {
         const witness = await EvmAbiImplementedDiviner.create({
           account: 'random',
-          config: { abi: [], schema: EvmAbiImplementedDivinerConfigSchema },
+          config: { abi: ERC20__factory.abi, schema: EvmAbiImplementedDivinerConfigSchema },
         })
         const observation = await witness.divine([{ address, block: 0, chainId: 1, code: '0x00', schema: EvmContractSchema }])
         expect(observation[0].address).toBe(address)
