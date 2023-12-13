@@ -1,7 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
-import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
 import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
 
@@ -14,14 +14,14 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
       it.each(cases)('returns implemented true', async (address, abi) => {
         const witness = await EvmContractWitness.create({
           account: 'random',
-          config: { address, schema: EvmContractWitnessConfigSchema },
+          config: { schema: EvmContractWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
         const diviner = await EvmAbiImplementedDiviner.create({
           account: 'random',
           config: { abi, schema: EvmAbiImplementedDivinerConfigSchema },
         })
-        const observations = await witness.observe()
+        const observations = await witness.observe([{ address, schema: BlockchainAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
         const code = observations?.[0].code
         const results = await diviner.divine([{ address, block: 0, chainId: 1, code, schema: EvmContractSchema }])
