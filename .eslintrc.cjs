@@ -1,9 +1,9 @@
 const finalConfig = {
-  "extends": ["@xylabs", "@xylabs/react"],
+  extends: ["@xylabs"],
   parser: '@typescript-eslint/parser',
   parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
-  "root": true,
-  "ignorePatterns": [
+  root: true,
+  ignorePatterns: [
     "dist",
     "node_modules",
     "docs",
@@ -16,7 +16,7 @@ const finalConfig = {
     ".yarn",
     ".*"
   ],
-  "rules": {
+  rules: {
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
     "no-restricted-imports": [
       "warn",
