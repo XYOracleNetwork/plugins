@@ -1,7 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema } from '@xyo-network/evm-contract-witness'
 
-import { EvmAbiImplementedDivinerConfigSchema, EvmAbiImplementedWitness } from '../Witness'
+import { EvmAbiImplementedDivinerConfigSchema, EvmAbiImplementedWitness } from '../Diviner'
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
