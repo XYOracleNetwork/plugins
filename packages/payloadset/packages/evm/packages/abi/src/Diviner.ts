@@ -1,28 +1,32 @@
 import { assertEx } from '@xylabs/assert'
+import { AbstractDiviner } from '@xyo-network/abstract-diviner'
+import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { EvmContract, EvmContractSchema } from '@xyo-network/evm-contract-witness'
+import { AnyConfigSchema } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import { AbstractBlockchainWitness, BlockchainWitnessConfig, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
 import { Interface } from 'ethers'
 
 import { EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi } from './Payload'
 
-export const EvmAbiImplementedWitnessConfigSchema = 'network.xyo.evm.abi.implemented.witness.config'
-export type EvmAbiImplementedWitnessConfigSchema = typeof EvmAbiImplementedWitnessConfigSchema
+export const EvmAbiImplementedDivinerConfigSchema = 'network.xyo.evm.abi.implemented.diviner.config'
+export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivinerConfigSchema
 
-export type EvmAbiImplementedWitnessConfig = BlockchainWitnessConfig<{ abi?: InterfaceAbi }, EvmAbiImplementedWitnessConfigSchema>
+export type EvmAbiImplementedDivinerConfig = DivinerConfig<{ abi?: InterfaceAbi; schema: EvmAbiImplementedDivinerConfigSchema }>
 
-export type EvmAbiImplementedWitnessParams = BlockchainWitnessParams<EvmAbiImplementedWitnessConfig>
+export type EvmAbiImplementedDivinerParams = DivinerParams<AnyConfigSchema<EvmAbiImplementedDivinerConfig>>
 
-export class EvmAbiImplementedWitness<
-  TParams extends EvmAbiImplementedWitnessParams = EvmAbiImplementedWitnessParams,
-> extends AbstractBlockchainWitness<TParams, EvmContract, EvmFunctionImplemented> {
-  static override configSchemas = [EvmAbiImplementedWitnessConfigSchema]
+export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerParams = EvmAbiImplementedDivinerParams> extends AbstractDiviner<
+  TParams,
+  EvmContract,
+  EvmFunctionImplemented
+> {
+  static override configSchemas = [EvmAbiImplementedDivinerConfigSchema]
 
   get abi() {
     return assertEx(this.config?.abi, 'No ABI specified')
   }
 
-  protected override async observeHandler(inPayloads: EvmContract[] = []): Promise<EvmFunctionImplemented[]> {
+  protected override async divineHandler(inPayloads: EvmContract[] = []): Promise<EvmFunctionImplemented[]> {
     await this.started('throw')
     try {
       const observations = await Promise.all(

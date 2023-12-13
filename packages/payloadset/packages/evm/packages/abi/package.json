@@ -1,5 +1,5 @@
 {
-  "name": "@xyo-network/evm-abi-witness",
+  "name": "@xyo-network/evm-abi-diviner",
   "author": {
     "email": "support@xyo.network",
     "name": "XYO Development Team",
@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@xylabs/assert": "^2.13.20",
-    "@xyo-network/evm-contract-witness": "workspace:~",
+    "@xyo-network/abstract-diviner": "^2.84.2",
+    "@xyo-network/diviner-model": "^2.84.2",
+    "@xyo-network/module-model": "^2.84.2",
     "@xyo-network/payload-model": "^2.84.2",
     "@xyo-network/witness-blockchain-abstract": "^2.84.2",
     "ethers": "^6.9.0"

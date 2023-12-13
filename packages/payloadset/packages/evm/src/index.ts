@@ -1,7 +1,7 @@
 export * from '@xyo-network/erc1822-witness'
 export * from '@xyo-network/erc1967-witness'
 export * from '@xyo-network/ethereum-blockchain-plugins'
-export * from '@xyo-network/evm-abi-witness'
+export * from '@xyo-network/evm-abi-diviner'
 export * from '@xyo-network/evm-call-witness'
 export * from '@xyo-network/evm-contract-witness'
 
