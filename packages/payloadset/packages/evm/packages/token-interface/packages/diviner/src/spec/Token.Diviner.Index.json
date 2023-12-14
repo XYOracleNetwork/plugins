@@ -58,10 +58,12 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.contract"]
+                "payload_schemas": [
+                  "network.xyo.evm.token.interface.implemented"
+                ]
               },
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.evm.token.interface.implemented": "diviner",
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
               },
               "language": "javascript",
@@ -77,14 +79,14 @@
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.evm.token.interface.implemented": "diviner",
                 "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexCandidateToEvmContractIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.evm.contract": [
+                "network.xyo.evm.token.interface.implemented": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -109,7 +111,7 @@
               "indexQuerySchema": "network.xyo.diviner.payload.query",
               "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.evm.token.interface.implemented": "diviner",
                 "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
               },
               "language": "javascript",
@@ -148,19 +150,12 @@
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.evm.token.interface.implemented": "diviner",
                 "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexQueryResponseToEvmContractQueryResponseDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
-            }
-          },
-          {
-            "config": {
-              "language": "javascript",
-              "name": "EvmTokenContractDiviner",
-              "schema": "network.xyo.evm.contract.witness.config"
             }
           },
           {
@@ -172,6 +167,13 @@
           }
         ],
         "public": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "EvmTokenInterfaceImplementedDiviner",
+              "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
+            }
+          },
           {
             "config": {
               "indexStore": {
@@ -199,7 +201,7 @@
           {
             "config": {
               "language": "javascript",
-              "name": "EvmTokenContractSentinel",
+              "name": "EvmTokenInterfaceImplementedSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
@@ -209,7 +211,7 @@
                 },
                 {
                   "input": true,
-                  "module": "EvmTokenContractDiviner"
+                  "module": "EvmTokenInterfaceImplementedDiviner"
                 }
               ]
             }

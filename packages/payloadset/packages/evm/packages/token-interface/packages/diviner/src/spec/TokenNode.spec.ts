@@ -31,14 +31,16 @@ import { BlockchainAddress, BlockchainAddressSchema, getProviderFromEnv } from '
 import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
-import sentinelNodeManifest from './Contract.Witness.Index.json'
+import { TokenInterface } from '../Payload'
+import contractWitnessManifest from './Contract.Witness.Index.json'
+import tokenDivinerManifest from './Token.Diviner.Index.json'
+import tokenNodeManifest from './TokenNode.json'
 
 const maxProviders = 32
 
 describe('Contract Node', () => {
   const chainId = 1
-  type TokenType = 'ERC721' | 'ERC1155'
-  const cases: [TokenType, string][] = [
+  const cases: [TokenInterface, string][] = [
     ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
     ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
   ]
@@ -72,12 +74,11 @@ describe('Contract Node', () => {
       }),
       { '"network.xyo.diviner.indexing.temporal.config"': 'witness' },
     )
-    // const publicChildren: PackageManifestPayload[] = [
-    //   erc721IndexNodeManifest as PackageManifestPayload,
-    //   erc1155IndexNodeManifest as PackageManifestPayload,
-    // ]
-    const publicChildren: PackageManifestPayload[] = []
-    const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
+    const publicChildren: PackageManifestPayload[] = [
+      contractWitnessManifest as PackageManifestPayload,
+      tokenDivinerManifest as PackageManifestPayload,
+    ]
+    const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)
   })
   describe('Sentinel', () => {
