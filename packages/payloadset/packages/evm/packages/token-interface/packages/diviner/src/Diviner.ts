@@ -30,11 +30,9 @@ type TokenInterfaceDictionary = DistributiveMappedType<TokenInterface>
 /**
  * A diviner that checks if a contract implements a token interface
  */
-export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerParams = EvmTokenInterfaceDivinerParams> extends AbstractDiviner<
-  TParams,
-  EvmContract,
-  EvmTokenInterfaceImplemented
-> {
+export class EvmTokenInterfaceImplementedDiviner<
+  TParams extends EvmTokenInterfaceDivinerParams = EvmTokenInterfaceDivinerParams,
+> extends AbstractDiviner<TParams, EvmContract, EvmTokenInterfaceImplemented> {
   /**
    * The list of supported token interfaces
    */
@@ -61,11 +59,11 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
         this._tokenInterfaces =
           (Object.fromEntries(
             this.config?.tokenInterfaces.map((tokenInterface) => {
-              return [tokenInterface, EvmTokenInterfaceDiviner.SupportedTokenInterfaces[tokenInterface]] as const
+              return [tokenInterface, EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces[tokenInterface]] as const
             }),
           ) as TokenInterfaceDictionary) ?? {}
       } else {
-        this._tokenInterfaces = EvmTokenInterfaceDiviner.SupportedTokenInterfaces
+        this._tokenInterfaces = EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
       }
     }
     return this._tokenInterfaces

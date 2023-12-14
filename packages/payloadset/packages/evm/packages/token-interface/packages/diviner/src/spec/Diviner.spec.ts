@@ -2,10 +2,10 @@ import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EvmTokenInterfaceDiviner, EvmTokenInterfaceDivinerConfigSchema } from '../Diviner'
+import { EvmTokenInterfaceDivinerConfigSchema, EvmTokenInterfaceImplementedDiviner } from '../Diviner'
 import { TokenInterface } from '../Payload'
 
-describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
+describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
   type TestData = readonly [string, TokenInterface[]]
   const cases: readonly TestData[] = [
     ['0x55296f69f40ea6d20e478533c15a6b08b654e758', ['ERC20'] as TokenInterface[]], // XYO ERC20
@@ -20,7 +20,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
           config: { schema: EvmContractWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
-        const diviner = await EvmTokenInterfaceDiviner.create({
+        const diviner = await EvmTokenInterfaceImplementedDiviner.create({
           account: 'random',
           config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
         })
@@ -37,7 +37,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
     })
     describe('without matching ABI', () => {
       it.each(cases)('returns implemented false', async (address, tokenInterfaces) => {
-        const diviner = await EvmTokenInterfaceDiviner.create({
+        const diviner = await EvmTokenInterfaceImplementedDiviner.create({
           account: 'random',
           config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
         })
