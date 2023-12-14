@@ -1,5 +1,6 @@
 /* eslint-disable max-statements */
 import { HDWallet } from '@xyo-network/account'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import {
   CryptoContractFunctionCall,
   CryptoContractFunctionCallSchema,
@@ -18,15 +19,16 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
+import { EvmContract, EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema, isEvmContract } from '@xyo-network/evm-contract-witness'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
+import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { BlockchainAddress, BlockchainAddressSchema, getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
-import { TimestampWitness } from '@xyo-network/witness-timestamp'
+import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
 import sentinelNodeManifest from './Contract.Witness.Index.json'
@@ -85,7 +87,14 @@ describe('Contract Node', () => {
       const collectionCallPayload: BlockchainAddress = { address, chainId, schema: BlockchainAddressSchema }
       const report = await collectionSentinel?.report([collectionCallPayload])
       expect(report).toBeDefined()
-      expect(report).toBeArrayOfSize(1)
+      expect(report).toBeArrayOfSize(3)
+      const [bw, timestamp, contract] = (report as [BoundWitness, TimeStamp, EvmContract]) ?? []
+      expect(isBoundWitness(bw)).toBeTrue()
+      expect(isTimestamp(timestamp)).toBeTrue()
+      expect(isEvmContract(contract)).toBeTrue()
+      expect(contract.address).toBe(address)
+      expect(contract.chainId).toBe(chainId)
+      expect(contract.code).toBeDefined()
     })
   })
   describe.skip('ERC721 Index', () => {
