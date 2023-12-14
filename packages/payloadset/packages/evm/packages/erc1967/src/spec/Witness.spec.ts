@@ -1,14 +1,14 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { BlockchainErc1967Witness, BlockchainErc1967WitnessConfigSchema } from '../Witness'
+import { Erc1967Witness, Erc1967WitnessConfigSchema } from '../Witness'
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   it('get code from contract (no proxy)', async () => {
     const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
-    const witness = await BlockchainErc1967Witness.create({
+    const witness = await Erc1967Witness.create({
       account: 'random',
-      config: { schema: BlockchainErc1967WitnessConfigSchema },
+      config: { schema: Erc1967WitnessConfigSchema },
       providers: getProvidersFromEnv,
     })
     const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
@@ -19,9 +19,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   })
   it('get code from contract (proxy)', async () => {
     const address = '0x33FD426905F149f8376e227d0C9D3340AaD17aF1' //The Memes NFT
-    const witness = await BlockchainErc1967Witness.create({
+    const witness = await Erc1967Witness.create({
       account: 'random',
-      config: { schema: BlockchainErc1967WitnessConfigSchema },
+      config: { schema: Erc1967WitnessConfigSchema },
       providers: getProvidersFromEnv,
     })
     const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])

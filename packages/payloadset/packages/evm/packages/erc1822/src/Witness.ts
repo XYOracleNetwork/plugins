@@ -11,7 +11,7 @@ import {
 import { getErc1822SlotStatus } from './lib'
 import { Erc1822Status, Erc1822StatusSchema } from './Payload'
 
-export const Erc1822WitnessConfigSchema = 'network.xyo.blockchain.Erc1822.witness.config'
+export const Erc1822WitnessConfigSchema = 'network.xyo.erc1822.witness.config'
 export type Erc1822WitnessConfigSchema = typeof Erc1822WitnessConfigSchema
 
 export type Erc1822WitnessConfig = BlockchainWitnessConfig<{ address?: string }, Erc1822WitnessConfigSchema>
