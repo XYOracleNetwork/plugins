@@ -1,12 +1,6 @@
 /* eslint-disable max-statements */
 import { HDWallet } from '@xyo-network/account'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import {
-  CryptoContractFunctionCall,
-  CryptoContractFunctionCallSchema,
-  isErc721ContractInfo,
-  isErc1155ContractInfo,
-} from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -19,18 +13,17 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { EvmContract, EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema, isEvmContract } from '@xyo-network/evm-contract-witness'
+import { EvmContract, EvmContractWitness, isEvmContract } from '@xyo-network/evm-contract-witness'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
-import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { BlockchainAddress, BlockchainAddressSchema, getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
+import { EvmTokenInterfaceImplementedDiviner } from '../Diviner'
 import { TokenInterface } from '../Payload'
 import contractWitnessManifest from './Contract.Witness.Index.json'
 import tokenDivinerManifest from './Token.Diviner.Index.json'
@@ -61,13 +54,13 @@ describe('Contract Node', () => {
     locator.register(MemoryBoundWitnessDiviner)
     locator.register(MemoryPayloadDiviner)
     locator.register(TimestampWitness)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, { 'network.xyo.evm.contract': 'diviner' })
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, { 'network.xyo.evm.contract': 'diviner' })
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, { 'network.xyo.evm.contract': 'diviner' })
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, { 'network.xyo.evm.contract': 'diviner' })
-    locator.register(TemporalIndexingDiviner, { 'network.xyo.evm.contract': 'diviner' })
-    locator.register(JsonPatchDiviner)
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
     locator.register(TemporalIndexingDiviner)
+    locator.register(JsonPatchDiviner)
+    locator.register(EvmTokenInterfaceImplementedDiviner)
     locator.register(
       new ModuleFactory(EvmContractWitness, {
         providers: getProviders,

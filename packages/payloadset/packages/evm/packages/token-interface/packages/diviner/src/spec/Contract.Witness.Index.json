@@ -62,8 +62,7 @@
                 "payload_schemas": ["network.xyo.evm.contract"]
               },
               "labels": {
-                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner",
-                "network.xyo.evm.contract": "diviner"
+                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
               },
               "language": "javascript",
               "name": "EvmContractStateToIndexCandidateDiviner",
@@ -78,8 +77,7 @@
           {
             "config": {
               "labels": {
-                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner",
-                "network.xyo.evm.contract": "diviner"
+                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexCandidateToEvmContractIndexDiviner",
@@ -110,8 +108,7 @@
               "indexQuerySchema": "network.xyo.diviner.payload.query",
               "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
               "labels": {
-                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner",
-                "network.xyo.evm.contract": "diviner"
+                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
               },
               "language": "javascript",
               "name": "EvmContractQueryToEvmContractIndexQueryDiviner",
@@ -149,8 +146,7 @@
           {
             "config": {
               "labels": {
-                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner",
-                "network.xyo.evm.contract": "diviner"
+                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexQueryResponseToEvmContractQueryResponseDiviner",
