@@ -8,19 +8,19 @@ import { Interface } from 'ethers'
 
 import { EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi } from './Payload'
 
-export const EvmAbiImplementedDivinerConfigSchema = 'network.xyo.evm.abi.implemented.diviner.config'
-export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivinerConfigSchema
+export const EvmTokenInterfaceDivinerConfigSchema = 'network.xyo.evm.token.interface.implemented.diviner.config'
+export type EvmTokenInterfaceDivinerConfigSchema = typeof EvmTokenInterfaceDivinerConfigSchema
 
-export type EvmAbiImplementedDivinerConfig = DivinerConfig<{ abi?: InterfaceAbi; schema: EvmAbiImplementedDivinerConfigSchema }>
+export type EvmTokenInterfaceDivinerConfig = DivinerConfig<{ abi?: InterfaceAbi; schema: EvmTokenInterfaceDivinerConfigSchema }>
 
-export type EvmAbiImplementedDivinerParams = DivinerParams<AnyConfigSchema<EvmAbiImplementedDivinerConfig>>
+export type EvmTokenInterfaceDivinerParams = DivinerParams<AnyConfigSchema<EvmTokenInterfaceDivinerConfig>>
 
-export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerParams = EvmAbiImplementedDivinerParams> extends AbstractDiviner<
+export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerParams = EvmTokenInterfaceDivinerParams> extends AbstractDiviner<
   TParams,
   EvmContract,
   EvmFunctionImplemented
 > {
-  static override configSchemas = [EvmAbiImplementedDivinerConfigSchema]
+  static override configSchemas = [EvmTokenInterfaceDivinerConfigSchema]
 
   get abi() {
     return assertEx(this.config?.abi, 'No ABI specified')
