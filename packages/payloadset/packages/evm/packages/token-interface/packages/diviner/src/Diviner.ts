@@ -17,12 +17,15 @@ import { Interface, JsonFragment } from 'ethers'
 
 import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload'
 
-export const EvmTokenInterfaceDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
-export type EvmTokenInterfaceDivinerConfigSchema = typeof EvmTokenInterfaceDivinerConfigSchema
+export const EvmTokenInterfaceImplementedDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
+export type EvmTokenInterfaceImplementedDivinerConfigSchema = typeof EvmTokenInterfaceImplementedDivinerConfigSchema
 
-export type EvmTokenInterfaceDivinerConfig = DivinerConfig<{ schema: EvmTokenInterfaceDivinerConfigSchema; tokenInterfaces?: TokenInterface[] }>
+export type EvmTokenInterfaceImplementedDivinerConfig = DivinerConfig<{
+  schema: EvmTokenInterfaceImplementedDivinerConfigSchema
+  tokenInterfaces?: TokenInterface[]
+}>
 
-export type EvmTokenInterfaceDivinerParams = DivinerParams<AnyConfigSchema<EvmTokenInterfaceDivinerConfig>>
+export type EvmTokenInterfaceImplementedDivinerParams = DivinerParams<AnyConfigSchema<EvmTokenInterfaceImplementedDivinerConfig>>
 
 type DistributiveMappedType<T> = T extends string ? { [K in T]: readonly JsonFragment[] } : never
 type TokenInterfaceDictionary = DistributiveMappedType<TokenInterface>
@@ -31,7 +34,7 @@ type TokenInterfaceDictionary = DistributiveMappedType<TokenInterface>
  * A diviner that checks if a contract implements a token interface
  */
 export class EvmTokenInterfaceImplementedDiviner<
-  TParams extends EvmTokenInterfaceDivinerParams = EvmTokenInterfaceDivinerParams,
+  TParams extends EvmTokenInterfaceImplementedDivinerParams = EvmTokenInterfaceImplementedDivinerParams,
 > extends AbstractDiviner<TParams, EvmContract, EvmTokenInterfaceImplemented> {
   /**
    * The list of supported token interfaces
@@ -46,7 +49,7 @@ export class EvmTokenInterfaceImplementedDiviner<
     ERC721Metadata: IERC721Metadata__factory.abi,
     ERC721TokenReceiver: IERC721Receiver__factory.abi,
   }
-  static override configSchemas = [EvmTokenInterfaceDivinerConfigSchema]
+  static override configSchemas = [EvmTokenInterfaceImplementedDivinerConfigSchema]
 
   private _tokenInterfaces?: TokenInterfaceDictionary
 

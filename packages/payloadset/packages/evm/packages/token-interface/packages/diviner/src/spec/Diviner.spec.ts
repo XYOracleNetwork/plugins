@@ -2,7 +2,7 @@ import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EvmTokenInterfaceDivinerConfigSchema, EvmTokenInterfaceImplementedDiviner } from '../Diviner'
+import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner'
 import { TokenInterface } from '../Payload'
 
 describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
@@ -22,7 +22,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner',
         })
         const diviner = await EvmTokenInterfaceImplementedDiviner.create({
           account: 'random',
-          config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
+          config: { schema: EvmTokenInterfaceImplementedDivinerConfigSchema, tokenInterfaces },
         })
         const observations = await witness.observe([{ address, schema: BlockchainAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
@@ -39,7 +39,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner',
       it.each(cases)('returns implemented false', async (address, tokenInterfaces) => {
         const diviner = await EvmTokenInterfaceImplementedDiviner.create({
           account: 'random',
-          config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
+          config: { schema: EvmTokenInterfaceImplementedDivinerConfigSchema, tokenInterfaces },
         })
         const results = await diviner.divine([{ address, block: 0, chainId: 1, code: '0x00', schema: EvmContractSchema }])
         expect(results?.length).toBeGreaterThan(0)
