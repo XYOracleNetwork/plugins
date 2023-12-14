@@ -85,16 +85,19 @@ export class EvmTokenInterfaceImplementedDiviner<
           Object.entries(this.tokenInterfaces).forEach(([tokenInterface, abi]) => {
             // Check if the contract implements the interface abi
             const contractInterface = new Interface(abi)
+            const implementations: boolean[] = []
             contractInterface.forEachFunction(({ selector }) => {
-              const result: EvmTokenInterfaceImplemented = {
-                address,
-                chainId,
-                implemented: byteCode.includes(BigInt(selector).toString(16)),
-                schema: EvmTokenInterfaceImplementedSchema,
-                tokenInterface: tokenInterface as TokenInterface,
-              }
-              results.push(result)
+              implementations.push(byteCode.includes(BigInt(selector).toString(16)))
             })
+            const implemented = implementations.every((implementation) => implementation)
+            const result: EvmTokenInterfaceImplemented = {
+              address,
+              chainId,
+              implemented,
+              schema: EvmTokenInterfaceImplementedSchema,
+              tokenInterface: tokenInterface as TokenInterface,
+            }
+            results.push(result)
           })
 
           return results
