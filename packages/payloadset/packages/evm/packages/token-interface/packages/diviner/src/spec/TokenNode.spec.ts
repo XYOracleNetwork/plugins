@@ -35,8 +35,8 @@ const maxProviders = 32
 describe('Contract Node', () => {
   const chainId = 1
   const cases: [TokenInterface, string][] = [
-    ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
-    ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
+    ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
+    ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'], // Spider Tanks
   ]
   const getProviders = () => {
     const providers: Provider[] = []
