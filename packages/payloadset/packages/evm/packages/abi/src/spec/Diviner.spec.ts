@@ -3,26 +3,38 @@ import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema }
 import {
   ERC20__factory,
   ERC721__factory,
-  // ERC1155__factory,
-  // ERC1155Burnable__factory,
+  ERC721Burnable__factory,
+  ERC721Enumerable__factory,
+  ERC721Pausable__factory,
+  ERC1155__factory,
   ERC1155Holder__factory,
-  // ERC1155URIStorage__factory,
+  ERC1155Pausable__factory,
+  IERC721Metadata__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
 import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
 
 describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
+  const name = ERC1155__factory.abi[11].name
+  console.log(name)
   const cases = [
     ['0x55296f69f40ea6d20e478533c15a6b08b654e758', ERC20__factory.abi], // XYO ERC20
-    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', ERC721__factory.abi], // BAYC
-    ['0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452', ERC1155Holder__factory.abi], // Gutter Cat Gang
-    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', ERC1155Holder__factory.abi], // Spider Tanks
-    // ['0x33FD426905F149f8376e227d0C9D3340AaD17aF1', ERC1155URIStorage__factory.abi], // The Memes by 6529
-    // ['0x33FD426905F149f8376e227d0C9D3340AaD17aF1', ERC1155__factory.abi], // The Memes by 6529
-    // ['0x33FD426905F149f8376e227d0C9D3340AaD17aF1', ERC1155Burnable__factory.abi], // The Memes by 6529
-    // ['0x33FD426905F149f8376e227d0C9D3340AaD17aF1', ERC1155Holder__factory.abi], // The Memes by 6529
-    // ['0x33FD426905F149f8376e227d0C9D3340AaD17aF1', ERC1155URIStorage__factory.abi], // The Memes by 6529
+    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', [...ERC721__factory.abi, ...IERC721Metadata__factory.abi, ...ERC721Enumerable__factory.abi]], // BAYC
+    [
+      '0xBd3531dA5CF5857e7CfAA92426877b022e612cf8',
+      [
+        ...ERC721__factory.abi,
+        ...IERC721Metadata__factory.abi,
+        ...ERC721Enumerable__factory.abi,
+        ...ERC721Burnable__factory.abi,
+        ...ERC721Pausable__factory.abi,
+      ],
+    ], // PPG
+    ['0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452', ERC1155__factory.abi], // Gutter Cat Gang
+    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', ERC1155__factory.abi], // Spider Tanks
+    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', [...ERC1155Holder__factory.abi, ...ERC1155Pausable__factory.abi]], // Spider Tanks
+    ['0x7dEB7Bce4d360Ebe68278dee6054b882aa62D19c', ERC1155__factory.abi], // Inhabitants: United Planets
   ] as const
   describe('divine', () => {
     describe('with matching ABI', () => {
@@ -43,6 +55,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
         expect(results?.length).toBeGreaterThan(0)
         for (const result of results ?? []) {
           expect(result.address).toBe(address)
+          if (result.implemented === false) {
+            const foo = 'bar'
+          }
           expect(result.implemented).toBeTrue()
         }
       })
