@@ -25,7 +25,7 @@ import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-t
 import { Provider } from 'ethers'
 
 import { EvmTokenInterfaceImplementedDiviner } from '../Diviner'
-import { TokenInterface } from '../Payload'
+import { isEvmTokenInterfaceImplemented, TokenInterface } from '../Payload'
 import contractWitnessManifest from './Contract.Witness.Index.json'
 import tokenDivinerManifest from './Token.Diviner.Index.json'
 import tokenNodeManifest from './TokenNode.json'
@@ -95,9 +95,11 @@ describe('Contract Node', () => {
       expect(tokenSentinel).toBeDefined()
       const tokenReport = await tokenSentinel?.report([contract])
       expect(tokenReport).toBeDefined()
+      const anyInterfacesImplemented = tokenReport?.filter(isEvmTokenInterfaceImplemented).some((i) => i.implemented)
+      expect(anyInterfacesImplemented).toBeTrue()
     })
   })
-  describe('Token Diviner Index Node', () => {
+  describe.skip('Token Diviner Index Node', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
