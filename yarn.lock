@@ -4848,6 +4848,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/diviner-stateful@npm:^2.84.3":
+  version: 2.84.3
+  resolution: "@xyo-network/diviner-stateful@npm:2.84.3"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xyo-network/abstract-diviner": "npm:~2.84.3"
+    "@xyo-network/archivist": "npm:~2.84.3"
+    "@xyo-network/archivist-wrapper": "npm:~2.84.3"
+    "@xyo-network/boundwitness-builder": "npm:~2.84.3"
+    "@xyo-network/boundwitness-model": "npm:~2.84.3"
+    "@xyo-network/diviner-boundwitness-model": "npm:~2.84.3"
+    "@xyo-network/diviner-model": "npm:~2.84.3"
+    "@xyo-network/diviner-wrapper": "npm:~2.84.3"
+    "@xyo-network/module-model": "npm:~2.84.3"
+    "@xyo-network/payload-builder": "npm:~2.84.3"
+    "@xyo-network/payload-model": "npm:~2.84.3"
+  checksum: 102d89e06bc9655867825fbefd5470a605bd466c51924ab4abd11c42c94b28a59f7dec8c009434a466ced3ca1f6b2b679f630ec29ef174f9299557fe54f926c5
+  languageName: node
+  linkType: hard
+
 "@xyo-network/diviner-temporal-indexing-memory@npm:~2.84.3":
   version: 2.84.3
   resolution: "@xyo-network/diviner-temporal-indexing-memory@npm:2.84.3"
@@ -5329,6 +5349,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.19"
     "@xyo-network/abstract-diviner": "npm:^2.84.3"
     "@xyo-network/diviner-model": "npm:^2.84.3"
+    "@xyo-network/diviner-stateful": "npm:^2.84.3"
     "@xyo-network/evm-contract-witness": "workspace:~"
     "@xyo-network/module-model": "npm:^2.84.3"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"

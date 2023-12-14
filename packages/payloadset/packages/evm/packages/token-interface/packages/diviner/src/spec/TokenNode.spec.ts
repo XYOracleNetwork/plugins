@@ -6,6 +6,7 @@ import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { StatefulDiviner } from '@xyo-network/diviner-stateful'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -60,6 +61,7 @@ describe('Contract Node', () => {
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
     locator.register(TemporalIndexingDiviner)
     locator.register(JsonPatchDiviner)
+    locator.register(StatefulDiviner)
     locator.register(EvmTokenInterfaceImplementedDiviner)
     locator.register(
       new ModuleFactory(EvmContractWitness, {
@@ -74,12 +76,12 @@ describe('Contract Node', () => {
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)
   })
-  describe('Sentinel', () => {
+  describe('Contract Witness Index Node', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
-      const collectionSentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
-      expect(collectionSentinel).toBeDefined()
+      const contractSentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
+      expect(contractSentinel).toBeDefined()
       const collectionCallPayload: BlockchainAddress = { address, chainId, schema: BlockchainAddressSchema }
-      const report = await collectionSentinel?.report([collectionCallPayload])
+      const report = await contractSentinel?.report([collectionCallPayload])
       expect(report).toBeDefined()
       expect(report).toBeArrayOfSize(3)
       const [bw, timestamp, contract] = (report as [BoundWitness, TimeStamp, EvmContract]) ?? []
@@ -89,23 +91,15 @@ describe('Contract Node', () => {
       expect(contract.address).toBe(address)
       expect(contract.chainId).toBe(chainId)
       expect(contract.code).toBeDefined()
+      const tokenSentinel = asSentinelInstance(await node.resolve('EvmTokenInterfaceImplementedSentinel'))
+      expect(tokenSentinel).toBeDefined()
+      const tokenReport = await tokenSentinel?.report([contract])
+      expect(tokenReport).toBeDefined()
     })
   })
-  describe.skip('ERC721 Index', () => {
-    const erc721Cases = cases.filter(([type]) => type === 'ERC721')
-    it.each(erc721Cases)('With %s (%s)', async (_, address) => {
+  describe('Token Diviner Index Node', () => {
+    it.each(cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
-      expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
-      const result = await diviner?.divine([query])
-      expect(result).toBeDefined()
-      expect(result).toBeArrayOfSize(1)
-    })
-  })
-  describe.skip('ERC1155 Index', () => {
-    const erc1155 = cases.filter(([type]) => type === 'ERC1155')
-    it.each(erc1155)('With %s (%s)', async (_, address) => {
-      const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
       expect(diviner).toBeDefined()
       const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
