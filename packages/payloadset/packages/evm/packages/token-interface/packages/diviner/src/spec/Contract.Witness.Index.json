@@ -3,7 +3,8 @@
   "nodes": [
     {
       "config": {
-        "name": "EvmContractNode",
+        "accountPath": "m/44'/60'/1",
+        "name": "ContractWitnessNode",
         "schema": "network.xyo.node.config"
       },
       "modules": {
@@ -61,8 +62,8 @@
                 "payload_schemas": ["network.xyo.evm.contract"]
               },
               "labels": {
-                "network.xyo.evm.contract": "diviner",
-                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
+                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner",
+                "network.xyo.evm.contract": "diviner"
               },
               "language": "javascript",
               "name": "EvmContractStateToIndexCandidateDiviner",
@@ -77,8 +78,8 @@
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
-                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
+                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner",
+                "network.xyo.evm.contract": "diviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexCandidateToEvmContractIndexDiviner",
@@ -109,8 +110,8 @@
               "indexQuerySchema": "network.xyo.diviner.payload.query",
               "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
               "labels": {
-                "network.xyo.evm.contract": "diviner",
-                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
+                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner",
+                "network.xyo.evm.contract": "diviner"
               },
               "language": "javascript",
               "name": "EvmContractQueryToEvmContractIndexQueryDiviner",
@@ -148,8 +149,8 @@
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
-                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
+                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner",
+                "network.xyo.evm.contract": "diviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexQueryResponseToEvmContractQueryResponseDiviner",
