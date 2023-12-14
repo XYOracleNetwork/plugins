@@ -1,52 +1,28 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
-import {
-  ERC20__factory,
-  ERC721__factory,
-  ERC721Burnable__factory,
-  ERC721Enumerable__factory,
-  ERC721Pausable__factory,
-  ERC1155__factory,
-  ERC1155Holder__factory,
-  ERC1155Pausable__factory,
-  IERC721Metadata__factory,
-} from '@xyo-network/open-zeppelin-typechain'
 import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
+import { EvmTokenInterfaceDiviner, EvmTokenInterfaceDivinerConfigSchema } from '../Diviner'
+import { TokenInterface } from '../Payload'
 
 describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
-  const name = ERC1155__factory.abi[11].name
-  console.log(name)
-  const cases = [
-    ['0x55296f69f40ea6d20e478533c15a6b08b654e758', ERC20__factory.abi], // XYO ERC20
-    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', [...ERC721__factory.abi, ...IERC721Metadata__factory.abi, ...ERC721Enumerable__factory.abi]], // BAYC
-    [
-      '0xBd3531dA5CF5857e7CfAA92426877b022e612cf8',
-      [
-        ...ERC721__factory.abi,
-        ...IERC721Metadata__factory.abi,
-        ...ERC721Enumerable__factory.abi,
-        ...ERC721Burnable__factory.abi,
-        ...ERC721Pausable__factory.abi,
-      ],
-    ], // PPG
-    ['0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452', ERC1155__factory.abi], // Gutter Cat Gang
-    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', ERC1155__factory.abi], // Spider Tanks
-    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', [...ERC1155Holder__factory.abi, ...ERC1155Pausable__factory.abi]], // Spider Tanks
-    ['0x7dEB7Bce4d360Ebe68278dee6054b882aa62D19c', ERC1155__factory.abi], // Inhabitants: United Planets
+  type TestData = readonly [string, TokenInterface[]]
+  const cases: readonly TestData[] = [
+    ['0x55296f69f40ea6d20e478533c15a6b08b654e758', ['ERC20'] as TokenInterface[]], // XYO ERC20
+    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', ['ERC721', 'ERC721Metadata', 'ERC721Enumerable', 'ERC721TokenReceiver'] as TokenInterface[]], // BAYC
+    ['0x2A6d6a082C410a195157EC4caf67CB9fD718f087', ['ERC1155', 'ERC1155Metadata_URI', 'ERC1155TokenReceiver'] as TokenInterface[]], // Spider Tanks
   ] as const
   describe('divine', () => {
     describe('with matching ABI', () => {
-      it.each(cases)('returns implemented true', async (address, abi) => {
+      it.each(cases)('returns implemented true', async (address, tokenInterfaces) => {
         const witness = await EvmContractWitness.create({
           account: 'random',
           config: { schema: EvmContractWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
-        const diviner = await EvmAbiImplementedDiviner.create({
+        const diviner = await EvmTokenInterfaceDiviner.create({
           account: 'random',
-          config: { abi, schema: EvmAbiImplementedDivinerConfigSchema },
+          config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
         })
         const observations = await witness.observe([{ address, schema: BlockchainAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
@@ -60,10 +36,10 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
       })
     })
     describe('without matching ABI', () => {
-      it.each(cases)('returns implemented false', async (address, abi) => {
-        const diviner = await EvmAbiImplementedDiviner.create({
+      it.each(cases)('returns implemented false', async (address, tokenInterfaces) => {
+        const diviner = await EvmTokenInterfaceDiviner.create({
           account: 'random',
-          config: { abi, schema: EvmAbiImplementedDivinerConfigSchema },
+          config: { schema: EvmTokenInterfaceDivinerConfigSchema, tokenInterfaces },
         })
         const results = await diviner.divine([{ address, block: 0, chainId: 1, code: '0x00', schema: EvmContractSchema }])
         expect(results?.length).toBeGreaterThan(0)
