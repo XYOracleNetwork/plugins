@@ -82,7 +82,6 @@
   "main": "dist/node/index.cjs",
   "module": "dist/node/index.js",
   "types": "dist/node/index.d.ts",
-  "type": "module",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {
@@ -93,5 +92,6 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.84.0"
+  "version": "2.84.0",
+  "type": "module"
 }

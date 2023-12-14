@@ -39,7 +39,7 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
           contractInterface.forEachFunction(({ selector }) => {
             const observation: EvmFunctionImplemented = {
               address,
-              implemented: byteCode.includes(selector.substring(2)),
+              implemented: byteCode.includes(BigInt(selector.substring(2)).toString(16)),
               schema: EvmFunctionImplementedSchema,
               selector,
             }
