@@ -4,19 +4,30 @@ import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witne
 import { BlockchainErc1967Witness, BlockchainErc1967WitnessConfigSchema } from '../Witness'
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
-  const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
-  describe('observe', () => {
-    it('get code from contract', async () => {
-      const witness = await BlockchainErc1967Witness.create({
-        account: 'random',
-        config: { schema: BlockchainErc1967WitnessConfigSchema },
-        providers: getProvidersFromEnv,
-      })
-      const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
-      console.log(`o: ${JSON.stringify(observation, null, 2)}`)
-      expect(observation[0].address).toBe(address)
-      expect(observation[0].slots).toBeObject()
-      expect(observation[0].implementation).toBeString()
+  it('get code from contract (no proxy)', async () => {
+    const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
+    const witness = await BlockchainErc1967Witness.create({
+      account: 'random',
+      config: { schema: BlockchainErc1967WitnessConfigSchema },
+      providers: getProvidersFromEnv,
     })
+    const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+    console.log(`o: ${JSON.stringify(observation, null, 2)}`)
+    expect(observation[0].address).toBe(address)
+    expect(observation[0].slots).toBeObject()
+    expect(observation[0].implementation).toBeString()
+  })
+  it('get code from contract (proxy)', async () => {
+    const address = '0x33FD426905F149f8376e227d0C9D3340AaD17aF1' //The Memes NFT
+    const witness = await BlockchainErc1967Witness.create({
+      account: 'random',
+      config: { schema: BlockchainErc1967WitnessConfigSchema },
+      providers: getProvidersFromEnv,
+    })
+    const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+    console.log(`o: ${JSON.stringify(observation, null, 2)}`)
+    expect(observation[0].address).toBe(address)
+    expect(observation[0].slots).toBeObject()
+    expect(observation[0].implementation).toBe('0x142fd5b9d67721efda3a5e2e9be47a96c9b724a4')
   })
 })

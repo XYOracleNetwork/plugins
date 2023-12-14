@@ -45,7 +45,9 @@ export const getErc1967SlotStatus = async (provider: Provider, address: string, 
   }
 
   if (status.slots.implementation && !isHexZero(status.slots.implementation)) {
-    status.implementation = status.slots.implementation as string
+    status.implementation = `0x${BigInt(status.slots.implementation as string)
+      .toString(16)
+      .padStart(40, '0')}`
   } else {
     if (status.slots.beacon && !isHexZero(status.slots.beacon)) {
       const beacon = UpgradeableBeacon__factory.connect(status.slots.beacon as string, { provider })
