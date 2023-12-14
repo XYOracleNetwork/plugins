@@ -27,6 +27,9 @@ export type EvmTokenInterfaceDivinerParams = DivinerParams<AnyConfigSchema<EvmTo
 type DistributiveMappedType<T> = T extends string ? { [K in T]: readonly JsonFragment[] } : never
 type TokenInterfaceDictionary = DistributiveMappedType<TokenInterface>
 
+/**
+ * A diviner that checks if a contract implements a token interface
+ */
 export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerParams = EvmTokenInterfaceDivinerParams> extends AbstractDiviner<
   TParams,
   EvmContract,
@@ -49,6 +52,9 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
 
   private _tokenInterfaces?: TokenInterfaceDictionary
 
+  /**
+   * The list of token interfaces to check against the contract
+   */
   get tokenInterfaces() {
     if (!this._tokenInterfaces) {
       if (this.config?.tokenInterfaces) {
@@ -68,13 +74,15 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
   protected override async divineHandler(inPayloads: EvmContract[] = []): Promise<EvmTokenInterfaceImplemented[]> {
     await this.started('throw')
     try {
-      const observations = await Promise.all(
+      const allResults = await Promise.all(
+        // Iterate over each contract passed in
         inPayloads.filter(isEvmContract).map(({ address, code, chainId }) => {
+          // Ensure we have the contract code
           const byteCode = assertEx(code, 'Missing code')
-
           const results: EvmTokenInterfaceImplemented[] = []
-
+          // Iterate over each token interface
           Object.entries(this.tokenInterfaces).forEach(([tokenInterface, abi]) => {
+            // Check if the contract implements the interface abi
             const contractInterface = new Interface(abi)
             contractInterface.forEachFunction(({ selector }) => {
               const result: EvmTokenInterfaceImplemented = {
@@ -91,7 +99,7 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
           return results
         }),
       )
-      return observations.flat()
+      return allResults.flat()
     } catch (ex) {
       const error = ex as Error
       console.log(`Error [${this.config.name}]: ${error.message}`)
