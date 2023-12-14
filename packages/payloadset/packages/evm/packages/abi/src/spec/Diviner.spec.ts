@@ -55,9 +55,6 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
         expect(results?.length).toBeGreaterThan(0)
         for (const result of results ?? []) {
           expect(result.address).toBe(address)
-          if (result.implemented === false) {
-            const foo = 'bar'
-          }
           expect(result.implemented).toBeTrue()
         }
       })
