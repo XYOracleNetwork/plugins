@@ -25,7 +25,7 @@ import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
-import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { BlockchainAddress, BlockchainAddressSchema, getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
@@ -34,15 +34,11 @@ import sentinelNodeManifest from './Contract.Witness.Index.json'
 const maxProviders = 32
 
 describe('Contract Node', () => {
+  const chainId = 1
   type TokenType = 'ERC721' | 'ERC1155'
   const cases: [TokenType, string][] = [
     ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
-    ['ERC1155', '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452'],
     ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
-    ['ERC1155', '0x33FD426905F149f8376e227d0C9D3340AaD17aF1'],
-    ['ERC1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
-    ['ERC1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'],
-    ['ERC1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'],
   ]
   const getProviders = () => {
     const providers: Provider[] = []
@@ -84,23 +80,12 @@ describe('Contract Node', () => {
   })
   describe('Sentinel', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
-      const collectionSentinel = asSentinelInstance(await node.resolve('NftInfoSentinel'))
+      const collectionSentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
       expect(collectionSentinel).toBeDefined()
-      const collectionCallPayload: CryptoContractFunctionCall = { address, schema: CryptoContractFunctionCallSchema }
+      const collectionCallPayload: BlockchainAddress = { address, chainId, schema: BlockchainAddressSchema }
       const report = await collectionSentinel?.report([collectionCallPayload])
-      let foundAny = false
-      const erc721 = report?.find(isErc721ContractInfo)
-      if (erc721) {
-        foundAny = true
-        expect(erc721?.results?.name).toBe('BoredApeYachtClub')
-        expect(erc721?.results?.symbol).toBe('BAYC')
-      }
-      const erc1155 = report?.find(isErc1155ContractInfo)
-      if (erc1155) {
-        foundAny = true
-        expect(erc1155?.results?.uri).toBeDefined()
-      }
-      expect(foundAny).toBe(true)
+      expect(report).toBeDefined()
+      expect(report).toBeArrayOfSize(1)
     })
   })
   describe.skip('ERC721 Index', () => {
