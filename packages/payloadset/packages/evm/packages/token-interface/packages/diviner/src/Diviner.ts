@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
-import { EvmContract, EvmContractSchema } from '@xyo-network/evm-contract-witness'
+import { EvmContract, isEvmContract } from '@xyo-network/evm-contract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import {
   ERC20__factory,
@@ -13,12 +13,11 @@ import {
   IERC1155MetadataURI__factory,
   IERC1155Receiver__factory,
 } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { Interface, JsonFragment } from 'ethers'
 
 import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload'
 
-export const EvmTokenInterfaceDivinerConfigSchema = 'network.xyo.evm.token.interface.implemented.diviner.config'
+export const EvmTokenInterfaceDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
 export type EvmTokenInterfaceDivinerConfigSchema = typeof EvmTokenInterfaceDivinerConfigSchema
 
 export type EvmTokenInterfaceDivinerConfig = DivinerConfig<{ schema: EvmTokenInterfaceDivinerConfigSchema; tokenInterfaces?: TokenInterface[] }>
@@ -70,7 +69,7 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType<EvmContract>(EvmContractSchema)).map(({ address, code }) => {
+        inPayloads.filter(isEvmContract).map(({ address, code, chainId }) => {
           const byteCode = assertEx(code, 'Missing code')
 
           const results: EvmTokenInterfaceImplemented[] = []
@@ -78,13 +77,14 @@ export class EvmTokenInterfaceDiviner<TParams extends EvmTokenInterfaceDivinerPa
           Object.entries(this.tokenInterfaces).forEach(([tokenInterface, abi]) => {
             const contractInterface = new Interface(abi)
             contractInterface.forEachFunction(({ selector }) => {
-              const observation: EvmTokenInterfaceImplemented = {
+              const result: EvmTokenInterfaceImplemented = {
                 address,
+                chainId,
                 implemented: byteCode.includes(BigInt(selector).toString(16)),
                 schema: EvmTokenInterfaceImplementedSchema,
                 tokenInterface: tokenInterface as TokenInterface,
               }
-              results.push(observation)
+              results.push(result)
             })
           })
 
