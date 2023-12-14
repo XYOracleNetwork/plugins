@@ -9,7 +9,32 @@
       },
       "modules": {
         "private": [],
-        "public": []
+        "public": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Archivist",
+              "schema": "network.xyo.archivist.config",
+              "storeQueries": false
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "language": "javascript",
+              "name": "BoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "language": "javascript",
+              "name": "PayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          }
+        ]
       }
     }
   ],

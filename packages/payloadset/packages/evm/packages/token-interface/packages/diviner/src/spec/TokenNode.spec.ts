@@ -1,5 +1,6 @@
 /* eslint-disable max-statements */
 import { HDWallet } from '@xyo-network/account'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
@@ -99,11 +100,13 @@ describe('Contract Node', () => {
       expect(anyInterfacesImplemented).toBeTrue()
     })
   })
-  describe.skip('Token Diviner Index Node', () => {
+  describe('Token Diviner Index Node', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
-      const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
+      const diviner = asDivinerInstance(await node.resolve('EvmTokenInterfaceImplementedIndexDiviner'))
+      const archivist = asArchivistInstance(await node.resolve('EvmContractDivinerIndexArchivist'))
+      const all = await archivist?.all?.()
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const query = { address, chainId, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

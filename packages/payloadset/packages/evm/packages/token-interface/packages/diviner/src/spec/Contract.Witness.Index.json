@@ -67,9 +67,9 @@
               "language": "javascript",
               "name": "EvmContractStateToIndexCandidateDiviner",
               "payloadStore": {
-                "archivist": "EvmContractArchivist",
-                "boundWitnessDiviner": "EvmContractBoundWitnessDiviner",
-                "payloadDiviner": "EvmContractPayloadDiviner"
+                "archivist": "Archivist",
+                "boundWitnessDiviner": "BoundWitnessDiviner",
+                "payloadDiviner": "PayloadDiviner"
               },
               "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
             }
@@ -183,8 +183,8 @@
                 "stateToIndexCandidateDiviner": "EvmContractStateToIndexCandidateDiviner"
               },
               "language": "javascript",
-              "name": "EvmContractDiviner",
-              "pollFrequency": 1000,
+              "name": "EvmContractIndexDiviner",
+              "pollFrequency": 1,
               "schema": "network.xyo.diviner.indexing.temporal.config",
               "stateStore": {
                 "archivist": "AddressStateArchivist",
@@ -195,6 +195,9 @@
           },
           {
             "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
               "language": "javascript",
               "name": "EvmContractSentinel",
               "schema": "network.xyo.sentinel.config",
