@@ -186,6 +186,13 @@
               "name": "EvmContractIndexQueryResponseToEvmContractQueryResponseDiviner",
               "schema": "network.xyo.diviner.config"
             }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "EvmContractWitness",
+              "schema": "network.xyo.evm.contract.witness.config"
+            }
           }
         ],
         "public": [
@@ -211,6 +218,20 @@
                 "boundWitnessDiviner": "AddressStateBoundWitnessDiviner",
                 "payloadDiviner": "AddressStatePayloadDiviner"
               }
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "EvmContractCodeSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "EvmContractWitness"
+                }
+              ]
             }
           }
         ]
