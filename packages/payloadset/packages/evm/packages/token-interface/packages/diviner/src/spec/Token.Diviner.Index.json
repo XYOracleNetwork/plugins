@@ -33,7 +33,13 @@
               "schema": "network.xyo.diviner.payload.config"
             }
           },
-
+          {
+            "config": {
+              "language": "javascript",
+              "name": "EvmContractDivinerIndexArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          },
           {
             "config": {
               "archivist": "EvmContractDivinerIndexArchivist",
@@ -179,14 +185,16 @@
           {
             "config": {
               "language": "javascript",
-              "name": "EvmContractDivinerIndexArchivist",
-              "schema": "network.xyo.archivist.config"
+              "tokenInterfaces": ["ERC721"],
+              "name": "ERC721TokenInterfaceImplementedDiviner",
+              "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
             }
           },
           {
             "config": {
               "language": "javascript",
-              "name": "EvmTokenInterfaceImplementedDiviner",
+              "tokenInterfaces": ["ERC1155"],
+              "name": "ERC1155TokenInterfaceImplementedDiviner",
               "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
             }
           },
@@ -220,7 +228,7 @@
                 "archivists": ["Archivist"]
               },
               "language": "javascript",
-              "name": "EvmTokenInterfaceImplementedSentinel",
+              "name": "ERC721TokenInterfaceImplementedSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
@@ -230,7 +238,28 @@
                 },
                 {
                   "input": true,
-                  "module": "EvmTokenInterfaceImplementedDiviner"
+                  "module": "ERC721TokenInterfaceImplementedDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
+              "language": "javascript",
+              "name": "ERC1155TokenInterfaceImplementedSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "TimestampWitness"
+                },
+                {
+                  "input": true,
+                  "module": "ERC1155TokenInterfaceImplementedDiviner"
                 }
               ]
             }
