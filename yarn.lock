@@ -5319,6 +5319,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xyo-network/evm-token-contract-diviner@workspace:packages/payloadset/packages/evm/packages/contract/packages/token/packages/diviner":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-token-contract-diviner@workspace:packages/payloadset/packages/evm/packages/contract/packages/token/packages/diviner"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.19"
+    "@xylabs/tsconfig": "npm:^3.2.19"
+    "@xyo-network/abstract-diviner": "npm:^2.84.3"
+    "@xyo-network/diviner-model": "npm:^2.84.3"
+    "@xyo-network/evm-abi-diviner": "workspace:~"
+    "@xyo-network/evm-contract-witness": "workspace:~"
+    "@xyo-network/module-model": "npm:^2.84.3"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/payload-model": "npm:^2.84.3"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.3"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas, @xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas"
