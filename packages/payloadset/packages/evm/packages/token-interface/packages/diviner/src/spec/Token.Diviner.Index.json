@@ -185,17 +185,17 @@
           {
             "config": {
               "language": "javascript",
-              "tokenInterfaces": ["ERC721"],
               "name": "ERC721TokenInterfaceImplementedDiviner",
-              "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
+              "schema": "network.xyo.evm.token.interface.implemented.diviner.config",
+              "tokenInterfaces": ["ERC721"]
             }
           },
           {
             "config": {
               "language": "javascript",
-              "tokenInterfaces": ["ERC1155"],
               "name": "ERC1155TokenInterfaceImplementedDiviner",
-              "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
+              "schema": "network.xyo.evm.token.interface.implemented.diviner.config",
+              "tokenInterfaces": ["ERC1155"]
             }
           },
           {
