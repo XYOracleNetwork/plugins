@@ -87,6 +87,14 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "tokenInterface",
+                    "sourcePathExpression": "$.tokenInterface"
+                  },
+                  {
+                    "destinationField": "implemented",
+                    "sourcePathExpression": "$.implemented"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -119,6 +127,16 @@
                     "defaultValue": 1,
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "tokenInterface",
+                    "sourcePathExpression": "$.tokenInterface"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "implemented",
+                    "sourcePathExpression": "$.implemented"
                   },
                   {
                     "defaultValue": 1,
