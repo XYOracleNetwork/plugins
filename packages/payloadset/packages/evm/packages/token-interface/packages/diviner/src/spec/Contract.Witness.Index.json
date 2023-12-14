@@ -35,29 +35,6 @@
           {
             "config": {
               "language": "javascript",
-              "name": "EvmContractArchivist",
-              "schema": "network.xyo.archivist.config"
-            }
-          },
-          {
-            "config": {
-              "archivist": "EvmContractArchivist",
-              "language": "javascript",
-              "name": "EvmContractBoundWitnessDiviner",
-              "schema": "network.xyo.diviner.boundwitness.config"
-            }
-          },
-          {
-            "config": {
-              "archivist": "EvmContractArchivist",
-              "language": "javascript",
-              "name": "EvmContractPayloadDiviner",
-              "schema": "network.xyo.diviner.payload.config"
-            }
-          },
-          {
-            "config": {
-              "language": "javascript",
               "name": "EvmContractDivinerIndexArchivist",
               "schema": "network.xyo.archivist.config"
             }
@@ -84,7 +61,7 @@
                 "payload_schemas": ["network.xyo.evm.contract"]
               },
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
               },
               "language": "javascript",
@@ -94,18 +71,18 @@
                 "boundWitnessDiviner": "EvmContractBoundWitnessDiviner",
                 "payloadDiviner": "EvmContractPayloadDiviner"
               },
-              "schema": "network.xyo.diviner.config"
+              "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
             }
           },
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexCandidateToEvmContractIndexDiviner",
-              "schema": "network.xyo.diviner.config",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
                 "network.xyo.evm.contract": [
                   {
@@ -115,10 +92,6 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
-                  },
-                  {
-                    "destinationField": "tokenId",
-                    "sourcePathExpression": "$.tokenId"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -136,12 +109,12 @@
               "indexQuerySchema": "network.xyo.diviner.payload.query",
               "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
               },
               "language": "javascript",
               "name": "EvmContractQueryToEvmContractIndexQueryDiviner",
-              "schema": "network.xyo.diviner.config",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.divinerQueryToIndexQueryDiviner.config",
               "schemaTransforms": {
                 "network.xyo.diviner.payload.query": [
                   {
@@ -152,10 +125,6 @@
                     "defaultValue": 1,
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
-                  },
-                  {
-                    "destinationField": "tokenId",
-                    "sourcePathExpression": "$.tokenId"
                   },
                   {
                     "defaultValue": 1,
@@ -179,12 +148,12 @@
           {
             "config": {
               "labels": {
-                "network.xyo.evm.contract": "diviner",
+                "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
               },
               "language": "javascript",
               "name": "EvmContractIndexQueryResponseToEvmContractQueryResponseDiviner",
-              "schema": "network.xyo.diviner.config"
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
             }
           },
           {
@@ -192,6 +161,13 @@
               "language": "javascript",
               "name": "EvmContractWitness",
               "schema": "network.xyo.evm.contract.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TimestampWitness",
+              "schema": "network.xyo.witness.timestamp.config"
             }
           }
         ],
@@ -227,6 +203,10 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
+                {
+                  "input": true,
+                  "module": "TimestampWitness"
+                },
                 {
                   "input": true,
                   "module": "EvmContractWitness"
