@@ -68,7 +68,6 @@ describe('Contract Node', () => {
       new ModuleFactory(EvmContractWitness, {
         providers: getProviders,
       }),
-      { '"network.xyo.diviner.indexing.temporal.config"': 'witness' },
     )
     const publicChildren: PackageManifestPayload[] = [
       contractWitnessManifest as PackageManifestPayload,
