@@ -38,6 +38,17 @@
           {
             "config": {
               "language": "javascript",
+              "name": "NumberZeroWitness",
+              "payload": {
+                "value": 0,
+                "schema": "network.xyo.number"
+              },
+              "schema": "network.xyo.witness.adhoc.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
               "name": "Erc1967Witness",
               "schema": "network.xyo.erc1967.witness.config"
             }
@@ -175,7 +186,7 @@
               "schemaTransforms": {
                 "network.xyo.evm.call.result": [
                   {
-                    "destinationField": "address",
+                    "destinationField": "start",
                     "sourcePathExpression": "$.address"
                   },
                   {
@@ -308,6 +319,10 @@
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
+                {
+                  "input": true,
+                  "module": "NumberZeroWitness"
+                },
                 {
                   "input": true,
                   "module": "Erc1822Witness"
