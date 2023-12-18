@@ -11,7 +11,7 @@ import {
 import { getErc1822SlotStatus } from './lib'
 import { Erc1822Status, Erc1822StatusSchema } from './Payload'
 
-export const Erc1822WitnessConfigSchema = 'network.xyo.blockchain.Erc1822.witness.config'
+export const Erc1822WitnessConfigSchema = 'network.xyo.erc1822.witness.config'
 export type Erc1822WitnessConfigSchema = typeof Erc1822WitnessConfigSchema
 
 export type Erc1822WitnessConfig = BlockchainWitnessConfig<{ address?: string }, Erc1822WitnessConfigSchema>
@@ -32,7 +32,7 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
     try {
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType(BlockchainAddressSchema)).map(async ({ address }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
+          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address').toLowerCase()
 
           const provider = await this.getProvider(true, true)
 

@@ -1,0 +1,387 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "name": "Erc721TokenInfo",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "public": [
+          {
+            "config": {
+              "labels": {
+                "network.xyo.evm.interface": "Erc721UriStorage"
+              },
+              "language": "javascript",
+              "name": "Erc721TokenURIWitness",
+              "schema": "network.xyo.evm.call.witness.config"
+            }
+          },
+          {
+            "config": {
+              "labels": {
+                "network.xyo.evm.interface": "Erc721"
+              },
+              "language": "javascript",
+              "name": "Erc721OwnerOfWitness",
+              "schema": "network.xyo.evm.call.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc1822Witness",
+              "schema": "network.xyo.erc1822.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "NumberZeroWitness",
+              "payload": {
+                "schema": "network.xyo.number",
+                "value": 0
+              },
+              "schema": "network.xyo.witness.adhoc.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc1967Witness",
+              "schema": "network.xyo.erc1967.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TokenInfoDiviner",
+              "schema": "network.xyo.evm.call.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
+              "language": "javascript",
+              "name": "Erc1822ToAddressDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config",
+              "schemaTransforms": {
+                "network.xyo.erc1822.status": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.implementation"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "blockTag",
+                    "sourcePathExpression": "$.block"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
+              "language": "javascript",
+              "name": "Erc1967ToAddressDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config",
+              "schemaTransforms": {
+                "network.xyo.erc1967.status": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.implementation"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "blockTag",
+                    "sourcePathExpression": "$.block"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.evm.call",
+              "language": "javascript",
+              "name": "ErcTokenInterfaceToCallDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config",
+              "schemaTransforms": {
+                "network.xyo.evm.token.interface.implemented": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "ContractWitness",
+              "schema": "network.xyo.evm.contract.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TokenInterfaceDiviner",
+              "schema": "network.xyo.evm.token.interface.implemented.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TokenInterfaceToErc721EnumerableInterfaceDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.evm.token.interface.implemented"
+                },
+                {
+                  "op": "test",
+                  "path": "/tokenInterface",
+                  "value": "ERC721Enumerable"
+                },
+                {
+                  "op": "test",
+                  "path": "/implemented",
+                  "value": true
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "functionName": "totalSupply",
+              "labels": {
+                "network.xyo.evm.interface": "Erc721Enumerable"
+              },
+              "language": "javascript",
+              "name": "Erc721TotalSupplyWitness",
+              "schema": "network.xyo.evm.call.witness.config"
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.range",
+              "language": "javascript",
+              "name": "TotalSupplyToRangeDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config",
+              "schemaTransforms": {
+                "network.xyo.evm.call.result": [
+                  {
+                    "destinationField": "start",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
+              "language": "javascript",
+              "name": "Erc721EnumerableInterfaceToRangeDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config",
+              "schemaTransforms": {
+                "network.xyo.evm.token.interface.implemented": [
+                  {
+                    "destinationField": "start",
+                    "sourcePathExpression": 1
+                  },
+                  {
+                    "destinationField": "count",
+                    "sourcePathExpression": 10
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc721RangeDiviner",
+              "schema": "network.xyo.diviner.range.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc721RangeToCallsDiviner",
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Erc721CallWitness",
+              "schema": "network.xyo.evm.call.witness.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "NftTokenInfoAllSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "Erc1822Witness"
+                },
+                {
+                  "input": [
+                    "Erc1822Witness"
+                  ],
+                  "module": "Erc1822ToAddressDiviner"
+                },
+                {
+                  "input": [
+                    "Erc1822ToAddressDiviner"
+                  ],
+                  "module": "Erc1967Witness"
+                },
+                {
+                  "input": [
+                    "Erc1967Witness"
+                  ],
+                  "module": "Erc1967ToAddressDiviner"
+                },
+                {
+                  "input": [
+                    "Erc1967ToAddressDiviner"
+                  ],
+                  "module": "ContractWitness"
+                },
+                {
+                  "input": [
+                    "ContractWitness"
+                  ],
+                  "module": "TokenInterfaceDiviner"
+                },
+                {
+                  "input": [
+                    "TokenInterfaceDiviner"
+                  ],
+                  "module": "TokenInterfaceToRangeDiviner"
+                },
+                {
+                  "input": [
+                    "TokenInterfaceToRangeDiviner"
+                  ],
+                  "module": "Erc721RangeDiviner"
+                },
+                {
+                  "input": [
+                    "Erc721RangeDiviner"
+                  ],
+                  "module": "Erc721RangeToCallsDiviner"
+                },
+                {
+                  "input": [
+                    "Erc721RangeToCallsDiviner"
+                  ],
+                  "module": "Erc721CallWitness"
+                },
+                {
+                  "input": [
+                    "Erc721CallWitness"
+                  ],
+                  "module": "TokenInfoDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "NftTokenInfoAllSentinelDebug",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "NumberZeroWitness"
+                },
+                {
+                  "input": true,
+                  "module": "Erc1822Witness"
+                },
+                {
+                  "input": [
+                    "Erc1822Witness"
+                  ],
+                  "module": "Erc1822ToAddressDiviner"
+                },
+                {
+                  "input": [
+                    "Erc1822ToAddressDiviner"
+                  ],
+                  "module": "Erc1967Witness"
+                },
+                {
+                  "input": [
+                    "Erc1967Witness"
+                  ],
+                  "module": "Erc1967ToAddressDiviner"
+                },
+                {
+                  "input": [
+                    "Erc1967ToAddressDiviner"
+                  ],
+                  "module": "ContractWitness"
+                },
+                {
+                  "input": [
+                    "ContractWitness"
+                  ],
+                  "module": "TokenInterfaceDiviner"
+                },
+                {
+                  "input": [
+                    "TokenInterfaceDiviner"
+                  ],
+                  "module": "TokenInterfaceToErc721EnumerableInterfaceDiviner"
+                },
+                {
+                  "input": [
+                    "TokenInterfaceToErc721EnumerableInterfaceDiviner"
+                  ],
+                  "module": "ErcTokenInterfaceToCallDiviner"
+                },
+                {
+                  "input": [
+                    "ErcTokenInterfaceToCallDiviner",
+                    "NumberZeroWitness"
+                  ],
+                  "module": "Erc721TotalSupplyWitness"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}

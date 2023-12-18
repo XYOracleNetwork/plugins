@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-export const EvmCallSchema = 'network.xyo.blockchain.contract.call'
+export const EvmCallSchema = 'network.xyo.evm.call'
 export type EvmCallSchema = typeof EvmCallSchema
 
 export type EvmCall = Payload<
@@ -13,7 +13,7 @@ export type EvmCall = Payload<
   EvmCallSchema
 >
 
-export const EvmCallResultSchema = 'network.xyo.blockchain.contract.call.result'
+export const EvmCallResultSchema = 'network.xyo.evm.call.result'
 export type EvmCallResultSchema = typeof EvmCallResultSchema
 
 export type EvmCallResultBase = Payload<

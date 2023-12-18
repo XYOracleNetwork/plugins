@@ -11,17 +11,19 @@ import {
 import { getErc1967SlotStatus } from './lib'
 import { Erc1967Status, Erc1967StatusSchema } from './Payload'
 
-export const BlockchainErc1967WitnessConfigSchema = 'network.xyo.blockchain.Erc1967.witness.config'
-export type BlockchainErc1967WitnessConfigSchema = typeof BlockchainErc1967WitnessConfigSchema
+export const Erc1967WitnessConfigSchema = 'network.xyo.erc1967.witness.config'
+export type Erc1967WitnessConfigSchema = typeof Erc1967WitnessConfigSchema
 
-export type BlockchainErc1967WitnessConfig = BlockchainWitnessConfig<{ address?: string }, BlockchainErc1967WitnessConfigSchema>
+export type Erc1967WitnessConfig = BlockchainWitnessConfig<{ address?: string }, Erc1967WitnessConfigSchema>
 
-export type BlockchainErc1967WitnessParams = BlockchainWitnessParams<BlockchainErc1967WitnessConfig>
+export type Erc1967WitnessParams = BlockchainWitnessParams<Erc1967WitnessConfig>
 
-export class BlockchainErc1967Witness<
-  TParams extends BlockchainErc1967WitnessParams = BlockchainErc1967WitnessParams,
-> extends AbstractBlockchainWitness<TParams, BlockchainAddress, Erc1967Status> {
-  static override configSchemas = [BlockchainErc1967WitnessConfigSchema]
+export class Erc1967Witness<TParams extends Erc1967WitnessParams = Erc1967WitnessParams> extends AbstractBlockchainWitness<
+  TParams,
+  BlockchainAddress,
+  Erc1967Status
+> {
+  static override configSchemas = [Erc1967WitnessConfigSchema]
 
   protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<Erc1967Status[]> {
     await this.started('throw')
@@ -29,8 +31,8 @@ export class BlockchainErc1967Witness<
     await this.getProviders()
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(BlockchainAddressSchema)).map(async ({ address }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
+        inPayloads.filter(isPayloadOfSchemaType<BlockchainAddress>(BlockchainAddressSchema)).map(async ({ address }) => {
+          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address').toLowerCase()
 
           const provider = await this.getProvider(true, true)
 
