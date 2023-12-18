@@ -17,6 +17,7 @@ import { ERC721__factory, ERC721Enumerable__factory, ERC721URIStorage__factory }
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { BlockchainAddress, BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import { AdhocWitness } from '@xyo-network/witnesses'
 
 import { EvmCallDiviner } from '../Diviner'
 import { EvmCallWitness } from '../Witness'
@@ -41,6 +42,7 @@ describe('Erc721Sentinel-Enumerate', () => {
       const wallet = await HDWallet.random()
       const locator = new ModuleFactoryLocator()
       locator.register(EvmCallDiviner)
+      locator.register(AdhocWitness)
       locator.register(
         new ModuleFactory(Erc1822Witness, {
           providers: () => getProvidersFromEnv(maxProviders),

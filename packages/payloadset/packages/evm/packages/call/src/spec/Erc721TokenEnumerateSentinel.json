@@ -40,8 +40,8 @@
               "language": "javascript",
               "name": "NumberZeroWitness",
               "payload": {
-                "value": 0,
-                "schema": "network.xyo.number"
+                "schema": "network.xyo.number",
+                "value": 0
               },
               "schema": "network.xyo.witness.adhoc.config"
             }
@@ -62,9 +62,9 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
               "language": "javascript",
               "name": "Erc1822ToAddressDiviner",
-              "destinationSchema": "network.xyo.blockchain.address",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
               "schemaTransforms": {
                 "network.xyo.erc1822.status": [
@@ -86,9 +86,9 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
               "language": "javascript",
               "name": "Erc1967ToAddressDiviner",
-              "destinationSchema": "network.xyo.blockchain.address",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
               "schemaTransforms": {
                 "network.xyo.erc1967.status": [
@@ -110,9 +110,9 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.evm.call",
               "language": "javascript",
               "name": "ErcTokenInterfaceToCallDiviner",
-              "destinationSchema": "network.xyo.evm.call",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
               "schemaTransforms": {
                 "network.xyo.evm.token.interface.implemented": [
@@ -179,9 +179,9 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.range",
               "language": "javascript",
               "name": "TotalSupplyToRangeDiviner",
-              "destinationSchema": "network.xyo.range",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
               "schemaTransforms": {
                 "network.xyo.evm.call.result": [
@@ -199,9 +199,9 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.blockchain.address",
               "language": "javascript",
               "name": "Erc721EnumerableInterfaceToRangeDiviner",
-              "destinationSchema": "network.xyo.blockchain.address",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
               "schemaTransforms": {
                 "network.xyo.evm.token.interface.implemented": [
@@ -371,7 +371,8 @@
                 },
                 {
                   "input": [
-                    "ErcTokenInterfaceToCallDiviner"
+                    "ErcTokenInterfaceToCallDiviner",
+                    "NumberZeroWitness"
                   ],
                   "module": "Erc721TotalSupplyWitness"
                 }

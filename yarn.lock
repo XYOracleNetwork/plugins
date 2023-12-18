@@ -5324,6 +5324,7 @@ __metadata:
     "@xyo-network/sentinel-model": "npm:^2.84.5"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.84.5"
     "@xyo-network/witness-model": "npm:^2.84.5"
+    "@xyo-network/witnesses": "npm:^2.84.5"
     ethers: "npm:^6.9.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
@@ -6684,6 +6685,19 @@ __metadata:
     "@xyo-network/payload-model": "npm:~2.84.5"
     "@xyo-network/witness-model": "npm:~2.84.5"
   checksum: ab5fe2410cc46007251c57280def6f31511a64224caa96e51c554e28a64ce5805350264da755117116c2b3a30a1e6b3aa9f34630474c07c14246d40241b63b97
+  languageName: node
+  linkType: hard
+
+"@xyo-network/witnesses@npm:^2.84.5":
+  version: 2.84.5
+  resolution: "@xyo-network/witnesses@npm:2.84.5"
+  dependencies:
+    "@xylabs/promise": "npm:^2.13.20"
+    "@xyo-network/abstract-witness": "npm:~2.84.5"
+    "@xyo-network/module-model": "npm:~2.84.5"
+    "@xyo-network/payload-model": "npm:~2.84.5"
+    "@xyo-network/witness-model": "npm:~2.84.5"
+  checksum: b17fb675eb728efb5d89dce52602d7eef57b8db378c86f4656519092091b08a49dcdfc00adb882a6b528375c0827f27782e10fa14a40d15835a713f2c10eae09
   languageName: node
   linkType: hard
 
