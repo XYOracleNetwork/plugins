@@ -6,7 +6,9 @@ import {
   isCryptoContractFunctionCallSuccess,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
+import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -84,13 +86,12 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     })
     describe('Index', () => {
       it.each(cases)('returns indexed result', async (address) => {
-        const sentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
-        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema }
-        const observations = await sentinel?.report([input])
-        expect(observations?.length).toBe(3)
-        const totalSupply = observations?.filter(isCryptoContractFunctionCallResult).find(isCryptoContractFunctionCallSuccess)
-        expect(totalSupply).toBeDefined()
-        expect(totalSupply?.result).toBeNumber()
+        const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
+        expect(diviner).toBeDefined()
+        const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
+        const result = await diviner?.divine([query])
+        expect(result).toBeDefined()
+        expect(result).toBeArrayOfSize(1)
       })
     })
   })
