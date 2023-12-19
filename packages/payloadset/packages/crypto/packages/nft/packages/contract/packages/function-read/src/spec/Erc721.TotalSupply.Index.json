@@ -7,6 +7,156 @@
         "schema": "network.xyo.node.config"
       },
       "modules": {
+        "private": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "AddressStateArchivist",
+              "schema": "network.xyo.archivist.config",
+              "storeQueries": false
+            }
+          },
+          {
+            "config": {
+              "archivist": "AddressStateArchivist",
+              "language": "javascript",
+              "name": "AddressStateBoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "AddressStateArchivist",
+              "language": "javascript",
+              "name": "AddressStatePayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "NftDivinerIndexArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "NftDivinerIndexArchivist",
+              "language": "javascript",
+              "name": "NftDivinerIndexBoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "NftDivinerIndexArchivist",
+              "language": "javascript",
+              "name": "NftDivinerIndexPayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "filter": {
+                "payload_schemas": ["network.xyo.crypto.contract.info.erc1155"]
+              },
+              "labels": {
+                "network.xyo.crypto.contract.info": "diviner",
+                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
+              },
+              "language": "javascript",
+              "name": "NftStateToIndexCandidateDiviner",
+              "payloadStore": {
+                "archivist": "NftArchivist",
+                "boundWitnessDiviner": "NftBoundWitnessDiviner",
+                "payloadDiviner": "NftPayloadDiviner"
+              },
+              "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
+            }
+          },
+          {
+            "config": {
+              "labels": {
+                "network.xyo.crypto.contract.info": "diviner",
+                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
+              },
+              "language": "javascript",
+              "name": "NftIndexCandidateToNftIndexDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
+              "schemaTransforms": {
+                "network.xyo.crypto.contract.info.erc1155": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  }
+                ],
+                "network.xyo.timestamp": [
+                  {
+                    "destinationField": "timestamp",
+                    "sourcePathExpression": "$.timestamp"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "divinerQuerySchema": "network.xyo.diviner.payload.query",
+              "indexQuerySchema": "network.xyo.diviner.payload.query",
+              "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
+              "labels": {
+                "network.xyo.crypto.contract.info": "diviner",
+                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
+              },
+              "language": "javascript",
+              "name": "NftQueryToNftIndexQueryDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.divinerQueryToIndexQueryDiviner.config",
+              "schemaTransforms": {
+                "network.xyo.diviner.payload.query": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "limit",
+                    "sourcePathExpression": "$.limit"
+                  },
+                  {
+                    "defaultValue": 0,
+                    "destinationField": "offset",
+                    "sourcePathExpression": "$.offset"
+                  },
+                  {
+                    "defaultValue": "desc",
+                    "destinationField": "order",
+                    "sourcePathExpression": "$.order"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "labels": {
+                "network.xyo.crypto.contract.info": "diviner",
+                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
+              },
+              "language": "javascript",
+              "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
+            }
+          }
+        ],
         "public": [
           {
             "config": {
