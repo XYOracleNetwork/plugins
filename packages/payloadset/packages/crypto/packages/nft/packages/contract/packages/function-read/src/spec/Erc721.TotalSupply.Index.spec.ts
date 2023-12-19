@@ -1,16 +1,11 @@
-/* eslint-disable max-statements */
-
-import { hexFromHexString } from '@xylabs/hex'
+import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import {
-  ContractInfo,
-  ContractInfoSchema,
-  CryptoContractFunctionCall,
-  CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
+  isCryptoContractFunctionCallResult,
+  isCryptoContractFunctionCallSuccess,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
-import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import {
   TemporalIndexingDiviner,
@@ -19,33 +14,23 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
+import { TokenInterface } from '@xyo-network/evm-token-interface-diviner'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
-import { asWitnessInstance } from '@xyo-network/witness-model'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
-import { Semaphore } from 'async-mutex'
 import { Provider } from 'ethers'
 
 import { CryptoContractDiviner } from '../Diviner'
 import { CryptoContractFunctionReadWitness } from '../Witness'
 import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json'
 
-const profileData: Record<string, number[]> = {}
-
-const profile = (name: string) => {
-  const timeData = profileData[name] ?? []
-  timeData.push(Date.now())
-  profileData[name] = timeData
-}
-const tokenCount = 0
 const maxProviders = 32
 
-describe('Erc721.TotalSupply.Index', () => {
+describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
   let wallet: HDWallet
   let node: MemoryNode
@@ -81,10 +66,22 @@ describe('Erc721.TotalSupply.Index', () => {
     const manifest = new ManifestWrapper(erc721TotalSupplyIndexManifest as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
   })
-
-  describe('todo', () => {
-    it('todo', () => {
-      // tests
+  type TestData = readonly [string, TokenInterface[]]
+  const cases: readonly TestData[] = [
+    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', ['ERC721', 'ERC721Metadata', 'ERC721Enumerable', 'ERC721TokenReceiver'] as TokenInterface[]], // BAYC
+  ] as const
+  describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
+    describe('with matching ABI', () => {
+      it.each(cases)('returns implemented true', async (address, tokenInterfaces) => {
+        // TODO: Rename sentinel
+        const sentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
+        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema }
+        const observations = await sentinel?.report([input])
+        expect(observations?.length).toBe(2)
+        const totalSupply = observations?.filter(isCryptoContractFunctionCallResult).find(isCryptoContractFunctionCallSuccess)
+        expect(totalSupply).toBeDefined()
+        expect(totalSupply?.result).toBeNumber()
+      })
     })
   })
 })
