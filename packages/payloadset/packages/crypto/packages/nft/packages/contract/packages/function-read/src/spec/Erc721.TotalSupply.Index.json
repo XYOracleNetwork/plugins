@@ -10,7 +10,6 @@
         "private": [
           {
             "config": {
-              "language": "javascript",
               "name": "AddressStateArchivist",
               "schema": "network.xyo.archivist.config",
               "storeQueries": false
@@ -19,7 +18,7 @@
           {
             "config": {
               "archivist": "AddressStateArchivist",
-              "language": "javascript",
+
               "name": "AddressStateBoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
@@ -27,14 +26,13 @@
           {
             "config": {
               "archivist": "AddressStateArchivist",
-              "language": "javascript",
+
               "name": "AddressStatePayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "NftDivinerIndexArchivist",
               "schema": "network.xyo.archivist.config"
             }
@@ -42,7 +40,7 @@
           {
             "config": {
               "archivist": "NftDivinerIndexArchivist",
-              "language": "javascript",
+
               "name": "NftDivinerIndexBoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
@@ -50,7 +48,7 @@
           {
             "config": {
               "archivist": "NftDivinerIndexArchivist",
-              "language": "javascript",
+
               "name": "NftDivinerIndexPayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
@@ -64,7 +62,7 @@
                 "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
               },
-              "language": "javascript",
+
               "name": "NftStateToIndexCandidateDiviner",
               "payloadStore": {
                 "archivist": "NftArchivist",
@@ -80,7 +78,7 @@
                 "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
               },
-              "language": "javascript",
+
               "name": "NftIndexCandidateToNftIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
@@ -112,7 +110,7 @@
                 "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
               },
-              "language": "javascript",
+
               "name": "NftQueryToNftIndexQueryDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.divinerQueryToIndexQueryDiviner.config",
               "schemaTransforms": {
@@ -151,13 +149,18 @@
                 "network.xyo.crypto.contract.info": "diviner",
                 "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
               },
-              "language": "javascript",
+
               "name": "NftIndexQueryResponseToNftQueryResponseDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
             }
-          }
-        ],
-        "public": [
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TimestampWitness",
+              "schema": "network.xyo.witness.timestamp.config"
+            }
+          },
           {
             "config": {
               "functionName": "totalSupply",
@@ -166,6 +169,53 @@
               },
               "name": "Erc721TotalSupplyWitness",
               "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "language": "javascript",
+              "name": "Archivist",
+              "schema": "network.xyo.archivist.config",
+              "storeQueries": false
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "language": "javascript",
+              "name": "BoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "language": "javascript",
+              "name": "PayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
+              "language": "javascript",
+              "name": "EvmContractSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "TimestampWitness"
+                },
+                {
+                  "input": true,
+                  "module": "Erc721TotalSupplyWitness"
+                }
+              ]
             }
           }
         ]

@@ -82,5 +82,9 @@ describe('Erc721.TotalSupply.Index', () => {
     node = await manifest.loadNodeFromIndex(0)
   })
 
-  describe('todo', () => {})
+  describe('todo', () => {
+    it('todo', () => {
+      // tests
+    })
+  })
 })
