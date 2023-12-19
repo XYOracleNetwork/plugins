@@ -14,7 +14,6 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { TokenInterface } from '@xyo-network/evm-token-interface-diviner'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -66,14 +65,13 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     const manifest = new ManifestWrapper(erc721TotalSupplyIndexManifest as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
   })
-  type TestData = readonly [string, TokenInterface[]]
+  type TestData = readonly [string]
   const cases: readonly TestData[] = [
-    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', ['ERC721', 'ERC721Metadata', 'ERC721Enumerable', 'ERC721TokenReceiver'] as TokenInterface[]], // BAYC
+    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
     describe('with matching ABI', () => {
-      it.each(cases)('returns implemented true', async (address, tokenInterfaces) => {
-        // TODO: Rename sentinel
+      it.each(cases)('returns totalSupply', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
         const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema }
         const observations = await sentinel?.report([input])
