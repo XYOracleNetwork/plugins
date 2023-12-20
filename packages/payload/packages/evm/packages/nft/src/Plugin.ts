@@ -1,7 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { NftId } from './Payload'
-import { NftIdSchema } from './Schema'
+import { NftId, NftIdSchema } from './Payload/Id'
 import { nftIdPayloadTemplate } from './Template'
 
 export const NftIdPayloadPlugin = () =>
