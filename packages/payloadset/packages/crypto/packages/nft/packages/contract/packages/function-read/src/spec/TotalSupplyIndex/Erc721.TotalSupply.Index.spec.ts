@@ -26,8 +26,8 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
-import { CryptoContractDiviner } from '../Diviner'
-import { CryptoContractFunctionReadWitness } from '../Witness'
+import { CryptoContractDiviner } from '../../Diviner'
+import { CryptoContractFunctionReadWitness } from '../../Witness'
 import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json'
 
 const maxProviders = 32

@@ -20,9 +20,9 @@ import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Semaphore } from 'async-mutex'
 import { Provider } from 'ethers'
 
-import { CryptoContractDiviner } from '../Diviner'
-import { CryptoContractFunctionReadWitness } from '../Witness'
-import erc721SentinelManifest from './Erc721Sentinel.json'
+import { CryptoContractDiviner } from '../../../Diviner'
+import { CryptoContractFunctionReadWitness } from '../../../Witness'
+import erc721SentinelManifest from '../Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}
 
