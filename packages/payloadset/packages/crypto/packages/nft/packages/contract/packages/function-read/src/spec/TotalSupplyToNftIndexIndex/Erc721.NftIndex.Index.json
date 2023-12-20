@@ -153,12 +153,47 @@
           },
           {
             "config": {
-              "functionName": "totalSupply",
-              "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
-              },
-              "name": "Erc721TotalSupplyWitness",
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "language": "javascript",
+              "name": "RangeDiviner",
+              "schema": "network.xyo.diviner.range.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TotalSupplyToRangeQueryTransformDiviner",
+              "operations": [
+                { "op": "defined", "path": "/totalSupply" },
+                { "op": "add", "path": "/start", "value": 0 },
+                { "from": "/totalSupply", "op": "move", "path": "/count" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.range.query"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "RangeToNftIndexTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.number"
+                },
+                { "op": "defined", "path": "/value" },
+                { "from": "/value", "op": "move", "path": "/index" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.evm.nft.index"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
             }
           }
         ],
@@ -223,11 +258,15 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "TimestampWitness"
+                  "module": "TotalSupplyToRangeQueryTransformDiviner"
                 },
                 {
-                  "input": true,
-                  "module": "Erc721TotalSupplyWitness"
+                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
+                  "module": "RangeDiviner"
+                },
+                {
+                  "input": ["RangeDiviner"],
+                  "module": "RangeToNftIndexTransformDiviner"
                 }
               ]
             }
