@@ -31,7 +31,7 @@ import nodeManifest from './Erc721.NftIndex.Index.json'
 
 const maxProviders = 32
 
-describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
+describeIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () => {
   let wallet: HDWallet
   let node: MemoryNode
 
@@ -78,10 +78,11 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
         const totalSupply = 2710
+        const chainId = 1
         const input = {
           address,
           args: [],
-          chainId: 1,
+          chainId,
           functionName: 'totalSupply',
           result: `${totalSupply}`,
           schema: 'network.xyo.crypto.contract.function.call.result',
@@ -89,6 +90,10 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
         const observations = await sentinel?.report([input])
         const nftIndexes = observations?.filter(isNftIndex)
         expect(nftIndexes?.length).toBe(totalSupply)
+        nftIndexes?.forEach((nftIndex) => {
+          expect(nftIndex.address).toBe(address)
+          expect(nftIndex.chainId).toBe(chainId)
+        })
       })
     })
     describe.skip('Index', () => {

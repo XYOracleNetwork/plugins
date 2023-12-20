@@ -208,21 +208,18 @@
           },
           {
             "config": {
+              "destinationSchema": "network.xyo.evm.nft.index",
               "language": "javascript",
               "name": "NftIndexToNftIndexTransformDiviner",
               "schemaTransforms": {
                 "network.xyo.evm.nft.index": [
                   {
-                    "destinationField": "address",
-                    "sourcePathExpression": "$.implementation"
+                    "destinationField": "index",
+                    "sourcePathExpression": "$.index"
                   },
                   {
-                    "destinationField": "chainId",
-                    "sourcePathExpression": "$.chainId"
-                  },
-                  {
-                    "destinationField": "blockTag",
-                    "sourcePathExpression": "$.block"
+                    "destinationField": "schema",
+                    "sourcePathExpression": "$.schema"
                   }
                 ]
               },
@@ -300,6 +297,10 @@
                 {
                   "input": ["RangeDiviner"],
                   "module": "RangeToNftIndexTransformDiviner"
+                },
+                {
+                  "input": ["RangeToNftIndexTransformDiviner"],
+                  "module": "NftIndexToNftIndexTransformDiviner"
                 }
               ]
             }
