@@ -5359,27 +5359,14 @@ __metadata:
   resolution: "@xyo-network/evm-events-witness@workspace:packages/payloadset/packages/evm/packages/events"
   dependencies:
     "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/exists": "npm:^2.13.20"
     "@xylabs/hex": "npm:^2.13.20"
     "@xylabs/jest-helpers": "npm:^2.13.20"
-    "@xylabs/profile": "npm:^2.13.20"
-    "@xylabs/promise": "npm:^2.13.20"
     "@xylabs/ts-scripts-yarn3": "npm:^3.2.24"
     "@xylabs/tsconfig": "npm:^3.2.24"
-    "@xyo-network/abstract-diviner": "npm:^2.84.8"
-    "@xyo-network/account": "npm:^2.84.8"
-    "@xyo-network/diviner-jsonpatch-memory": "npm:^2.84.8"
-    "@xyo-network/diviner-jsonpath-aggregate-memory": "npm:^2.84.8"
-    "@xyo-network/diviner-model": "npm:^2.84.8"
-    "@xyo-network/erc1822-witness": "workspace:~"
-    "@xyo-network/erc1967-witness": "workspace:~"
-    "@xyo-network/manifest": "npm:^2.84.8"
-    "@xyo-network/module-model": "npm:^2.84.8"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.84.8"
-    "@xyo-network/sentinel-model": "npm:^2.84.8"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.84.8"
-    "@xyo-network/witness-model": "npm:^2.84.8"
-    "@xyo-network/witnesses": "npm:^2.84.8"
     ethers: "npm:^6.9.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
@@ -6761,19 +6748,6 @@ __metadata:
     "@xyo-network/payload-model": "npm:~2.84.8"
     "@xyo-network/witness-model": "npm:~2.84.8"
   checksum: fb53fb479f3c8cb8ba6a35f0e40aa2f9be926f865af7ed09351e4333c88dd59010c4a23a8d61bc3b1812752d72248bba842ede92f0ac0afa9a96c0fbf5f262ed
-  languageName: node
-  linkType: hard
-
-"@xyo-network/witnesses@npm:^2.84.8":
-  version: 2.84.8
-  resolution: "@xyo-network/witnesses@npm:2.84.8"
-  dependencies:
-    "@xylabs/promise": "npm:^2.13.20"
-    "@xyo-network/abstract-witness": "npm:~2.84.8"
-    "@xyo-network/module-model": "npm:~2.84.8"
-    "@xyo-network/payload-model": "npm:~2.84.8"
-    "@xyo-network/witness-model": "npm:~2.84.8"
-  checksum: b903fc6eb71a8e9c3b7af8c855c91f4ee4f5165f4135ed7caab39638794a4c2fe118e35bfbe04be7be413905351ec8e7c8da85023c1eeeee65597a77dd8ce0c0
   languageName: node
   linkType: hard
 
