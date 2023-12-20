@@ -1,3 +1,4 @@
+import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import {
@@ -8,7 +9,7 @@ import {
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -50,11 +51,11 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     locator.register(MemoryPayloadDiviner)
     locator.register(TimestampWitness)
     locator.register(CryptoContractDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, CryptoContractDiviner.labels)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, CryptoContractDiviner.labels)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, CryptoContractDiviner.labels)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, CryptoContractDiviner.labels)
-    locator.register(TemporalIndexingDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
+    locator.register(TemporalIndexingDiviner)
 
     locator.register(
       new ModuleFactory(CryptoContractFunctionReadWitness, {
@@ -86,6 +87,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     })
     describe('Index', () => {
       it.each(cases)('returns indexed result', async (address) => {
+        await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
         const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
