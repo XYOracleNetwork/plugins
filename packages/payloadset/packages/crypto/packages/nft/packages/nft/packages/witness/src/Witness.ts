@@ -8,17 +8,17 @@ import {
   NftWitnessConfigSchema,
   NftWitnessQuery,
 } from '@xyo-network/crypto-nft-payload-plugin'
-import { AbstractBlockchainWitness, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
+import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib'
 
-export type CryptoWalletNftWitnessParams = BlockchainWitnessParams<CryptoWalletNftWitnessConfig>
+export type CryptoWalletNftWitnessParams = EvmWitnessParams<CryptoWalletNftWitnessConfig>
 
 const schema = NftSchema
 
 const defaultMaxNfts = 200
 
-export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams = CryptoWalletNftWitnessParams> extends AbstractBlockchainWitness<
+export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams = CryptoWalletNftWitnessParams> extends AbstractEvmWitness<
   TParams,
   NftWitnessQuery,
   NftInfo

@@ -10,11 +10,11 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { PayloadHasher } from '@xyo-network/hash'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
-import { AbstractBlockchainWitness, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
+import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib'
 
-export type CryptoNftCollectionWitnessParams = BlockchainWitnessParams<NftCollectionWitnessConfig>
+export type CryptoNftCollectionWitnessParams = EvmWitnessParams<NftCollectionWitnessConfig>
 
 const defaultMaxNfts = 100
 
@@ -36,7 +36,7 @@ function resolvedValue<T>(settled: PromiseSettledResult<T>, assert?: boolean) {
 
 export class CryptoNftCollectionWitness<
   TParams extends CryptoNftCollectionWitnessParams = CryptoNftCollectionWitnessParams,
-> extends AbstractBlockchainWitness<TParams, NftCollectionWitnessQuery, NftCollectionInfo> {
+> extends AbstractEvmWitness<TParams, NftCollectionWitnessQuery, NftCollectionInfo> {
   static override configSchemas = [NftCollectionWitnessConfigSchema]
 
   protected override async observeHandler(payloads?: NftCollectionWitnessQuery[]): Promise<NftCollectionInfo[]> {

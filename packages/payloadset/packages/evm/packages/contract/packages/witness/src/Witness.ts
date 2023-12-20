@@ -1,34 +1,28 @@
 import { assertEx } from '@xylabs/assert'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import {
-  AbstractBlockchainWitness,
-  BlockchainAddress,
-  BlockchainAddressSchema,
-  BlockchainWitnessConfig,
-  BlockchainWitnessParams,
-} from '@xyo-network/witness-blockchain-abstract'
+import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { EvmContract, EvmContractSchema } from './Payload'
 
 export const EvmContractWitnessConfigSchema = 'network.xyo.evm.contract.witness.config'
 export type EvmContractWitnessConfigSchema = typeof EvmContractWitnessConfigSchema
 
-export type EvmContractWitnessConfig = BlockchainWitnessConfig<{ address?: string }, EvmContractWitnessConfigSchema>
+export type EvmContractWitnessConfig = EvmWitnessConfig<{ address?: string }, EvmContractWitnessConfigSchema>
 
-export type EvmContractWitnessParams = BlockchainWitnessParams<EvmContractWitnessConfig>
+export type EvmContractWitnessParams = EvmWitnessParams<EvmContractWitnessConfig>
 
-export class EvmContractWitness<TParams extends EvmContractWitnessParams = EvmContractWitnessParams> extends AbstractBlockchainWitness<
+export class EvmContractWitness<TParams extends EvmContractWitnessParams = EvmContractWitnessParams> extends AbstractEvmWitness<
   TParams,
-  BlockchainAddress,
+  EvmAddress,
   EvmContract
 > {
   static override configSchemas = [EvmContractWitnessConfigSchema]
 
-  protected override async observeHandler(inPayloads: BlockchainAddress[] = []): Promise<EvmContract[]> {
+  protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<EvmContract[]> {
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(BlockchainAddressSchema)).map(async ({ address }) => {
+        inPayloads.filter(isPayloadOfSchemaType(EvmAddressSchema)).map(async ({ address }) => {
           const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
 
           const provider = await this.getProvider(true, true)

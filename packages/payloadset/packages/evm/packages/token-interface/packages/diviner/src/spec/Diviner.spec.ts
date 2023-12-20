@@ -1,6 +1,6 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
-import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner'
 import { TokenInterface } from '../Payload'
@@ -24,7 +24,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner',
           account: 'random',
           config: { schema: EvmTokenInterfaceImplementedDivinerConfigSchema, tokenInterfaces },
         })
-        const observations = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+        const observations = await witness.observe([{ address, schema: EvmAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
         const code = observations?.[0].code
         const results = await diviner.divine([{ address, block: 0, chainId: 1, code, schema: EvmContractSchema }])

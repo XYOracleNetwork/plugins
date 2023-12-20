@@ -3,17 +3,13 @@ import { isHexZero } from '@xylabs/hex'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import { AbstractBlockchainWitness } from '@xyo-network/witness-blockchain-abstract'
+import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract } from 'ethers'
 
 import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model'
 import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
 
-export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractBlockchainWitness<
-  TParams,
-  EvmCall,
-  EvmCallResult
-> {
+export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
   static override configSchemas = [EvmCallWitnessConfigSchema]
 
   get abi() {

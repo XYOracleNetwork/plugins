@@ -1,5 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { Erc1967Witness, Erc1967WitnessConfigSchema } from '../Witness'
 
@@ -11,7 +11,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
       config: { schema: Erc1967WitnessConfigSchema },
       providers: getProvidersFromEnv,
     })
-    const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+    const observation = await witness.observe([{ address, schema: EvmAddressSchema }])
     console.log(`o: ${JSON.stringify(observation, null, 2)}`)
     expect(observation[0].address).toBe(address)
     expect(observation[0].slots).toBeObject()
@@ -24,7 +24,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
       config: { schema: Erc1967WitnessConfigSchema },
       providers: getProvidersFromEnv,
     })
-    const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+    const observation = await witness.observe([{ address, schema: EvmAddressSchema }])
     console.log(`o: ${JSON.stringify(observation, null, 2)}`)
     expect(observation[0].address).toBe(address.toLowerCase())
     expect(observation[0].slots).toBeObject()

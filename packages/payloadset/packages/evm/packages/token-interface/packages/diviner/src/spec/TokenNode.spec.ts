@@ -21,7 +21,7 @@ import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
-import { BlockchainAddress, BlockchainAddressSchema, getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddress, EvmAddressSchema, getProviderFromEnv } from '@xyo-network/witness-evm-abstract'
 import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
@@ -82,7 +82,7 @@ describe('Contract Node', () => {
     it.each(cases)('With %s (%s)', async (tokenInterface, address) => {
       const contractSentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
       expect(contractSentinel).toBeDefined()
-      const collectionCallPayload: BlockchainAddress = { address, chainId, schema: BlockchainAddressSchema }
+      const collectionCallPayload: EvmAddress = { address, chainId, schema: EvmAddressSchema }
       const report = await contractSentinel?.report([collectionCallPayload])
       expect(report).toBeDefined()
       expect(report).toBeArrayOfSize(3)

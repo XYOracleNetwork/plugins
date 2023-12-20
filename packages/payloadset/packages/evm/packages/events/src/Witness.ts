@@ -2,22 +2,13 @@ import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { hexFromBigInt } from '@xylabs/hex'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import { AbstractBlockchainWitness } from '@xyo-network/witness-blockchain-abstract'
+import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract, EventLog } from 'ethers'
 
 import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model'
 import { EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema } from './Payload'
 
-const bigIntArrayToHexString = (items: unknown[]) => {
-  return items.map((item) => {
-    if (typeof item === 'bigint') {
-      return hexFromBigInt(item)
-    }
-    return item
-  })
-}
-
-export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEventsWitnessParams> extends AbstractBlockchainWitness<
+export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEventsWitnessParams> extends AbstractEvmWitness<
   TParams,
   EvmEvents,
   EvmEvent

@@ -11,7 +11,7 @@ import {
   ERC1155Pausable__factory,
   IERC721Metadata__factory,
 } from '@xyo-network/open-zeppelin-typechain'
-import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
 
@@ -48,7 +48,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
           account: 'random',
           config: { abi, schema: EvmAbiImplementedDivinerConfigSchema },
         })
-        const observations = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+        const observations = await witness.observe([{ address, schema: EvmAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
         const code = observations?.[0].code
         const results = await diviner.divine([{ address, block: 0, chainId: 1, code, schema: EvmContractSchema }])

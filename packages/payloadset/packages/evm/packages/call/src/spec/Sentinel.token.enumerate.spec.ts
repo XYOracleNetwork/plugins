@@ -16,7 +16,7 @@ import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { ERC721__factory, ERC721Enumerable__factory, ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { AdhocWitness } from '@xyo-network/witness-adhoc'
-import { BlockchainAddress, BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddress, EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
 import { EvmCallDiviner } from '../Diviner'
@@ -111,7 +111,7 @@ describe('Erc721Sentinel-Enumerate', () => {
       const diviner = asDivinerInstance(await node.resolve('TokenInfoDiviner'))
       expect(diviner).toBeDefined()
 
-      const addressPayload: BlockchainAddress = { address, chainId: 1, schema: BlockchainAddressSchema }
+      const addressPayload: EvmAddress = { address, chainId: 1, schema: EvmAddressSchema }
       profile(profiler, 'tokenReport')
       const report = await tokenSentinel?.report([addressPayload])
       console.log(`report: ${JSON.stringify(report, null, 2)}`)

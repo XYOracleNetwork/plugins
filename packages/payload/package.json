@@ -10,28 +10,21 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xyo-network/address-payload-plugin": "workspace:~",
     "@xyo-network/blockchain-payload-plugins": "workspace:~",
-    "@xyo-network/config-payload-plugin": "workspace:~",
     "@xyo-network/crypto-payload-plugins": "workspace:~",
-    "@xyo-network/domain-payload-plugin": "workspace:~",
     "@xyo-network/elevation-payload-plugin": "workspace:~",
-    "@xyo-network/id-payload-plugin": "workspace:~",
     "@xyo-network/image-thumbnail-payload-plugin": "workspace:~",
     "@xyo-network/location-certainty-payload-plugin": "workspace:~",
     "@xyo-network/location-payload-plugin": "workspace:~",
     "@xyo-network/module-instance-payload-plugin": "workspace:~",
-    "@xyo-network/payload-plugin": "^2.84.8",
+    "@xyo-network/payload-plugin": "^2.84.11",
     "@xyo-network/pentair-payload-plugin": "workspace:~",
-    "@xyo-network/query-payload-plugin": "workspace:~",
-    "@xyo-network/schema-payload-plugin": "workspace:~",
     "@xyo-network/url-payload-plugin": "workspace:~",
-    "@xyo-network/url-safety-payload-plugin": "workspace:~",
-    "@xyo-network/value-payload-plugin": "workspace:~"
+    "@xyo-network/url-safety-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.2.24",
-    "@xylabs/tsconfig": "^3.2.24",
+    "@xylabs/ts-scripts-yarn3": "^3.2.25",
+    "@xylabs/tsconfig": "^3.2.25",
     "typescript": "^5.3.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",

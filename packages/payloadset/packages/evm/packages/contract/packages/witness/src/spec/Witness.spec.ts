@@ -1,5 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { BlockchainAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmContractWitness, EvmContractWitnessConfigSchema } from '../Witness'
 
@@ -12,7 +12,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
         config: { schema: EvmContractWitnessConfigSchema },
         providers: getProvidersFromEnv,
       })
-      const observation = await witness.observe([{ address, schema: BlockchainAddressSchema }])
+      const observation = await witness.observe([{ address, schema: EvmAddressSchema }])
       console.log(`o: ${JSON.stringify(observation, null, 2)}`)
       expect(observation[0].address).toBe(address)
       expect(observation[0].code).toBeString()
