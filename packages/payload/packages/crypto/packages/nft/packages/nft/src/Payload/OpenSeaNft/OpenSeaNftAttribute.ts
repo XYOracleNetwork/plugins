@@ -1,4 +1,4 @@
-import { NftAttribute } from '../Nft'
+import { NftAttribute } from '../Info'
 import { DisplayType } from './DisplayType'
 
 export interface OpenSeaNftAttribute extends NftAttribute {

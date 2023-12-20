@@ -1,4 +1,4 @@
-import { NftMetadata } from '../Nft'
+import { NftMetadata } from '../Info'
 import { OpenSeaNftAttribute } from './OpenSeaNftAttribute'
 
 /**
