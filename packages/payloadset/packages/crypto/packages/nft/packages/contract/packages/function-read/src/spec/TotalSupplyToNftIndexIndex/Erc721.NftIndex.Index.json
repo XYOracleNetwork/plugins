@@ -153,12 +153,77 @@
           },
           {
             "config": {
-              "functionName": "totalSupply",
-              "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+              "language": "javascript",
+              "name": "RangeDiviner",
+              "schema": "network.xyo.diviner.range.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "TotalSupplyToRangeQueryTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.function.call.result"
+                },
+                {
+                  "op": "test",
+                  "path": "/functionName",
+                  "value": "totalSupply"
+                },
+                { "op": "defined", "path": "/result" },
+                { "op": "add", "path": "/start", "value": 0 },
+                { "from": "/result", "op": "move", "path": "/count" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.range.query"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
+              "name": "RangeToNftIndexTransformDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.number"
+                },
+                { "op": "defined", "path": "/value" },
+                { "from": "/value", "op": "move", "path": "/index" },
+                {
+                  "op": "replace",
+                  "path": "/schema",
+                  "value": "network.xyo.evm.nft.index"
+                }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "destinationSchema": "network.xyo.evm.nft.index",
+              "language": "javascript",
+              "name": "NftIndexToNftIndexTransformDiviner",
+              "schemaTransforms": {
+                "network.xyo.evm.nft.index": [
+                  {
+                    "destinationField": "index",
+                    "sourcePathExpression": "$.index"
+                  },
+                  {
+                    "destinationField": "schema",
+                    "sourcePathExpression": "$.schema"
+                  }
+                ]
               },
-              "name": "Erc721TotalSupplyWitness",
-              "schema": "network.xyo.crypto.contract.function.read.config"
+              "schema": "network.xyo.diviner.jsonpath.aggregate.config"
             }
           }
         ],
@@ -223,11 +288,19 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "TimestampWitness"
+                  "module": "TotalSupplyToRangeQueryTransformDiviner"
                 },
                 {
-                  "input": true,
-                  "module": "Erc721TotalSupplyWitness"
+                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
+                  "module": "RangeDiviner"
+                },
+                {
+                  "input": ["RangeDiviner"],
+                  "module": "RangeToNftIndexTransformDiviner"
+                },
+                {
+                  "input": ["RangeToNftIndexTransformDiviner"],
+                  "module": "NftIndexToNftIndexTransformDiviner"
                 }
               ]
             }
