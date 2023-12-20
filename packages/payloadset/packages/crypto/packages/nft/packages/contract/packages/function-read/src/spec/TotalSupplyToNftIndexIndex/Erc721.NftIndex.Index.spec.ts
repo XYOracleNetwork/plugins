@@ -1,9 +1,9 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
+import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
@@ -56,6 +56,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
     locator.register(TemporalIndexingDiviner)
     locator.register(JsonPatchDiviner)
+    locator.register(JsonPathAggregateDiviner)
     locator.register(RangeDiviner)
 
     locator.register(
@@ -76,10 +77,18 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema, totalSupply: 100 }
+        const totalSupply = 2710
+        const input = {
+          address,
+          args: [],
+          chainId: 1,
+          functionName: 'totalSupply',
+          result: `${totalSupply}`,
+          schema: 'network.xyo.crypto.contract.function.call.result',
+        }
         const observations = await sentinel?.report([input])
         const nftIndexes = observations?.filter(isNftIndex)
-        expect(nftIndexes?.length).toBe(input.totalSupply)
+        expect(nftIndexes?.length).toBe(totalSupply)
       })
     })
     describe.skip('Index', () => {
