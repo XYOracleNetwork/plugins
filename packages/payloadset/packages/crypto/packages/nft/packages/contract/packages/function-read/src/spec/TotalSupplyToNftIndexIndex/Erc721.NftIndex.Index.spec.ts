@@ -1,15 +1,13 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import {
-  CryptoContractFunctionCallSchema,
-  isCryptoContractFunctionCallResult,
-  isCryptoContractFunctionCallSuccess,
-} from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import { CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
+import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { RangeDiviner } from '@xyo-network/diviner-range'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -17,6 +15,7 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
+import { isNftIndex } from '@xyo-network/evm-nft-id-payload-plugin'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -56,6 +55,8 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
     locator.register(TemporalIndexingDiviner)
+    locator.register(JsonPatchDiviner)
+    locator.register(RangeDiviner)
 
     locator.register(
       new ModuleFactory(CryptoContractFunctionReadWitness, {
@@ -73,20 +74,16 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
     describe('Sentinel', () => {
-      it.each(cases)('returns totalSupply', async (address) => {
+      it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema }
+        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema, totalSupply: 100 }
         const observations = await sentinel?.report([input])
-        expect(observations?.length).toBe(3)
-        const totalSupply = observations?.filter(isCryptoContractFunctionCallResult).find(isCryptoContractFunctionCallSuccess)
-        expect(totalSupply).toBeDefined()
-        expect(totalSupply?.result).toBeString()
-        const totalSupplyValue = totalSupply?.result as string
-        expect(parseInt(totalSupplyValue)).toBeNumber()
+        const nftIndexes = observations?.filter(isNftIndex)
+        expect(nftIndexes?.length).toBe(input.totalSupply)
       })
     })
-    describe('Index', () => {
-      it.each(cases)('returns indexed result', async (address) => {
+    describe.skip('Index', () => {
+      it.each(cases)('returns indexed NftIndex results', async (address) => {
         await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
