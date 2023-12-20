@@ -1,3 +1,3 @@
-export * from './Nft'
-export * from './OpenSeaNft'
+export * from './NftInfo'
+export * from './OpenSeaNftInfo'
 export * from './Payload'
