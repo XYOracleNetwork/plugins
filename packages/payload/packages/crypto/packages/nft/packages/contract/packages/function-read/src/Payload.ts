@@ -50,6 +50,10 @@ export type CryptoContractFunctionCallFailure = CryptoContractFunctionCallResult
 
 export type CryptoContractFunctionCallResult = CryptoContractFunctionCallSuccess | CryptoContractFunctionCallFailure
 
+export const isCryptoContractFunctionCallResult = (payload?: Payload): payload is CryptoContractFunctionCallSuccess => {
+  return payload?.schema === CryptoContractFunctionCallResultSchema
+}
+
 export const isCryptoContractFunctionCallSuccess = (payload?: CryptoContractFunctionCallResult): payload is CryptoContractFunctionCallSuccess => {
   return (payload as CryptoContractFunctionCallSuccess | undefined)?.result !== undefined
 }
