@@ -3,8 +3,9 @@ import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
+import { EvmCallWitnessConfigSchema } from '../model'
 import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../Payload'
-import { EvmCallWitness, EvmCallWitnessConfigSchema } from '../Witness'
+import { EvmCallWitness } from '../Witness'
 
 const validateObservation = (observation: Payload[]) => {
   const results = observation.filter(isPayloadOfSchemaType(EvmCallResultSchema))
