@@ -5307,6 +5307,7 @@ __metadata:
   resolution: "@xyo-network/evm-call-witness@workspace:packages/payloadset/packages/evm/packages/call"
   dependencies:
     "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/hex": "npm:^2.13.20"
     "@xylabs/jest-helpers": "npm:^2.13.20"
     "@xylabs/profile": "npm:^2.13.20"
     "@xylabs/promise": "npm:^2.13.20"
@@ -5343,6 +5344,38 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.24"
     "@xyo-network/payload-model": "npm:^2.84.8"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.84.8"
+    ethers: "npm:^6.9.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/evm-events-witness@workspace:packages/payloadset/packages/evm/packages/events":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/evm-events-witness@workspace:packages/payloadset/packages/evm/packages/events"
+  dependencies:
+    "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/hex": "npm:^2.13.20"
+    "@xylabs/jest-helpers": "npm:^2.13.20"
+    "@xylabs/profile": "npm:^2.13.20"
+    "@xylabs/promise": "npm:^2.13.20"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.24"
+    "@xylabs/tsconfig": "npm:^3.2.24"
+    "@xyo-network/abstract-diviner": "npm:^2.84.8"
+    "@xyo-network/account": "npm:^2.84.8"
+    "@xyo-network/diviner-jsonpatch-memory": "npm:^2.84.8"
+    "@xyo-network/diviner-jsonpath-aggregate-memory": "npm:^2.84.8"
+    "@xyo-network/diviner-model": "npm:^2.84.8"
+    "@xyo-network/erc1822-witness": "workspace:~"
+    "@xyo-network/erc1967-witness": "workspace:~"
+    "@xyo-network/manifest": "npm:^2.84.8"
+    "@xyo-network/module-model": "npm:^2.84.8"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/payload-model": "npm:^2.84.8"
+    "@xyo-network/sentinel-model": "npm:^2.84.8"
+    "@xyo-network/witness-blockchain-abstract": "npm:^2.84.8"
+    "@xyo-network/witness-model": "npm:^2.84.8"
+    "@xyo-network/witnesses": "npm:^2.84.8"
     ethers: "npm:^6.9.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"

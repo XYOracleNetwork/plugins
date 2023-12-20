@@ -1,41 +1,13 @@
 import { assertEx } from '@xylabs/assert'
+import { isHexZero } from '@xylabs/hex'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import { AbstractBlockchainWitness, BlockchainWitnessConfig, BlockchainWitnessParams } from '@xyo-network/witness-blockchain-abstract'
-import { Contract, JsonFragment } from 'ethers'
+import { AbstractBlockchainWitness } from '@xyo-network/witness-blockchain-abstract'
+import { Contract } from 'ethers'
 
+import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model'
 import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
-
-export type Abi = string | ReadonlyArray<JsonFragment | string>
-
-export const EvmCallWitnessConfigSchema = 'network.xyo.evm.call.witness.config'
-export type EvmCallWitnessConfigSchema = typeof EvmCallWitnessConfigSchema
-
-export type EvmCallWitnessConfig = BlockchainWitnessConfig<
-  {
-    abi?: Abi
-    address?: string
-    args?: unknown[]
-    block?: number
-    functionName?: string
-  },
-  EvmCallWitnessConfigSchema
->
-
-export type EvmCallWitnessParams = BlockchainWitnessParams<EvmCallWitnessConfig>
-
-const prefixHex = (value?: string) => {
-  if (value !== undefined) {
-    const lowerValue = value.toLowerCase()
-    return lowerValue.startsWith('0x') ? lowerValue : `0x${lowerValue}`
-  }
-}
-
-const isHexZero = (value?: string) => {
-  const prefixedValue = prefixHex(value)
-  return prefixedValue === undefined ? true : BigInt(prefixedValue) === 0n
-}
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractBlockchainWitness<
   TParams,
@@ -54,7 +26,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
     await this.getProviders()
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(EvmCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
+        inPayloads.filter(isPayloadOfSchemaType<EvmCall>(EvmCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
           const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]
@@ -69,7 +41,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
           //Check if ERC-1822 Upgradeable
           const erc1822Status = await getErc1822SlotStatus(provider, validatedAddress, block)
 
-          const implementation = isHexZero(erc1967Status.slots.implementation) ? erc1822Status.implementation : erc1967Status.implementation
+          const implementation = isHexZero(erc1967Status.slots.implementation ?? '0x00') ? erc1822Status.implementation : erc1967Status.implementation
 
           const contract = new Contract(implementation, this.abi, provider)
           let transformedResult: unknown
