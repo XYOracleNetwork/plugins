@@ -1,8 +1,8 @@
-import { EvmAddress } from './Payload'
-import { EvmAddressSchema } from './Schema'
+import { NftId } from './Payload'
+import { NftIdSchema } from './Schema'
 
-export const addressPayloadTemplate = (): EvmAddress => ({
+export const addressPayloadTemplate = (): NftId => ({
   address: '',
   chainId: 1,
-  schema: EvmAddressSchema,
+  schema: NftIdSchema,
 })

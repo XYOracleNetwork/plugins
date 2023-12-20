@@ -1,10 +1,10 @@
 import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
 
-import { EvmAddressPayloadPlugin } from '../Plugin'
+import { NftIdPayloadPlugin } from '../Plugin'
 
-describe('EvmAddressPayloadPlugin', () => {
+describe('NftIdPayloadPlugin', () => {
   test('Add to Resolver', () => {
-    const plugin = EvmAddressPayloadPlugin()
+    const plugin = NftIdPayloadPlugin()
     const resolver = new PayloadPluginResolver().register(plugin)
     expect(resolver.resolve(plugin.schema)).toBeObject()
   })

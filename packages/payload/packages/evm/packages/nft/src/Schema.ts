@@ -1,8 +1,2 @@
-/**
- * The schema for an EVM address.
- */
-export type EvmAddressSchema = 'network.xyo.evm.address'
-/**
- * The schema for an EVM address.
- */
-export const EvmAddressSchema: EvmAddressSchema = 'network.xyo.evm.address'
+export const NftIdSchema = 'network.xyo.crypto.nft.id'
+export type NftIdSchema = typeof NftIdSchema

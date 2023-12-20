@@ -1,11 +1,11 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { EvmAddress } from './Payload'
-import { EvmAddressSchema } from './Schema'
+import { NftId } from './Payload'
+import { NftIdSchema } from './Schema'
 import { addressPayloadTemplate } from './Template'
 
-export const EvmAddressPayloadPlugin = () =>
-  createPayloadPlugin<EvmAddress>({
-    schema: EvmAddressSchema,
+export const NftIdPayloadPlugin = () =>
+  createPayloadPlugin<NftId>({
+    schema: NftIdSchema,
     template: addressPayloadTemplate,
   })
