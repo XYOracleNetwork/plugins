@@ -4266,6 +4266,7 @@ __metadata:
   resolution: "@xyo-network/crypto-contract-function-read-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/contract/packages/function-read"
   dependencies:
     "@xylabs/assert": "npm:^2.13.20"
+    "@xylabs/delay": "npm:^2.13.20"
     "@xylabs/hex": "npm:^2.13.20"
     "@xylabs/jest-helpers": "npm:^2.13.20"
     "@xylabs/promise": "npm:^2.13.20"
@@ -4873,7 +4874,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/diviner-range@npm:~2.84.8":
+"@xyo-network/diviner-range@npm:^2.84.8, @xyo-network/diviner-range@npm:~2.84.8":
   version: 2.84.8
   resolution: "@xyo-network/diviner-range@npm:2.84.8"
   dependencies:
@@ -5317,8 +5318,11 @@ __metadata:
     "@xyo-network/diviner-jsonpatch-memory": "npm:^2.84.8"
     "@xyo-network/diviner-jsonpath-aggregate-memory": "npm:^2.84.8"
     "@xyo-network/diviner-model": "npm:^2.84.8"
+    "@xyo-network/diviner-range": "npm:^2.84.8"
     "@xyo-network/erc1822-witness": "workspace:~"
     "@xyo-network/erc1967-witness": "workspace:~"
+    "@xyo-network/evm-contract-witness": "workspace:~"
+    "@xyo-network/evm-token-interface-diviner": "workspace:~"
     "@xyo-network/manifest": "npm:^2.84.8"
     "@xyo-network/module-model": "npm:^2.84.8"
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
@@ -5391,7 +5395,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/evm-token-interface-diviner@workspace:packages/payloadset/packages/evm/packages/token-interface/packages/diviner":
+"@xyo-network/evm-token-interface-diviner@workspace:packages/payloadset/packages/evm/packages/token-interface/packages/diviner, @xyo-network/evm-token-interface-diviner@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-token-interface-diviner@workspace:packages/payloadset/packages/evm/packages/token-interface/packages/diviner"
   dependencies:
