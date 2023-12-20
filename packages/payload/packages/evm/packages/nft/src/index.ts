@@ -1,7 +1,6 @@
 import { NftIdPayloadPlugin } from './Plugin'
 
-export * from './Payload/Id/Payload'
-export * from './Payload/Id/Schema'
+export * from './Payload'
 export * from './Template'
 
 export { NftIdPayloadPlugin }

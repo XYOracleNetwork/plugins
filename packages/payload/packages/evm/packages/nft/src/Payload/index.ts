@@ -1,1 +1,2 @@
-export * from './Id'
+export * from './NftId'
+export * from './NftIndex'
