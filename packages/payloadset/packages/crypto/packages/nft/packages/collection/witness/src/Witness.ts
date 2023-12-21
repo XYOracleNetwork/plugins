@@ -60,7 +60,7 @@ export class CryptoNftCollectionWitness<
           await erc721Enumerable.symbol(),
           await erc721Enumerable.totalSupply(),
           await tokenTypes(provider, address),
-          await this.writeArchivist(),
+          await this.getArchivist(),
         ])
         const types = resolvedValue(typesSettled, true)
         const nfts = await getNftCollectionNfts(address, provider, types, maxNfts)
