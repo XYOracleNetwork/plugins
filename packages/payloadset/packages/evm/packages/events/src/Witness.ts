@@ -35,7 +35,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
               const provider = await this.getProvider(true, true)
               const network = await provider.getNetwork()
 
-              const contract = new Contract(validatedAddress, this.abi, provider)
+              const contract = new Contract(validatedAddress, this.abi, provider).attach(validatedAddress)
 
               const abiArray = assertEx(Array.isArray(this.abi) ? this.abi : undefined, 'Abi is not an array')
 
@@ -44,12 +44,13 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
                 'Could not find event',
               )
 
-              const fromBlock = this.config.fromBlock ?? payloadFromBlock ?? contract.deploymentTransaction()?.blockNumber ?? undefined
               const toBlock = this.config.toBlock ?? payloadToBlock ?? (await provider.getBlockNumber())
+              const fromBlock = this.config.fromBlock ?? payloadFromBlock ?? 0
 
-              const rawEvents = await contract.queryFilter(contract.filters[validatedEventName], fromBlock, toBlock)
+              const allRawEvents = await contract.queryFilter(contract.filters[validatedEventName], fromBlock, toBlock)
+              //console.log(`from-to: ${fromBlock}|${toBlock} = ${allRawEvents.length}`)
 
-              const observation = rawEvents
+              const observation = allRawEvents
                 .map((rawLog) => {
                   const rawEvent = rawLog as EventLog
                   if (rawEvent.args) {
@@ -77,7 +78,6 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
                 })
                 .filter(exists)
 
-              console.log(`observation: ${JSON.stringify(observation, null, 2)}`)
               return observation
             }),
         )

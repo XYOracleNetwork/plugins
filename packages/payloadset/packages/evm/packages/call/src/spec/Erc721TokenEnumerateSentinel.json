@@ -62,7 +62,7 @@
           },
           {
             "config": {
-              "destinationSchema": "network.xyo.blockchain.address",
+              "destinationSchema": "network.xyo.evm.address",
               "language": "javascript",
               "name": "Erc1822ToAddressDiviner",
               "schema": "network.xyo.diviner.jsonpath.aggregate.config",
@@ -368,13 +368,6 @@
                     "TokenInterfaceToErc721EnumerableInterfaceDiviner"
                   ],
                   "module": "ErcTokenInterfaceToCallDiviner"
-                },
-                {
-                  "input": [
-                    "ErcTokenInterfaceToCallDiviner",
-                    "NumberZeroWitness"
-                  ],
-                  "module": "Erc721TotalSupplyWitness"
                 }
               ]
             }
