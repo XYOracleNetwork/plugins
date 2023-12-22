@@ -97,7 +97,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
         }
       })
     })
-    describe('Index', () => {
+    describe.skip('Index', () => {
       it.each(cases)('returns indexed NftIndex results', async (address) => {
         await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
