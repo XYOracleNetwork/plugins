@@ -74,7 +74,7 @@
               "name": "IndexCandidateToIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.crypto.contract.function.call.result": [
+                "network.xyo.evm.nft.index": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -82,6 +82,10 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "index",
+                    "sourcePathExpression": "$.index"
                   }
                 ],
                 "network.xyo.timestamp": [
