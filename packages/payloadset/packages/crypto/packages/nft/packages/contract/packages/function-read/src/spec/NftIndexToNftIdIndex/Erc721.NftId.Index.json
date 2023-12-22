@@ -182,16 +182,6 @@
               "destinationSchema": "network.xyo.evm.nft.id",
               "name": "NftIdPartialToNftIdTransformDiviner",
               "schemaTransforms": {
-                "network.xyo.evm.nft.index": [
-                  {
-                    "destinationField": "index",
-                    "sourcePathExpression": "$.index"
-                  },
-                  {
-                    "destinationField": "schema",
-                    "sourcePathExpression": "$.schema"
-                  }
-                ],
                 "network.xyo.crypto.contract.function.call.result": [
                   {
                     "destinationField": "address",
@@ -200,6 +190,10 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.result"
                   }
                 ]
               },
@@ -303,25 +297,11 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingDiviner"
+                  "module": "Erc721TokenByIndexWitness"
                 },
                 {
-                  "input": true,
-                  "module": "TokenIndexToTokenIdSentinel"
-                },
-                {
-                  "input": [
-                    "InputBufferingSentinel",
-                    "TokenIndexToTokenIdSentinel"
-                  ],
+                  "input": ["Erc721TokenByIndexWitness"],
                   "module": "NftIdPartialToNftIdTransformDiviner"
-                },
-                {
-                  "input": [
-                    "InputBufferingSentinel",
-                    "TokenIndexToTokenIdSentinel"
-                  ],
-                  "module": "TimestampWitness"
                 }
               ]
             }

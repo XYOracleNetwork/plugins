@@ -76,11 +76,15 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
     const tokensToCheck = 1
+    const tokenIndexes = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => {
+      // Add one to prevent 0 index
+      tokenIndex + 1
+    })
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
         const chainId = 1
-        const inputs = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => {
+        const inputs = tokenIndexes.map((_, tokenIndex) => {
           return {
             address,
             args: [`0x${BigInt(tokenIndex).toString(16)}`],
