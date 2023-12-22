@@ -74,10 +74,10 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
+    const totalSupply = 2710
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const totalSupply = 2710
         const chainId = 1
         const input = {
           address,
@@ -96,15 +96,19 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
         }
       })
     })
-    describe.skip('Index', () => {
+    describe('Index', () => {
       it.each(cases)('returns indexed NftIndex results', async (address) => {
         await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
-        const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
-        const result = await diviner?.divine([query])
-        expect(result).toBeDefined()
-        expect(result).toBeArrayOfSize(1)
+        // Check we've indexed the results by sampling the first and last index
+        const sampleIndexes = [0, totalSupply - 1]
+        for (const index of sampleIndexes) {
+          const query = { address, chainId: 1, index, schema: PayloadDivinerQuerySchema }
+          const result = await diviner?.divine([query])
+          expect(result).toBeDefined()
+          expect(result).toBeArrayOfSize(1)
+        }
       })
     })
   })
