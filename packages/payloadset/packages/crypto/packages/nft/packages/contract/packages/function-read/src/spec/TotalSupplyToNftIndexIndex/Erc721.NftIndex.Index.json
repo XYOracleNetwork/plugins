@@ -52,9 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": [
-                  "network.xyo.crypto.contract.function.call.result"
-                ]
+                "payload_schemas": ["network.xyo.evm.nft.index"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
