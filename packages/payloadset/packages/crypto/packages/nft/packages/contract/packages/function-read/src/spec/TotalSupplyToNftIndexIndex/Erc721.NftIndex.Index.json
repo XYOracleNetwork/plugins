@@ -251,6 +251,40 @@
               },
               "schema": "network.xyo.diviner.jsonpath.aggregate.config"
             }
+          },
+          {
+            "config": {
+              "name": "InputBufferingSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "InputBufferingDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "name": "TotalSupplyToSlugsSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "TotalSupplyToRangeQueryTransformDiviner"
+                },
+                {
+                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
+                  "module": "RangeDiviner"
+                },
+                {
+                  "input": ["RangeDiviner"],
+                  "module": "RangeToNftIndexTransformDiviner"
+                }
+              ]
+            }
           }
         ],
         "public": [
@@ -296,40 +330,6 @@
                 "boundWitnessDiviner": "AddressStateBoundWitnessDiviner",
                 "payloadDiviner": "AddressStatePayloadDiviner"
               }
-            }
-          },
-          {
-            "config": {
-              "name": "InputBufferingSentinel",
-              "schema": "network.xyo.sentinel.config",
-              "synchronous": "true",
-              "tasks": [
-                {
-                  "input": true,
-                  "module": "InputBufferingDiviner"
-                }
-              ]
-            }
-          },
-          {
-            "config": {
-              "name": "TotalSupplyToSlugsSentinel",
-              "schema": "network.xyo.sentinel.config",
-              "synchronous": "true",
-              "tasks": [
-                {
-                  "input": true,
-                  "module": "TotalSupplyToRangeQueryTransformDiviner"
-                },
-                {
-                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
-                  "module": "RangeDiviner"
-                },
-                {
-                  "input": ["RangeDiviner"],
-                  "module": "RangeToNftIndexTransformDiviner"
-                }
-              ]
             }
           },
           {
