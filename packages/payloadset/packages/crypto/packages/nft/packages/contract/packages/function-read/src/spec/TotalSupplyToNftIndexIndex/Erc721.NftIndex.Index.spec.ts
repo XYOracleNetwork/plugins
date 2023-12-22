@@ -93,6 +93,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
         for (const nftIndex of nftIndexes ?? []) {
           expect(nftIndex.address).toBe(address)
           expect(nftIndex.chainId).toBe(chainId)
+          expect(nftIndex.index).toBeNumber()
         }
       })
     })
