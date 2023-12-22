@@ -254,36 +254,13 @@
           },
           {
             "config": {
-              "name": "InputBufferingSentinel",
-              "schema": "network.xyo.sentinel.config",
-              "synchronous": "true",
-              "tasks": [
-                {
-                  "input": true,
-                  "module": "InputBufferingDiviner"
-                }
-              ]
-            }
-          },
-          {
-            "config": {
-              "name": "TotalSupplyToSlugsSentinel",
-              "schema": "network.xyo.sentinel.config",
-              "synchronous": "true",
-              "tasks": [
-                {
-                  "input": true,
-                  "module": "TotalSupplyToRangeQueryTransformDiviner"
-                },
-                {
-                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
-                  "module": "RangeDiviner"
-                },
-                {
-                  "input": ["RangeDiviner"],
-                  "module": "RangeToNftIndexTransformDiviner"
-                }
-              ]
+              "functionName": "tokenByIndex",
+              "labels": {
+                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+              },
+              "language": "javascript",
+              "name": "Erc721TokenByIndexWitness",
+              "schema": "network.xyo.crypto.contract.function.read.config"
             }
           }
         ],
@@ -343,25 +320,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingSentinel"
-                },
-                {
-                  "input": true,
-                  "module": "TotalSupplyToSlugsSentinel"
-                },
-                {
-                  "input": [
-                    "InputBufferingSentinel",
-                    "TotalSupplyToSlugsSentinel"
-                  ],
-                  "module": "NftIndexToNftIndexTransformDiviner"
-                },
-                {
-                  "input": [
-                    "InputBufferingSentinel",
-                    "TotalSupplyToSlugsSentinel"
-                  ],
-                  "module": "TimestampWitness"
+                  "module": "Erc721TokenByIndexWitness"
                 }
               ]
             }
