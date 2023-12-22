@@ -21,12 +21,12 @@ const nfts: NftInfoFields[] = [
         {
           display_type: 'date',
           trait_type: 'Registration Date',
-          value: 1640668437000,
+          value: 1_640_668_437_000,
         },
         {
           display_type: 'date',
           trait_type: 'Expiration Date',
-          value: 1956237957000,
+          value: 1_956_237_957_000,
         },
       ],
       background_image: 'https://metadata.ens.domains/mainnet/avatar/💩happens.eth',
@@ -53,7 +53,7 @@ const nfts: NftInfoFields[] = [
         {
           display_type: 'date',
           trait_type: 'Publish Date',
-          value: 1643274000,
+          value: 1_643_274_000,
         },
         {
           trait_type: 'Edition',
@@ -102,7 +102,7 @@ const nfts: NftInfoFields[] = [
       external_url: 'https://www.thepincovillage.com/',
       image: 'https://arweave.net/0-R-VFX6VxkK4Cr70gnq50A2Rd6qXge0sHAQqGPqI4E',
       image_details: {
-        bytes: 2459769,
+        bytes: 2_459_769,
         format: 'PNG',
         height: 1500,
         sha256: 'f5cc400e767fe9a5c75c32745faf472ca35863b0ff48662923d7f3c9bae13edd',

@@ -10,7 +10,7 @@ const valuationExists = (value: [string, Partial<Record<string, number>> | undef
 
 const otherValueExists = (value: [string, number | undefined]): value is [string, number] => {
   const possiblyNumber = value[1]
-  return typeof possiblyNumber === 'number' && !isNaN(possiblyNumber)
+  return typeof possiblyNumber === 'number' && !Number.isNaN(possiblyNumber)
 }
 
 export const divineCoinGeckoPrices = async (payload: CoingeckoCryptoMarketPayload | undefined): Promise<CryptoMarketAssetPayload> => {

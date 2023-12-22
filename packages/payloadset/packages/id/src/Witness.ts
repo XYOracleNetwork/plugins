@@ -19,7 +19,7 @@ export class IdWitness<TParams extends IdWitnessParams = IdWitnessParams> extend
   static override configSchemas = [IdWitnessConfigSchema]
 
   get salt() {
-    return this.config?.salt ?? `${Math.floor(Math.random() * 9999999)}`
+    return this.config?.salt ?? `${Math.floor(Math.random() * 9_999_999)}`
   }
 
   protected override observeHandler(payloads: Payload[] = []): Promisable<Payload[]> {

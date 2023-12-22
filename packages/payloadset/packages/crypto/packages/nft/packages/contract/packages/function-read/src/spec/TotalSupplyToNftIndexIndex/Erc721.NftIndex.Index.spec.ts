@@ -90,10 +90,10 @@ describeIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () => {
         const observations = await sentinel?.report([input])
         const nftIndexes = observations?.filter(isNftIndex)
         expect(nftIndexes?.length).toBe(totalSupply)
-        nftIndexes?.forEach((nftIndex) => {
+        for (const nftIndex of nftIndexes ?? []) {
           expect(nftIndex.address).toBe(address)
           expect(nftIndex.chainId).toBe(chainId)
-        })
+        }
       })
     })
     describe.skip('Index', () => {

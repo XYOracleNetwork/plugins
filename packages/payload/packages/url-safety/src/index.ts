@@ -1,9 +1,3 @@
-import { UrlSafetyPayloadPlugin } from './Plugin'
-
 export * from './Payload'
+export { UrlSafetyPayloadPlugin as default, UrlSafetyPayloadPlugin } from './Plugin'
 export * from './Schema'
-
-export { UrlSafetyPayloadPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default UrlSafetyPayloadPlugin

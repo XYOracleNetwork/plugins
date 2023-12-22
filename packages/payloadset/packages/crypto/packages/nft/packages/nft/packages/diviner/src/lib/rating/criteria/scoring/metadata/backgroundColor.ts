@@ -1,7 +1,7 @@
 import { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 import { incrementPossible, incrementTotal, incrementTotalAndPossible, PASS, ScaledScore } from '@xyo-network/crypto-nft-score-model'
 
-const isHexColor = /^[0-9A-F]{6}$/i
+const isHexColor = /^[\da-f]{6}$/i
 
 export const scoreNftBackgroundColor = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore => {
   return scoreBackgroundColor(nft.metadata?.background_color)
@@ -13,6 +13,6 @@ export const scoreBackgroundColor = (background_color: unknown): ScaledScore => 
   incrementPossible(score)
   if (typeof background_color !== 'string') return score
   incrementTotalAndPossible(score)
-  if (!background_color.toUpperCase().match(isHexColor)) return score
+  if (!isHexColor.test(background_color.toUpperCase())) return score
   return incrementTotal(score)
 }

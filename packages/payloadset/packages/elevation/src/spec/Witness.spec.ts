@@ -1,11 +1,12 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+
 import { assertEx } from '@xylabs/assert'
 import { testIf } from '@xylabs/jest-helpers'
 import { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { Quadkey } from '@xyo-network/quadkey'
-import { existsSync } from 'fs'
-import { join } from 'path'
 
 import { ElevationWitness, ElevationWitnessConfig, ElevationWitnessConfigSchema } from '../Witness'
 

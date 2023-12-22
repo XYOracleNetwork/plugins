@@ -26,7 +26,7 @@ describe('ImageThumbnailWitness', () => {
     const result = (await witness.observe([ipfsPayload])) as (ImageThumbnail | ModuleError)[]
     expect(result.length).toBe(1)
     const thumb = result[0] as ImageThumbnail
-    expect(thumb.url?.length).toBeLessThan(64000)
+    expect(thumb.url?.length).toBeLessThan(64_000)
     const error = result[0] as ModuleError
     if (result[0].schema === ModuleErrorSchema) {
       console.log(`Error: ${error.message}`)
@@ -41,7 +41,7 @@ describe('ImageThumbnailWitness', () => {
     const result = (await witness.observe([ipfsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     const thumb = result[0] as ImageThumbnail
-    expect(thumb.url?.length).toBeLessThan(64000)
+    expect(thumb.url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
   })
   testIfHasBin('magick')('IPFS [bad (ipfs.io)]', async () => {

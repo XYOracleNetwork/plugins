@@ -17,19 +17,19 @@ const attributes: NftAttribute[][] = [
     {
       display_type: 'date',
       trait_type: 'Registration Date',
-      value: 1640668437000,
+      value: 1_640_668_437_000,
     },
     {
       display_type: 'date',
       trait_type: 'Expiration Date',
-      value: 1956237957000,
+      value: 1_956_237_957_000,
     },
   ],
   [
     {
       display_type: 'date',
       trait_type: 'Publish Date',
-      value: 1643274000,
+      value: 1_643_274_000,
     },
     {
       trait_type: 'Edition',

@@ -6,7 +6,7 @@ import { normalize, Score } from '@xyo-network/crypto-nft-score-model'
  * to find the median, with mu/sigma fixed, which maximizes
  * the distribution (the mode for lognormal) at 10,000
  */
-const median = 81030839.8217352
+const median = 81_030_839.821_735_2
 const defaultMu = Math.log(median)
 const defaultSigma = 3
 const mode = Math.exp(defaultMu - Math.pow(defaultSigma, 2))

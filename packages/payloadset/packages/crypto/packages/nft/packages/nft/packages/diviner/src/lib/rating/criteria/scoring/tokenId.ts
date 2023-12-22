@@ -12,7 +12,7 @@ export const scoreTokenId: PassFailScoringFunction<NftInfoFields> = (nft: NftInf
   if (typeof nft.tokenId !== 'string') return FAIL
   try {
     return BigInt(nft.tokenId) >= 0n && BigInt(nft.tokenId) < 2n ** 256n ? PASS : FAIL
-  } catch (_error) {
+  } catch {
     return FAIL
   }
 }

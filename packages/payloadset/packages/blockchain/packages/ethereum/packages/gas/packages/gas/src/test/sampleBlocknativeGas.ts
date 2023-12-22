@@ -3,8 +3,8 @@ import { EstimatedBaseFee, EthereumGasBlocknativePayload, EthereumGasBlocknative
 export const sampleBlocknativeGas: EthereumGasBlocknativePayload = {
   blockPrices: [
     {
-      baseFeePerGas: 13.691764456,
-      blockNumber: 16028191,
+      baseFeePerGas: 13.691_764_456,
+      blockNumber: 16_028_191,
       estimatedPrices: [
         {
           confidence: 99,
@@ -40,7 +40,7 @@ export const sampleBlocknativeGas: EthereumGasBlocknativePayload = {
       estimatedTransactionCount: 69,
     },
   ],
-  currentBlockNumber: 16028190,
+  currentBlockNumber: 16_028_190,
   estimatedBaseFees: [
     {
       'pending+1': [
@@ -88,6 +88,6 @@ export const sampleBlocknativeGas: EthereumGasBlocknativePayload = {
   network: 'main',
   schema: EthereumGasBlocknativeSchema,
   system: 'ethereum',
-  timestamp: 1668697958837,
+  timestamp: 1_668_697_958_837,
   unit: 'gwei',
 }

@@ -16,7 +16,7 @@ export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> ext
 
   protected override async observeHandler(payloads: Payload[] = []): Promise<Payload[]> {
     if (UrlWitness.hashUrl === undefined) {
-      throw Error('Set UrlWitness.hashUrl before using')
+      throw new Error('Set UrlWitness.hashUrl before using')
     }
     const urls: UrlPayload[] =
       this.urls?.map((url) => ({ schema: UrlSchema, url })) ??

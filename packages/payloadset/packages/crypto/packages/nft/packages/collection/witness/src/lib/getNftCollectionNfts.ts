@@ -66,7 +66,7 @@ export const getNftCollectionNfts = async (
               : '0x01'
             const metadataUri = await tryCall(async () => await storage.tokenURI(tokenId, { blockTag: block }))
             const checkedMetaDataUri = metadataUri ? checkIpfsUrl(metadataUri, ipfsGateway) : undefined
-            let metadata: NftMetadata | undefined = undefined
+            let metadata: NftMetadata | undefined
             if (checkedMetaDataUri !== undefined) {
               try {
                 metadata = (await axios.get(checkedMetaDataUri)).data

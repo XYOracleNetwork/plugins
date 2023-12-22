@@ -1,8 +1,9 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { Account } from '@xyo-network/account'
 import { isNftInfo, NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
-import { readFile } from 'fs/promises'
-import { join } from 'path'
 
 import { isNftScore, NftScoreDiviner } from '../Diviner'
 
@@ -21,8 +22,7 @@ describe('NftScoreDiviner', () => {
     const diviner = await NftScoreDiviner.create({ account: Account.randomSync() })
     const scores = (await diviner.divine(data)).filter(isNftScore)
     expect(scores).toBeArrayOfSize(data.length)
-    for (let i = 0; i < scores.length; i++) {
-      const score = scores[i]
+    for (const [i, score] of scores.entries()) {
       const wrapped = PayloadWrapper.wrap(score)
       expect(await wrapped.getValid()).toBe(true)
       const payload = wrapped.payload()

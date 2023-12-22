@@ -3,13 +3,13 @@ import { EthereumGasEtherchainV2Payload, EthereumGasEtherchainV2Schema } from '@
 export const sampleEtherchainGasV2: EthereumGasEtherchainV2Payload = {
   code: 200,
   data: {
-    fast: 19803047330,
+    fast: 19_803_047_330,
     priceUSD: 1195.77,
-    rapid: 29714286170,
-    slow: 11200000000,
-    standard: 12000000000,
-    timestamp: 1668621234096,
+    rapid: 29_714_286_170,
+    slow: 11_200_000_000,
+    standard: 12_000_000_000,
+    timestamp: 1_668_621_234_096,
   },
   schema: EthereumGasEtherchainV2Schema,
-  timestamp: 1668621240790,
+  timestamp: 1_668_621_240_790,
 }

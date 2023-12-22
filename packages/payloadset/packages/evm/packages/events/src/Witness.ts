@@ -58,11 +58,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
 
                     abiEvent.inputs.map((input: { name: string }, index: number) => {
                       const value = rawEvent.args[index]
-                      if (typeof value === 'bigint') {
-                        argsObject[input.name] = hexFromBigInt(value)
-                      } else {
-                        argsObject[input.name] = value
-                      }
+                      argsObject[input.name] = typeof value === 'bigint' ? hexFromBigInt(value) : value
                     })
 
                     const eventResult: EvmEvent = {

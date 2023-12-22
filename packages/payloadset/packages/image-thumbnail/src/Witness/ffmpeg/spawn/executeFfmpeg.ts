@@ -1,4 +1,4 @@
-import { spawn } from 'child_process'
+import { spawn } from 'node:child_process'
 
 /**
  * Execute FFmpeg with the provided arguments.
@@ -15,10 +15,10 @@ export const executeFFmpeg = (videoBuffer: Buffer, ffmpegArgs: string[]): Promis
     // how we're piping the data to ffmpeg. Works perfectly though.
     ffmpeg.stdin.on('error', () => {})
     ffmpeg.on('close', (code) => {
-      if (code !== 0) {
-        reject(new Error(`FFmpeg exited with code ${code}`))
-      } else {
+      if (code === 0) {
         resolve(Buffer.concat(imageData))
+      } else {
+        reject(new Error(`FFmpeg exited with code ${code}`))
       }
     })
     // Pipe the input stream to ffmpeg's stdin

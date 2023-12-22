@@ -4,14 +4,14 @@ import { linear } from 'regression'
 
 const getBaseFee = (payload: EthereumGasEtherscanPayload): number | undefined => {
   const { suggestBaseFee } = payload.result
-  return parseFloat(suggestBaseFee)
+  return Number.parseFloat(suggestBaseFee)
 }
 
 const getFeePerGas = (payload: EthereumGasEtherscanPayload): Partial<FeePerGas> => {
   const { FastGasPrice, ProposeGasPrice, SafeGasPrice } = payload.result
-  const low = parseFloat(SafeGasPrice)
-  const medium = parseFloat(ProposeGasPrice)
-  const high = parseFloat(FastGasPrice)
+  const low = Number.parseFloat(SafeGasPrice)
+  const medium = Number.parseFloat(ProposeGasPrice)
+  const high = Number.parseFloat(FastGasPrice)
   const veryHigh = linear([
     [0, low],
     [1, medium],

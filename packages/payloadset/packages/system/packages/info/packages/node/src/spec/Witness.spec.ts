@@ -14,12 +14,12 @@ describe('SystemInfoWitness', () => {
     const [observation] = await witness.observe()
     expect(observation.schema).toBe('network.xyo.system.info.node')
     expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
-  }, 60000)
+  }, 60_000)
   test('observe [no config]', async () => {
     const witness = await NodeSystemInfoWitness.create()
 
     const [observation] = await witness.observe()
     expect(observation.schema).toBe('network.xyo.system.info.node')
     expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
-  }, 60000)
+  }, 60_000)
 })

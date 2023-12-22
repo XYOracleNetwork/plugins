@@ -48,7 +48,7 @@ describe('IdWitness', () => {
           const observations = (await witness.observe()) as IdPayload[]
           await validateObservationShape(observations)
           const [observation] = observations
-          expect(parseInt(observation.salt)).toBeInteger()
+          expect(Number.parseInt(observation.salt)).toBeInteger()
         })
         it('with salt uses payload salt', async () => {
           const witness = await IdWitness.create({ account: Account.randomSync() })
@@ -64,7 +64,7 @@ describe('IdWitness', () => {
           const observations = (await witness.observe()) as IdPayload[]
           await validateObservationShape(observations)
           const [observation] = observations
-          expect(parseInt(observation.salt)).toBeInteger()
+          expect(Number.parseInt(observation.salt)).toBeInteger()
         })
       })
     })

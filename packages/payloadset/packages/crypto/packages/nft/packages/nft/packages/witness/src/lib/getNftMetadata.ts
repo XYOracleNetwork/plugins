@@ -53,7 +53,7 @@ export const getNftMetadata = async (
   if (is721) {
     try {
       uri721 = await storage721.tokenURI(tokenId)
-    } catch (ex) {
+    } catch {
       //const error = ex as Error
       //console.error(`metaDataUri[${error.name}][${contractAddress}]: storage721.tokenURI(tokenId) failed`)
     }
@@ -81,7 +81,7 @@ export const getNftMetadata = async (
     if (is1155) {
       try {
         uri1155 = await storage1155.uri(tokenId)
-      } catch (ex) {
+      } catch {
         //const error = ex as Error
         //console.error(`metaDataUri[${error.name}][${contractAddress}]: storage1155.uri(tokenId) failed`)
         //console.log(error.message)
@@ -109,14 +109,14 @@ export const getNftMetadata = async (
       }*/
       const axios = new AxiosJson({ timeout: 5000 })
       try {
-        if (tokenMetadataUri && tokenMetadataUri.length) {
+        if (tokenMetadataUri && tokenMetadataUri.length > 0) {
           checkedMetaDataUri = tokenMetadataUri ? checkIpfsUrl(tokenMetadataUri, ipfsGateway) : tokenMetadataUri
         }
         metadata = checkedMetaDataUri ? (await axios.get(checkedMetaDataUri)).data : undefined
-      } catch (ex) {
+      } catch {
         try {
           metadata = defaultUri ? (await axios.get(defaultUri)).data : undefined
-        } catch (ex) {
+        } catch {
           //const error = ex as Error
           //console.error(`metadata: ${error.message}`)
         }

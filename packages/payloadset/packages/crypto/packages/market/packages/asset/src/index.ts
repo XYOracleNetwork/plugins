@@ -1,9 +1,3 @@
-import { CryptoMarketAssetPlugin } from './Plugin'
-
 export * from './Diviner'
+export { CryptoMarketAssetPlugin, CryptoMarketAssetPlugin as default } from './Plugin'
 export * from './Schema'
-
-export { CryptoMarketAssetPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default CryptoMarketAssetPlugin

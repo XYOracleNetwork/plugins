@@ -21,9 +21,9 @@ describe('transformGasFromEthers', () => {
   it('matches expected output', () => {
     const result = transformGasFromEthers(sampleEthersGas)
     expect(result).toMatchObject({
-      baseFee: 13.54786364,
+      baseFee: 13.547_863_64,
       feePerGas: {
-        high: 28.395724162,
+        high: 28.395_724_162,
       },
       priorityFeePerGas: {
         high: 1.5,

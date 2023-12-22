@@ -1,6 +1,7 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { readFile } from 'fs/promises'
-import { join } from 'path'
 
 import { scoreTotalAttributes } from '../scoreTotalAttributes'
 

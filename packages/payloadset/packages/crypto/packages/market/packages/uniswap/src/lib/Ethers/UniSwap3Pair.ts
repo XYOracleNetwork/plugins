@@ -43,9 +43,8 @@ export class EthersUniSwap3Pair {
       this._pool = this._pool || null
       const slot0 = await this.slot0()
       this._pool =
-        this._pool !== null
-          ? this._pool
-          : new Pool(
+        this._pool === null
+          ? new Pool(
               await this.token(0),
               await this.token(1),
               Number(slot0.feeProtocol),
@@ -53,6 +52,7 @@ export class EthersUniSwap3Pair {
               `0x${(await this.poolContract().liquidity()).toString(16)}`,
               Number(slot0.tick),
             )
+          : this._pool
       return assertEx(this._pool)
     })
   }
@@ -70,7 +70,7 @@ export class EthersUniSwap3Pair {
       const pool = await this.pool()
       const tokens = await Promise.all(tokenIndexes.map((value) => this.token(value)))
       const tokenContracts = await Promise.all(tokenIndexes.map((value) => this.tokenContract(value)))
-      const tokenPrices = tokens.map((token) => parseFloat(pool.priceOf(token).toSignificant()))
+      const tokenPrices = tokens.map((token) => Number.parseFloat(pool.priceOf(token).toSignificant()))
       const tokenSymbols = tokens.map((token, index) => assertEx(token.symbol, `Token[${index}] Missing Symbols`).toLowerCase())
       const result = {
         tokens: await Promise.all(

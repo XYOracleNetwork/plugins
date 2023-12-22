@@ -35,6 +35,7 @@ const profile = (name: string) => {
 const profileReport = () => {
   let lowest = Date.now()
   let highest = 0
+  // eslint-disable-next-line unicorn/no-array-reduce
   const results = Object.entries(profileData).reduce<Record<string, number>>((prev, [name, readings]) => {
     const start = readings.at(0)
     if (start) {

@@ -1,9 +1,3 @@
-import { PentairScreenlogicPayloadPlugin } from './Plugin'
-
 export * from './Payload'
+export { PentairScreenlogicPayloadPlugin as default, PentairScreenlogicPayloadPlugin } from './Plugin'
 export * from './Schema'
-
-export { PentairScreenlogicPayloadPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default PentairScreenlogicPayloadPlugin

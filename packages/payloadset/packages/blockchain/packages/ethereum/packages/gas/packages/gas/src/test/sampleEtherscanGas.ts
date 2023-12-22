@@ -12,5 +12,5 @@ export const sampleEtherscanGas: EthereumGasEtherscanPayload = {
   },
   schema: EthereumGasEtherscanSchema,
   status: '1',
-  timestamp: 1668697958837,
+  timestamp: 1_668_697_958_837,
 }

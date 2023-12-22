@@ -27,8 +27,8 @@ const readAddressFromSlot = async (provider: Provider, address: string, slot: st
   try {
     const slotValue = await provider.getStorage(address, slot, block)
     return hexFromHexString(slotValue, { prefix: true })
-  } catch (ex) {
-    return undefined
+  } catch {
+    return
   }
 }
 

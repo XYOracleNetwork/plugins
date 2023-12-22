@@ -30,6 +30,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
 
   protected static matchingExistingField<R = string, T extends Payload = Payload>(objs: T[], field: keyof T): R | undefined {
     const expectedValue = objs.at(0)?.[field] as R
+    // eslint-disable-next-line unicorn/no-array-reduce
     const didNotMatch = objs.reduce((prev, obj) => {
       return prev || obj[field] !== expectedValue
     }, false)
@@ -47,6 +48,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
   protected override async divineHandler(inPayloads: CryptoContractFunctionCallResult[] = []): Promise<ContractInfo[]> {
     const callResults = inPayloads.filter(isPayloadOfSchemaType<CryptoContractFunctionCallResult>(CryptoContractFunctionCallResultSchema))
     const addresses = Object.keys(
+      // eslint-disable-next-line unicorn/no-array-reduce
       callResults.reduce<Record<string, boolean>>((prev, result) => {
         if (result.address) {
           prev[result.address] = true
@@ -58,7 +60,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
       addresses.map(async (address) => {
         const foundCallResults = callResults.filter((callResult) => callResult.address === address)
         const info: ContractInfo = {
-          ...{ results: await this.reduceResults(foundCallResults) },
+          results: await this.reduceResults(foundCallResults),
           ...this.contractInfoRequiredFields(foundCallResults),
         }
         return info
@@ -69,6 +71,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
   }
 
   protected reduceResults(callResults: CryptoContractFunctionCallResult[]): Promisable<ContractInfo['results']> {
+    // eslint-disable-next-line unicorn/no-array-reduce
     return callResults.reduce<Record<string, unknown>>((prev, callResult) => {
       prev[callResult.functionName] = asCryptoContractFunctionCallSuccess(callResult)?.result
       return prev

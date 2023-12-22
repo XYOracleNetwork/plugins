@@ -24,9 +24,9 @@ describe('transformGasFromEtherchainV2', () => {
       baseFee: undefined,
       feePerGas: {
         low: 11.2,
-        medium: 12.0,
-        high: 19.80304733,
-        veryHigh: 29.71428617,
+        medium: 12,
+        high: 19.803_047_33,
+        veryHigh: 29.714_286_17,
       },
       priorityFeePerGas: {},
     })

@@ -1,9 +1,12 @@
 const finalConfig = {
-  extends: ["@xylabs"],
+  env: {
+    es2024: true
+  },
+  'extends': ['@xylabs', 'plugin:unicorn/recommended'],
   parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaVersion: 'latest', project: null, tsconfigRootDir: __dirname, extraFileExtensions: ['json'] },
-  root: true,
-  ignorePatterns: [
+  parserOptions: { ecmaVersion: 'latest', project: null, sourceType: 'module', tsconfigRootDir: null },
+  "root": true,
+  "ignorePatterns": [
     "dist",
     "node_modules",
     "docs",
@@ -16,7 +19,20 @@ const finalConfig = {
     ".yarn",
     ".*"
   ],
-  rules: {
+  "rules": {
+    "unicorn/filename-case": ["off"],
+    "unicorn/no-nested-ternary": ["off"],
+    "unicorn/no-array-callback-reference": ["off"],
+    "unicorn/prevent-abbreviations": ["off"],
+    "unicorn/no-null": ["off"],
+    "unicorn/number-literal-case": ["off"],
+    "unicorn/no-await-expression-member": ["off"],
+    "unicorn/new-for-builtins": ["off"],
+    "unicorn/catch-error-name": ["off"],
+    "unicorn/prefer-top-level-await": ["off"],
+    "unicorn/consistent-function-scoping": ["off"],
+    "unicorn/prefer-module": ["off"],
+    "import/no-default-export": ["off"],
     "@typescript-eslint/explicit-member-accessibility": ["warn", { "accessibility": "no-public" }],
     "no-restricted-imports": [
       "warn",

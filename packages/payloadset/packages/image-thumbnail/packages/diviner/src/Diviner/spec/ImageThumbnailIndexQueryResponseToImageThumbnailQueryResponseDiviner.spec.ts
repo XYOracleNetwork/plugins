@@ -30,7 +30,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         sources: [],
         status: 200,
         success: true,
-        timestamp: 1234567890,
+        timestamp: 1_234_567_890,
       },
     ],
     [
@@ -40,7 +40,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         sources: [],
         status: 200,
         success: true,
-        timestamp: 1234567891,
+        timestamp: 1_234_567_891,
       },
       {
         key: 'setInBeforeAll',
@@ -48,7 +48,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         sources: [],
         status: 500,
         success: false,
-        timestamp: 1234567892,
+        timestamp: 1_234_567_892,
       },
     ],
   ]
@@ -57,7 +57,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
     diviner = await ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.create()
     await Promise.all(
       queries.map((query, i) => {
-        indexes[i].forEach(async (index) => {
+        indexes[i].map(async (index) => {
           index.key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: query.url })
         })
       }),
@@ -70,14 +70,14 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const results = await diviner.divine([imageThumbnailDivinerQuery, ...imageThumbnailResultIndex])
         expect(results).toBeArrayOfSize(imageThumbnailResultIndex.length)
         expect(results.filter(isImageThumbnailResult)).toBeArrayOfSize(imageThumbnailResultIndex.length)
-        results.filter(isImageThumbnailResult).forEach((result, i) => {
+        for (const [i, result] of results.filter(isImageThumbnailResult).entries()) {
           const index = imageThumbnailResultIndex[i]
           expect(result.url).toBe(imageThumbnailDivinerQuery.url)
           expect(result.success).toBe(index.success)
           expect(result.timestamp).toBe(index.timestamp)
           expect(result.status).toBe(index.status)
           expect(result.schema).toBe(ImageThumbnailResultSchema)
-        })
+        }
       })
     })
     describe('with multiple urls in index result', () => {
@@ -88,11 +88,9 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const resultsIndexes = results.filter(isImageThumbnailResult)
         expect(resultsIndexes).toBeArrayOfSize(indexesLength)
         let resultsIterator = 0
-        for (let i = 0; i < queries.length; i++) {
-          const { url } = queries[i]
+        for (const [i, { url }] of queries.entries()) {
           const indexSet = indexes[i]
-          for (let j = 0; j < indexSet.length; j++) {
-            const index = indexSet[j]
+          for (const index of indexSet) {
             const result = resultsIndexes[resultsIterator]
             expect(result.url).toBe(url)
             expect(result.success).toBe(index.success)

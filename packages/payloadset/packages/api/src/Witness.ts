@@ -72,7 +72,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
       return url.href
     }
 
-    throw Error('Unable to determine uri. No uri/uriTemplate specified in either the call or config.')
+    throw new Error('Unable to determine uri. No uri/uriTemplate specified in either the call or config.')
   }
 
   protected override async observeHandler(inPayloads: ApiCall[] = []): Promise<ApiCallResult[]> {

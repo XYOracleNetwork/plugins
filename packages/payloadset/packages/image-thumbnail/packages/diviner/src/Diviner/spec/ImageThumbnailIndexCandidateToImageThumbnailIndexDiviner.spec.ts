@@ -10,7 +10,7 @@ import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../Ima
 
 describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
   let diviner: ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner
-  const timestampA = 1234567890
+  const timestampA = 1_234_567_890
   const timestampPayloadA: TimeStamp = { schema: TimestampSchema, timestamp: timestampA }
   const imageThumbnailPayloadA: ImageThumbnail = {
     http: {
@@ -20,7 +20,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     sourceUrl: 'https://xyo.network',
     url: 'data',
   }
-  const timestampB = 1234567891
+  const timestampB = 1_234_567_891
   const timestampPayloadB: TimeStamp = { schema: TimestampSchema, timestamp: timestampB }
   const imageThumbnailPayloadB: ImageThumbnail = {
     http: {
@@ -34,13 +34,16 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     const payloadDictionary = await PayloadHasher.toMap([boundWitness, thumbnail, timestamp])
     expect(result).toBeArrayOfSize(1)
     expect(result.filter(isImageThumbnailResultIndex)).toBeArrayOfSize(1)
-    const [index] = result.filter(isImageThumbnailResultIndex)
+    const index = result.find(isImageThumbnailResultIndex)
     const key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: thumbnail.sourceUrl })
-    expect(index.key).toBe(key)
-    expect(index.sources.sort()).toEqual(Object.keys(payloadDictionary).sort())
-    expect(index.success).toBe(thumbnail.http?.status === 200)
-    expect(index.timestamp).toBe(timestamp.timestamp)
-    expect(index.status).toBe(thumbnail.http?.status)
+    expect(index).toBeDefined()
+    if (index !== undefined) {
+      expect(index.key).toBe(key)
+      expect(index.sources.sort()).toEqual(Object.keys(payloadDictionary).sort())
+      expect(index.success).toBe(thumbnail.http?.status === 200)
+      expect(index.timestamp).toBe(timestamp.timestamp)
+      expect(index.status).toBe(thumbnail.http?.status)
+    }
   }
   beforeAll(async () => {
     diviner = await ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.create()
@@ -73,10 +76,12 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
         )
         const results = await diviner.divine(data.flat())
         expect(results).toBeArrayOfSize(2)
-        data.forEach(async (input, i) => {
-          const result = results[i]
-          await validateResult(input, [result])
-        })
+        await Promise.all(
+          data.map(async (input, i) => {
+            const result = results[i]
+            await validateResult(input, [result])
+          }),
+        )
       })
       it('handles sparse inputs', async () => {
         const [bw] = await new BoundWitnessBuilder().payloads(cases[0]).build()

@@ -1,10 +1,4 @@
-import { AddressTransactionHistoryPlugin } from './Plugin'
-
 export * from './Config'
 export * from './lib'
+export { AddressTransactionHistoryPlugin, AddressTransactionHistoryPlugin as default } from './Plugin'
 export * from './Witness'
-
-export { AddressTransactionHistoryPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default AddressTransactionHistoryPlugin

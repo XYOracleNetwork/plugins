@@ -1,3 +1,5 @@
+import { writeFile } from 'node:fs/promises'
+
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import { AccountInstance } from '@xyo-network/account-model'
@@ -9,7 +11,6 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
-import { writeFile } from 'fs/promises'
 
 import { CryptoNftCollectionWitness } from '../Witness'
 
@@ -78,7 +79,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
           config: { schema: NftCollectionWitnessConfigSchema },
           providers: () => getProvidersFromEnv(1, chainId),
         })
-        const query: NftCollectionWitnessQuery = { address, chainId, maxNfts: 20000, schema: NftCollectionWitnessQuerySchema }
+        const query: NftCollectionWitnessQuery = { address, chainId, maxNfts: 20_000, schema: NftCollectionWitnessQuerySchema }
         const observation = await witness.observe([query])
         validateObservation(observation)
         await writeFile(`./nftData/witness/${address}-witness.json`, JSON.stringify(observation, null, 2))

@@ -31,8 +31,9 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
     const bws: BoundWitness[] = payloads.filter(isBoundWitness)
     const imageThumbnailPayloads: ImageThumbnail[] = payloads.filter(isImageThumbnail)
     const timestampPayloads: TimeStamp[] = payloads.filter(isTimestamp)
-    if (bws.length && imageThumbnailPayloads.length && timestampPayloads.length) {
+    if (bws.length > 0 && imageThumbnailPayloads.length > 0 && timestampPayloads.length > 0) {
       const payloadDictionary = await PayloadHasher.toMap(payloads)
+      // eslint-disable-next-line unicorn/no-array-reduce
       const tuples: [BoundWitness, ImageThumbnail, TimeStamp][] = bws.reduce<[BoundWitness, ImageThumbnail, TimeStamp][]>(
         (acc, curr) => {
           const imageThumbnailIndex = curr.payload_schemas?.findIndex((schema) => schema === ImageThumbnailSchema)
@@ -48,9 +49,9 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
       )
       const indexes = await Promise.all(
         tuples.map(async ([bw, imageThumbnailPayload, timestampPayload]) => {
-          const { sourceUrl: url } = imageThumbnailPayload
+          const { sourceUrl: url, http } = imageThumbnailPayload
           const { timestamp } = timestampPayload
-          const status = imageThumbnailPayload.http?.status
+          const { status } = http ?? {}
           const success = !!imageThumbnailPayload.url // Call anything with a thumbnail url a success
           const sources = (await PayloadHasher.hashPairs([bw, imageThumbnailPayload, timestampPayload])).map(([, hash]) => hash)
           const urlPayload = { schema: UrlSchema, url }
@@ -65,6 +66,6 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
       )
       return indexes.flat()
     }
-    return Promise.resolve([])
+    return []
   }
 }

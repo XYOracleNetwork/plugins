@@ -16,9 +16,9 @@ describe('divineCoinGeckoPrices', () => {
       Object.entries(value).map(([symbol, price]) => {
         expect(symbol).toBeString()
         expect(price).toBeString()
-        const parsed = parseFloat(price)
+        const parsed = Number.parseFloat(price)
         expect(parsed).toBeNumber()
-        expect(isNaN(parsed)).toBeFalse()
+        expect(Number.isNaN(parsed)).toBeFalse()
       })
     })
     expect(result?.assets?.xyo?.value?.btc).toBe('6.28282e-7')

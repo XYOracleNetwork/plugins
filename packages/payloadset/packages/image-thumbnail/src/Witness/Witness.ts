@@ -72,7 +72,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     if (PayloadHasher.wasmSupport.canUseWasm) {
       try {
         return await sha256(viewData)
-      } catch (ex) {
+      } catch {
         PayloadHasher.wasmSupport.allowWasm = false
       }
     }
@@ -84,7 +84,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     if (url.startsWith('data:image')) {
       const data = url.split(',')[1]
       if (data) {
-        return Uint8Array.from(atob(data), (c) => c.charCodeAt(0))
+        return Uint8Array.from(atob(data), (c) => c.codePointAt(0) ?? 0)
       } else {
         const error: ImageThumbnailWitnessError = {
           message: 'Invalid data Url',
@@ -99,7 +99,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
   protected override async observeHandler(payloads: UrlPayload[] = []): Promise<ImageThumbnail[]> {
     // eslint-disable-next-line import/no-named-as-default-member
     if (!hasbin.sync('magick')) {
-      throw Error('ImageMagick is required for this witness')
+      throw new Error('ImageMagick is required for this witness')
     }
     const urlPayloads = payloads.filter((payload) => payload.schema === UrlSchema)
     const process = async () => {
@@ -276,13 +276,15 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     let encoding: ImageThumbnailEncoding = 'PNG'
 
     switch (fileType.toUpperCase()) {
-      case 'GIF':
+      case 'GIF': {
         encoding = 'GIF'
         break
+      }
       case 'JPG':
-      case 'JPEG':
+      case 'JPEG': {
         encoding = 'JPG'
         break
+      }
     }
 
     switch (mediaType) {

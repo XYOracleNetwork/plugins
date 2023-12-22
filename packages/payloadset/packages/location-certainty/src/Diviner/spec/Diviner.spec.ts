@@ -9,20 +9,20 @@ import { LocationCertaintyDiviner } from '../Diviner'
 const sample1: LocationPayload[] = [
   {
     altitude: -5,
-    latitude: 32.71664,
-    longitude: -117.12033,
+    latitude: 32.716_64,
+    longitude: -117.120_33,
     schema: LocationSchema,
   },
   {
     altitude: -9,
     latitude: 32.7174,
-    longitude: -117.11674,
+    longitude: -117.116_74,
     schema: LocationSchema,
   },
   {
     altitude: -11,
-    latitude: 32.71788,
-    longitude: -117.11377,
+    latitude: 32.717_88,
+    longitude: -117.113_77,
     schema: LocationSchema,
   },
 ]
@@ -30,20 +30,20 @@ const sample1: LocationPayload[] = [
 const sample2: LocationPayload[] = [
   {
     altitude: 50,
-    latitude: 32.71664,
-    longitude: -117.12033,
+    latitude: 32.716_64,
+    longitude: -117.120_33,
     schema: LocationSchema,
   },
   {
     altitude: 53,
     latitude: 32.7174,
-    longitude: -117.11674,
+    longitude: -117.116_74,
     schema: LocationSchema,
   },
   {
     altitude: 55,
-    latitude: 32.71788,
-    longitude: -117.11377,
+    latitude: 32.717_88,
+    longitude: -117.113_77,
     schema: LocationSchema,
   },
 ]
@@ -51,20 +51,20 @@ const sample2: LocationPayload[] = [
 const sample3: LocationPayload[] = [
   {
     altitude: 151,
-    latitude: 32.71664,
-    longitude: -117.12033,
+    latitude: 32.716_64,
+    longitude: -117.120_33,
     schema: LocationSchema,
   },
   {
     altitude: 163,
     latitude: 32.7174,
-    longitude: -117.11674,
+    longitude: -117.116_74,
     schema: LocationSchema,
   },
   {
     altitude: 168,
-    latitude: 32.71788,
-    longitude: -117.11377,
+    latitude: 32.717_88,
+    longitude: -117.113_77,
     schema: LocationSchema,
   },
 ]

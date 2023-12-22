@@ -1,6 +1,7 @@
+import { createReadStream } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+
 import { Crypto } from '@xylabs/crypto'
-import { createReadStream } from 'fs'
-import { fileURLToPath } from 'url'
 
 export const hashFile = (url: string): Promise<string> => {
   const path = url.startsWith('file://') ? fileURLToPath(url) : url

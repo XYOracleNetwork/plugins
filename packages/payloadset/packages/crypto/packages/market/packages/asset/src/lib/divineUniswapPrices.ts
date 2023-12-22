@@ -1,3 +1,4 @@
+import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { AssetInfo, CryptoMarketAssetPayload, CryptoMarketAssetSchema, Currency, Token, ValueBasis } from '@xyo-network/crypto-asset-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -22,21 +23,18 @@ const pairsContainingToken = (uniswapPayload: UniswapCryptoMarketPayload, token:
 }
 
 const tokensFromPairs = (pairs: UniswapCryptoPair[]) => {
-  return pairs
-    .map((p) => p.tokens)
-    .flat()
-    .map((t) => t.symbol.toLowerCase() as Token)
+  return pairs.flatMap((p) => p.tokens).map((t) => t.symbol.toLowerCase() as Token)
 }
 
 const valuesFromTokenPairs = (tokensPairs: UniswapCryptoToken[][], token: Token): ValueBasis => {
   return Object.fromEntries(
     tokensPairs
       .map((pair) => {
-        const current = pair.filter((p) => p.symbol.toLowerCase() === token)?.[0]
-        const other = pair.filter((p) => p.symbol.toLowerCase() !== token)?.[0]
-        return [other.symbol.toLowerCase(), current.value.toString()]
+        const current = pair.find((p) => p.symbol.toLowerCase() === token)
+        const other = pair.find((p) => p.symbol.toLowerCase() !== token)
+        return [other?.symbol.toLowerCase(), current?.value.toString()]
       })
-      .map((x) => [mapUniswapToken(x[0]), x[1]]),
+      .map((x) => [mapUniswapToken(assertEx(x[0], 'Undefined Token')), x[1]]),
   )
 }
 

@@ -16,8 +16,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('getNftsOwnedByAddress', () => {
     const provider = getProviderFromEnv(chainId)
     const nfts = await getNftsOwnedByAddress(address, [provider], 10)
     expect(nfts.length).toBeGreaterThan(0)
-    for (let i = 0; i < nfts.length; i++) {
-      const nft = nfts[i]
+    for (const nft of nfts) {
       expect(nft.address).toBeString()
       expect(nft.supply).toBeString()
       if (nft?.metadata) {

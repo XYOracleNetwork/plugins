@@ -58,16 +58,13 @@ export class EvmTokenInterfaceImplementedDiviner<
    */
   get tokenInterfaces() {
     if (!this._tokenInterfaces) {
-      if (this.config?.tokenInterfaces) {
-        this._tokenInterfaces =
-          (Object.fromEntries(
+      this._tokenInterfaces = this.config?.tokenInterfaces
+        ? (Object.fromEntries(
             this.config?.tokenInterfaces.map((tokenInterface) => {
               return [tokenInterface, EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces[tokenInterface]] as const
             }),
           ) as TokenInterfaceDictionary) ?? {}
-      } else {
-        this._tokenInterfaces = EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
-      }
+        : EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
     }
     return this._tokenInterfaces
   }
@@ -82,14 +79,14 @@ export class EvmTokenInterfaceImplementedDiviner<
           const byteCode = assertEx(code, 'Missing code')
           const results: EvmTokenInterfaceImplemented[] = []
           // Iterate over each token interface
-          Object.entries(this.tokenInterfaces).forEach(([tokenInterface, abi]) => {
+          for (const [tokenInterface, abi] of Object.entries(this.tokenInterfaces)) {
             // Check if the contract implements the interface abi
             const contractInterface = new Interface(abi)
             const implementations: boolean[] = []
             contractInterface.forEachFunction(({ selector }) => {
               implementations.push(byteCode.includes(BigInt(selector).toString(16)))
             })
-            const implemented = implementations.every((implementation) => implementation)
+            const implemented = implementations.every(Boolean)
             const result: EvmTokenInterfaceImplemented = {
               address,
               chainId,
@@ -98,7 +95,7 @@ export class EvmTokenInterfaceImplementedDiviner<
               tokenInterface: tokenInterface as TokenInterface,
             }
             results.push(result)
-          })
+          }
 
           return results
         }),

@@ -18,7 +18,7 @@ const testVideoFormat = async (witness: ImageThumbnailWitness, url: string) => {
   expect(result[0].schema).toBe(ImageThumbnailSchema)
   expect(result[0].url?.length).toBeGreaterThan(0)
   const imageData = result[0].url?.split(',')[1] ?? ''
-  const buffer = Buffer.from(Uint8Array.from(atob(imageData), (c) => c.charCodeAt(0)))
+  const buffer = Buffer.from(Uint8Array.from(atob(imageData), (c) => c.codePointAt(0) ?? 0))
   const fileType = await FileType.fromBuffer(buffer)
   expect(fileType?.mime).toBe('image/png')
 }

@@ -30,7 +30,7 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
   }
 
   get timeout() {
-    return this.config.timeout ?? 10000
+    return this.config.timeout ?? 10_000
   }
 
   protected override async observeHandler(payloads?: NftWitnessQuery[]): Promise<NftInfo[]> {
@@ -58,7 +58,7 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
             return observation
           } catch (ex) {
             const error = ex as Error
-            throw Error(`Failed to get nfts for address ${address} on chainId ${chainId}: ${error.message}`)
+            throw new Error(`Failed to get nfts for address ${address} on chainId ${chainId}: ${error.message}`)
           }
         }),
       )

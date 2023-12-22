@@ -2,7 +2,7 @@ import { EthereumGasEthgasstationPayload, EthereumGasEthgasstationSchema } from 
 
 export const sampleEthgasstationGas: EthereumGasEthgasstationPayload = {
   baseFee: 10,
-  blockNumber: 16028883,
+  blockNumber: 16_028_883,
   blockTime: 11.88,
   gasPrice: {
     fast: 12,
@@ -16,5 +16,5 @@ export const sampleEthgasstationGas: EthereumGasEthgasstationPayload = {
     standard: 2,
   },
   schema: EthereumGasEthgasstationSchema,
-  timestamp: 1668697958837,
+  timestamp: 1_668_697_958_837,
 }

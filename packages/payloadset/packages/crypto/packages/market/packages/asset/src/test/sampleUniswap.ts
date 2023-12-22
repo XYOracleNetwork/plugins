@@ -7,12 +7,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x55296f69f40Ea6d20E478533C15A6B08B654E758',
           symbol: 'xyo',
-          value: 0.00000896773,
+          value: 0.000_008_967_73,
         },
         {
           address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           symbol: 'weth',
-          value: 111511,
+          value: 111_511,
         },
       ],
     },
@@ -21,7 +21,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x55296f69f40Ea6d20E478533C15A6B08B654E758',
           symbol: 'xyo',
-          value: 0.0148782,
+          value: 0.014_878_2,
         },
         {
           address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
@@ -35,7 +35,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x55296f69f40Ea6d20E478533C15A6B08B654E758',
           symbol: 'xyo',
-          value: 0.014039,
+          value: 0.014_039,
         },
         {
           address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
@@ -49,12 +49,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
           symbol: 'wbtc',
-          value: 1527240,
+          value: 1_527_240,
         },
         {
           address: '0x55296f69f40Ea6d20E478533C15A6B08B654E758',
           symbol: 'xyo',
-          value: 6.54777e-7,
+          value: 6.547_77e-7,
         },
       ],
     },
@@ -68,7 +68,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x55296f69f40Ea6d20E478533C15A6B08B654E758',
           symbol: 'xyo',
-          value: 0.00220354,
+          value: 0.002_203_54,
         },
       ],
     },
@@ -82,7 +82,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
           symbol: 'weth',
-          value: 0.0710048,
+          value: 0.071_004_8,
         },
       ],
     },
@@ -91,12 +91,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
           symbol: 'dai',
-          value: 1.00004,
+          value: 1.000_04,
         },
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.999959,
+          value: 0.999_959,
         },
       ],
     },
@@ -105,7 +105,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.000616944,
+          value: 0.000_616_944,
         },
         {
           address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -119,7 +119,7 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.000617196,
+          value: 0.000_617_196,
         },
         {
           address: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
@@ -133,12 +133,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x6B175474E89094C44Da98b954EedeAC495271d0F',
           symbol: 'dai',
-          value: 1.00002,
+          value: 1.000_02,
         },
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.999983,
+          value: 0.999_983,
         },
       ],
     },
@@ -147,12 +147,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x853d955aCEf822Db058eb8505911ED77F175b99e',
           symbol: 'frax',
-          value: 0.999762,
+          value: 0.999_762,
         },
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 1.00024,
+          value: 1.000_24,
         },
       ],
     },
@@ -161,12 +161,12 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599',
           symbol: 'wbtc',
-          value: 22826.3,
+          value: 22_826.3,
         },
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.000043809,
+          value: 0.000_043_809,
         },
       ],
     },
@@ -175,16 +175,16 @@ export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
         {
           address: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48',
           symbol: 'usdc',
-          value: 0.999853,
+          value: 0.999_853,
         },
         {
           address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
           symbol: 'usdt',
-          value: 1.00015,
+          value: 1.000_15,
         },
       ],
     },
   ],
   schema: UniswapCryptoMarketSchema,
-  timestamp: 1659012011418,
+  timestamp: 1_659_012_011_418,
 }

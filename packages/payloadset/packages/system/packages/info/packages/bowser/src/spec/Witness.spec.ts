@@ -1,12 +1,13 @@
 /**
  * @jest-environment jsdom
  */
+import Crypto from 'node:crypto'
+
 import { Account } from '@xyo-network/account'
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
-import Crypto from 'crypto'
 
 import { BowserSystemInfoWitnessConfigSchema } from '../Config'
 import { BowserSystemInfoWitness } from '../Witness'

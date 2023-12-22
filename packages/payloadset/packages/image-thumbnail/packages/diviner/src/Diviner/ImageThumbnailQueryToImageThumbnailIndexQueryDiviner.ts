@@ -21,7 +21,7 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
   }
   protected override async divineHandler(payloads: Payload[] = []): Promise<ImageThumbnailResultQuery[]> {
     const queries = payloads.filter(isImageThumbnailDivinerQuery)
-    if (queries.length) {
+    if (queries.length > 0) {
       const results = await Promise.all(
         queries.map(async (query) => {
           const { limit: payloadLimit, offset: payloadOffset, order: payloadOrder, status: payloadStatus, success: payloadSuccess, url } = query
@@ -38,6 +38,6 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
       )
       return results
     }
-    return Promise.resolve([])
+    return []
   }
 }

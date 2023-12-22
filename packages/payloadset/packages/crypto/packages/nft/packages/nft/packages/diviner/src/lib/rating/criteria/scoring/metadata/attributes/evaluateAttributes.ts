@@ -6,7 +6,7 @@ const isDate = (value: unknown): value is Date => {
     try {
       new Date(value)
       return true
-    } catch (error) {
+    } catch {
       return false
     }
   }
@@ -22,7 +22,7 @@ const isNonEmptyString = (value: unknown): value is string => typeof value === '
 const isNonEmptyStringOrNumber = (value: unknown): value is string | number => value === 'number' || isNonEmptyString(value)
 
 export const evaluateNftAttributes = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore =>
-  !nft?.metadata?.attributes ? [0, 1] : evaluateAttributes(nft?.metadata?.attributes)
+  nft?.metadata?.attributes ? evaluateAttributes(nft?.metadata?.attributes) : [0, 1]
 
 export const evaluateAttributes = (attributes: NftAttribute[] | OpenSeaNftAttribute[] | unknown): ScaledScore => {
   if (!attributes || !Array.isArray(attributes) || attributes.length === 0) return [0, 1]

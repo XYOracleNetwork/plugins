@@ -1,9 +1,3 @@
-import { EthereumGasEthersPayloadPlugin } from './Plugin'
-
 export * from './Payload'
+export { EthereumGasEthersPayloadPlugin as default, EthereumGasEthersPayloadPlugin } from './Plugin'
 export * from './Schema'
-
-export { EthereumGasEthersPayloadPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default EthereumGasEthersPayloadPlugin

@@ -70,7 +70,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
   }
 
   get payloadDivinerLimit() {
-    return this.config.payloadDivinerLimit ?? 1_000
+    return this.config.payloadDivinerLimit ?? 1000
   }
 
   protected static async getPayloadsInBoundWitness(bw: BoundWitness, archivist: ArchivistInstance): Promise<IndexCandidate[] | undefined> {
@@ -78,7 +78,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const hashes = indexes.map((index) => bw.payload_hashes?.[index])
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map((is) => results.find(is))
-    if (filteredResults.some((f) => f === undefined)) return undefined
+    if (filteredResults.includes(undefined)) return undefined
     const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as IndexCandidate[]
     return [bw, ...indexCandidates]
   }

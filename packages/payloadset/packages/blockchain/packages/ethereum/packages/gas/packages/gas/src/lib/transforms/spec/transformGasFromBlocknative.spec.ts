@@ -21,7 +21,7 @@ describe('transformGasFromEtherscan', () => {
   it('matches expected output', () => {
     const result = transformGasFromBlocknative(sampleBlocknativeGas)
     expect(result).toMatchObject({
-      baseFee: 13.691764456,
+      baseFee: 13.691_764_456,
       feePerGas: {
         low: 12.95,
         medium: 13.25,

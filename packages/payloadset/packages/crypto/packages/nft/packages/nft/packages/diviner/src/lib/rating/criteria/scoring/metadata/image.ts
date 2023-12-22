@@ -7,11 +7,11 @@ const MaxPossibleImageScore = 3
 
 export const scoreNftImage = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore => {
   // If there's no image data
-  if (!nft?.metadata?.image) {
+  if (nft?.metadata?.image) {
+    return scoreImage(nft.metadata?.image)
+  } else {
     // but there is image data, skip this scoring criteria, otherwise fail it completely
     return nft.metadata?.image_data ? PASS : [0, MaxPossibleImageScore]
-  } else {
-    return scoreImage(nft.metadata?.image)
   }
 }
 

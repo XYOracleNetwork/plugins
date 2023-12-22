@@ -1,9 +1,3 @@
-import { NodeSystemInfoPlugin } from './Plugin'
-
 export * from './Config'
+export { NodeSystemInfoPlugin as default, NodeSystemInfoPlugin } from './Plugin'
 export * from './Witness'
-
-export { NodeSystemInfoPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default NodeSystemInfoPlugin

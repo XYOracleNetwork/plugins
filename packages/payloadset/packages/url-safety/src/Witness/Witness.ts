@@ -80,6 +80,7 @@ export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafety
     const matches = await checkUrlSafety(urls, { key: this.key })
 
     return urls.map((url) => {
+      // eslint-disable-next-line unicorn/no-array-reduce
       const payload = matches.reduce<UrlSafetyPayload>(
         (prev, match) => {
           if (match.threat.url === url) {

@@ -12,8 +12,8 @@ export const pricesFromCoingecko = async (coins: CryptoAsset[], currencies: Cryp
     .join(',')}`
   const coinGeckoSimplePrices = (await axios.get<CoinGeckoSimplePrices>(url)).data
   const assets: CryptoAssetPrices = {}
-  Object.entries(coinGeckoSimplePrices).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(coinGeckoSimplePrices)) {
     assets[coingeckoCoinToAssetMap[key]] = value
-  })
+  }
   return assets
 }

@@ -31,7 +31,7 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
     const imageThumbnailResultIndexes = payloads.filter(isImageThumbnailResultIndex)
 
     // If we have operands
-    if (imageThumbnailDivinerQueries.length && imageThumbnailResultIndexes.length) {
+    if (imageThumbnailDivinerQueries.length > 0 && imageThumbnailResultIndexes.length > 0) {
       // Create a dictionary to translate index keys to the urls that represent them
       const keyToUrlDictionary = Object.fromEntries(
         await Promise.all(

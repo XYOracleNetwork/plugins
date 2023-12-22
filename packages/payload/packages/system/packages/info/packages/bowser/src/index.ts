@@ -1,10 +1,4 @@
-import { BowserSystemInfoPayloadPlugin } from './Plugin'
-
 export * from './Payload'
+export { BowserSystemInfoPayloadPlugin, BowserSystemInfoPayloadPlugin as default } from './Plugin'
 export * from './Schema'
 export * from './Template'
-
-export { BowserSystemInfoPayloadPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default BowserSystemInfoPayloadPlugin

@@ -25,7 +25,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
   })
   it.skip('HTTPS [medium/png/unsafe]', async () => {
@@ -36,7 +36,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
   })
   it('HTTPS [medium/svg]', async () => {
@@ -46,7 +46,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
 
     //do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
@@ -65,7 +65,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     console.log(`ENS-DataHash: ${await PayloadHasher.hashAsync({ url: result[0].url })}`)
     console.log(`ENS-Result: ${JSON.stringify(result[0], null, 2)}`)
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
 
     //do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
@@ -80,7 +80,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
   })
   it('HTTPS [html/error]', async () => {
@@ -118,7 +118,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64000)
+    expect(result[0].url?.length).toBeLessThan(64_000)
 
     //do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]

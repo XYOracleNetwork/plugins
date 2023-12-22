@@ -44,6 +44,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
 
   protected static matchingExistingField<R = string, T extends Payload = Payload>(objs: T[], field: keyof T): R | undefined {
     const expectedValue = objs.at(0)?.[field] as R
+    // eslint-disable-next-line unicorn/no-array-reduce
     const didNotMatch = objs.reduce((prev, obj) => {
       return prev || obj[field] !== expectedValue
     }, false)
@@ -61,6 +62,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
   protected override async divineHandler(inPayloads: EvmCallResult[] = []): Promise<EvmCallResults[]> {
     const callResults = inPayloads.filter(isPayloadOfSchemaType<EvmCallResult>(EvmCallResultSchema))
     const addresses = Object.keys(
+      // eslint-disable-next-line unicorn/no-array-reduce
       callResults.reduce<Record<string, boolean>>((prev, result) => {
         if (result.address) {
           prev[result.address] = true
@@ -72,7 +74,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
       addresses.map(async (address) => {
         const foundCallResults = callResults.filter((callResult) => callResult.address === address)
         const results: EvmCallResults = {
-          ...{ results: await this.reduceResults(foundCallResults) },
+          results: await this.reduceResults(foundCallResults),
           ...this.contractInfoRequiredFields(foundCallResults),
         }
         return results
@@ -83,6 +85,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
   }
 
   protected reduceResults(callResults: EvmCallResult[]): Promisable<EvmCallResults['results']> {
+    // eslint-disable-next-line unicorn/no-array-reduce
     return callResults.reduce<
       Record<
         string,

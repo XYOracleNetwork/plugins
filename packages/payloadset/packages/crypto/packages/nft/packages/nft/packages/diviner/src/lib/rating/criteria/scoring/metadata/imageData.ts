@@ -13,18 +13,18 @@ const isValidImageData = (image_data: string): boolean => {
     // If it can't be parsed, it's not an svg
     parse(image_data)
     return true
-  } catch (error) {
+  } catch {
     return false
   }
 }
 
 export const scoreNftImageData = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore => {
   // If there's no image data
-  if (!nft?.metadata?.image_data) {
+  if (nft?.metadata?.image_data) {
+    return scoreImageData(nft.metadata?.image_data)
+  } else {
     // but there is an image, skip this scoring criteria, otherwise fail it completely
     return nft.metadata?.image ? PASS : [0, MaxPossibleImageDataScore]
-  } else {
-    return scoreImageData(nft.metadata?.image_data)
   }
 }
 

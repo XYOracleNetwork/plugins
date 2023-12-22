@@ -82,7 +82,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
         expect(totalSupply).toBeDefined()
         expect(totalSupply?.result).toBeString()
         const totalSupplyValue = totalSupply?.result as string
-        expect(parseInt(totalSupplyValue)).toBeNumber()
+        expect(Number.parseInt(totalSupplyValue)).toBeNumber()
       })
     })
     describe('Index', () => {

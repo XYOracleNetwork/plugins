@@ -44,7 +44,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
           try {
             const result = await contract[validatedFunctionName](...mergedArgs)
             transformedResult = typeof result === 'bigint' ? `0x${result.toString(16)}` : result
-          } catch (ex) {
+          } catch {
             //const error = ex as Error & { code: string }
             //this.logger.error(`Error [${this.config.name}]: ${error.code} : ${error.message}`)
           }

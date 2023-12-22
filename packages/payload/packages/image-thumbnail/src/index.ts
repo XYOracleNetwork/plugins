@@ -1,10 +1,4 @@
-import { ImageThumbnailPayloadPlugin } from './Plugin'
-
 export * from './Diviner'
 export * from './Payload'
+export { ImageThumbnailPayloadPlugin as default, ImageThumbnailPayloadPlugin } from './Plugin'
 export * from './Schema'
-
-export { ImageThumbnailPayloadPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default ImageThumbnailPayloadPlugin

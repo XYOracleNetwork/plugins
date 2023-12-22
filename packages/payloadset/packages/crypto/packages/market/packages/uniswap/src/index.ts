@@ -1,10 +1,4 @@
-import { UniswapCryptoMarketPlugin } from './Plugin'
-
 export * from './Config'
 export * from './lib'
+export { UniswapCryptoMarketPlugin as default, UniswapCryptoMarketPlugin } from './Plugin'
 export * from './Witness'
-
-export { UniswapCryptoMarketPlugin }
-
-// eslint-disable-next-line import/no-default-export
-export default UniswapCryptoMarketPlugin

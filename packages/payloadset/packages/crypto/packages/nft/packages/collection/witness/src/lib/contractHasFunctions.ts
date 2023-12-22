@@ -4,9 +4,9 @@ import { Interface, Provider } from 'ethers'
 export const contractHasFunctions = async (provider: Provider, address: string, contractInterface: Interface, functionNames: string[]) => {
   try {
     const bytecode = await provider.getCode(address, 'latest')
-    for (let i = 0; i < functionNames.length; i++) {
-      const selector = assertEx(contractInterface.getFunction(functionNames[i])?.selector, 'Function not found on interface')
-      if (!bytecode.includes(selector.substring(2))) {
+    for (const functionName of functionNames) {
+      const selector = assertEx(contractInterface.getFunction(functionName)?.selector, 'Function not found on interface')
+      if (!bytecode.includes(selector.slice(2))) {
         return false
       }
       return true

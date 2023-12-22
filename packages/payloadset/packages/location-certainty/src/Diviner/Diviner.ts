@@ -22,31 +22,35 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
   /* Given an array of numbers, find the min/max/mean */
   private static calcHeuristic(heuristic: (number | null)[]): LocationCertaintyHeuristic {
     return {
+      // eslint-disable-next-line unicorn/no-array-reduce
       max: heuristic.reduce<number>((prev, value) => {
-        return value !== null ? (value > prev ? value : prev) : prev
-      }, -Infinity),
+        return value === null ? prev : value > prev ? value : prev
+      }, Number.NEGATIVE_INFINITY),
       mean: (() => {
+        // eslint-disable-next-line unicorn/no-array-reduce
         const values = heuristic.reduce<number[]>(
           (prev, value) => {
-            return value !== null ? [value + prev[0], prev[1] + 1] : prev
+            return value === null ? prev : [value + prev[0], prev[1] + 1]
           },
           [0, 0],
         )
         return values[0] / values[1]
       })(),
+      // eslint-disable-next-line unicorn/no-array-reduce
       min: heuristic.reduce<number>((prev, value) => {
-        return value !== null ? (value < prev ? value : prev) : prev
-      }, Infinity),
+        return value === null ? prev : value < prev ? value : prev
+      }, Number.POSITIVE_INFINITY),
     }
   }
 
   /* Given elevation and location payloads, generate heuristic arrays */
   private static locationsToHeuristics(elevations: ElevationPayload[], locations: LocationPayload[]) {
+    // eslint-disable-next-line unicorn/no-array-reduce
     const heuristics = elevations.reduce<{ altitude: (number | null)[]; elevation: number[]; variance: (number | null)[] }>(
       (prev, elev, index) => {
         const elevation = elev.elevation
         if (elevation === undefined || elevation === null) {
-          throw Error('Invalid Elevation')
+          throw new Error('Invalid Elevation')
         }
         const altitude = locations[index].altitude
         prev.altitude.push(altitude ?? null)
