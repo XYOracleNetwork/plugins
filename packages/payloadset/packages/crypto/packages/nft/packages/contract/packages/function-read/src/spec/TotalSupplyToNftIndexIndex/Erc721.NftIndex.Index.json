@@ -353,6 +353,13 @@
                     "TotalSupplyToSlugsSentinel"
                   ],
                   "module": "NftIndexToNftIndexTransformDiviner"
+                },
+                {
+                  "input": [
+                    "InputBufferingSentinel",
+                    "TotalSupplyToSlugsSentinel"
+                  ],
+                  "module": "TimestampWitness"
                 }
               ]
             }
