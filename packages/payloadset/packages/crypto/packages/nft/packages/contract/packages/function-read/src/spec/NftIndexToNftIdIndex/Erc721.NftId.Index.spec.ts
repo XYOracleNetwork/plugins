@@ -75,7 +75,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
-    const tokensToCheck = 1
+    const tokensToCheck = 16
     const tokenIndexes = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => {
       // Add one to prevent 0 index
       tokenIndex + 1
