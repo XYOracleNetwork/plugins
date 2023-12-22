@@ -226,7 +226,7 @@
           {
             "config": {
               "destinationSchema": "network.xyo.evm.nft.index",
-              "name": "NftIndexToNftIndexTransformDiviner",
+              "name": "NftIndexPartialToNftIndexTransformDiviner",
               "schemaTransforms": {
                 "network.xyo.evm.nft.index": [
                   {
@@ -354,7 +354,7 @@
                     "InputBufferingSentinel",
                     "TotalSupplyToSlugsSentinel"
                   ],
-                  "module": "NftIndexToNftIndexTransformDiviner"
+                  "module": "NftIndexPartialToNftIndexTransformDiviner"
                 },
                 {
                   "input": [
