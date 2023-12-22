@@ -52,9 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": [
-                  "network.xyo.crypto.contract.function.call.result"
-                ]
+                "payload_schemas": ["network.xyo.evm.nft.index"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -76,7 +74,7 @@
               "name": "IndexCandidateToIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.crypto.contract.function.call.result": [
+                "network.xyo.evm.nft.index": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -84,6 +82,10 @@
                   {
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "destinationField": "index",
+                    "sourcePathExpression": "$.index"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -146,21 +148,37 @@
           },
           {
             "config": {
-              "language": "javascript",
               "name": "TimestampWitness",
               "schema": "network.xyo.witness.timestamp.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "RangeDiviner",
               "schema": "network.xyo.diviner.range.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
+              "name": "InputBufferingDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.function.call.result"
+                },
+                {
+                  "op": "test",
+                  "path": "/functionName",
+                  "value": "totalSupply"
+                },
+                { "op": "defined", "path": "/result" }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
               "name": "TotalSupplyToRangeQueryTransformDiviner",
               "operations": [
                 {
@@ -187,7 +205,6 @@
           },
           {
             "config": {
-              "language": "javascript",
               "name": "RangeToNftIndexTransformDiviner",
               "operations": [
                 {
@@ -209,7 +226,6 @@
           {
             "config": {
               "destinationSchema": "network.xyo.evm.nft.index",
-              "language": "javascript",
               "name": "NftIndexToNftIndexTransformDiviner",
               "schemaTransforms": {
                 "network.xyo.evm.nft.index": [
@@ -221,6 +237,16 @@
                     "destinationField": "schema",
                     "sourcePathExpression": "$.schema"
                   }
+                ],
+                "network.xyo.crypto.contract.function.call.result": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
+                  }
                 ]
               },
               "schema": "network.xyo.diviner.jsonpath.aggregate.config"
@@ -230,7 +256,6 @@
         "public": [
           {
             "config": {
-              "language": "javascript",
               "name": "Archivist",
               "schema": "network.xyo.archivist.config",
               "storeQueries": false
@@ -239,7 +264,6 @@
           {
             "config": {
               "archivist": "Archivist",
-              "language": "javascript",
               "name": "BoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
@@ -247,7 +271,6 @@
           {
             "config": {
               "archivist": "Archivist",
-              "language": "javascript",
               "name": "PayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
@@ -265,7 +288,6 @@
                 "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
                 "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
               },
-              "language": "javascript",
               "name": "IndexDiviner",
               "pollFrequency": 1,
               "schema": "network.xyo.diviner.indexing.temporal.config",
@@ -278,11 +300,20 @@
           },
           {
             "config": {
-              "archiving": {
-                "archivists": ["Archivist"]
-              },
-              "language": "javascript",
-              "name": "Sentinel",
+              "name": "InputBufferingSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "InputBufferingDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "name": "TotalSupplyToSlugsSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
@@ -297,10 +328,40 @@
                 {
                   "input": ["RangeDiviner"],
                   "module": "RangeToNftIndexTransformDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
+              "name": "Sentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "InputBufferingSentinel"
                 },
                 {
-                  "input": ["RangeToNftIndexTransformDiviner"],
+                  "input": true,
+                  "module": "TotalSupplyToSlugsSentinel"
+                },
+                {
+                  "input": [
+                    "InputBufferingSentinel",
+                    "TotalSupplyToSlugsSentinel"
+                  ],
                   "module": "NftIndexToNftIndexTransformDiviner"
+                },
+                {
+                  "input": [
+                    "InputBufferingSentinel",
+                    "TotalSupplyToSlugsSentinel"
+                  ],
+                  "module": "TimestampWitness"
                 }
               ]
             }
