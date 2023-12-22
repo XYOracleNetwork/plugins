@@ -15,6 +15,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { Contract, Provider } from 'ethers'
 
+/** @deprecated use EvmCallWitness instead */
 export type CryptoContractFunctionReadWitnessParams = WitnessParams<
   AnyConfigSchema<CryptoContractFunctionReadWitnessConfig>,
   {
@@ -22,6 +23,7 @@ export type CryptoContractFunctionReadWitnessParams = WitnessParams<
   }
 >
 
+/** @deprecated use EvmCallWitness instead */
 export class CryptoContractFunctionReadWitness<
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
