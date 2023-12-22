@@ -165,68 +165,22 @@
                 {
                   "op": "test",
                   "path": "/schema",
-                  "value": "network.xyo.crypto.contract.function.call.result"
+                  "value": "network.xyo.crypto.contract.function.call"
                 },
                 {
                   "op": "test",
                   "path": "/functionName",
-                  "value": "totalSupply"
+                  "value": "tokenByIndex"
                 },
-                { "op": "defined", "path": "/result" }
+                { "op": "defined", "path": "/address" }
               ],
               "schema": "network.xyo.diviner.jsonpatch.config"
             }
           },
           {
             "config": {
-              "name": "TotalSupplyToRangeQueryTransformDiviner",
-              "operations": [
-                {
-                  "op": "test",
-                  "path": "/schema",
-                  "value": "network.xyo.crypto.contract.function.call.result"
-                },
-                {
-                  "op": "test",
-                  "path": "/functionName",
-                  "value": "totalSupply"
-                },
-                { "op": "defined", "path": "/result" },
-                { "op": "add", "path": "/start", "value": 0 },
-                { "from": "/result", "op": "move", "path": "/count" },
-                {
-                  "op": "replace",
-                  "path": "/schema",
-                  "value": "network.xyo.range.query"
-                }
-              ],
-              "schema": "network.xyo.diviner.jsonpatch.config"
-            }
-          },
-          {
-            "config": {
-              "name": "RangeToNftIndexTransformDiviner",
-              "operations": [
-                {
-                  "op": "test",
-                  "path": "/schema",
-                  "value": "network.xyo.number"
-                },
-                { "op": "defined", "path": "/value" },
-                { "from": "/value", "op": "move", "path": "/index" },
-                {
-                  "op": "replace",
-                  "path": "/schema",
-                  "value": "network.xyo.evm.nft.index"
-                }
-              ],
-              "schema": "network.xyo.diviner.jsonpatch.config"
-            }
-          },
-          {
-            "config": {
-              "destinationSchema": "network.xyo.evm.nft.index",
-              "name": "NftIndexToNftIndexTransformDiviner",
+              "destinationSchema": "network.xyo.evm.nft.id",
+              "name": "NftIdPartialToNftIdTransformDiviner",
               "schemaTransforms": {
                 "network.xyo.evm.nft.index": [
                   {
@@ -254,6 +208,19 @@
           },
           {
             "config": {
+              "name": "InputBufferingSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "InputBufferingDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
               "functionName": "tokenByIndex",
               "labels": {
                 "network.xyo.crypto.contract.interface": "Erc721Enumerable"
@@ -261,6 +228,22 @@
               "language": "javascript",
               "name": "Erc721TokenByIndexWitness",
               "schema": "network.xyo.crypto.contract.function.read.config"
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
+              "name": "TokenIndexToTokenIdSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "Erc721TokenByIndexWitness"
+                }
+              ]
             }
           }
         ],
@@ -320,7 +303,25 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "module": "InputBufferingDiviner"
+                },
+                {
+                  "input": true,
+                  "module": "TokenIndexToTokenIdSentinel"
+                },
+                {
+                  "input": [
+                    "InputBufferingSentinel",
+                    "TokenIndexToTokenIdSentinel"
+                  ],
+                  "module": "NftIdPartialToNftIdTransformDiviner"
+                },
+                {
+                  "input": [
+                    "InputBufferingSentinel",
+                    "TokenIndexToTokenIdSentinel"
+                  ],
+                  "module": "TimestampWitness"
                 }
               ]
             }
