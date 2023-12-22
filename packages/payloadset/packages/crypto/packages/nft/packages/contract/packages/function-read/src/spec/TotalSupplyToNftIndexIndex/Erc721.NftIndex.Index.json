@@ -161,6 +161,26 @@
           {
             "config": {
               "language": "javascript",
+              "name": "InputBufferingDiviner",
+              "operations": [
+                {
+                  "op": "test",
+                  "path": "/schema",
+                  "value": "network.xyo.crypto.contract.function.call.result"
+                },
+                {
+                  "op": "test",
+                  "path": "/functionName",
+                  "value": "totalSupply"
+                },
+                { "op": "defined", "path": "/result" }
+              ],
+              "schema": "network.xyo.diviner.jsonpatch.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
               "name": "TotalSupplyToRangeQueryTransformDiviner",
               "operations": [
                 {
@@ -220,6 +240,16 @@
                   {
                     "destinationField": "schema",
                     "sourcePathExpression": "$.schema"
+                  }
+                ],
+                "'network.xyo.crypto.contract.function.call.result'": [
+                  {
+                    "destinationField": "address",
+                    "sourcePathExpression": "$.address"
+                  },
+                  {
+                    "destinationField": "chainId",
+                    "sourcePathExpression": "$.chainId"
                   }
                 ]
               },
@@ -291,6 +321,10 @@
                   "module": "TotalSupplyToRangeQueryTransformDiviner"
                 },
                 {
+                  "input": true,
+                  "module": "InputBufferingDiviner"
+                },
+                {
                   "input": ["TotalSupplyToRangeQueryTransformDiviner"],
                   "module": "RangeDiviner"
                 },
@@ -299,7 +333,10 @@
                   "module": "RangeToNftIndexTransformDiviner"
                 },
                 {
-                  "input": ["RangeToNftIndexTransformDiviner"],
+                  "input": [
+                    "InputBufferingDiviner",
+                    "RangeToNftIndexTransformDiviner"
+                  ],
                   "module": "NftIndexToNftIndexTransformDiviner"
                 }
               ]
