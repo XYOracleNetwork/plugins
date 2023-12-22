@@ -31,7 +31,7 @@ import nodeManifest from './Erc721.NftIndex.Index.json'
 
 const maxProviders = 32
 
-describeIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () => {
+describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
   let wallet: HDWallet
   let node: MemoryNode
 
