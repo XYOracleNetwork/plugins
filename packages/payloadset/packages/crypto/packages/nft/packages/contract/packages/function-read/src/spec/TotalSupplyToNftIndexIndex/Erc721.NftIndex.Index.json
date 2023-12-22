@@ -146,21 +146,18 @@
           },
           {
             "config": {
-              "language": "javascript",
               "name": "TimestampWitness",
               "schema": "network.xyo.witness.timestamp.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "RangeDiviner",
               "schema": "network.xyo.diviner.range.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "InputBufferingDiviner",
               "operations": [
                 {
@@ -180,7 +177,6 @@
           },
           {
             "config": {
-              "language": "javascript",
               "name": "TotalSupplyToRangeQueryTransformDiviner",
               "operations": [
                 {
@@ -207,7 +203,6 @@
           },
           {
             "config": {
-              "language": "javascript",
               "name": "RangeToNftIndexTransformDiviner",
               "operations": [
                 {
@@ -229,7 +224,6 @@
           {
             "config": {
               "destinationSchema": "network.xyo.evm.nft.index",
-              "language": "javascript",
               "name": "NftIndexToNftIndexTransformDiviner",
               "schemaTransforms": {
                 "network.xyo.evm.nft.index": [
@@ -242,7 +236,7 @@
                     "sourcePathExpression": "$.schema"
                   }
                 ],
-                "'network.xyo.crypto.contract.function.call.result'": [
+                "network.xyo.crypto.contract.function.call.result": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -255,12 +249,49 @@
               },
               "schema": "network.xyo.diviner.jsonpath.aggregate.config"
             }
+          },
+          {
+            "config": {
+              "name": "InputBufferingSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "InputBufferingDiviner"
+                }
+              ]
+            }
+          },
+          {
+            "config": {
+              "name": "TotalSupplyToSlugsSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "TotalSupplyToRangeQueryTransformDiviner"
+                },
+                {
+                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
+                  "module": "RangeDiviner"
+                },
+                {
+                  "input": ["RangeDiviner"],
+                  "module": "RangeToNftIndexTransformDiviner"
+                },
+                {
+                  "input": ["RangeToNftIndexTransformDiviner"],
+                  "module": "NftIndexToNftIndexTransformDiviner"
+                }
+              ]
+            }
           }
         ],
         "public": [
           {
             "config": {
-              "language": "javascript",
               "name": "Archivist",
               "schema": "network.xyo.archivist.config",
               "storeQueries": false
@@ -269,7 +300,6 @@
           {
             "config": {
               "archivist": "Archivist",
-              "language": "javascript",
               "name": "BoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
             }
@@ -277,7 +307,6 @@
           {
             "config": {
               "archivist": "Archivist",
-              "language": "javascript",
               "name": "PayloadDiviner",
               "schema": "network.xyo.diviner.payload.config"
             }
@@ -295,7 +324,6 @@
                 "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
                 "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
               },
-              "language": "javascript",
               "name": "IndexDiviner",
               "pollFrequency": 1,
               "schema": "network.xyo.diviner.indexing.temporal.config",
@@ -311,33 +339,17 @@
               "archiving": {
                 "archivists": ["Archivist"]
               },
-              "language": "javascript",
               "name": "Sentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
                 {
                   "input": true,
-                  "module": "TotalSupplyToRangeQueryTransformDiviner"
+                  "module": "InputBufferingSentinel"
                 },
                 {
                   "input": true,
-                  "module": "InputBufferingDiviner"
-                },
-                {
-                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
-                  "module": "RangeDiviner"
-                },
-                {
-                  "input": ["RangeDiviner"],
-                  "module": "RangeToNftIndexTransformDiviner"
-                },
-                {
-                  "input": [
-                    "InputBufferingDiviner",
-                    "RangeToNftIndexTransformDiviner"
-                  ],
-                  "module": "NftIndexToNftIndexTransformDiviner"
+                  "module": "TotalSupplyToSlugsSentinel"
                 }
               ]
             }
