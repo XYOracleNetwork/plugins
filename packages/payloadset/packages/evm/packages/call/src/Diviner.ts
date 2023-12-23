@@ -4,6 +4,7 @@ import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
+import { EvmCallDivinerLabels } from './Labels'
 import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
@@ -36,6 +37,7 @@ export type EvmCallResults = Payload<
 
 export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivinerParams> extends AbstractDiviner<TParams> {
   static override configSchemas = [EvmCallDivinerConfigSchema]
+  static labels: EvmCallDivinerLabels = EvmCallDivinerLabels
 
   protected static findCallResult<TResult = string>(address: string, functionName: string, payloads: EvmCallResult[]): TResult | undefined {
     const foundPayload = payloads.find((payload) => payload.functionName === functionName && payload.address === address)

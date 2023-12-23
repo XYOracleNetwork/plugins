@@ -167,7 +167,7 @@
                 {
                   "op": "test",
                   "path": "/schema",
-                  "value": "network.xyo.crypto.contract.function.call.result"
+                  "value": "network.xyo.evm.call.result"
                 },
                 {
                   "op": "test",
@@ -189,7 +189,7 @@
                 {
                   "op": "test",
                   "path": "/schema",
-                  "value": "network.xyo.crypto.contract.function.call.result"
+                  "value": "network.xyo.evm.call.result"
                 },
                 {
                   "op": "test",
@@ -261,7 +261,7 @@
                     "sourcePathExpression": "$.schema"
                   }
                 ],
-                "network.xyo.crypto.contract.function.call.result": [
+                "network.xyo.evm.call.result": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"

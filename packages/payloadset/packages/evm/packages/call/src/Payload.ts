@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 export const EvmCallSchema = 'network.xyo.evm.call'
 export type EvmCallSchema = typeof EvmCallSchema
@@ -45,6 +45,8 @@ export const isEvmCallSuccess = (payload?: EvmCallResult): payload is EvmCallSuc
 export const isEvmCallFailure = (payload?: EvmCallResult): payload is EvmCallFailure => {
   return (payload as EvmCallFailure | undefined)?.error !== undefined
 }
+
+export const isEvmCallResult = isPayloadOfSchemaType<EvmCallResult>(EvmCallResultSchema)
 
 export const asEvmCallSuccess = (payload?: EvmCallResult) => (isEvmCallSuccess(payload) ? payload : undefined)
 
