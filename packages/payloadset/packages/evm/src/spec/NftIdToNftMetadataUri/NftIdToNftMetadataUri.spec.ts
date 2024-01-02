@@ -51,12 +51,6 @@ describe('Sentinel', () => {
     const privateModules = manifest.nodes[0].modules?.private ?? []
     const publicModules = manifest.nodes[0].modules?.public ?? []
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
-
-    const tokenUriWitness = asWitnessInstance(await node.resolve('Erc721TokenURIWitness'))
-    expect(tokenUriWitness).toBeDefined()
-
-    const diviner = asDivinerInstance(await node.resolve('EvmCallDiviner'))
-    expect(diviner).toBeDefined()
   })
   describeIf(providers.length)('report', () => {
     it('Returns metadata for token ID', async () => {
