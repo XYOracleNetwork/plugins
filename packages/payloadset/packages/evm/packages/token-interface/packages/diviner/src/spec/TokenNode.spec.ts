@@ -1,6 +1,7 @@
 /* eslint-disable max-statements */
 import { delay } from '@xylabs/delay'
 import { HDWallet } from '@xyo-network/account'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
@@ -17,7 +18,6 @@ import {
 } from '@xyo-network/diviner-temporal-indexing'
 import { EvmContract, EvmContractWitness, isEvmContract } from '@xyo-network/evm-contract-witness'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
-import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'

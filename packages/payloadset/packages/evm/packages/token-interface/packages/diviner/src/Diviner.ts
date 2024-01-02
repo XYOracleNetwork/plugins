@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { EvmContract, isEvmContract } from '@xyo-network/evm-contract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'

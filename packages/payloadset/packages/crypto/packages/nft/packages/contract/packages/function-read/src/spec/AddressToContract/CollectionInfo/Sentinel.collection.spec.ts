@@ -1,3 +1,4 @@
+/* eslint-disable import/no-deprecated */
 /* eslint-disable max-statements */
 
 import { HDWallet } from '@xyo-network/account'
@@ -81,7 +82,7 @@ describe('Erc721Sentinel', () => {
           config: { abi: ERC721__factory.abi },
           providers: getProviders(),
         }),
-        { 'network.xyo.crypto.contract.interface': 'Erc721' },
+        { 'network.xyo.evm.interface': 'Erc721' },
       )
 
       locator.register(
@@ -89,7 +90,7 @@ describe('Erc721Sentinel', () => {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: getProviders(),
         }),
-        { 'network.xyo.crypto.contract.interface': 'Erc721Enumerable' },
+        { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
       locator.register(
@@ -97,7 +98,7 @@ describe('Erc721Sentinel', () => {
           config: { abi: ERC1155__factory.abi },
           providers: getProviders(),
         }),
-        { 'network.xyo.crypto.contract.interface': 'Erc1155' },
+        { 'network.xyo.evm.interface': 'Erc1155' },
       )
       profile('setup')
       profile('manifest')

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-deprecated */
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
@@ -65,7 +66,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProviders(),
       }),
-      { 'network.xyo.crypto.contract.interface': 'Erc721Enumerable' },
+      { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     const manifest = new ManifestWrapper(nodeManifest as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)

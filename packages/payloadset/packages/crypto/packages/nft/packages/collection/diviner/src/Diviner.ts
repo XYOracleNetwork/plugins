@@ -1,4 +1,3 @@
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import {
   isNftCollectionInfo,
   NftCollectionInfo,
@@ -8,6 +7,7 @@ import {
   NftCollectionScoreDivinerConfigSchema,
   NftCollectionScoreSchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerParams } from '@xyo-network/diviner-model'
 import { PayloadHasher } from '@xyo-network/hash'
 import { AnyConfigSchema } from '@xyo-network/module-model'

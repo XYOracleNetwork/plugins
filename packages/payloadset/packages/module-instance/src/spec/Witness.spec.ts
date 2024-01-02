@@ -1,5 +1,5 @@
 import { Account } from '@xyo-network/account'
-import { MemoryArchivist } from '@xyo-network/archivist'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { AbstractModuleInstanceWitness, AbstractModuleInstanceWitnessConfigSchema } from '../Witness'

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-deprecated */
 import { describeIf } from '@xylabs/jest-helpers'
 import {
   CryptoContractFunctionCall,

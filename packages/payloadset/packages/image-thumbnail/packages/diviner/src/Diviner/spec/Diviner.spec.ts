@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { HDWallet } from '@xyo-network/account'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
@@ -16,7 +17,6 @@ import {
   isImageThumbnailResultIndex,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
-import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { isModuleState, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'

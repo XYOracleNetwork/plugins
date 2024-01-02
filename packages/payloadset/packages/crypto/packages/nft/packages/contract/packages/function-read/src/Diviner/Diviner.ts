@@ -1,6 +1,5 @@
 import { assertEx } from '@xylabs/assert'
 import { Promisable } from '@xylabs/promise'
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
 import {
   asCryptoContractFunctionCallSuccess,
   ContractInfo,
@@ -11,6 +10,7 @@ import {
   CryptoContractFunctionCallResult,
   CryptoContractFunctionCallResultSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 /** @deprecated use EvmCallDiviner instead */

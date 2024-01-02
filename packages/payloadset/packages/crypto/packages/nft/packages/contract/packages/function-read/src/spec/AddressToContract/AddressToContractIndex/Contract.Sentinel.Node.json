@@ -20,7 +20,7 @@
             "config": {
               "functionName": "name",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721NameWitness",
@@ -32,7 +32,7 @@
             "config": {
               "functionName": "symbol",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721SymbolWitness",
@@ -44,7 +44,7 @@
             "config": {
               "functionName": "tokenURI",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
@@ -55,7 +55,7 @@
             "config": {
               "functionName": "ownerOf",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721OwnerOfWitness",
@@ -66,7 +66,7 @@
             "config": {
               "functionName": "totalSupply",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+                "network.xyo.evm.interface": "Erc721Enumerable"
               },
               "language": "javascript",
               "name": "Erc721TotalSupplyWitness",
@@ -76,10 +76,12 @@
           },
           {
             "config": {
-              "args": ["0x1"],
+              "args": [
+                "0x1"
+              ],
               "functionName": "uri",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc1155"
+                "network.xyo.evm.interface": "Erc1155"
               },
               "language": "javascript",
               "name": "Erc1155UriWitness",
@@ -111,9 +113,18 @@
                   "path": "/schema",
                   "value": "network.xyo.crypto.contract.info"
                 },
-                { "op": "defined", "path": "/results/name" },
-                { "op": "defined", "path": "/results/symbol" },
-                { "op": "defined", "path": "/results/totalSupply" },
+                {
+                  "op": "defined",
+                  "path": "/results/name"
+                },
+                {
+                  "op": "defined",
+                  "path": "/results/symbol"
+                },
+                {
+                  "op": "defined",
+                  "path": "/results/totalSupply"
+                },
                 {
                   "op": "replace",
                   "path": "/schema",
@@ -133,7 +144,10 @@
                   "path": "/schema",
                   "value": "network.xyo.crypto.contract.info"
                 },
-                { "op": "defined", "path": "/results/uri" },
+                {
+                  "op": "defined",
+                  "path": "/results/uri"
+                },
                 {
                   "op": "replace",
                   "path": "/schema",
@@ -171,7 +185,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["NftArchivist"]
+                "archivists": [
+                  "NftArchivist"
+                ]
               },
               "language": "javascript",
               "name": "NftInfoSentinel",
@@ -203,23 +219,33 @@
                   "module": "Erc721ContractInfoDiviner"
                 },
                 {
-                  "input": ["Erc1155UriWitness"],
+                  "input": [
+                    "Erc1155UriWitness"
+                  ],
                   "module": "Erc1155ContractInfoDiviner"
                 },
                 {
-                  "input": ["Erc721ContractInfoDiviner"],
+                  "input": [
+                    "Erc721ContractInfoDiviner"
+                  ],
                   "module": "Erc721ContractInfoTransformDiviner"
                 },
                 {
-                  "input": ["Erc721ContractInfoDiviner"],
+                  "input": [
+                    "Erc721ContractInfoDiviner"
+                  ],
                   "module": "TimestampWitness"
                 },
                 {
-                  "input": ["Erc1155ContractInfoDiviner"],
+                  "input": [
+                    "Erc1155ContractInfoDiviner"
+                  ],
                   "module": "Erc1155ContractInfoTransformDiviner"
                 },
                 {
-                  "input": ["Erc1155ContractInfoDiviner"],
+                  "input": [
+                    "Erc1155ContractInfoDiviner"
+                  ],
                   "module": "TimestampWitness"
                 }
               ]

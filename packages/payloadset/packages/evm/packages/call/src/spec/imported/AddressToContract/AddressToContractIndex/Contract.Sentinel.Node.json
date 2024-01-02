@@ -20,7 +20,7 @@
             "config": {
               "functionName": "name",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721NameWitness",
@@ -32,7 +32,7 @@
             "config": {
               "functionName": "symbol",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721SymbolWitness",
@@ -44,7 +44,7 @@
             "config": {
               "functionName": "tokenURI",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
@@ -55,7 +55,7 @@
             "config": {
               "functionName": "ownerOf",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721"
+                "network.xyo.evm.interface": "Erc721"
               },
               "language": "javascript",
               "name": "Erc721OwnerOfWitness",
@@ -66,7 +66,7 @@
             "config": {
               "functionName": "totalSupply",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+                "network.xyo.evm.interface": "Erc721Enumerable"
               },
               "language": "javascript",
               "name": "Erc721TotalSupplyWitness",
@@ -81,7 +81,7 @@
               ],
               "functionName": "uri",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc1155"
+                "network.xyo.evm.interface": "Erc1155"
               },
               "language": "javascript",
               "name": "Erc1155UriWitness",

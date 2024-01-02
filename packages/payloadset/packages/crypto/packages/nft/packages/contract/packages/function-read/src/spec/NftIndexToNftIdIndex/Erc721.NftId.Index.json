@@ -52,7 +52,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.nft.index"]
+                "payload_schemas": [
+                  "network.xyo.evm.nft.index"
+                ]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -172,7 +174,10 @@
                   "path": "/functionName",
                   "value": "tokenByIndex"
                 },
-                { "op": "defined", "path": "/address" }
+                {
+                  "op": "defined",
+                  "path": "/address"
+                }
               ],
               "schema": "network.xyo.diviner.jsonpatch.config"
             }
@@ -217,7 +222,7 @@
             "config": {
               "functionName": "tokenByIndex",
               "labels": {
-                "network.xyo.crypto.contract.interface": "Erc721Enumerable"
+                "network.xyo.evm.interface": "Erc721Enumerable"
               },
               "language": "javascript",
               "name": "Erc721TokenByIndexWitness",
@@ -227,7 +232,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "name": "TokenIndexToTokenIdSentinel",
               "schema": "network.xyo.sentinel.config",
@@ -289,7 +296,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "name": "Sentinel",
               "schema": "network.xyo.sentinel.config",
@@ -300,7 +309,9 @@
                   "module": "Erc721TokenByIndexWitness"
                 },
                 {
-                  "input": ["Erc721TokenByIndexWitness"],
+                  "input": [
+                    "Erc721TokenByIndexWitness"
+                  ],
                   "module": "NftIdPartialToNftIdTransformDiviner"
                 }
               ]

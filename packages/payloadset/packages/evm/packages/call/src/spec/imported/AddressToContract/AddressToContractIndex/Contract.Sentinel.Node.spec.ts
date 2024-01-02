@@ -1,5 +1,6 @@
 /* eslint-disable max-statements */
 import { HDWallet } from '@xyo-network/account'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isErc721ContractInfo, isErc1155ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
@@ -17,7 +18,6 @@ import {
 import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
-import { MemoryArchivist } from '@xyo-network/memory-archivist'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
@@ -65,21 +65,21 @@ describe('Contract Node', () => {
         config: { abi: ERC721__factory.abi },
         providers: getProvidersFromEnv,
       }),
-      { 'network.xyo.crypto.contract.interface': 'Erc721' },
+      { 'network.xyo.evm.interface': 'Erc721' },
     )
     locator.register(
       new ModuleFactory(EvmCallWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProvidersFromEnv,
       }),
-      { 'network.xyo.crypto.contract.interface': 'Erc721Enumerable' },
+      { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     locator.register(
       new ModuleFactory(EvmCallWitness, {
         config: { abi: ERC1155__factory.abi },
         providers: getProvidersFromEnv,
       }),
-      { 'network.xyo.crypto.contract.interface': 'Erc1155' },
+      { 'network.xyo.evm.interface': 'Erc1155' },
     )
     locator.register(JsonPatchDiviner)
     locator.register(TemporalIndexingDiviner)

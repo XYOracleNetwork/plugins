@@ -1,4 +1,5 @@
-import { AbstractArchivist, MemoryArchivist } from '@xyo-network/archivist'
+import { AbstractArchivist } from '@xyo-network/archivist-abstract'
+import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { LocationCertaintyPayload, LocationCertaintySchema } from '@xyo-network/location-certainty-payload-plugin'
 import { LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
 import { CompositeModuleResolver } from '@xyo-network/module-resolver'

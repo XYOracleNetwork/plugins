@@ -1,4 +1,4 @@
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerModule, DivinerParams } from '@xyo-network/diviner-model'
 import { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { ElevationWitness, ElevationWitnessConfigSchema } from '@xyo-network/elevation-plugin'

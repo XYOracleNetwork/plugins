@@ -48,7 +48,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProvidersFromEnv,
       }),
-      { 'network.xyo.crypto.contract.interface': 'Erc721Enumerable' },
+      { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     const manifest = new ManifestWrapper(erc721TotalSupplyIndexManifest as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)

@@ -1,5 +1,5 @@
 import { exists } from '@xylabs/exists'
-import { AbstractDiviner } from '@xyo-network/abstract-diviner'
+import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import { PayloadHasher } from '@xyo-network/hash'
 import {
