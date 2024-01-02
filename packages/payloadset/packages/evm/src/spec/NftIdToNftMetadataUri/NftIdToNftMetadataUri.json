@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "name": "Erc721TokenInfo",
+        "name": "NftTokenUriNode",
         "schema": "network.xyo.node.config"
       },
       "modules": {
@@ -12,7 +12,7 @@
             "config": {
               "functionName": "tokenURI",
               "labels": {
-                "network.xyo.evm.interface": "ERC721URIStorage"
+                "network.xyo.evm.interface": "ERC721TokenUri"
               },
               "language": "javascript",
               "name": "Erc721TokenURIWitness",
@@ -21,37 +21,15 @@
           },
           {
             "config": {
-              "functionName": "ownerOf",
-              "labels": {
-                "network.xyo.evm.interface": "Erc721"
-              },
               "language": "javascript",
-              "name": "Erc721OwnerOfWitness",
-              "schema": "network.xyo.evm.call.witness.config"
-            }
-          },
-          {
-            "config": {
-              "functionName": "uri",
-              "labels": {
-                "network.xyo.evm.interface": "Erc1155"
-              },
-              "language": "javascript",
-              "name": "Erc1155UriWitness",
-              "schema": "network.xyo.evm.call.witness.config"
-            }
-          },
-          {
-            "config": {
-              "language": "javascript",
-              "name": "TokenInfoDiviner",
+              "name": "EvmCallDiviner",
               "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {
             "config": {
               "language": "javascript",
-              "name": "NftTokenInfoSentinel",
+              "name": "NftTokenUriSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
@@ -60,20 +38,8 @@
                   "module": "Erc721TokenURIWitness"
                 },
                 {
-                  "input": true,
-                  "module": "Erc721OwnerOfWitness"
-                },
-                {
-                  "input": true,
-                  "module": "Erc1155UriWitness"
-                },
-                {
-                  "input": [
-                    "Erc721TokenURIWitness",
-                    "Erc721OwnerOfWitness",
-                    "Erc1155UriWitness"
-                  ],
-                  "module": "TokenInfoDiviner"
+                  "input": ["Erc721TokenURIWitness"],
+                  "module": "EvmCallDiviner"
                 }
               ]
             }
