@@ -36,10 +36,13 @@ const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
 }
 
 describeIf(providers.length)('NftIdToNftMetadataUri', () => {
-  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
   const chainId = 1
-  const tokenId = '0x0f'
   let node: MemoryNode
+  const cases = [
+    //Bored Apes
+    ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', '0x0f'],
+    ['0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452', '0x543'],
+  ]
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
@@ -60,7 +63,7 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
   })
   describe('Sentinel', () => {
-    it('returns metadata URI for token ID', async () => {
+    it.each(cases)('returns metadata URI for token ID', async (address, tokenId) => {
       const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
@@ -72,10 +75,12 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       expect(results[0].tokenId).toBe(tokenId)
       expect(results[0].schema).toBe(NftMetadataUriSchema)
       expect(results[0].metadataUri).toBeString()
+      const num = Number(BigInt(tokenId)).toString()
+      expect(results[0].metadataUri).toContain(num)
     })
   })
   describe('Index', () => {
-    it.skip('returns indexed NftIndex results', async () => {
+    it.skip.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
       const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
