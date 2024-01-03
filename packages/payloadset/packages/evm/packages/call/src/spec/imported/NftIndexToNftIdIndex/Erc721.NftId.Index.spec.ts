@@ -68,20 +68,13 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
     const tokensToCheck = 16
     const tokenIds = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => tokenIndex)
     const tokenIndexes = tokenIds.map((tokenId) => tokenId)
+    const chainId = 1
+    const functionName = 'tokenByIndex'
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const chainId = 1
         for (const tokenIndex of tokenIndexes) {
-          const inputs = [
-            {
-              address,
-              args: [`0x${BigInt(tokenIndex).toString(16)}`],
-              chainId,
-              functionName: 'tokenByIndex',
-              schema: EvmCallSchema,
-            },
-          ]
+          const inputs = [{ address, args: [`0x${BigInt(tokenIndex).toString(16)}`], chainId, functionName, schema: EvmCallSchema }]
           const observations = await sentinel?.report(inputs)
           const nftIds = observations?.filter(isNftId)
           expect(nftIds?.length).toBe(1)
@@ -96,14 +89,12 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
     })
     describe('Index', () => {
       it.each(cases)('returns indexed NftIndex results', async (address) => {
-        await delay(1000)
+        await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
-        // Check we've indexed the results by sampling the first and last index
-        const sampleIndexes = [0, tokensToCheck - 1]
-        for (const tokenIndex of sampleIndexes) {
+        for (const tokenIndex of tokenIndexes) {
           const tokenId = `0x${BigInt(tokenIndex).toString(16)}`
-          const query = { address, chainId: 1, length: 10, schema: PayloadDivinerQuerySchema, tokenId }
+          const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
           const result = await diviner?.divine([query])
           expect(result).toBeDefined()
           expect(result).toBeArrayOfSize(1)
