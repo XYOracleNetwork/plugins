@@ -1,24 +1,17 @@
-// eslint-disable-next-line simple-import-sort/imports
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
-import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
-
 // eslint-disable-next-line workspaces/no-absolute-imports
 import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
+import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+
+import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config'
+import { EvmCallResultToNftTokenUriDivinerParams } from './Params'
 
 export type EvmTokenUriCallResults = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
 
-// Schema
-export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'network.xyo.evm.call.results.metadata.uri.diviner.config'
-export type EvmCallResultToNftTokenUriDivinerConfigSchema = typeof EvmCallResultToNftTokenUriDivinerConfigSchema
-// Config
-export type EvmCallResultToNftTokenUriDivinerConfig = DivinerConfig<{ schema: EvmCallResultToNftTokenUriDivinerConfigSchema }>
-// Params
-export type EvmCallResultToNftTokenUriDivinerParams = DivinerParams<AnyConfigSchema<EvmCallResultToNftTokenUriDivinerConfig>>
-
-export class EvmCallResultToNftTokenUriDiviner extends AbstractDiviner {
+export class EvmCallResultToNftTokenUriDiviner<
+  TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,
+> extends AbstractDiviner<TParams, Payload, NftMetadataUri> {
   static override configSchemas = [EvmCallResultToNftTokenUriDivinerConfigSchema]
 
   // TODO: Add support for ERC1155 with `uri` function in addition to current ERC721 `tokenURI` support
