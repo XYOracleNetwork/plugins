@@ -120,6 +120,11 @@
                   },
                   {
                     "defaultValue": 1,
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.tokenId"
+                  },
+                  {
+                    "defaultValue": 1,
                     "destinationField": "limit",
                     "sourcePathExpression": "$.limit"
                   },
