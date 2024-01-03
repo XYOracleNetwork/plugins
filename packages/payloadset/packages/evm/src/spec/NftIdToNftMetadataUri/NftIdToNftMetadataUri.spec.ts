@@ -10,14 +10,14 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
-import erc721TokenSentinelManifest from './NftIdToNftMetadataUri.json'
+import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json'
 
 const maxProviders = 2
+const providers = getProvidersFromEnv(maxProviders)
 
-describe('Sentinel', () => {
+describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
-  const tokenId = 1
-  const providers = getProvidersFromEnv(maxProviders)
+  const tokenId = '0x0f'
   let node: MemoryNode
   beforeAll(async () => {
     const wallet = await HDWallet.random()
@@ -30,7 +30,7 @@ describe('Sentinel', () => {
       }),
       { 'network.xyo.evm.interface': 'ERC721TokenUri' },
     )
-    const manifest = erc721TokenSentinelManifest as PackageManifestPayload
+    const manifest = nftIdToNftMetadataUri as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     const mods = await node.resolve()
@@ -38,8 +38,19 @@ describe('Sentinel', () => {
     const publicModules = manifest.nodes[0].modules?.public ?? []
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
   })
-  describeIf(providers.length)('report', () => {
-    it('Returns metadata for token ID', async () => {
+  describe('Sentinel', () => {
+    it('returns metadata URI for token ID', async () => {
+      const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
+      const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
+      expect(tokenSentinel).toBeDefined()
+      const report = await tokenSentinel?.report([tokenCallPayload])
+      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
+      console.log(`info: ${JSON.stringify(info, null, 2)}`)
+      expect(info?.results?.['tokenURI']?.result).toBeString()
+    })
+  })
+  describe('Index', () => {
+    it.skip('returns indexed NftIndex results', async () => {
       const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
