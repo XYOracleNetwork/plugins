@@ -4659,6 +4659,48 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/diviner-evm-call-result-to-token-uri@workspace:packages/payloadset/packages/evm/packages/call/packages/token-uri/diviner":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/diviner-evm-call-result-to-token-uri@workspace:packages/payloadset/packages/evm/packages/call/packages/token-uri/diviner"
+  dependencies:
+    "@xylabs/delay": "npm:^2.13.23"
+    "@xylabs/hex": "npm:^2.13.23"
+    "@xylabs/jest-helpers": "npm:^2.13.23"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.25"
+    "@xylabs/tsconfig": "npm:^3.2.25"
+    "@xyo-network/account": "npm:^2.85.8"
+    "@xyo-network/archivist-memory": "npm:^2.85.8"
+    "@xyo-network/crypto-contract-function-read-payload-plugin": "workspace:~"
+    "@xyo-network/diviner-abstract": "npm:^2.85.8"
+    "@xyo-network/diviner-boundwitness-memory": "npm:^2.85.8"
+    "@xyo-network/diviner-jsonpatch": "npm:^2.85.8"
+    "@xyo-network/diviner-jsonpatch-memory": "npm:^2.85.8"
+    "@xyo-network/diviner-jsonpath-aggregate-memory": "npm:^2.85.8"
+    "@xyo-network/diviner-model": "npm:^2.85.8"
+    "@xyo-network/diviner-payload-memory": "npm:^2.85.8"
+    "@xyo-network/diviner-payload-model": "npm:^2.85.8"
+    "@xyo-network/diviner-range": "npm:^2.85.8"
+    "@xyo-network/diviner-temporal-indexing": "npm:^2.85.8"
+    "@xyo-network/evm-call-witness": "workspace:~"
+    "@xyo-network/evm-contract-witness": "workspace:~"
+    "@xyo-network/evm-nft-id-payload-plugin": "workspace:~"
+    "@xyo-network/evm-token-interface-diviner": "workspace:~"
+    "@xyo-network/manifest": "npm:^2.85.8"
+    "@xyo-network/module-model": "npm:^2.85.8"
+    "@xyo-network/node-memory": "npm:^2.85.8"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/payload-model": "npm:^2.85.8"
+    "@xyo-network/sentinel-model": "npm:^2.85.8"
+    "@xyo-network/witness-adhoc": "npm:^2.85.8"
+    "@xyo-network/witness-model": "npm:^2.85.8"
+    "@xyo-network/witness-timestamp": "npm:^2.85.8"
+    async-mutex: "npm:^0.4.0"
+    ethers: "npm:^6.9.1"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner, @xyo-network/diviner-image-thumbnail@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner"
