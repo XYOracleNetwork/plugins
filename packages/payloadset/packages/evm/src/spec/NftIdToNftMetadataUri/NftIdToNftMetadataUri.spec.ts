@@ -16,7 +16,7 @@ import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json'
 const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)
 
-type EvmCallResultsTokenUri = EvmCallResults & { results: { tokenURI: { args: [string]; result: string } } }
+type EvmCallResultsTokenUri = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
 
 const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
   await Promise.resolve()
@@ -28,8 +28,10 @@ const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
     })
     .map<NftMetadataUri>((p) => {
       const { address, chainId, results } = p
-      const { args, result: metadataUri } = results.tokenURI
+      const { args, result } = results.tokenURI
       const tokenId = args[0]
+      const num = Number(BigInt(tokenId)).toString()
+      const metadataUri = result?.includes('{id}') ? result.replace('{id}', num) : result
       return { address, chainId, metadataUri, schema: NftMetadataUriSchema, tokenId }
     })
   return erc721CallResults
