@@ -1,13 +1,14 @@
 /* eslint-disable max-statements */
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
+import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
 import { EvmCall, EvmCallDiviner, EvmCallResults, EvmCallResultsSchema, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
-import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
+import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
@@ -15,27 +16,6 @@ import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json'
 
 const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)
-
-type EvmCallResultsTokenUri = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
-
-const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
-  await Promise.resolve()
-  const evmCallResults = payloads.filter(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults[]
-  const erc721CallResults = evmCallResults
-    .filter((p): p is EvmCallResultsTokenUri => {
-      const casted = p as EvmCallResultsTokenUri
-      return casted.results?.tokenURI?.result !== undefined && (p.results?.tokenURI?.args?.length ?? 0) > 0
-    })
-    .map<NftMetadataUri>((p) => {
-      const { address, chainId, results } = p
-      const { args, result } = results.tokenURI
-      const tokenId = args[0]
-      const num = Number(BigInt(tokenId)).toString()
-      const metadataUri = result?.includes('{id}') ? result.replace('{id}', num) : result
-      return { address, chainId, metadataUri, schema: NftMetadataUriSchema, tokenId }
-    })
-  return erc721CallResults
-}
 
 describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   const chainId = 1
@@ -50,6 +30,7 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
     locator.register(EvmCallDiviner)
+    locator.register(EvmCallResultToNftTokenUriDiviner)
     locator.register(
       new ModuleFactory(EvmCallWitness, {
         config: { abi: ERC721URIStorage__factory.abi },
@@ -71,17 +52,17 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
       const report = await tokenSentinel?.report([tokenCallPayload])
-      const results = await divine(report ?? [])
+      const results = report?.filter(isNftMetadataUri) ?? []
       expect(results.length).toBe(1)
-      expect(results[0].address).toBe(address)
-      expect(results[0].chainId).toBe(chainId)
-      expect(results[0].tokenId).toBe(tokenId)
-      expect(results[0].schema).toBe(NftMetadataUriSchema)
-      expect(results[0].metadataUri).toBeString()
+      expect(results?.[0]?.address).toBe(address)
+      expect(results?.[0]?.chainId).toBe(chainId)
+      expect(results?.[0]?.tokenId).toBe(tokenId)
+      expect(results?.[0]?.schema).toBe(NftMetadataUriSchema)
+      expect(results?.[0]?.metadataUri).toBeString()
       const num = Number(BigInt(tokenId)).toString()
       // It is not always true that the metadata URI contains the token ID, but
       // it is true for the cases we are testing
-      expect(results[0].metadataUri).toContain(num)
+      expect(results?.[0]?.metadataUri).toContain(num)
     })
   })
   describe('Index', () => {

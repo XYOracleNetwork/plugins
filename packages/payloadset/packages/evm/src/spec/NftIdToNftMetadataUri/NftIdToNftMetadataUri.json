@@ -29,6 +29,13 @@
           {
             "config": {
               "language": "javascript",
+              "name": "EvmCallResultToNftTokenUriDiviner",
+              "schema": "network.xyo.evm.call.results.metadata.uri.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "language": "javascript",
               "name": "NftTokenUriSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
@@ -40,6 +47,10 @@
                 {
                   "input": ["Erc721TokenURIWitness"],
                   "module": "EvmCallDiviner"
+                },
+                {
+                  "input": ["EvmCallDiviner"],
+                  "module": "EvmCallResultToNftTokenUriDiviner"
                 }
               ]
             }
