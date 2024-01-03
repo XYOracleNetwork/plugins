@@ -11,7 +11,7 @@ import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witn
 export type EvmTokenUriCallResults = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
 
 // Schema
-export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'network.xyo.evm.call.results.uri.diviner.config'
+export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'network.xyo.evm.call.results.metadata.uri.diviner.config'
 export type EvmCallResultToNftTokenUriDivinerConfigSchema = typeof EvmCallResultToNftTokenUriDivinerConfigSchema
 // Config
 export type EvmCallResultToNftTokenUriDivinerConfig = DivinerConfig<{ schema: EvmCallResultToNftTokenUriDivinerConfigSchema }>
