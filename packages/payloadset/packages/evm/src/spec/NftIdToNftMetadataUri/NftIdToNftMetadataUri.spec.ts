@@ -1,7 +1,9 @@
+import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
+import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
@@ -11,13 +13,12 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { EvmCall, EvmCallDiviner, EvmCallResults, EvmCallResultsSchema, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
+import { EvmCall, EvmCallDiviner, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
@@ -83,14 +84,14 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     })
   })
   describe('Index', () => {
-    it.skip.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
-      const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
-      const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
-      expect(tokenSentinel).toBeDefined()
-      const report = await tokenSentinel?.report([tokenCallPayload])
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
-      console.log(`info: ${JSON.stringify(info, null, 2)}`)
-      expect(info?.results?.['tokenURI']?.result).toBeString()
+    it.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
+      await delay(100)
+      const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
+      expect(diviner).toBeDefined()
+      const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
+      const result = await diviner?.divine([query])
+      expect(result).toBeDefined()
+      expect(result).toBeArrayOfSize(1)
     })
   })
 })

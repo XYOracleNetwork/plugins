@@ -52,7 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.nft.id"]
+                "payload_schemas": ["network.xyo.evm.nft.metadata.uri"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -74,7 +74,7 @@
               "name": "IndexCandidateToIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.evm.nft.id": [
+                "network.xyo.evm.nft.metadata.uri": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -204,6 +204,32 @@
           },
           {
             "config": {
+              "indexStore": {
+                "archivist": "IndexArchivist",
+                "boundWitnessDiviner": "IndexBoundWitnessDiviner",
+                "payloadDiviner": "IndexPayloadDiviner"
+              },
+              "indexingDivinerStages": {
+                "divinerQueryToIndexQueryDiviner": "QueryToIndexQueryDiviner",
+                "indexCandidateToIndexDiviner": "IndexCandidateToIndexDiviner",
+                "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
+                "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
+              },
+              "name": "IndexDiviner",
+              "pollFrequency": 1,
+              "schema": "network.xyo.diviner.indexing.temporal.config",
+              "stateStore": {
+                "archivist": "AddressStateArchivist",
+                "boundWitnessDiviner": "AddressStateBoundWitnessDiviner",
+                "payloadDiviner": "AddressStatePayloadDiviner"
+              }
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
               "name": "NftTokenUriSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
@@ -219,6 +245,10 @@
                 {
                   "input": ["EvmCallDiviner"],
                   "module": "EvmCallResultToNftTokenUriDiviner"
+                },
+                {
+                  "input": ["EvmCallDiviner"],
+                  "module": "TimestampWitness"
                 }
               ]
             }
