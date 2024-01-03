@@ -3,20 +3,29 @@ import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witn
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 
-import { EvmCallResultToNftTokenUriDiviner, EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Diviner'
+import { EvmCallResultsTokenUri, EvmCallResultToNftTokenUriDiviner, EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Diviner'
 
-const validateResult = (evmCallResults: EvmCallResults, observation: Payload[]) => {
-  const results = observation.filter(isNftMetadataUri)
+const validateResult = (evmCallResults: EvmCallResultsTokenUri, actual: Payload[]) => {
+  const results = actual.filter(isNftMetadataUri)
   expect(results.length).toBe(1)
-  expect(results[0].address).toBe(evmCallResults.address)
-  expect(results[0].chainId).toBe(evmCallResults.chainId)
-  // expect(results[0].tokenId).toBe(evmCallResults.results.tokenURI.args[0])
+  const {
+    address,
+    chainId,
+    results: {
+      tokenURI: {
+        args: [tokenId],
+      },
+    },
+  } = evmCallResults
+  expect(results[0].address).toBe(address)
+  expect(results[0].chainId).toBe(chainId)
+  expect(results[0].tokenId).toBe(tokenId)
   expect(results[0].schema).toBe(NftMetadataUriSchema)
   expect(results[0].metadataUri).toBeString()
-  // const num = Number(BigInt(tokenId)).toString()
+  const num = Number(BigInt(tokenId)).toString()
   // It is not always true that the metadata URI contains the token ID, but
   // it is true for the cases we are testing
-  // expect(results[0].metadataUri).toContain(num)
+  expect(results[0].metadataUri).toContain(num)
 }
 
 describe('CryptoWalletNftDiviner', () => {
@@ -27,7 +36,13 @@ describe('CryptoWalletNftDiviner', () => {
       results: { tokenURI: { args: ['0x0f'], result: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15' } },
       schema: EvmCallResultsSchema,
     },
-  ] as EvmCallResults[]
+    {
+      address: '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452',
+      chainId: 1,
+      results: { tokenURI: { args: ['0x543'], result: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347' } },
+      schema: 'network.xyo.evm.call.results',
+    },
+  ] as EvmCallResultsTokenUri[]
   let diviner: EvmCallResultToNftTokenUriDiviner
   beforeAll(async () => {
     diviner = await EvmCallResultToNftTokenUriDiviner.create({
@@ -37,6 +52,16 @@ describe('CryptoWalletNftDiviner', () => {
   })
   describe('divine', () => {
     it.each(cases)('transforms the input to the result', async (evmCallResult) => {
+      const result = await diviner.divine([evmCallResult])
+      validateResult(evmCallResult, result)
+    })
+    it('replaced values in templatized results', async () => {
+      const evmCallResult = {
+        address: '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452',
+        chainId: 1,
+        results: { tokenURI: { args: ['0x543'], result: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/{id}' } },
+        schema: 'network.xyo.evm.call.results',
+      } as EvmCallResultsTokenUri
       const result = await diviner.divine([evmCallResult])
       validateResult(evmCallResult, result)
     })
