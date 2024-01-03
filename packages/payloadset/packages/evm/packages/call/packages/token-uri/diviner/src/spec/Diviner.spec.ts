@@ -1,11 +1,15 @@
 // eslint-disable-next-line workspaces/no-absolute-imports
-import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
+import { EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 
-import { EvmCallResultsTokenUri, EvmCallResultToNftTokenUriDiviner, EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Diviner'
+import {
+  EvmCallResultToNftTokenUriDiviner,
+  EvmCallResultToNftTokenUriDivinerConfigSchema,
+  EvmTokenUriCallResults as EvmTokenUriCallResults,
+} from '../Diviner'
 
-const validateResult = (evmCallResults: EvmCallResultsTokenUri, actual: Payload[]) => {
+const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[]) => {
   const results = actual.filter(isNftMetadataUri)
   expect(results.length).toBe(1)
   const {
@@ -42,7 +46,7 @@ describe('CryptoWalletNftDiviner', () => {
       results: { tokenURI: { args: ['0x543'], result: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347' } },
       schema: 'network.xyo.evm.call.results',
     },
-  ] as EvmCallResultsTokenUri[]
+  ] as EvmTokenUriCallResults[]
   let diviner: EvmCallResultToNftTokenUriDiviner
   beforeAll(async () => {
     diviner = await EvmCallResultToNftTokenUriDiviner.create({
@@ -61,7 +65,7 @@ describe('CryptoWalletNftDiviner', () => {
         chainId: 1,
         results: { tokenURI: { args: ['0x543'], result: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/{id}' } },
         schema: 'network.xyo.evm.call.results',
-      } as EvmCallResultsTokenUri
+      } as EvmTokenUriCallResults
       const result = await diviner.divine([evmCallResult])
       validateResult(evmCallResult, result)
     })

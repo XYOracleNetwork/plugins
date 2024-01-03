@@ -8,7 +8,7 @@ import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 // eslint-disable-next-line workspaces/no-absolute-imports
 import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
 
-export type EvmCallResultsTokenUri = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
+export type EvmTokenUriCallResults = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
 
 // Schema
 export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'foo.bar'
@@ -24,8 +24,8 @@ export class EvmCallResultToNftTokenUriDiviner extends AbstractDiviner {
   protected override divineHandler(payloads: Payload[] = []): NftMetadataUri[] {
     const evmCallResults = payloads.filter(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults[]
     const erc721CallResults = evmCallResults
-      .filter((p): p is EvmCallResultsTokenUri => {
-        const casted = p as EvmCallResultsTokenUri
+      .filter((p): p is EvmTokenUriCallResults => {
+        const casted = p as EvmTokenUriCallResults
         return casted.results?.tokenURI?.result !== undefined && (p.results?.tokenURI?.args?.length ?? 0) > 0
       })
       .map<NftMetadataUri>((p) => {
