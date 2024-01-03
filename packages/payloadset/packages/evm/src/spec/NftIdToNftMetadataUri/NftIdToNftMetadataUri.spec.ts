@@ -1,7 +1,16 @@
-/* eslint-disable max-statements */
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
+import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
+import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import {
+  TemporalIndexingDiviner,
+  TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
+  TemporalIndexingDivinerIndexCandidateToIndexDiviner,
+  TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
+  TemporalIndexingDivinerStateToIndexCandidateDiviner,
+} from '@xyo-network/diviner-temporal-indexing'
 import { EvmCall, EvmCallDiviner, EvmCallResults, EvmCallResultsSchema, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
@@ -11,6 +20,7 @@ import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import { TimestampWitness } from '@xyo-network/witness-timestamp'
 
 import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json'
 
@@ -29,6 +39,14 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
+    locator.register(MemoryBoundWitnessDiviner)
+    locator.register(MemoryPayloadDiviner)
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
+    locator.register(TemporalIndexingDiviner)
+    locator.register(TimestampWitness)
     locator.register(EvmCallDiviner)
     locator.register(EvmCallResultToNftTokenUriDiviner)
     locator.register(
@@ -42,9 +60,8 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     const mods = await node.resolve()
-    const privateModules = manifest.nodes[0].modules?.private ?? []
     const publicModules = manifest.nodes[0].modules?.public ?? []
-    expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
+    expect(mods.length).toBe(publicModules.length + 1)
   })
   describe('Sentinel', () => {
     it.each(cases)('returns metadata URI for token ID', async (address, tokenId) => {
