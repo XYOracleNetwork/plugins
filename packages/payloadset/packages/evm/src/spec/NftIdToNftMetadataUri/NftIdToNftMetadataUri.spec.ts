@@ -43,6 +43,7 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   const cases = [
     //Bored Apes
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', '0x0f'],
+    // Gutter Cat Gang
     ['0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452', '0x543'],
   ]
   beforeAll(async () => {
