@@ -76,6 +76,8 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       expect(results[0].schema).toBe(NftMetadataUriSchema)
       expect(results[0].metadataUri).toBeString()
       const num = Number(BigInt(tokenId)).toString()
+      // It is not always true that the metadata URI contains the token ID, but
+      // it is true for the cases we are testing
       expect(results[0].metadataUri).toContain(num)
     })
   })
