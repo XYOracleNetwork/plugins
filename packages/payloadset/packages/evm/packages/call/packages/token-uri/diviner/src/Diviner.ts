@@ -6,8 +6,7 @@ import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config'
 import { EvmCallResultToNftTokenUriDivinerParams } from './Params'
-
-export type EvmTokenUriCallResults = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
+import { EvmTokenUriCallResults } from './Payload'
 
 export class EvmCallResultToNftTokenUriDiviner<
   TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,
