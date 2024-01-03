@@ -14,28 +14,24 @@
               "labels": {
                 "network.xyo.evm.interface": "ERC721TokenUri"
               },
-              "language": "javascript",
               "name": "Erc721TokenURIWitness",
               "schema": "network.xyo.evm.call.witness.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "EvmCallDiviner",
               "schema": "network.xyo.evm.call.diviner.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "EvmCallResultToNftTokenUriDiviner",
               "schema": "network.xyo.evm.call.results.metadata.uri.diviner.config"
             }
           },
           {
             "config": {
-              "language": "javascript",
               "name": "NftTokenUriSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
