@@ -19,6 +19,7 @@ import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
+import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
@@ -89,9 +90,12 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
       const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
-      const result = await diviner?.divine([query])
+      const result = (await diviner?.divine([query])) as unknown as Payload<{ address?: string; chainId?: number; tokenId?: string }>[]
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
+      expect(result?.[0]?.address).toBe(address)
+      expect(result?.[0]?.chainId).toBe(chainId)
+      expect(result?.[0]?.tokenId).toBe(tokenId)
     })
   })
 })
