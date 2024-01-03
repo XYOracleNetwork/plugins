@@ -2,7 +2,6 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { createProfiler, profile, profileReport } from '@xylabs/profile'
 import { HDWallet } from '@xyo-network/account'
-import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { EvmCall, EvmCallDiviner, EvmCallResults, EvmCallResultsSchema, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
@@ -11,7 +10,6 @@ import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
-import { asWitnessInstance } from '@xyo-network/witness-model'
 
 import erc721TokenSentinelManifest from './NftIdToNftMetadataUri.json'
 
