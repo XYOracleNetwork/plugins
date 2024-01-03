@@ -11,7 +11,7 @@ import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witn
 export type EvmTokenUriCallResults = EvmCallResults & { results: { tokenURI: { args: [string]; result?: string } } }
 
 // Schema
-export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'foo.bar'
+export const EvmCallResultToNftTokenUriDivinerConfigSchema = 'network.xyo.evm.call.results.uri.diviner.config'
 export type EvmCallResultToNftTokenUriDivinerConfigSchema = typeof EvmCallResultToNftTokenUriDivinerConfigSchema
 // Config
 export type EvmCallResultToNftTokenUriDivinerConfig = DivinerConfig<{ schema: EvmCallResultToNftTokenUriDivinerConfigSchema }>
@@ -21,6 +21,7 @@ export type EvmCallResultToNftTokenUriDivinerParams = DivinerParams<AnyConfigSch
 export class EvmCallResultToNftTokenUriDiviner extends AbstractDiviner {
   static override configSchemas = [EvmCallResultToNftTokenUriDivinerConfigSchema]
 
+  // TODO: Add support for ERC1155 with `uri` function in addition to current ERC721 `tokenURI` support
   protected override divineHandler(payloads: Payload[] = []): NftMetadataUri[] {
     const evmCallResults = payloads.filter(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults[]
     const erc721CallResults = evmCallResults
