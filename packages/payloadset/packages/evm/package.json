@@ -16,11 +16,21 @@
     "@xyo-network/evm-abi-diviner": "workspace:~",
     "@xyo-network/evm-call-witness": "workspace:~",
     "@xyo-network/evm-contract-witness": "workspace:~",
-    "@xyo-network/payloadset-plugin": "^2.85.7"
+    "@xyo-network/payloadset-plugin": "^2.85.8"
   },
   "devDependencies": {
+    "@xylabs/jest-helpers": "^2.13.23",
+    "@xylabs/profile": "^2.13.23",
     "@xylabs/ts-scripts-yarn3": "^3.2.25",
     "@xylabs/tsconfig": "^3.2.25",
+    "@xyo-network/account": "^2.85.8",
+    "@xyo-network/manifest": "^2.85.8",
+    "@xyo-network/module-model": "^2.85.8",
+    "@xyo-network/node-memory": "^2.85.8",
+    "@xyo-network/open-zeppelin-typechain": "^3.0.5",
+    "@xyo-network/payload-model": "^2.85.8",
+    "@xyo-network/sentinel-model": "^2.85.8",
+    "@xyo-network/witness-evm-abstract": "^2.85.8",
     "typescript": "^5.3.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",

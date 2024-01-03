@@ -52,9 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": [
-                  "network.xyo.evm.nft.index"
-                ]
+                "payload_schemas": ["network.xyo.evm.nft.id"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -76,7 +74,7 @@
               "name": "IndexCandidateToIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.evm.nft.index": [
+                "network.xyo.evm.nft.id": [
                   {
                     "destinationField": "address",
                     "sourcePathExpression": "$.address"
@@ -86,8 +84,8 @@
                     "sourcePathExpression": "$.chainId"
                   },
                   {
-                    "destinationField": "index",
-                    "sourcePathExpression": "$.index"
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.tokenId"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -119,6 +117,11 @@
                     "defaultValue": 1,
                     "destinationField": "chainId",
                     "sourcePathExpression": "$.chainId"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "tokenId",
+                    "sourcePathExpression": "$.tokenId"
                   },
                   {
                     "defaultValue": 1,
@@ -232,9 +235,7 @@
           {
             "config": {
               "archiving": {
-                "archivists": [
-                  "Archivist"
-                ]
+                "archivists": ["Archivist"]
               },
               "name": "TokenIndexToTokenIdSentinel",
               "schema": "network.xyo.sentinel.config",
@@ -296,9 +297,7 @@
           {
             "config": {
               "archiving": {
-                "archivists": [
-                  "Archivist"
-                ]
+                "archivists": ["Archivist"]
               },
               "name": "Sentinel",
               "schema": "network.xyo.sentinel.config",
@@ -309,10 +308,12 @@
                   "module": "Erc721TokenByIndexWitness"
                 },
                 {
-                  "input": [
-                    "Erc721TokenByIndexWitness"
-                  ],
+                  "input": ["Erc721TokenByIndexWitness"],
                   "module": "NftIdPartialToNftIdTransformDiviner"
+                },
+                {
+                  "input": ["Erc721TokenByIndexWitness"],
+                  "module": "TimestampWitness"
                 }
               ]
             }
