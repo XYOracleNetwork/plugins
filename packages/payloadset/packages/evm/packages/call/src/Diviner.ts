@@ -23,7 +23,7 @@ export type EvmCallResultsSchema = typeof EvmCallResultsSchema
 export type EvmCallResults = Payload<
   {
     address: string
-    chainId: string
+    chainId: number
     results?: Record<
       string,
       {
