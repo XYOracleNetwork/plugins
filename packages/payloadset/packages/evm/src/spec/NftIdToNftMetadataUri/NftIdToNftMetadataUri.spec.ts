@@ -38,6 +38,7 @@ const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
 
 describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
+  const chainId = 1
   const tokenId = '0x0f'
   let node: MemoryNode
   beforeAll(async () => {
@@ -66,9 +67,13 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       expect(tokenSentinel).toBeDefined()
       const report = await tokenSentinel?.report([tokenCallPayload])
       const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
-      console.log(`info: ${JSON.stringify(info, null, 2)}`)
-      expect(info?.results?.['tokenURI']?.result).toBeString()
-      // TODO: Make NFT URI payload
+      const results = await divine(report ?? [])
+      expect(results.length).toBe(1)
+      expect(results[0].address).toBe(address)
+      expect(results[0].chainId).toBe(chainId)
+      expect(results[0].tokenId).toBe(tokenId)
+      expect(results[0].schema).toBe(NftMetadataUriSchema)
+      expect(results[0].metadataUri).toBeString()
     })
   })
   describe('Index', () => {
