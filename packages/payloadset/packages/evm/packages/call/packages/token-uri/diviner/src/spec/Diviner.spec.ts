@@ -3,11 +3,9 @@ import { EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 
-import {
-  EvmCallResultToNftTokenUriDiviner,
-  EvmCallResultToNftTokenUriDivinerConfigSchema,
-  EvmTokenUriCallResults as EvmTokenUriCallResults,
-} from '../Diviner'
+import { EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Config'
+import { EvmCallResultToNftTokenUriDiviner } from '../Diviner'
+import { EvmTokenUriCallResults } from '../Payload'
 
 const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[]) => {
   const results = actual.filter(isNftMetadataUri)
