@@ -1,7 +1,6 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -73,23 +72,25 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
         const chainId = 1
-        const inputs = tokenIndexes.map((tokenIndex) => {
-          return {
-            address,
-            args: [`0x${BigInt(tokenIndex).toString(16)}`],
-            chainId,
-            functionName: 'tokenByIndex',
-            schema: EvmCallSchema,
+        for (const tokenIndex of tokenIndexes) {
+          const inputs = [
+            {
+              address,
+              args: [`0x${BigInt(tokenIndex).toString(16)}`],
+              chainId,
+              functionName: 'tokenByIndex',
+              schema: EvmCallSchema,
+            },
+          ]
+          const observations = await sentinel?.report(inputs)
+          const nftIds = observations?.filter(isNftId)
+          expect(nftIds?.length).toBe(1)
+          for (const nftId of nftIds ?? []) {
+            expect(nftId.address).toBe(address)
+            expect(nftId.chainId).toBe(chainId)
+            expect(nftId.tokenId).toBeString()
+            expect(tokenIds).toContain(Number(BigInt(nftId.tokenId)))
           }
-        })
-        const observations = await sentinel?.report(inputs)
-        const nftIds = observations?.filter(isNftId)
-        expect(nftIds?.length).toBe(tokensToCheck)
-        for (const nftId of nftIds ?? []) {
-          expect(nftId.address).toBe(address)
-          expect(nftId.chainId).toBe(chainId)
-          expect(nftId.tokenId).toBeString()
-          expect(tokenIds).toContain(Number(BigInt(nftId.tokenId)))
         }
       })
     })
@@ -98,8 +99,6 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
         await delay(1000)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
-        const archivist = asArchivistInstance(await node.resolve('Archivist'))
-        const all = (await archivist?.all?.()) ?? []
         // Check we've indexed the results by sampling the first and last index
         const sampleIndexes = [0, tokensToCheck - 1]
         for (const tokenIndex of sampleIndexes) {
