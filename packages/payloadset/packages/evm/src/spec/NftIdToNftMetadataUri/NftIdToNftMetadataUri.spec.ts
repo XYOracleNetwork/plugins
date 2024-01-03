@@ -27,7 +27,6 @@ const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
       return casted.results?.tokenURI?.result !== undefined && (p.results?.tokenURI?.args?.length ?? 0) > 0
     })
     .map<NftMetadataUri>((p) => {
-      // TODO: Get chain ID type correct
       const { address, chainId, results } = p
       const { args, result: metadataUri } = results.tokenURI
       const tokenId = args[0]
@@ -66,7 +65,6 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
       const report = await tokenSentinel?.report([tokenCallPayload])
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
       const results = await divine(report ?? [])
       expect(results.length).toBe(1)
       expect(results[0].address).toBe(address)
