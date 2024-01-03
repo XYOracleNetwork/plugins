@@ -7,7 +7,7 @@ import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayload, isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
@@ -27,11 +27,11 @@ const divine = async (payloads: Payload[]): Promise<NftMetadataUri[]> => {
       return casted.results?.tokenURI?.result !== undefined && (p.results?.tokenURI?.args?.length ?? 0) > 0
     })
     .map<NftMetadataUri>((p) => {
+      // TODO: Get chain ID type correct
       const { address, chainId, results } = p
       const { args, result: metadataUri } = results.tokenURI
       const tokenId = args[0]
-      const tempChainId = 1
-      return { address, chainId: tempChainId, metadataUri, schema: NftMetadataUriSchema, tokenId }
+      return { address, chainId, metadataUri, schema: NftMetadataUriSchema, tokenId }
     })
   return erc721CallResults
 }
