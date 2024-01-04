@@ -10,6 +10,7 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
+    "@xylabs/assert": "^2.13.23",
     "@xylabs/exists": "^2.13.23",
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:~",
     "@xyo-network/crypto-asset-payload-plugin": "workspace:~",
@@ -22,7 +23,6 @@
     "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/assert": "^2.13.23",
     "@xylabs/ts-scripts-yarn3": "^3.2.28",
     "@xylabs/tsconfig": "^3.2.28",
     "@xyo-network/account": "^2.86.0",
