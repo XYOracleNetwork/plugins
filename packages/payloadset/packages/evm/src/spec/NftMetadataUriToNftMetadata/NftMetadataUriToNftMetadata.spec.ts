@@ -2,6 +2,7 @@ import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import { ApiCall, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -35,11 +36,11 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       // BAYC
       uri: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15',
     },
-    // {
-    //   schema: ApiCallSchema,
-    //   // Gutter Cats
-    //   uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
-    // },
+    {
+      schema: ApiCallSchema,
+      // Gutter Cats
+      uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
+    },
   ]
   beforeAll(async () => {
     const wallet = await HDWallet.random()
@@ -72,8 +73,10 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       const report = await sentinel?.report([apiCall])
       const results = report?.filter(isApiCallJsonResult) ?? []
       expect(results.length).toBe(1)
-      expect(results[0].data).toBeDefined()
-      // TODO: Assert JSON result here
+      expect(results[0].data).toBeObject()
+      const metadata = results[0].data as OpenSeaNftMetadata
+      expect(metadata.image).toBeString()
+      expect(metadata.attributes).toBeArray()
     })
   })
   describe.skip('Index', () => {
