@@ -80,8 +80,10 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
     })
   })
   describe('Index', () => {
+    beforeAll(async () => {
+      await delay(100)
+    })
     it.each(cases)('returns indexed NftIndex results', async (apiCall) => {
-      await delay(1000)
       const { uri } = apiCall
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()

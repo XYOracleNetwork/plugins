@@ -85,8 +85,10 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     })
   })
   describe('Index', () => {
-    it.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
+    beforeAll(async () => {
       await delay(100)
+    })
+    it.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
       const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
