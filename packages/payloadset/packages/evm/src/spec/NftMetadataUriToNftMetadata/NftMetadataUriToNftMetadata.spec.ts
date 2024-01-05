@@ -1,7 +1,7 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { ApiCall, ApiCallSchema, ApiCallWitness, isApiCallResult } from '@xyo-network/api-call-witness'
+import { ApiCall, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult } from '@xyo-network/api-call-witness'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -14,7 +14,7 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
-import { ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
@@ -30,16 +30,16 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
   const chainId = 1
   let node: MemoryNode
   const cases: ApiCall[] = [
-    // {
-    //   schema: ApiCallSchema,
-    //   // BAYC
-    //   uri: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15',
-    // },
     {
       schema: ApiCallSchema,
-      // Gutter Cats
-      uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
+      // BAYC
+      uri: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15',
     },
+    // {
+    //   schema: ApiCallSchema,
+    //   // Gutter Cats
+    //   uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
+    // },
   ]
   beforeAll(async () => {
     const wallet = await HDWallet.random()
@@ -52,7 +52,12 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
     locator.register(TemporalIndexingDiviner)
     locator.register(TimestampWitness)
-    locator.register(ApiCallWitness)
+    locator.register(
+      new ModuleFactory(ApiCallWitness, {
+        config: { schema: ApiCallWitnessConfigSchema },
+        ipfsGateway: '5d7b6582.beta.decentralnetworkservices.com',
+      }),
+    )
     const manifest = nftIdToNftMetadataUri as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
@@ -65,8 +70,9 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       const sentinel = asSentinelInstance(await node.resolve('NftMetadataSentinel'))
       expect(sentinel).toBeDefined()
       const report = await sentinel?.report([apiCall])
-      const results = report?.filter(isApiCallResult) ?? []
+      const results = report?.filter(isApiCallJsonResult) ?? []
       expect(results.length).toBe(1)
+      expect(results[0].data).toBeDefined()
       // TODO: Assert JSON result here
     })
   })
