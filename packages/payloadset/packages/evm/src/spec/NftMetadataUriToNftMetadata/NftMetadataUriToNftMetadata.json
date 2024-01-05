@@ -76,7 +76,7 @@
               "schemaTransforms": {
                 "network.xyo.api.call.result": [
                   {
-                    "destinationField": "url",
+                    "destinationField": "uri",
                     "sourcePathExpression": "$.call"
                   }
                 ],
@@ -102,8 +102,8 @@
               "schemaTransforms": {
                 "network.xyo.diviner.payload.query": [
                   {
-                    "destinationField": "url",
-                    "sourcePathExpression": "$.url"
+                    "destinationField": "uri",
+                    "sourcePathExpression": "$.uri"
                   },
                   {
                     "defaultValue": 1,
