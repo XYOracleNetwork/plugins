@@ -80,3 +80,6 @@ export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
 export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>
   isApiCall(value) && !!((value as ApiUriTemplateCall).uriTemplate || (value as ApiUriTemplateCall).params)
 export const asApiUriTemplateCall = AsObjectFactory.create(isApiUriTemplateCall)
+
+export const isApiCallResult = isPayloadOfSchemaType(ApiCallResultSchema)
+export const asApiCallResult = AsObjectFactory.create(isApiCallResult)

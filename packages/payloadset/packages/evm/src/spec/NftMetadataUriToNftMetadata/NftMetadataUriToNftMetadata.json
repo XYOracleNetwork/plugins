@@ -159,24 +159,8 @@
           },
           {
             "config": {
-              "functionName": "tokenURI",
-              "labels": {
-                "network.xyo.evm.interface": "ERC721TokenUri"
-              },
-              "name": "Erc721TokenURIWitness",
-              "schema": "network.xyo.evm.call.witness.config"
-            }
-          },
-          {
-            "config": {
-              "name": "EvmCallDiviner",
-              "schema": "network.xyo.evm.call.diviner.config"
-            }
-          },
-          {
-            "config": {
-              "name": "EvmCallResultToNftTokenUriDiviner",
-              "schema": "network.xyo.evm.call.results.metadata.uri.diviner.config"
+              "name": "ApiCallWitness",
+              "schema": "network.xyo.api.call.witness.config"
             }
           }
         ],
@@ -230,24 +214,16 @@
               "archiving": {
                 "archivists": ["Archivist"]
               },
-              "name": "NftTokenUriSentinel",
+              "name": "NftMetadataSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenURIWitness"
+                  "module": "ApiCallWitness"
                 },
                 {
-                  "input": ["Erc721TokenURIWitness"],
-                  "module": "EvmCallDiviner"
-                },
-                {
-                  "input": ["EvmCallDiviner"],
-                  "module": "EvmCallResultToNftTokenUriDiviner"
-                },
-                {
-                  "input": ["EvmCallDiviner"],
+                  "input": true,
                   "module": "TimestampWitness"
                 }
               ]
