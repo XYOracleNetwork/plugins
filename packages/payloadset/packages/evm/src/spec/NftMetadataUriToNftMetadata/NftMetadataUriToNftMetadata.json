@@ -52,7 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.nft.metadata.uri"]
+                "payload_schemas": ["network.xyo.api.call.result"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -74,18 +74,10 @@
               "name": "IndexCandidateToIndexDiviner",
               "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
               "schemaTransforms": {
-                "network.xyo.evm.nft.metadata.uri": [
+                "network.xyo.api.call.result": [
                   {
-                    "destinationField": "address",
-                    "sourcePathExpression": "$.address"
-                  },
-                  {
-                    "destinationField": "chainId",
-                    "sourcePathExpression": "$.chainId"
-                  },
-                  {
-                    "destinationField": "tokenId",
-                    "sourcePathExpression": "$.tokenId"
+                    "destinationField": "url",
+                    "sourcePathExpression": "$.call"
                   }
                 ],
                 "network.xyo.timestamp": [
@@ -110,18 +102,8 @@
               "schemaTransforms": {
                 "network.xyo.diviner.payload.query": [
                   {
-                    "destinationField": "address",
-                    "sourcePathExpression": "$.address"
-                  },
-                  {
-                    "defaultValue": 1,
-                    "destinationField": "chainId",
-                    "sourcePathExpression": "$.chainId"
-                  },
-                  {
-                    "defaultValue": 1,
-                    "destinationField": "tokenId",
-                    "sourcePathExpression": "$.tokenId"
+                    "destinationField": "url",
+                    "sourcePathExpression": "$.url"
                   },
                   {
                     "defaultValue": 1,

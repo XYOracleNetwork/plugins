@@ -1,7 +1,7 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { ApiCall, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { ApiCall, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, ApiUriCall, isApiCallJsonResult } from '@xyo-network/api-call-witness'
 import { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -30,7 +30,7 @@ const providers = getProvidersFromEnv(maxProviders)
 describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
   const chainId = 1
   let node: MemoryNode
-  const cases: ApiCall[] = [
+  const cases: ApiUriCall[] = [
     {
       schema: ApiCallSchema,
       // BAYC
@@ -79,18 +79,17 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       expect(metadata.attributes).toBeArray()
     })
   })
-  describe.skip('Index', () => {
-    it.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
-      await delay(100)
+  describe('Index', () => {
+    it.each(cases)('returns indexed NftIndex results', async (apiCall) => {
+      await delay(1000)
+      const { uri } = apiCall
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
-      const result = (await diviner?.divine([query])) as unknown as Payload<{ address?: string; chainId?: number; tokenId?: string }>[]
+      const query = { limit: 1, schema: PayloadDivinerQuerySchema, uri }
+      const result = (await diviner?.divine([query])) as unknown as Payload<{ uri: string }>[]
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
-      expect(result?.[0]?.address).toBe(address)
-      expect(result?.[0]?.chainId).toBe(chainId)
-      expect(result?.[0]?.tokenId).toBe(tokenId)
+      expect(result?.[0]?.uri).toBe(uri)
     })
   })
 })
