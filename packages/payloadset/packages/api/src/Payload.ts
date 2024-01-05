@@ -58,7 +58,7 @@ export type ApiCallJsonResult<T extends ApiCallJsonResultType = ApiCallJsonResul
 >
 
 export const isApiCallJsonResult = <T extends ApiCallJsonResultType = ApiCallJsonResultType>(x?: unknown | null): x is ApiCallJsonResult<T> => {
-  return isPayloadOfSchemaType(ApiCallResultSchema)(x) && (x as ApiCallJsonResult<T>)?.contentType === 'application/json'
+  return isPayloadOfSchemaType(ApiCallResultSchema)(x) && (x as ApiCallJsonResult)?.contentType === 'application/json'
 }
 export const asApiCallJsonResult = AsObjectFactory.create(isApiCallJsonResult)
 
