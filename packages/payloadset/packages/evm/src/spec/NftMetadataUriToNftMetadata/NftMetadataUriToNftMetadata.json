@@ -1,0 +1,219 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/main/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "name": "NftTokenUriNode",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [
+          {
+            "config": {
+              "name": "AddressStateArchivist",
+              "schema": "network.xyo.archivist.config",
+              "storeQueries": false
+            }
+          },
+          {
+            "config": {
+              "archivist": "AddressStateArchivist",
+              "name": "AddressStateBoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "AddressStateArchivist",
+              "name": "AddressStatePayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "name": "IndexArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "IndexArchivist",
+              "name": "IndexBoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "IndexArchivist",
+              "name": "IndexPayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "filter": {
+                "payload_schemas": ["network.xyo.api.call.result"]
+              },
+              "labels": {
+                "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
+              },
+              "name": "StateToIndexCandidateDiviner",
+              "payloadStore": {
+                "archivist": "Archivist",
+                "boundWitnessDiviner": "BoundWitnessDiviner",
+                "payloadDiviner": "PayloadDiviner"
+              },
+              "schema": "network.xyo.diviner.indexing.temporal.stage.stateToIndexCandidateDiviner.config"
+            }
+          },
+          {
+            "config": {
+              "labels": {
+                "network.xyo.diviner.stage": "indexCandidateToIndexDiviner"
+              },
+              "name": "IndexCandidateToIndexDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexCandidateToIndexDiviner.config",
+              "schemaTransforms": {
+                "network.xyo.api.call.result": [
+                  {
+                    "destinationField": "uri",
+                    "sourcePathExpression": "$.call"
+                  }
+                ],
+                "network.xyo.timestamp": [
+                  {
+                    "destinationField": "timestamp",
+                    "sourcePathExpression": "$.timestamp"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "divinerQuerySchema": "network.xyo.diviner.payload.query",
+              "indexQuerySchema": "network.xyo.diviner.payload.query",
+              "indexSchema": "network.xyo.diviner.indexing.temporal.result.index",
+              "labels": {
+                "network.xyo.diviner.stage": "divinerQueryToIndexQueryDiviner"
+              },
+              "name": "QueryToIndexQueryDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.divinerQueryToIndexQueryDiviner.config",
+              "schemaTransforms": {
+                "network.xyo.diviner.payload.query": [
+                  {
+                    "destinationField": "uri",
+                    "sourcePathExpression": "$.uri"
+                  },
+                  {
+                    "defaultValue": 1,
+                    "destinationField": "limit",
+                    "sourcePathExpression": "$.limit"
+                  },
+                  {
+                    "defaultValue": 0,
+                    "destinationField": "offset",
+                    "sourcePathExpression": "$.offset"
+                  },
+                  {
+                    "defaultValue": "desc",
+                    "destinationField": "order",
+                    "sourcePathExpression": "$.order"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "config": {
+              "labels": {
+                "network.xyo.diviner.stage": "indexQueryResponseToDivinerQueryResponseDiviner"
+              },
+              "name": "IndexQueryResponseToQueryResponseDiviner",
+              "schema": "network.xyo.diviner.indexing.temporal.stage.indexQueryResponseToDivinerQueryResponseDiviner.config"
+            }
+          },
+          {
+            "config": {
+              "name": "TimestampWitness",
+              "schema": "network.xyo.witness.timestamp.config"
+            }
+          },
+          {
+            "config": {
+              "name": "ApiCallWitness",
+              "schema": "network.xyo.api.call.witness.config"
+            }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "name": "Archivist",
+              "schema": "network.xyo.archivist.config",
+              "storeQueries": false
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "name": "BoundWitnessDiviner",
+              "schema": "network.xyo.diviner.boundwitness.config"
+            }
+          },
+          {
+            "config": {
+              "archivist": "Archivist",
+              "name": "PayloadDiviner",
+              "schema": "network.xyo.diviner.payload.config"
+            }
+          },
+          {
+            "config": {
+              "indexStore": {
+                "archivist": "IndexArchivist",
+                "boundWitnessDiviner": "IndexBoundWitnessDiviner",
+                "payloadDiviner": "IndexPayloadDiviner"
+              },
+              "indexingDivinerStages": {
+                "divinerQueryToIndexQueryDiviner": "QueryToIndexQueryDiviner",
+                "indexCandidateToIndexDiviner": "IndexCandidateToIndexDiviner",
+                "indexQueryResponseToDivinerQueryResponseDiviner": "IndexQueryResponseToQueryResponseDiviner",
+                "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
+              },
+              "name": "IndexDiviner",
+              "pollFrequency": 1,
+              "schema": "network.xyo.diviner.indexing.temporal.config",
+              "stateStore": {
+                "archivist": "AddressStateArchivist",
+                "boundWitnessDiviner": "AddressStateBoundWitnessDiviner",
+                "payloadDiviner": "AddressStatePayloadDiviner"
+              }
+            }
+          },
+          {
+            "config": {
+              "archiving": {
+                "archivists": ["Archivist"]
+              },
+              "name": "NftMetadataSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "ApiCallWitness"
+                },
+                {
+                  "input": true,
+                  "module": "TimestampWitness"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}

@@ -19,6 +19,8 @@ export type ApiUriCall = Payload<
   },
   ApiCallSchema
 >
+export const isApiUriCall = (value?: unknown): value is ApiUriCall => isApiCall(value) && !!(value as ApiUriCall).uri
+export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
 
 export type ApiUriTemplateCall = Payload<
   ApiCallFields & {
@@ -27,11 +29,17 @@ export type ApiUriTemplateCall = Payload<
   },
   ApiCallSchema
 >
+export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>
+  isApiCall(value) && !!((value as ApiUriTemplateCall).uriTemplate || (value as ApiUriTemplateCall).params)
+export const asApiUriTemplateCall = AsObjectFactory.create(isApiUriTemplateCall)
 
 export type ApiCall = ApiUriCall | ApiUriTemplateCall
 
 export const ApiCallResultSchema = 'network.xyo.api.call.result'
 export type ApiCallResultSchema = typeof ApiCallResultSchema
+
+export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
+export const asApiCall = AsObjectFactory.create(isApiCall)
 
 export interface HttpMeta {
   code?: string
@@ -48,6 +56,11 @@ export type ApiCallJsonResult<T extends ApiCallJsonResultType = ApiCallJsonResul
   },
   ApiCallResultSchema
 >
+
+export const isApiCallJsonResult = <T extends ApiCallJsonResultType = ApiCallJsonResultType>(x?: unknown | null): x is ApiCallJsonResult<T> => {
+  return isPayloadOfSchemaType(ApiCallResultSchema)(x) && (x as ApiCallJsonResult)?.contentType === 'application/json'
+}
+export const asApiCallJsonResult = AsObjectFactory.create(isApiCallJsonResult)
 
 export type ApiCallBase64Result = Payload<
   {
@@ -71,12 +84,5 @@ export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | Jso
   | ApiCallJsonResult<TJson>
   | ApiCallErrorResult
 
-export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
-export const asApiCall = AsObjectFactory.create(isApiCall)
-
-export const isApiUriCall = (value?: unknown): value is ApiUriCall => isApiCall(value) && !!(value as ApiUriCall).uri
-export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
-
-export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>
-  isApiCall(value) && !!((value as ApiUriTemplateCall).uriTemplate || (value as ApiUriTemplateCall).params)
-export const asApiUriTemplateCall = AsObjectFactory.create(isApiUriTemplateCall)
+export const isApiCallResult = isPayloadOfSchemaType(ApiCallResultSchema)
+export const asApiCallResult = AsObjectFactory.create(isApiCallResult)
