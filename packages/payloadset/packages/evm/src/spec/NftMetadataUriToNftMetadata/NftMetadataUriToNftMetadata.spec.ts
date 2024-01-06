@@ -1,7 +1,7 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { ApiCall, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, ApiUriCall, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, ApiUriCall, isApiCallJsonResult } from '@xyo-network/api-call-witness'
 import { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
