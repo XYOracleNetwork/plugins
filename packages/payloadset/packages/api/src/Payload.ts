@@ -38,7 +38,7 @@ export type ApiCall = ApiUriCall | ApiUriTemplateCall
 export const ApiCallResultSchema = 'network.xyo.api.call.result'
 export type ApiCallResultSchema = typeof ApiCallResultSchema
 
-export const isApiCall = isPayloadOfSchemaType(ApiCallSchema)
+export const isApiCall = isPayloadOfSchemaType<ApiCall>(ApiCallSchema)
 export const asApiCall = AsObjectFactory.create(isApiCall)
 
 export interface HttpMeta {
@@ -84,5 +84,5 @@ export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | Jso
   | ApiCallJsonResult<TJson>
   | ApiCallErrorResult
 
-export const isApiCallResult = isPayloadOfSchemaType(ApiCallResultSchema)
+export const isApiCallResult = isPayloadOfSchemaType<ApiCallResult>(ApiCallResultSchema)
 export const asApiCallResult = AsObjectFactory.create(isApiCallResult)

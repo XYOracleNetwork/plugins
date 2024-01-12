@@ -30,7 +30,7 @@ export type ApiUriTemplateCallWitnessConfig = WitnessConfig<
 
 export type ApiCallWitnessConfig = ApiUriCallWitnessConfig | ApiUriTemplateCallWitnessConfig | ApiCallWitnessConfigBase
 
-export const isApiCallWitnessConfig = isPayloadOfSchemaType(ApiCallWitnessConfigSchema)
+export const isApiCallWitnessConfig = isPayloadOfSchemaType<ApiCallWitnessConfig>(ApiCallWitnessConfigSchema)
 export const asApiCallWitnessConfig = AsObjectFactory.create(isApiCallWitnessConfig)
 
 export const isApiUriCallWitnessConfig = (value?: unknown): value is ApiUriCallWitnessConfig =>
