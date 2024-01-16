@@ -2939,7 +2939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/superagent@npm:*":
+"@types/superagent@npm:^8.1.0":
   version: 8.1.1
   resolution: "@types/superagent@npm:8.1.1"
   dependencies:
@@ -2950,12 +2950,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:^2.0.16":
-  version: 2.0.16
-  resolution: "@types/supertest@npm:2.0.16"
+"@types/supertest@npm:^6.0.2":
+  version: 6.0.2
+  resolution: "@types/supertest@npm:6.0.2"
   dependencies:
-    "@types/superagent": "npm:*"
-  checksum: 2fc998ea698e0467cdbe3bea0ebce2027ea3a45a13e51a6cecb0435f44b486faecf99c34d8702d2d7fe033e6e09fdd2b374af52ecc8d0c69a1deec66b8c0dd52
+    "@types/methods": "npm:^1.1.4"
+    "@types/superagent": "npm:^8.1.0"
+  checksum: 4b67fb2d1bfbb7ff0a7dfaaf190cdf2e0014522615fb2dc53c214bdac95b4ee42696dd1df13332c90a7765cc52934c9cc0c428bf0f9e8189167aef01042e7448
   languageName: node
   linkType: hard
 
@@ -3725,7 +3726,7 @@ __metadata:
     "@xyo-network/witness-model": "npm:^2.87.0"
     base64-js: "npm:^1.5.1"
     es6-template-strings: "npm:^2.0.1"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -3746,7 +3747,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
     "@xyo-network/witness-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     graphql: "npm:^16.8.1"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
@@ -4097,7 +4098,7 @@ __metadata:
     "@xyo-network/payload-wrapper": "npm:^2.87.0"
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
     "@xyo-network/witness-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -4233,7 +4234,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/payload-plugin": "npm:^2.87.0"
     "@xyo-network/witness-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -4276,7 +4277,7 @@ __metadata:
     "@xyo-network/witness-model": "npm:^2.87.0"
     "@xyo-network/witness-timestamp": "npm:^2.87.0"
     async-mutex: "npm:^0.4.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -4352,7 +4353,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/payload-wrapper": "npm:^2.87.0"
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -4397,7 +4398,7 @@ __metadata:
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -4422,7 +4423,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/payload-wrapper": "npm:^2.87.0"
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     svg-parser: "npm:^2.0.4"
     typescript: "npm:^5.3.3"
@@ -4534,7 +4535,7 @@ __metadata:
     "@xyo-network/witness-blockchain": "npm:^2.87.0"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     lru-cache: "npm:^10.1.0"
     parse-data-url: "npm:^6.0.0"
@@ -4649,7 +4650,7 @@ __metadata:
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:~"
     "@xyo-network/module-model": "npm:^2.87.0"
     "@xyo-network/payload-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5082,7 +5083,7 @@ __metadata:
     "@xylabs/tsconfig": "npm:^3.2.41"
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5100,7 +5101,7 @@ __metadata:
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5215,7 +5216,7 @@ __metadata:
     "@xyo-network/payloadset-plugin": "npm:^2.87.0"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.87.0"
     "@xyo-network/witness-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5282,7 +5283,7 @@ __metadata:
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5341,7 +5342,7 @@ __metadata:
     "@xyo-network/witness-model": "npm:^2.87.0"
     "@xyo-network/witness-timestamp": "npm:^2.87.0"
     async-mutex: "npm:^0.4.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5358,7 +5359,7 @@ __metadata:
     "@xyo-network/module-model": "npm:^2.87.0"
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5377,7 +5378,7 @@ __metadata:
     "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
     "@xyo-network/payload-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -5474,7 +5475,7 @@ __metadata:
     "@xyo-network/sentinel-model": "npm:^2.87.0"
     "@xyo-network/witness-evm-abstract": "npm:^2.87.0"
     "@xyo-network/witness-timestamp": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -6290,7 +6291,7 @@ __metadata:
     "@babel/preset-env": "npm:^7.23.8"
     "@babel/preset-typescript": "npm:^7.23.3"
     "@types/jest": "npm:^29.5.11"
-    "@types/supertest": "npm:^2.0.16"
+    "@types/supertest": "npm:^6.0.2"
     "@typescript-eslint/eslint-plugin": "npm:^6.19.0"
     "@typescript-eslint/parser": "npm:^6.19.0"
     "@xylabs/eslint-config": "npm:^3.2.41"
@@ -6548,7 +6549,7 @@ __metadata:
     "@xyo-network/uniswap-v3-sdk": "npm:^3.12.3"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.87.0"
     "@xyo-network/witness-model": "npm:^2.87.0"
-    ethers: "npm:^6.9.2"
+    ethers: "npm:^6.10.0"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.3.3"
   languageName: unknown
@@ -9661,7 +9662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ethers@npm:^6.8.1, ethers@npm:^6.9.1, ethers@npm:^6.9.2":
+"ethers@npm:^6.10.0, ethers@npm:^6.8.1, ethers@npm:^6.9.1, ethers@npm:^6.9.2":
   version: 6.10.0
   resolution: "ethers@npm:6.10.0"
   dependencies:
