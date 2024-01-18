@@ -28,7 +28,6 @@ const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)
 
 describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
-  const chainId = 1
   let node: MemoryNode
   const cases: ApiUriCall[] = [
     {
