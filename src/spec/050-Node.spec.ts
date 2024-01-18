@@ -10,7 +10,7 @@ describe('Node', () => {
     console.log(describe)
   })
   it('create from manifest', async () => {
-    const wallet = await HDWallet.create()
+    const wallet = await HDWallet.random()
     const manifest: PackageManifestPayload = {
       nodes: [
         {
@@ -32,7 +32,7 @@ describe('Node', () => {
     console.log(describe)
   })
   it('create from manifest with module', async () => {
-    const wallet = await HDWallet.create()
+    const wallet = await HDWallet.random()
     const manifest: PackageManifestPayload = {
       nodes: [
         {
@@ -41,8 +41,22 @@ describe('Node', () => {
             schema: 'network.xyo.node.config',
           },
           modules: {
-            private: [],
-            public: [],
+            private: [
+              {
+                config: {
+                  name: 'PrivateArchivist',
+                  schema: 'network.xyo.archivist.config',
+                },
+              },
+            ],
+            public: [
+              {
+                config: {
+                  name: 'PublicArchivist',
+                  schema: 'network.xyo.archivist.config',
+                },
+              },
+            ],
           },
         },
       ],

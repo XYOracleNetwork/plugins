@@ -18,7 +18,7 @@ describe('Wallet', () => {
   })
   describe('create child', () => {
     it('create child', async () => {
-      const wallet = await HDWallet.create()
+      const wallet = await HDWallet.random()
       console.log(wallet.address)
       const childAccount = await wallet.derivePath("/0'/0/0")
       console.log(childAccount.address)
