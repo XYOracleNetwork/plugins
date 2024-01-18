@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {
+      "config": {
+        "name": "Node",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "private": [
+          {
+            "config": {
+              "name": "PrivateArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          }
+        ],
+        "public": [
+          {
+            "config": {
+              "name": "PublicArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest.package"
+}
