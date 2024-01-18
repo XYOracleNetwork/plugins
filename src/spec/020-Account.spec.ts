@@ -4,11 +4,16 @@ import { Mnemonic } from 'ethers'
 describe('Account', () => {
   it('create random account', () => {
     const account = Account.randomSync()
-    account.address
+    console.log(account.address)
+  })
+  it('create random account (async)', async () => {
+    const account = await Account.create()
+    console.log(account.address)
   })
   it('create reusable account', async () => {
-    const mnemonic = Mnemonic.fromPhrase('inhale setup middle assault install bulb language acoustic argue allow kiss peanut march friend finish')
+    const seedPhrase = 'inhale setup middle assault install bulb language acoustic argue allow kiss peanut march friend finish'
+    const mnemonic = Mnemonic.fromPhrase(seedPhrase)
     const account = await Account.fromMnemonic(mnemonic)
-    account.address
+    console.log(account.address)
   })
 })
