@@ -30,12 +30,12 @@ describe('Witness', () => {
       thumbnailWitness = await ImageThumbnailWitness.create({
         account: Account.randomSync(),
         config: { schema: ImageThumbnailWitness.configSchema },
-        logger,
+        //logger,
       })
       timestampWitness = await TimestampWitness.create({
         account: Account.randomSync(),
         config: { schema: TimestampWitness.configSchema },
-        logger,
+        //logger,
       })
       archivist = await MemoryArchivist.create({
         account: Account.randomSync(),
@@ -49,13 +49,13 @@ describe('Witness', () => {
           synchronous: true,
           tasks: [{ input: true, module: thumbnailWitness.address }, { module: timestampWitness.address }],
         },
-        logger,
+        //logger,
       })
       const modules = [timestampWitness, thumbnailWitness, archivist, sentinel]
       node = await MemoryNode.create({
         account: Account.randomSync(),
         config: { schema: MemoryNode.configSchema },
-        logger,
+        //logger,
       })
       await node.start()
       await Promise.all(
