@@ -10,20 +10,20 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/axios": "^2.13.25",
-    "@xyo-network/abstract-witness": "^2.88.2",
+    "@xylabs/axios": "^2.13.29",
+    "@xyo-network/abstract-witness": "next",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "^2.88.2",
-    "@xyo-network/payload-builder": "^2.88.2",
-    "@xyo-network/payload-model": "^2.88.2",
-    "@xyo-network/payloadset-plugin": "^2.88.2",
-    "@xyo-network/witness-timestamp": "^2.88.2"
+    "@xyo-network/module-model": "next",
+    "@xyo-network/payload-builder": "next",
+    "@xyo-network/payload-model": "next",
+    "@xyo-network/payloadset-plugin": "next",
+    "@xyo-network/witness-timestamp": "next"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.2.42",
     "@xylabs/tsconfig": "^3.2.42",
-    "@xyo-network/account": "^2.88.2",
-    "@xyo-network/payload-wrapper": "^2.88.2",
+    "@xyo-network/account": "next",
+    "@xyo-network/payload-wrapper": "next",
     "typescript": "^5.3.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",

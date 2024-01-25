@@ -2,6 +2,7 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnail, ImageThumbnailSchema, isImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
@@ -31,7 +32,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
   }
   const validateResult = async (input: [boundWitness: BoundWitness, thumbnail: ImageThumbnail, timestamp: TimeStamp], result: Payload[]) => {
     const [boundWitness, thumbnail, timestamp] = input
-    const payloadDictionary = await PayloadHasher.toMap([boundWitness, thumbnail, timestamp])
+    const payloadDictionary = await PayloadBuilder.toDataHashMap([boundWitness, thumbnail, timestamp])
     expect(result).toBeArrayOfSize(1)
     expect(result.filter(isImageThumbnailResultIndex)).toBeArrayOfSize(1)
     const index = result.find(isImageThumbnailResultIndex)

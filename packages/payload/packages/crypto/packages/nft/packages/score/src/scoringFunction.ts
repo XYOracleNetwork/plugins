@@ -1,4 +1,4 @@
-import { AnyObject, EmptyObject } from '@xyo-network/object'
+import { AnyObject, EmptyObject } from '@xylabs/object'
 
 import { PassFailScore, Score } from './score'
 

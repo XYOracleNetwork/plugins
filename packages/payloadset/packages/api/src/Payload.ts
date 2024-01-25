@@ -1,5 +1,5 @@
 import { Hash } from '@xylabs/hex'
-import { AsObjectFactory, JsonArray, JsonObject } from '@xyo-network/object'
+import { AsObjectFactory, JsonArray, JsonObject } from '@xylabs/object'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 export const ApiCallSchema = 'network.xyo.api.call'

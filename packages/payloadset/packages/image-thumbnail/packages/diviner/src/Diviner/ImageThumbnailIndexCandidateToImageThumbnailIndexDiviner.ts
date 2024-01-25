@@ -32,7 +32,7 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
     const imageThumbnailPayloads: ImageThumbnail[] = payloads.filter(isImageThumbnail)
     const timestampPayloads: TimeStamp[] = payloads.filter(isTimestamp)
     if (bws.length > 0 && imageThumbnailPayloads.length > 0 && timestampPayloads.length > 0) {
-      const payloadDictionary = await PayloadHasher.toMap(payloads)
+      const payloadDictionary = await PayloadBuilder.toDataHashMap(payloads)
       // eslint-disable-next-line unicorn/no-array-reduce
       const tuples: [BoundWitness, ImageThumbnail, TimeStamp][] = bws.reduce<[BoundWitness, ImageThumbnail, TimeStamp][]>(
         (acc, curr) => {
