@@ -21,10 +21,10 @@ import {
   TemporalIndexingDivinerResultIndex,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { PayloadHasher } from '@xyo-network/hash'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
 import { isModuleState, Labels, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 import imageThumbnailDivinerManifest from './Witness.Index.json'
 
@@ -242,7 +242,7 @@ describe('CryptoWalletNftWitness Index', () => {
   const verifyIsExpectedNft = async (result: TemporalIndexingDivinerResultIndex | undefined, payload: NftInfo | undefined) => {
     expect(result).toBeDefined()
     expect(payload).toBeDefined()
-    const expected = await PayloadHasher.hashAsync(assertEx(payload))
+    const expected = await PayloadBuilder.dataHash(assertEx(payload))
     expect(result?.sources).toContain(expected)
   }
 })

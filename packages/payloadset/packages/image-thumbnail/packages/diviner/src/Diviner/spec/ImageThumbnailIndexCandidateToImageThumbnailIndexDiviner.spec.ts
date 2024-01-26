@@ -1,6 +1,5 @@
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnail, ImageThumbnailSchema, isImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
@@ -36,7 +35,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     expect(result).toBeArrayOfSize(1)
     expect(result.filter(isImageThumbnailResultIndex)).toBeArrayOfSize(1)
     const index = result.find(isImageThumbnailResultIndex)
-    const key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: thumbnail.sourceUrl })
+    const key = await PayloadBuilder.dataHash({ schema: UrlSchema, url: thumbnail.sourceUrl })
     expect(index).toBeDefined()
     if (index !== undefined) {
       expect(index.key).toBe(key)
@@ -56,12 +55,12 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     ]
     describe('with single result', () => {
       it.each(cases)('transforms single result', async (thumbnail, timestamp) => {
-        const [boundWitness] = await new BoundWitnessBuilder().payloads([thumbnail, timestamp]).build()
+        const [boundWitness] = await (await new BoundWitnessBuilder().payloads([thumbnail, timestamp])).build()
         const result = await diviner.divine([boundWitness, thumbnail, timestamp])
         await validateResult([boundWitness, thumbnail, timestamp], result)
       })
       it.each(cases)('handles sparse inputs', async (thumbnail, timestamp) => {
-        const [boundWitness] = await new BoundWitnessBuilder().payloads([thumbnail, timestamp]).build()
+        const [boundWitness] = await (await new BoundWitnessBuilder().payloads([thumbnail, timestamp])).build()
         expect(await diviner.divine([thumbnail, timestamp])).toBeArrayOfSize(0)
         expect(await diviner.divine([boundWitness, timestamp])).toBeArrayOfSize(0)
         expect(await diviner.divine([boundWitness, thumbnail])).toBeArrayOfSize(0)
@@ -71,7 +70,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
       it('transforms multiple results', async () => {
         const data: [BoundWitness, ImageThumbnail, TimeStamp][] = await Promise.all(
           cases.map(async (payloads) => {
-            const [bw] = await new BoundWitnessBuilder().payloads(payloads).build()
+            const [bw] = await (await new BoundWitnessBuilder().payloads(payloads)).build()
             return [bw, ...payloads]
           }),
         )
@@ -85,7 +84,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
         )
       })
       it('handles sparse inputs', async () => {
-        const [bw] = await new BoundWitnessBuilder().payloads(cases[0]).build()
+        const [bw] = await (await new BoundWitnessBuilder().payloads(cases[0])).build()
         const results = await diviner.divine([bw, ...cases.flat()])
         expect(results).toBeArrayOfSize(1)
         await validateResult([bw, ...cases[0]], results)

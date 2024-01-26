@@ -38,7 +38,7 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
           imageThumbnailDivinerQueries.map(async (imageThumbnailDivinerQuery) => {
             const { url } = imageThumbnailDivinerQuery
             const urlPayload = await new PayloadBuilder<ImageThumbnailResult>({ schema: UrlSchema }).fields({ url }).build()
-            const key = await PayloadHasher.hashAsync(urlPayload)
+            const key = await PayloadBuilder.dataHash(urlPayload)
             return [key, url] as const
           }),
         ),

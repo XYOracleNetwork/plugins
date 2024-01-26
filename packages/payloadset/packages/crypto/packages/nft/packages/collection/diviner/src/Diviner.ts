@@ -9,8 +9,8 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerParams } from '@xyo-network/diviner-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import { AnyConfigSchema } from '@xyo-network/module-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
 import { analyzeNftCollection, NftCollectionAnalysis } from './lib'
@@ -36,7 +36,7 @@ export class NftCollectionScoreDiviner<
           // Get score
           toNftCollectionScore(nftCollectionInfo, await analyzeNftCollection(nftCollectionInfo)),
           // Hash sources
-          PayloadHasher.hashAsync(nftCollectionInfo),
+          PayloadBuilder.dataHash(nftCollectionInfo),
         ])
         return { ...score, schema: NftCollectionScoreSchema, sources: [sourceHash] } as NftCollectionScore
       }),

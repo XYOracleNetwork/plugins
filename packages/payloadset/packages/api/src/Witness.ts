@@ -92,7 +92,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           }
 
           const observation: ApiCallResult = {
-            call: await PayloadHasher.hashAsync(call),
+            call: await PayloadHasher.hash(call),
             schema: ApiCallResultSchema,
           }
           return observation

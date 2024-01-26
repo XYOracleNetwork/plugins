@@ -1,4 +1,3 @@
-import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnailDivinerQuery,
   ImageThumbnailDivinerQuerySchema,
@@ -7,6 +6,7 @@ import {
   ImageThumbnailResultSchema,
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner } from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner'
@@ -56,10 +56,12 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
   beforeAll(async () => {
     diviner = await ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.create()
     await Promise.all(
-      queries.map((query, i) => {
-        indexes[i].map(async (index) => {
-          index.key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: query.url })
-        })
+      queries.map(async (query, i) => {
+        await Promise.all(
+          indexes[i].map(async (index) => {
+            index.key = await PayloadBuilder.dataHash({ schema: UrlSchema, url: query.url })
+          }),
+        )
       }),
     )
   })

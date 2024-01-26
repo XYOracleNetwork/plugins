@@ -29,7 +29,7 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
           const order = payloadOrder ?? 'desc'
           const offset = payloadOffset ?? 0
           const urlPayload = { schema: UrlSchema, url }
-          const key = await PayloadHasher.hashAsync(urlPayload)
+          const key = await PayloadBuilder.dataHash(urlPayload)
           const fields: Partial<ImageThumbnailResultQuery> = { key, limit, offset, order }
           if (payloadSuccess !== undefined) fields.success = payloadSuccess
           if (payloadStatus !== undefined) fields.status = payloadStatus

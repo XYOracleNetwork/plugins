@@ -8,7 +8,6 @@ import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnail,
   ImageThumbnailDivinerQuery,
@@ -19,6 +18,7 @@ import {
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
 import { isModuleState, ModuleFactoryLocator } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDiviner } from '../Diviner'
@@ -192,7 +192,7 @@ describe('ImageThumbnailDiviner', () => {
         const results = await sut.divine([query])
         const result = results.find(isImageThumbnailResult)
         expect(result).toBeDefined()
-        const expected = await PayloadHasher.hashAsync(thumbnailHttpSuccess)
+        const expected = await PayloadBuilder.dataHash(thumbnailHttpSuccess)
         expect(result?.sources).toContain(expected)
       })
     })
@@ -205,7 +205,7 @@ describe('ImageThumbnailDiviner', () => {
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()
-          const expected = await PayloadHasher.hashAsync(payload)
+          const expected = await PayloadBuilder.dataHash(payload)
           expect(result?.sources).toContain(expected)
         })
       })
@@ -217,7 +217,7 @@ describe('ImageThumbnailDiviner', () => {
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()
-          const expected = await PayloadHasher.hashAsync(payload)
+          const expected = await PayloadBuilder.dataHash(payload)
           expect(result?.sources).toContain(expected)
         })
       })
@@ -229,7 +229,7 @@ describe('ImageThumbnailDiviner', () => {
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()
-          const expected = await PayloadHasher.hashAsync(payload)
+          const expected = await PayloadBuilder.dataHash(payload)
           expect(result?.sources).toContain(expected)
         })
       })

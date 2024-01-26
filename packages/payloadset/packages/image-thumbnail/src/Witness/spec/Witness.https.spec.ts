@@ -1,6 +1,6 @@
 import { Account } from '@xyo-network/account'
-import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 
@@ -61,8 +61,8 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     console.log(`ENS-SourceHash: ${result[0].sourceHash}`)
-    console.log(`ENS-Hash: ${await PayloadHasher.hashAsync(result[0])}`)
-    console.log(`ENS-DataHash: ${await PayloadHasher.hashAsync({ url: result[0].url })}`)
+    console.log(`ENS-Hash: ${await PayloadBuilder.hash(result[0])}`)
+    console.log(`ENS-DataHash: ${await PayloadBuilder.dataHash(result[0])}`)
     console.log(`ENS-Result: ${JSON.stringify(result[0], null, 2)}`)
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
