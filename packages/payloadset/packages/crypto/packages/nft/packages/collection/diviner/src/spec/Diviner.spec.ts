@@ -58,12 +58,12 @@ describe('NftCollectionScoreDiviner', () => {
     const scores = (await diviner.divine(data)).filter(isNftCollectionScore)
     expect(scores).toBeArrayOfSize(data.length)
     for (const [i, score] of scores.entries()) {
-      const wrapped = PayloadWrapper.wrap(score)
+      const wrapped = await PayloadWrapper.wrap(score)
       expect(await wrapped.getValid()).toBe(true)
-      const payload = wrapped.payload()
+      const payload = wrapped.jsonPayload()
       expect(payload?.sources).toBeArrayOfSize(1)
       expect(payload?.sources?.[0]).toBeString()
-      const sourceHash = await PayloadWrapper.wrap(data[i]).hashAsync()
+      const sourceHash = await (await PayloadWrapper.wrap(data[i])).dataHash()
       expect(payload?.sources?.[0]).toBe(sourceHash)
     }
   })

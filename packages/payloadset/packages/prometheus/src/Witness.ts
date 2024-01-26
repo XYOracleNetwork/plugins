@@ -37,6 +37,7 @@ export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams =
   protected override async startHandler() {
     collectDefaultMetrics({ register: this._registry })
     if (this.config.port) {
+      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       this.server = createServer(async (_request, response) => {
         response.writeHead(200)
 

@@ -60,7 +60,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
           if (implementation !== validatedAddress) {
             observation.implementation = implementation
           }
-          console.log(`observation: ${JSON.stringify(observation, null, 2)}`)
+          //console.log(`observation: ${JSON.stringify(observation, null, 2)}`)
           return observation
         }),
       )

@@ -17,7 +17,10 @@ const finalConfig = {
     "*.stories.*",
     "swagger.json",
     ".yarn",
-    ".*"
+    ".*",
+    "xy.config.ts",
+    "jestSetup",
+    "jest.config.ts"
   ],
   "rules": {
     "@typescript-eslint/no-floating-promises": "error",

@@ -132,7 +132,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
         const results = await diviner.divine([query])
         const actual = results.filter(isImageThumbnailResultQuery)
         expect(actual).toBeArrayOfSize(1)
-        expect(actual?.[0]).toEqual(expected)
+        expect(await PayloadBuilder.dataHash(actual?.[0])).toEqual(await PayloadBuilder.dataHash(expected))
       })
     })
     describe('with multiple queries', () => {
@@ -140,7 +140,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
         const results = await diviner.divine(queries)
         const actual = results.filter(isImageThumbnailResultQuery)
         expect(actual).toBeArrayOfSize(expected.length)
-        expect(actual).toEqual(expected)
+        expect(await PayloadBuilder.dataHashes(actual)).toEqual(await PayloadBuilder.dataHashes(expected))
       })
     })
   })

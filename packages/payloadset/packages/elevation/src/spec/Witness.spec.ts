@@ -48,7 +48,7 @@ const validateResult = async (result: ElevationPayload[]) => {
   expect(result[0].elevation === result[1].elevation).toBe(false)
   expect(result[0].elevation === result[2].elevation).toBe(false)
   expect(result[1].elevation === result[2].elevation).toBe(false)
-  expect(await PayloadWrapper.wrap(result[0]).getValid()).toBe(true)
-  expect(await PayloadWrapper.wrap(result[1]).getValid()).toBe(true)
-  expect(await PayloadWrapper.wrap(result[2]).getValid()).toBe(true)
+  expect(await (await PayloadWrapper.wrap(result[0])).getValid()).toBe(true)
+  expect(await (await PayloadWrapper.wrap(result[1])).getValid()).toBe(true)
+  expect(await (await PayloadWrapper.wrap(result[2])).getValid()).toBe(true)
 }

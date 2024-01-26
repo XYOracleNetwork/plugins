@@ -13,12 +13,12 @@ describe('AbstractModuleInstanceWitness', () => {
       module,
     })
     const [result] = await witness.observe()
-    expect(await PayloadWrapper.wrap(result).getValid()).toBe(true)
+    expect(await (await PayloadWrapper.wrap(result)).getValid()).toBe(true)
   })
 
   test('Witnessing [no config]', async () => {
     const witness = await AbstractModuleInstanceWitness.create()
     const [result] = await witness.observe()
-    expect(await PayloadWrapper.wrap(result).getValid()).toBe(true)
+    expect(await (await PayloadWrapper.wrap(result)).getValid()).toBe(true)
   })
 })
