@@ -18,7 +18,9 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'divinerQueryToIndexQueryDiviner',
   }
-  protected override async divineHandler(payloads: Payload[] = []): Promise<ImageThumbnailResultQuery[]> {
+  protected override async divineHandler(
+    payloads: Payload[] = [],
+  ): Promise<Omit<Omit<ImageThumbnailResultQuery, 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>>, 'timestamp'>[]> {
     const queries = payloads.filter(isImageThumbnailDivinerQuery)
     if (queries.length > 0) {
       const results = await Promise.all(
@@ -29,10 +31,19 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
           const offset = payloadOffset ?? 0
           const urlPayload = { schema: UrlSchema, url }
           const key = await PayloadBuilder.dataHash(urlPayload)
-          const fields: Partial<ImageThumbnailResultQuery> = { key, limit, offset, order }
+          const fields: Omit<ImageThumbnailResultQuery, 'schema' | 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>> = {
+            key,
+            limit,
+            offset,
+            order,
+          }
           if (payloadSuccess !== undefined) fields.success = payloadSuccess
           if (payloadStatus !== undefined) fields.status = payloadStatus
-          return await new PayloadBuilder<ImageThumbnailResultQuery>({ schema: PayloadDivinerQuerySchema }).fields(fields).build()
+          return await new PayloadBuilder<
+            Omit<ImageThumbnailResultQuery, 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>>
+          >({ schema: PayloadDivinerQuerySchema })
+            .fields(fields)
+            .build()
         }),
       )
       return results

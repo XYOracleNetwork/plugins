@@ -52,7 +52,7 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const { timestamp } = timestampPayload
           const { status } = http ?? {}
           const success = !!imageThumbnailPayload.url // Call anything with a thumbnail url a success
-          const sources = (await PayloadBuilder.dataHashPairs([bw, imageThumbnailPayload, timestampPayload])).map(([, hash]) => hash)
+          const sources = await PayloadBuilder.dataHashes([bw, imageThumbnailPayload, timestampPayload])
           const urlPayload = { schema: UrlSchema, url }
           const key = await PayloadBuilder.dataHash(urlPayload)
           const fields: ImageThumbnailResultIndexFields = { key, sources, success, timestamp }

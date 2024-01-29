@@ -21,11 +21,11 @@ export interface EthereumGasEthersResponse {
    * for the uncle risk and for the majority of current MEV risk
    */
   maxPriorityFeePerGas: null | number
+  timestamp: number
 }
 
 export type EthereumGasEthersPayload = Payload<
   EthereumGasEthersResponse & {
     schema: EthereumGasEthersSchema
-    timestamp: number
   }
 >

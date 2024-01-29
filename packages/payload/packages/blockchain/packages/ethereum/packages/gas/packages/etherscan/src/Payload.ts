@@ -34,11 +34,11 @@ export interface EthereumGasEtherscanResponse {
     suggestBaseFee: string
   }
   status: string
+  timestamp: number
 }
 
 export type EthereumGasEtherscanPayload = Payload<
   EthereumGasEtherscanResponse & {
     schema: EthereumGasEtherscanSchema
-    timestamp: number
   }
 >
