@@ -13,7 +13,7 @@ const validateObservation = (observation: Payload[]) => {
   expect(observation.length).toEqual(results.length)
 }
 
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
+describeIf(process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
   const address = '0x6811f2f20c42f42656a3c8623ad5e9461b83f719' //ParallelPlanetFall
   const eventName = 'TransferSingle'
   describe('observe', () => {
@@ -21,7 +21,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
       it('uses values from config', async () => {
         const witness = await EvmEventsWitness.create({
           account: 'random',
-          config: { abi: ERC1155__factory.abi, schema: EvmEventsWitnessConfigSchema },
+          config: { abi: ERC1155__factory.abi, fromBlock: 19_180_000, schema: EvmEventsWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
         const call: EvmEvents = { address, eventName, schema: EvmEventsSchema }
