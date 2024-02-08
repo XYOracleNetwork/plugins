@@ -19,7 +19,7 @@ describe('UniswapCryptoMarketWitness', () => {
     const [observation] = (await witness.observe()) as UniswapCryptoMarketPayload[]
     expect(observation.pairs.length).toBeGreaterThan(1)
 
-    const answerWrapper = PayloadWrapper.wrap(observation)
+    const answerWrapper = await PayloadWrapper.wrap(observation)
     expect(await answerWrapper.getValid()).toBe(true)
   })
   test('observe [no config]', async () => {
@@ -35,7 +35,7 @@ describe('UniswapCryptoMarketWitness', () => {
     const [observation] = (await witness.observe()) as UniswapCryptoMarketPayload[]
     expect(observation.pairs.length).toBeGreaterThan(1)
 
-    const answerWrapper = PayloadWrapper.wrap(observation)
+    const answerWrapper = await PayloadWrapper.wrap(observation)
     expect(await answerWrapper.getValid()).toBe(true)
   })
   test('observe [no params]', async () => {

@@ -1,5 +1,5 @@
-import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnailDivinerQuery, ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner'
@@ -119,10 +119,12 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
   beforeAll(async () => {
     diviner = await ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.create()
     // eslint-disable-next-line unicorn/no-array-for-each
-    queries.forEach(async (query, i) => {
-      const key = await PayloadHasher.hashAsync({ schema: UrlSchema, url: query.url })
-      expected[i].key = key
-    })
+    await Promise.all(
+      queries.map(async (query, i) => {
+        const key = await PayloadBuilder.dataHash({ schema: UrlSchema, url: query.url })
+        expected[i].key = key
+      }),
+    )
   })
   describe('divine', () => {
     describe('with single query', () => {
@@ -130,7 +132,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
         const results = await diviner.divine([query])
         const actual = results.filter(isImageThumbnailResultQuery)
         expect(actual).toBeArrayOfSize(1)
-        expect(actual?.[0]).toEqual(expected)
+        expect(await PayloadBuilder.dataHash(actual?.[0])).toEqual(await PayloadBuilder.dataHash(expected))
       })
     })
     describe('with multiple queries', () => {
@@ -138,7 +140,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
         const results = await diviner.divine(queries)
         const actual = results.filter(isImageThumbnailResultQuery)
         expect(actual).toBeArrayOfSize(expected.length)
-        expect(actual).toEqual(expected)
+        expect(await PayloadBuilder.dataHashes(actual)).toEqual(await PayloadBuilder.dataHashes(expected))
       })
     })
   })

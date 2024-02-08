@@ -12,6 +12,7 @@ export const getGasFromEthers = async (provider: Provider): Promise<EthereumGasE
     gasPrice: formatFeeDataValue(feeData.gasPrice),
     maxFeePerGas: formatFeeDataValue(feeData.maxFeePerGas),
     maxPriorityFeePerGas: formatFeeDataValue(feeData.maxPriorityFeePerGas),
+    timestamp: Date.now(),
   }
   return formattedFeeData
 }

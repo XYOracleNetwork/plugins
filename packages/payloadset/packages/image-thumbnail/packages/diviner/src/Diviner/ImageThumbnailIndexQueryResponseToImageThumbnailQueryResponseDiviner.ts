@@ -1,7 +1,6 @@
 import { exists } from '@xylabs/exists'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnailResult,
   ImageThumbnailResultFields,
@@ -37,8 +36,10 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
         await Promise.all(
           imageThumbnailDivinerQueries.map(async (imageThumbnailDivinerQuery) => {
             const { url } = imageThumbnailDivinerQuery
-            const urlPayload = await new PayloadBuilder<ImageThumbnailResult>({ schema: UrlSchema }).fields({ url }).build()
-            const key = await PayloadHasher.hashAsync(urlPayload)
+            const urlPayload = await new PayloadBuilder<Omit<ImageThumbnailResult, 'timestamp' | 'success' | 'sources'>>({ schema: UrlSchema })
+              .fields({ url })
+              .build()
+            const key = await PayloadBuilder.dataHash(urlPayload)
             return [key, url] as const
           }),
         ),

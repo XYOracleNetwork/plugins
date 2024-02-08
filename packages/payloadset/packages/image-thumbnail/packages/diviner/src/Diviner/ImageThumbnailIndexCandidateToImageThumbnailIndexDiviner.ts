@@ -1,7 +1,6 @@
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import {
   ImageThumbnail,
   ImageThumbnailResultIndex,
@@ -32,7 +31,7 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
     const imageThumbnailPayloads: ImageThumbnail[] = payloads.filter(isImageThumbnail)
     const timestampPayloads: TimeStamp[] = payloads.filter(isTimestamp)
     if (bws.length > 0 && imageThumbnailPayloads.length > 0 && timestampPayloads.length > 0) {
-      const payloadDictionary = await PayloadHasher.toMap(payloads)
+      const payloadDictionary = await PayloadBuilder.toDataHashMap(payloads)
       // eslint-disable-next-line unicorn/no-array-reduce
       const tuples: [BoundWitness, ImageThumbnail, TimeStamp][] = bws.reduce<[BoundWitness, ImageThumbnail, TimeStamp][]>(
         (acc, curr) => {
@@ -53,9 +52,9 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const { timestamp } = timestampPayload
           const { status } = http ?? {}
           const success = !!imageThumbnailPayload.url // Call anything with a thumbnail url a success
-          const sources = (await PayloadHasher.hashPairs([bw, imageThumbnailPayload, timestampPayload])).map(([, hash]) => hash)
+          const sources = await PayloadBuilder.dataHashes([bw, imageThumbnailPayload, timestampPayload])
           const urlPayload = { schema: UrlSchema, url }
-          const key = await PayloadHasher.hashAsync(urlPayload)
+          const key = await PayloadBuilder.dataHash(urlPayload)
           const fields: ImageThumbnailResultIndexFields = { key, sources, success, timestamp }
           if (status) fields.status = status
           const result: ImageThumbnailResultIndex = await new PayloadBuilder<ImageThumbnailResultIndex>({ schema: ImageThumbnailResultIndexSchema })

@@ -11,7 +11,7 @@ export interface LocationCertaintyHeuristic {
 export type LocationCertainty = {
   altitude: LocationCertaintyHeuristic
   /** @field Value between 0 and 100 - Certainty Score */
-  certainty: number
+  certainty?: number
   elevation: LocationCertaintyHeuristic
   schema: LocationCertaintySchema
   variance: LocationCertaintyHeuristic

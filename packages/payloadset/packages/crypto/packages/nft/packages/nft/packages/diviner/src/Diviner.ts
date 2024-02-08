@@ -8,8 +8,8 @@ import {
 } from '@xyo-network/crypto-nft-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerParams } from '@xyo-network/diviner-model'
-import { PayloadHasher } from '@xyo-network/hash'
 import { AnyConfigSchema } from '@xyo-network/module-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
 import { analyzeNft, NftAnalysis } from './lib'
@@ -34,7 +34,7 @@ export class NftScoreDiviner<TParams extends NftScoreDivinerParams = NftScoreDiv
           // Analyze the NFT
           toNftScorePayload(nftInfo, await analyzeNft(nftInfo)),
           // Hash the source payload
-          PayloadHasher.hashAsync(nftInfo),
+          PayloadBuilder.dataHash(nftInfo),
         ])
         return { ...score, sources: [sourceHash] }
       }),

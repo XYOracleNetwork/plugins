@@ -36,12 +36,12 @@ export interface EthereumGasBlocknativeResponse {
   msSinceLastBlock: number
   network: 'main'
   system: 'ethereum'
+  timestamp: number
   unit: 'gwei'
 }
 
 export type EthereumGasBlocknativePayload = Payload<
   EthereumGasBlocknativeResponse & {
     schema: EthereumGasBlocknativeSchema
-    timestamp: number
   }
 >

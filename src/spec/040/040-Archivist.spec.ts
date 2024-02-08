@@ -1,5 +1,5 @@
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
-import { PayloadHasher } from '@xyo-network/hash'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 describe('Archivist', () => {
   describe('insert', () => {
@@ -21,7 +21,7 @@ describe('Archivist', () => {
     it('get payload', async () => {
       const archivist = await MemoryArchivist.create()
       const payload = { salt: '1', schema: 'network.xyo.id' }
-      const hash = await PayloadHasher.hashAsync(payload)
+      const hash = await PayloadBuilder.dataHash(payload)
       await archivist.insert([payload])
       const result = await archivist.get([hash])
       console.log(result)
