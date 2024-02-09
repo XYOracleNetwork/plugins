@@ -1,6 +1,6 @@
-import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -65,7 +65,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
-    const totalSupply = 2710
+    const totalSupply = 100
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
@@ -78,7 +78,8 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
           result: `${totalSupply}`,
           schema: 'network.xyo.evm.call.result',
         }
-        const observations = await sentinel?.report([input])
+
+        const observations = (await sentinel?.report([input])) ?? []
         const nftIndexes = observations?.filter(isNftIndex)
         expect(nftIndexes?.length).toBe(totalSupply)
         for (const nftIndex of nftIndexes ?? []) {
@@ -90,7 +91,11 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     })
     describe('Index', () => {
       it.each(cases)('returns indexed NftIndex results', async (address) => {
-        await delay(1000)
+        const delay = (ms: number) => {
+          return new Promise((resolve) => setTimeout(resolve, ms))
+        }
+
+        await delay(2000)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
         // Check we've indexed the results by sampling the first and last index

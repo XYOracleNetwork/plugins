@@ -31,12 +31,6 @@
           },
           {
             "config": {
-              "name": "IndexArchivist",
-              "schema": "network.xyo.archivist.config"
-            }
-          },
-          {
-            "config": {
               "archivist": "IndexArchivist",
               "name": "IndexBoundWitnessDiviner",
               "schema": "network.xyo.diviner.boundwitness.config"
@@ -317,6 +311,12 @@
         "public": [
           {
             "config": {
+              "name": "IndexArchivist",
+              "schema": "network.xyo.archivist.config"
+            }
+          },
+          {
+            "config": {
               "name": "Archivist",
               "schema": "network.xyo.archivist.config",
               "storeQueries": false
@@ -350,7 +350,7 @@
                 "stateToIndexCandidateDiviner": "StateToIndexCandidateDiviner"
               },
               "name": "IndexDiviner",
-              "pollFrequency": 1,
+              "pollFrequency": 10,
               "schema": "network.xyo.diviner.indexing.temporal.config",
               "stateStore": {
                 "archivist": "AddressStateArchivist",
