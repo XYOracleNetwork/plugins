@@ -17,7 +17,7 @@ export class BrowserFileWitness extends FileWitness<BrowserFileWitnessParams> {
   protected override async observeHandler() {
     try {
       const [payload] = await this.witnessBrowserFile()
-      console.log(`BrowserFileWitness: ${await PayloadBuilder.hash(payload)}`)
+      console.log(`BrowserFileWitness: ${await PayloadBuilder.dataHash(payload)}`)
       return [payload]
     } catch (e) {
       throw new Error(`Error reading file: ${e}`)
