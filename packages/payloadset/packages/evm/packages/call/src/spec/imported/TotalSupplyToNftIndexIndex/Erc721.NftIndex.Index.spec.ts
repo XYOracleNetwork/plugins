@@ -1,6 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -90,12 +89,14 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
       })
     })
     describe('Index', () => {
-      it.each(cases)('returns indexed NftIndex results', async (address) => {
+      beforeAll(async () => {
         const delay = (ms: number) => {
           return new Promise((resolve) => setTimeout(resolve, ms))
         }
-
-        await delay(2000)
+        // Delay enough time for the diviners to index the results
+        await delay(4000)
+      })
+      it.each(cases)('returns indexed NftIndex results', async (address) => {
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
         // Check we've indexed the results by sampling the first and last index
