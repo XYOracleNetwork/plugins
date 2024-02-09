@@ -1,5 +1,4 @@
 /* eslint-disable import/no-deprecated */
-import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import {
@@ -87,8 +86,14 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
       })
     })
     describe('Index', () => {
+      beforeAll(async () => {
+        const delay = (ms: number) => {
+          return new Promise((resolve) => setTimeout(resolve, ms))
+        }
+        // Delay enough time for the diviners to index the results
+        await delay(4000)
+      })
       it.each(cases)('returns indexed result', async (address) => {
-        await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
         const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
