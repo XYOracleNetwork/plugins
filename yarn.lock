@@ -5512,6 +5512,37 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xyo-network/file-browser-plugin@workspace:packages/payloadset/packages/file/packages/browser, @xyo-network/file-browser-plugin@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/file-browser-plugin@workspace:packages/payloadset/packages/file/packages/browser"
+  dependencies:
+    "@scure/base": "npm:^1.1.5"
+    "@xylabs/assert": "npm:^2.14.0"
+    "@xylabs/promise": "npm:^2.14.0"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
+    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xyo-network/abstract-witness": "npm:^2.89.3"
+    "@xyo-network/module-model": "npm:^2.89.3"
+    "@xyo-network/payload-builder": "npm:^2.89.3"
+    "@xyo-network/payload-model": "npm:^2.89.3"
+    "@xyo-network/payloadset-plugin": "npm:^2.89.3"
+    "@xyo-network/witness-model": "npm:^2.89.3"
+    sha.js: "npm:^2.4.11"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/file-plugins@workspace:packages/payloadset/packages/file, @xyo-network/file-plugins@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/file-plugins@workspace:packages/payloadset/packages/file"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.2.42"
+    "@xylabs/tsconfig": "npm:^3.2.42"
+    "@xyo-network/file-browser-plugin": "workspace:~"
+    typescript: "npm:^5.3.3"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas, @xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas"
@@ -6260,6 +6291,7 @@ __metadata:
     "@xyo-network/crypto-plugins": "workspace:~"
     "@xyo-network/domain-plugin": "workspace:~"
     "@xyo-network/elevation-plugin": "workspace:~"
+    "@xyo-network/file-plugins": "workspace:~"
     "@xyo-network/id-plugin": "workspace:~"
     "@xyo-network/image-thumbnail-plugin": "workspace:~"
     "@xyo-network/location-certainty-plugin": "workspace:~"
