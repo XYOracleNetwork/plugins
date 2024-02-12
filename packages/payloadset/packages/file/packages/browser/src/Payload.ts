@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { FileSchema } from './Schema'
 
@@ -17,3 +17,5 @@ export type FilePayload = Payload<
   },
   FileSchema
 >
+
+export const isFilePayload = isPayloadOfSchemaType<FilePayload>(FileSchema)
