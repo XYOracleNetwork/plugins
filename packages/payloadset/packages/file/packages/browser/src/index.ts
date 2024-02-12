@@ -1,6 +1,7 @@
 export * from './BrowserFileWitness'
 export * from './Config'
 export * from './Params'
+export * from './Payload'
 export { BrowserFilePlugin, BrowserFilePlugin as default } from './PluginBrowser'
 export * from './Schema'
 export * from './Witness'
