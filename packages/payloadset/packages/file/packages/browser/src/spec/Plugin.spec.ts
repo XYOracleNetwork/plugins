@@ -17,6 +17,7 @@ import { HDWallet } from '@xyo-network/account'
 
 import { BrowserFileWitness } from '../BrowserFileWitness'
 import { FileWitnessConfigSchema } from '../Config'
+import { isFilePayload } from '../Payload'
 
 // Leave off modified since its a timestamp and won't be known till the test runs
 const expectedFilePayload = {
@@ -39,9 +40,11 @@ describe('FileWitness', () => {
       ...(file ? { file } : {}),
     })
   })
+
   test('BrowserFileWitness', async () => {
     expect(browserFileWitness).toBeDefined()
     const [payload] = await browserFileWitness.observe()
+    expect(isFilePayload(payload)).toBeTrue()
     expect(payload).toMatchObject(expectedFilePayload)
   })
 })
