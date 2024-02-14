@@ -35,13 +35,13 @@ import sentinelNodeManifest from './Contract.Sentinel.Node.json'
 describe('Contract Node', () => {
   type TokenType = 'ERC721' | 'ERC1155'
   const cases: [TokenType, string][] = [
-    ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],
-    ['ERC1155', '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452'],
-    ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'],
-    ['ERC1155', '0x33FD426905F149f8376e227d0C9D3340AaD17aF1'],
-    ['ERC1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'],
-    //['ERC1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'],
-    ['ERC1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'],
+    ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'.toLowerCase()],
+    ['ERC1155', '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452'.toLowerCase()],
+    ['ERC1155', '0x2A6d6a082C410a195157EC4caf67CB9fD718f087'.toLowerCase()],
+    ['ERC1155', '0x33FD426905F149f8376e227d0C9D3340AaD17aF1'.toLowerCase()],
+    ['ERC1155', '0x7DaEC605E9e2a1717326eeDFd660601e2753A057'.toLowerCase()],
+    //['ERC1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'.toLowerCase()],
+    ['ERC1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'.toLowerCase()],
   ]
   let wallet: HDWallet
   let node: MemoryNode
@@ -104,7 +104,7 @@ describe('Contract Node', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
       const collectionSentinel = asSentinelInstance(await node.resolve('NftInfoSentinel'))
       expect(collectionSentinel).toBeDefined()
-      const collectionCallPayload: EvmCall = { address, schema: EvmCallSchema }
+      const collectionCallPayload: EvmCall = { address: address.toLowerCase(), schema: EvmCallSchema }
       const report = await collectionSentinel?.report([collectionCallPayload])
       let foundAny = false
       const erc721 = report?.find(isErc721ContractInfo)
@@ -126,7 +126,7 @@ describe('Contract Node', () => {
     it.each(erc721Cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase(), schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
@@ -137,7 +137,7 @@ describe('Contract Node', () => {
     it.each(erc1155)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase(), schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

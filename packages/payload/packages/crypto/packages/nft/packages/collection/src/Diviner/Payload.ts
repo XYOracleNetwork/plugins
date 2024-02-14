@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, Payload } from '@xyo-network/payload-model'
 
 import { NftCollectionMetadata } from '../Payload'
 import { NftCollectionScoreSchema } from './Schema'
@@ -12,4 +12,5 @@ export interface NftCollectionScores {
 export type NftCollectionScoreFields = NftCollectionMetadata & NftCollectionScores & { sources?: string[] }
 
 export type NftCollectionScore = Payload<NftCollectionScoreFields, NftCollectionScoreSchema>
-export const isNftCollectionScore = (x?: Payload | null): x is NftCollectionScore => x?.schema === NftCollectionScoreSchema
+export const isNftCollectionScore = isPayloadOfSchemaType<NftCollectionScore>(NftCollectionScoreSchema)
+export const isNftCollectionScoreWithMeta = isPayloadOfSchemaTypeWithMeta<NftCollectionScore>(NftCollectionScoreSchema)

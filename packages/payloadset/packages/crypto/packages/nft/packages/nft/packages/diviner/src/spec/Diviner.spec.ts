@@ -25,7 +25,7 @@ describe('NftScoreDiviner', () => {
     for (const [i, score] of scores.entries()) {
       const wrapped = await PayloadWrapper.wrap(score)
       expect(await wrapped.getValid()).toBe(true)
-      const payload = wrapped.payload()
+      const payload = wrapped.payload
       expect(payload?.sources).toBeArrayOfSize(1)
       expect(payload?.sources?.[0]).toBeString()
       const sourceHash = await (await PayloadWrapper.wrap(data[i])).dataHash()

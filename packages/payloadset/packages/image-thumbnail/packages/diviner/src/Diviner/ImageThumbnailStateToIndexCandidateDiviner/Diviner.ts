@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
-import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
@@ -10,7 +10,7 @@ import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
 import { ImageThumbnail, ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { isModuleState, ModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels'
@@ -79,7 +79,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map((is) => results.find(is))
     if (filteredResults.includes(undefined)) return undefined
-    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as IndexCandidate[]
+    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as WithMeta<IndexCandidate>[]
     return [bw, ...indexCandidates]
   }
 
@@ -95,13 +95,13 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
       .fields({ limit: this.payloadDivinerLimit, offset, order, payload_schemas })
       .build()
-    const batch = await boundWitnessDiviner.divine([query])
+    const batch = (await boundWitnessDiviner.divine([query])) as WithSources<WithMeta<BoundWitness>>[]
     if (batch.length === 0) return [lastState]
     // Get source data
     const sourceArchivist = await this.getArchivistForStore()
     const indexCandidates: IndexCandidate[] = (
       await Promise.all(
-        batch.filter(isBoundWitness).map((bw) => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+        batch.filter(isBoundWitnessWithMeta).map((bw) => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
       )
     )
       .filter(exists)

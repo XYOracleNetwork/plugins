@@ -20,8 +20,8 @@ describe('CoingeckoCryptoMarketWitness', () => {
     expect(actual.schema).toBe(CoingeckoCryptoMarketSchema)
     const answerWrapper = (await PayloadWrapper.wrap(actual)) as PayloadWrapper<CoingeckoCryptoMarketPayload>
     expect(await answerWrapper.getValid()).toBe(true)
-    expect(answerWrapper.body().assets).toBeObject()
-    const assets = Object.keys(answerWrapper.body().assets)
+    expect(answerWrapper.payload.assets).toBeObject()
+    const assets = Object.keys(answerWrapper.payload.assets)
     expect(assets).toBeArray()
     expect(assets.length).toBeGreaterThan(0)
   })
@@ -32,8 +32,8 @@ describe('CoingeckoCryptoMarketWitness', () => {
     expect(actual.schema).toBe(CoingeckoCryptoMarketSchema)
     const answerWrapper = (await PayloadWrapper.wrap(actual)) as PayloadWrapper<CoingeckoCryptoMarketPayload>
     expect(await answerWrapper.getValid()).toBe(true)
-    expect(answerWrapper.body().assets).toBeObject()
-    const assets = Object.keys(answerWrapper.body().assets)
+    expect(answerWrapper.payload.assets).toBeObject()
+    const assets = Object.keys(answerWrapper.payload.assets)
     expect(assets).toBeArray()
     expect(assets.length).toBe(0)
   })

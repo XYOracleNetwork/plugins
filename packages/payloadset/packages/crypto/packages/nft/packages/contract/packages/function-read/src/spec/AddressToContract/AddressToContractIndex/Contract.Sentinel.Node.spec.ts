@@ -37,7 +37,7 @@ import sentinelNodeManifest from './Contract.Sentinel.Node.json'
 
 const maxProviders = 32
 
-describe('Contract Node', () => {
+describe.skip('Contract Node', () => {
   type TokenType = 'ERC721' | 'ERC1155'
   const cases: [TokenType, string][] = [
     ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'],

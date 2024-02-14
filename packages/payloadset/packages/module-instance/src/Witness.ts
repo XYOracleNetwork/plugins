@@ -30,6 +30,6 @@ export class AbstractModuleInstanceWitness<
   }
 
   protected override observeHandler(payloads?: Partial<Payload>[]): Promisable<Payload[]> {
-    return [merge({ queries: this.module?.queries }, payloads?.[0], { schema: AbstractModuleInstanceSchema })]
+    return [merge({ queries: this.module?.queries ?? [] }, payloads?.[0], { schema: AbstractModuleInstanceSchema })]
   }
 }

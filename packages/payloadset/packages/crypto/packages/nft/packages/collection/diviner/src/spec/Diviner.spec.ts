@@ -1,7 +1,12 @@
 import { readFile, writeFile } from 'node:fs/promises'
 
 import { Account } from '@xyo-network/account'
-import { isNftCollectionScore, NftCollectionInfo, NftCollectionSchema } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import {
+  isNftCollectionScoreWithMeta,
+  NftCollectionInfo,
+  NftCollectionSchema,
+  NftCollectionScore,
+} from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { NftCollectionScoreDiviner } from '../Diviner'
@@ -39,7 +44,7 @@ describe('NftCollectionScoreDiviner', () => {
     const json = await readFile(`./nftData/witness/${address}-witness.json`)
     const data: NftCollectionInfo[] = JSON.parse(json.toString())
     const results = await diviner.divine(data)
-    const scores = results.filter(isNftCollectionScore)
+    const scores = results.filter(isNftCollectionScoreWithMeta)
     for (const score of scores) {
       const address = score.address
       // eslint-disable-next-line unicorn/no-array-reduce
@@ -55,12 +60,12 @@ describe('NftCollectionScoreDiviner', () => {
     }
   })
   test('divine', async () => {
-    const scores = (await diviner.divine(data)).filter(isNftCollectionScore)
+    const scores = (await diviner.divine(data)).filter(isNftCollectionScoreWithMeta)
     expect(scores).toBeArrayOfSize(data.length)
     for (const [i, score] of scores.entries()) {
-      const wrapped = await PayloadWrapper.wrap(score)
+      const wrapped = await PayloadWrapper.wrap<NftCollectionScore>(score)
       expect(await wrapped.getValid()).toBe(true)
-      const payload = wrapped.jsonPayload()
+      const payload = wrapped.payload
       expect(payload?.sources).toBeArrayOfSize(1)
       expect(payload?.sources?.[0]).toBeString()
       const sourceHash = await (await PayloadWrapper.wrap(data[i])).dataHash()

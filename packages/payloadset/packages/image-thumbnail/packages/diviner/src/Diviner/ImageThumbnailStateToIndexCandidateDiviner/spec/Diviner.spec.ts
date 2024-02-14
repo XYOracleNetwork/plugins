@@ -11,6 +11,7 @@ import { ImageThumbnail, isImageThumbnail } from '@xyo-network/image-thumbnail-p
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
 import { isModuleState, ModuleFactoryLocator, ModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { WithMeta } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState'
@@ -106,7 +107,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
       ...codeFailPayloads,
     ])
 
-    sut = assertEx(asDivinerInstance<ImageThumbnailStateToIndexCandidateDiviner>(await node.resolve('ImageThumbnailStateToIndexCandidateDiviner')))
+    sut = assertEx(asDivinerInstance(await node.resolve('ImageThumbnailStateToIndexCandidateDiviner'))) as ImageThumbnailStateToIndexCandidateDiviner
   })
 
   describe('divine', () => {
@@ -114,7 +115,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
       it('return state and no results', async () => {
         const results = await sut.divine()
         expect(results.length).toBe(1)
-        const state = results.find(isModuleState<ImageThumbnailDivinerState>)
+        const state = results.find(isModuleState<ImageThumbnailDivinerState>) as WithMeta<ModuleState<ImageThumbnailDivinerState>>
         expect(state).toBeDefined()
         expect(state?.state.offset).toBe(0)
       })
@@ -134,7 +135,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
         expect(results.length).toBe(expectedResults)
 
         // Validate expected state
-        const nextState = results.find(isModuleState<ImageThumbnailDivinerState>)
+        const nextState = results.find(isModuleState<ImageThumbnailDivinerState>) as WithMeta<ModuleState<ImageThumbnailDivinerState>> | undefined
         expect(nextState).toBeDefined()
         expect(nextState?.state.offset).toBe(witnessedThumbnails.length)
 
