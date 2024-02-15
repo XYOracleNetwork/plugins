@@ -7,7 +7,6 @@ import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import { SentinelWrapper } from '@xyo-network/sentinel-wrapper'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimestampWitness } from '@xyo-network/witness-timestamp'
-import { mock } from 'jest-mock-extended'
 
 import { ImageThumbnailWitness } from '../Witness'
 
