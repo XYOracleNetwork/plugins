@@ -18,7 +18,7 @@ describe('CoingeckoCryptoMarketWitness', () => {
     })
     const [actual] = await sut.observe()
     expect(actual.schema).toBe(CoingeckoCryptoMarketSchema)
-    const answerWrapper = (await PayloadWrapper.wrap(actual)) as PayloadWrapper<CoingeckoCryptoMarketPayload>
+    const answerWrapper = PayloadWrapper.wrap(actual) as PayloadWrapper<CoingeckoCryptoMarketPayload>
     expect(await answerWrapper.getValid()).toBe(true)
     expect(answerWrapper.payload.assets).toBeObject()
     const assets = Object.keys(answerWrapper.payload.assets)
@@ -30,7 +30,7 @@ describe('CoingeckoCryptoMarketWitness', () => {
     const sut = await CoingeckoCryptoMarketWitness.create({ account: Account.randomSync() })
     const [actual] = await sut.observe()
     expect(actual.schema).toBe(CoingeckoCryptoMarketSchema)
-    const answerWrapper = (await PayloadWrapper.wrap(actual)) as PayloadWrapper<CoingeckoCryptoMarketPayload>
+    const answerWrapper = PayloadWrapper.wrap(actual) as PayloadWrapper<CoingeckoCryptoMarketPayload>
     expect(await answerWrapper.getValid()).toBe(true)
     expect(answerWrapper.payload.assets).toBeObject()
     const assets = Object.keys(answerWrapper.payload.assets)

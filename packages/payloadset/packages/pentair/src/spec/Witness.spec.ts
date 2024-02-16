@@ -8,6 +8,6 @@ describe('PentairScreenLogicWitness', () => {
   testIf(process.env.TEST_PENTAIR === 'true')('Witnessing [no config]', async () => {
     const witness = await PentairScreenlogicWitness.create({ account: Account.randomSync() })
     const [observation] = await witness.observe()
-    expect(await (await PayloadWrapper.wrap(observation)).getValid()).toBe(true)
+    expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
   })
 })

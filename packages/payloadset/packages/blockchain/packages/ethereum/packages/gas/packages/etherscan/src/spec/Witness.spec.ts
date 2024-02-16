@@ -27,7 +27,7 @@ describe('EthereumGasEtherscanWitness', () => {
     expect(actual.timestamp).toBeNumber()
     expect(actual.schema).toBe(EthereumGasEtherscanSchema)
 
-    const answerWrapper = await PayloadWrapper.wrap(actual)
+    const answerWrapper = PayloadWrapper.wrap(actual)
     expect(await answerWrapper.getValid()).toBe(true)
   })
 

@@ -11,7 +11,7 @@ const validateObservation = async (observation: Payload[]) => {
   expect(nfts.length).toBeGreaterThan(0)
   expect(observation.length).toEqual(nfts.length)
   for (const nft of nfts) {
-    const wrapped = await PayloadWrapper.wrap(nft)
+    const wrapped = PayloadWrapper.wrap(nft)
     expect(await wrapped.getValid()).toBe(true)
   }
 }

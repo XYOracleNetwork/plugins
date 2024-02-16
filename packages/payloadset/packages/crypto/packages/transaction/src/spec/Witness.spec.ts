@@ -23,7 +23,7 @@ describeIf(process.env.ETHERSCAN_API_KEY)('AddressTransactionHistoryWitness', ()
     expect(transactions.length).toBeGreaterThan(0)
     expect(observation.length).toEqual(transactions.length)
     for (const transaction of transactions) {
-      const wrapped = await PayloadWrapper.wrap(transaction)
+      const wrapped = PayloadWrapper.wrap(transaction)
       expect(await wrapped.getValid()).toBe(true)
     }
   })

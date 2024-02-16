@@ -31,7 +31,7 @@ describe('EthereumGasEthersWitness', () => {
     const actual = observed.find(isPayloadOfSchemaType(EthereumGasEthersSchema))
     expect((actual as EthereumGasEthersPayload).gasPrice).toBeNumber()
     expect(actual?.schema).toBe(EthereumGasEthersSchema)
-    const answerWrapper = await PayloadWrapper.wrap(actual)
+    const answerWrapper = PayloadWrapper.wrap(actual)
     expect(await answerWrapper.getValid()).toBe(true)
   })
 })

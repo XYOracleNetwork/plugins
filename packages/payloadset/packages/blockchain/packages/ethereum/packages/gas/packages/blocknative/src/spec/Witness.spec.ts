@@ -15,7 +15,7 @@ describe('EthereumGasBlocknativeWitness', () => {
     })
     const [actual] = await sut.observe()
     expect(actual.schema).toBe(EthereumGasBlocknativeSchema)
-    const answerWrapper = await PayloadWrapper.wrap(actual)
+    const answerWrapper = PayloadWrapper.wrap(actual)
     expect(await answerWrapper.getValid()).toBe(true)
   })
 })

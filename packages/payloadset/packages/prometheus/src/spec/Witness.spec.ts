@@ -10,7 +10,7 @@ describe('PrometheusNodeWitness', () => {
     })
     const observation = await witness.observe()
     expect(observation?.length).toBeGreaterThan(0)
-    expect(await (await PayloadWrapper.wrap(observation[0])).getValid()).toBe(true)
+    expect(await PayloadWrapper.wrap(observation[0]).getValid()).toBe(true)
     await witness.stop()
   })
 })

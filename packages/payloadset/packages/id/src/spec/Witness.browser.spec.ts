@@ -17,7 +17,7 @@ describe('IdWitness [Browser]', () => {
     })
     const [observation] = await witness.observe([{ salt: 'test', schema: IdSchema } as Payload])
     expect(observation.schema).toBe(IdSchema)
-    expect(await (await PayloadWrapper.wrap(observation)).getValid()).toBe(true)
+    expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
   })
 
   test('observe [no salt]', async () => {
@@ -27,6 +27,6 @@ describe('IdWitness [Browser]', () => {
     })
     const [observation] = await witness.observe([{ salt: 'test', schema: IdSchema } as Payload])
     expect(observation.schema).toBe(IdSchema)
-    expect(await (await PayloadWrapper.wrap(observation)).getValid()).toBe(true)
+    expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
   })
 })
