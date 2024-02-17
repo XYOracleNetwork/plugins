@@ -57,12 +57,12 @@ export type ElevationWitnessConfig = WitnessConfig<{
 
 export const locationToQuadkey = (location: Location, zoom = 16) => {
   return assertEx(
-    (location as QuadkeyLocation).quadkey
-      ? Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
-      : Quadkey.fromLngLat(
-          { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
-          zoom,
-        ),
+    (location as QuadkeyLocation).quadkey ?
+      Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
+    : Quadkey.fromLngLat(
+        { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
+        zoom,
+      ),
   )
 }
 
@@ -147,7 +147,11 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
         const isWest = westBoundingBox.contains(quadkey.center)
         const isNorthEast = northEastBoundingBox.contains(quadkey.center)
         const isSouthEast = southEastBoundingBox.contains(quadkey.center)
-        const sectionToUse = isWest ? 'west' : isNorthEast ? 'northEast' : isSouthEast ? 'southEast' : null
+        const sectionToUse =
+          isWest ? 'west'
+          : isNorthEast ? 'northEast'
+          : isSouthEast ? 'southEast'
+          : null
         const section = await this.getSectionImage(assertEx(sectionToUse, 'Unsupported Area'))
         const sectionInfo = await this.getSectionInfo(assertEx(sectionToUse, 'Unsupported Area'))
 

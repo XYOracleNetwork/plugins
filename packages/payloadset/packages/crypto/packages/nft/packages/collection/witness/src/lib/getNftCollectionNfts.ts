@@ -44,9 +44,9 @@ export const getNftCollectionNfts = async (
     const erc1822Status = await getErc1822SlotStatus(provider, contractAddress, block)
 
     const implementation =
-      !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
-        ? erc1822Status.implementation
-        : erc1967Status.implementation
+      !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation) ?
+        erc1822Status.implementation
+      : erc1967Status.implementation
 
     const axios = new AxiosJson({ timeout: 2000 })
     const enumerable = ERC721Enumerable__factory.connect(implementation, provider)
@@ -61,8 +61,9 @@ export const getNftCollectionNfts = async (
         maxNftsArray.map(async (_value, i) => {
           const tokenId = (await tryCall(async () => await enumerable.tokenByIndex(i, { blockTag: block }))) ?? BigInt(i)
           if (tokenId !== undefined) {
-            const supply = finalTypes.includes(toTokenType('ERC1155'))
-              ? (await tryCall(async () => await supply1155['totalSupply(uint256)'](tokenId))) ?? '0x01'
+            const supply =
+              finalTypes.includes(toTokenType('ERC1155')) ?
+                (await tryCall(async () => await supply1155['totalSupply(uint256)'](tokenId))) ?? '0x01'
               : '0x01'
             const metadataUri = await tryCall(async () => await storage.tokenURI(tokenId, { blockTag: block }))
             const checkedMetaDataUri = metadataUri ? checkIpfsUrl(metadataUri, ipfsGateway) : undefined

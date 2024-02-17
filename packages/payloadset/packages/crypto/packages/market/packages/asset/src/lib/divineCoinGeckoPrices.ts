@@ -15,20 +15,20 @@ const otherValueExists = (value: [string, number | undefined]): value is [string
 
 export const divineCoinGeckoPrices = async (payload: CoingeckoCryptoMarketPayload | undefined): Promise<CryptoMarketAssetPayload> => {
   const assets: Record<string, AssetInfo> =
-    payload && payload?.assets
-      ? Object.fromEntries(
-          Object.entries(payload.assets)
-            .filter(valuationExists)
-            .map(([asset, valuation]) => {
-              const value = Object.fromEntries(
-                Object.entries(valuation)
-                  .filter(otherValueExists)
-                  .map(([symbol, price]) => [symbol.toLowerCase(), price?.toString()]),
-              )
-              return [asset, { value }]
-            }),
-        )
-      : {}
+    payload && payload?.assets ?
+      Object.fromEntries(
+        Object.entries(payload.assets)
+          .filter(valuationExists)
+          .map(([asset, valuation]) => {
+            const value = Object.fromEntries(
+              Object.entries(valuation)
+                .filter(otherValueExists)
+                .map(([symbol, price]) => [symbol.toLowerCase(), price?.toString()]),
+            )
+            return [asset, { value }]
+          }),
+      )
+    : {}
   const timestamp = Date.now()
   return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }

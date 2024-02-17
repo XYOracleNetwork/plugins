@@ -24,7 +24,11 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
     return {
       // eslint-disable-next-line unicorn/no-array-reduce
       max: heuristic.reduce<number>((prev, value) => {
-        return value === null ? prev : value > prev ? value : prev
+        return (
+          value === null ? prev
+          : value > prev ? value
+          : prev
+        )
       }, Number.NEGATIVE_INFINITY),
       mean: (() => {
         // eslint-disable-next-line unicorn/no-array-reduce
@@ -38,7 +42,11 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
       })(),
       // eslint-disable-next-line unicorn/no-array-reduce
       min: heuristic.reduce<number>((prev, value) => {
-        return value === null ? prev : value < prev ? value : prev
+        return (
+          value === null ? prev
+          : value < prev ? value
+          : prev
+        )
       }, Number.POSITIVE_INFINITY),
     }
   }

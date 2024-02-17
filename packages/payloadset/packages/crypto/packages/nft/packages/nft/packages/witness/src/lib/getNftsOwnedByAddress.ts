@@ -125,9 +125,9 @@ export const getNftsOwnedByAddress = async (
         ])
 
         const implementation =
-          !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
-            ? erc1822Status.implementation
-            : erc1967Status.implementation
+          !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation) ?
+            erc1822Status.implementation
+          : erc1967Status.implementation
 
         let supply = 1n
         const types = await getTokenTypes(provider, implementation)

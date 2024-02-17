@@ -49,8 +49,9 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
           const chainId = assertEx(network.chainId, 'params.chainId is required')
           const maxNfts = query?.maxNfts || defaultMaxNfts
           try {
-            const nfts = this.loadMetadata
-              ? await getNftsOwnedByAddressWithMetadata(address, providers, maxNfts, this.timeout)
+            const nfts =
+              this.loadMetadata ?
+                await getNftsOwnedByAddressWithMetadata(address, providers, maxNfts, this.timeout)
               : await getNftsOwnedByAddress(address, providers, maxNfts, this.timeout)
             const observation = nfts.map<NftInfo>((nft) => {
               return { ...nft, schema }

@@ -43,16 +43,16 @@ export class EthersUniSwap3Pair {
       this._pool = this._pool || null
       const slot0 = await this.slot0()
       this._pool =
-        this._pool === null
-          ? new Pool(
-              await this.token(0),
-              await this.token(1),
-              Number(slot0.feeProtocol),
-              `0x${slot0.sqrtPriceX96.toString(16)}`,
-              `0x${(await this.poolContract().liquidity()).toString(16)}`,
-              Number(slot0.tick),
-            )
-          : this._pool
+        this._pool === null ?
+          new Pool(
+            await this.token(0),
+            await this.token(1),
+            Number(slot0.feeProtocol),
+            `0x${slot0.sqrtPriceX96.toString(16)}`,
+            `0x${(await this.poolContract().liquidity()).toString(16)}`,
+            Number(slot0.tick),
+          )
+        : this._pool
       return assertEx(this._pool)
     })
   }

@@ -34,8 +34,9 @@ export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams
       longitude: location.coords.longitude,
       schema: LocationSchema,
     }
-    const heading: LocationHeadingPayload[] = location.coords.heading
-      ? [
+    const heading: LocationHeadingPayload[] =
+      location.coords.heading ?
+        [
           {
             heading: location.coords.heading ?? undefined,
             schema: LocationHeadingSchema,

@@ -29,7 +29,7 @@ export const scoreNftImageData = (nft: NftInfoFields | OpenSeaNftInfoFields): Sc
 }
 
 export const scoreImageData = (image_data: unknown): ScaledScore => {
-  return !image_data || typeof image_data !== 'string' || !isValidImageData(image_data)
-    ? [0, MaxPossibleImageDataScore]
+  return !image_data || typeof image_data !== 'string' || !isValidImageData(image_data) ?
+      [0, MaxPossibleImageDataScore]
     : [MaxPossibleImageDataScore, MaxPossibleImageDataScore]
 }
