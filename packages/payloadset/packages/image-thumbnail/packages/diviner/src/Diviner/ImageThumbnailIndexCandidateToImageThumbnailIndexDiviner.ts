@@ -10,7 +10,7 @@ import {
   isImageThumbnail,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
@@ -39,8 +39,8 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const timestampIndex = curr.payload_schemas?.findIndex((schema) => schema === TimestampSchema)
           const imageThumbnailHash = curr.payload_hashes?.[imageThumbnailIndex]
           const timestampHash = curr.payload_hashes?.[timestampIndex]
-          const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail)
-          const timestampPayload = [payloadDictionary[timestampHash]].find(isTimestamp)
+          const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail) as WithMeta<ImageThumbnail> | undefined
+          const timestampPayload = [payloadDictionary[timestampHash]].find(isTimestamp) as WithMeta<TimeStamp>
           if (imageThumbnailPayload && timestampPayload) acc.push([curr, imageThumbnailPayload, timestampPayload])
           return acc
         },
