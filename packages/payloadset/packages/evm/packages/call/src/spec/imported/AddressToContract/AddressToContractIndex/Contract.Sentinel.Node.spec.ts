@@ -1,4 +1,5 @@
 /* eslint-disable max-statements */
+import { Address } from '@xylabs/hex'
 import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isErc721ContractInfo, isErc1155ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
@@ -126,7 +127,7 @@ describe('Contract Node', () => {
     it.each(erc721Cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase(), schema: PayloadDivinerQuerySchema }
+      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase() as Address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
@@ -137,7 +138,7 @@ describe('Contract Node', () => {
     it.each(erc1155)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase(), schema: PayloadDivinerQuerySchema }
+      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase() as Address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

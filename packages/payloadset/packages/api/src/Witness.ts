@@ -3,6 +3,7 @@ import { Axios, AxiosError, AxiosJson } from '@xylabs/axios'
 import { Hash } from '@xylabs/hex'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
@@ -88,7 +89,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           const validatedUri = assertEx(checkIpfsUrl(uri, this.ipfsGateway), 'Invalid URI')
 
           if (verb === 'get') {
-            return this.httpGet(validatedUri, uri)
+            return this.httpGet(validatedUri, (await PayloadBuilder.build(call)).$hash)
           }
 
           const observation: ApiCallResult = {

@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { Address } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 

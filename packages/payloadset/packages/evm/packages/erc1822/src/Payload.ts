@@ -1,4 +1,3 @@
-import { Address } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
 import { Erc1822SlotStatus } from './lib'
@@ -8,7 +7,7 @@ export type Erc1822StatusSchema = typeof Erc1822StatusSchema
 
 export type Erc1822Status = Payload<
   {
-    address: Address
+    address: string
     block: number
     chainId: number
     implementation?: Erc1822SlotStatus['implementation']

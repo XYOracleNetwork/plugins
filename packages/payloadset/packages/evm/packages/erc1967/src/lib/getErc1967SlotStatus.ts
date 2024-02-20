@@ -15,11 +15,11 @@ export interface Erc1967DataSlots {
 }
 
 export interface Erc1967SlotStatus {
-  address: Address
+  address: string
   beacon?: {
     implementation?: Address
   }
-  implementation: Address
+  implementation: string
   slots: Erc1967DataSlots
 }
 
@@ -47,12 +47,12 @@ export const getErc1967SlotStatus = async (provider: Provider, address: string, 
   if (status.slots.implementation && !isHexZero(status.slots.implementation)) {
     status.implementation = `0x${BigInt(status.slots.implementation as string)
       .toString(16)
-      .padStart(40, '0')}`
+      .padStart(40, '0')}` as Address
   } else {
     if (status.slots.beacon && !isHexZero(status.slots.beacon)) {
       const beacon = UpgradeableBeacon__factory.connect(status.slots.beacon as string, { provider })
       try {
-        const implementation = await beacon.implementation(block ? { blockTag: block } : {})
+        const implementation = (await beacon.implementation(block ? { blockTag: block } : {})) as Address
         if (implementation) {
           status.beacon = { implementation }
           if (!isHexZero(implementation)) {

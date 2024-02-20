@@ -8,7 +8,7 @@ export type Erc1967StatusSchema = typeof Erc1967StatusSchema
 
 export type Erc1967Status = Payload<
   {
-    address: Address
+    address: string
     beacon?: Erc1967SlotStatus['beacon']
     block: number
     chainId: number

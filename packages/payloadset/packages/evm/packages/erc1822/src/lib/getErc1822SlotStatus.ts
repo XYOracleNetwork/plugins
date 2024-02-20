@@ -8,8 +8,8 @@ export interface Erc1822DataSlots {
 }
 
 export interface Erc1822SlotStatus {
-  address: Address
-  implementation: Address
+  address: string
+  implementation: string
   slots: Erc1822DataSlots
 }
 
@@ -32,7 +32,7 @@ export const getErc1822SlotStatus = async (provider: Provider, address: string, 
   }
 
   if (status.slots.implementation && !isHexZero(status.slots.implementation)) {
-    status.implementation = status.slots.implementation as string
+    status.implementation = status.slots.implementation
   }
 
   return status
