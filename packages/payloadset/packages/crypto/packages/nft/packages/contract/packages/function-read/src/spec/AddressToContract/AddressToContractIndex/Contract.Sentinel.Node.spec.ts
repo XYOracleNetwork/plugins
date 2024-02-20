@@ -127,7 +127,7 @@ describe.skip('Contract Node', () => {
     it.each(erc721Cases)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const query = { address, schema: PayloadDivinerQuerySchema } as PayloadDivinerQueryPayload
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
@@ -138,7 +138,7 @@ describe.skip('Contract Node', () => {
     it.each(erc1155)('With %s (%s)', async (_, address) => {
       const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address, schema: PayloadDivinerQuerySchema }
+      const query = { address, schema: PayloadDivinerQuerySchema } as PayloadDivinerQueryPayload
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

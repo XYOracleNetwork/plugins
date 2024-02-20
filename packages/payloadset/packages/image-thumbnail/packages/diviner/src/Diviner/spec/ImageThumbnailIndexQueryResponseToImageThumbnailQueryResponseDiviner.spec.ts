@@ -1,12 +1,15 @@
+import { Hash } from '@xylabs/hex'
 import {
   ImageThumbnailDivinerQuery,
   ImageThumbnailDivinerQuerySchema,
+  ImageThumbnailResult,
   ImageThumbnailResultIndex,
   ImageThumbnailResultIndexSchema,
   ImageThumbnailResultSchema,
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithMeta } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner } from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner'
@@ -25,7 +28,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
   const indexes: ImageThumbnailResultIndex[][] = [
     [
       {
-        key: 'setInBeforeAll',
+        key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
         sources: [],
         status: 200,
@@ -35,7 +38,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
     ],
     [
       {
-        key: 'setInBeforeAll',
+        key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
         sources: [],
         status: 200,
@@ -43,7 +46,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         timestamp: 1_234_567_891,
       },
       {
-        key: 'setInBeforeAll',
+        key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
         sources: [],
         status: 500,
@@ -72,7 +75,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const results = await diviner.divine([imageThumbnailDivinerQuery, ...imageThumbnailResultIndex])
         expect(results).toBeArrayOfSize(imageThumbnailResultIndex.length)
         expect(results.filter(isImageThumbnailResult)).toBeArrayOfSize(imageThumbnailResultIndex.length)
-        for (const [i, result] of results.filter(isImageThumbnailResult).entries()) {
+        for (const [i, result] of (results.filter(isImageThumbnailResult) as WithMeta<ImageThumbnailResult>[]).entries()) {
           const index = imageThumbnailResultIndex[i]
           expect(result.url).toBe(imageThumbnailDivinerQuery.url)
           expect(result.success).toBe(index.success)
@@ -87,7 +90,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const indexesLength = indexes.flat().length
         const results = await diviner.divine([...queries, ...indexes.flat()])
         expect(results).toBeArrayOfSize(indexesLength)
-        const resultsIndexes = results.filter(isImageThumbnailResult)
+        const resultsIndexes = results.filter(isImageThumbnailResult) as WithMeta<ImageThumbnailResult>[]
         expect(resultsIndexes).toBeArrayOfSize(indexesLength)
         let resultsIterator = 0
         for (const [i, { url }] of queries.entries()) {

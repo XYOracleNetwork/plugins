@@ -1,6 +1,6 @@
 import { Account } from '@xyo-network/account'
 import { CryptoMarketAssetPayload, CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, WithMeta } from '@xyo-network/payload-model'
 
 import { CryptoMarketAssetDiviner } from '../Diviner'
 import { sampleCoinGeckoPayload, sampleUniswapPayload } from '../test'
@@ -22,7 +22,7 @@ describe('Diviner', () => {
     expect(payloads.length).toBe(1)
     payloads.map((payload) => {
       if (payload?.schema === CryptoMarketAssetSchema) {
-        const assetPayload = payload as CryptoMarketAssetPayload
+        const assetPayload = payload as WithMeta<CryptoMarketAssetPayload>
         expect(assetPayload).toBeObject()
         expect(assetPayload?.assets).toBeObject()
         expect(assetPayload?.schema).toBe(CryptoMarketAssetSchema)

@@ -6,7 +6,7 @@ import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { isBoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { NftInfo, NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -22,9 +22,10 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
-import { isModuleState, Labels, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { isModuleState, Labels, ModuleFactoryLocator, ModuleState } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { WithMeta } from '@xyo-network/payload-model'
 
 import imageThumbnailDivinerManifest from './Witness.Index.json'
 
@@ -170,7 +171,7 @@ describe('CryptoWalletNftWitness Index', () => {
     })
     it('has expected bound witnesses', async () => {
       const payloads = await stateArchivist.all()
-      const stateBoundWitnesses = payloads.filter(isBoundWitness)
+      const stateBoundWitnesses = payloads.filter(isBoundWitness) as WithMeta<BoundWitness>[]
       expect(stateBoundWitnesses).toBeArrayOfSize(2)
       for (const stateBoundWitness of stateBoundWitnesses) {
         expect(stateBoundWitness).toBeObject()
@@ -180,7 +181,7 @@ describe('CryptoWalletNftWitness Index', () => {
     })
     it('has expected state', async () => {
       const payloads = await stateArchivist.all()
-      const statePayloads = payloads.filter(isModuleState)
+      const statePayloads = payloads.filter(isModuleState) as WithMeta<ModuleState>[]
       expect(statePayloads).toBeArrayOfSize(2)
       expect(statePayloads.at(-1)).toBeObject()
       const statePayload = assertEx(statePayloads.at(-1))
@@ -220,8 +221,8 @@ describe('CryptoWalletNftWitness Index', () => {
         const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address using the default chainId', async (payload) => {
           const { address } = payload
-          const query: Query = { address, schema }
-          const results = await sut.divine([query])
+          const query = { address, schema } as Query
+          const results = (await sut.divine([query])) as WithMeta<TemporalIndexingDivinerResultIndex>[]
           const result = results.find(isTemporalIndexingDivinerResultIndex)
           await verifyIsExpectedNft(result, payload)
         })
@@ -231,8 +232,8 @@ describe('CryptoWalletNftWitness Index', () => {
         const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address & chainId', async (payload) => {
           const { address, chainId } = payload
-          const query: Query = { address, chainId, schema }
-          const results = await sut.divine([query])
+          const query = { address, chainId, schema } as Query
+          const results = (await sut.divine([query])) as WithMeta<TemporalIndexingDivinerResultIndex>[]
           const result = results.find(isTemporalIndexingDivinerResultIndex)
           await verifyIsExpectedNft(result, payload)
         })
