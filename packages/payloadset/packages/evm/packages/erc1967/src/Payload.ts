@@ -1,4 +1,3 @@
-import { Address } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
 import { Erc1967SlotStatus } from './lib'
