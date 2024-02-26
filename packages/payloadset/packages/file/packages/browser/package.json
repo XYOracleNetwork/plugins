@@ -13,18 +13,18 @@
     "@scure/base": "^1.1.5",
     "@xylabs/assert": "^3.0.3",
     "@xylabs/promise": "^3.0.3",
-    "@xyo-network/abstract-witness": "next",
-    "@xyo-network/module-model": "next",
-    "@xyo-network/payload-builder": "next",
-    "@xyo-network/payload-model": "next",
-    "@xyo-network/payloadset-plugin": "next",
-    "@xyo-network/witness-model": "next",
+    "@xyo-network/abstract-witness": "^2.92.0-rc.2",
+    "@xyo-network/module-model": "^2.92.0-rc.2",
+    "@xyo-network/payload-builder": "^2.92.0-rc.2",
+    "@xyo-network/payload-model": "^2.92.0-rc.2",
+    "@xyo-network/payloadset-plugin": "^2.92.0-rc.2",
+    "@xyo-network/witness-model": "^2.92.0-rc.2",
     "sha.js": "^2.4.11"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.4.1",
     "@xylabs/tsconfig": "^3.4.1",
-    "@xyo-network/account": "next",
+    "@xyo-network/account": "^2.92.0-rc.2",
     "typescript": "^5.3.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -66,7 +66,7 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.89.0-rc.1",
+  "version": "2.89.0-rc.2",
   "type": "module",
   "stableVersion": "2.88.1"
 }
