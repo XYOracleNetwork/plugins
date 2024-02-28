@@ -1,3 +1,4 @@
+import { Hash } from '@xylabs/hex'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { ImageThumbnailSchema } from '../Schema'
@@ -12,7 +13,7 @@ export interface ImageThumbnailResultFields {
   /**
    * The hashes of the timestamp & image thumbnail payloads used to create this result
    */
-  sources: string[]
+  sources: Hash[]
   /**
    * The HTTP status code of the thumbnail generation request
    */
