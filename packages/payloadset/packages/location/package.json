@@ -10,19 +10,19 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.0.3",
-    "@xyo-network/abstract-witness": "next",
+    "@xylabs/assert": "^3.0.8",
+    "@xyo-network/abstract-witness": "^2.92.0",
     "@xyo-network/location-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "next",
-    "@xyo-network/payload-model": "next",
-    "@xyo-network/payloadset-plugin": "next",
-    "@xyo-network/witness-model": "next"
+    "@xyo-network/module-model": "^2.92.0",
+    "@xyo-network/payload-model": "^2.92.0",
+    "@xyo-network/payloadset-plugin": "^2.92.0",
+    "@xyo-network/witness-model": "^2.92.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.4.1",
     "@xylabs/tsconfig-dom": "^3.4.1",
     "@xylabs/tsconfig-dom-jest": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "types": "dist/node/index.d.ts",
@@ -63,6 +63,7 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.88.1",
-  "type": "module"
+  "version": "2.89.0-rc.6",
+  "type": "module",
+  "stableVersion": "2.88.1"
 }

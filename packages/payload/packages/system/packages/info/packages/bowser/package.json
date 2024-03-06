@@ -10,14 +10,14 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xyo-network/payload-model": "next",
-    "@xyo-network/payload-plugin": "next",
+    "@xyo-network/payload-model": "^2.92.0",
+    "@xyo-network/payload-plugin": "^2.92.0",
     "bowser": "^2.11.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.4.1",
     "@xylabs/tsconfig": "^3.4.1",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "exports": {
@@ -58,6 +58,7 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.88.1",
-  "type": "module"
+  "version": "2.89.0-rc.6",
+  "type": "module",
+  "stableVersion": "2.88.1"
 }

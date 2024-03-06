@@ -7,6 +7,7 @@ import {
   NftCollectionSchema,
   NftCollectionScore,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { NftCollectionScoreDiviner } from '../Diviner'
@@ -44,7 +45,7 @@ describe('NftCollectionScoreDiviner', () => {
     const json = await readFile(`./nftData/witness/${address}-witness.json`)
     const data: NftCollectionInfo[] = JSON.parse(json.toString())
     const results = await diviner.divine(data)
-    const scores = results.filter(isNftCollectionScoreWithMeta)
+    const scores = results.filter(isNftCollectionScoreWithMeta) as WithMeta<NftCollectionScore>[]
     for (const score of scores) {
       const address = score.address
       // eslint-disable-next-line unicorn/no-array-reduce
@@ -60,7 +61,7 @@ describe('NftCollectionScoreDiviner', () => {
     }
   })
   test('divine', async () => {
-    const scores = (await diviner.divine(data)).filter(isNftCollectionScoreWithMeta)
+    const scores = (await diviner.divine(data)).filter(isNftCollectionScoreWithMeta) as WithMeta<NftCollectionScore>[]
     expect(scores).toBeArrayOfSize(data.length)
     for (const [i, score] of scores.entries()) {
       const wrapped = PayloadWrapper.wrap<NftCollectionScore>(score)

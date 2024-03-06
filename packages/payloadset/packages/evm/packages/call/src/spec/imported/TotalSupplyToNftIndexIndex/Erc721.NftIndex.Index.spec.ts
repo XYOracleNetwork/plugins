@@ -1,5 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -29,7 +29,7 @@ import { EvmCallWitness } from '../../../Witness'
 import nodeManifest from './Erc721.NftIndex.Index.json'
 
 describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
 
   beforeAll(async () => {
