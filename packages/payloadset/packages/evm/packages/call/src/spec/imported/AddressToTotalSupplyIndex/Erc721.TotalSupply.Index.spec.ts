@@ -1,6 +1,6 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -26,7 +26,7 @@ import { EvmCallWitness } from '../../../Witness'
 import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json'
 
 describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
 
   beforeAll(async () => {

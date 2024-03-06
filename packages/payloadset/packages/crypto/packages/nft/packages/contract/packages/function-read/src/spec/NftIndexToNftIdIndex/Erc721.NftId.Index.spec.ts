@@ -1,7 +1,7 @@
 /* eslint-disable import/no-deprecated */
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
@@ -34,7 +34,7 @@ import nodeManifest from './Erc721.NftId.Index.json'
 const maxProviders = 32
 
 describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
 
   const getProviders = () => {

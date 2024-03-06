@@ -1,6 +1,6 @@
 /* eslint-disable max-statements */
 import { Address } from '@xylabs/hex'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isErc721ContractInfo, isErc1155ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
@@ -44,7 +44,7 @@ describe('Contract Node', () => {
     //['ERC1155', '0xCaf94eB06D4dE233c45B353723C387D3E440f3d6'.toLowerCase()],
     ['ERC1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'.toLowerCase()],
   ]
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
   beforeAll(async () => {
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'

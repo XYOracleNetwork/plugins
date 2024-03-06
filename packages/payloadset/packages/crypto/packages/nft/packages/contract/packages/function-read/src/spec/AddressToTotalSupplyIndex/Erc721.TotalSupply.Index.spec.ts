@@ -1,6 +1,6 @@
 /* eslint-disable import/no-deprecated */
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import {
   CryptoContractFunctionCallSchema,
   isCryptoContractFunctionCallResult,
@@ -33,7 +33,7 @@ import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json'
 const maxProviders = 32
 
 describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
 
   const getProviders = () => {

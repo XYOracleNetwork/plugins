@@ -1,6 +1,6 @@
 /* eslint-disable max-statements */
 import { delay } from '@xylabs/delay'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
@@ -46,7 +46,7 @@ describe('Contract Node', () => {
     }
     return providers
   }
-  let wallet: HDWallet
+  let wallet: WalletInstance
   let node: MemoryNode
   beforeAll(async () => {
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
