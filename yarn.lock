@@ -3346,10 +3346,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/arraybuffer@npm:~3.0.15":
+  version: 3.0.15
+  resolution: "@xylabs/arraybuffer@npm:3.0.15"
+  dependencies:
+    "@scure/base": "npm:^1.1.5"
+    "@xylabs/assert": "npm:~3.0.15"
+    "@xylabs/lodash": "npm:^3.0.15"
+    "@xylabs/typeof": "npm:~3.0.15"
+  checksum: 10/fbd1e0520f5cb0d0aefa2524199058967aca57a155562891b29e3058e2821134bc1f3799f4bb26c3b31e3debfaf40928038b8af2372ada3afb7220ef714d579c
+  languageName: node
+  linkType: hard
+
 "@xylabs/assert@npm:^3.0.13, @xylabs/assert@npm:^3.0.14, @xylabs/assert@npm:~3.0.14":
   version: 3.0.14
   resolution: "@xylabs/assert@npm:3.0.14"
   checksum: 10/f4dfa04fc29c3d1bbb8712c6dcb08321b5b582b23f0ee600ef988f2883cf8f2f450354cddc531c43f8b43aea7a4cccbdd3278c2f2820795c822ad3e0f5004024
+  languageName: node
+  linkType: hard
+
+"@xylabs/assert@npm:~3.0.15":
+  version: 3.0.15
+  resolution: "@xylabs/assert@npm:3.0.15"
+  checksum: 10/938dc46b77ff6f95b2292ce42291adc2000d2b5eb177430cb553874e07c183c4e3bf159d45c1d1d7e3d162120d8f9c5298276c948f1b9c752f45c9b9cb56e218
   languageName: node
   linkType: hard
 
@@ -3457,6 +3476,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/hex@npm:^3.0.15":
+  version: 3.0.15
+  resolution: "@xylabs/hex@npm:3.0.15"
+  dependencies:
+    "@xylabs/arraybuffer": "npm:~3.0.15"
+  checksum: 10/84d67332ef015b2c407ae5a1e744233906b9ff9443d63210219e75c98845b483a3bb29f1c175e5e920b7feb1d47b52fe8666523e86bc3c1891fc2d29d1b74277
+  languageName: node
+  linkType: hard
+
 "@xylabs/jest-helpers@npm:^3.0.14":
   version: 3.0.14
   resolution: "@xylabs/jest-helpers@npm:3.0.14"
@@ -3489,6 +3517,23 @@ __metadata:
     lodash-es:
       optional: true
   checksum: 10/fb59dc3a4fe7b82e736eaaeee44ee52fa75a7fc9d6fc8a8c61caa0c20057ec48844b71c49aeb1f2f735d2e29497d5cea5dba150abf403a7d10414d5951ce0833
+  languageName: node
+  linkType: hard
+
+"@xylabs/lodash@npm:^3.0.15":
+  version: 3.0.15
+  resolution: "@xylabs/lodash@npm:3.0.15"
+  dependencies:
+    "@types/lodash": "npm:^4.17.0"
+    "@types/lodash-es": "npm:^4.17.12"
+    lodash: "npm:^4.17.21"
+    lodash-es: "npm:^4.17.21"
+  dependenciesMeta:
+    lodash:
+      optional: true
+    lodash-es:
+      optional: true
+  checksum: 10/3e2d1760a36018a4c5c8132f9ea883266e2cd37e3fc925db7bd8ad1a7192c34871615571c62582e5ec278f90e0fc7c0051c92ec6bf7b43e5896ab159a126cee1
   languageName: node
   linkType: hard
 
@@ -3734,6 +3779,13 @@ __metadata:
   version: 3.0.14
   resolution: "@xylabs/typeof@npm:3.0.14"
   checksum: 10/a74e1cd824b9d9f25badf1f6ee0cbef33d6e196943047b9876a5c0a6608ca18dc19160d2d310315fe3c41d8c3ac5a2c0bb70a7c8587144eb89cce9fa13ed5dd4
+  languageName: node
+  linkType: hard
+
+"@xylabs/typeof@npm:~3.0.15":
+  version: 3.0.15
+  resolution: "@xylabs/typeof@npm:3.0.15"
+  checksum: 10/9e1cf8edd0d1c8306d3000e3a0788b718d1490a20d29f8a9a84a093563301f4ef8010abdc22eeed1dabf97467d3ce39d57a27a1013a960317a3318174401859b
   languageName: node
   linkType: hard
 
@@ -4059,7 +4111,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/boundwitness-validator@npm:~2.92.7":
+"@xyo-network/boundwitness-validator@npm:^2.92.7, @xyo-network/boundwitness-validator@npm:~2.92.7":
   version: 2.92.7
   resolution: "@xyo-network/boundwitness-validator@npm:2.92.7"
   dependencies:
@@ -6969,8 +7021,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record"
   dependencies:
+    "@xylabs/hex": "npm:^3.0.15"
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
+    "@xyo-network/account": "npm:^2.92.7"
+    "@xyo-network/boundwitness-builder": "npm:^2.92.7"
+    "@xyo-network/boundwitness-model": "npm:^2.92.7"
+    "@xyo-network/boundwitness-validator": "npm:^2.92.7"
+    "@xyo-network/payload-builder": "npm:^2.92.7"
+    "@xyo-network/payload-model": "npm:^2.92.7"
     "@xyo-network/payload-plugin": "npm:^2.92.7"
     typescript: "npm:^5.4.2"
   languageName: unknown

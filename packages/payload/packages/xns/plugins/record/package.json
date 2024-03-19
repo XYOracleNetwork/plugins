@@ -10,11 +10,18 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
+    "@xylabs/hex": "^3.0.15",
+    "@xyo-network/boundwitness-model": "^2.92.7",
+    "@xyo-network/boundwitness-validator": "^2.92.7",
+    "@xyo-network/payload-builder": "^2.92.7",
+    "@xyo-network/payload-model": "^2.92.7",
     "@xyo-network/payload-plugin": "^2.92.7"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.5.2",
     "@xylabs/tsconfig": "^3.5.2",
+    "@xyo-network/account": "^2.92.7",
+    "@xyo-network/boundwitness-builder": "^2.92.7",
     "typescript": "^5.4.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
