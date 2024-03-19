@@ -1,1 +1,3 @@
-export const XNS_RECORDS = true
+export * from './Address'
+export * from './Domain'
+export * from './DomainRegistration'
