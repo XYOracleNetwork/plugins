@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../../Duration'
+import { DurationFields } from '../Duration'
 import { DomainFields } from './Domain'
 
 export type DomainLeaseSchema = 'network.xyo.ns.domain.lease'

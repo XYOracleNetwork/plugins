@@ -6960,11 +6960,12 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
     "@xyo-network/payload-plugin": "npm:^2.92.7"
+    "@xyo-network/xns-record-payload-plugins": "workspace:~"
     typescript: "npm:^5.4.2"
   languageName: unknown
   linkType: soft
 
-"@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record":
+"@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record, @xyo-network/xns-record-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record"
   dependencies:
