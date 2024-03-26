@@ -26,7 +26,7 @@ export class Erc1967Witness<TParams extends Erc1967WitnessParams = Erc1967Witnes
     try {
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType<EvmAddress>(EvmAddressSchema)).map(async ({ address }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address').toLowerCase()
+          const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address').toLowerCase()
 
           const provider = await this.getProvider(true, true)
 

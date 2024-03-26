@@ -65,7 +65,7 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
   static override configSchemas = [ApiGraphqlWitnessConfigSchema]
 
   get endpoint() {
-    return assertEx(this.config.endpoint ?? this.params.endpoint, 'No endpoint specified')
+    return assertEx(this.config.endpoint ?? this.params.endpoint, () => 'No endpoint specified')
   }
 
   get headers() {

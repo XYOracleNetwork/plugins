@@ -28,12 +28,12 @@ export class AddressTransactionHistoryWitness<
   static override configSchemas = [AddressTransactionHistoryWitnessConfigSchema]
 
   protected get provider() {
-    return assertEx(this.params.provider, 'Provider Required')
+    return assertEx(this.params.provider, () => 'Provider Required')
   }
 
   protected override async observeHandler(): Promise<Payload[]> {
     await this.started('throw')
-    const address = assertEx(this.config.address, 'params.address is required')
+    const address = assertEx(this.config.address, () => 'params.address is required')
     const transactions = await getTransactionsForAddress(address, this.provider)
     const payloads = transactions.map<AddressTransactionHistoryPayload>((transaction) => {
       return { ...transaction, schema }

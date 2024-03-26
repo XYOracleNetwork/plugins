@@ -16,7 +16,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
   static override configSchemas = [EvmEventsWitnessConfigSchema]
 
   get abi() {
-    return assertEx(this.config.abi, 'Missing abi')
+    return assertEx(this.config.abi, () => 'Missing abi')
   }
 
   protected override async observeHandler(inPayloads: EvmEvents[] = []): Promise<EvmEvent[]> {
@@ -29,19 +29,19 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
           inPayloads
             .filter(isPayloadOfSchemaType<EvmEvents>(EvmEventsSchema))
             .map(async ({ eventName, address, fromBlock: payloadFromBlock, toBlock: payloadToBlock }) => {
-              const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
-              const validatedEventName = assertEx(eventName ?? this.config.eventName, 'Missing eventName')
+              const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
+              const validatedEventName = assertEx(eventName ?? this.config.eventName, () => 'Missing eventName')
 
               const provider = await this.getProvider(true, true)
               const network = await provider.getNetwork()
 
               const contract = new Contract(validatedAddress, this.abi, provider).attach(validatedAddress)
 
-              const abiArray = assertEx(Array.isArray(this.abi) ? this.abi : undefined, 'Abi is not an array')
+              const abiArray = assertEx(Array.isArray(this.abi) ? this.abi : undefined, () => 'Abi is not an array')
 
               const abiEvent = assertEx(
                 abiArray.find((entry) => entry.type === 'event' && entry.name === validatedEventName),
-                'Could not find event',
+                () => 'Could not find event',
               )
 
               const toBlock = this.config.toBlock ?? payloadToBlock ?? (await provider.getBlockNumber())

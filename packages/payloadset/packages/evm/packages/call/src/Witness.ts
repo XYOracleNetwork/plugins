@@ -13,7 +13,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
   static override configSchemas = [EvmCallWitnessConfigSchema]
 
   get abi() {
-    return assertEx(this.config.abi, 'Missing abi')
+    return assertEx(this.config.abi, () => 'Missing abi')
   }
 
   protected override async observeHandler(inPayloads: EvmCall[] = []): Promise<EvmCallResult[]> {
@@ -23,8 +23,8 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
     try {
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType<EvmCall>(EvmCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
-          const validatedFunctionName = assertEx(functionName ?? this.config.functionName, 'Missing address')
+          const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
+          const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]
 
           const provider = await this.getProvider(true, true)

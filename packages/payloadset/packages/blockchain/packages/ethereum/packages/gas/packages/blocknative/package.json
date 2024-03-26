@@ -10,21 +10,21 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/axios": "^3.0.15",
-    "@xyo-network/abstract-witness": "^2.92.8",
+    "@xylabs/axios": "^3.0.24",
+    "@xyo-network/abstract-witness": "^2.93.0",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "^2.92.8",
-    "@xyo-network/payload-builder": "^2.92.8",
-    "@xyo-network/payload-model": "^2.92.8",
-    "@xyo-network/payloadset-plugin": "^2.92.8",
-    "@xyo-network/witness-timestamp": "^2.92.8"
+    "@xyo-network/module-model": "^2.93.0",
+    "@xyo-network/payload-builder": "^2.93.0",
+    "@xyo-network/payload-model": "^2.93.0",
+    "@xyo-network/payloadset-plugin": "^2.93.0",
+    "@xyo-network/witness-timestamp": "^2.93.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.5.2",
     "@xylabs/tsconfig": "^3.5.2",
-    "@xyo-network/account": "^2.92.8",
-    "@xyo-network/payload-wrapper": "^2.92.8",
-    "typescript": "^5.4.2"
+    "@xyo-network/account": "^2.93.0",
+    "@xyo-network/payload-wrapper": "^2.93.0",
+    "typescript": "^5.4.3"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "types": "dist/node/index.d.ts",

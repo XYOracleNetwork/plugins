@@ -46,7 +46,10 @@ export class UniswapCryptoMarketWitness<
 
   protected override async startHandler() {
     await super.startHandler()
-    this.pairs = createUniswapPoolContracts(assertEx(this.provider, 'Provider Required'), this.config?.pools ?? UniswapPoolContracts)
+    this.pairs = createUniswapPoolContracts(
+      assertEx(this.provider, () => 'Provider Required'),
+      this.config?.pools ?? UniswapPoolContracts,
+    )
     return true
   }
 }

@@ -23,7 +23,7 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
   static override configSchemas = [EvmAbiImplementedDivinerConfigSchema]
 
   get abi() {
-    return assertEx(this.config?.abi, 'No ABI specified')
+    return assertEx(this.config?.abi, () => 'No ABI specified')
   }
 
   protected override async divineHandler(inPayloads: EvmContract[] = []): Promise<EvmFunctionImplemented[]> {
@@ -32,7 +32,7 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType<EvmContract>(EvmContractSchema)).map(({ address, code }) => {
           const contractInterface = new Interface(this.abi)
-          const byteCode = assertEx(code, 'Missing code')
+          const byteCode = assertEx(code, () => 'Missing code')
 
           const results: EvmFunctionImplemented[] = []
 

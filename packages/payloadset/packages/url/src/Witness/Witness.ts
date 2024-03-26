@@ -28,7 +28,7 @@ export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> ext
     const hashed = await Promise.all(
       urls.map(async (url) => {
         // TODO: Different schema for hashed url
-        return { ...url, hash: await assertEx(UrlWitness.hashUrl, 'Set UrlWitness.hashUrl before using')(url.url) }
+        return { ...url, hash: await assertEx(UrlWitness.hashUrl, () => 'Set UrlWitness.hashUrl before using')(url.url) }
       }),
     )
     // TODO: Handle partial success

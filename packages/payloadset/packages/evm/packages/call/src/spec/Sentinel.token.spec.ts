@@ -78,7 +78,7 @@ describe('Erc721Sentinel - Token', () => {
       const node = await manifest.loadNodeFromIndex(0)
       profile(profiler, 'manifest-load')
       profile(profiler, 'manifest-resolve')
-      const mods = await node.resolve()
+      const mods = await node.resolve('*')
       profile(profiler, 'manifest-resolve')
       profile(profiler, 'manifest')
       expect(mods.length).toBeGreaterThan(5)

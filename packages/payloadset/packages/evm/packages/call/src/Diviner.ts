@@ -55,8 +55,8 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
 
   protected contractInfoRequiredFields(callResults: EvmCallResult[]): EvmCallResults {
     return {
-      address: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'address'), 'Mismatched address'),
-      chainId: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'chainId'), 'Mismatched chainId'),
+      address: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'address'), () => 'Mismatched address'),
+      chainId: assertEx(EvmCallDiviner.matchingExistingField(callResults, 'chainId'), () => 'Mismatched chainId'),
       schema: EvmCallResultsSchema,
     }
   }

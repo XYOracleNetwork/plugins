@@ -75,7 +75,7 @@ describe('Contract Node', () => {
     ]
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)
-    const mods = await node.resolve()
+    const mods = await node.resolve('*')
     expect(mods).toBeDefined()
   })
   describe('Contract Witness Index Node', () => {

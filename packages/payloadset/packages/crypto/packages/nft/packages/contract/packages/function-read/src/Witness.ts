@@ -30,7 +30,7 @@ export class CryptoContractFunctionReadWitness<
   static override configSchemas = [CryptoContractFunctionReadWitnessConfigSchema]
 
   get abi() {
-    return assertEx(this.config.abi, 'Missing abi')
+    return assertEx(this.config.abi, () => 'Missing abi')
   }
 
   protected override async observeHandler(inPayloads: CryptoContractFunctionCall[] = []): Promise<CryptoContractFunctionCallResult[]> {
@@ -40,8 +40,8 @@ export class CryptoContractFunctionReadWitness<
         inPayloads.filter(isPayloadOfSchemaType(CryptoContractFunctionCallSchema)).map(async ({ functionName, args, address }) => {
           const { providers } = this.params
           const provider = providers[Date.now() % providers.length] //pick a random provider
-          const validatedAddress = assertEx(address ?? this.config.address, 'Missing address')
-          const validatedFunctionName = assertEx(functionName ?? this.config.functionName, 'Missing address')
+          const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
+          const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]
 
           const contract = new Contract(validatedAddress, this.abi, provider)

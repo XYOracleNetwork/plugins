@@ -61,7 +61,7 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     const manifest = nftIdToNftMetadataUri as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
-    const mods = await node.resolve()
+    const mods = await node.resolve('*')
     const publicModules = manifest.nodes[0].modules?.public ?? []
     expect(mods.length).toBe(publicModules.length + 1)
   })

@@ -9,7 +9,7 @@ export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams
   static override configSchemas = [CurrentLocationWitnessConfigSchema]
 
   get geolocation(): Geolocation {
-    return assertEx(this.params.geolocation, 'No geolocation provided')
+    return assertEx(this.params.geolocation, () => 'No geolocation provided')
   }
 
   getCurrentPosition() {

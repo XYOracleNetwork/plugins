@@ -45,11 +45,11 @@ export class CryptoNftCollectionWitness<
     const queries = payloads?.filter(isNftCollectionWitnessQuery) ?? []
     const observations = await Promise.all(
       queries.map<Promise<NftCollectionInfo>>(async (query) => {
-        const chainId = assertEx(query?.chainId || this.config.chainId, 'params.chainId is required')
+        const chainId = assertEx(query?.chainId || this.config.chainId, () => 'params.chainId is required')
         const provider = await this.getProvider(true, true)
         const address = assertEx(
-          EthAddress.parse(assertEx(query?.address || this.config.address, 'params.address is required')),
-          'Failed to parse params.address',
+          EthAddress.parse(assertEx(query?.address || this.config.address, () => 'params.address is required')),
+          () => 'Failed to parse params.address',
         ).toString()
 
         const erc721Enumerable = ERC721Enumerable__factory.connect(address, provider)

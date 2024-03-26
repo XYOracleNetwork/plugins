@@ -40,7 +40,7 @@ export class BrowserFileWitness extends FileWitness<BrowserFileWitnessParams> {
   }
 
   private async witnessBrowserFile(): Promise<[FilePayload, Uint8Array]> {
-    const file = assertEx(this.params.file, 'File is missing from params')
+    const file = assertEx(this.params.file, () => 'File is missing from params')
     const fileBinary = await this.readBinaryFile(file)
     const result = new Uint8Array(fileBinary)
     const hash = shajs('sha256').update(result).digest('hex').padStart(64, '0')

@@ -110,7 +110,7 @@ describe('Erc721Sentinel', () => {
       const node = await manifest.loadNodeFromIndex(0)
       profile('manifest-load')
       profile('manifest-resolve')
-      const mods = await node.resolve()
+      const mods = await node.resolve('*')
       profile('manifest-resolve')
       profile('manifest')
       expect(mods.length).toBeGreaterThan(5)

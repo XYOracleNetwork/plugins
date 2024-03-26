@@ -41,8 +41,8 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
 
   protected contractInfoRequiredFields(callResults: CryptoContractFunctionCallResult[]): ContractInfo {
     return {
-      address: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'address'), 'Mismatched address'),
-      chainId: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'chainId'), 'Mismatched chainId'),
+      address: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'address'), () => 'Mismatched address'),
+      chainId: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'chainId'), () => 'Mismatched chainId'),
       schema: ContractInfoSchema,
     }
   }

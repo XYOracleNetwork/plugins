@@ -14,7 +14,7 @@ export class EthereumGasEtherscanWitness extends AbstractWitness<WitnessParams<A
   static override configSchemas = [EthereumGasEtherscanWitnessConfigSchema]
 
   protected override async observeHandler(): Promise<Payload[]> {
-    const apiKey = assertEx(this.config?.apiKey, 'apiKey is required')
+    const apiKey = assertEx(this.config?.apiKey, () => 'apiKey is required')
     const payload = await new PayloadBuilder<EthereumGasEtherscanPayload>({ schema: EthereumGasEtherscanSchema })
       .fields(await getGasFromEtherscan(apiKey))
       .build()

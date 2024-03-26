@@ -87,7 +87,7 @@ describe('OpenSeaApi', () => {
 
       const node = await manifest.loadNodeFromIndex(0)
 
-      const mods = await node.resolve()
+      const mods = await node.resolve('*')
 
       expect(mods.length).toBeGreaterThan(1)
 

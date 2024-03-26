@@ -23,7 +23,7 @@ interface QuickNodeFetchNftsResult {
 }
 
 export const getAssetsFromWallet = async (address: string, maxNfts = 10, timeout = 2000) => {
-  const endpoint = assertEx(process.env.QUICKNODE_API_URI, 'No endpoint found')
+  const endpoint = assertEx(process.env.QUICKNODE_API_URI, () => 'No endpoint found')
 
   const axios = new AxiosJson({ timeout })
 

@@ -34,7 +34,7 @@ const valuesFromTokenPairs = (tokensPairs: UniswapCryptoToken[][], token: Token)
         const other = pair.find((p) => p.symbol.toLowerCase() !== token)
         return [other?.symbol.toLowerCase(), current?.value.toString()]
       })
-      .map((x) => [mapUniswapToken(assertEx(x[0], 'Undefined Token')), x[1]]),
+      .map((x) => [mapUniswapToken(assertEx(x[0], () => 'Undefined Token')), x[1]]),
   )
 }
 

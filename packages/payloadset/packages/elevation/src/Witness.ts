@@ -93,11 +93,11 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
   async getSection(section: keyof Tiffs): Promise<GeoTIFF> {
     if (!this._tiffs[section]) {
       this._tiffs[section] = (async () => {
-        return await fromFile(assertEx(this.config.files?.[section], `Missing file in config [${section}]`))
+        return await fromFile(assertEx(this.config.files?.[section], () => `Missing file in config [${section}]`))
       })()
     }
 
-    return await assertEx(this._tiffs[section], `Failed to load section [${section}]`)
+    return await assertEx(this._tiffs[section], () => `Failed to load section [${section}]`)
   }
 
   async getSectionImage(section: keyof TiffImages): Promise<GeoTIFFImage> {
@@ -107,7 +107,7 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
       })()
     }
 
-    return await assertEx(this._tiffImages[section], `Failed to load section [${section}]`)
+    return await assertEx(this._tiffImages[section], () => `Failed to load section [${section}]`)
   }
 
   async getSectionInfo(section: keyof TiffImageInfos): Promise<TiffImageInfo> {
@@ -127,7 +127,7 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
       })()
     }
 
-    return await assertEx(this._tiffInfos[section], `Failed to load section [${section}]`)
+    return await assertEx(this._tiffInfos[section], () => `Failed to load section [${section}]`)
   }
 
   protected override async observeHandler(payloads?: Payload[]): Promise<Payload[]> {
@@ -152,8 +152,8 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
           : isNorthEast ? 'northEast'
           : isSouthEast ? 'southEast'
           : null
-        const section = await this.getSectionImage(assertEx(sectionToUse, 'Unsupported Area'))
-        const sectionInfo = await this.getSectionInfo(assertEx(sectionToUse, 'Unsupported Area'))
+        const section = await this.getSectionImage(assertEx(sectionToUse, () => 'Unsupported Area'))
+        const sectionInfo = await this.getSectionInfo(assertEx(sectionToUse, () => 'Unsupported Area'))
 
         const bb = quadkey.boundingBox
         const window = [

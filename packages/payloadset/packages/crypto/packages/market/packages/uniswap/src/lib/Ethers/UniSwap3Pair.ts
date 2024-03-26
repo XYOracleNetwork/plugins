@@ -71,7 +71,7 @@ export class EthersUniSwap3Pair {
       const tokens = await Promise.all(tokenIndexes.map((value) => this.token(value)))
       const tokenContracts = await Promise.all(tokenIndexes.map((value) => this.tokenContract(value)))
       const tokenPrices = tokens.map((token) => Number.parseFloat(pool.priceOf(token).toSignificant()))
-      const tokenSymbols = tokens.map((token, index) => assertEx(token.symbol, `Token[${index}] Missing Symbols`).toLowerCase())
+      const tokenSymbols = tokens.map((token, index) => assertEx(token.symbol, () => `Token[${index}] Missing Symbols`).toLowerCase())
       const result = {
         tokens: await Promise.all(
           tokenIndexes.map(async (value) => {

@@ -22,9 +22,9 @@ export class PentairScreenlogicWitness<
 
   protected override async observeHandler(_payloads?: Partial<Payload>[]): Promise<Payload[]> {
     const finder = new FindUnits()
-    const localUnit = assertEx((await finder.searchAsync()).shift(), 'No local screenlogic unit found')
+    const localUnit = assertEx((await finder.searchAsync()).shift(), () => 'No local screenlogic unit found')
     screenlogic.initUnit(localUnit)
-    assertEx(await screenlogic.connectAsync(), 'Failed to connect to ScreenLogic')
+    assertEx(await screenlogic.connectAsync(), () => 'Failed to connect to ScreenLogic')
 
     return [
       {
