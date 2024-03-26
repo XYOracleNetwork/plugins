@@ -7041,9 +7041,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments"
   dependencies:
+    "@xylabs/crypto": "npm:^3.0.24"
     "@xylabs/hex": "npm:^3.0.24"
     "@xylabs/ts-scripts-yarn3": "npm:^3.5.2"
     "@xylabs/tsconfig": "npm:^3.5.2"
+    "@xyo-network/account-model": "npm:^2.93.0"
+    "@xyo-network/boundwitness-builder": "npm:^2.93.0"
+    "@xyo-network/id-payload-plugin": "npm:^2.93.0"
     "@xyo-network/payload-model": "npm:^2.93.0"
     typescript: "npm:^5.4.3"
   languageName: unknown
