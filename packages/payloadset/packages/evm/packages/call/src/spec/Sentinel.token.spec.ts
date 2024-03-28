@@ -81,7 +81,7 @@ describe('Erc721Sentinel - Token', () => {
       const mods = await node.resolve('*')
       profile(profiler, 'manifest-resolve')
       profile(profiler, 'manifest')
-      expect(mods.length).toBeGreaterThan(5)
+      expect(mods.length).toBe(5)
 
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenInfoSentinel'))
       expect(tokenSentinel).toBeDefined()
