@@ -149,7 +149,7 @@ describe('CryptoWalletNftWitness Index', () => {
       await Promise.all(
         data.map(async (nft) => {
           const timestamp = { schema: 'network.xyo.timestamp', timestamp: Date.now() }
-          const [bw, payloads] = await (await new BoundWitnessBuilder().payloads([nft, timestamp])).build()
+          const [bw, payloads] = await new BoundWitnessBuilder().payloads([nft, timestamp]).build()
           return [bw, ...payloads]
         }),
       )

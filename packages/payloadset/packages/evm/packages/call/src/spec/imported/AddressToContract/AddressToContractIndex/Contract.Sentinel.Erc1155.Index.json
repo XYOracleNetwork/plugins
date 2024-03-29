@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "accountPath": "m/44'/60'/2",
+        "accountPath": "2",
         "name": "ERC1155Node",
         "schema": "network.xyo.node.config"
       },
@@ -59,7 +59,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.crypto.contract.info.erc1155"]
+                "payload_schemas": [
+                  "network.xyo.crypto.contract.info.erc1155"
+                ]
               },
               "labels": {
                 "network.xyo.crypto.contract.info": "diviner",

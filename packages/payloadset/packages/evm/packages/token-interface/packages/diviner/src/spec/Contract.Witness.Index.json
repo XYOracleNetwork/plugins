@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "accountPath": "m/44'/60'/1",
+        "accountPath": "3",
         "name": "ContractWitnessIndexNode",
         "schema": "network.xyo.node.config"
       },
@@ -59,7 +59,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.contract"]
+                "payload_schemas": [
+                  "network.xyo.evm.contract"
+                ]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -196,7 +198,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "language": "javascript",
               "name": "EvmContractSentinel",

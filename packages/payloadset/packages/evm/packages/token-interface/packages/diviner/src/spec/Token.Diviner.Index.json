@@ -3,7 +3,7 @@
   "nodes": [
     {
       "config": {
-        "accountPath": "m/44'/60'/2",
+        "accountPath": "2",
         "name": "TokenDivinerIndexNode",
         "schema": "network.xyo.node.config"
       },
@@ -187,7 +187,9 @@
               "language": "javascript",
               "name": "ERC721TokenInterfaceImplementedDiviner",
               "schema": "network.xyo.evm.token.interface.implemented.diviner.config",
-              "tokenInterfaces": ["ERC721"]
+              "tokenInterfaces": [
+                "ERC721"
+              ]
             }
           },
           {
@@ -195,7 +197,9 @@
               "language": "javascript",
               "name": "ERC1155TokenInterfaceImplementedDiviner",
               "schema": "network.xyo.evm.token.interface.implemented.diviner.config",
-              "tokenInterfaces": ["ERC1155"]
+              "tokenInterfaces": [
+                "ERC1155"
+              ]
             }
           },
           {
@@ -225,7 +229,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "language": "javascript",
               "name": "ERC721TokenInterfaceImplementedSentinel",
@@ -246,7 +252,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "language": "javascript",
               "name": "ERC1155TokenInterfaceImplementedSentinel",
