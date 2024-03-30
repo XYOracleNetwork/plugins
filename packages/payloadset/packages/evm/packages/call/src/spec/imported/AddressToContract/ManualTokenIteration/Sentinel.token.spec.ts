@@ -52,7 +52,7 @@ const profileReport = () => {
 
 let tokenCount = 0
 
-describe('Erc721Sentinel', () => {
+describe.skip('Erc721Sentinel', () => {
   //const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
 

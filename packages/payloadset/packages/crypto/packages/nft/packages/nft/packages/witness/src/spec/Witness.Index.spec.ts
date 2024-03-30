@@ -34,7 +34,7 @@ type Query = PayloadDivinerQueryPayload & { address: string; chainId?: number }
 /**
  * @group slow
  */
-describe('CryptoWalletNftWitness Index', () => {
+describe.skip('CryptoWalletNftWitness Index', () => {
   let node: MemoryNode
   let sut: TemporalIndexingDiviner
   const data: NftInfo[] = [

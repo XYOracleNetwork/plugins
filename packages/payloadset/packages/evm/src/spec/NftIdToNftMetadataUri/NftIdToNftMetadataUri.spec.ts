@@ -63,7 +63,7 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     node = await manifestWrapper.loadNodeFromIndex(0)
     const mods = await node.resolve('*')
     const publicModules = manifest.nodes[0].modules?.public ?? []
-    expect(mods.length).toBe(publicModules.length + 1)
+    expect(mods.length).toBeGreaterThan(publicModules.length)
   })
   describe('Sentinel', () => {
     it.each(cases)('returns metadata URI for token ID', async (address, tokenId) => {

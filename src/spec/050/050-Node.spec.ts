@@ -9,8 +9,8 @@ import { MemoryNode } from '@xyo-network/node-memory'
 describe('Node', () => {
   it('create', async () => {
     const node = await MemoryNode.create()
-    const describe = await node.describe()
-    console.log(describe)
+    const state = await node.state()
+    console.log(state)
   })
   it('create from manifest', async () => {
     const wallet = await HDWallet.random()
@@ -31,8 +31,8 @@ describe('Node', () => {
     }
     const wrapper = new ManifestWrapper(manifest, wallet)
     const [node] = await wrapper.loadNodes()
-    const describe = await node.describe()
-    console.log(describe)
+    const state = await node.state()
+    console.log(state)
   })
   it('create from manifest with module', async () => {
     const wallet = await HDWallet.random()
@@ -67,8 +67,8 @@ describe('Node', () => {
     }
     const wrapper = new ManifestWrapper(manifest, wallet)
     const [node] = await wrapper.loadNodes()
-    const describe = await node.describe()
-    console.log(describe)
+    const state = await node.state()
+    console.log(state)
   })
   it('create from manifest file', async () => {
     const wallet = await HDWallet.random()
@@ -76,7 +76,7 @@ describe('Node', () => {
     const manifest: PackageManifestPayload = JSON.parse(await readFile(manifestPath, 'utf8'))
     const wrapper = new ManifestWrapper(manifest, wallet)
     const [node] = await wrapper.loadNodes()
-    const describe = await node.describe()
-    console.log(describe)
+    const state = await node.state()
+    console.log(state)
   })
 })

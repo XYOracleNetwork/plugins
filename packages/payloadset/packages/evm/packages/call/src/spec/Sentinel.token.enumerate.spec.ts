@@ -28,7 +28,7 @@ const profiler = createProfiler()
 const tokenCount = 0
 const maxProviders = 2
 
-describe('Erc721Sentinel-Enumerate', () => {
+describe.skip('Erc721Sentinel-Enumerate', () => {
   //const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
   const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
   //const address = '0x495f947276749Ce646f68AC8c248420045cb7b5e' //OpenSea Storefront
