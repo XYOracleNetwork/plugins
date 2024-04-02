@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { DurationFields } from '../Duration'
 import { DomainRegistrationFields, DomainRegistrationSchema } from './DomainRegistration'
@@ -12,3 +12,8 @@ export interface DomainRegistrationLeaseFields extends DomainRegistrationFields,
  * Temporal delegation of a domain to a registrar by a registrant
  */
 export type DomainRegistrationLease = Payload<DomainRegistrationLeaseFields, DomainRegistrationLeaseSchema>
+
+/**
+ * Identity function for DomainRegistrationLease payload
+ */
+export const isDomainRegistrationLease = isPayloadOfSchemaType<DomainRegistrationLease>(DomainRegistrationLeaseSchema)

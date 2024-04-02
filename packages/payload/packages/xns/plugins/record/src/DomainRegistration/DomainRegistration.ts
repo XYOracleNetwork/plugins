@@ -1,5 +1,5 @@
 import { Address } from '@xylabs/hex'
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { DomainFields, DomainSchema } from '../Domain'
 
@@ -21,3 +21,8 @@ export interface DomainRegistrationFields extends DomainFields {
  * Delegation of a domain to a registrar by a registrant
  */
 export type DomainRegistration = Payload<DomainRegistrationFields, DomainRegistrationSchema>
+
+/**
+ * Identity function for DomainRegistration payload
+ */
+export const isDomainRegistration = isPayloadOfSchemaType<DomainRegistration>(DomainRegistrationSchema)

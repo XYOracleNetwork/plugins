@@ -1,4 +1,4 @@
-import { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { DurationFields } from '../Duration'
 import { DomainFields } from './Domain'
@@ -15,3 +15,8 @@ export interface DomainLeaseFields extends DomainFields, DurationFields {}
  * A domain lease is a record of a domain and the duration it is leased for
  */
 export type DomainLease = Payload<DomainLeaseFields, DomainLeaseSchema>
+
+/**
+ * Identity function for DomainLease payload
+ */
+export const isDomainLease = isPayloadOfSchemaType<DomainLease>(DomainLeaseSchema)
