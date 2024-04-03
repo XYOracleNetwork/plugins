@@ -4812,6 +4812,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@xyo-network/diviner-hash-lease@npm:^2.94.11":
+  version: 2.94.11
+  resolution: "@xyo-network/diviner-hash-lease@npm:2.94.11"
+  dependencies:
+    "@xyo-network/diviner-abstract": "npm:~2.94.11"
+    "@xyo-network/diviner-model": "npm:~2.94.11"
+    "@xyo-network/module-model": "npm:~2.94.11"
+    "@xyo-network/payload-model": "npm:~2.94.11"
+  checksum: 10/46aa6aaa29719a34ef6d9c50ecb61f25aa7ae0ee31f72c78cfccdd03c1aa2afa91dbe20aea1d4d4df40cf6de5d5031d522c081ab395804b35ce16d2d85e07720
+  languageName: node
+  linkType: hard
+
 "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner, @xyo-network/diviner-image-thumbnail@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner"
@@ -6460,13 +6472,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments"
   dependencies:
+    "@xylabs/assert": "npm:^3.0.25"
     "@xylabs/crypto": "npm:^3.0.25"
     "@xylabs/hex": "npm:^3.0.25"
     "@xylabs/ts-scripts-yarn3": "npm:^3.9.0"
     "@xylabs/tsconfig": "npm:^3.9.0"
     "@xyo-network/account-model": "npm:^2.94.11"
     "@xyo-network/boundwitness-builder": "npm:^2.94.11"
+    "@xyo-network/boundwitness-model": "npm:^2.94.11"
+    "@xyo-network/boundwitness-validator": "npm:^2.94.11"
+    "@xyo-network/diviner-hash-lease": "npm:^2.94.11"
     "@xyo-network/id-payload-plugin": "npm:^2.94.11"
+    "@xyo-network/module-model": "npm:^2.94.11"
     "@xyo-network/payload-model": "npm:^2.94.11"
     typescript: "npm:^5.4.3"
   languageName: unknown
