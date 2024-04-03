@@ -1,7 +1,7 @@
 import { asAddress } from '@xylabs/hex'
 import { ModuleIdentifier } from '@xyo-network/module-model'
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
+import { EscrowTerms } from '../../Terms'
 import { moduleIdentifiersContainsAllOf } from '../common'
 import { EscrowTermsValidationFunction } from '../types'
 

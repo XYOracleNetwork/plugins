@@ -1,6 +1,6 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
+import { EscrowTerms } from '../../Terms'
 import { moduleIdentifiersContainsOneOf } from '../common'
 import { EscrowTermsValidationFunction } from '../types'
 

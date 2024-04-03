@@ -1,4 +1,4 @@
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
+import { EscrowTerms } from '../../Terms'
 
 /**
  * Type corresponding to the escrow terms properties

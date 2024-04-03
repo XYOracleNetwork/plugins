@@ -3,8 +3,8 @@ import { Hash } from '@xylabs/hex'
 import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
+import { EscrowTerms } from '../../Terms'
 import { validateWithinWindow } from '../common'
 import { EscrowTermsValidationFunction } from '../types'
 

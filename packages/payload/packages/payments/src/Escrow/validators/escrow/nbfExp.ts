@@ -1,5 +1,4 @@
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
-
+import { EscrowTerms } from '../../Terms'
 import { EscrowTermsValidationFunction } from '../types'
 
 export const getNbfExpValidator = (now: number, minRequiredDuration: number): EscrowTermsValidationFunction => {

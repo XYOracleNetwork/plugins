@@ -3,8 +3,8 @@ import { Hash } from '@xylabs/hex'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
 import { Payload, WithMeta } from '@xyo-network/payload-model'
-import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
+import { EscrowTerms } from '../../Terms'
 import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.buyerSecret'
