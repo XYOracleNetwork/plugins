@@ -22,7 +22,7 @@ export interface PaymentFields {
 }
 
 /**
- * A payment is a record of a payment made
+ * A payment is a record of an amount to be paid
  */
 export type Payment = PayloadWithSources<PaymentFields, PaymentSchema>
 
