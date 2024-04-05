@@ -15,10 +15,10 @@ export interface PurchaseFields {
    */
   assets: Hash[]
   /**
-   * The payments for this purchase.  Array to allow for multiple payments
+   * The receipts for payments for this purchase.  Array to allow for multiple payments
    * for a single quote.
    */
-  payments: Hash[]
+  receipts: Hash[]
 }
 
 /**
@@ -27,16 +27,16 @@ export interface PurchaseFields {
 export type Purchase = PayloadWithSources<PurchaseFields, PurchaseSchema>
 
 /**
- * Identity function for determine if an object is a Payment
+ * Identity function for determine if an object is a Purchase
  */
-export const isPayment = isPayloadOfSchemaType<Purchase>(PurchaseSchema)
+export const isPurchase = isPayloadOfSchemaType<Purchase>(PurchaseSchema)
 
 /**
- * Identity function for determine if an object is a Payment with sources
+ * Identity function for determine if an object is a Purchase with sources
  */
-export const isPaymentWithSources = isPayloadOfSchemaTypeWithSources<Purchase>(PurchaseSchema)
+export const isPurchaseWithSources = isPayloadOfSchemaTypeWithSources<Purchase>(PurchaseSchema)
 
 /**
- * Identity function for determine if an object is a Payment with meta
+ * Identity function for determine if an object is a Purchase with meta
  */
-export const isPaymentWithMeta = isPayloadOfSchemaTypeWithMeta<Purchase>(PurchaseSchema)
+export const isPurchaseWithMeta = isPayloadOfSchemaTypeWithMeta<Purchase>(PurchaseSchema)
