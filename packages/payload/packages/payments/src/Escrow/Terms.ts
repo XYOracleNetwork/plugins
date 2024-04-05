@@ -1,5 +1,5 @@
 import { Address, Hash } from '@xylabs/hex'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
 import { EscrowSchema } from './Schema'
 
@@ -59,4 +59,17 @@ export interface EscrowTermsFields {
  */
 export type EscrowTerms = Payload<Partial<EscrowTermsFields>, EscrowTermsSchema>
 
+/**
+ * Identity function for determining if an object is an EscrowTerms
+ */
 export const isEscrowTerms = isPayloadOfSchemaType<EscrowTerms>(EscrowTermsSchema)
+
+/**
+ * Identity function for determining if an object is an EscrowTerms with sources
+ */
+export const isEscrowTermsWithSources = isPayloadOfSchemaTypeWithSources<EscrowTerms>(EscrowTermsSchema)
+
+/**
+ * Identity function for determining if an object is an EscrowTerms with meta
+ */
+export const isEscrowTermsWithMeta = isPayloadOfSchemaTypeWithMeta<EscrowTerms>(EscrowTermsSchema)
