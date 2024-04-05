@@ -12,20 +12,20 @@
   "dependencies": {
     "@xylabs/lodash": "^3.0.25",
     "@xylabs/promise": "^3.0.25",
-    "@xyo-network/abstract-witness": "^2.94.12",
+    "@xyo-network/abstract-witness": "^2.94.23",
     "@xyo-network/module-instance-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "^2.94.12",
-    "@xyo-network/payload-model": "^2.94.12",
-    "@xyo-network/payloadset-plugin": "^2.94.12",
-    "@xyo-network/witness-model": "^2.94.12"
+    "@xyo-network/module-model": "^2.94.23",
+    "@xyo-network/payload-model": "^2.94.23",
+    "@xyo-network/payloadset-plugin": "^2.94.23",
+    "@xyo-network/witness-model": "^2.94.23"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^3.9.0",
     "@xylabs/tsconfig": "^3.9.0",
-    "@xyo-network/account": "^2.94.12",
-    "@xyo-network/archivist-memory": "^2.94.12",
-    "@xyo-network/payload-wrapper": "^2.94.12",
-    "typescript": "^5.4.3"
+    "@xyo-network/account": "^2.94.23",
+    "@xyo-network/archivist-memory": "^2.94.23",
+    "@xyo-network/payload-wrapper": "^2.94.23",
+    "typescript": "^5.4.4"
   },
   "description": "Contains the information about a module instance",
   "types": "dist/node/index.d.ts",
