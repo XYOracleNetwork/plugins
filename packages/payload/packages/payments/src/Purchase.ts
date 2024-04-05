@@ -6,9 +6,9 @@ export const PurchaseSchema: PurchaseSchema = 'network.xyo.payments.purchase'
 
 export interface PurchaseFields {
   /**
-   * The hashes that were purchased
+   * The things that were purchased
    */
-  hashes: Hash[]
+  assets: Hash[]
   /**
    * The payments for this purchase.  Array to allow for multiple payments
    * for a single quote.
