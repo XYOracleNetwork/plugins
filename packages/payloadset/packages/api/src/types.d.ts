@@ -1,1 +1,1 @@
-declare module 'es6-template-strings'
+declare module 'es6-dynamic-template'

@@ -24,7 +24,7 @@ export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
 
 export type ApiUriTemplateCall = Payload<
   ApiCallFields & {
-    params?: Record<string, unknown>
+    params?: Record<string, string>
     uriTemplate?: string
   },
   ApiCallSchema

@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
 import { Axios, AxiosError, AxiosJson } from '@xylabs/axios'
 import { Hash } from '@xylabs/hex'
@@ -7,7 +8,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
-import template from 'es6-template-strings'
+import fillTemplate from 'es6-dynamic-template'
 
 import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
 import { checkIpfsUrl } from './lib'
@@ -60,11 +61,11 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     if (callUri) {
       url = new URL(callUri)
     } else if (callUriTemplate) {
-      url = new URL(template(callUriTemplate, params))
+      url = new URL(fillTemplate(callUriTemplate, params))
     } else if (configUri) {
       url = new URL(configUri)
     } else if (configUriTemplate) {
-      url = new URL(template(configUriTemplate, params))
+      url = new URL(fillTemplate(configUriTemplate, params))
     }
 
     if (url) {
@@ -116,7 +117,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     try {
       switch (this.accept) {
         case 'application/json': {
-          const axios = new AxiosJson({ headers: this.params.headers, timeout: this.timeout })
+          const axios = new AxiosJson({ headers: { ...this.params.headers, Accept: 'application/json' }, timeout: this.timeout })
           const response = await axios.get<ApiCallJsonResultType>(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as ApiCallJsonResult

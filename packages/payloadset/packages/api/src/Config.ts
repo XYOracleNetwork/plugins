@@ -23,7 +23,7 @@ export type ApiUriCallWitnessConfig = WitnessConfig<
 
 export type ApiUriTemplateCallWitnessConfig = WitnessConfig<
   ApiCallWitnessConfigBase & {
-    params?: Record<string, unknown>
+    params?: Record<string, string>
     uriTemplate: ApiUriTemplateCall['uriTemplate']
   }
 >
