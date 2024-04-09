@@ -3,11 +3,24 @@ import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 export type DomainSchema = 'network.xyo.ns.domain'
 export const DomainSchema: DomainSchema = 'network.xyo.ns.domain'
 
+/**
+ * The supported TLDs for XNS
+ */
+export type TopLevelDomain = 'xyo'
+
+/**
+ * The fields for a domain record
+ */
 export interface DomainFields {
   /**
    * The XNS domain of the record
    */
   domain: string
+
+  /**
+   * The Top-Level Domain of the domain
+   */
+  tld: TopLevelDomain
 }
 
 /**
