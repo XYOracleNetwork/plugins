@@ -1,4 +1,4 @@
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
 import { DurationFields } from '../Duration'
 import { DomainRegistrationFields, DomainRegistrationSchema } from './DomainRegistration'
@@ -17,3 +17,13 @@ export type DomainRegistrationLease = Payload<DomainRegistrationLeaseFields, Dom
  * Identity function for DomainRegistrationLease payload
  */
 export const isDomainRegistrationLease = isPayloadOfSchemaType<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+
+/**
+ * Identity function for DomainRegistrationLease payload with sources
+ */
+export const isDomainRegistrationLeaseSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+
+/**
+ * Identity function for DomainRegistrationLease payload with meta
+ */
+export const isDomainRegistrationLeaseMeta = isPayloadOfSchemaTypeWithMeta<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
