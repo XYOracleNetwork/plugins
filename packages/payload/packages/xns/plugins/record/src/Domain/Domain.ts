@@ -6,7 +6,7 @@ export const DomainSchema: DomainSchema = 'network.xyo.ns.domain'
 /**
  * The supported TLDs for XNS
  */
-export type SupportedTld = 'xyo'
+export type TopLevelDomain = 'xyo'
 
 /**
  * The fields for a domain record
@@ -18,9 +18,9 @@ export interface DomainFields {
   domain: string
 
   /**
-   * The TLD of the domain
+   * The Top-Level Domain of the domain
    */
-  tld: SupportedTld
+  tld: TopLevelDomain
 }
 
 /**
