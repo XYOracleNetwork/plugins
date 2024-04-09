@@ -1,9 +1,9 @@
 import { asAddress } from '@xylabs/hex'
 import { ModuleIdentifier } from '@xyo-network/module-model'
+import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../Terms'
 import { moduleIdentifiersContainsAllOf } from '../common'
-import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.appraisalAuthorities'
 
@@ -11,7 +11,7 @@ const name = 'EscrowTerms.appraisalAuthorities'
  * A function that validates the escrow terms for appraisalAuthorities
  * @returns True if the escrow terms contain appraisalAuthorities, false otherwise
  */
-export const appraisalAuthoritiesExistValidator: EscrowTermsValidationFunction = (terms: EscrowTerms) => {
+export const appraisalAuthoritiesExistValidator: PayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
   // Validate we have appraisalAuthorities
   const appraisalAuthorities = terms.appraisalAuthorities
   if (!appraisalAuthorities || appraisalAuthorities.length === 0) {
@@ -26,7 +26,7 @@ export const appraisalAuthoritiesExistValidator: EscrowTermsValidationFunction =
   return true
 }
 
-export const getAppraisalAuthoritiesAllowedValidator = (allowed: ModuleIdentifier[]): EscrowTermsValidationFunction => {
+export const getAppraisalAuthoritiesAllowedValidator = (allowed: ModuleIdentifier[]): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const result = moduleIdentifiersContainsAllOf(terms, (t) => t.appraisalAuthorities, allowed, true)
     if (!result) {

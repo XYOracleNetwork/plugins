@@ -1,7 +1,7 @@
 import { asAddress } from '@xylabs/hex'
+import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../Terms'
-import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.seller'
 
@@ -9,7 +9,7 @@ const name = 'EscrowTerms.seller'
  * A function that validates the escrow terms for seller
  * @returns True if the escrow terms contain seller, false otherwise
  */
-export const sellerExistsValidator: EscrowTermsValidationFunction = (terms: EscrowTerms) => {
+export const sellerExistsValidator: PayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
   // Validate we have seller
   const seller = terms.seller
   if (!seller || seller.length === 0) {

@@ -2,11 +2,10 @@ import { assertEx } from '@xylabs/assert'
 import { Hash } from '@xylabs/hex'
 import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
-import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
+import { Payload, PayloadValidationFunction, WithMeta, WithSources } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../Terms'
 import { validateWithinWindow } from '../common'
-import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.appraisal'
 
@@ -14,7 +13,7 @@ const name = 'EscrowTerms.appraisal'
  * A function that validates the escrow terms for tbe existence of appraisals
  * @returns True if the escrow terms contain appraisals, false otherwise
  */
-export const appraisalsExistValidator: EscrowTermsValidationFunction = (terms: EscrowTerms) => {
+export const appraisalsExistValidator: PayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
   // Validate we have appraisals
   const appraisals = terms.appraisals
   if (!appraisals || appraisals.length === 0) {
@@ -29,7 +28,7 @@ export const appraisalsExistValidator: EscrowTermsValidationFunction = (terms: E
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for appraisals which are from valid authorities
  */
-export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Hash, WithMeta<Payload>>): EscrowTermsValidationFunction => {
+export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const appraisals = assertEx(terms.appraisals, () => `${name}: No appraisals: ${terms.appraisals}`)
     const appraisalAuthorities = assertEx(terms.appraisalAuthorities, () => `${name}: No appraisalAuthorities: ${terms.appraisalAuthorities}`)
@@ -64,7 +63,10 @@ export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Ha
  * for in the future (so as not to expire before the escrow is complete)
  * @returns A function that validates the escrow terms for appraisals which are valid
  */
-export const getAppraisalsValidValidator = (dictionary: Record<Hash, WithMeta<Payload>>, minimumExp: number): EscrowTermsValidationFunction => {
+export const getAppraisalsValidValidator = (
+  dictionary: Record<Hash, WithMeta<Payload>>,
+  minimumExp: number,
+): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
     const estimatesByAsset = getEstimatesByAsset(terms, dictionary)
@@ -88,7 +90,7 @@ export const getAppraisalsValidValidator = (dictionary: Record<Hash, WithMeta<Pa
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for appraisals
  */
-export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, WithMeta<Payload>>): EscrowTermsValidationFunction => {
+export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
     const estimatesByAsset = getEstimatesByAsset(terms, dictionary)

@@ -1,12 +1,12 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
+import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../Terms'
 import { moduleIdentifiersContainsOneOf } from '../common'
-import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.escrowAgent'
 
-export const getEscrowAgentAllowedValidator = (allowedEscrowAgent: ModuleIdentifier): EscrowTermsValidationFunction => {
+export const getEscrowAgentAllowedValidator = (allowedEscrowAgent: ModuleIdentifier): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const result = moduleIdentifiersContainsOneOf(terms, (t) => t.escrowAgent, [allowedEscrowAgent], true)
     if (!result) {

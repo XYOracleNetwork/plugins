@@ -1,7 +1,8 @@
-import { EscrowTerms } from '../../Terms'
-import { EscrowTermsValidationFunction } from '../types'
+import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-export const getNbfExpValidator = (now: number, minRequiredDuration: number): EscrowTermsValidationFunction => {
+import { EscrowTerms } from '../../Terms'
+
+export const getNbfExpValidator = (now: number, minRequiredDuration: number): PayloadValidationFunction<EscrowTerms> => {
   const minExp = now + minRequiredDuration
   return (terms: EscrowTerms) => {
     const { exp, nbf } = terms

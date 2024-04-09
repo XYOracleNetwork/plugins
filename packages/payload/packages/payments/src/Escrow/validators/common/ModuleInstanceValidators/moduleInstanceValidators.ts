@@ -1,7 +1,7 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
+import { PayloadValueExpression } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../../Terms'
-import { EscrowTermsValueExpression } from '../../types/escrowValidation'
 
 /**
  * Checks if property value of the escrow terms contains one of the valid moduleIdentifiers
@@ -13,7 +13,7 @@ import { EscrowTermsValueExpression } from '../../types/escrowValidation'
  */
 export const moduleIdentifiersContainsOneOf = (
   escrowTerms: EscrowTerms,
-  propertyExpression: EscrowTermsValueExpression<'appraisalAuthorities' | 'buyer' | 'escrowAgent' | 'paymentAuthorities' | 'seller'>,
+  propertyExpression: PayloadValueExpression<EscrowTerms, 'appraisalAuthorities' | 'buyer' | 'escrowAgent' | 'paymentAuthorities' | 'seller'>,
   moduleIdentifiers: ModuleIdentifier[],
   required: boolean = true,
 ) => {
@@ -35,7 +35,7 @@ export const moduleIdentifiersContainsOneOf = (
  */
 export const moduleIdentifiersContainsAllOf = (
   escrowTerms: EscrowTerms,
-  selector: EscrowTermsValueExpression<'appraisalAuthorities' | 'buyer' | 'escrowAgent' | 'paymentAuthorities' | 'seller'>,
+  selector: PayloadValueExpression<EscrowTerms, 'appraisalAuthorities' | 'buyer' | 'escrowAgent' | 'paymentAuthorities' | 'seller'>,
   moduleIdentifiers: ModuleIdentifier[],
   required: boolean = true,
 ) => {

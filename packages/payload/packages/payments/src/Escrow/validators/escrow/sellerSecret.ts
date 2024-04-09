@@ -2,10 +2,9 @@ import { assertEx } from '@xylabs/assert'
 import { Hash } from '@xylabs/hex'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
 
 import { EscrowTerms } from '../../Terms'
-import { EscrowTermsValidationFunction } from '../types'
 
 const name = 'EscrowTerms.sellerSecret'
 
@@ -13,7 +12,7 @@ const name = 'EscrowTerms.sellerSecret'
  * Returns a function that validates the escrow terms for sellerSecret
  * @returns A function that validates the escrow terms for sellerSecret
  */
-export const sellerSecretExistsValidator: EscrowTermsValidationFunction = (terms: EscrowTerms) => {
+export const sellerSecretExistsValidator: PayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
   // Validate we have sellerSecret
   const sellerSecret = terms.sellerSecret
   if (!sellerSecret || sellerSecret.length === 0) {
@@ -28,7 +27,7 @@ export const sellerSecretExistsValidator: EscrowTermsValidationFunction = (terms
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for the existence of the sellerSecret in the dictionary
  */
-export const getSellerSecretSuppliedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): EscrowTermsValidationFunction => {
+export const getSellerSecretSuppliedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const sellerSecret = assertEx(terms.sellerSecret, () => `${name}: No sellerSecret: ${terms.sellerSecret}`)
     if (!dictionary[sellerSecret]) {
@@ -44,7 +43,7 @@ export const getSellerSecretSuppliedValidator = (dictionary: Record<Hash, WithMe
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for the existence of the sellerSecret signed by the seller
  */
-export const getSellerSecretSignedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): EscrowTermsValidationFunction => {
+export const getSellerSecretSignedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
   return async (terms: EscrowTerms) => {
     const seller = assertEx(terms.seller, () => `${name}: No seller: ${terms.seller}`)
     const sellerSecret = assertEx(terms.sellerSecret, () => `${name}: No sellerSecret: ${terms.sellerSecret}`)
