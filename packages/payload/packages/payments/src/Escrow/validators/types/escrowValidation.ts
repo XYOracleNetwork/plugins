@@ -1,30 +1,31 @@
+import { PayloadProperty, PayloadValidationFunction, PayloadValue, PayloadValueExpression } from '@xyo-network/payload-model'
 import { EscrowTerms } from '../../Terms'
 
 /**
  * Type corresponding to the escrow terms properties
  */
-export type EscrowTermsProperty = keyof EscrowTerms
+export type EscrowTermsProperty = PayloadProperty<EscrowTerms>
 
 /**
  * Type corresponding to the escrow terms property value
  */
-export type EscrowTermsValue<K extends EscrowTermsProperty> = EscrowTerms[K]
+export type EscrowTermsValue = PayloadValue<EscrowTerms>
 
 /**
  * An expressions that selects a property value from the escrow terms
  */
 export type EscrowTermsValueExpression<
   /**
-   * The property of the escrow terms to select
+   * The property of the payload to select
    */
-  K extends EscrowTermsProperty,
+  Key extends EscrowTermsProperty = EscrowTermsProperty,
   /**
    * The type of the selected property's value
    */
-  V = EscrowTermsValue<K>,
-> = (escrowTerms: EscrowTerms) => V
+  TValue = PayloadValue<EscrowTerms, Key>,
+> = PayloadValueExpression<EscrowTerms, Key, TValue>
 
 /**
  * A function that validates the supplied escrow terms
  */
-export type EscrowTermsValidationFunction = (escrowTerms: EscrowTerms) => boolean | Promise<boolean>
+export type EscrowTermsValidationFunction = PayloadValidationFunction<EscrowTerms>
