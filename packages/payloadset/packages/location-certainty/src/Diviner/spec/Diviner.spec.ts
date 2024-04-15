@@ -81,7 +81,7 @@ describe.skip('MongoDBLocationCertaintyDiviner', () => {
         schema: LocationCertaintyDivinerConfigSchema,
         targetSchema: LocationCertaintySchema,
       },
-      resolver: new CompositeModuleResolver().add(payloadsArchivist),
+      resolver: new CompositeModuleResolver({ root: sut }).add(payloadsArchivist),
     }
     sut = (await LocationCertaintyDiviner.create(params)) as LocationCertaintyDiviner
   })
