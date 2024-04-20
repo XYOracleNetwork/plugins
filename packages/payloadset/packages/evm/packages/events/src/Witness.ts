@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { hexFromBigInt } from '@xylabs/hex'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract, EventLog } from 'ethers'
 
@@ -13,7 +13,8 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
   EvmEvents,
   EvmEvent
 > {
-  static override configSchemas = [EvmEventsWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmEventsWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = EvmEventsWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

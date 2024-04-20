@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
 import { EvmCallDivinerLabels } from './Labels'
 import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload'
@@ -36,7 +36,8 @@ export type EvmCallResults = Payload<
 >
 
 export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivinerParams> extends AbstractDiviner<TParams> {
-  static override configSchemas = [EvmCallDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = EvmCallDivinerConfigSchema
   static labels: EvmCallDivinerLabels = EvmCallDivinerLabels
 
   protected static findCallResult<TResult = string>(address: string, functionName: string, payloads: EvmCallResult[]): TResult | undefined {

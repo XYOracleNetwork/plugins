@@ -5,12 +5,11 @@ import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
-import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
 import { ImageThumbnail, ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { isModuleState, ModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels'
@@ -63,7 +62,8 @@ const moduleName = 'ImageThumbnailStateToIndexCandidateDiviner'
 export class ImageThumbnailStateToIndexCandidateDiviner<
   TParams extends ImageThumbnailStateToIndexCandidateDivinerParams = ImageThumbnailStateToIndexCandidateDivinerParams,
 > extends AbstractDiviner<TParams> {
-  static override configSchemas = [DivinerConfigSchema, ImageThumbnailStateToIndexCandidateDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailStateToIndexCandidateDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = ImageThumbnailStateToIndexCandidateDivinerConfigSchema
   static labels: ImageThumbnailDivinerStageLabels = {
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'stateToIndexCandidateDiviner',

@@ -13,6 +13,7 @@ import {
   IERC1155MetadataURI__factory,
   IERC1155Receiver__factory,
 } from '@xyo-network/open-zeppelin-typechain'
+import { Schema } from '@xyo-network/payload-model'
 import { Interface, JsonFragment } from 'ethers'
 
 import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload'
@@ -49,7 +50,8 @@ export class EvmTokenInterfaceImplementedDiviner<
     ERC721Metadata: IERC721Metadata__factory.abi,
     ERC721TokenReceiver: IERC721Receiver__factory.abi,
   }
-  static override configSchemas = [EvmTokenInterfaceImplementedDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmTokenInterfaceImplementedDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = EvmTokenInterfaceImplementedDivinerConfigSchema
 
   private _tokenInterfaces?: TokenInterfaceDictionary
 

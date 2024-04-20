@@ -11,7 +11,7 @@ describe('EthereumGasEtherscanPlugin', () => {
   testIf(apiKey)('Add to Resolver', async () => {
     const plugin = EthereumGasEtherscanPlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin, {
-      config: { apiKey, schema: EthereumGasEtherscanWitness.configSchema },
+      config: { apiKey, schema: EthereumGasEtherscanWitness.defaultConfigSchema },
     })
     expect(resolver.resolve(plugin.set)).toBeObject()
     expect(resolver.witness(EthereumGasEtherscanSchema)).toBeObject()

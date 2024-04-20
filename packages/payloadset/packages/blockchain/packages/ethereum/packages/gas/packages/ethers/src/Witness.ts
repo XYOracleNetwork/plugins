@@ -3,7 +3,7 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { EthereumGasEthersPayload, EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
@@ -21,7 +21,8 @@ export type EthereumGasEthersWitnessParams = WitnessParams<
 export class EthereumGasEthersWitness<
   TParams extends EthereumGasEthersWitnessParams = EthereumGasEthersWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas = [EthereumGasEthersWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EthereumGasEthersWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = EthereumGasEthersWitnessConfigSchema
 
   private _provider?: Provider
 

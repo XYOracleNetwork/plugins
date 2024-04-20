@@ -7,6 +7,7 @@ import { compact } from '@xylabs/lodash'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { Semaphore } from 'async-mutex'
 import FileType from 'file-type'
@@ -38,7 +39,8 @@ export interface DnsError extends Error {
 }
 
 export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams = ImageThumbnailWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas = [ImageThumbnailWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = ImageThumbnailWitnessConfigSchema
 
   private _semaphore = new Semaphore(this.maxAsyncProcesses)
 

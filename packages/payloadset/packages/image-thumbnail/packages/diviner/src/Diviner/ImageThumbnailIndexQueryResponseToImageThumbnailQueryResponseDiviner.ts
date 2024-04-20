@@ -9,7 +9,7 @@ import {
   isImageThumbnailResultIndex,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels'
@@ -18,7 +18,8 @@ import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '.
  * Transforms an ImageThumbnailIndex response into an ImageThumbnailResponse response
  */
 export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner extends AbstractDiviner {
-  static override configSchemas = [DivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
+  static override defaultConfigSchema: Schema = DivinerConfigSchema
   static labels: ImageThumbnailDivinerStageLabels = {
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'indexQueryResponseToDivinerQueryResponseDiviner',

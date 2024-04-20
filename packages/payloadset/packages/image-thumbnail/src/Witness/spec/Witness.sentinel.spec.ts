@@ -28,23 +28,23 @@ describe('Witness', () => {
     beforeAll(async () => {
       thumbnailWitness = await ImageThumbnailWitness.create({
         account: Account.randomSync(),
-        config: { schema: ImageThumbnailWitness.configSchema },
+        config: { schema: ImageThumbnailWitness.defaultConfigSchema },
         //logger,
       })
       timestampWitness = await TimestampWitness.create({
         account: Account.randomSync(),
-        config: { schema: TimestampWitness.configSchema },
+        config: { schema: TimestampWitness.defaultConfigSchema },
         //logger,
       })
       archivist = await MemoryArchivist.create({
         account: Account.randomSync(),
-        config: { name: archivistName, schema: MemoryArchivist.configSchema },
+        config: { name: archivistName, schema: MemoryArchivist.defaultConfigSchema },
       })
       sentinel = await MemorySentinel.create({
         account: Account.randomSync(),
         config: {
           archiving: { archivists: [archivistName] },
-          schema: MemorySentinel.configSchema,
+          schema: MemorySentinel.defaultConfigSchema,
           synchronous: true,
           tasks: [{ input: true, module: thumbnailWitness.address }, { module: timestampWitness.address }],
         },
@@ -53,7 +53,7 @@ describe('Witness', () => {
       const modules = [timestampWitness, thumbnailWitness, archivist, sentinel]
       node = await MemoryNode.create({
         account: Account.randomSync(),
-        config: { schema: MemoryNode.configSchema },
+        config: { schema: MemoryNode.defaultConfigSchema },
         //logger,
       })
       await node.start()

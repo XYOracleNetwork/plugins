@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import {
   UniswapCryptoMarketPayload,
   UniswapCryptoMarketSchema,
@@ -23,7 +23,8 @@ export type UniswapCryptoMarketWitnessParams = WitnessParams<
 export class UniswapCryptoMarketWitness<
   TParams extends UniswapCryptoMarketWitnessParams = UniswapCryptoMarketWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas = [UniswapCryptoMarketWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, UniswapCryptoMarketWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = UniswapCryptoMarketWitnessConfigSchema
 
   protected pairs?: EthersUniSwap3Pair[]
   protected get provider() {

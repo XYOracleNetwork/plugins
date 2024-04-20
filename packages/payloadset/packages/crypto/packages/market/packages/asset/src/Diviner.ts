@@ -3,7 +3,7 @@ import { CryptoMarketAssetPayload, CryptoMarketAssetSchema } from '@xyo-network/
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerModule, DivinerParams } from '@xyo-network/diviner-model'
 import { AnyConfigSchema, Module } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 import { divinePrices } from './lib'
@@ -16,7 +16,8 @@ export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerPa
   extends AbstractDiviner<TParams>
   implements DivinerModule, Module
 {
-  static override configSchemas = [CryptoMarketAssetDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, CryptoMarketAssetDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = CryptoMarketAssetDivinerConfigSchema
   static override targetSchema = CryptoMarketAssetSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {

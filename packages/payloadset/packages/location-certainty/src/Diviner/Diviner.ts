@@ -6,7 +6,7 @@ import { LocationCertaintyHeuristic, LocationCertaintyPayload, LocationCertainty
 import { LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 
 import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config'
 
@@ -16,7 +16,8 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
   extends AbstractDiviner<TParam>
   implements DivinerModule
 {
-  static override configSchemas = [LocationCertaintyDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, LocationCertaintyDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = LocationCertaintyDivinerConfigSchema
   static override targetSchema = LocationCertaintySchema
 
   /* Given an array of numbers, find the min/max/mean */

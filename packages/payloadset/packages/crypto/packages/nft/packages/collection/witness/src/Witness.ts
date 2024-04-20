@@ -10,6 +10,7 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib'
@@ -37,7 +38,8 @@ function resolvedValue<T>(settled: PromiseSettledResult<T>, assert?: boolean) {
 export class CryptoNftCollectionWitness<
   TParams extends CryptoNftCollectionWitnessParams = CryptoNftCollectionWitnessParams,
 > extends AbstractEvmWitness<TParams, NftCollectionWitnessQuery, NftCollectionInfo> {
-  static override configSchemas = [NftCollectionWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, NftCollectionWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = NftCollectionWitnessConfigSchema
 
   protected override async observeHandler(payloads?: NftCollectionWitnessQuery[]): Promise<NftCollectionInfo[]> {
     await this.started('throw')
@@ -60,7 +62,7 @@ export class CryptoNftCollectionWitness<
           await erc721Enumerable.symbol(),
           await erc721Enumerable.totalSupply(),
           await tokenTypes(provider, address),
-          await this.getArchivist(),
+          await this.archivistInstance(),
         ])
         const types = resolvedValue(typesSettled, true)
         const nfts = await getNftCollectionNfts(address, provider, types, maxNfts)

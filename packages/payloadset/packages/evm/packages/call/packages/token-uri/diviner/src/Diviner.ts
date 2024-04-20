@@ -2,7 +2,7 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 // eslint-disable-next-line workspaces/no-absolute-imports
 import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
 import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config'
 import { EvmCallResultToNftTokenUriDivinerParams } from './Params'
@@ -11,7 +11,8 @@ import { EvmTokenUriCallResults } from './Payload'
 export class EvmCallResultToNftTokenUriDiviner<
   TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,
 > extends AbstractDiviner<TParams, Payload, NftMetadataUri> {
-  static override configSchemas = [EvmCallResultToNftTokenUriDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallResultToNftTokenUriDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = EvmCallResultToNftTokenUriDivinerConfigSchema
 
   // TODO: Add support for ERC1155 with `uri` function in addition to current ERC721 `tokenURI` support
   protected override divineHandler(payloads: Payload[] = []): NftMetadataUri[] {

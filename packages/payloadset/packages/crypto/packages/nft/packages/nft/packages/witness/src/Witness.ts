@@ -8,6 +8,7 @@ import {
   NftWitnessConfigSchema,
   NftWitnessQuery,
 } from '@xyo-network/crypto-nft-payload-plugin'
+import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib'
@@ -23,7 +24,8 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
   NftWitnessQuery,
   NftInfo
 > {
-  static override configSchemas = [NftWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, NftWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = NftWitnessConfigSchema
 
   get loadMetadata() {
     return this.config.loadMetadata ?? true

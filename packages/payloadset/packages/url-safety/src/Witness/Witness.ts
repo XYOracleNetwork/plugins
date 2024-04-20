@@ -1,6 +1,6 @@
 import { AxiosJson } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { UrlSafetyPayload, UrlSafetySchema, UrlSafetyThreatType } from '@xyo-network/url-safety-payload-plugin'
 
@@ -58,7 +58,8 @@ const checkUrlSafety = async (
 }
 
 export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafetyWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas = [UrlSafetyWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, UrlSafetyWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = UrlSafetyWitnessConfigSchema
 
   get key() {
     return this.params.google?.safeBrowsing?.key

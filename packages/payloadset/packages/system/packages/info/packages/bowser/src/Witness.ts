@@ -2,7 +2,7 @@ import { merge } from '@xylabs/lodash'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import Bowser from 'bowser'
 
@@ -13,7 +13,8 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
   extends AbstractWitness<TParams>
   implements WitnessModule
 {
-  static override configSchemas = [BowserSystemInfoWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, BowserSystemInfoWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = BowserSystemInfoWitnessConfigSchema
 
   protected get bowser() {
     // we do this to fix importing in node-esm

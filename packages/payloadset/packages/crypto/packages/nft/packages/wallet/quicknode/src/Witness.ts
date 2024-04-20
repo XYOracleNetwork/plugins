@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import type { ExecutionResult } from 'graphql'
 
@@ -62,7 +62,8 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
   GraphqlQuery,
   GraphqlResult
 > {
-  static override configSchemas = [ApiGraphqlWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ApiGraphqlWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = ApiGraphqlWitnessConfigSchema
 
   get endpoint() {
     return assertEx(this.config.endpoint ?? this.params.endpoint, () => 'No endpoint specified')

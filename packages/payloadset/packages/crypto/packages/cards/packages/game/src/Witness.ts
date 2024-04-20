@@ -1,7 +1,7 @@
 import { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 
 import { CryptoCardsGameWitnessConfigSchema } from './Schema'
@@ -13,7 +13,8 @@ export type CryptoCardsGameWitnessConfig = WitnessConfig<{
 export type CryptoCardsGameWitnessParams = WitnessParams<AnyConfigSchema<CryptoCardsGameWitnessConfig>>
 
 export class CryptoCardsGameWitness extends AbstractWitness<CryptoCardsGameWitnessParams> implements WitnessModule {
-  static override configSchemas = [CryptoCardsGameWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, CryptoCardsGameWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = CryptoCardsGameWitnessConfigSchema
 
   protected override observeHandler(payloads?: Payload[]): Promisable<Payload[]> {
     return payloads ?? []

@@ -3,7 +3,7 @@ import { createServer, Server } from 'node:http'
 import { compact } from '@xylabs/lodash'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { collectDefaultMetrics, Registry } from 'prom-client'
 
@@ -22,7 +22,8 @@ export type PrometheusNodeWitnessParams = WitnessParams<AnyConfigSchema<Promethe
 
 creatableModule()
 export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams = PrometheusNodeWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas = [PrometheusNodeWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, PrometheusNodeWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = PrometheusNodeWitnessConfigSchema
   protected _registry = new Registry()
   protected server?: Server
 

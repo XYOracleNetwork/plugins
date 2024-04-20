@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
 import { getErc1822SlotStatus } from './lib'
@@ -17,7 +17,8 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
   EvmAddress,
   Erc1822Status
 > {
-  static override configSchemas = [Erc1822WitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, Erc1822WitnessConfigSchema]
+  static override defaultConfigSchema: Schema = Erc1822WitnessConfigSchema
 
   protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<Erc1822Status[]> {
     await this.started('throw')

@@ -11,7 +11,7 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerParams } from '@xyo-network/diviner-model'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 
 import { analyzeNftCollection, NftCollectionAnalysis } from './lib'
 
@@ -26,7 +26,8 @@ const toNftCollectionScore = (nftCollectionInfo: NftCollectionInfo, scores: NftC
 export class NftCollectionScoreDiviner<
   TParams extends NftCollectionScoreDivinerParams = NftCollectionScoreDivinerParams,
 > extends AbstractDiviner<TParams> {
-  static override configSchemas = [NftCollectionScoreDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, NftCollectionScoreDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = NftCollectionScoreDivinerConfigSchema
 
   protected override divineHandler = async (payloads?: Payload[]): Promise<Payload[]> => {
     const nftCollectionInfos = payloads?.filter(isNftCollectionInfo) ?? []

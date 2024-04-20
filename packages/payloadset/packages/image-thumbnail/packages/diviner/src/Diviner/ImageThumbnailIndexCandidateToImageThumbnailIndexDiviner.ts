@@ -11,7 +11,7 @@ import {
   isImageThumbnail,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, WithMeta, WithSources } from '@xyo-network/payload-model'
+import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
@@ -21,7 +21,8 @@ import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '.
  * Transforms candidates for image thumbnail indexing into their indexed representation
  */
 export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends AbstractDiviner {
-  static override configSchemas = [DivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
+  static override defaultConfigSchema: Schema = DivinerConfigSchema
   static labels: ImageThumbnailDivinerStageLabels = {
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'indexCandidateToIndexDiviner',

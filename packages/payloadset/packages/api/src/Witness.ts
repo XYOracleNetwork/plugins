@@ -5,7 +5,7 @@ import { Hash } from '@xylabs/hex'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
@@ -34,7 +34,8 @@ export type ApiCallWitnessParams = WitnessParams<
 >
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
-  static override configSchemas = [ApiCallWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
 
   get accept() {
     return this.config.accept ?? 'application/json'

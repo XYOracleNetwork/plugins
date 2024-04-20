@@ -10,22 +10,22 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.1.7",
-    "@xylabs/exists": "^3.1.7",
+    "@xylabs/assert": "^3.1.8",
+    "@xylabs/exists": "^3.1.8",
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:~",
     "@xyo-network/crypto-asset-payload-plugin": "workspace:~",
-    "@xyo-network/diviner-abstract": "^2.95.6",
-    "@xyo-network/diviner-model": "^2.95.6",
-    "@xyo-network/module-model": "^2.95.6",
-    "@xyo-network/payload-builder": "^2.95.6",
-    "@xyo-network/payload-model": "^2.95.6",
-    "@xyo-network/payloadset-plugin": "^2.95.6",
+    "@xyo-network/diviner-abstract": "^2.97.0",
+    "@xyo-network/diviner-model": "^2.97.0",
+    "@xyo-network/module-model": "^2.97.0",
+    "@xyo-network/payload-builder": "^2.97.0",
+    "@xyo-network/payload-model": "^2.97.0",
+    "@xyo-network/payloadset-plugin": "^2.97.0",
     "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.9.0",
-    "@xylabs/tsconfig": "^3.9.0",
-    "@xyo-network/account": "^2.95.6",
+    "@xylabs/ts-scripts-yarn3": "^3.9.1",
+    "@xylabs/tsconfig": "^3.9.1",
+    "@xyo-network/account": "^2.97.0",
     "typescript": "^5.4.5"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -67,6 +67,6 @@
     "url": "https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "2.92.1",
+  "version": "2.93.0",
   "type": "module"
 }

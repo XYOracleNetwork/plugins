@@ -6,7 +6,7 @@ import {
   AddressTransactionHistoryWitnessConfigSchema,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
 
@@ -25,7 +25,8 @@ const schema = AddressTransactionHistorySchema
 export class AddressTransactionHistoryWitness<
   TParams extends AddressTransactionHistoryWitnessParams = AddressTransactionHistoryWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas = [AddressTransactionHistoryWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, AddressTransactionHistoryWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = AddressTransactionHistoryWitnessConfigSchema
 
   protected get provider() {
     return assertEx(this.params.provider, () => 'Provider Required')

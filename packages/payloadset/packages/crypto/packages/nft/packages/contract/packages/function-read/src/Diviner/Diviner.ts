@@ -11,14 +11,15 @@ import {
   CryptoContractFunctionCallResultSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
 /** @deprecated use EvmCallDiviner instead */
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 
 /** @deprecated use EvmCallDiviner instead */
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
-  static override configSchemas = [CryptoContractDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, CryptoContractDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = CryptoContractDivinerConfigSchema
   static labels: CryptoContractDivinerLabels = CryptoContractDivinerLabels
 
   protected static findCallResult<TResult = string>(

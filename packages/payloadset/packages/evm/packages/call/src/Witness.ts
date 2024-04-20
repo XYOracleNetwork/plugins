@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { isHexZero } from '@xylabs/hex'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract } from 'ethers'
 
@@ -10,7 +10,8 @@ import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model'
 import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
-  static override configSchemas = [EvmCallWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = EvmCallWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

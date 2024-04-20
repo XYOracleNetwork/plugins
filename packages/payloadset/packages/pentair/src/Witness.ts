@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { PentairScreenlogicPayload, PentairScreenlogicSchema } from '@xyo-network/pentair-payload-plugin'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { FindUnits, SchedTypes, screenlogic } from 'node-screenlogic'
@@ -18,7 +18,8 @@ export type PentairScreenlogicWitnessParams = WitnessParams<AnyConfigSchema<Pent
 export class PentairScreenlogicWitness<
   TParams extends PentairScreenlogicWitnessParams = PentairScreenlogicWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas = [PentairScreenlogicWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, PentairScreenlogicWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = PentairScreenlogicWitnessConfigSchema
 
   protected override async observeHandler(_payloads?: Partial<Payload>[]): Promise<Payload[]> {
     const finder = new FindUnits()

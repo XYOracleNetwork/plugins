@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Schema } from '@xyo-network/payload-model'
 import shajs from 'sha.js'
 
 import { FileWitnessConfigSchema } from './Config'
@@ -12,7 +13,8 @@ import { FileWitness, FileWitnessParams } from './Witness'
 type BrowserFileWitnessParams = FileWitnessParams & BrowserFileWitnessAdditionalParams
 
 export class BrowserFileWitness extends FileWitness<BrowserFileWitnessParams> {
-  static override configSchemas = [FileWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, FileWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = FileWitnessConfigSchema
 
   protected override async observeHandler() {
     try {

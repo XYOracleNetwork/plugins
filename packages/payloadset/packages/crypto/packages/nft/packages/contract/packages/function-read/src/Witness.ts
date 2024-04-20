@@ -11,7 +11,7 @@ import {
   CryptoContractFunctionReadWitnessConfigSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { Contract, Provider } from 'ethers'
 
@@ -27,7 +27,8 @@ export type CryptoContractFunctionReadWitnessParams = WitnessParams<
 export class CryptoContractFunctionReadWitness<
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
-  static override configSchemas = [CryptoContractFunctionReadWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, CryptoContractFunctionReadWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = CryptoContractFunctionReadWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

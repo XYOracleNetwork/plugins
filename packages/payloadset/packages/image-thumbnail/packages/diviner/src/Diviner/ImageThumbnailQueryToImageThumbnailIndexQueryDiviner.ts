@@ -3,7 +3,7 @@ import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { isImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels'
@@ -13,7 +13,8 @@ import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery'
  * A diviner that converts ImageThumbnailDivinerQuery to ImageThumbnailResultQuery
  */
 export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends AbstractDiviner {
-  static override configSchemas = [DivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
+  static override defaultConfigSchema: Schema = DivinerConfigSchema
   static labels: ImageThumbnailDivinerStageLabels = {
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'divinerQueryToIndexQueryDiviner',

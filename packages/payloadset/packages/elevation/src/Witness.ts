@@ -3,7 +3,7 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { ElevationPayload, ElevationSchema } from '@xyo-network/elevation-payload-plugin'
 import { GeographicCoordinateSystemLocation, Location, LocationPayload, QuadkeyLocation } from '@xyo-network/location-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { Quadkey } from '@xyo-network/quadkey'
 import { MercatorBoundingBox } from '@xyo-network/sdk-geo'
 import { WitnessConfig, WitnessModule, WitnessParams } from '@xyo-network/witness-model'
@@ -72,7 +72,8 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
   extends AbstractWitness<TParams>
   implements WitnessModule
 {
-  static override configSchemas = [ElevationWitnessConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, ElevationWitnessConfigSchema]
+  static override defaultConfigSchema: Schema = ElevationWitnessConfigSchema
 
   private _tiffImages: TiffImages = {}
   private _tiffInfos: TiffImageInfos = {}

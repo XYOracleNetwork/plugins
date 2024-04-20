@@ -14,7 +14,7 @@ describe('EthereumGasEthersPlugin', () => {
     const provider = getProviderFromEnv()
     const plugin = EthereumGasEthersPlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin, {
-      config: { schema: EthereumGasEthersWitness.configSchema },
+      config: { schema: EthereumGasEthersWitness.defaultConfigSchema },
       provider,
     })
     expect(resolver.resolve(plugin.set)).toBeObject()

@@ -3,7 +3,7 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { EvmContract, EvmContractSchema } from '@xyo-network/evm-contract-witness'
 import { AnyConfigSchema } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { Interface } from 'ethers'
 
 import { EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi } from './Payload'
@@ -20,7 +20,8 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
   EvmContract,
   EvmFunctionImplemented
 > {
-  static override configSchemas = [EvmAbiImplementedDivinerConfigSchema]
+  static override configSchemas: Schema[] = [...super.configSchemas, EvmAbiImplementedDivinerConfigSchema]
+  static override defaultConfigSchema: Schema = EvmAbiImplementedDivinerConfigSchema
 
   get abi() {
     return assertEx(this.config?.abi, () => 'No ABI specified')

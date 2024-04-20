@@ -8,7 +8,7 @@ describe('EthereumGasBlocknativePlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = EthereumGasBlocknativePlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin, {
-      config: { schema: EthereumGasBlocknativeWitness.configSchema },
+      config: { schema: EthereumGasBlocknativeWitness.defaultConfigSchema },
     })
     expect(resolver.resolve(plugin.set)).toBeObject()
     expect(resolver.witness(EthereumGasBlocknativeSchema)).toBeObject()
