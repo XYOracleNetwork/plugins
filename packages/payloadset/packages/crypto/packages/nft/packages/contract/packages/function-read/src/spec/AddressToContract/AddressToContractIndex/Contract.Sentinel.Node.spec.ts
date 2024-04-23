@@ -21,7 +21,8 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
-import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { ModuleFactory } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'

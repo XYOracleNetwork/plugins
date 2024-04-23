@@ -22,7 +22,8 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
-import { isModuleState, Labels, ModuleFactoryLocator, ModuleState } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { isModuleState, Labels, ModuleState } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { WithMeta } from '@xyo-network/payload-model'

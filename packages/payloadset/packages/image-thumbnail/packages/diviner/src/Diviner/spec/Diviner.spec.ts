@@ -16,7 +16,8 @@ import {
   isImageThumbnailResultIndex,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
-import { isModuleStateWithMeta, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { isModuleStateWithMeta } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'

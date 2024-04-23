@@ -15,7 +15,8 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
-import { ModuleFactory, ModuleFactoryLocator } from '@xyo-network/module-model'
+import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import { ModuleFactory } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
