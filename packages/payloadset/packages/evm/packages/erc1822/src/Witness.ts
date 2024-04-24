@@ -17,8 +17,8 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
   EvmAddress,
   Erc1822Status
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, Erc1822WitnessConfigSchema]
-  static override defaultConfigSchema: Schema = Erc1822WitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, Erc1822WitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = Erc1822WitnessConfigSchema
 
   protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<Erc1822Status[]> {
     await this.started('throw')

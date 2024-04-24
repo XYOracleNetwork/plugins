@@ -11,8 +11,8 @@ export type FileWitnessParams = WitnessParams<AnyConfigSchema<FileWitnessConfig>
 
 // Abstract so that derived classes provide a type for the file param and methods to parse it
 export abstract class FileWitness<TParams extends FileWitnessParams = FileWitnessParams> extends AbstractWitness<TParams> implements WitnessModule {
-  static override configSchemas: Schema[] = [...super.configSchemas, FileWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = FileWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, FileWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = FileWitnessConfigSchema
 
   protected override observeHandler(payloads?: Payload[]): Promisable<Payload[]> {
     return [{ ...payloads?.[0], schema: FileSchema }]

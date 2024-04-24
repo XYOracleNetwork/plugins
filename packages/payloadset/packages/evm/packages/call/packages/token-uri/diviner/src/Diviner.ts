@@ -11,8 +11,8 @@ import { EvmTokenUriCallResults } from './Payload'
 export class EvmCallResultToNftTokenUriDiviner<
   TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,
 > extends AbstractDiviner<TParams, Payload, NftMetadataUri> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallResultToNftTokenUriDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = EvmCallResultToNftTokenUriDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmCallResultToNftTokenUriDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmCallResultToNftTokenUriDivinerConfigSchema
 
   // TODO: Add support for ERC1155 with `uri` function in addition to current ERC721 `tokenURI` support
   protected override divineHandler(payloads: Payload[] = []): NftMetadataUri[] {

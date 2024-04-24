@@ -62,9 +62,10 @@ const moduleName = 'ImageThumbnailStateToIndexCandidateDiviner'
 export class ImageThumbnailStateToIndexCandidateDiviner<
   TParams extends ImageThumbnailStateToIndexCandidateDivinerParams = ImageThumbnailStateToIndexCandidateDivinerParams,
 > extends AbstractDiviner<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailStateToIndexCandidateDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = ImageThumbnailStateToIndexCandidateDivinerConfigSchema
-  static labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailStateToIndexCandidateDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = ImageThumbnailStateToIndexCandidateDivinerConfigSchema
+  static override labels: ImageThumbnailDivinerStageLabels = {
+    ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'stateToIndexCandidateDiviner',
   }

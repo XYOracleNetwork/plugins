@@ -20,8 +20,8 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
   EvmContract,
   EvmFunctionImplemented
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmAbiImplementedDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = EvmAbiImplementedDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmAbiImplementedDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmAbiImplementedDivinerConfigSchema
 
   get abi() {
     return assertEx(this.config?.abi, () => 'No ABI specified')

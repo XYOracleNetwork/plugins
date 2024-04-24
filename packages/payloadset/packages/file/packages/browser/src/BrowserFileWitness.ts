@@ -13,8 +13,8 @@ import { FileWitness, FileWitnessParams } from './Witness'
 type BrowserFileWitnessParams = FileWitnessParams & BrowserFileWitnessAdditionalParams
 
 export class BrowserFileWitness extends FileWitness<BrowserFileWitnessParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, FileWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = FileWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, FileWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = FileWitnessConfigSchema
 
   protected override async observeHandler() {
     try {

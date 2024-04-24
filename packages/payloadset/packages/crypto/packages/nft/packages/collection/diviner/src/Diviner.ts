@@ -26,8 +26,8 @@ const toNftCollectionScore = (nftCollectionInfo: NftCollectionInfo, scores: NftC
 export class NftCollectionScoreDiviner<
   TParams extends NftCollectionScoreDivinerParams = NftCollectionScoreDivinerParams,
 > extends AbstractDiviner<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, NftCollectionScoreDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = NftCollectionScoreDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, NftCollectionScoreDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = NftCollectionScoreDivinerConfigSchema
 
   protected override divineHandler = async (payloads?: Payload[]): Promise<Payload[]> => {
     const nftCollectionInfos = payloads?.filter(isNftCollectionInfo) ?? []

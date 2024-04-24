@@ -34,8 +34,8 @@ export type ApiCallWitnessParams = WitnessParams<
 >
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
-  static override configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
 
   get accept() {
     return this.config.accept ?? 'application/json'

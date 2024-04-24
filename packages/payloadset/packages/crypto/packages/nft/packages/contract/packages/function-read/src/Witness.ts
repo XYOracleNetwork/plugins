@@ -27,8 +27,8 @@ export type CryptoContractFunctionReadWitnessParams = WitnessParams<
 export class CryptoContractFunctionReadWitness<
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
-  static override configSchemas: Schema[] = [...super.configSchemas, CryptoContractFunctionReadWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = CryptoContractFunctionReadWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoContractFunctionReadWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = CryptoContractFunctionReadWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

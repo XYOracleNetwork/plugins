@@ -18,9 +18,9 @@ export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPa
 
 /** @deprecated use EvmCallDiviner instead */
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, CryptoContractDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = CryptoContractDivinerConfigSchema
-  static labels: CryptoContractDivinerLabels = CryptoContractDivinerLabels
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoContractDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = CryptoContractDivinerConfigSchema
+  static override labels: CryptoContractDivinerLabels = { ...super.labels, ...CryptoContractDivinerLabels }
 
   protected static findCallResult<TResult = string>(
     address: string,

@@ -62,8 +62,8 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
   GraphqlQuery,
   GraphqlResult
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, ApiGraphqlWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = ApiGraphqlWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiGraphqlWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = ApiGraphqlWitnessConfigSchema
 
   get endpoint() {
     return assertEx(this.config.endpoint ?? this.params.endpoint, () => 'No endpoint specified')

@@ -11,8 +11,8 @@ import { EthereumGasBlocknativeWitnessConfigSchema } from './Schema'
 
 export type EthereumGasBlocknativeWitnessParams = TimestampWitnessParams<AnyConfigSchema<EthereumGasBlocknativeWitnessConfig>>
 export class EthereumGasBlocknativeWitness extends AbstractWitness<EthereumGasBlocknativeWitnessParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EthereumGasBlocknativeWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EthereumGasBlocknativeWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasBlocknativeWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EthereumGasBlocknativeWitnessConfigSchema
 
   protected override async observeHandler(): Promise<Payload[]> {
     const fields = await getGasFromBlocknative()

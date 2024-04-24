@@ -22,8 +22,8 @@ export type PrometheusNodeWitnessParams = WitnessParams<AnyConfigSchema<Promethe
 
 creatableModule()
 export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams = PrometheusNodeWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, PrometheusNodeWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = PrometheusNodeWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, PrometheusNodeWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = PrometheusNodeWitnessConfigSchema
   protected _registry = new Registry()
   protected server?: Server
 

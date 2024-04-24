@@ -13,8 +13,8 @@ export class NodeSystemInfoWitness<TParams extends NodeSystemInfoWitnessParams =
   extends AbstractWitness<TParams>
   implements WitnessModule
 {
-  static override configSchemas: Schema[] = [...super.configSchemas, NodeSystemInfoWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = NodeSystemInfoWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, NodeSystemInfoWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = NodeSystemInfoWitnessConfigSchema
 
   protected override async observeHandler(payloads?: Payload[]) {
     const node = await get(this.config?.nodeValues ?? defaultSystemInfoConfig())

@@ -13,8 +13,8 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
   EvmEvents,
   EvmEvent
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmEventsWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EvmEventsWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmEventsWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmEventsWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

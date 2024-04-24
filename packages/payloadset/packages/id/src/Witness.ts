@@ -16,8 +16,8 @@ export type IdWitnessConfig = WitnessConfig<{
 export type IdWitnessParams = WitnessParams<AnyConfigSchema<IdWitnessConfig>>
 
 export class IdWitness<TParams extends IdWitnessParams = IdWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, IdWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = IdWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, IdWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = IdWitnessConfigSchema
 
   get salt() {
     return this.config?.salt ?? `${Math.floor(Math.random() * 9_999_999)}`

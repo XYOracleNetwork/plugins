@@ -16,8 +16,8 @@ export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerPa
   extends AbstractDiviner<TParams>
   implements DivinerModule, Module
 {
-  static override configSchemas: Schema[] = [...super.configSchemas, CryptoMarketAssetDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = CryptoMarketAssetDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoMarketAssetDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = CryptoMarketAssetDivinerConfigSchema
   static override targetSchema = CryptoMarketAssetSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {

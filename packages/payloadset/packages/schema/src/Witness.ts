@@ -13,8 +13,8 @@ export type SchemaWitnessConfig = WitnessConfig<{ schema: SchemaWitnessConfigSch
 export type SchemaWitnessParams = WitnessParams<AnyConfigSchema<SchemaWitnessConfig>>
 
 export class SchemaWitness<TParams extends SchemaWitnessParams = SchemaWitnessParams> extends AbstractWitness<TParams> implements WitnessModule {
-  static override configSchemas: Schema[] = [...super.configSchemas, SchemaWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = SchemaWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, SchemaWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = SchemaWitnessConfigSchema
 
   protected override async observeHandler(_payloads?: Payload[]): Promise<SchemaPayload[]> {
     await delay(0)

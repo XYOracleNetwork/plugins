@@ -10,8 +10,8 @@ import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model'
 import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EvmCallWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmCallWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmCallWitnessConfigSchema
 
   get abi() {
     return assertEx(this.config.abi, () => 'Missing abi')

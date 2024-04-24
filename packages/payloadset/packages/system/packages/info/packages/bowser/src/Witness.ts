@@ -13,8 +13,8 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
   extends AbstractWitness<TParams>
   implements WitnessModule
 {
-  static override configSchemas: Schema[] = [...super.configSchemas, BowserSystemInfoWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = BowserSystemInfoWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, BowserSystemInfoWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = BowserSystemInfoWitnessConfigSchema
 
   protected get bowser() {
     // we do this to fix importing in node-esm

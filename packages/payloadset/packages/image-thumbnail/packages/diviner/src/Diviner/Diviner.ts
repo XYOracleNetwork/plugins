@@ -4,5 +4,5 @@ import { AttachableDivinerInstance } from '@xyo-network/diviner-model'
 import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels'
 
 export class ImageThumbnailDiviner extends IndexingDiviner implements AttachableDivinerInstance {
-  static labels: ImageThumbnailDivinerLabels = ImageThumbnailDivinerLabels
+  static override labels: ImageThumbnailDivinerLabels = { ...super.labels, ...ImageThumbnailDivinerLabels }
 }

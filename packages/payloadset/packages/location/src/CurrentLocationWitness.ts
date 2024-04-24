@@ -6,8 +6,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { CurrentLocationWitnessConfigSchema, CurrentLocationWitnessParams } from './Config'
 
 export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams = CurrentLocationWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, CurrentLocationWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = CurrentLocationWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, CurrentLocationWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = CurrentLocationWitnessConfigSchema
 
   get geolocation(): Geolocation {
     return assertEx(this.params.geolocation, () => 'No geolocation provided')

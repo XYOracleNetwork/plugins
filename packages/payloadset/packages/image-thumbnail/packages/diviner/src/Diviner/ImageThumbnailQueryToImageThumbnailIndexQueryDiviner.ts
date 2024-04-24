@@ -13,9 +13,10 @@ import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery'
  * A diviner that converts ImageThumbnailDivinerQuery to ImageThumbnailResultQuery
  */
 export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends AbstractDiviner {
-  static override configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
-  static override defaultConfigSchema: Schema = DivinerConfigSchema
-  static labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = DivinerConfigSchema
+  static override labels: ImageThumbnailDivinerStageLabels = {
+    ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'divinerQueryToIndexQueryDiviner',
   }

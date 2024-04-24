@@ -38,8 +38,8 @@ function resolvedValue<T>(settled: PromiseSettledResult<T>, assert?: boolean) {
 export class CryptoNftCollectionWitness<
   TParams extends CryptoNftCollectionWitnessParams = CryptoNftCollectionWitnessParams,
 > extends AbstractEvmWitness<TParams, NftCollectionWitnessQuery, NftCollectionInfo> {
-  static override configSchemas: Schema[] = [...super.configSchemas, NftCollectionWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = NftCollectionWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, NftCollectionWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = NftCollectionWitnessConfigSchema
 
   protected override async observeHandler(payloads?: NftCollectionWitnessQuery[]): Promise<NftCollectionInfo[]> {
     await this.started('throw')

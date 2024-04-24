@@ -23,8 +23,8 @@ export type AbstractModuleInstanceWitnessParams = WitnessParams<
 export class AbstractModuleInstanceWitness<
   TParams extends AbstractModuleInstanceWitnessParams = AbstractModuleInstanceWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, AbstractModuleInstanceWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = AbstractModuleInstanceWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, AbstractModuleInstanceWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = AbstractModuleInstanceWitnessConfigSchema
 
   protected get module() {
     return this.params?.module

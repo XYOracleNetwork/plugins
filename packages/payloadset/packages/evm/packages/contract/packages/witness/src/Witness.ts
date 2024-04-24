@@ -18,8 +18,8 @@ export class EvmContractWitness<TParams extends EvmContractWitnessParams = EvmCo
   EvmAddress,
   EvmContract
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmContractWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EvmContractWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmContractWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmContractWitnessConfigSchema
 
   protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<EvmContract[]> {
     await this.started('throw')

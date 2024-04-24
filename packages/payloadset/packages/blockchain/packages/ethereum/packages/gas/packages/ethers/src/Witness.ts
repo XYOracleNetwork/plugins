@@ -21,8 +21,8 @@ export type EthereumGasEthersWitnessParams = WitnessParams<
 export class EthereumGasEthersWitness<
   TParams extends EthereumGasEthersWitnessParams = EthereumGasEthersWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EthereumGasEthersWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EthereumGasEthersWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasEthersWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EthereumGasEthersWitnessConfigSchema
 
   private _provider?: Provider
 

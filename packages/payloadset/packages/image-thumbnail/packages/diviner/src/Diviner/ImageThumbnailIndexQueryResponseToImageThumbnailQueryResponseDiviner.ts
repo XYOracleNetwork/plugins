@@ -18,9 +18,10 @@ import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '.
  * Transforms an ImageThumbnailIndex response into an ImageThumbnailResponse response
  */
 export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner extends AbstractDiviner {
-  static override configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
-  static override defaultConfigSchema: Schema = DivinerConfigSchema
-  static labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = DivinerConfigSchema
+  static override labels: ImageThumbnailDivinerStageLabels = {
+    ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'indexQueryResponseToDivinerQueryResponseDiviner',
   }

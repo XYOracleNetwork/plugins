@@ -50,8 +50,8 @@ export class EvmTokenInterfaceImplementedDiviner<
     ERC721Metadata: IERC721Metadata__factory.abi,
     ERC721TokenReceiver: IERC721Receiver__factory.abi,
   }
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmTokenInterfaceImplementedDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = EvmTokenInterfaceImplementedDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmTokenInterfaceImplementedDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmTokenInterfaceImplementedDivinerConfigSchema
 
   private _tokenInterfaces?: TokenInterfaceDictionary
 

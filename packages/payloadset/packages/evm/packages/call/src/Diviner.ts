@@ -36,9 +36,9 @@ export type EvmCallResults = Payload<
 >
 
 export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivinerParams> extends AbstractDiviner<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EvmCallDivinerConfigSchema]
-  static override defaultConfigSchema: Schema = EvmCallDivinerConfigSchema
-  static labels: EvmCallDivinerLabels = EvmCallDivinerLabels
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmCallDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EvmCallDivinerConfigSchema
+  static override labels: EvmCallDivinerLabels = { ...super.labels, ...EvmCallDivinerLabels }
 
   protected static findCallResult<TResult = string>(address: string, functionName: string, payloads: EvmCallResult[]): TResult | undefined {
     const foundPayload = payloads.find((payload) => payload.functionName === functionName && payload.address === address)

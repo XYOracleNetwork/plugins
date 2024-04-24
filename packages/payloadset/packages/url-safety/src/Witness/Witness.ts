@@ -58,8 +58,8 @@ const checkUrlSafety = async (
 }
 
 export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafetyWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, UrlSafetyWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = UrlSafetyWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, UrlSafetyWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = UrlSafetyWitnessConfigSchema
 
   get key() {
     return this.params.google?.safeBrowsing?.key

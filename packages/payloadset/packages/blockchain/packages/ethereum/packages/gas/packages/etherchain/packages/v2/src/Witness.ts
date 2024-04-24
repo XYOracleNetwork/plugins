@@ -11,8 +11,8 @@ import { EthereumGasEtherchainV2WitnessConfigSchema } from './Schema'
 export type EtherchainEthereumGasWitnessV2Params = WitnessParams<AnyConfigSchema<EthereumGasEtherchainV2WitnessConfig>>
 
 export class EtherchainEthereumGasWitnessV2 extends AbstractWitness<EtherchainEthereumGasWitnessV2Params> {
-  static override configSchemas: Schema[] = [...super.configSchemas, EthereumGasEtherchainV2WitnessConfigSchema]
-  static override defaultConfigSchema: Schema = EthereumGasEtherchainV2WitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasEtherchainV2WitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = EthereumGasEtherchainV2WitnessConfigSchema
 
   protected override async observeHandler(): Promise<Payload[]> {
     const payload: EthereumGasEtherchainV2Payload = {

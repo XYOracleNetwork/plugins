@@ -39,8 +39,8 @@ export interface DnsError extends Error {
 }
 
 export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams = ImageThumbnailWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = ImageThumbnailWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = ImageThumbnailWitnessConfigSchema
 
   private _semaphore = new Semaphore(this.maxAsyncProcesses)
 

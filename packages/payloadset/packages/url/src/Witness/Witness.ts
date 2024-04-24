@@ -7,8 +7,8 @@ import { UrlWitnessConfigSchema } from './Config'
 import { UrlWitnessParams } from './Params'
 
 export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> extends AbstractWitness<TParams> {
-  static override configSchemas: Schema[] = [...super.configSchemas, UrlWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = UrlWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, UrlWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = UrlWitnessConfigSchema
   static hashUrl: ((url: string) => Promise<string>) | undefined = undefined
 
   get urls() {

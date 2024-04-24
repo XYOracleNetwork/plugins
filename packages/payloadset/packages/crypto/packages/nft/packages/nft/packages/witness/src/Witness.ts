@@ -24,8 +24,8 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
   NftWitnessQuery,
   NftInfo
 > {
-  static override configSchemas: Schema[] = [...super.configSchemas, NftWitnessConfigSchema]
-  static override defaultConfigSchema: Schema = NftWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, NftWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = NftWitnessConfigSchema
 
   get loadMetadata() {
     return this.config.loadMetadata ?? true
