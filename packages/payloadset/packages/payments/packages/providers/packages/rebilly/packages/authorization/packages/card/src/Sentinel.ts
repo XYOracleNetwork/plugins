@@ -1,9 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson, AxiosRequestConfig, HttpStatusCode } from '@xylabs/axios'
-import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, WithSources } from '@xyo-network/payload-model'
 import { isBillingAddress, isPaymentCard } from '@xyo-network/payment-payload-plugins'
+import { RebillyPaymentAuthorizationToken, RebillyPaymentAuthorizationTokenSchema } from '@xyo-network/rebilly-payment-payload-plugin'
 import { AbstractSentinel } from '@xyo-network/sentinel-abstract'
 import { SentinelInstance, SentinelModuleEventData } from '@xyo-network/sentinel-model'
 
@@ -94,7 +94,7 @@ export class RebillyPaymentCardAuthorizationSentinel<
 
   override async reportHandler(payloads?: Payload[]): Promise<Payload[]> {
     await this.started('throw')
-    const results: WithSources<IdPayload>[] = []
+    const results: WithSources<RebillyPaymentAuthorizationToken>[] = []
     // Verify necessary inputs and if nothing meets our criteria, bail early
     if (!payloads || payloads.length === 0) return results
     const paymentCard = payloads?.find(isPaymentCard)
@@ -106,9 +106,9 @@ export class RebillyPaymentCardAuthorizationSentinel<
       const data = toTokenRequest(paymentCard, billingAddress)
       const response = await axios.post<CreateTokenResponse>(this.tokenEndpoint, data)
       assertEx(response.status === HttpStatusCode.Created, () => `Failed to tokenize payment card: ${response.status}`)
-      const token = response.data
+      const { id } = response.data
       const sources = await PayloadBuilder.dataHashes([paymentCard, billingAddress])
-      results.push({ salt: token.id, schema: IdSchema, sources })
+      results.push({ id, schema: RebillyPaymentAuthorizationTokenSchema, sources })
     } catch (error) {
       this.logger?.error?.(`${moduleName}: Error creating payment token: ${error}`)
     }

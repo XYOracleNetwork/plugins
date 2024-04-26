@@ -1,5 +1,5 @@
 {
-  "name": "@xyo-network/rebilly-payment-card-authorization-plugin",
+  "name": "@xyo-network/rebilly-payment-payload-plugin",
   "author": {
     "email": "support@xyo.network",
     "name": "XYO Development Team",
@@ -10,25 +10,14 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.1.11",
-    "@xylabs/axios": "^3.1.11",
-    "@xyo-network/module-model": "^2.99.1",
-    "@xyo-network/payload-builder": "^2.99.1",
-    "@xyo-network/payload-model": "^2.99.1",
-    "@xyo-network/payment-payload-plugins": "workspace:~",
-    "@xyo-network/rebilly-payment-payload-plugin": "workspace:~",
-    "@xyo-network/sentinel-abstract": "^2.99.1",
-    "@xyo-network/sentinel-model": "^2.99.1"
+    "@xyo-network/payload-model": "^2.99.1"
   },
   "devDependencies": {
-    "@xylabs/jest-helpers": "^3.1.11",
     "@xylabs/ts-scripts-yarn3": "^3.9.1",
     "@xylabs/tsconfig": "^3.9.1",
-    "@xyo-network/boundwitness-model": "^2.99.1",
     "typescript": "^5.4.5"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
-  "types": "dist/node/index.d.ts",
   "exports": {
     ".": {
       "browser": {
@@ -56,6 +45,7 @@
   },
   "main": "dist/node/index.cjs",
   "module": "dist/node/index.js",
+  "types": "dist/node/index.d.ts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

@@ -1,9 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { describeIf } from '@xylabs/jest-helpers'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { isIdWithSources } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { BillingAddress, BillingAddressSchema, PaymentCard, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
+import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-payload-plugin'
 
 import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from '../Config'
 import { RebillyPaymentCardAuthorizationSentinel } from '../Sentinel'
@@ -73,13 +73,12 @@ describeIf(process.env.REB_PUB_APIKEY)('RebillyPaymentCardAuthorizationSentinel'
       expect(payloads).toBeArray()
       expect(payloads.length).toBeGreaterThanOrEqual(1)
 
-      const id = payloads.find(isIdWithSources)
-      expect(id).toBeDefined()
-      const payment = assertEx(id)
-      expect(payment.salt).toBeString()
-      expect(payment.salt).not.toBeEmpty()
-      expect(payment.sources).toBeArrayOfSize(2)
-      expect(payment.sources).toEqual(await PayloadBuilder.dataHashes([paymentCard, billingAddress]))
+      const payload = payloads.find(isRebillyPaymentAuthorizationTokenWithSources)
+      expect(payload).toBeDefined()
+      const token = assertEx(payload)
+      expect(token.id).toBeString()
+      expect(token.sources).toBeArrayOfSize(2)
+      expect(token.sources).toEqual(await PayloadBuilder.dataHashes([paymentCard, billingAddress]))
     })
   })
 })
