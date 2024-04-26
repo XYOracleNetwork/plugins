@@ -3,7 +3,7 @@ import { AxiosJson, AxiosRequestConfig, HttpStatusCode } from '@xylabs/axios'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, WithSources } from '@xyo-network/payload-model'
 import { isBillingAddress, isPaymentCard } from '@xyo-network/payment-payload-plugins'
-import { RebillyPaymentAuthorizationToken, RebillyPaymentAuthorizationTokenSchema } from '@xyo-network/rebilly-payment-authorization-payload-plugin'
+import { RebillyPaymentAuthorizationToken, RebillyPaymentAuthorizationTokenSchema } from '@xyo-network/rebilly-payment-payload-plugin'
 import { AbstractSentinel } from '@xyo-network/sentinel-abstract'
 import { SentinelInstance, SentinelModuleEventData } from '@xyo-network/sentinel-model'
 

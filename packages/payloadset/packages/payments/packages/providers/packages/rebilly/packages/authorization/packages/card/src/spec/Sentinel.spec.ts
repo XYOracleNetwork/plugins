@@ -1,10 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { describeIf } from '@xylabs/jest-helpers'
 import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { isIdWithSources } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { BillingAddress, BillingAddressSchema, PaymentCard, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
-import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-authorization-payload-plugin'
+import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-payload-plugin'
 
 import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from '../Config'
 import { RebillyPaymentCardAuthorizationSentinel } from '../Sentinel'
