@@ -1,2 +1,4 @@
-export type PurchaseSchema = 'network.xyo.payments.purchase'
-export const PurchaseSchema: PurchaseSchema = 'network.xyo.payments.purchase'
+import { PaymentsSchema } from '../Schema'
+
+export const PurchaseSchema = `${PaymentsSchema}.purchase`
+export type PurchaseSchema = typeof PurchaseSchema

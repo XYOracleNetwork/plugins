@@ -1,2 +1,2 @@
-export type EscrowSchema = 'network.xyo.escrow'
-export const EscrowSchema: EscrowSchema = 'network.xyo.escrow'
+export const EscrowSchema = 'network.xyo.escrow'
+export type EscrowSchema = typeof EscrowSchema

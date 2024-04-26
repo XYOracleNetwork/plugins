@@ -1,2 +1,2 @@
-export type PaymentsSchema = 'network.xyo.payments'
-export const PaymentsSchema: PaymentsSchema = 'network.xyo.payments'
+export const PaymentsSchema = 'network.xyo.payments'
+export type PaymentsSchema = typeof PaymentsSchema

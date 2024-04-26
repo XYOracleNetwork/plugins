@@ -1,7 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-export const BillingAddressSchema = 'network.xyo.payments.billing.address'
-export type BillingAddressSchema = typeof BillingAddressSchema
+import { BillingAddressSchema } from './Schema'
 
 /**
  * The fields describing a billing address.
