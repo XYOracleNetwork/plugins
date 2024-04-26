@@ -1,5 +1,6 @@
+export * from './Billing'
 export * from './Currency'
 export * from './Escrow'
-export * from './Payment'
+export * from './Payment/Payload'
 export * from './Purchase'
 export * from './Receipt'
