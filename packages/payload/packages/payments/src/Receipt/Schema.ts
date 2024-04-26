@@ -1,2 +1,4 @@
-export type ReceiptSchema = 'network.xyo.payments.receipt'
-export const ReceiptSchema: ReceiptSchema = 'network.xyo.payments.receipt'
+import { PaymentsSchema } from '../Schema'
+
+export const ReceiptSchema = `${PaymentsSchema}.receipt`
+export type ReceiptSchema = typeof ReceiptSchema
