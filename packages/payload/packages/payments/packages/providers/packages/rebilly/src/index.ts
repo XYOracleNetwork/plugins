@@ -1,2 +1,2 @@
-export * from './RebillyProviderSettings'
-export * from './Token'
+export * from './Authorization'
+export * from './ProviderSettings'
