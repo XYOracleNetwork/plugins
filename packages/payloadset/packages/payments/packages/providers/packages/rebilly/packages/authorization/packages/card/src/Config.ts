@@ -1,7 +1,6 @@
 import { SentinelConfig } from '@xyo-network/sentinel-model'
 
-import { OrderPostRequest } from '../../../../../../api'
-import { RebillyApiDomainSettings } from '../../../../../RebillyProviderSettings'
+import { RebillyApiDomainSettings } from './RebillyProviderSettings'
 import { RebillyPaymentCardAuthorizationSentinelSchema } from './Schema'
 
 export const RebillyPaymentCardAuthorizationSentinelConfigSchema = `${RebillyPaymentCardAuthorizationSentinelSchema}.config`
@@ -11,7 +10,6 @@ export type RebillyPaymentCardAuthorizationSentinelConfigSchema = typeof Rebilly
  * The Rebilly Payment Card Authorization Sentinel Config
  */
 export type RebillyPaymentCardAuthorizationSentinelConfig = SentinelConfig<{
-  requestDefaults?: Partial<OrderPostRequest>
   /**
    * The config schema
    */

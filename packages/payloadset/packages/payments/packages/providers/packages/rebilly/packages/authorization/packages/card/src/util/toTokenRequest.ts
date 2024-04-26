@@ -1,5 +1,5 @@
-import { BillingAddress } from '../../../../../../Billing'
-import { PaymentCard } from '../../../Payload'
+import { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
+
 import { CreatePaymentTokenRequest } from '../Api'
 
 /**
