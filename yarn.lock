@@ -6717,7 +6717,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/rebilly-payment-authorization-payload-plugin@workspace:packages/payload/packages/payments/packages/providers/packages/rebilly/packages/authorization":
+"@xyo-network/rebilly-payment-authorization-payload-plugin@workspace:packages/payload/packages/payments/packages/providers/packages/rebilly/packages/authorization, @xyo-network/rebilly-payment-authorization-payload-plugin@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/rebilly-payment-authorization-payload-plugin@workspace:packages/payload/packages/payments/packages/providers/packages/rebilly/packages/authorization"
   dependencies:
@@ -6748,11 +6748,11 @@ __metadata:
     "@xylabs/ts-scripts-yarn3": "npm:^3.9.1"
     "@xylabs/tsconfig": "npm:^3.9.1"
     "@xyo-network/boundwitness-model": "npm:^2.99.1"
-    "@xyo-network/id-payload-plugin": "npm:^2.99.1"
     "@xyo-network/module-model": "npm:^2.99.1"
     "@xyo-network/payload-builder": "npm:^2.99.1"
     "@xyo-network/payload-model": "npm:^2.99.1"
     "@xyo-network/payment-payload-plugins": "workspace:~"
+    "@xyo-network/rebilly-payment-authorization-payload-plugin": "workspace:~"
     "@xyo-network/rebilly-payment-payload-plugin": "workspace:~"
     "@xyo-network/sentinel-abstract": "npm:^2.99.1"
     "@xyo-network/sentinel-model": "npm:^2.99.1"
