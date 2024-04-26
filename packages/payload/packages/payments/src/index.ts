@@ -1,3 +1,4 @@
+export * from './Billing'
 export * from './Currency'
 export * from './Escrow'
 export * from './Payment'

@@ -6,8 +6,7 @@ import {
   PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-export type PurchaseSchema = 'network.xyo.payments.purchase'
-export const PurchaseSchema: PurchaseSchema = 'network.xyo.payments.purchase'
+import { PurchaseSchema } from './Schema'
 
 export interface PurchaseFields {
   /**

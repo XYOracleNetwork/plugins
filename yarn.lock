@@ -6566,7 +6566,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments":
+"@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments, @xyo-network/payment-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments"
   dependencies:
@@ -6716,6 +6716,26 @@ __metadata:
   checksum: 10/f7c9f18bd80c37746b4601080bd086dc53035401784889ed8d60b75d60596516a241d0d48171e8cde354113124dffb00646f761702cd748ce1db17de1febfa65
   languageName: node
   linkType: hard
+
+"@xyo-network/rebilly-payment-card-authorization-plugin@workspace:packages/payloadset/packages/payments/packages/providers/packages/rebilly/packages/authorization/packages/card":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/rebilly-payment-card-authorization-plugin@workspace:packages/payloadset/packages/payments/packages/providers/packages/rebilly/packages/authorization/packages/card"
+  dependencies:
+    "@xylabs/promise": "npm:^3.1.11"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.9.1"
+    "@xylabs/tsconfig": "npm:^3.9.1"
+    "@xyo-network/abstract-witness": "npm:^2.99.0"
+    "@xyo-network/account": "npm:^2.99.0"
+    "@xyo-network/id-payload-plugin": "npm:^2.99.0"
+    "@xyo-network/module-model": "npm:^2.99.0"
+    "@xyo-network/payload-model": "npm:^2.99.0"
+    "@xyo-network/payload-wrapper": "npm:^2.99.0"
+    "@xyo-network/payloadset-plugin": "npm:^2.99.0"
+    "@xyo-network/payment-payload-plugins": "workspace:~"
+    "@xyo-network/witness-model": "npm:^2.99.0"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
 
 "@xyo-network/schema-name-validator@npm:^2.99.0, @xyo-network/schema-name-validator@npm:~2.99.0":
   version: 2.99.0

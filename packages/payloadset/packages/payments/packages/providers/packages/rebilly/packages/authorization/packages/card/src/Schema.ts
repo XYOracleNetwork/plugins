@@ -1,0 +1,2 @@
+export const RebillyPaymentCardAuthorizationSentinelSchema = 'network.xyo.sentinel.payments.payment.instrument.card.authorization.rebilly'
+export type RebillyPaymentCardAuthorizationSentinelSchema = typeof RebillyPaymentCardAuthorizationSentinelSchema
