@@ -1,5 +1,5 @@
-import { BillingAddress, BillingAddressSchema } from '../../../../../../../Billing'
-import { PaymentCard, PaymentCardSchema } from '../../../../Payload'
+import { BillingAddress, BillingAddressSchema, PaymentCard, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
+
 import { toTokenRequest } from '../toTokenRequest'
 
 describe('toTokenRequest', () => {
