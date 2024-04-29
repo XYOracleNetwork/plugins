@@ -7,7 +7,7 @@ import { BillingAddressSchema } from './Schema'
  */
 export interface BillingAddressFields {
   /** Street address line 1. */
-  address: string
+  address?: string
   /** Street address line 2. */
   address2?: string | null
   /** City of the billing address. */
