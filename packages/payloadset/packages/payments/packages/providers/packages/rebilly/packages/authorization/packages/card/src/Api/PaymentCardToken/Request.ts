@@ -37,7 +37,7 @@ export interface ContactEmail {
  */
 export interface RequestBillingAddress {
   /** Street address line 1. */
-  address: string
+  address?: string
   /** Street address line 2. */
   address2?: string | null
   /** City of the billing address. */
