@@ -1,3 +1,4 @@
+import { Hash } from '@xylabs/hex'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, Payload } from '@xyo-network/payload-model'
 
 import { NftCollectionMetadata } from '../Payload'
@@ -9,7 +10,7 @@ export interface NftCollectionScores {
   scores: NftCollectionAnalysis
 }
 
-export type NftCollectionScoreFields = NftCollectionMetadata & NftCollectionScores & { sources?: string[] }
+export type NftCollectionScoreFields = NftCollectionMetadata & NftCollectionScores & { sources?: Hash[] }
 
 export type NftCollectionScore = Payload<NftCollectionScoreFields, NftCollectionScoreSchema>
 export const isNftCollectionScore = isPayloadOfSchemaType<NftCollectionScore>(NftCollectionScoreSchema)
