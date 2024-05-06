@@ -9,7 +9,12 @@ import { PaymentStatusSchema } from './Schema'
 
 export interface PaymentStatusFields {
   /**
-   * The status of the payment (i.e. declined)
+   * The result of the payment (i.e. declined)
+   */
+  result?: string
+
+  /**
+   * The status of the payment (i.e. completed)
    */
   status: string
 }
