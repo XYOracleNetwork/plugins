@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import Path from 'node:path'
 
 import { HDWallet } from '@xyo-network/account'
 import { PackageManifestPayload } from '@xyo-network/manifest'
@@ -72,7 +72,7 @@ describe('Node', () => {
   })
   it('create from manifest file', async () => {
     const wallet = await HDWallet.random()
-    const manifestPath = join(__dirname, 'manifest.json')
+    const manifestPath = Path.join(__dirname, 'manifest.json')
     const manifest: PackageManifestPayload = JSON.parse(await readFile(manifestPath, 'utf8'))
     const wrapper = new ManifestWrapper(manifest, wallet)
     const [node] = await wrapper.loadNodes()

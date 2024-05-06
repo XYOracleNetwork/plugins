@@ -58,11 +58,11 @@ export class CryptoNftCollectionWitness<
 
         const maxNfts = query?.maxNfts || defaultMaxNfts
         const [name, symbol, total, typesSettled, archivistSettled] = await Promise.allSettled([
-          await erc721Enumerable.name(),
-          await erc721Enumerable.symbol(),
-          await erc721Enumerable.totalSupply(),
-          await tokenTypes(provider, address),
-          await this.archivistInstance(),
+          erc721Enumerable.name(),
+          erc721Enumerable.symbol(),
+          erc721Enumerable.totalSupply(),
+          tokenTypes(provider, address),
+          this.archivistInstance(),
         ])
         const types = resolvedValue(typesSettled, true)
         const nfts = await getNftCollectionNfts(address, provider, types, maxNfts)

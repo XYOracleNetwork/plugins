@@ -17,8 +17,8 @@ describe('average', () => {
     expect(average(...payloads)?.xyo?.value?.usd).toBe('2')
   })
   it('handles single value', async () => {
-    const payloads = await Promise.all([getPayloadWithPrice(1)])
-    expect(average(...payloads)?.xyo?.value?.usd).toBe('1')
+    const payloads = await getPayloadWithPrice(1)
+    expect(average(payloads)?.xyo?.value?.usd).toBe('1')
   })
   it('handles no values', () => {
     expect(average()?.xyo?.value?.usd).toBeUndefined()

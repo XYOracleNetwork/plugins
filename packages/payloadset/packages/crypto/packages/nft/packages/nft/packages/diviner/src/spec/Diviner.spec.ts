@@ -1,5 +1,5 @@
 import { readFile } from 'node:fs/promises'
-import { join } from 'node:path'
+import Path from 'node:path'
 
 import { Account } from '@xyo-network/account'
 import { isNftInfo, NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
@@ -10,7 +10,7 @@ import { isNftScore, NftScoreDiviner } from '../Diviner'
 describe('NftScoreDiviner', () => {
   let data: NftInfo[]
   beforeAll(async () => {
-    const filePath = join(__dirname, 'testData.json')
+    const filePath = Path.join(__dirname, 'testData.json')
     const fileContents = await readFile(filePath, 'utf8')
     const nfts = JSON.parse(fileContents)
     expect(nfts).toBeArray()

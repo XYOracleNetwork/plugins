@@ -118,10 +118,10 @@ export const getNftsOwnedByAddress = async (
         // Check if Upgradeable
         const [erc1967Status, erc1822Status] = await Promise.all([
           // Check if ERC-1967 Upgradeable
-          await getErc1967SlotStatus(provider, contract, block),
+          getErc1967SlotStatus(provider, contract, block),
 
           // Check if ERC-1822 Upgradeable
-          await getErc1822SlotStatus(provider, contract, block),
+          getErc1822SlotStatus(provider, contract, block),
         ])
 
         const implementation =

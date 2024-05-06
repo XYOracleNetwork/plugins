@@ -1,5 +1,5 @@
 import { existsSync } from 'node:fs'
-import { join } from 'node:path'
+import Path from 'node:path'
 
 import { assertEx } from '@xylabs/assert'
 import { testIf } from '@xylabs/jest-helpers'
@@ -20,10 +20,10 @@ const locations = [
   { quadkey: assertEx(Quadkey.fromLngLat({ lat: 47.3769, lng: 8.5417 }, 16)?.base16String), schema: LocationSchema }, //Zurich
 ]
 
-const testDataDir = join(__dirname, '..', '.testdata')
-const northEast = join(testDataDir, 'SRTM_NE_250m.tif')
-const southEast = join(testDataDir, 'SRTM_SE_250m.tif')
-const west = join(testDataDir, 'SRTM_W_250m.tif')
+const testDataDir = Path.join(__dirname, '..', '.testdata')
+const northEast = Path.join(testDataDir, 'SRTM_NE_250m.tif')
+const southEast = Path.join(testDataDir, 'SRTM_SE_250m.tif')
+const west = Path.join(testDataDir, 'SRTM_W_250m.tif')
 const config: ElevationWitnessConfig = { files: { northEast, southEast, west }, schema: ElevationWitnessConfigSchema }
 
 describe('ElevationWitness', () => {
