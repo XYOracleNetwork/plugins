@@ -9,6 +9,7 @@ export type Verb = 'get' | 'post'
 export type Queries = Record<string, string>
 
 export interface ApiCallFields {
+  headers?: Record<string, string | undefined>
   queries?: Queries
   verb?: Verb
 }

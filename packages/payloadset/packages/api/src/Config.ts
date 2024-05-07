@@ -9,6 +9,7 @@ export type ApiCallWitnessConfigSchema = typeof ApiCallWitnessConfigSchema
 
 export type ApiCallWitnessConfigBase = WitnessConfig<{
   accept?: 'application/json'
+  headers?: Record<string, string | undefined>
   queries?: ApiCall['queries']
   schema: ApiCallWitnessConfigSchema
   timeout?: number

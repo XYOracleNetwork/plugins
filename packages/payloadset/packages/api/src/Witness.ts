@@ -78,6 +78,10 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     throw new Error('Unable to determine uri. No uri/uriTemplate specified in either the call or config.')
   }
 
+  getHeaders(headers?: Record<string, string | undefined>): Record<string, string | undefined> {
+    return { ...this.params.headers, ...this.config.headers, ...headers }
+  }
+
   protected override async observeHandler(inPayloads: ApiCall[] = []): Promise<ApiCallResult[]> {
     await this.started('throw')
     try {
@@ -110,7 +114,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     }
   }
 
-  private async httpGet(url: string, call: Hash): Promise<ApiCallResult> {
+  private async httpGet(url: string, call: Hash, headers?: Record<string, string | undefined>): Promise<ApiCallResult> {
     const result: ApiCallResult = {
       call,
       schema: ApiCallResultSchema,
@@ -118,7 +122,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     try {
       switch (this.accept) {
         case 'application/json': {
-          const axios = new AxiosJson({ headers: { ...this.params.headers, Accept: 'application/json' }, timeout: this.timeout })
+          const axios = new AxiosJson({ headers: { ...this.getHeaders(headers), Accept: 'application/json' }, timeout: this.timeout })
           const response = await axios.get<ApiCallJsonResultType>(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as ApiCallJsonResult
