@@ -2,6 +2,7 @@ import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import { ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, ApiUriCall, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -85,6 +86,15 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
     })
     it.each(cases)('returns indexed NftIndex results', async (apiCall) => {
       const { uri } = apiCall
+      const archivistModule = await node.resolvePrivate('IndexArchivist')
+      expect(archivistModule).toBeDefined()
+      const archivist = asArchivistInstance(archivistModule)
+      expect(archivist).toBeDefined()
+      expect(archivist?.all).toBeDefined()
+      const allPayload = (await archivist?.all?.()) ?? []
+      console.log('uri', uri)
+      console.log(JSON.stringify(allPayload, null, 2))
+      expect(allPayload).toBe(1)
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
       const query = { limit: 1, schema: PayloadDivinerQuerySchema, uri }
