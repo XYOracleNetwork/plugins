@@ -8,7 +8,7 @@ import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-mem
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import { ImageThumbnail, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { isModuleState, ModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -70,7 +70,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
     locator.register(MemoryBoundWitnessDiviner)
     locator.register(MemoryPayloadDiviner)
     locator.register(ImageThumbnailStateToIndexCandidateDiviner)
-    const manifest = ImageThumbnailStateToIndexCandidateDivinerManifest as PackageManifest
+    const manifest = ImageThumbnailStateToIndexCandidateDivinerManifest as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     await node.start()

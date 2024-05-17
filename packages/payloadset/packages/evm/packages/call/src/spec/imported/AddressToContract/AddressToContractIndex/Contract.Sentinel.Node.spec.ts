@@ -18,7 +18,7 @@ import {
 } from '@xyo-network/diviner-temporal-indexing'
 import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -95,9 +95,9 @@ describe('Contract Node', () => {
         providers: getProvidersFromEnv,
       }),
     )
-    const publicChildren: PackageManifestPayload[] = [
-      erc721IndexNodeManifest as PackageManifestPayload,
-      erc1155IndexNodeManifest as PackageManifestPayload,
+    const publicChildren: ModuleManifest[] = [
+      ...(erc721IndexNodeManifest as PackageManifestPayload).nodes,
+      ...(erc1155IndexNodeManifest as PackageManifestPayload).nodes,
     ]
     const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)

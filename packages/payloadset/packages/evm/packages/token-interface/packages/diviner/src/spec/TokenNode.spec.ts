@@ -17,7 +17,7 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { EvmContract, EvmContractWitness, isEvmContract } from '@xyo-network/evm-contract-witness'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -70,9 +70,9 @@ describe('Contract Node', () => {
         providers: getProviders,
       }),
     )
-    const publicChildren: PackageManifestPayload[] = [
-      contractWitnessManifest as PackageManifestPayload,
-      tokenDivinerManifest as PackageManifestPayload,
+    const publicChildren: ModuleManifest[] = [
+      ...(contractWitnessManifest as PackageManifestPayload).nodes,
+      ...(tokenDivinerManifest as PackageManifestPayload).nodes,
     ]
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)

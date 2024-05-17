@@ -21,7 +21,7 @@ import {
   TemporalIndexingDivinerResultIndex,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { ManifestWrapper, PackageManifest } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { isModuleState, Labels, ModuleState } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
@@ -135,7 +135,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, labels)
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, labels)
     locator.register(TemporalIndexingDiviner, labels)
-    const manifest = imageThumbnailDivinerManifest as PackageManifest
+    const manifest = imageThumbnailDivinerManifest as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     await node.start()
