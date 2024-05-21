@@ -8,22 +8,22 @@ import { DurationFields } from '../../Duration'
 import { validateBoundWitnessAndDuration } from '../validateBoundWitnessAndDuration'
 
 describe('validateBoundWitnessAndDuration', () => {
-  let nameserver: WalletInstance
+  let nameServer: WalletInstance
   let domainOwner: WalletInstance
   let recordBw: BoundWitness
   let recordPayload: Payload<DurationFields>
   const schema = 'network.xyo.test'
   beforeAll(async () => {
-    nameserver = await HDWallet.fromPhrase('camp notable brick vast absent express leader safe obey crater yard gun multiply crouch devote')
+    nameServer = await HDWallet.fromPhrase('camp notable brick vast absent express leader safe obey crater yard gun multiply crouch devote')
     domainOwner = await HDWallet.fromPhrase('carbon donate rib engage earth vibrant cover fruit way hair poverty grunt fish husband initial')
     const delegation = {
       domain: 'foo.xyo',
       exp: Date.now() + 1_000_000,
-      nameserver: nameserver.address,
+      nameServer: nameServer.address,
       nbf: Date.now(),
       schema,
     }
-    const [bw] = await new BoundWitnessBuilder().payload(delegation).witness(domainOwner).build()
+    const [bw] = await new BoundWitnessBuilder().payload(delegation).signer(domainOwner).build()
     recordBw = bw
     recordPayload = delegation
   })

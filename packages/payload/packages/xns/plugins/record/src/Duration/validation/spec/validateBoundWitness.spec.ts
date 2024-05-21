@@ -20,7 +20,7 @@ describe('validateBoundWitness', () => {
       nbf: Date.now(),
       schema,
     }
-    const [bw] = await new BoundWitnessBuilder().payload(delegation).witness(domainOwner).build()
+    const [bw] = await new BoundWitnessBuilder().payload(delegation).signer(domainOwner).build()
     recordBw = bw
   })
   describe('returns true', () => {

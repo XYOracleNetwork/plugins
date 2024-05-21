@@ -23,7 +23,7 @@ describe('validateBoundWitnessWithDuration', () => {
       nbf: Date.now(),
       schema,
     }
-    const [bw] = await new BoundWitnessBuilder().payload(delegation).witness(domainOwner).build()
+    const [bw] = await new BoundWitnessBuilder().payload(delegation).signer(domainOwner).build()
     recordBw = bw
     recordPayload = delegation
   })
@@ -47,7 +47,7 @@ describe('validateBoundWitnessWithDuration', () => {
         nbf: Date.now() + 10_000,
         schema,
       } as Payload<DurationFields>
-      const [bw] = await new BoundWitnessBuilder().payload(invalidPayload).witness(domainOwner).build()
+      const [bw] = await new BoundWitnessBuilder().payload(invalidPayload).signer(domainOwner).build()
       expect(await validateBoundWitnessWithDuration(bw, invalidPayload)).toBeFalse()
     })
   })
