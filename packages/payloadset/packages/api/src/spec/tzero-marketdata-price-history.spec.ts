@@ -9,7 +9,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../Payload'
+import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall, isApiCallErrorResult } from '../Payload'
 import { ApiCallWitness } from '../Witness'
 import tzeroMarketdataManifest from './tzero-marketdata-price-history.json'
 
@@ -55,6 +55,7 @@ describe('tZero', () => {
       const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroMarketdataSandboxResponse>>(ApiCallResultSchema))
       expect(apiCallResult).toBeDefined()
       console.log(`Result: ${toJsonString(apiCallResult, 10)}`)
+      expect(isApiCallErrorResult(apiCallResult)).toBe(false)
     })
   })
 })

@@ -86,4 +86,6 @@ export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | Jso
   | ApiCallErrorResult
 
 export const isApiCallResult = isPayloadOfSchemaType<ApiCallResult>(ApiCallResultSchema)
+export const isApiCallErrorResult = (value: unknown): value is ApiCallErrorResult =>
+  !!isPayloadOfSchemaType<ApiCallResult>(ApiCallResultSchema) && ((value as ApiCallErrorResult).http?.status ?? 200) >= 400
 export const asApiCallResult = AsObjectFactory.create(isApiCallResult)

@@ -1,5 +1,5 @@
 import { ApiCallWitnessConfigSchema } from '../Config'
-import { ApiCallResultSchema, ApiCallSchema } from '../Payload'
+import { ApiCallResultSchema, ApiCallSchema, isApiCallErrorResult } from '../Payload'
 import { ApiCallWitness } from '../Witness'
 
 describe('CryptoWalletNftWitness', () => {
@@ -12,6 +12,7 @@ describe('CryptoWalletNftWitness', () => {
       })
       const observation = await witness.observe([{ schema: ApiCallSchema, uri }])
       expect(observation[0].schema).toBe(ApiCallResultSchema)
+      expect(isApiCallErrorResult(observation[0].schema)).toBe(false)
     })
   })
 })
