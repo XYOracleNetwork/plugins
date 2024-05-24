@@ -1,3 +1,4 @@
+import { delay } from '@xylabs/delay'
 import { Account } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
@@ -43,7 +44,7 @@ describe('Witness', () => {
       sentinel = await MemorySentinel.create({
         account: Account.randomSync(),
         config: {
-          archiving: { archivists: [archivistName] },
+          archiving: { archivists: [archivist.address] },
           schema: MemorySentinel.defaultConfigSchema,
           synchronous: true,
           tasks: [{ input: true, module: thumbnailWitness.address }, { module: timestampWitness.address }],
@@ -79,6 +80,7 @@ describe('Witness', () => {
       expect(thumbnails.length).toBe(1)
       const thumbnail = thumbnails[0]
       expect(thumbnail.sourceUrl).toBe(url)
+      await delay(1000)
       const payloads = await archivist?.all()
       expect(payloads?.length).toBeGreaterThan(0)
     })

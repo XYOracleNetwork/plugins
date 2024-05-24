@@ -1,4 +1,5 @@
 /* eslint-disable max-statements */
+import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
@@ -70,12 +71,9 @@ describe('Contract Node', () => {
         providers: getProviders,
       }),
     )
-    const publicChildren: ModuleManifest[] = [
-      ...(contractWitnessManifest as PackageManifestPayload).nodes,
-      ...(tokenDivinerManifest as PackageManifestPayload).nodes,
-    ]
+    const publicChildren: ModuleManifest[] = [...contractWitnessManifest.nodes, ...tokenDivinerManifest.nodes]
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
-    node = await manifest.loadNodeFromIndex(0)
+    node = assertEx((await manifest.loadNodes()).at(0), () => 'Node not loaded')
     const mods = await node.resolve('*')
     expect(mods).toBeDefined()
   })
@@ -109,7 +107,9 @@ describe('Contract Node', () => {
       await delay(1000)
     })
     it.each(cases)('With %s (%s)', async (tokenInterface, address) => {
-      const diviner = asDivinerInstance(await node.resolve('EvmTokenInterfaceImplementedIndexDiviner'))
+      const divinerModule = await node.resolve('EvmTokenInterfaceImplementedIndexDiviner')
+      expect(divinerModule).toBeDefined()
+      const diviner = asDivinerInstance(divinerModule)
       expect(diviner).toBeDefined()
       const query = { address, chainId, implemented: true, schema: PayloadDivinerQuerySchema, tokenInterface }
       const result = await diviner?.divine([query])

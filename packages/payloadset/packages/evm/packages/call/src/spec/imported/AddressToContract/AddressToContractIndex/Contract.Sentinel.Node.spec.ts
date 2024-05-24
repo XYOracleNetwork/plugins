@@ -20,7 +20,7 @@ import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
 import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { ModuleFactory } from '@xyo-network/module-model'
+import { ModuleFactory, resolveLocalNameToAddress, resolveLocalNameToInstance, resolvePathToAddress } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
@@ -46,10 +46,14 @@ describe('Contract Node', () => {
     ['ERC1155', '0xbF42C1972877F39e102807E5E80ed2ff5D16aa5f'.toLowerCase()],
   ]
   let wallet: WalletInstance
+  let wallet721: WalletInstance
+  let wallet1155: WalletInstance
   let node: MemoryNode
   beforeAll(async () => {
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
     wallet = await HDWallet.fromPhrase(mnemonic)
+    wallet721 = await HDWallet.random()
+    wallet1155 = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
     locator.register(MemoryArchivist)
     locator.register(MemoryBoundWitnessDiviner)
@@ -95,12 +99,21 @@ describe('Contract Node', () => {
         providers: getProvidersFromEnv,
       }),
     )
-    const publicChildren: ModuleManifest[] = [
-      ...(erc721IndexNodeManifest as PackageManifestPayload).nodes,
-      ...(erc1155IndexNodeManifest as PackageManifestPayload).nodes,
-    ]
-    const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
+
+    const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
+
+    const manifest721 = new ManifestWrapper(erc721IndexNodeManifest as PackageManifestPayload, wallet721, locator)
+    const node721 = await manifest721.loadNodeFromIndex(0)
+
+    await node.register(node721)
+    await node.attach(node721.address, true)
+
+    const manifest1155 = new ManifestWrapper(erc1155IndexNodeManifest as PackageManifestPayload, wallet1155, locator)
+    const node1155 = await manifest1155.loadNodeFromIndex(0)
+
+    await node.register(node1155)
+    await node.attach(node1155.address, true)
   })
   describe('Sentinel', () => {
     it.each(cases)('With %s (%s)', async (_, address) => {
@@ -126,7 +139,7 @@ describe('Contract Node', () => {
   describe('ERC721 Index', () => {
     const erc721Cases = cases.filter(([type]) => type === 'ERC721')
     it.each(erc721Cases)('With %s (%s)', async (_, address) => {
-      const diviner = asDivinerInstance(await node.resolve('Erc721IndexDiviner'))
+      const diviner = asDivinerInstance(await node.resolve('NftInfo:Erc721IndexDiviner'))
       expect(diviner).toBeDefined()
       const query: PayloadDivinerQueryPayload = { address: address.toLowerCase() as Address, schema: PayloadDivinerQuerySchema }
       const result = await diviner?.divine([query])
@@ -137,12 +150,21 @@ describe('Contract Node', () => {
   describe('ERC1155 Index', () => {
     const erc1155 = cases.filter(([type]) => type === 'ERC1155')
     it.each(erc1155)('With %s (%s)', async (_, address) => {
-      const diviner = asDivinerInstance(await node.resolve('Erc1155IndexDiviner'))
-      expect(diviner).toBeDefined()
-      const query: PayloadDivinerQueryPayload = { address: address.toLowerCase() as Address, schema: PayloadDivinerQuerySchema }
-      const result = await diviner?.divine([query])
-      expect(result).toBeDefined()
-      expect(result).toBeArrayOfSize(1)
+      const erc1155Node = await resolveLocalNameToInstance(node, 'ERC1155Node')
+      expect(erc1155Node).toBeDefined()
+      if (erc1155Node) {
+        expect(await resolveLocalNameToAddress(erc1155Node, 'Erc1155IndexDiviner')).toBeDefined()
+        const modAddress = await resolvePathToAddress(node, 'ERC1155Node:Erc1155IndexDiviner')
+        expect(modAddress).toBeDefined()
+        if (modAddress) {
+          const diviner = asDivinerInstance(await node.resolve(modAddress))
+          expect(diviner).toBeDefined()
+          const query: PayloadDivinerQueryPayload = { address: address.toLowerCase() as Address, schema: PayloadDivinerQuerySchema }
+          const result = await diviner?.divine([query])
+          expect(result).toBeDefined()
+          expect(result).toBeArrayOfSize(1)
+        }
+      }
     })
   })
 })
