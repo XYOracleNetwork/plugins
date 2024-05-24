@@ -15,12 +15,12 @@
               "language": "javascript",
               "name": "ApiCallWitness",
               "schema": "network.xyo.api.call.witness.config",
-              "uriTemplate": "https://gateway-web-markets-staging.tzero.com/mdt/public-snapshots"
+              "uriTemplate": "https://gateway-web-markets.tzero.com/mdt/public-pricehistory/${symbol}"
             }
           },
           {
             "config": {
-              "accountPath": "0/1",
+              "accountPath": "1/0",
               "language": "javascript",
               "name": "ApiCallSentinel",
               "schema": "network.xyo.sentinel.config",

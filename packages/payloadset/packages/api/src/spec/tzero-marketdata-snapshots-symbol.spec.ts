@@ -11,14 +11,14 @@ import { asWitnessInstance } from '@xyo-network/witness-model'
 
 import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../Payload'
 import { ApiCallWitness } from '../Witness'
-import tzeroMarketdataManifest from './tzero-marketdata-sandbox-price-history.json'
+import tzeroMarketdataManifest from './tzero-marketdata-snapshots-symbol.json'
 
 describe('tZero', () => {
   const symbol = 'XYLB'
 
   const apiKey = process.env.TZERO_MARKETDATA_SANDBOX_API_KEY
 
-  describeIf(apiKey)('price-history', () => {
+  describeIf(apiKey)('snapshots', () => {
     type TZeroMarketdataSandboxResponse = JsonObject
     it('specifying symbol', async () => {
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'

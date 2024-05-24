@@ -11,11 +11,9 @@ import { asWitnessInstance } from '@xyo-network/witness-model'
 
 import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../Payload'
 import { ApiCallWitness } from '../Witness'
-import tzeroMarketdataManifest from './tzero-marketdata-sandbox-snapshots-symbol.json'
+import tzeroMarketdataManifest from './tzero-marketdata-snapshots.json'
 
 describe('tZero', () => {
-  const symbol = 'XYLB'
-
   const apiKey = process.env.TZERO_MARKETDATA_SANDBOX_API_KEY
 
   describeIf(apiKey)('snapshots', () => {
@@ -48,7 +46,7 @@ describe('tZero', () => {
       const sentinel = asSentinelInstance(await node.resolve('ApiCallSentinel'))
       expect(sentinel).toBeDefined()
 
-      const call: ApiUriTemplateCall = { params: { symbol }, schema: ApiCallSchema }
+      const call: ApiUriTemplateCall = { schema: ApiCallSchema }
 
       const report = await sentinel?.report([call])
 
