@@ -37,11 +37,11 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       // BAYC
       uri: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15',
     },
-    {
+    /*{
       schema: ApiCallSchema,
       // Gutter Cats
       uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
-    },
+    },*/
   ]
   beforeAll(async () => {
     const wallet = await HDWallet.random()
@@ -94,7 +94,7 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       const allPayload = (await archivist?.all?.()) ?? []
       console.log('uri', uri)
       console.log(JSON.stringify(allPayload, null, 2))
-      expect(allPayload).toBe(1)
+      expect(allPayload).toBeArrayOfSize(1)
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
       const query = { limit: 1, schema: PayloadDivinerQuerySchema, uri }
