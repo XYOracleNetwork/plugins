@@ -18,7 +18,7 @@ describe('tZero', () => {
   const apiKey = process.env.TZERO_MARKETDATA_API_KEY
 
   describeIf(apiKey)('price-history', () => {
-    interface HistoricalData extends JsonObject {
+    interface TZeroHistoricalPrice extends JsonObject {
       close: number | null
       date: string
       high: number | null
@@ -27,8 +27,13 @@ describe('tZero', () => {
       symbol: string
       volume: number
     }
-
-    type TZeroMarketdataSandboxResponse = JsonObject
+    interface TZeroPriceHistoryResponse extends JsonObject {
+      currentPage: number
+      priceHistories: TZeroHistoricalPrice[]
+      size: number
+      totalCount: number
+      totalPages: number
+    }
     let sentinel: SentinelInstance
 
     beforeAll(async () => {
@@ -52,7 +57,7 @@ describe('tZero', () => {
 
       const report = await sentinel?.report([call])
 
-      const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroMarketdataSandboxResponse>>(ApiCallResultSchema))
+      const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroPriceHistoryResponse>>(ApiCallResultSchema))
       expect(apiCallResult).toBeDefined()
       console.log(`Result: ${toJsonString(apiCallResult, 10)}`)
       expect(isApiCallErrorResult(apiCallResult)).toBe(false)
