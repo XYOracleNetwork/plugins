@@ -64,6 +64,7 @@ describe('tZero', () => {
       const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroMarketdataSnapshotResponse>>(ApiCallResultSchema))
       expect(apiCallResult).toBeDefined()
       expect(isApiCallErrorResult(apiCallResult)).toBe(false)
+      expect(apiCallResult?.data).toBeObject()
       const data = assertEx(apiCallResult?.data)
       expect(data.askPrice).toBeOneOf([null, expect.any(Number)])
       expect(data.askPriceRate).toBeOneOf([null, expect.any(Number)])
