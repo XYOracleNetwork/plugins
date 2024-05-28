@@ -16,7 +16,7 @@ import tzeroMarketdataManifest from './tzero-marketdata-snapshots.json'
 describe('tZero', () => {
   const apiKey = process.env.TZERO_MARKETDATA_API_KEY
 
-  describeIf(apiKey)('snapshots', () => {
+  describeIf(apiKey)('public-snapshots', () => {
     type TZeroMarketdataSandboxResponse = JsonObject
     let sentinel: SentinelInstance
 
@@ -36,7 +36,7 @@ describe('tZero', () => {
       expect(sentinelInstance).toBeDefined()
       sentinel = assertEx(sentinelInstance)
     })
-    it('specifying symbol', async () => {
+    it('returns all public snapshots', async () => {
       const call: ApiUriTemplateCall = { schema: ApiCallSchema }
 
       const report = await sentinel?.report([call])

@@ -15,10 +15,19 @@ import tzeroMarketdataManifest from './tzero-marketdata-price-history.json'
 
 describe('tZero', () => {
   const symbol = 'XYLB'
-
   const apiKey = process.env.TZERO_MARKETDATA_API_KEY
 
   describeIf(apiKey)('price-history', () => {
+    interface HistoricalData extends JsonObject {
+      close: number | null
+      date: string
+      high: number | null
+      low: number | null
+      open: number | null
+      symbol: string
+      volume: number
+    }
+
     type TZeroMarketdataSandboxResponse = JsonObject
     let sentinel: SentinelInstance
 
