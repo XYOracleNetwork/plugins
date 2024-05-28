@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { describeIf } from '@xylabs/jest-helpers'
-import { JsonObject, toJsonString } from '@xylabs/object'
+import { JsonObject } from '@xylabs/object'
 import { HDWallet } from '@xyo-network/account'
 import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
@@ -59,8 +59,23 @@ describe('tZero', () => {
 
       const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroPriceHistoryResponse>>(ApiCallResultSchema))
       expect(apiCallResult).toBeDefined()
-      console.log(`Result: ${toJsonString(apiCallResult, 10)}`)
       expect(isApiCallErrorResult(apiCallResult)).toBe(false)
+      expect(apiCallResult?.data).toBeObject()
+      const data = assertEx(apiCallResult?.data)
+      expect(data.currentPage).toEqual(expect.any(Number))
+      expect(data.priceHistories).toBeArray()
+      for (const priceHistory of data.priceHistories) {
+        expect(priceHistory.symbol).toEqual(expect.any(String))
+        expect(priceHistory.date).toEqual(expect.any(String))
+        expect(priceHistory.open).toBeOneOf([null, expect.any(Number)])
+        expect(priceHistory.high).toBeOneOf([null, expect.any(Number)])
+        expect(priceHistory.low).toBeOneOf([null, expect.any(Number)])
+        expect(priceHistory.close).toBeOneOf([null, expect.any(Number)])
+        expect(priceHistory.volume).toEqual(expect.any(Number))
+      }
+      expect(data.size).toEqual(expect.any(Number))
+      expect(data.totalCount).toEqual(expect.any(Number))
+      expect(data.totalPages).toEqual(expect.any(Number))
     })
   })
 })
