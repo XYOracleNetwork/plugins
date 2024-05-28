@@ -64,6 +64,7 @@ describe('tZero', () => {
       const data = assertEx(apiCallResult?.data)
       expect(data.currentPage).toEqual(expect.any(Number))
       expect(data.priceHistories).toBeArray()
+      expect(data.priceHistories.length).toBeGreaterThan(0)
       for (const priceHistory of data.priceHistories) {
         expect(priceHistory.symbol).toEqual(expect.any(String))
         expect(priceHistory.date).toEqual(expect.any(String))
