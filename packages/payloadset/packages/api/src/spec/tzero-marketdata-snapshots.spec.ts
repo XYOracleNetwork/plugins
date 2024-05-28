@@ -17,7 +17,28 @@ describe('tZero', () => {
   const apiKey = process.env.TZERO_MARKETDATA_API_KEY
 
   describeIf(apiKey)('public-snapshots', () => {
-    type TZeroMarketdataSandboxResponse = JsonObject
+    interface Snapshot extends JsonObject {
+      askPrice: number
+      askPriceRate: number | null
+      askQtyBookTotal: number
+      askQuantity: number
+      bidPrice: number
+      bidPriceRate: number | null
+      high: number | null
+      lastPrice: number | null
+      lastQuantity: number | null
+      low: number | null
+      open: number | null
+      prevClosePx: number
+      symbol: string
+      timestamp: string
+      volume: number
+    }
+
+    interface TZeroMarketdataSandboxResponse extends JsonObject {
+      snapshots: Snapshot[]
+    }
+
     let sentinel: SentinelInstance
 
     beforeAll(async () => {
@@ -44,6 +65,28 @@ describe('tZero', () => {
       const apiCallResult = report?.find(isPayloadOfSchemaType<ApiCallJsonResult<TZeroMarketdataSandboxResponse>>(ApiCallResultSchema))
       expect(apiCallResult).toBeDefined()
       expect(isApiCallErrorResult(apiCallResult)).toBe(false)
+      expect(apiCallResult?.data).toBeObject()
+      const data = assertEx(apiCallResult?.data)
+      expect(data.snapshots).toBeArray()
+      for (const snapshot of data.snapshots) {
+        expect(snapshot.symbol).toEqual(expect.any(String))
+        expect(snapshot.high).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.low).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.open).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.volume).toEqual(expect.any(Number))
+        expect(snapshot.lastPrice).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.lastQuantity).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.prevClosePx).toEqual(expect.any(Number))
+        expect(snapshot.bidPrice).toEqual(expect.any(Number))
+        expect(snapshot.bidPriceRate).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.bidQuantity).toEqual(expect.any(Number))
+        expect(snapshot.bidQtyBookTotal).toEqual(expect.any(Number))
+        expect(snapshot.askPrice).toEqual(expect.any(Number))
+        expect(snapshot.askPriceRate).toBeOneOf([null, expect.any(Number)])
+        expect(snapshot.askQuantity).toEqual(expect.any(Number))
+        expect(snapshot.askQtyBookTotal).toEqual(expect.any(Number))
+        expect(snapshot.timestamp).toEqual(expect.any(String))
+      }
     })
   })
 })
