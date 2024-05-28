@@ -14,7 +14,7 @@ import { ApiCallWitness } from '../Witness'
 import tzeroMarketdataManifest from './tzero-marketdata-snapshots.json'
 
 describe('tZero', () => {
-  const apiKey = process.env.TZERO_MARKETDATA_SANDBOX_API_KEY
+  const apiKey = process.env.TZERO_MARKETDATA_API_KEY
 
   describeIf(apiKey)('snapshots', () => {
     type TZeroMarketdataSandboxResponse = JsonObject
