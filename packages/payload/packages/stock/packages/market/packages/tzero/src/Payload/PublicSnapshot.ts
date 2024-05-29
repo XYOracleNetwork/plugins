@@ -1,3 +1,6 @@
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+
+import { TZeroStockMarketSchema } from '../Schema'
 export interface PublicSnapshotFields {
   askPrice: number | null
   askPriceRate: number | null
@@ -17,3 +20,16 @@ export interface PublicSnapshotFields {
   timestamp: string
   volume: number
 }
+
+export const PublicSnapshotSchema = `${TZeroStockMarketSchema}.public-snapshot`
+export type PublicSnapshotSchema = typeof PublicSnapshotSchema
+
+/**
+ * The PublicSnapshot payload
+ */
+export type PublicSnapshot = Payload<PublicSnapshotFields, PublicSnapshotSchema>
+
+/**
+ * Identity function for PublicSnapshot payload
+ */
+export const isContractInfo = isPayloadOfSchemaType<PublicSnapshot>(PublicSnapshotSchema)
