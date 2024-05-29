@@ -1,5 +1,5 @@
 import { JsonObject } from '@xylabs/object'
-import { ApiCallResult, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import { isApiCallJsonResult } from '@xyo-network/api-call-witness'
 import { Snapshot, SnapshotFields, SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 
 interface SnapshotJson extends JsonObject, SnapshotFields {}
@@ -8,7 +8,7 @@ const isSnapshotApiCallJsonResult = isApiCallJsonResult<SnapshotJson>
 
 const numberOrNull = (value: unknown): number | null => (typeof value === 'number' ? value : null)
 
-export const tryMapToSnapshot = (response: ApiCallResult): Snapshot | undefined => {
+export const tryMapToSnapshot = (response?: unknown): Snapshot | undefined => {
   if (isSnapshotApiCallJsonResult(response)) {
     const data: Partial<SnapshotFields> = response.data
     const { symbol, timestamp, volume } = data
