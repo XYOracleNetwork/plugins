@@ -6921,26 +6921,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/stock-asset-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/asset, @xyo-network/stock-asset-payload-plugin@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/stock-asset-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/asset"
-  dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
-    "@xylabs/tsconfig": "npm:^3.10.4"
-    "@xyo-network/payload-model": "npm:^2.103.1"
-    "@xyo-network/payload-plugin": "npm:^2.103.1"
-    typescript: "npm:^5.4.5"
-  languageName: unknown
-  linkType: soft
-
-"@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market":
+"@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market, @xyo-network/stock-market-payload-plugins@workspace:~":
   version: 0.0.0-use.local
   resolution: "@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market"
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
     "@xylabs/tsconfig": "npm:^3.10.4"
     "@xyo-network/payload-plugin": "npm:^2.103.1"
-    "@xyo-network/stock-asset-payload-plugin": "workspace:~"
     "@xyo-network/tzero-stock-market-payload-plugin": "workspace:~"
     typescript: "npm:^5.4.5"
   languageName: unknown
@@ -6952,9 +6939,8 @@ __metadata:
   dependencies:
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
     "@xylabs/tsconfig": "npm:^3.10.4"
-    "@xyo-network/crypto-cards-payload-plugins": "workspace:~"
-    "@xyo-network/crypto-market-payload-plugins": "workspace:~"
     "@xyo-network/payload-plugin": "npm:^2.103.1"
+    "@xyo-network/stock-market-payload-plugins": "workspace:~"
     typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
