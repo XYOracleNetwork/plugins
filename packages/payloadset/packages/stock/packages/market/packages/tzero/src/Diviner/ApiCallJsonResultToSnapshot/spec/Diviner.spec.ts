@@ -2,8 +2,8 @@ import { HDWallet } from '@xyo-network/account'
 import { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 
-import { TZeroStockMarketDiviner } from '../Diviner'
-import { TZeroStockMarketDivinerConfigSchema } from '../Schema'
+import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
+import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema'
 
 describe('TZeroStockMarketDiviner', () => {
   const config = {
@@ -38,7 +38,7 @@ describe('TZeroStockMarketDiviner', () => {
     ]
     it.each(cases)('with API Response', async (payload) => {
       const account = await HDWallet.random()
-      const sut = await TZeroStockMarketDiviner.create({ account, config })
+      const sut = await TZeroApiCallJsonResultToSnapshotDiviner.create({ account, config })
       const result = await sut.divine([payload])
       expect(result).toBeArrayOfSize(1)
       const [actual] = result
@@ -57,7 +57,7 @@ describe('TZeroStockMarketDiviner', () => {
     ]
     it.each(cases)('with non API Response', async (payload) => {
       const account = await HDWallet.random()
-      const sut = await TZeroStockMarketDiviner.create({ account, config })
+      const sut = await TZeroApiCallJsonResultToSnapshotDiviner.create({ account, config })
       const result = await sut.divine([payload])
       expect(result).toBeArrayOfSize(0)
     })

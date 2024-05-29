@@ -8,15 +8,15 @@ import { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 
 import { TZeroStockMarketDivinerConfig } from './Config'
 import { tryMapToSnapshot } from './lib'
-import { TZeroStockMarketDivinerConfigSchema } from './Schema'
+import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema'
 
-export type TZeroApiCallWitnessToSnapshotDivinerParams = DivinerParams<AnyConfigSchema<TZeroStockMarketDivinerConfig>>
+export type TZeroApiCallJsonResultToSnapshotDivinerParams = DivinerParams<AnyConfigSchema<TZeroStockMarketDivinerConfig>>
 
-export class TZeroStockMarketDiviner<
-  TParams extends TZeroApiCallWitnessToSnapshotDivinerParams = TZeroApiCallWitnessToSnapshotDivinerParams,
+export class TZeroApiCallJsonResultToSnapshotDiviner<
+  TParams extends TZeroApiCallJsonResultToSnapshotDivinerParams = TZeroApiCallJsonResultToSnapshotDivinerParams,
 > extends AbstractDiviner<TParams> {
-  static override readonly configSchemas: Schema[] = [...super.configSchemas, TZeroStockMarketDivinerConfigSchema]
-  static override readonly defaultConfigSchema: Schema = TZeroStockMarketDivinerConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, TZeroApiCallJsonResultToSnapshotDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = TZeroApiCallJsonResultToSnapshotDivinerConfigSchema
 
   protected override divineHandler(payloads?: Payload[]): Promisable<WithSources<Snapshot>[]> {
     if (!payloads) return []
