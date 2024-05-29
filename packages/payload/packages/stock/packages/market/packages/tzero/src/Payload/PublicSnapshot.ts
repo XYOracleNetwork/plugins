@@ -1,4 +1,4 @@
-export interface MarketdataSnapshotFields {
+export interface PublicSnapshotFields {
   askPrice: number | null
   askPriceRate: number | null
   askQtyBookTotal: number | null
