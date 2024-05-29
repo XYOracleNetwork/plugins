@@ -1,10 +1,7 @@
-import { CryptoAsset } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import { WitnessConfig } from '@xyo-network/witness-model'
+import { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { CoingeckoCryptoMarketWitnessConfigSchema } from './Schema'
+import { TZeroStockMarketDivinerConfigSchema } from './Schema'
 
-export type CoingeckoCryptoMarketWitnessConfig = WitnessConfig<{
-  coins?: CryptoAsset[]
-  currencies?: CryptoAsset[]
-  schema: CoingeckoCryptoMarketWitnessConfigSchema
+export type CoingeckoCryptoMarketDivinerConfig = DivinerConfig<{
+  schema: TZeroStockMarketDivinerConfigSchema
 }>

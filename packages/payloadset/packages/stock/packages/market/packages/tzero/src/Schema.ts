@@ -1,2 +1,2 @@
-export type CoingeckoCryptoMarketWitnessConfigSchema = 'network.xyo.crypto.market.coingecko.witness.config'
-export const CoingeckoCryptoMarketWitnessConfigSchema: CoingeckoCryptoMarketWitnessConfigSchema = 'network.xyo.crypto.market.coingecko.witness.config'
+export type TZeroStockMarketDivinerConfigSchema = 'network.xyo.stock.market.tzero.diviner.config'
+export const TZeroStockMarketDivinerConfigSchema: TZeroStockMarketDivinerConfigSchema = 'network.xyo.stock.market.tzero.diviner.config'
