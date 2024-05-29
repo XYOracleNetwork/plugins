@@ -6921,6 +6921,44 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/stock-asset-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/asset, @xyo-network/stock-asset-payload-plugin@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/stock-asset-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/asset"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
+    "@xylabs/tsconfig": "npm:^3.10.4"
+    "@xyo-network/payload-model": "npm:^2.103.1"
+    "@xyo-network/payload-plugin": "npm:^2.103.1"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
+    "@xylabs/tsconfig": "npm:^3.10.4"
+    "@xyo-network/payload-plugin": "npm:^2.103.1"
+    "@xyo-network/stock-asset-payload-plugin": "workspace:~"
+    "@xyo-network/tzero-stock-market-payload-plugin": "workspace:~"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/stock-payload-plugins@workspace:packages/payload/packages/stock":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/stock-payload-plugins@workspace:packages/payload/packages/stock"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
+    "@xylabs/tsconfig": "npm:^3.10.4"
+    "@xyo-network/crypto-cards-payload-plugins": "workspace:~"
+    "@xyo-network/crypto-market-payload-plugins": "workspace:~"
+    "@xyo-network/payload-plugin": "npm:^2.103.1"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/system-payload-plugins@workspace:packages/payload/packages/system":
   version: 0.0.0-use.local
   resolution: "@xyo-network/system-payload-plugins@workspace:packages/payload/packages/system"
@@ -6953,6 +6991,18 @@ __metadata:
   checksum: 10/9ec98a44dc60fa599cca3a2bcdd8708691d8579966b0caac76ea15d37c8441fa9cf592cb7651c48c7fdfab0f013d5fb4f96fc099aba3523449f8e484e450b629
   languageName: node
   linkType: hard
+
+"@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero, @xyo-network/tzero-stock-market-payload-plugin@workspace:~":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
+    "@xylabs/tsconfig": "npm:^3.10.4"
+    "@xyo-network/payload-model": "npm:^2.103.1"
+    "@xyo-network/payload-plugin": "npm:^2.103.1"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
 
 "@xyo-network/uniswap-crypto-market-payload-plugin@workspace:packages/payload/packages/crypto/packages/market/packages/uniswap, @xyo-network/uniswap-crypto-market-payload-plugin@workspace:~":
   version: 0.0.0-use.local
