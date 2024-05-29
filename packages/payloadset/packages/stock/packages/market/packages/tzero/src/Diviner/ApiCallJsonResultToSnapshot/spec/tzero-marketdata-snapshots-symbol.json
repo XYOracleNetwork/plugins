@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/XYOracleNetwork/sdk-xyo-client-js/a5a229a767e3998e13cce8160fd1c2b027317424/packages/manifest/src/schema.json",
+  "nodes": [
+    {
+      "config": {
+        "accountPath": "0",
+        "name": "ApiCall",
+        "schema": "network.xyo.node.config"
+      },
+      "modules": {
+        "public": [
+          {
+            "config": {
+              "accountPath": "0/0",
+              "name": "ApiCallWitness",
+              "schema": "network.xyo.api.call.witness.config",
+              "uriTemplate": "https://gateway-web-markets.tzero.com/mdt/public-snapshots/${symbol}"
+            }
+          },
+          {
+            "config": {
+              "accountPath": "0/1",
+              "name": "TZeroApiCallJsonResultToSnapshotDiviner",
+              "schema": "network.xyo.stock.market.tzero.api.snapshot.diviner.config"
+            }
+          },
+          {
+            "config": {
+              "accountPath": "0/2",
+              "name": "ApiCallSentinel",
+              "schema": "network.xyo.sentinel.config",
+              "synchronous": "true",
+              "tasks": [
+                {
+                  "input": true,
+                  "module": "ApiCallWitness"
+                },
+                {
+                  "input": ["ApiCallWitness"],
+                  "module": "TZeroApiCallJsonResultToSnapshotDiviner"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "schema": "network.xyo.manifest"
+}
