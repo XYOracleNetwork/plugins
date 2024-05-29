@@ -10,7 +10,7 @@ import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
-import tzeroMarketdataManifest from './tzero-marketdata-snapshots-symbol.json'
+import tzeroMarketdataManifest from './ApiCallWitnessManifest.json'
 
 describe('tZero', () => {
   const symbol = 'XYLB'

@@ -5,7 +5,7 @@ import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
 import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema'
 
-describe('TZeroStockMarketDiviner', () => {
+describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
   const config = {
     schema: TZeroApiCallJsonResultToSnapshotDivinerConfigSchema,
   }
