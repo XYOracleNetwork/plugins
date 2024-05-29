@@ -1,0 +1,68 @@
+{
+  "name": "@xyo-network/tzero-crypto-market-plugin",
+  "author": {
+    "email": "support@xyo.network",
+    "name": "XYO Development Team",
+    "url": "https://xyo.network"
+  },
+  "bugs": {
+    "email": "support@xyo.network",
+    "url": "https://github.com/XYOracleNetwork/plugins/issues"
+  },
+  "dependencies": {
+    "@xylabs/axios": "^3.3.3",
+    "@xyo-network/abstract-witness": "^2.103.1",
+    "@xyo-network/module-model": "^2.103.1",
+    "@xyo-network/payload-model": "^2.103.1",
+    "@xyo-network/payloadset-plugin": "^2.103.1"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^3.10.4",
+    "@xylabs/tsconfig": "^3.10.4",
+    "@xyo-network/account": "^2.103.1",
+    "@xyo-network/payload-wrapper": "^2.103.1",
+    "@xyo-network/witness-model": "^2.103.1",
+    "typescript": "^5.4.5"
+  },
+  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "types": "dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "browser": {
+        "require": {
+          "types": "./dist/browser/index.d.cts",
+          "default": "./dist/browser/index.cjs"
+        },
+        "import": {
+          "types": "./dist/browser/index.d.mts",
+          "default": "./dist/browser/index.js"
+        }
+      },
+      "node": {
+        "require": {
+          "types": "./dist/node/index.d.cts",
+          "default": "./dist/node/index.cjs"
+        },
+        "import": {
+          "types": "./dist/node/index.d.mts",
+          "default": "./dist/node/index.js"
+        }
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "dist/node/index.cjs",
+  "module": "dist/node/index.js",
+  "homepage": "https://xyo.network",
+  "license": "LGPL-3.0-only",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "sideEffects": false,
+  "version": "2.95.3",
+  "type": "module"
+}
