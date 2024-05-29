@@ -1,11 +1,11 @@
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { PublicSnapshotSchema } from './Schema'
+import { SnapshotSchema } from './Schema'
 
 /**
- * The fields for a PublicSnapshot
+ * The fields for a Snapshot
  */
-export interface PublicSnapshotFields {
+export interface SnapshotFields {
   askPrice: number | null
   askPriceRate: number | null
   askQtyBookTotal: number | null
@@ -26,11 +26,11 @@ export interface PublicSnapshotFields {
 }
 
 /**
- * The PublicSnapshot payload
+ * The Snapshot payload
  */
-export type PublicSnapshot = Payload<PublicSnapshotFields, PublicSnapshotSchema>
+export type Snapshot = Payload<SnapshotFields, SnapshotSchema>
 
 /**
- * Identity function for PublicSnapshot payload
+ * Identity function for Snapshot payload
  */
-export const isContractInfo = isPayloadOfSchemaType<PublicSnapshot>(PublicSnapshotSchema)
+export const isSnapshot = isPayloadOfSchemaType<Snapshot>(SnapshotSchema)

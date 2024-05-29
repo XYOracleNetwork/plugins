@@ -1,2 +1,2 @@
 export * from './PriceHistory'
-export * from './PublicSnapshot'
+export * from './Snapshot'

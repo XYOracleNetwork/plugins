@@ -1,36 +1,37 @@
 import { JsonObject } from '@xylabs/object'
 import { ApiCallResult, isApiCallJsonResult } from '@xyo-network/api-call-witness'
-import { PublicSnapshotFields } from '@xyo-network/tzero-stock-market-payload-plugin'
+import { Snapshot, SnapshotFields, SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 
-interface PublicSnapshotJson extends JsonObject, PublicSnapshotFields {}
+interface SnapshotJson extends JsonObject, SnapshotFields {}
 
-const isPublicSnapshotApiCallJsonResult = isApiCallJsonResult<PublicSnapshotJson>
+const isSnapshotApiCallJsonResult = isApiCallJsonResult<SnapshotJson>
 
 const numberOrNull = (value: unknown): number | null => (typeof value === 'number' ? value : null)
 
-export const tryMapToPublicSnapshot = (response: ApiCallResult): PublicSnapshotFields | undefined => {
-  if (isPublicSnapshotApiCallJsonResult(response)) {
-    const fields: Partial<PublicSnapshotFields> = response.data
-    const { symbol, timestamp, volume } = fields
+export const tryMapToSnapshot = (response: ApiCallResult): Snapshot | undefined => {
+  if (isSnapshotApiCallJsonResult(response)) {
+    const data: Partial<SnapshotFields> = response.data
+    const { symbol, timestamp, volume } = data
     if (!symbol || !timestamp || !volume) return undefined
-    return {
-      askPrice: numberOrNull(fields.askPrice),
-      askPriceRate: numberOrNull(fields.askPriceRate),
-      askQtyBookTotal: numberOrNull(fields.askQtyBookTotal),
-      askQuantity: numberOrNull(fields.askQuantity),
-      bidPrice: numberOrNull(fields.bidPrice),
-      bidPriceRate: numberOrNull(fields.bidPriceRate),
-      bidQtyBookTotal: numberOrNull(fields.bidQtyBookTotal),
-      bidQuantity: numberOrNull(fields.bidQuantity),
-      high: numberOrNull(fields.high),
-      lastPrice: numberOrNull(fields.lastPrice),
-      lastQuantity: numberOrNull(fields.lastQuantity),
-      low: numberOrNull(fields.low),
-      open: numberOrNull(fields.open),
-      prevClosePx: numberOrNull(fields.prevClosePx),
+    const fields = {
+      askPrice: numberOrNull(data.askPrice),
+      askPriceRate: numberOrNull(data.askPriceRate),
+      askQtyBookTotal: numberOrNull(data.askQtyBookTotal),
+      askQuantity: numberOrNull(data.askQuantity),
+      bidPrice: numberOrNull(data.bidPrice),
+      bidPriceRate: numberOrNull(data.bidPriceRate),
+      bidQtyBookTotal: numberOrNull(data.bidQtyBookTotal),
+      bidQuantity: numberOrNull(data.bidQuantity),
+      high: numberOrNull(data.high),
+      lastPrice: numberOrNull(data.lastPrice),
+      lastQuantity: numberOrNull(data.lastQuantity),
+      low: numberOrNull(data.low),
+      open: numberOrNull(data.open),
+      prevClosePx: numberOrNull(data.prevClosePx),
       symbol,
       timestamp,
       volume,
     }
+    return { ...fields, schema: SnapshotSchema }
   }
 }
