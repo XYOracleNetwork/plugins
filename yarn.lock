@@ -6978,9 +6978,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/tzero-crypto-market-plugin@workspace:packages/payloadset/packages/stock/packages/market/packages/tzero":
+"@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero, @xyo-network/tzero-stock-market-payload-plugin@workspace:~":
   version: 0.0.0-use.local
-  resolution: "@xyo-network/tzero-crypto-market-plugin@workspace:packages/payloadset/packages/stock/packages/market/packages/tzero"
+  resolution: "@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
+    "@xylabs/tsconfig": "npm:^3.10.4"
+    "@xyo-network/payload-model": "npm:^2.103.1"
+    "@xyo-network/payload-plugin": "npm:^2.103.1"
+    typescript: "npm:^5.4.5"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/tzero-stock-market-plugin@workspace:packages/payloadset/packages/stock/packages/market/packages/tzero":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/tzero-stock-market-plugin@workspace:packages/payloadset/packages/stock/packages/market/packages/tzero"
   dependencies:
     "@xylabs/axios": "npm:^3.3.3"
     "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
@@ -6992,18 +7004,6 @@ __metadata:
     "@xyo-network/payload-wrapper": "npm:^2.103.1"
     "@xyo-network/payloadset-plugin": "npm:^2.103.1"
     "@xyo-network/witness-model": "npm:^2.103.1"
-    typescript: "npm:^5.4.5"
-  languageName: unknown
-  linkType: soft
-
-"@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero, @xyo-network/tzero-stock-market-payload-plugin@workspace:~":
-  version: 0.0.0-use.local
-  resolution: "@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero"
-  dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.10.4"
-    "@xylabs/tsconfig": "npm:^3.10.4"
-    "@xyo-network/payload-model": "npm:^2.103.1"
-    "@xyo-network/payload-plugin": "npm:^2.103.1"
     typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
