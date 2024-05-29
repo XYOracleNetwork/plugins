@@ -7,7 +7,7 @@ import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema'
 
 describe('TZeroStockMarketDiviner', () => {
   const config = {
-    schema: TZeroStockMarketDivinerConfigSchema,
+    schema: TZeroApiCallJsonResultToSnapshotDivinerConfigSchema,
   }
   describe('with API Response', () => {
     const cases: ApiCallResult[] = [

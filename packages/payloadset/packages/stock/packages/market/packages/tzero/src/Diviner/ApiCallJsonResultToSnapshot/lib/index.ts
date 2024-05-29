@@ -1,1 +1,1 @@
-export * from './tryMapToPublicSnapshot'
+export * from './tryMapToSnapshot'

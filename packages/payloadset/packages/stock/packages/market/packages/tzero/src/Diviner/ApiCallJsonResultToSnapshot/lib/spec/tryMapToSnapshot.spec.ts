@@ -1,6 +1,6 @@
 import { ApiCallResult } from '@xyo-network/api-call-witness'
 
-import { tryMapToPublicSnapshot } from '../tryMapToPublicSnapshot'
+import { tryMapToSnapshot } from '../tryMapToSnapshot'
 
 describe('mapToPublicSnapshot', () => {
   describe('with successful response', () => {
@@ -31,7 +31,7 @@ describe('mapToPublicSnapshot', () => {
       },
     ]
     it.each(cases)('maps to Public Snapshot', (response) => {
-      const result = tryMapToPublicSnapshot(response)
+      const result = tryMapToSnapshot(response)
       expect(result).toBeDefined()
     })
   })
@@ -46,7 +46,7 @@ describe('mapToPublicSnapshot', () => {
       },
     ]
     it.each(cases)('maps to Public Snapshot', (response) => {
-      const result = tryMapToPublicSnapshot(response)
+      const result = tryMapToSnapshot(response)
       expect(result).toBeUndefined()
     })
   })
