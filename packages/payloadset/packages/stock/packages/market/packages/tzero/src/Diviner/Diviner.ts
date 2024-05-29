@@ -10,9 +10,11 @@ import { TZeroStockMarketDivinerConfig } from './Config'
 import { tryMapToSnapshot } from './lib'
 import { TZeroStockMarketDivinerConfigSchema } from './Schema'
 
-export type TZeroStockMarketDivinerParams = DivinerParams<AnyConfigSchema<TZeroStockMarketDivinerConfig>>
+export type TZeroApiCallWitnessToSnapshotDivinerParams = DivinerParams<AnyConfigSchema<TZeroStockMarketDivinerConfig>>
 
-export class TZeroStockMarketDiviner<TParams extends TZeroStockMarketDivinerParams = TZeroStockMarketDivinerParams> extends AbstractDiviner<TParams> {
+export class TZeroStockMarketDiviner<
+  TParams extends TZeroApiCallWitnessToSnapshotDivinerParams = TZeroApiCallWitnessToSnapshotDivinerParams,
+> extends AbstractDiviner<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, TZeroStockMarketDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = TZeroStockMarketDivinerConfigSchema
 
