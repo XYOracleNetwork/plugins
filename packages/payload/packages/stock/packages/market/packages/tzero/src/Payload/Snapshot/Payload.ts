@@ -1,4 +1,4 @@
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
 import { SnapshotSchema } from './Schema'
 
@@ -31,6 +31,16 @@ export interface SnapshotFields {
 export type Snapshot = Payload<SnapshotFields, SnapshotSchema>
 
 /**
- * Identity function for Snapshot payload
+ * Identity function for determine if an object is a Snapshot
  */
 export const isSnapshot = isPayloadOfSchemaType<Snapshot>(SnapshotSchema)
+
+/**
+ * Identity function for determine if an object is a Snapshot with sources
+ */
+export const isSnapshotWithSources = isPayloadOfSchemaTypeWithSources<Snapshot>(SnapshotSchema)
+
+/**
+ * Identity function for determine if an object is a Snapshot with meta
+ */
+export const isSnapshotWithMeta = isPayloadOfSchemaTypeWithMeta<Snapshot>(SnapshotSchema)
