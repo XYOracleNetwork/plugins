@@ -7331,6 +7331,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/xml-plugin@workspace:packages/payloadset/packages/xml"
   dependencies:
+    "@types/xml2js": "npm:^0.4.14"
     "@xylabs/assert": "npm:^3.5.1"
     "@xylabs/axios": "npm:^3.5.1"
     "@xylabs/hex": "npm:^3.5.1"
@@ -7356,6 +7357,7 @@ __metadata:
     ethers: "npm:^6.13.1"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.4.5"
+    xml2js: "npm:^0.6.2"
   languageName: unknown
   linkType: soft
 
