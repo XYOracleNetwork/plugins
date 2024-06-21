@@ -136,6 +136,26 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           }
           break
         }
+        // TODO: application/xml
+        case 'text/xml' as unknown: {
+          const axios = new Axios({
+            headers: { ...this.getHeaders(headers), Accept: 'text/xml' },
+            responseType: 'arraybuffer',
+            timeout: this.timeout,
+          })
+          const response = await axios.get(url)
+          if (response.status >= 200 && response.status < 300) {
+            const jsonResult = result as ApiCallBase64Result
+            jsonResult.data = Buffer.from(response.data, 'binary').toString('utf8')
+            jsonResult.contentType = 'text/xml' as unknown as 'application/json'
+          } else {
+            const errorResult = result as ApiCallErrorResult
+            errorResult.http = {
+              status: response.status,
+            }
+          }
+          break
+        }
         default: {
           const axios = new Axios({ headers: this.params.headers, responseType: 'arraybuffer', timeout: this.timeout })
           const response = await axios.get(url)
