@@ -7,7 +7,7 @@ import { XmlParsingDivinerConfigSchema } from '../Schema'
 describe('XmlParsingDiviner', () => {
   const uri = 'https://medium.com/feed/xyonetwork'
   describe('observe', () => {
-    it('get code from contract', async () => {
+    it('parses XML from API response', async () => {
       const witness = await ApiCallWitness.create({
         account: 'random',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -23,6 +23,7 @@ describe('XmlParsingDiviner', () => {
       const xml = Buffer.from((observation[0] as unknown as { data: string }).data).toString('utf8')
       const input = { data: xml, schema: PayloadSchema }
       const result = await diviner.divine([input])
+      expect(result[0].schema).toBe('network.xyo.xml')
     })
   })
 })
