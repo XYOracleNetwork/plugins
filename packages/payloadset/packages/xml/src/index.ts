@@ -1,3 +1,3 @@
-export * from './Config'
-export * from './Payload'
 export * from './Diviner'
+export * from './Payload'
+export * from './Schema'
