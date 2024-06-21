@@ -72,6 +72,11 @@ export type ApiCallBase64Result = Payload<
   ApiCallResultSchema
 >
 
+export const isApiCallBase64Result = (x?: unknown | null): x is ApiCallBase64Result => {
+  return isPayloadOfSchemaType(ApiCallResultSchema)(x) && typeof (x as ApiCallBase64Result)?.data === 'string'
+}
+export const asApiCallBase64Result = AsObjectFactory.create(isApiCallBase64Result)
+
 export type ApiCallErrorResult = Payload<
   {
     call: Hash
