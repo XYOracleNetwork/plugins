@@ -18,7 +18,7 @@ import {
 } from '@xyo-network/diviner-temporal-indexing'
 import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
-import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory, resolveLocalNameToAddress, resolveLocalNameToInstance, resolvePathToAddress } from '@xyo-network/module-model'
 import { MemoryNode } from '@xyo-network/node-memory'
