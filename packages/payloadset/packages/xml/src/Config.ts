@@ -2,7 +2,7 @@ import { AsObjectFactory } from '@xylabs/object'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessConfig } from '@xyo-network/witness-model'
 
-import { ApiCall, ApiUriCall, ApiUriTemplateCall } from './Payload'
+import { ApiCall, ApiUriTemplateCall, Xml } from './Payload'
 
 export const ApiCallWitnessConfigSchema = 'network.xyo.api.call.witness.config'
 export type ApiCallWitnessConfigSchema = typeof ApiCallWitnessConfigSchema
@@ -18,7 +18,7 @@ export type ApiCallWitnessConfigBase = WitnessConfig<{
 
 export type ApiUriCallWitnessConfig = WitnessConfig<
   ApiCallWitnessConfigBase & {
-    uri: ApiUriCall['uri']
+    uri: Xml['uri']
   }
 >
 
