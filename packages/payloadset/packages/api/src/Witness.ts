@@ -12,7 +12,6 @@ import fillTemplate from 'es6-dynamic-template'
 
 import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
 import { checkIpfsUrl } from './lib'
-import { MimeTypes } from './MimeTypes'
 import {
   ApiCall,
   ApiCallBase64Result,
@@ -25,6 +24,7 @@ import {
   asApiUriCall,
   asApiUriTemplateCall,
 } from './Payload'
+import { MimeTypes } from './Payload/MimeTypes'
 
 export type ApiCallWitnessParams = WitnessParams<
   ApiCallWitnessConfig,
