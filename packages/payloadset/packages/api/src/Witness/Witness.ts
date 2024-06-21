@@ -6,12 +6,10 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
-import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
-import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
-import { checkIpfsUrl } from './lib'
+import { checkIpfsUrl } from '../lib'
 import {
   ApiCall,
   ApiCallBase64Result,
@@ -21,23 +19,20 @@ import {
   ApiCallResult,
   ApiCallResultSchema,
   ApiCallSchema,
+  ApiCallXmlResult,
   asApiUriCall,
   asApiUriTemplateCall,
-} from './Payload'
-
-export type ApiCallWitnessParams = WitnessParams<
-  ApiCallWitnessConfig,
-  {
-    headers?: Record<string, string | undefined>
-    ipfsGateway?: string
-  }
->
+  MimeTypes,
+} from '../Payload'
+import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
+import { ApiCallWitnessParams } from './Params'
+import { ApiCallWitnessConfigSchema } from './Schema'
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
 
-  get accept() {
+  get accept(): MimeTypes {
     return this.config.accept ?? 'application/json'
   }
 
@@ -128,6 +123,26 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
             const jsonResult = result as ApiCallJsonResult
             jsonResult.data = response.data
             jsonResult.contentType = 'application/json'
+          } else {
+            const errorResult = result as ApiCallErrorResult
+            errorResult.http = {
+              status: response.status,
+            }
+          }
+          break
+        }
+        case 'application/xml':
+        case 'text/xml': {
+          const axios = new Axios({
+            headers: { ...this.getHeaders(headers), Accept: this.accept },
+            responseType: 'arraybuffer',
+            timeout: this.timeout,
+          })
+          const response = await axios.get(url)
+          if (response.status >= 200 && response.status < 300) {
+            const xmlResult = result as ApiCallXmlResult
+            xmlResult.data = Buffer.from(response.data, 'binary').toString('utf8')
+            xmlResult.contentType = response.headers['content-type']?.toString() ?? 'application/xml'
           } else {
             const errorResult = result as ApiCallErrorResult
             errorResult.http = {

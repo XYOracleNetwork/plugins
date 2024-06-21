@@ -7327,6 +7327,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/xml-plugin@workspace:packages/payloadset/packages/xml":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/xml-plugin@workspace:packages/payloadset/packages/xml"
+  dependencies:
+    "@types/xml2js": "npm:^0.4.14"
+    "@xylabs/assert": "npm:^3.5.1"
+    "@xylabs/jest-helpers": "npm:^3.5.1"
+    "@xylabs/object": "npm:^3.5.1"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.11.2"
+    "@xylabs/tsconfig": "npm:^3.11.2"
+    "@xyo-network/api-call-witness": "workspace:^"
+    "@xyo-network/diviner-abstract": "npm:^2.106.0"
+    "@xyo-network/diviner-model": "npm:^2.106.0"
+    "@xyo-network/module-model": "npm:^2.106.0"
+    "@xyo-network/payload-model": "npm:^2.106.0"
+    jest: "npm:^29.7.0"
+    typescript: "npm:^5.4.5"
+    xml2js: "npm:^0.6.2"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/xns-payload-plugins@workspace:packages/payload/packages/xns":
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-payload-plugins@workspace:packages/payload/packages/xns"
