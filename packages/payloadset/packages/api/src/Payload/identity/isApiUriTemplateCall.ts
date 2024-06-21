@@ -1,4 +1,4 @@
-import { ApiUriTemplateCall } from './ApiUriTemplateCall'
+import { ApiUriTemplateCall } from '../types'
 import { isApiCall } from './isApiCall'
 
 export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>

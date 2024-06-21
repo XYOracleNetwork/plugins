@@ -2,7 +2,7 @@ import { Hash } from '@xylabs/hex'
 import { AsObjectFactory, JsonArray, JsonObject } from '@xylabs/object'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { ApiCallResultSchema } from './Schema'
+import { ApiCallResultSchema } from '../Schema'
 
 export type ApiCallJsonResultType = JsonArray | JsonObject
 
