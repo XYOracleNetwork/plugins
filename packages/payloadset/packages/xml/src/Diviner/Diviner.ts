@@ -5,7 +5,7 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 
 import { Xml } from '../Payload'
 import { XmlSchema } from '../Schema'
-import { StringDataField, toXml } from './lib'
+import { hasStringDataField, StringDataField, toXml } from './lib'
 import { XmlParsingDivinerParams } from './Params'
 import { XmlParsingDivinerConfigSchema } from './Schema'
 
@@ -25,11 +25,7 @@ export class XmlParsingDiviner<
   static override targetSchema = XmlSchema
 
   protected override async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
-    const results = await Promise.all(payloads.filter(isDataLike).map(toXml))
+    const results = await Promise.all(payloads.filter(hasStringDataField).map(toXml))
     return results as TOut[]
   }
-}
-
-const isDataLike = (dataLike?: unknown): dataLike is { data: string } => {
-  return typeof dataLike === 'object' && dataLike !== null && 'data' in dataLike && typeof (dataLike as { data: unknown }).data === 'string'
 }
