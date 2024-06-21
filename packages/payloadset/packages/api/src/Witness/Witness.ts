@@ -19,6 +19,7 @@ import {
   ApiCallResult,
   ApiCallResultSchema,
   ApiCallSchema,
+  ApiCallXmlResult,
   asApiUriCall,
   asApiUriTemplateCall,
   MimeTypes,
@@ -139,7 +140,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           })
           const response = await axios.get(url)
           if (response.status >= 200 && response.status < 300) {
-            const xmlResult = result as ApiCallBase64Result
+            const xmlResult = result as ApiCallXmlResult
             xmlResult.data = Buffer.from(response.data, 'binary').toString('utf8')
             xmlResult.contentType = response.headers['content-type']?.toString() ?? 'application/xml'
           } else {
