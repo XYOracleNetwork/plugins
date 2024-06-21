@@ -12,6 +12,7 @@ import fillTemplate from 'es6-dynamic-template'
 
 import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
 import { checkIpfsUrl } from './lib'
+import { MimeTypes } from './MimeTypes'
 import {
   ApiCall,
   ApiCallBase64Result,
@@ -37,7 +38,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
 
-  get accept() {
+  get accept(): MimeTypes {
     return this.config.accept ?? 'application/json'
   }
 
@@ -136,18 +137,18 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           }
           break
         }
-        // TODO: application/xml
-        case 'text/xml' as unknown: {
+        case 'application/xml':
+        case 'text/xml': {
           const axios = new Axios({
-            headers: { ...this.getHeaders(headers), Accept: 'text/xml' },
+            headers: { ...this.getHeaders(headers), Accept: this.accept },
             responseType: 'arraybuffer',
             timeout: this.timeout,
           })
           const response = await axios.get(url)
           if (response.status >= 200 && response.status < 300) {
-            const jsonResult = result as ApiCallBase64Result
-            jsonResult.data = Buffer.from(response.data, 'binary').toString('utf8')
-            jsonResult.contentType = 'text/xml' as unknown as 'application/json'
+            const xmlResult = result as ApiCallBase64Result
+            xmlResult.data = Buffer.from(response.data, 'binary').toString('utf8')
+            xmlResult.contentType = response.headers['content-type']?.toString() ?? 'application/xml'
           } else {
             const errorResult = result as ApiCallErrorResult
             errorResult.http = {
