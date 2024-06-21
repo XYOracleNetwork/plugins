@@ -1,5 +1,5 @@
 import { ApiCallResultSchema, ApiCallSchema, isApiCallErrorResult } from '../../Payload'
-import { ApiCallWitnessConfigSchema } from '../Config'
+import { ApiCallWitnessConfigSchema } from '../Schema'
 import { ApiCallWitness } from '../Witness'
 
 describe('CryptoWalletNftWitness', () => {

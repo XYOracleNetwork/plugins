@@ -6,7 +6,6 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
-import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
@@ -24,15 +23,9 @@ import {
   asApiUriTemplateCall,
   MimeTypes,
 } from '../Payload'
-import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
-
-export type ApiCallWitnessParams = WitnessParams<
-  ApiCallWitnessConfig,
-  {
-    headers?: Record<string, string | undefined>
-    ipfsGateway?: string
-  }
->
+import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
+import { ApiCallWitnessParams } from './Params'
+import { ApiCallWitnessConfigSchema } from './Schema'
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]

@@ -3,9 +3,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessConfig } from '@xyo-network/witness-model'
 
 import { ApiCall, ApiUriCall, ApiUriTemplateCall } from '../Payload'
-
-export const ApiCallWitnessConfigSchema = 'network.xyo.api.call.witness.config'
-export type ApiCallWitnessConfigSchema = typeof ApiCallWitnessConfigSchema
+import { ApiCallWitnessConfigSchema } from './Schema'
 
 export type ApiCallWitnessConfigBase = WitnessConfig<{
   accept?: 'application/json'
