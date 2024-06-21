@@ -2,11 +2,11 @@ import { AsObjectFactory } from '@xylabs/object'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { WitnessConfig } from '@xyo-network/witness-model'
 
-import { ApiCall, ApiUriCall, ApiUriTemplateCall } from '../Payload'
+import { ApiCall, ApiUriCall, ApiUriTemplateCall, MimeTypes } from '../Payload'
 import { ApiCallWitnessConfigSchema } from './Schema'
 
 export type ApiCallWitnessConfigBase = WitnessConfig<{
-  accept?: 'application/json'
+  accept?: MimeTypes
   headers?: Record<string, string | undefined>
   queries?: ApiCall['queries']
   schema: ApiCallWitnessConfigSchema
