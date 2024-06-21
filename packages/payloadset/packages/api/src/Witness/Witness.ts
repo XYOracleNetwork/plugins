@@ -10,8 +10,7 @@ import { WitnessParams } from '@xyo-network/witness-model'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
-import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
-import { checkIpfsUrl } from './lib'
+import { checkIpfsUrl } from '../lib'
 import {
   ApiCall,
   ApiCallBase64Result,
@@ -23,8 +22,9 @@ import {
   ApiCallSchema,
   asApiUriCall,
   asApiUriTemplateCall,
-} from './Payload'
-import { MimeTypes } from './Payload/MimeTypes'
+  MimeTypes,
+} from '../Payload'
+import { ApiCallWitnessConfig, ApiCallWitnessConfigSchema, asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
 
 export type ApiCallWitnessParams = WitnessParams<
   ApiCallWitnessConfig,
