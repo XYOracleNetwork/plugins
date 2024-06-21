@@ -1,8 +1,10 @@
-import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallErrorResult } from '@xyo-network/api-call-witness'
-import { PayloadSchema } from '@xyo-network/payload-model'
+import { assertEx } from '@xylabs/assert'
+import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallBase64Result } from '@xyo-network/api-call-witness'
 
+import { isXmlWithMeta, Xml } from '../../Payload'
 import { XmlSchema } from '../../Schema'
 import { XmlParsingDiviner } from '../Diviner'
+import { hasStringDataField } from '../lib'
 import { XmlParsingDivinerConfigSchema } from '../Schema'
 
 describe('XmlParsingDiviner', () => {
@@ -18,17 +20,20 @@ describe('XmlParsingDiviner', () => {
         account: 'random',
         config: { schema: XmlParsingDivinerConfigSchema },
       })
-      const observation = await witness.observe([{ schema: ApiCallSchema, uri }])
-      expect(observation[0].schema).toBe(ApiCallResultSchema)
-      expect(isApiCallErrorResult(observation[0].schema)).toBe(false)
-      const xml = Buffer.from((observation[0] as unknown as { data: string }).data).toString('utf8')
-      const input = { data: xml, schema: PayloadSchema }
-      const results = await diviner.divine([input])
+      const observations = await witness.observe([{ schema: ApiCallSchema, uri }])
+      expect(observations).toBeArrayOfSize(1)
+      const observation = observations.filter(isApiCallBase64Result).find(hasStringDataField)
+      expect(observation).toBeDefined()
+      expect(observation).toBeObject()
+      expect(observation?.schema).toBe(ApiCallResultSchema)
+      const xml = assertEx(observation, () => 'Error in observation')
+      const results = await diviner.divine([xml])
       expect(results).toBeArrayOfSize(1)
-      const result = results[0]
-      expect(result.schema).toBe(XmlSchema)
-      // expect(result.xml).toBeDefined()
-      // expect(result.xml).toBeObject()
+      const result: undefined | Xml = results.find(isXmlWithMeta)
+      expect(result).toBeDefined()
+      expect(result?.schema).toBe(XmlSchema)
+      expect(result?.xml).toBeDefined()
+      expect(result?.xml).toBeObject()
     })
   })
 })
