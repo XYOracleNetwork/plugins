@@ -25,26 +25,39 @@ export class XmlParsingDiviner<
   static override targetSchema = XmlSchema
 
   protected override async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
-    return await Promise.all(
+    const results = await Promise.all(
       payloads.filter(isDataLike).map((payload) => {
         const parser = new Parser()
-        return new Promise<TOut>((resolve, reject) => {
+        return new Promise<Xml>((resolve, reject) => {
           parser.parseString(payload.data, (err, result) => {
             if (err) {
               reject(err)
             } else {
-              const foo = result as object
-              const bar = foo as TOut
-              bar.schema = XmlSchema
-              resolve(bar)
+              const xml = { schema: XmlSchema, xml: result } as const
+              resolve(xml)
             }
           })
         })
       }),
     )
+    return results as TOut[]
   }
 }
 
 const isDataLike = (dataLike?: unknown): dataLike is { data: string } => {
   return typeof dataLike === 'object' && dataLike !== null && 'data' in dataLike && typeof (dataLike as { data: unknown }).data === 'string'
+}
+
+const toXml = (payload: { data: string }): Promise<Xml> => {
+  const parser = new Parser()
+  return new Promise<Xml>((resolve, reject) => {
+    parser.parseString(payload.data, (err, result) => {
+      if (err) {
+        reject(err)
+      } else {
+        const xml = { schema: XmlSchema, xml: result } as const
+        resolve(xml)
+      }
+    })
+  })
 }
