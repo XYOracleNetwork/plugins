@@ -1,6 +1,7 @@
 import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallErrorResult } from '@xyo-network/api-call-witness'
 import { PayloadSchema } from '@xyo-network/payload-model'
 
+import { XmlSchema } from '../../Schema'
 import { XmlParsingDiviner } from '../Diviner'
 import { XmlParsingDivinerConfigSchema } from '../Schema'
 
@@ -22,8 +23,12 @@ describe('XmlParsingDiviner', () => {
       expect(isApiCallErrorResult(observation[0].schema)).toBe(false)
       const xml = Buffer.from((observation[0] as unknown as { data: string }).data).toString('utf8')
       const input = { data: xml, schema: PayloadSchema }
-      const result = await diviner.divine([input])
-      expect(result[0].schema).toBe('network.xyo.xml')
+      const results = await diviner.divine([input])
+      expect(results).toBeArrayOfSize(1)
+      const result = results[0]
+      expect(result.schema).toBe(XmlSchema)
+      // expect(result.xml).toBeDefined()
+      // expect(result.xml).toBeObject()
     })
   })
 })
