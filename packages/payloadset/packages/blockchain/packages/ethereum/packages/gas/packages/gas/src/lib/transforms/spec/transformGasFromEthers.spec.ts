@@ -1,4 +1,3 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { sampleEthersGas } from '../../../test'
 import { transformGasFromEthers } from '../transformGasFromEthers'
 

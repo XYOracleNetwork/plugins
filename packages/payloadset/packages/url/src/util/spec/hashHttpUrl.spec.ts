@@ -17,8 +17,14 @@ describe('hashHttpUrl', () => {
     })
   })
   describe('with non-existent URL', () => {
-    it('throws', () => {
-      expect(() => hashHttpUrl('https://foo.bar.baz.quix/missing.txt')).rejects.toThrow()
+    it('throws', async () => {
+      try {
+        await hashHttpUrl('https://foo.bar.baz.quix/missing.txt')
+      } catch {
+        expect(true).toBeTruthy()
+        return
+      }
+      expect(false).toBeTruthy()
     })
   })
 })

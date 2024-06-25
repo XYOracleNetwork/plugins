@@ -14,8 +14,14 @@ describe('hashFile', () => {
     })
   })
   describe('with non-existent file', () => {
-    it('throws', () => {
-      expect(() => hashFile('missing.txt')).rejects.toThrow()
+    it('throws', async () => {
+      try {
+        await hashFile('missing.txt')
+      } catch {
+        expect(true).toBeTruthy()
+        return
+      }
+      expect(false).toBeTruthy()
     })
   })
 })
