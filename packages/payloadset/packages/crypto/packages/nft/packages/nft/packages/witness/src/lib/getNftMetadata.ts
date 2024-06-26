@@ -1,5 +1,5 @@
 /* eslint-disable complexity */
-/* eslint-disable max-statements */
+
 import { AxiosJson } from '@xylabs/axios'
 import { NftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { ERC721URIStorage__factory, ERC1155URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'

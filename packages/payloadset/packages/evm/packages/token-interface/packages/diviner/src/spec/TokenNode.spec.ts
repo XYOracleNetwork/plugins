@@ -1,4 +1,3 @@
-/* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { HDWallet, WalletInstance } from '@xyo-network/account'

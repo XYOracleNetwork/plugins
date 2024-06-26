@@ -14,7 +14,6 @@ import { BowserSystemInfoWitness } from '../Witness'
 
 PayloadValidator.setSchemaNameValidatorFactory((schema) => new SchemaNameValidator(schema))
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const cryptoPolyfill = (window: Window & typeof globalThis) => {
   window.crypto = window.crypto ?? {
     getRandomValues: (arr: []) => Crypto.randomBytes(arr.length),

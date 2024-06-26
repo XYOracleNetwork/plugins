@@ -7,7 +7,6 @@ import hasbin from 'hasbin'
 
 import { ImageThumbnailWitness } from '../Witness'
 
-// eslint-disable-next-line import/no-named-as-default-member
 const describeIfHasBin = (bin: string) => (hasbin.sync(bin) ? describe : describe.skip)
 
 /**

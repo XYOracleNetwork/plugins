@@ -15,6 +15,7 @@ const validateAccessList = (accessList: AccessList) => {
   }
 }
 
+// eslint-disable-next-line complexity
 const validateTransaction = (t: Transaction) => {
   if (t?.accessList) validateAccessList(t.accessList)
   if (t?.blockHash !== undefined) expect(t.blockHash).toBeString()

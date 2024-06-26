@@ -1,6 +1,7 @@
 // eslint.config.mjs
 
 import { typescriptConfig, importConfig, unicornConfig, prettierConfig, rulesConfig, workspacesConfig } from '@xylabs/eslint-config-flat'
+import tsParser from '@typescript-eslint/parser'
 
 export default [
   {

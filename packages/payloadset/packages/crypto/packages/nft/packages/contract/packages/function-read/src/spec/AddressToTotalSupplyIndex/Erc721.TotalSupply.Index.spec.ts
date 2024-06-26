@@ -1,4 +1,3 @@
-/* eslint-disable import/no-deprecated */
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet, WalletInstance } from '@xyo-network/account'
 import {

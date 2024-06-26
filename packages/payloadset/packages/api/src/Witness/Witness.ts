@@ -109,6 +109,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     }
   }
 
+  // eslint-disable-next-line complexity
   private async httpGet(url: string, call: Hash, headers?: Record<string, string | undefined>): Promise<ApiCallResult> {
     const result: ApiCallResult = {
       call,

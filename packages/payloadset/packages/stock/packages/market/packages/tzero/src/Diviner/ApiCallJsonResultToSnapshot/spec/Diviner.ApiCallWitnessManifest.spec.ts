@@ -35,6 +35,7 @@ describe('tZero', () => {
       sentinel = assertEx(sentinelInstance)
     })
 
+    // eslint-disable-next-line complexity
     it('specifying symbol', async () => {
       const call: ApiUriTemplateCall = { params: { symbol }, schema: ApiCallSchema }
 

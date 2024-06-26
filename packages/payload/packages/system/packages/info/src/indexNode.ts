@@ -5,5 +5,4 @@ import { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 
 export const SystemInfoPayloadPlugins: PayloadPluginFunc[] = [NodeSystemInfoPayloadPlugin]
 
-// eslint-disable-next-line import/no-default-export
 export default SystemInfoPayloadPlugins

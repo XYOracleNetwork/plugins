@@ -9,5 +9,4 @@ import { UniswapCryptoMarketPlugin } from '@xyo-network/uniswap-crypto-market-pl
 
 export const CryptoMarketPlugins: PayloadSetPluginFunc[] = [CoingeckoCryptoMarketPlugin, UniswapCryptoMarketPlugin, CryptoMarketAssetPlugin]
 
-// eslint-disable-next-line import/no-default-export
 export default CryptoMarketPlugins

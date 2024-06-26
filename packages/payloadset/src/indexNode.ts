@@ -40,5 +40,4 @@ export const PayloadSetPlugins: PayloadSetPluginFunc[] = [
   LocationCertaintyPlugin,
 ]
 
-// eslint-disable-next-line import/no-default-export
 export default PayloadSetPlugins

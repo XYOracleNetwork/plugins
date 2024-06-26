@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describeIf } from '@xylabs/jest-helpers'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 

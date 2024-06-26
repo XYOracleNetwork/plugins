@@ -1,4 +1,3 @@
-/* eslint-disable import/no-deprecated */
 /* eslint-disable max-statements */
 
 import { HDWallet } from '@xyo-network/account'

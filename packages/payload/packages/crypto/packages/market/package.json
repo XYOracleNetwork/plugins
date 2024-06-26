@@ -10,14 +10,14 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:~",
-    "@xyo-network/crypto-asset-payload-plugin": "workspace:~",
+    "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:^",
+    "@xyo-network/crypto-asset-payload-plugin": "workspace:^",
     "@xyo-network/payload-plugin": "^2.107.5",
-    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~"
+    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.11.10",
-    "@xylabs/tsconfig": "^3.11.10",
+    "@xylabs/ts-scripts-yarn3": "^3.11.12",
+    "@xylabs/tsconfig": "^3.11.12",
     "typescript": "^5.5.2"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",

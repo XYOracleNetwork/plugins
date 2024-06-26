@@ -118,7 +118,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
   const cases: [ImageThumbnailDivinerQuery, ImageThumbnailResultQuery][] = queries.map((query, i) => [query, expected[i]])
   beforeAll(async () => {
     diviner = await ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.create()
-    // eslint-disable-next-line unicorn/no-array-for-each
+
     await Promise.all(
       queries.map(async (query, i) => {
         const key = await PayloadBuilder.dataHash({ schema: UrlSchema, url: query.url })

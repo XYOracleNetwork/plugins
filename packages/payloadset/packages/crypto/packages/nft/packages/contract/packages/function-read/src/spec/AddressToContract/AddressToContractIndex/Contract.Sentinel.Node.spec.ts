@@ -1,5 +1,3 @@
-/* eslint-disable import/no-deprecated */
-/* eslint-disable max-statements */
 import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import {

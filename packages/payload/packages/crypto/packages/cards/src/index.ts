@@ -7,5 +7,4 @@ import { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 
 export const CryptoCardsPayloadPlugins: PayloadPluginFunc[] = [CryptoCardsGamePayloadPlugin, CryptoCardsMovePayloadPlugin]
 
-// eslint-disable-next-line import/no-default-export
 export default CryptoCardsPayloadPlugins

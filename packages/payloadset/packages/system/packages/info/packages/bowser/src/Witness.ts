@@ -18,7 +18,7 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
 
   protected get bowser() {
     // we do this to fix importing in node-esm
-    // eslint-disable-next-line import/no-named-as-default-member
+
     return Bowser.parse(window.navigator.userAgent)
   }
 

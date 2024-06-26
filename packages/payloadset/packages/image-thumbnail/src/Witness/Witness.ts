@@ -26,7 +26,6 @@ import { ImageThumbnailWitnessParams } from './Params'
 
 // setFfmpegPath(ffmpegPath)
 
-// eslint-disable-next-line import/no-named-as-default-member
 const gm = graphicsMagick.subClass({ imageMagick: '7+' })
 
 export interface ImageThumbnailWitnessError extends Error {
@@ -99,7 +98,6 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
   }
 
   protected override async observeHandler(payloads: UrlPayload[] = []): Promise<ImageThumbnail[]> {
-    // eslint-disable-next-line import/no-named-as-default-member
     if (!hasbin.sync('magick')) {
       throw new Error('ImageMagick is required for this witness')
     }
@@ -265,7 +263,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
 
     const processVideo = async () => {
       // Gracefully handle the case where ffmpeg is not installed.
-      // eslint-disable-next-line import/no-named-as-default-member
+
       if (hasbin.sync('ffmpeg')) {
         imageThumbnail.sourceHash = await ImageThumbnailWitness.binaryToSha256(sourceBuffer)
         imageThumbnail.url = await this.createThumbnailFromVideo(sourceBuffer)
