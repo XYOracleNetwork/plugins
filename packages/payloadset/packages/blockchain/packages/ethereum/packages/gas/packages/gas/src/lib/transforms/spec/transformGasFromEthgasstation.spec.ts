@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { sampleEthgasstationGas } from '../../../test'
 import { transformGasFromEthgasstation } from '../transformGasFromEthgasstation'
 

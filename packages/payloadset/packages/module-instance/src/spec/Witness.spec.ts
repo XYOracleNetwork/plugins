@@ -6,11 +6,11 @@ import { AbstractModuleInstanceWitness, AbstractModuleInstanceWitnessConfigSchem
 
 describe('AbstractModuleInstanceWitness', () => {
   test('Witnessing', async () => {
-    const module = await MemoryArchivist.create({ account: Account.randomSync() })
+    const mod = await MemoryArchivist.create({ account: Account.randomSync() })
     const witness = await AbstractModuleInstanceWitness.create({
       account: Account.randomSync(),
       config: { schema: AbstractModuleInstanceWitnessConfigSchema },
-      module,
+      mod,
     })
     const [result] = await witness.observe()
     expect(await PayloadWrapper.wrap(result).getValid()).toBe(true)

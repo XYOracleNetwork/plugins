@@ -26,7 +26,9 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
+// eslint-disable-next-line import/no-deprecated
 import { CryptoContractDiviner } from '../../Diviner'
+// eslint-disable-next-line import/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../Witness'
 import nodeManifest from './Erc721.NftIndex.Index.json'
 
@@ -50,6 +52,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     locator.register(MemoryBoundWitnessDiviner)
     locator.register(MemoryPayloadDiviner)
     locator.register(TimestampWitness)
+    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
     locator.register(CryptoContractDiviner)
     locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
     locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
@@ -61,6 +64,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     locator.register(RangeDiviner)
 
     locator.register(
+      // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProviders(),

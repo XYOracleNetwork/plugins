@@ -42,7 +42,9 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
 
   protected contractInfoRequiredFields(callResults: CryptoContractFunctionCallResult[]): ContractInfo {
     return {
+      // eslint-disable-next-line deprecation/deprecation
       address: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'address'), () => 'Mismatched address'),
+      // eslint-disable-next-line deprecation/deprecation
       chainId: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'chainId'), () => 'Mismatched chainId'),
       schema: ContractInfoSchema,
     }

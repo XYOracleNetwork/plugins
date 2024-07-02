@@ -5,4 +5,5 @@ import { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
 
 export const FilePlugins: PayloadSetPluginFunc[] = [BrowserFilePlugin]
 
+// eslint-disable-next-line import/no-default-export
 export default FilePlugins

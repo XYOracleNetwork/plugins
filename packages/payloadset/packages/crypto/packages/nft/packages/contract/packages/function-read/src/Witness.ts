@@ -25,6 +25,7 @@ export type CryptoContractFunctionReadWitnessParams = WitnessParams<
 
 /** @deprecated use EvmCallWitness instead */
 export class CryptoContractFunctionReadWitness<
+  // eslint-disable-next-line deprecation/deprecation
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoContractFunctionReadWitnessConfigSchema]

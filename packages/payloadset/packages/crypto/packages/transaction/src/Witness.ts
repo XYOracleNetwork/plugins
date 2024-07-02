@@ -11,6 +11,7 @@ import { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
 
 import { AddressTransactionHistoryWitnessConfig } from './Config'
+// eslint-disable-next-line import/no-deprecated
 import { getTransactionsForAddress } from './lib'
 
 export type AddressTransactionHistoryWitnessParams = WitnessParams<
@@ -35,6 +36,7 @@ export class AddressTransactionHistoryWitness<
   protected override async observeHandler(): Promise<Payload[]> {
     await this.started('throw')
     const address = assertEx(this.config.address, () => 'params.address is required')
+    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
     const transactions = await getTransactionsForAddress(address, this.provider)
     const payloads = transactions.map<AddressTransactionHistoryPayload>((transaction) => {
       return { ...transaction, schema }

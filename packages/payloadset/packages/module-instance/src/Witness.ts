@@ -16,7 +16,7 @@ export type AbstractModuleInstanceWitnessConfig = WitnessConfig<{
 export type AbstractModuleInstanceWitnessParams = WitnessParams<
   AnyConfigSchema<AbstractModuleInstanceWitnessConfig>,
   {
-    module?: Module
+    mod?: Module
   }
 >
 
@@ -26,11 +26,11 @@ export class AbstractModuleInstanceWitness<
   static override readonly configSchemas: Schema[] = [...super.configSchemas, AbstractModuleInstanceWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = AbstractModuleInstanceWitnessConfigSchema
 
-  protected get module() {
-    return this.params?.module
+  protected get mod() {
+    return this.params?.mod
   }
 
   protected override observeHandler(payloads?: Partial<Payload>[]): Promisable<Payload[]> {
-    return [merge({ queries: this.module?.queries ?? [] }, payloads?.[0], { schema: AbstractModuleInstanceSchema })]
+    return [merge({ queries: this.mod?.queries ?? [] }, payloads?.[0], { schema: AbstractModuleInstanceSchema })]
   }
 }

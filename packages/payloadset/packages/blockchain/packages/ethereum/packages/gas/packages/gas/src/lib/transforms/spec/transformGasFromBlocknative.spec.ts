@@ -1,3 +1,4 @@
+/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { sampleBlocknativeGas } from '../../../test'
 import { transformGasFromBlocknative } from '../transformGasFromBlocknative'
 

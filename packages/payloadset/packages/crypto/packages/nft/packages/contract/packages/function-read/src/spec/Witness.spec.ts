@@ -9,6 +9,7 @@ import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
+// eslint-disable-next-line import/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../Witness'
 
 const validateObservation = (observation: Payload[]) => {
@@ -25,13 +26,14 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   describe('observe', () => {
     describe('with no address or chainId in query', () => {
       it('uses values from config', async () => {
+        // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
         const witness = await CryptoContractFunctionReadWitness.create({
           config: { abi: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },
           providers: [provider],
         })
         const call: CryptoContractFunctionCall = { address, args, functionName, schema: CryptoContractFunctionCallSchema }
         const observation = await witness.observe([call])
-        await validateObservation(observation)
+        validateObservation(observation)
       })
     })
   })

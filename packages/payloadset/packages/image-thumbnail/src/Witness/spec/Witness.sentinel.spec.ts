@@ -47,7 +47,7 @@ describe('Witness', () => {
           archiving: { archivists: [archivist.address] },
           schema: MemorySentinel.defaultConfigSchema,
           synchronous: true,
-          tasks: [{ input: true, module: thumbnailWitness.address }, { module: timestampWitness.address }],
+          tasks: [{ input: true, mod: thumbnailWitness.address }, { mod: timestampWitness.address }],
         },
         //logger,
       })
