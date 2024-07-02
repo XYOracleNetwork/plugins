@@ -277,7 +277,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingDiviner"
+                  "mod": "InputBufferingDiviner"
                 }
               ]
             }
@@ -290,19 +290,19 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "TotalSupplyToRangeQueryTransformDiviner"
+                  "mod": "TotalSupplyToRangeQueryTransformDiviner"
                 },
                 {
                   "input": [
                     "TotalSupplyToRangeQueryTransformDiviner"
                   ],
-                  "module": "RangeDiviner"
+                  "mod": "RangeDiviner"
                 },
                 {
                   "input": [
                     "RangeDiviner"
                   ],
-                  "module": "RangeToNftIndexTransformDiviner"
+                  "mod": "RangeToNftIndexTransformDiviner"
                 }
               ]
             }
@@ -372,25 +372,25 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingSentinel"
+                  "mod": "InputBufferingSentinel"
                 },
                 {
                   "input": true,
-                  "module": "TotalSupplyToSlugsSentinel"
+                  "mod": "TotalSupplyToSlugsSentinel"
                 },
                 {
                   "input": [
                     "InputBufferingSentinel",
                     "TotalSupplyToSlugsSentinel"
                   ],
-                  "module": "NftIndexPartialToNftIndexTransformDiviner"
+                  "mod": "NftIndexPartialToNftIndexTransformDiviner"
                 },
                 {
                   "input": [
                     "InputBufferingSentinel",
                     "TotalSupplyToSlugsSentinel"
                   ],
-                  "module": "TimestampWitness"
+                  "mod": "TimestampWitness"
                 }
               ]
             }

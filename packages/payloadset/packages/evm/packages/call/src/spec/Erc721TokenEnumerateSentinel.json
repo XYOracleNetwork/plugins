@@ -247,67 +247,67 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc1822Witness"
+                  "mod": "Erc1822Witness"
                 },
                 {
                   "input": [
                     "Erc1822Witness"
                   ],
-                  "module": "Erc1822ToAddressDiviner"
+                  "mod": "Erc1822ToAddressDiviner"
                 },
                 {
                   "input": [
                     "Erc1822ToAddressDiviner"
                   ],
-                  "module": "Erc1967Witness"
+                  "mod": "Erc1967Witness"
                 },
                 {
                   "input": [
                     "Erc1967Witness"
                   ],
-                  "module": "Erc1967ToAddressDiviner"
+                  "mod": "Erc1967ToAddressDiviner"
                 },
                 {
                   "input": [
                     "Erc1967ToAddressDiviner"
                   ],
-                  "module": "ContractWitness"
+                  "mod": "ContractWitness"
                 },
                 {
                   "input": [
                     "ContractWitness"
                   ],
-                  "module": "TokenInterfaceDiviner"
+                  "mod": "TokenInterfaceDiviner"
                 },
                 {
                   "input": [
                     "TokenInterfaceDiviner"
                   ],
-                  "module": "TokenInterfaceToRangeDiviner"
+                  "mod": "TokenInterfaceToRangeDiviner"
                 },
                 {
                   "input": [
                     "TokenInterfaceToRangeDiviner"
                   ],
-                  "module": "Erc721RangeDiviner"
+                  "mod": "Erc721RangeDiviner"
                 },
                 {
                   "input": [
                     "Erc721RangeDiviner"
                   ],
-                  "module": "Erc721RangeToCallsDiviner"
+                  "mod": "Erc721RangeToCallsDiviner"
                 },
                 {
                   "input": [
                     "Erc721RangeToCallsDiviner"
                   ],
-                  "module": "Erc721CallWitness"
+                  "mod": "Erc721CallWitness"
                 },
                 {
                   "input": [
                     "Erc721CallWitness"
                   ],
-                  "module": "TokenInfoDiviner"
+                  "mod": "TokenInfoDiviner"
                 }
               ]
             }
@@ -321,53 +321,53 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "NumberZeroWitness"
+                  "mod": "NumberZeroWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc1822Witness"
+                  "mod": "Erc1822Witness"
                 },
                 {
                   "input": [
                     "Erc1822Witness"
                   ],
-                  "module": "Erc1822ToAddressDiviner"
+                  "mod": "Erc1822ToAddressDiviner"
                 },
                 {
                   "input": [
                     "Erc1822ToAddressDiviner"
                   ],
-                  "module": "Erc1967Witness"
+                  "mod": "Erc1967Witness"
                 },
                 {
                   "input": [
                     "Erc1967Witness"
                   ],
-                  "module": "Erc1967ToAddressDiviner"
+                  "mod": "Erc1967ToAddressDiviner"
                 },
                 {
                   "input": [
                     "Erc1967ToAddressDiviner"
                   ],
-                  "module": "ContractWitness"
+                  "mod": "ContractWitness"
                 },
                 {
                   "input": [
                     "ContractWitness"
                   ],
-                  "module": "TokenInterfaceDiviner"
+                  "mod": "TokenInterfaceDiviner"
                 },
                 {
                   "input": [
                     "TokenInterfaceDiviner"
                   ],
-                  "module": "TokenInterfaceToErc721EnumerableInterfaceDiviner"
+                  "mod": "TokenInterfaceToErc721EnumerableInterfaceDiviner"
                 },
                 {
                   "input": [
                     "TokenInterfaceToErc721EnumerableInterfaceDiviner"
                   ],
-                  "module": "ErcTokenInterfaceToCallDiviner"
+                  "mod": "ErcTokenInterfaceToCallDiviner"
                 }
               ]
             }

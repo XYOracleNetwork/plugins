@@ -52,7 +52,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.nft.metadata.uri"]
+                "payload_schemas": [
+                  "network.xyo.evm.nft.metadata.uri"
+                ]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -228,7 +230,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "name": "NftTokenUriSentinel",
               "schema": "network.xyo.sentinel.config",
@@ -236,19 +240,25 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenURIWitness"
+                  "mod": "Erc721TokenURIWitness"
                 },
                 {
-                  "input": ["Erc721TokenURIWitness"],
-                  "module": "EvmCallDiviner"
+                  "input": [
+                    "Erc721TokenURIWitness"
+                  ],
+                  "mod": "EvmCallDiviner"
                 },
                 {
-                  "input": ["EvmCallDiviner"],
-                  "module": "EvmCallResultToNftTokenUriDiviner"
+                  "input": [
+                    "EvmCallDiviner"
+                  ],
+                  "mod": "EvmCallResultToNftTokenUriDiviner"
                 },
                 {
-                  "input": ["EvmCallDiviner"],
-                  "module": "TimestampWitness"
+                  "input": [
+                    "EvmCallDiviner"
+                  ],
+                  "mod": "TimestampWitness"
                 }
               ]
             }

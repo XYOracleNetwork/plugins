@@ -57,15 +57,15 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenURIWitness"
+                  "mod": "Erc721TokenURIWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721OwnerOfWitness"
+                  "mod": "Erc721OwnerOfWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc1155UriWitness"
+                  "mod": "Erc1155UriWitness"
                 },
                 {
                   "input": [
@@ -73,7 +73,7 @@
                     "Erc721OwnerOfWitness",
                     "Erc1155UriWitness"
                   ],
-                  "module": "TokenInfoDiviner"
+                  "mod": "TokenInfoDiviner"
                 }
               ]
             }

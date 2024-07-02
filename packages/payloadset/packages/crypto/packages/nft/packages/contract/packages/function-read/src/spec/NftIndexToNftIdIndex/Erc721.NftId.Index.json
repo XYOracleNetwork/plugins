@@ -213,7 +213,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingDiviner"
+                  "mod": "InputBufferingDiviner"
                 }
               ]
             }
@@ -242,7 +242,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "mod": "Erc721TokenByIndexWitness"
                 }
               ]
             }
@@ -306,13 +306,13 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "mod": "Erc721TokenByIndexWitness"
                 },
                 {
                   "input": [
                     "Erc721TokenByIndexWitness"
                   ],
-                  "module": "NftIdPartialToNftIdTransformDiviner"
+                  "mod": "NftIdPartialToNftIdTransformDiviner"
                 }
               ]
             }

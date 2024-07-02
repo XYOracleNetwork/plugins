@@ -52,7 +52,9 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": ["network.xyo.evm.nft.id"]
+                "payload_schemas": [
+                  "network.xyo.evm.nft.id"
+                ]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -216,7 +218,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "InputBufferingDiviner"
+                  "mod": "InputBufferingDiviner"
                 }
               ]
             }
@@ -235,7 +237,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "name": "TokenIndexToTokenIdSentinel",
               "schema": "network.xyo.sentinel.config",
@@ -243,7 +247,7 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "mod": "Erc721TokenByIndexWitness"
                 }
               ]
             }
@@ -297,7 +301,9 @@
           {
             "config": {
               "archiving": {
-                "archivists": ["Archivist"]
+                "archivists": [
+                  "Archivist"
+                ]
               },
               "name": "Sentinel",
               "schema": "network.xyo.sentinel.config",
@@ -305,15 +311,19 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721TokenByIndexWitness"
+                  "mod": "Erc721TokenByIndexWitness"
                 },
                 {
-                  "input": ["Erc721TokenByIndexWitness"],
-                  "module": "NftIdPartialToNftIdTransformDiviner"
+                  "input": [
+                    "Erc721TokenByIndexWitness"
+                  ],
+                  "mod": "NftIdPartialToNftIdTransformDiviner"
                 },
                 {
-                  "input": ["Erc721TokenByIndexWitness"],
-                  "module": "TimestampWitness"
+                  "input": [
+                    "Erc721TokenByIndexWitness"
+                  ],
+                  "mod": "TimestampWitness"
                 }
               ]
             }

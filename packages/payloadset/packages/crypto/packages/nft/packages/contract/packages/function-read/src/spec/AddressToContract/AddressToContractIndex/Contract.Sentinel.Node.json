@@ -196,19 +196,19 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721NameWitness"
+                  "mod": "Erc721NameWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721SymbolWitness"
+                  "mod": "Erc721SymbolWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721TotalSupplyWitness"
+                  "mod": "Erc721TotalSupplyWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc1155UriWitness"
+                  "mod": "Erc1155UriWitness"
                 },
                 {
                   "input": [
@@ -216,37 +216,37 @@
                     "Erc721SymbolWitness",
                     "Erc721TotalSupplyWitness"
                   ],
-                  "module": "Erc721ContractInfoDiviner"
+                  "mod": "Erc721ContractInfoDiviner"
                 },
                 {
                   "input": [
                     "Erc1155UriWitness"
                   ],
-                  "module": "Erc1155ContractInfoDiviner"
+                  "mod": "Erc1155ContractInfoDiviner"
                 },
                 {
                   "input": [
                     "Erc721ContractInfoDiviner"
                   ],
-                  "module": "Erc721ContractInfoTransformDiviner"
+                  "mod": "Erc721ContractInfoTransformDiviner"
                 },
                 {
                   "input": [
                     "Erc721ContractInfoDiviner"
                   ],
-                  "module": "TimestampWitness"
+                  "mod": "TimestampWitness"
                 },
                 {
                   "input": [
                     "Erc1155ContractInfoDiviner"
                   ],
-                  "module": "Erc1155ContractInfoTransformDiviner"
+                  "mod": "Erc1155ContractInfoTransformDiviner"
                 },
                 {
                   "input": [
                     "Erc1155ContractInfoDiviner"
                   ],
-                  "module": "TimestampWitness"
+                  "mod": "TimestampWitness"
                 }
               ]
             }

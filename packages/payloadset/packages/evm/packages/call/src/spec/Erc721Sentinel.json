@@ -105,15 +105,15 @@
               "tasks": [
                 {
                   "input": true,
-                  "module": "Erc721NameWitness"
+                  "mod": "Erc721NameWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721SymbolWitness"
+                  "mod": "Erc721SymbolWitness"
                 },
                 {
                   "input": true,
-                  "module": "Erc721TotalSupplyWitness"
+                  "mod": "Erc721TotalSupplyWitness"
                 },
                 {
                   "input": [
@@ -121,7 +121,7 @@
                     "Erc721SymbolWitness",
                     "Erc721TotalSupplyWitness"
                   ],
-                  "module": "ContractInfoDiviner"
+                  "mod": "ContractInfoDiviner"
                 }
               ]
             }
