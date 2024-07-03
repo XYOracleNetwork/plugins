@@ -25,7 +25,7 @@ cryptoPolyfill(window)
 describe('BowserSystemInfo', () => {
   test('observe', async () => {
     const witness = await BowserSystemInfoWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         schema: BowserSystemInfoWitnessConfigSchema,
       },
@@ -35,7 +35,7 @@ describe('BowserSystemInfo', () => {
     expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
   })
   test('observe [no config]', async () => {
-    const witness = await BowserSystemInfoWitness.create({ account: Account.randomSync() })
+    const witness = await BowserSystemInfoWitness.create({ account: 'random' })
     const [observation] = await witness.observe()
     expect(observation.schema).toBe(BowserSystemInfoSchema)
     expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)

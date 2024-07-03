@@ -11,7 +11,7 @@ describeIf(process.env.GOOGLE_SAFEBROWSING_KEY)('UrlSafetyWitness', () => {
   const schema = UrlSchema
   beforeAll(async () => {
     witness = await UrlSafetyWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       google: { safeBrowsing: { key: process.env.GOOGLE_SAFEBROWSING_KEY } },
     })
   })

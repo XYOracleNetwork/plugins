@@ -16,7 +16,7 @@ describe('Diviner', () => {
     ['no inputs', 'empty observation', []],
   ]
   test.each(cases)('with %s returns %s', async (_input: string, _expected: string, data: Payload[]) => {
-    const diviner = await CryptoMarketAssetDiviner.create({ account: Account.randomSync() })
+    const diviner = await CryptoMarketAssetDiviner.create({ account: 'random' })
     const payloads = await diviner.divine(data)
     expect(payloads).toBeArray()
     expect(payloads.length).toBe(1)

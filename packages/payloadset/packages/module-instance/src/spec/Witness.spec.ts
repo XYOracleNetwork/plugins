@@ -6,9 +6,9 @@ import { AbstractModuleInstanceWitness, AbstractModuleInstanceWitnessConfigSchem
 
 describe('AbstractModuleInstanceWitness', () => {
   test('Witnessing', async () => {
-    const mod = await MemoryArchivist.create({ account: Account.randomSync() })
+    const mod = await MemoryArchivist.create({ account: 'random' })
     const witness = await AbstractModuleInstanceWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: AbstractModuleInstanceWitnessConfigSchema },
       mod,
     })

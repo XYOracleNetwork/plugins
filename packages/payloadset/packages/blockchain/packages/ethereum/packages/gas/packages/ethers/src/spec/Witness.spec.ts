@@ -21,7 +21,7 @@ describe('EthereumGasEthersWitness', () => {
   testIf(projectId && projectSecret)('returns observation', async () => {
     const provider = getProviderFromEnv()
     const sut = await EthereumGasEthersWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         schema: EthereumGasEthersWitnessConfigSchema,
       },

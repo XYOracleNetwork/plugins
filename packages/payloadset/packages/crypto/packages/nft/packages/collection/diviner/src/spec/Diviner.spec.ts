@@ -31,7 +31,7 @@ describe('NftCollectionScoreDiviner', () => {
   ]
   let diviner: NftCollectionScoreDiviner
   beforeAll(async () => {
-    const account = Account.randomSync()
+    const account = await Account.random()
     diviner = await NftCollectionScoreDiviner.create({ account })
   })
   const cases: [address: string, chainId: number][] = [

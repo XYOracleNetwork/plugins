@@ -1,8 +1,8 @@
 import { Account } from '@xyo-network/account'
 
 describe('Account', () => {
-  it('create random', () => {
-    const account = Account.randomSync()
+  it('create random', async () => {
+    const account = await Account.random()
     console.log(account.address)
   })
   it('create random (async)', async () => {

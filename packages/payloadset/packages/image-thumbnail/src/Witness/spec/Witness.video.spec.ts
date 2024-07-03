@@ -31,7 +31,7 @@ describe.skip('ImageThumbnailWitness', () => {
     describe('with video type', () => {
       let witness: ImageThumbnailWitness
       beforeAll(async () => {
-        witness = await ImageThumbnailWitness.create({ account: Account.randomSync() })
+        witness = await ImageThumbnailWitness.create({ account: 'random' })
       })
       describe('3GPP', () => {
         const cases: MimeWithUrl[] = [['video/3gpp', 'https://filesamples.com/samples/video/3gp/sample_640x360.3gp']]

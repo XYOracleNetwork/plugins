@@ -6,7 +6,7 @@ import { PentairScreenlogicWitness } from '../Witness'
 
 describe('PentairScreenLogicWitness', () => {
   testIf(process.env.TEST_PENTAIR === 'true')('Witnessing [no config]', async () => {
-    const witness = await PentairScreenlogicWitness.create({ account: Account.randomSync() })
+    const witness = await PentairScreenlogicWitness.create({ account: 'random' })
     const [observation] = await witness.observe()
     expect(await PayloadWrapper.wrap(observation).getValid()).toBe(true)
   })

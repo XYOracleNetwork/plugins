@@ -7,7 +7,7 @@ const endpoint = 'https://api.quicknode.com/graphql'
 describe('ApiGraphqlWitness', () => {
   it('Expected Success', async () => {
     const publicAddress = '0xacdaEEb57ff6886fC8e203B9Dd4C2b241DF89b7a'
-    const witness = await ApiGraphqlWitness.create({ account: Account.randomSync(), endpoint })
+    const witness = await ApiGraphqlWitness.create({ account: 'random', endpoint })
     const query: GraphqlQuery = {
       query: `query Query {
         ethereum {

@@ -15,7 +15,7 @@ const testIfHasBin = (bin: string) => (hasbin.sync(bin) ? it : it.skip)
 describe('ImageThumbnailWitness', () => {
   let witness: ImageThumbnailWitness
   beforeAll(async () => {
-    witness = await ImageThumbnailWitness.create({ account: Account.randomSync() })
+    witness = await ImageThumbnailWitness.create({ account: 'random' })
   })
   testIfHasBin('magick')('IPFS [jpeg]', async () => {
     const ipfsPayload: UrlPayload = {

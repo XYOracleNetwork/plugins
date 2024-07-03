@@ -9,7 +9,7 @@ import { CoingeckoCryptoMarketWitness } from '../Witness'
 describe('CoingeckoCryptoMarketWitness', () => {
   test('returns observation', async () => {
     const sut = await CoingeckoCryptoMarketWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         coins: defaultCoins,
         currencies: defaultCurrencies,
@@ -27,7 +27,7 @@ describe('CoingeckoCryptoMarketWitness', () => {
   })
 
   test('returns observation [no config]', async () => {
-    const sut = await CoingeckoCryptoMarketWitness.create({ account: Account.randomSync() })
+    const sut = await CoingeckoCryptoMarketWitness.create({ account: 'random' })
     const [actual] = await sut.observe()
     expect(actual.schema).toBe(CoingeckoCryptoMarketSchema)
     const answerWrapper = PayloadWrapper.wrap(actual) as PayloadWrapper<CoingeckoCryptoMarketPayload>

@@ -16,7 +16,7 @@ const describeIfHasBin = (bin: string) => (hasbin.sync(bin) ? describe : describ
 describeIfHasBin('magick')('ImageThumbnailWitness', () => {
   let witness: ImageThumbnailWitness
   beforeAll(async () => {
-    witness = await ImageThumbnailWitness.create({ account: Account.randomSync() })
+    witness = await ImageThumbnailWitness.create({ account: 'random' })
   })
   it('HTTPS [medium/avif]', async () => {
     const httpsPayload: UrlPayload = {

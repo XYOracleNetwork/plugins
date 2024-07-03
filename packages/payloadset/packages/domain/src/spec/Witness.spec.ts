@@ -6,7 +6,7 @@ import { DomainWitness } from '../Witness'
 describe('DomainConfigWitness', () => {
   test('valid-instantiation', async () => {
     const witness = await DomainWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         domain: 'xyo.network',
         schema: DomainWitnessConfigSchema,

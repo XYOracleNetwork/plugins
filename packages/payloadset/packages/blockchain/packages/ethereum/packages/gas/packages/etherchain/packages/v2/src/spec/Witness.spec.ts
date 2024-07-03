@@ -8,7 +8,7 @@ import { EtherchainEthereumGasWitnessV2 } from '../Witness'
 describe('EtherchainEthereumGasWitnessV2', () => {
   test('returns observation', async () => {
     const sut = await EtherchainEthereumGasWitnessV2.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: EthereumGasEtherchainV2WitnessConfigSchema },
     })
     const [actual] = (await sut.observe()) as EthereumGasEtherchainV2Payload[]
@@ -22,7 +22,7 @@ describe('EtherchainEthereumGasWitnessV2', () => {
     expect(await answerWrapper.getValid()).toBe(true)
   })
   test('returns observation [no config]', async () => {
-    const sut = await EtherchainEthereumGasWitnessV2.create({ account: Account.randomSync() })
+    const sut = await EtherchainEthereumGasWitnessV2.create({ account: 'random' })
     const [actual] = (await sut.observe()) as EthereumGasEtherchainV2Payload[]
     expect(actual).toBeObject()
     expect(actual.code).toBeNumber()

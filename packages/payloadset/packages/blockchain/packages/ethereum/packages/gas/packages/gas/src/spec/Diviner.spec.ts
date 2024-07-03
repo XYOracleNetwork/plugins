@@ -21,7 +21,7 @@ describe('Diviner', () => {
     ['all supported gas payloads', [sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas]],
   ]
   test.each(cases)('with %s returns divined gas price', async (_title: string, data: Payload[]) => {
-    const diviner = await EthereumGasDiviner.create({ account: Account.randomSync() })
+    const diviner = await EthereumGasDiviner.create({ account: 'random' })
     const payloads = await diviner.divine(data)
     expect(payloads).toBeArray()
     expect(payloads.length).toBe(1)
@@ -39,7 +39,7 @@ describe('Diviner', () => {
     const blocknativeGas = (
       await (
         await EthereumGasBlocknativeWitness.create({
-          account: Account.randomSync(),
+          account: 'random',
           config: {
             schema: EthereumGasBlocknativeWitnessConfigSchema,
           },
@@ -49,7 +49,7 @@ describe('Diviner', () => {
     const etherchainGasV2 = (
       await (
         await EtherchainEthereumGasWitnessV2.create({
-          account: Account.randomSync(),
+          account: 'random',
           config: {
             schema: EthereumGasEtherchainV2WitnessConfigSchema,
           },
@@ -59,7 +59,7 @@ describe('Diviner', () => {
     const etherscanGas = (
       await (
         await EthereumGasEtherscanWitness.create({
-          account: Account.randomSync(),
+          account: 'random',
           config: {
             apiKey: process.env.ETHERSCAN_API_KEY || '',
             schema: EthereumGasEtherscanWitnessConfigSchema,
@@ -70,7 +70,7 @@ describe('Diviner', () => {
     const ethersGas = (
       await (
         await EthereumGasEthersWitness.create({
-          account: Account.randomSync(),
+          account: 'random',
           config: {
             schema: EthereumGasEthersWitnessConfigSchema,
           },
@@ -81,7 +81,7 @@ describe('Diviner', () => {
 
     const observations: Payload[] = [blocknativeGas, etherchainGasV2, etherscanGas, ethersGas]
 
-    const diviner = await EthereumGasDiviner.create({ account: Account.randomSync() })
+    const diviner = await EthereumGasDiviner.create({ account: 'random' })
 
     const payloads = await diviner.divine(observations)
 

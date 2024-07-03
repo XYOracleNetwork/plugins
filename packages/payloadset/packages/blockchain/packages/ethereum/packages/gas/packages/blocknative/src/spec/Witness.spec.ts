@@ -8,7 +8,7 @@ import { EthereumGasBlocknativeWitness } from '../Witness'
 describe('EthereumGasBlocknativeWitness', () => {
   it('returns observation', async () => {
     const sut = await EthereumGasBlocknativeWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: {
         schema: EthereumGasBlocknativeWitnessConfigSchema,
       },

@@ -32,8 +32,8 @@ const validateObservation = (observation: Payload[]) => {
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
   let account: AccountInstance
-  beforeAll(() => {
-    account = Account.randomSync()
+  beforeAll(async () => {
+    account = await Account.random()
   })
   describe('observe', () => {
     const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'

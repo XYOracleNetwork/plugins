@@ -12,7 +12,7 @@ import { IdWitness, IdWitnessConfigSchema } from '../Witness'
 describe('IdWitness [Browser]', () => {
   test('observe', async () => {
     const witness = await IdWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { salt: 'test', schema: IdWitnessConfigSchema },
     })
     const [observation] = await witness.observe([{ salt: 'test', schema: IdSchema } as Payload])
@@ -22,7 +22,7 @@ describe('IdWitness [Browser]', () => {
 
   test('observe [no salt]', async () => {
     const witness = await IdWitness.create({
-      account: Account.randomSync(),
+      account: 'random',
       config: { schema: IdWitnessConfigSchema },
     })
     const [observation] = await witness.observe([{ salt: 'test', schema: IdSchema } as Payload])

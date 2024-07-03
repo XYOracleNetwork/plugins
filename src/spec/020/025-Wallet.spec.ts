@@ -2,11 +2,7 @@ import { HDWallet } from '@xyo-network/account'
 
 describe('Wallet', () => {
   describe('create', () => {
-    it('random', () => {
-      const wallet = HDWallet.randomSync()
-      console.log(wallet.address)
-    })
-    it('random (async)', async () => {
+    it('random', async () => {
       const wallet = await HDWallet.random()
       console.log(wallet.address)
     })

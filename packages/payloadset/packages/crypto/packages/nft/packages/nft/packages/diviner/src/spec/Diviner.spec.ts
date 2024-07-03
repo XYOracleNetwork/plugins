@@ -19,7 +19,7 @@ describe('NftScoreDiviner', () => {
     }
   })
   test('divine', async () => {
-    const diviner = await NftScoreDiviner.create({ account: Account.randomSync() })
+    const diviner = await NftScoreDiviner.create({ account: 'random' })
     const scores = (await diviner.divine(data)).filter(isNftScore)
     expect(scores).toBeArrayOfSize(data.length)
     for (const [i, score] of scores.entries()) {

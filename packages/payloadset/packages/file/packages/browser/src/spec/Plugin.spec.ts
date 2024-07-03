@@ -35,7 +35,7 @@ describe('FileWitness', () => {
     const file = new File(['test'], 'test.txt', { type: 'text/plain' })
 
     browserFileWitness = await BrowserFileWitness.create({
-      account: HDWallet.randomSync(),
+      account: 'random',
       config: { name: 'BrowserFileWitness', schema: FileWitnessConfigSchema, storage: 'data-uri' },
       ...(file ? { file } : {}),
     })
