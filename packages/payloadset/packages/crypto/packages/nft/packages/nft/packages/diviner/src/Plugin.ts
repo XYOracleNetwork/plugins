@@ -2,7 +2,7 @@ import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetDivinerPlugin } from '@xyo-network/payloadset-plugin'
 
-import { NftScoreDiviner } from './Diviner'
+import { NftScoreDiviner } from './Diviner.js'
 
 export const NftScoreDivinerPlugin = () =>
   createPayloadSetDivinerPlugin<NftScoreDiviner>(

@@ -4,9 +4,9 @@ import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witn
 import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
-import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config'
-import { EvmCallResultToNftTokenUriDivinerParams } from './Params'
-import { EvmTokenUriCallResults } from './Payload'
+import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config.js'
+import { EvmCallResultToNftTokenUriDivinerParams } from './Params.js'
+import { EvmTokenUriCallResults } from './Payload.js'
 
 export class EvmCallResultToNftTokenUriDiviner<
   TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,

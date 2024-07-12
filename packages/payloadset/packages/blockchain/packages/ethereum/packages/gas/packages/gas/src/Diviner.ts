@@ -4,8 +4,8 @@ import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { divineGas } from './lib'
-import { EthereumGasDivinerConfigSchema } from './Schema'
+import { divineGas } from './lib/index.js'
+import { EthereumGasDivinerConfigSchema } from './Schema.js'
 
 export type EthereumGasDivinerConfig = DivinerConfig<{ schema: EthereumGasDivinerConfigSchema }>
 export type EthereumGasDivinerParams = DivinerParams<AnyConfigSchema<EthereumGasDivinerConfig>>

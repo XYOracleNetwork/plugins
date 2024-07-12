@@ -6,7 +6,7 @@ import {
   PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-import { PurchaseSchema } from './Schema'
+import { PurchaseSchema } from './Schema.js'
 
 export interface PurchaseFields {
   /**

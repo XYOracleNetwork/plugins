@@ -5,7 +5,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 
-import { DomainWitnessConfig, DomainWitnessConfigSchema } from './Config'
+import { DomainWitnessConfig, DomainWitnessConfigSchema } from './Config.js'
 
 export type DomainWitnessParams = WitnessParams<AnyConfigSchema<DomainWitnessConfig>>
 export class DomainWitness<TParams extends DomainWitnessParams = DomainWitnessParams> extends AbstractWitness<TParams> implements WitnessModule {

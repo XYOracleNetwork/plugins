@@ -2,7 +2,7 @@ import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugi
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetDivinerPlugin } from '@xyo-network/payloadset-plugin'
 
-import { CryptoMarketAssetDiviner } from './Diviner'
+import { CryptoMarketAssetDiviner } from './Diviner.js'
 
 export const CryptoMarketAssetPlugin = () =>
   createPayloadSetDivinerPlugin<CryptoMarketAssetDiviner>(

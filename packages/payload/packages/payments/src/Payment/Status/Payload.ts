@@ -5,7 +5,7 @@ import {
   PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-import { PaymentStatusSchema } from './Schema'
+import { PaymentStatusSchema } from './Schema.js'
 
 export interface PaymentStatusFields {
   /**

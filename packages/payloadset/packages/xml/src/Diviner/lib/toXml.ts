@@ -1,8 +1,8 @@
 import { Parser } from 'xml2js'
 
-import { Xml } from '../../Payload'
-import { XmlSchema } from '../../Schema'
-import { StringDataField } from './StringDataField'
+import { Xml } from '../../Payload.js'
+import { XmlSchema } from '../../Schema.js'
+import { StringDataField } from './StringDataField.js'
 
 /**
  * Takes a string data field containing xml and converts it to an XML object

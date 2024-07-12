@@ -1,5 +1,5 @@
-import { CryptoCardsGamePayload } from './Payload'
-import { CryptoCardsGameSchema } from './Schema'
+import { CryptoCardsGamePayload } from './Payload.js'
+import { CryptoCardsGameSchema } from './Schema.js'
 
 export const cryptoCardsGamePayloadTemplate = (): Partial<CryptoCardsGamePayload> => ({
   schema: CryptoCardsGameSchema,

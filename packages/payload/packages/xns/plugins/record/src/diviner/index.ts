@@ -1,1 +1,1 @@
-export * from './DomainLeaseEstimateDiviner'
+export * from './DomainLeaseEstimateDiviner/index.js'

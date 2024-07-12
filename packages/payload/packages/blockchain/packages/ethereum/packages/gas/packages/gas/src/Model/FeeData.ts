@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { FeePerGas } from './FeePerGas'
-import { PriorityFeePerGas } from './PriorityFeePerGas'
+import { FeePerGas } from './FeePerGas.js'
+import { PriorityFeePerGas } from './PriorityFeePerGas.js'
 
 export interface FeeData {
   /**

@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema'
+import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.js'
 
 export interface ErrorDetails<TErrorCode extends string | undefined = string | undefined> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

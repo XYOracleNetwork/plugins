@@ -15,8 +15,8 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { WithMeta } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState'
-import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner'
+import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.js'
+import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.js'
 import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json'
 
 /**
@@ -78,23 +78,23 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
     const privateModules = manifest.nodes[0].modules?.private ?? []
     const publicModules = manifest.nodes[0].modules?.public ?? []
     const mods = await node.resolve('*')
-    expect(mods.length).toBe(privateModules.length + publicModules.length)
+    expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
 
     // Insert previously witnessed payloads into thumbnail archivist
     const httpSuccessTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [httpSuccessBoundWitness, httpSuccessPayloads] = await (
-      await new BoundWitnessBuilder().payloads([thumbnailHttpSuccess, httpSuccessTimestamp])
-    ).build()
+    const [httpSuccessBoundWitness, httpSuccessPayloads] = await new BoundWitnessBuilder()
+      .payloads([thumbnailHttpSuccess, httpSuccessTimestamp])
+      .build()
     const httpFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [httpFailBoundWitness, httpFailPayloads] = await (await new BoundWitnessBuilder().payloads([thumbnailHttpFail, httpFailTimestamp])).build()
+    const [httpFailBoundWitness, httpFailPayloads] = await new BoundWitnessBuilder().payloads([thumbnailHttpFail, httpFailTimestamp]).build()
 
     const witnessFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [witnessFailBoundWitness, witnessFailPayloads] = await (
-      await new BoundWitnessBuilder().payloads([thumbnailWitnessFail, witnessFailTimestamp])
-    ).build()
+    const [witnessFailBoundWitness, witnessFailPayloads] = await new BoundWitnessBuilder()
+      .payloads([thumbnailWitnessFail, witnessFailTimestamp])
+      .build()
 
     const codeFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [codeFailBoundWitness, codeFailPayloads] = await (await new BoundWitnessBuilder().payloads([thumbnailCodeFail, codeFailTimestamp])).build()
+    const [codeFailBoundWitness, codeFailPayloads] = await new BoundWitnessBuilder().payloads([thumbnailCodeFail, codeFailTimestamp]).build()
 
     const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('ImageThumbnailArchivist')))
     await thumbnailArchivist.insert([

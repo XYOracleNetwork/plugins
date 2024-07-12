@@ -1,2 +1,2 @@
-export * from './ErrorDetails'
-export * from './Schema'
+export * from './ErrorDetails/index.js'
+export * from './Schema.js'

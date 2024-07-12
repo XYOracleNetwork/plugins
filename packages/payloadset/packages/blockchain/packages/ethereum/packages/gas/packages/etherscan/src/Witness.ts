@@ -6,9 +6,9 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 
-import { EthereumGasEtherscanWitnessConfig } from './Config'
-import { getGasFromEtherscan } from './lib'
-import { EthereumGasEtherscanWitnessConfigSchema } from './Schema'
+import { EthereumGasEtherscanWitnessConfig } from './Config.js'
+import { getGasFromEtherscan } from './lib/index.js'
+import { EthereumGasEtherscanWitnessConfigSchema } from './Schema.js'
 
 export class EthereumGasEtherscanWitness extends AbstractWitness<WitnessParams<AnyConfigSchema<EthereumGasEtherscanWitnessConfig>>> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasEtherscanWitnessConfigSchema]

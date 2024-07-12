@@ -1,4 +1,4 @@
-import { NftSchema } from '../Schema'
+import { NftSchema } from '../Schema.js'
 
 export type NftWitnessConfigSchema = `${NftSchema}.witness.config`
 export const NftWitnessConfigSchema: NftWitnessConfigSchema = `${NftSchema}.witness.config`

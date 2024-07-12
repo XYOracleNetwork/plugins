@@ -2,8 +2,8 @@ import { assertEx } from '@xylabs/assert'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getErc1967SlotStatus } from './lib'
-import { Erc1967Status, Erc1967StatusSchema } from './Payload'
+import { getErc1967SlotStatus } from './lib/index.js'
+import { Erc1967Status, Erc1967StatusSchema } from './Payload.js'
 
 export const Erc1967WitnessConfigSchema = 'network.xyo.erc1967.witness.config'
 export type Erc1967WitnessConfigSchema = typeof Erc1967WitnessConfigSchema

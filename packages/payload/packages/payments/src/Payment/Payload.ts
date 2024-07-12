@@ -5,8 +5,8 @@ import {
   PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-import { SupportedCurrency } from '../Currency'
-import { PaymentSchema } from './Schema'
+import { SupportedCurrency } from '../Currency.js'
+import { PaymentSchema } from './Schema.js'
 
 export interface PaymentFields {
   /**

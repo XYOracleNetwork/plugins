@@ -17,10 +17,10 @@ import { sha256 } from 'hash-wasm'
 import shajs from 'sha.js'
 import Url from 'url-parse'
 
-import { ImageThumbnailEncoding, ImageThumbnailWitnessConfigSchema } from './Config'
-import { getVideoFrameAsImageFluent } from './ffmpeg'
-import { checkIpfsUrl, createDataUrl, resolveDynamicSvg } from './lib'
-import { ImageThumbnailWitnessParams } from './Params'
+import { ImageThumbnailEncoding, ImageThumbnailWitnessConfigSchema } from './Config.js'
+import { getVideoFrameAsImageFluent } from './ffmpeg/index.js'
+import { checkIpfsUrl, createDataUrl, resolveDynamicSvg } from './lib/index.js'
+import { ImageThumbnailWitnessParams } from './Params.js'
 
 //TODO: Break this into two Witnesses?
 

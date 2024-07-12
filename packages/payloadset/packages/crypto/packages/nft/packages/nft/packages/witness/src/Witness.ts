@@ -11,7 +11,7 @@ import {
 import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib'
+import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib/index.js'
 
 export type CryptoWalletNftWitnessParams = EvmWitnessParams<CryptoWalletNftWitnessConfig>
 

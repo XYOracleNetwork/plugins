@@ -1,10 +1,9 @@
-import { Account } from '@xyo-network/account'
 import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ModuleError, ModuleErrorSchema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 
-import { ImageThumbnailWitness } from '../Witness'
+import { ImageThumbnailWitness } from '../Witness.js'
 
 const testIfHasBin = (bin: string) => (hasbin.sync(bin) ? it : it.skip)
 

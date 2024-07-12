@@ -13,7 +13,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib'
+import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib/index.js'
 
 export type CryptoNftCollectionWitnessParams = EvmWitnessParams<NftCollectionWitnessConfig>
 

@@ -2,16 +2,12 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "incremental": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "NodeNext",
+    "module": "NodeNext",
     "typeRoots": []
   },
-  "exclude": ["dist", "node_modules", "./node_modules", "./**/node_modules", "./dist", "./**/dist", "./**/docs", ".*"],
-  "extends": "@xylabs/tsconfig",
-  "ts-node": {
-    "compilerOptions": {
-      "module": "ESNext"
-    },
-    "files": true,
-    "transpileOnly": true
-  }
+  "exclude": ["dist", "./dist", "./**/dist", "./**/docs", ".*"],
+  "extends": "@xylabs/tsconfig"
 }

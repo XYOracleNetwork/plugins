@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { AbstractModuleInstanceSchema } from './Schema'
+import { AbstractModuleInstanceSchema } from './Schema.js'
 
 export interface AbstractModuleInstanceQueryConfig {
   cost?: string

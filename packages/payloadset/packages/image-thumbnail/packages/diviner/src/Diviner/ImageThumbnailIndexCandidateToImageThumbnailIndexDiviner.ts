@@ -15,7 +15,7 @@ import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-mod
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.js'
 
 /**
  * Transforms candidates for image thumbnail indexing into their indexed representation

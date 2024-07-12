@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { SnapshotSchema } from './Schema'
+import { SnapshotSchema } from './Schema.js'
 
 /**
  * The fields for a Snapshot

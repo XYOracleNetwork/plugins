@@ -2,7 +2,7 @@ import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
-import { SchemaWitness } from './Witness'
+import { SchemaWitness } from './Witness.js'
 
 export const SchemaPlugin = () =>
   createPayloadSetWitnessPlugin<SchemaWitness>(

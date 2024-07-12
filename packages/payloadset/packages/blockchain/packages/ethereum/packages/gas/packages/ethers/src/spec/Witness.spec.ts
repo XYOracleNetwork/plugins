@@ -1,10 +1,9 @@
-import { Account } from '@xyo-network/account'
 import { EthereumGasEthersPayload, EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EthereumGasEthersWitnessConfigSchema } from '../Schema'
-import { EthereumGasEthersWitness } from '../Witness'
+import { EthereumGasEthersWitnessConfigSchema } from '../Schema.js'
+import { EthereumGasEthersWitness } from '../Witness.js'
 
 const projectId = process.env.INFURA_PROJECT_ID || ''
 const projectSecret = process.env.INFURA_PROJECT_SECRET || ''

@@ -2,7 +2,7 @@ import { CryptoCardsGameSchema } from '@xyo-network/crypto-cards-game-payload-pl
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { CryptoCardsGameWitness } from './Witness'
+import { CryptoCardsGameWitness } from './Witness.js'
 
 export const CryptoCardsGamePlugin = () =>
   createPayloadSetWitnessPlugin<CryptoCardsGameWitness>(

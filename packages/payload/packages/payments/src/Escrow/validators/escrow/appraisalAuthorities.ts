@@ -2,8 +2,8 @@ import { asAddress } from '@xylabs/hex'
 import { ModuleIdentifier } from '@xyo-network/module-model'
 import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms'
-import { moduleIdentifiersContainsAllOf } from '../common'
+import { EscrowTerms } from '../../Terms.js'
+import { moduleIdentifiersContainsAllOf } from '../common/index.js'
 
 const name = 'EscrowTerms.appraisalAuthorities'
 

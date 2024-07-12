@@ -1,6 +1,6 @@
 import { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { EvmCallResultToNftTokenUriDivinerSchema } from './Schema'
+import { EvmCallResultToNftTokenUriDivinerSchema } from './Schema.js'
 
 /**
  * The config schema for the EVM call result to NFT token URI diviner

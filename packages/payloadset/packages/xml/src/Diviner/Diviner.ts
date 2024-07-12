@@ -3,11 +3,11 @@ import { DivinerInstance, DivinerModuleEventData } from '@xyo-network/diviner-mo
 import { creatableModule } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { Xml } from '../Payload'
-import { XmlSchema } from '../Schema'
-import { hasStringDataField, StringDataField, toXml } from './lib'
-import { XmlParsingDivinerParams } from './Params'
-import { XmlParsingDivinerConfigSchema } from './Schema'
+import { Xml } from '../Payload.js'
+import { XmlSchema } from '../Schema.js'
+import { hasStringDataField, StringDataField, toXml } from './lib/index.js'
+import { XmlParsingDivinerParams } from './Params.js'
+import { XmlParsingDivinerConfigSchema } from './Schema.js'
 
 @creatableModule()
 export class XmlParsingDiviner<

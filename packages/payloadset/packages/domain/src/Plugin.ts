@@ -2,7 +2,7 @@ import { DomainSchema } from '@xyo-network/domain-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { DomainWitness } from './Witness'
+import { DomainWitness } from './Witness.js'
 
 export const DomainPlugin = () =>
   createPayloadSetWitnessPlugin<DomainWitness>(

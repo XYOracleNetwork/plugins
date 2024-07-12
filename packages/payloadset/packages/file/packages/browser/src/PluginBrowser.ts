@@ -1,8 +1,8 @@
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { BrowserFileWitness } from './BrowserFileWitness'
-import { FileSchema } from './Schema'
+import { BrowserFileWitness } from './BrowserFileWitness.js'
+import { FileSchema } from './Schema.js'
 
 export const BrowserFilePlugin = () =>
   createPayloadSetWitnessPlugin<BrowserFileWitness>(

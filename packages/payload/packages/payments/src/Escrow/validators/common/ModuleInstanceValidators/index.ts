@@ -1,1 +1,1 @@
-export * from './moduleInstanceValidators'
+export * from './moduleInstanceValidators.js'

@@ -5,9 +5,9 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { TimestampWitnessParams } from '@xyo-network/witness-timestamp'
 
-import { EthereumGasBlocknativeWitnessConfig } from './Config'
-import { getGasFromBlocknative } from './lib'
-import { EthereumGasBlocknativeWitnessConfigSchema } from './Schema'
+import { EthereumGasBlocknativeWitnessConfig } from './Config.js'
+import { getGasFromBlocknative } from './lib/index.js'
+import { EthereumGasBlocknativeWitnessConfigSchema } from './Schema.js'
 
 export type EthereumGasBlocknativeWitnessParams = TimestampWitnessParams<AnyConfigSchema<EthereumGasBlocknativeWitnessConfig>>
 export class EthereumGasBlocknativeWitness extends AbstractWitness<EthereumGasBlocknativeWitnessParams> {

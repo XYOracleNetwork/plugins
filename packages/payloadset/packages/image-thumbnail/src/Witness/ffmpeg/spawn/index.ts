@@ -1,2 +1,2 @@
-export * from './executeFfmpeg'
-export * from './getVideoFrameAsImage'
+export * from './executeFfmpeg.js'
+export * from './getVideoFrameAsImage.js'

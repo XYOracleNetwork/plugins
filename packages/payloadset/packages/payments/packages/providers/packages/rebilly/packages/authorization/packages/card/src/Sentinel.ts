@@ -7,10 +7,10 @@ import { RebillyPaymentAuthorizationToken, RebillyPaymentAuthorizationTokenSchem
 import { AbstractSentinel } from '@xyo-network/sentinel-abstract'
 import { SentinelInstance, SentinelModuleEventData } from '@xyo-network/sentinel-model'
 
-import { CreateTokenResponse } from './Api'
-import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from './Config'
-import { RebillyPaymentCardAuthorizationSentinelParams } from './Params'
-import { toTokenRequest } from './util'
+import { CreateTokenResponse } from './Api/index.js'
+import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from './Config.js'
+import { RebillyPaymentCardAuthorizationSentinelParams } from './Params.js'
+import { toTokenRequest } from './util/index.js'
 
 const removePrefix = (str: string, prefix: string) => {
   const regex = new RegExp(`^${prefix}`)

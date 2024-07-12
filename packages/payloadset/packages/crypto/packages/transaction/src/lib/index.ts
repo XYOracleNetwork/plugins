@@ -1,1 +1,1 @@
-export * from './getTransactionsForAddress'
+export * from './getTransactionsForAddress.js'

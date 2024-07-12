@@ -1,1 +1,1 @@
-export * from './getV2GasFromEtherchain'
+export * from './getV2GasFromEtherchain.js'

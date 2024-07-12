@@ -1,3 +1,3 @@
-export * from './calculateAllPropertiesDistribution'
-export * from './distribution'
-export * from './probabilityDistributions'
+export * from './calculateAllPropertiesDistribution.js'
+export * from './distribution.js'
+export * from './probabilityDistributions/index.js'

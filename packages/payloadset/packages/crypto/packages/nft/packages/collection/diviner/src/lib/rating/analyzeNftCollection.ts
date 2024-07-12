@@ -1,7 +1,7 @@
 import { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { Score } from '@xyo-network/crypto-nft-score-model'
 
-import { scoringCriteria } from './criteria'
+import { scoringCriteria } from './criteria/index.js'
 
 export type ScoringCriteriaKey = keyof typeof scoringCriteria & PropertyKey
 

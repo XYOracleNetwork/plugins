@@ -1,1 +1,1 @@
-export * from './getErc1822SlotStatus'
+export * from './getErc1822SlotStatus.js'

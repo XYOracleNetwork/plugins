@@ -14,9 +14,9 @@ import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Semaphore } from 'async-mutex'
 
-import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner'
-import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../../../../Payload'
-import { EvmCallWitness } from '../../../../Witness'
+import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner.js'
+import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../../../../Payload.js'
+import { EvmCallWitness } from '../../../../Witness.js'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}
@@ -122,7 +122,7 @@ describe.skip('Erc721Sentinel', () => {
       profile('tokenCallSetup')
       const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
 
-      const totalSupply = info?.results?.totalSupply ? BigInt(hexFrom(info.results.totalSupply.result, { prefix: true })) : 0n
+      const totalSupply = info?.results?.totalSupply ? BigInt(hexFrom(info.results.totalSupply.result as string, { prefix: true })) : 0n
       expect(totalSupply).toBeGreaterThan(0n)
 
       const chunkSize = 100n

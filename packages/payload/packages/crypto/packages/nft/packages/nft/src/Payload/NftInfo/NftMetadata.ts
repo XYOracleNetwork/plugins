@@ -1,6 +1,6 @@
 import { JsonValue } from '@xylabs/object'
 
-import { NftAttribute } from './NftAttribute'
+import { NftAttribute } from './NftAttribute.js'
 
 export interface NftMetadata {
   [key: string]: JsonValue | NftAttribute[] | undefined

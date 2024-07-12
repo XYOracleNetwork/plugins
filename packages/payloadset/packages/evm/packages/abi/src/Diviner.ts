@@ -6,7 +6,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { Interface } from 'ethers'
 
-import { EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi } from './Payload'
+import { EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi } from './Payload.js'
 
 export const EvmAbiImplementedDivinerConfigSchema = 'network.xyo.evm.abi.implemented.diviner.config'
 export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivinerConfigSchema

@@ -2,7 +2,7 @@ import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { IdWitness } from './Witness'
+import { IdWitness } from './Witness.js'
 
 export const IdPlugin = () =>
   createPayloadSetWitnessPlugin<IdWitness>(

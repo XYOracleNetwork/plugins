@@ -1,5 +1,5 @@
-import { NodeSystemInfoPayload } from './Payload'
-import { NodeSystemInfoSchema } from './Schema'
+import { NodeSystemInfoPayload } from './Payload.js'
+import { NodeSystemInfoSchema } from './Schema.js'
 
 const defaultSystemInfoConfig = () => {
   return {

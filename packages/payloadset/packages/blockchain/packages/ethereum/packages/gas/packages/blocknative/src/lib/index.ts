@@ -1,1 +1,1 @@
-export * from './getGasFromBlocknative'
+export * from './getGasFromBlocknative.js'

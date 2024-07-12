@@ -12,10 +12,10 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels'
-import { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState'
-import { ImageThumbnailStateToIndexCandidateDivinerConfigSchema } from './Config'
-import { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels.js'
+import { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState.js'
+import { ImageThumbnailStateToIndexCandidateDivinerConfigSchema } from './Config.js'
+import { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params.js'
 
 /**
  * All Payload types involved in index candidates for indexing

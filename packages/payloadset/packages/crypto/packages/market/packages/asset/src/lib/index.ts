@@ -1,1 +1,1 @@
-export * from './divinePrices'
+export * from './divinePrices.js'

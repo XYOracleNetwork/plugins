@@ -7,7 +7,7 @@ import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
 import { Provider } from 'ethers'
 import parseDataUrl from 'parse-data-url'
 
-import { isErc721, isErc1155 } from './tokenTypes'
+import { isErc721, isErc1155 } from './tokenTypes.js'
 
 /*const baseUrlAbi = [
   {

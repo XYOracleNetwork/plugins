@@ -1,6 +1,4 @@
-import { Account } from '@xyo-network/account'
-
-import { ApiGraphqlWitness, GraphqlQuery, GraphqlQuerySchema } from '../Witness'
+import { ApiGraphqlWitness, GraphqlQuery, GraphqlQuerySchema } from '../Witness.js'
 
 const endpoint = 'https://api.quicknode.com/graphql'
 

@@ -4,7 +4,7 @@ import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfi
 import { isXmlWithMeta } from '../../Payload'
 import { XmlSchema } from '../../Schema'
 import { XmlParsingDiviner } from '../Diviner'
-import { XmlParsingDivinerConfigSchema } from '../Schema'
+import { XmlParsingDivinerConfigSchema } from '../Schema.js'
 
 describe('XmlParsingDiviner', () => {
   const uri = 'https://medium.com/feed/xyonetwork'

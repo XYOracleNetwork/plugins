@@ -12,7 +12,7 @@ import {
   scoreSupply,
   scoreTokenId,
   scoreType,
-} from './scoring'
+} from './scoring/index.js'
 
 const attributesScoringCriteria = {
   Attributes: { score: evaluateNftAttributes, weight: 1 },

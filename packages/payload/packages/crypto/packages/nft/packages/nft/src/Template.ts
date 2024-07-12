@@ -1,5 +1,5 @@
-import { NftInfo } from './Payload'
-import { NftSchema } from './Schema'
+import { NftInfo } from './Payload/index.js'
+import { NftSchema } from './Schema.js'
 
 export const cryptoWalletNftPayloadTemplate = (): Partial<NftInfo> => ({
   schema: NftSchema,

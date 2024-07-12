@@ -3,12 +3,12 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Schema } from '@xyo-network/payload-model'
 import shajs from 'sha.js'
 
-import { FileWitnessConfigSchema } from './Config'
-import { BrowserFileWitnessAdditionalParams } from './Params'
-import { FilePayload } from './Payload'
-import { FileSchema } from './Schema'
-import { generateDataUri } from './util'
-import { FileWitness, FileWitnessParams } from './Witness'
+import { FileWitnessConfigSchema } from './Config.js'
+import { BrowserFileWitnessAdditionalParams } from './Params.js'
+import { FilePayload } from './Payload.js'
+import { FileSchema } from './Schema.js'
+import { generateDataUri } from './util/index.js'
+import { FileWitness, FileWitnessParams } from './Witness.js'
 
 type BrowserFileWitnessParams = FileWitnessParams & BrowserFileWitnessAdditionalParams
 

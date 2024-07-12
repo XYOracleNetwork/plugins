@@ -1,7 +1,7 @@
 import { Address, Hash } from '@xylabs/hex'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { EscrowSchema } from './Schema'
+import { EscrowSchema } from './Schema.js'
 
 export const EscrowTermsSchema = `${EscrowSchema}.terms` as const
 export type EscrowTermsSchema = typeof EscrowTermsSchema

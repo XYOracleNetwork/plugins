@@ -1,7 +1,7 @@
 import { Provider } from 'ethers'
 
-import { logErrors } from '../logErrors'
-import { EthersUniSwap3Pair } from './UniSwap3Pair'
+import { logErrors } from '../logErrors.js'
+import { EthersUniSwap3Pair } from './UniSwap3Pair.js'
 
 export const createUniswapPoolContracts = (provider: Provider, contracts: string[]) => {
   return logErrors(() => {

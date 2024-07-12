@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { EthereumGasEthersSchema } from './Schema'
+import { EthereumGasEthersSchema } from './Schema.js'
 
 /**
  * https://docs.ethers.io/v5/api/providers/types/#providers-FeeData

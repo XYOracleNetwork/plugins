@@ -1,5 +1,5 @@
-import { NftMetadata } from '../NftInfo'
-import { OpenSeaNftAttribute } from './OpenSeaNftAttribute'
+import { NftMetadata } from '../NftInfo/index.js'
+import { OpenSeaNftAttribute } from './OpenSeaNftAttribute.js'
 
 /**
  * https://docs.opensea.io/docs/metadata-standards

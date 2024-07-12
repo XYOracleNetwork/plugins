@@ -4,8 +4,8 @@ import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-
 import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import { Payload, PayloadValidationFunction, WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms'
-import { validateWithinWindow } from '../common'
+import { EscrowTerms } from '../../Terms.js'
+import { validateWithinWindow } from '../common/index.js'
 
 const name = 'EscrowTerms.appraisal'
 

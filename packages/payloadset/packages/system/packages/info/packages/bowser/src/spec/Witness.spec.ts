@@ -3,7 +3,6 @@
  */
 import Crypto from 'node:crypto'
 
-import { Account } from '@xyo-network/account'
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'

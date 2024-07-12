@@ -1,4 +1,3 @@
-import { Account } from '@xyo-network/account'
 import { EthereumGasBlocknativeWitness, EthereumGasBlocknativeWitnessConfigSchema } from '@xyo-network/blocknative-ethereum-gas-plugin'
 import { EtherchainEthereumGasWitnessV2, EthereumGasEtherchainV2WitnessConfigSchema } from '@xyo-network/etherchain-gas-ethereum-blockchain-plugins'
 import { EthereumGasEthersWitness, EthereumGasEthersWitnessConfigSchema } from '@xyo-network/ethers-ethereum-gas-plugin'
@@ -7,7 +6,7 @@ import { EthereumGasPayload, EthereumGasSchema } from '@xyo-network/gas-price-pa
 import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EthereumGasDiviner } from '../Diviner'
+import { EthereumGasDiviner } from '../Diviner.js'
 import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas } from '../test'
 
 describe('Diviner', () => {

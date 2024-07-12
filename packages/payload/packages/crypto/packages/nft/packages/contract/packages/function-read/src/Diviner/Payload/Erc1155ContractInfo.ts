@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { ContractInfoFields, ContractInfoSchema } from './ContractInfo'
+import { ContractInfoFields, ContractInfoSchema } from './ContractInfo.js'
 
 /**
  * The schema for the ERC1155 contract info

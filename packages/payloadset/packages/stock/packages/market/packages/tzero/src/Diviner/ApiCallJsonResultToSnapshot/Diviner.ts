@@ -6,9 +6,9 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema, WithSources } from '@xyo-network/payload-model'
 import { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 
-import { TZeroStockMarketDivinerConfig } from './Config'
-import { tryMapToSnapshot } from './lib'
-import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema'
+import { TZeroStockMarketDivinerConfig } from './Config.js'
+import { tryMapToSnapshot } from './lib/index.js'
+import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema.js'
 
 export type TZeroApiCallJsonResultToSnapshotDivinerParams = DivinerParams<AnyConfigSchema<TZeroStockMarketDivinerConfig>>
 

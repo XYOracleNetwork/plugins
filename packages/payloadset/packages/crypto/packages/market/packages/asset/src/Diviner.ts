@@ -6,8 +6,8 @@ import { AnyConfigSchema, Module } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
-import { divinePrices } from './lib'
-import { CryptoMarketAssetDivinerConfigSchema } from './Schema'
+import { divinePrices } from './lib/index.js'
+import { CryptoMarketAssetDivinerConfigSchema } from './Schema.js'
 
 export type CryptoMarketAssetDivinerConfig = DivinerConfig<{ schema: CryptoMarketAssetDivinerConfigSchema }>
 export type CryptoMarketAssetDivinerParams = DivinerParams<AnyConfigSchema<CryptoMarketAssetDivinerConfig>>

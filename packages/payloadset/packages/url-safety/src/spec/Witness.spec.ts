@@ -1,10 +1,9 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { Account } from '@xyo-network/account'
 import { ModuleError } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { UrlSafetyPayload } from '@xyo-network/url-safety-payload-plugin'
 
-import { UrlSafetyWitness } from '../Witness'
+import { UrlSafetyWitness } from '../Witness/index.js'
 
 describeIf(process.env.GOOGLE_SAFEBROWSING_KEY)('UrlSafetyWitness', () => {
   let witness: UrlSafetyWitness

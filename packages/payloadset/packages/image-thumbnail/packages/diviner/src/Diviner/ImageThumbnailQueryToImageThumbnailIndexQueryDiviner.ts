@@ -6,8 +6,8 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels'
-import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.js'
+import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.js'
 
 /**
  * A diviner that converts ImageThumbnailDivinerQuery to ImageThumbnailResultQuery

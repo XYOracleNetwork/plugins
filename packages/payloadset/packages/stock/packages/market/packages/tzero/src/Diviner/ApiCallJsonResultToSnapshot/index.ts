@@ -1,3 +1,3 @@
-export * from './Config'
-export * from './Diviner'
-export * from './Schema'
+export * from './Config.js'
+export * from './Diviner.js'
+export * from './Schema.js'

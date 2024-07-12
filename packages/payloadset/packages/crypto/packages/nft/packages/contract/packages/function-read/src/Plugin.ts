@@ -3,7 +3,7 @@ import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
 // eslint-disable-next-line import/no-deprecated
-import { CryptoContractFunctionReadWitness } from './Witness'
+import { CryptoContractFunctionReadWitness } from './Witness.js'
 
 /** @deprecated use EvmCallWitness instead */
 export const CryptoContractFunctionReadWitnessPlugin = () =>

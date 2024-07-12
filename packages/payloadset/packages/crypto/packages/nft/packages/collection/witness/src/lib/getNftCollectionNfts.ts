@@ -8,8 +8,8 @@ import { ERC721Enumerable__factory, ERC721URIStorage__factory, ERC1155Supply__fa
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
 import { Provider } from 'ethers'
 
-import { tokenTypes } from './tokenTypes'
-import { tryCall } from './tryCall'
+import { tokenTypes } from './tokenTypes.js'
+import { tryCall } from './tryCall.js'
 
 const ipfsGateway = '5d7b6582.beta.decentralnetworkservices.com'
 

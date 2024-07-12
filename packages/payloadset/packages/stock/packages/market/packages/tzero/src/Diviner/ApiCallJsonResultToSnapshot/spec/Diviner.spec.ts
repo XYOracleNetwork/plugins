@@ -3,7 +3,7 @@ import { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
-import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema'
+import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema.js'
 
 describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
   const config = {

@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { ElevationPayload } from './Payload'
-import { ElevationSchema } from './Schema'
-import { elevationPayloadTemplate } from './Template'
+import { ElevationPayload } from './Payload.js'
+import { ElevationSchema } from './Schema.js'
+import { elevationPayloadTemplate } from './Template.js'
 
 export const ElevationPayloadPlugin = () =>
   createPayloadPlugin<ElevationPayload>({

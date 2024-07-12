@@ -2,21 +2,21 @@ import { EthereumGasPayload, EthereumGasSchema, FeeData } from '@xyo-network/gas
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 
-import { average } from './average'
+import { average } from './average.js'
 import {
   isEthereumGasBlocknativePayload,
   isEthereumGasEtherchainV2Payload,
   isEthereumGasEtherscanPayload,
   isEthereumGasEthersPayload,
   isEthereumGasEthgasstationPayload,
-} from './identities'
+} from './identities/index.js'
 import {
   transformGasFromBlocknative,
   transformGasFromEtherchainV2,
   transformGasFromEthers,
   transformGasFromEtherscan,
   transformGasFromEthgasstation,
-} from './transforms'
+} from './transforms/index.js'
 
 export const divineGas = async (payloads: Payload[]): Promise<EthereumGasPayload> => {
   const blocknative = payloads.filter(isEthereumGasBlocknativePayload).map(transformGasFromBlocknative)

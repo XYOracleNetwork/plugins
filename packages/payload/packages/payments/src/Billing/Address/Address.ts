@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { BillingAddressSchema } from './Schema'
+import { BillingAddressSchema } from './Schema.js'
 
 /**
  * The fields describing a billing address.

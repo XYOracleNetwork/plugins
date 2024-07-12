@@ -1,1 +1,1 @@
-export * from './validateWithinWindow'
+export * from './validateWithinWindow.js'

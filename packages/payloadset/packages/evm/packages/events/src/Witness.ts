@@ -5,8 +5,8 @@ import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract, EventLog } from 'ethers'
 
-import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model'
-import { EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema } from './Payload'
+import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model.js'
+import { EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema } from './Payload.js'
 
 export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEventsWitnessParams> extends AbstractEvmWitness<
   TParams,

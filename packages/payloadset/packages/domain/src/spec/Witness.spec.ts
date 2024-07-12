@@ -1,7 +1,5 @@
-import { Account } from '@xyo-network/account'
-
-import { DomainWitnessConfigSchema } from '../Config'
-import { DomainWitness } from '../Witness'
+import { DomainWitnessConfigSchema } from '../Config.js'
+import { DomainWitness } from '../Witness.js'
 
 describe('DomainConfigWitness', () => {
   test('valid-instantiation', async () => {

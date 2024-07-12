@@ -1,3 +1,3 @@
-export * from './Config'
-export * from './Query'
-export * from './Schema'
+export * from './Config.js'
+export * from './Query.js'
+export * from './Schema.js'

@@ -1,3 +1,3 @@
-export * from './coinGeckoCoinToAssetMap'
-export * from './defaults'
-export * from './pricesFromCoingecko'
+export * from './coinGeckoCoinToAssetMap.js'
+export * from './defaults.js'
+export * from './pricesFromCoingecko.js'

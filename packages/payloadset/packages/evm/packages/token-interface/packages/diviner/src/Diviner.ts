@@ -16,7 +16,7 @@ import {
 import { Schema } from '@xyo-network/payload-model'
 import { Interface, JsonFragment } from 'ethers'
 
-import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload'
+import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload.js'
 
 export const EvmTokenInterfaceImplementedDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
 export type EvmTokenInterfaceImplementedDivinerConfigSchema = typeof EvmTokenInterfaceImplementedDivinerConfigSchema

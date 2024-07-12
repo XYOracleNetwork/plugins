@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { UniswapCryptoMarketPayload } from './Payload'
-import { UniswapCryptoMarketSchema } from './Schema'
-import { uniswapCryptoMarketPayloadTemplate } from './Template'
+import { UniswapCryptoMarketPayload } from './Payload.js'
+import { UniswapCryptoMarketSchema } from './Schema.js'
+import { uniswapCryptoMarketPayloadTemplate } from './Template.js'
 
 export const UniswapCryptoMarketPayloadPlugin = () =>
   createPayloadPlugin<UniswapCryptoMarketPayload>({

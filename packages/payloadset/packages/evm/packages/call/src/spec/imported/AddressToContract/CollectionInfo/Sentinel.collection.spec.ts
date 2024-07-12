@@ -11,9 +11,9 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner'
-import { EvmCall, EvmCallSchema } from '../../../../Payload'
-import { EvmCallWitness } from '../../../../Witness'
+import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner.js'
+import { EvmCall, EvmCallSchema } from '../../../../Payload.js'
+import { EvmCallWitness } from '../../../../Witness.js'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}

@@ -1,1 +1,1 @@
-export * from './toTokenRequest'
+export * from './toTokenRequest.js'

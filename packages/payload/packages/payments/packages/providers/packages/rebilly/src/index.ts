@@ -1,2 +1,2 @@
-export * from './Authorization'
-export * from './ProviderSettings'
+export * from './Authorization/index.js'
+export * from './ProviderSettings/index.js'

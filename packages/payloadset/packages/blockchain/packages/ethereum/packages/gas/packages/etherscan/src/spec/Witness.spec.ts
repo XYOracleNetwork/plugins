@@ -2,7 +2,7 @@ import { testIf } from '@xylabs/jest-helpers'
 import { EthereumGasEtherscanPayload, EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { EthereumGasEtherscanWitnessConfigSchema } from '../Schema'
+import { EthereumGasEtherscanWitnessConfigSchema } from '../Schema.js'
 import { EthereumGasEtherscanWitness } from '../Witness'
 
 const apiKey = process.env.ETHERSCAN_API_KEY || ''

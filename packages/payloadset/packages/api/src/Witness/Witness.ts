@@ -9,7 +9,7 @@ import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
-import { checkIpfsUrl } from '../lib'
+import { checkIpfsUrl } from '../lib/index.js'
 import {
   ApiCall,
   ApiCallBase64Result,
@@ -23,10 +23,10 @@ import {
   asApiUriCall,
   asApiUriTemplateCall,
   MimeTypes,
-} from '../Payload'
-import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config'
-import { ApiCallWitnessParams } from './Params'
-import { ApiCallWitnessConfigSchema } from './Schema'
+} from '../Payload/index.js'
+import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config.js'
+import { ApiCallWitnessParams } from './Params.js'
+import { ApiCallWitnessConfigSchema } from './Schema.js'
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]

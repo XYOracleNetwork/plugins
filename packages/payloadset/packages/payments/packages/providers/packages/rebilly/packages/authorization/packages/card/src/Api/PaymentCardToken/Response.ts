@@ -1,4 +1,4 @@
-import { PaymentMethod, RequestBillingAddress } from './Request'
+import { PaymentMethod, RequestBillingAddress } from './Request.js'
 
 export interface ResponseBillingAddress extends RequestBillingAddress {
   hash?: string | null

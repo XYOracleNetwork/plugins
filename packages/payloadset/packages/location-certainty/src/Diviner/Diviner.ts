@@ -8,7 +8,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config'
+import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config.js'
 
 export type LocationCertaintyDivinerParams = DivinerParams<AnyConfigSchema<LocationCertaintyDivinerConfig>>
 

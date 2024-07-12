@@ -1,10 +1,9 @@
-import { Account } from '@xyo-network/account'
 import { CoingeckoCryptoMarketPayload, CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { defaultCoins, defaultCurrencies } from '../lib'
-import { CoingeckoCryptoMarketWitnessConfigSchema } from '../Schema'
-import { CoingeckoCryptoMarketWitness } from '../Witness'
+import { defaultCoins, defaultCurrencies } from '../lib/index.js'
+import { CoingeckoCryptoMarketWitnessConfigSchema } from '../Schema.js'
+import { CoingeckoCryptoMarketWitness } from '../Witness.js'
 
 describe('CoingeckoCryptoMarketWitness', () => {
   test('returns observation', async () => {

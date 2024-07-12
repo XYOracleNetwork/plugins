@@ -2,7 +2,7 @@ import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { CurrentLocationWitness } from './CurrentLocationWitness'
+import { CurrentLocationWitness } from './CurrentLocationWitness.js'
 
 export const LocationPlugin = () =>
   createPayloadSetWitnessPlugin<CurrentLocationWitness>(

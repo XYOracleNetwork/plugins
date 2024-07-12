@@ -1,4 +1,4 @@
-import { Distribution } from './distribution'
+import { Distribution } from './distribution.js'
 
 export const calculatePropertyDistribution = <T>(array: T[], property: keyof T): Distribution<T> => {
   const distribution: Distribution<T> = {}

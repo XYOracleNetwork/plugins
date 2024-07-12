@@ -1,5 +1,5 @@
-import { AddressTransactionHistoryPayload } from './Payload'
-import { AddressTransactionHistorySchema } from './Schema'
+import { AddressTransactionHistoryPayload } from './Payload.js'
+import { AddressTransactionHistorySchema } from './Schema.js'
 
 export const addressTransactionHistoryPayloadTemplate = (): Partial<AddressTransactionHistoryPayload> => ({
   schema: AddressTransactionHistorySchema,

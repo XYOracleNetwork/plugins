@@ -1,5 +1,5 @@
-import { LocationCertaintyPayload } from './Payload'
-import { LocationCertaintySchema } from './Schema'
+import { LocationCertaintyPayload } from './Payload.js'
+import { LocationCertaintySchema } from './Schema.js'
 
 export const LocationCertaintyPayloadTemplate = (): Partial<LocationCertaintyPayload> => {
   return {

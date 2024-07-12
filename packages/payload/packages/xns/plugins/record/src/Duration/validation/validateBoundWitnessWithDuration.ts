@@ -1,10 +1,10 @@
 import { BoundWitness } from '@xyo-network/boundwitness-model'
 import { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../Duration'
-import { validateBoundWitness } from './validateBoundWitness'
-import { validateBoundWitnessAndDuration } from './validateBoundWitnessAndDuration'
-import { validateDuration } from './validateDuration'
+import { DurationFields } from '../Duration.js'
+import { validateBoundWitness } from './validateBoundWitness.js'
+import { validateBoundWitnessAndDuration } from './validateBoundWitnessAndDuration.js'
+import { validateDuration } from './validateDuration.js'
 
 export const validateBoundWitnessWithDuration = async (recordBw: BoundWitness, recordPayload: Payload<DurationFields>): Promise<boolean> => {
   // Validate the BW

@@ -1,7 +1,7 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
 import { PayloadValueExpression } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../../Terms'
+import { EscrowTerms } from '../../../Terms.js'
 
 /**
  * Checks if property value of the escrow terms contains one of the valid moduleIdentifiers

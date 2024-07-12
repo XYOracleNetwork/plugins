@@ -6,8 +6,8 @@ import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-ty
 import { Pool } from '@xyo-network/uniswap-v3-sdk'
 import { Provider } from 'ethers'
 
-import { logErrors, logErrorsAsync } from '../logErrors'
-import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper'
+import { logErrors, logErrorsAsync } from '../logErrors.js'
+import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.js'
 
 export enum ChainId {
   MAINNET = 1,

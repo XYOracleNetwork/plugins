@@ -1,1 +1,1 @@
-export * from './PaymentCardToken'
+export * from './PaymentCardToken/index.js'

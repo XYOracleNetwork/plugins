@@ -1,4 +1,4 @@
-import { ScaledScore } from './score'
+import { ScaledScore } from './score.js'
 
 export const incrementTotal = (score: ScaledScore, by = 1): ScaledScore => {
   score[0] += by

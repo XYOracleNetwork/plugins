@@ -1,5 +1,5 @@
-import { BowserSystemInfoPayload } from './Payload'
-import { BowserSystemInfoSchema } from './Schema'
+import { BowserSystemInfoPayload } from './Payload.js'
+import { BowserSystemInfoSchema } from './Schema.js'
 
 export const bowserSystemInfoPayloadTemplate = (): BowserSystemInfoPayload => ({
   schema: BowserSystemInfoSchema,

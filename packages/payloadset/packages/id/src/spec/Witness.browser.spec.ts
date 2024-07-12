@@ -2,12 +2,11 @@
  * @jest-environment jsdom
  */
 
-import { Account } from '@xyo-network/account'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { IdWitness, IdWitnessConfigSchema } from '../Witness'
+import { IdWitness, IdWitnessConfigSchema } from '../Witness.js'
 
 describe('IdWitness [Browser]', () => {
   test('observe', async () => {

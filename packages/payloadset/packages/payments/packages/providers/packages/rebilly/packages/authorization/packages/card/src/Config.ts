@@ -1,7 +1,7 @@
 import { RebillyApiDomainSettings } from '@xyo-network/rebilly-payment-payload-plugin'
 import { SentinelConfig } from '@xyo-network/sentinel-model'
 
-import { RebillyPaymentCardAuthorizationSentinelSchema } from './Schema'
+import { RebillyPaymentCardAuthorizationSentinelSchema } from './Schema.js'
 
 export const RebillyPaymentCardAuthorizationSentinelConfigSchema = `${RebillyPaymentCardAuthorizationSentinelSchema}.config`
 export type RebillyPaymentCardAuthorizationSentinelConfigSchema = typeof RebillyPaymentCardAuthorizationSentinelConfigSchema

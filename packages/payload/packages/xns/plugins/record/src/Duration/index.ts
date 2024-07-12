@@ -1,2 +1,2 @@
-export * from './Duration'
-export * from './validation'
+export * from './Duration.js'
+export * from './validation/index.js'

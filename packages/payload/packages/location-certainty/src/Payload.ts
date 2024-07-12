@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { LocationCertaintySchema } from './Schema'
+import { LocationCertaintySchema } from './Schema.js'
 
 export interface LocationCertaintyHeuristic {
   max: number

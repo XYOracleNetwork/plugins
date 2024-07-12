@@ -1,2 +1,2 @@
-export * from './UniswapCryptoPair'
-export * from './UniswapCryptoToken'
+export * from './UniswapCryptoPair.js'
+export * from './UniswapCryptoToken.js'

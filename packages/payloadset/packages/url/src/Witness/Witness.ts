@@ -3,8 +3,8 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { UrlWitnessConfigSchema } from './Config'
-import { UrlWitnessParams } from './Params'
+import { UrlWitnessConfigSchema } from './Config.js'
+import { UrlWitnessParams } from './Params.js'
 
 export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> extends AbstractWitness<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, UrlWitnessConfigSchema]

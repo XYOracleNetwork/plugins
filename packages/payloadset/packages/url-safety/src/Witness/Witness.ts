@@ -4,8 +4,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { UrlSafetyPayload, UrlSafetySchema, UrlSafetyThreatType } from '@xyo-network/url-safety-payload-plugin'
 
-import { UrlSafetyWitnessConfigSchema } from './Config'
-import { UrlSafetyWitnessParams } from './Params'
+import { UrlSafetyWitnessConfigSchema } from './Config.js'
+import { UrlSafetyWitnessParams } from './Params.js'
 
 export type GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'
 export const GoogleSafeBrowsingMatchSchema: GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'

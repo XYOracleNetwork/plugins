@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { PaymentCardSchema } from './Schema'
+import { PaymentCardSchema } from './Schema.js'
 
 /**
  * The fields describing a payment card.

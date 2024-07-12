@@ -2,7 +2,7 @@ import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 import { PentairScreenlogicSchema } from '@xyo-network/pentair-payload-plugin'
 
-import { PentairScreenlogicWitness } from './Witness'
+import { PentairScreenlogicWitness } from './Witness.js'
 
 export const PentairScreenlogicPlugin = () =>
   createPayloadSetWitnessPlugin<PentairScreenlogicWitness>(

@@ -1,8 +1,8 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
 import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms'
-import { moduleIdentifiersContainsOneOf } from '../common'
+import { EscrowTerms } from '../../Terms.js'
+import { moduleIdentifiersContainsOneOf } from '../common/index.js'
 
 const name = 'EscrowTerms.escrowAgent'
 

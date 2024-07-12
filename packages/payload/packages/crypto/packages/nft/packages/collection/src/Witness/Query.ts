@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { NftCollectionWitnessQuerySchema } from './Schema'
+import { NftCollectionWitnessQuerySchema } from './Schema.js'
 
 export type NftCollectionWitnessQuery = Payload<
   {

@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { UrlPayload } from './Payload'
-import { UrlSchema } from './Schema'
-import { urlPayloadTemplate } from './Template'
+import { UrlPayload } from './Payload.js'
+import { UrlSchema } from './Schema.js'
+import { urlPayloadTemplate } from './Template.js'
 
 export const UrlPayloadPlugin = () =>
   createPayloadPlugin<UrlPayload>({

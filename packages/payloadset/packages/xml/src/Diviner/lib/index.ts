@@ -1,2 +1,2 @@
-export * from './StringDataField'
-export * from './toXml'
+export * from './StringDataField.js'
+export * from './toXml.js'

@@ -4,8 +4,8 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
-import { EvmCallDivinerLabels } from './Labels'
-import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload'
+import { EvmCallDivinerLabels } from './Labels.js'
+import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload.js'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 

@@ -2,7 +2,7 @@ import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { BowserSystemInfoWitness } from './Witness'
+import { BowserSystemInfoWitness } from './Witness.js'
 
 export const BowserSystemInfoPlugin = () =>
   createPayloadSetWitnessPlugin<BowserSystemInfoWitness>(

@@ -4,7 +4,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 
-import { CryptoCardsMoveWitnessConfigSchema } from './Schema'
+import { CryptoCardsMoveWitnessConfigSchema } from './Schema.js'
 
 export type CryptoCardsMoveWitnessConfig = WitnessConfig<{
   schema: CryptoCardsMoveWitnessConfigSchema

@@ -10,8 +10,8 @@ import {
 import { WitnessParams } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { UniswapCryptoMarketWitnessConfig } from './Config'
-import { createUniswapPoolContracts, EthersUniSwap3Pair, pricesFromUniswap3, UniswapPoolContracts } from './lib'
+import { UniswapCryptoMarketWitnessConfig } from './Config.js'
+import { createUniswapPoolContracts, EthersUniSwap3Pair, pricesFromUniswap3, UniswapPoolContracts } from './lib/index.js'
 
 export type UniswapCryptoMarketWitnessParams = WitnessParams<
   AnyConfigSchema<UniswapCryptoMarketWitnessConfig>,

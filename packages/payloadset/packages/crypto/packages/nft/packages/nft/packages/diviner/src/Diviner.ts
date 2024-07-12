@@ -12,7 +12,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { analyzeNft, NftAnalysis } from './lib'
+import { analyzeNft, NftAnalysis } from './lib/index.js'
 
 export type NftScoreDivinerParams = DivinerParams<AnyConfigSchema<NftScoreDivinerConfig>>
 

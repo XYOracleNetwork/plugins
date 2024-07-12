@@ -1,3 +1,3 @@
-export * from './Config'
-export * from './Params'
-export * from './Witness'
+export * from './Config.js'
+export * from './Params.js'
+export * from './Witness.js'

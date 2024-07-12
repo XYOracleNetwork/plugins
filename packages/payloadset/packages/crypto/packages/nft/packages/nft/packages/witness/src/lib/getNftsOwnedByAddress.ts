@@ -6,11 +6,11 @@ import { ERC721__factory, ERC1155__factory, ERC1155Supply__factory } from '@xyo-
 import { Provider } from 'ethers'
 import { LRUCache } from 'lru-cache'
 
-import { getNftMetadata } from './getNftMetadata'
-import { getNftsFromWalletFromOpenSea } from './getNftsFromWalletFromOpenSea'
-import { getProvider } from './getProvider'
-import { tokenTypes } from './tokenTypes'
-import { tryCall } from './tryCall'
+import { getNftMetadata } from './getNftMetadata.js'
+import { getNftsFromWalletFromOpenSea } from './getNftsFromWalletFromOpenSea.js'
+import { getProvider } from './getProvider.js'
+import { tokenTypes } from './tokenTypes.js'
+import { tryCall } from './tryCall.js'
 
 const tokenTypeCache = new LRUCache<string, TokenType[]>({ max: 100 })
 

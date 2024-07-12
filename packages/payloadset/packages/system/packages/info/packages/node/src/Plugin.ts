@@ -2,7 +2,7 @@ import { NodeSystemInfoSchema } from '@xyo-network/node-system-info-payload-plug
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { NodeSystemInfoWitness } from './Witness'
+import { NodeSystemInfoWitness } from './Witness.js'
 
 export const NodeSystemInfoPlugin = () =>
   createPayloadSetWitnessPlugin<NodeSystemInfoWitness>(

@@ -1,9 +1,8 @@
-import { Account } from '@xyo-network/account'
 import { EthereumGasEtherchainV2Payload, EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { EthereumGasEtherchainV2WitnessConfigSchema } from '../Schema'
-import { EtherchainEthereumGasWitnessV2 } from '../Witness'
+import { EthereumGasEtherchainV2WitnessConfigSchema } from '../Schema.js'
+import { EtherchainEthereumGasWitnessV2 } from '../Witness.js'
 
 describe('EtherchainEthereumGasWitnessV2', () => {
   test('returns observation', async () => {

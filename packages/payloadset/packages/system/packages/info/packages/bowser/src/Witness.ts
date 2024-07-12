@@ -6,7 +6,7 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import Bowser from 'bowser'
 
-import { BowserSystemInfoWitnessConfig, BowserSystemInfoWitnessConfigSchema } from './Config'
+import { BowserSystemInfoWitnessConfig, BowserSystemInfoWitnessConfigSchema } from './Config.js'
 
 export type BowserSystemInfoWitnessParams = WitnessParams<AnyConfigSchema<BowserSystemInfoWitnessConfig>>
 export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessParams = BowserSystemInfoWitnessParams>

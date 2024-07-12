@@ -1,2 +1,2 @@
-export * from './sampleCoinGecko'
-export * from './sampleUniswap'
+export * from './sampleCoinGecko.js'
+export * from './sampleUniswap.js'

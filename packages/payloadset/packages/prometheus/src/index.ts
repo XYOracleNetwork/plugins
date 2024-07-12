@@ -1,5 +1,5 @@
-export * from './Payload'
+export * from './Payload.js'
 // eslint-disable-next-line import/no-default-export
-export { PrometheusNodePlugin as default, PrometheusNodePlugin } from './Plugin'
-export * from './Schema'
-export * from './Witness'
+export { PrometheusNodePlugin as default, PrometheusNodePlugin } from './Plugin.js'
+export * from './Schema.js'
+export * from './Witness.js'

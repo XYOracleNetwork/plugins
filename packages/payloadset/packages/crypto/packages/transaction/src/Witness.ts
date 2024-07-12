@@ -10,9 +10,9 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
 
-import { AddressTransactionHistoryWitnessConfig } from './Config'
+import { AddressTransactionHistoryWitnessConfig } from './Config.js'
 // eslint-disable-next-line import/no-deprecated
-import { getTransactionsForAddress } from './lib'
+import { getTransactionsForAddress } from './lib/index.js'
 
 export type AddressTransactionHistoryWitnessParams = WitnessParams<
   AnyConfigSchema<AddressTransactionHistoryWitnessConfig>,

@@ -1,3 +1,3 @@
-export * from './identity'
-export * from './Schema'
-export * from './types'
+export * from './identity/index.js'
+export * from './Schema.js'
+export * from './types/index.js'

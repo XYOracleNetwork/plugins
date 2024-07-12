@@ -6,8 +6,8 @@ import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract } from 'ethers'
 
-import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model'
-import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload'
+import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model.js'
+import { EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema, EvmCallSuccess } from './Payload.js'
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmCallWitnessConfigSchema]

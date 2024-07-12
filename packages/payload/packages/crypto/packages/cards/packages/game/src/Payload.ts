@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { CryptoCardsGameSchema } from './Schema'
+import { CryptoCardsGameSchema } from './Schema.js'
 
 export type CryptoCardsGamePayload = Payload<{
   /** @field The set of weights to pick from */

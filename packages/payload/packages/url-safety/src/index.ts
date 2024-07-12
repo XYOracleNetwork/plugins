@@ -1,4 +1,4 @@
-export * from './Payload'
+export * from './Payload.js'
 // eslint-disable-next-line import/no-default-export
-export { UrlSafetyPayloadPlugin as default, UrlSafetyPayloadPlugin } from './Plugin'
-export * from './Schema'
+export { UrlSafetyPayloadPlugin as default, UrlSafetyPayloadPlugin } from './Plugin.js'
+export * from './Schema.js'

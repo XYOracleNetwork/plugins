@@ -1,4 +1,4 @@
-import { Currency } from './Currency'
-import { Token } from './Token'
+import { Currency } from './Currency.js'
+import { Token } from './Token.js'
 
 export type ValueBasis = Partial<Record<Currency | Token, string | undefined>>

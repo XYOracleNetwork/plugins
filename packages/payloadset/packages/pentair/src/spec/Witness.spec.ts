@@ -1,8 +1,7 @@
 import { testIf } from '@xylabs/jest-helpers'
-import { Account } from '@xyo-network/account'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { PentairScreenlogicWitness } from '../Witness'
+import { PentairScreenlogicWitness } from '../Witness.js'
 
 describe('PentairScreenLogicWitness', () => {
   testIf(process.env.TEST_PENTAIR === 'true')('Witnessing [no config]', async () => {

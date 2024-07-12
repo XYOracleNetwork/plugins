@@ -4,7 +4,7 @@ import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
 import { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms'
+import { EscrowTerms } from '../../Terms.js'
 
 const name = 'EscrowTerms.sellerSecret'
 

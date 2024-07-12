@@ -5,7 +5,7 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import { get } from 'systeminformation'
 
-import { NodeSystemInfoWitnessConfig, NodeSystemInfoWitnessConfigSchema } from './Config'
+import { NodeSystemInfoWitnessConfig, NodeSystemInfoWitnessConfigSchema } from './Config.js'
 
 export type NodeSystemInfoWitnessParams = WitnessParams<AnyConfigSchema<NodeSystemInfoWitnessConfig>>
 

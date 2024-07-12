@@ -1,5 +1,5 @@
-import { ElevationPayload } from './Payload'
-import { ElevationSchema } from './Schema'
+import { ElevationPayload } from './Payload.js'
+import { ElevationSchema } from './Schema.js'
 
 export const elevationPayloadTemplate = (): ElevationPayload => {
   return {

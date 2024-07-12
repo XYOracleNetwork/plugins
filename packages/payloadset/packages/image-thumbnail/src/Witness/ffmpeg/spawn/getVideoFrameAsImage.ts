@@ -1,4 +1,4 @@
-import { executeFFmpeg } from './executeFfmpeg'
+import { executeFFmpeg } from './executeFfmpeg.js'
 
 /**
  * Execute FFmpeg with provided input buffer and return video thumbnail image.

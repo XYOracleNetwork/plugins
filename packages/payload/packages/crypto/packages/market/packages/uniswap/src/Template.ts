@@ -1,5 +1,5 @@
-import { UniswapCryptoMarketPayload } from './Payload'
-import { UniswapCryptoMarketSchema } from './Schema'
+import { UniswapCryptoMarketPayload } from './Payload.js'
+import { UniswapCryptoMarketSchema } from './Schema.js'
 
 export const uniswapCryptoMarketPayloadTemplate = (): Partial<UniswapCryptoMarketPayload> => ({
   schema: UniswapCryptoMarketSchema,

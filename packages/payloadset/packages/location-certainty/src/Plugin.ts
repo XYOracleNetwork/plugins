@@ -2,7 +2,7 @@ import { LocationCertaintySchema } from '@xyo-network/location-certainty-payload
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetDivinerPlugin } from '@xyo-network/payloadset-plugin'
 
-import { LocationCertaintyDiviner } from './Diviner'
+import { LocationCertaintyDiviner } from './Diviner/index.js'
 
 export const LocationCertaintyPlugin = () =>
   createPayloadSetDivinerPlugin<LocationCertaintyDiviner>(

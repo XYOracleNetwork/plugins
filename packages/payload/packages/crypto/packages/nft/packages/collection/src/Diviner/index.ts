@@ -1,3 +1,3 @@
-export * from './Config'
-export * from './Payload'
-export * from './Schema'
+export * from './Config.js'
+export * from './Payload.js'
+export * from './Schema.js'

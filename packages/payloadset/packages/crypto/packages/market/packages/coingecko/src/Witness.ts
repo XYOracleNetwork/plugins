@@ -4,9 +4,9 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 
-import { CoingeckoCryptoMarketWitnessConfig } from './Config'
-import { pricesFromCoingecko } from './lib'
-import { CoingeckoCryptoMarketWitnessConfigSchema } from './Schema'
+import { CoingeckoCryptoMarketWitnessConfig } from './Config.js'
+import { pricesFromCoingecko } from './lib/index.js'
+import { CoingeckoCryptoMarketWitnessConfigSchema } from './Schema.js'
 
 export type CoingeckoCryptoMarketWitnessParams = WitnessParams<AnyConfigSchema<CoingeckoCryptoMarketWitnessConfig>>
 

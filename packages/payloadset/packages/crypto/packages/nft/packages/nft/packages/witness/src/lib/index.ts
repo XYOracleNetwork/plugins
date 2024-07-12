@@ -1,3 +1,3 @@
-export * from './contractHasFunctions'
-export * from './getNftsOwnedByAddress'
-export * from './tokenTypes'
+export * from './contractHasFunctions.js'
+export * from './getNftsOwnedByAddress.js'
+export * from './tokenTypes.js'

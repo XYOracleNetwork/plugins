@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { EvmAddressSchema } from './Schema'
+import { EvmAddressSchema } from './Schema.js'
 
 /**
  * The fields of an EVM address payload

@@ -1,5 +1,5 @@
-import { EthereumGasPayload } from './Payload'
-import { EthereumGasSchema } from './Schema'
+import { EthereumGasPayload } from './Payload.js'
+import { EthereumGasSchema } from './Schema.js'
 
 export const ethereumGasPayloadTemplate = (): Partial<EthereumGasPayload> => ({
   schema: EthereumGasSchema,

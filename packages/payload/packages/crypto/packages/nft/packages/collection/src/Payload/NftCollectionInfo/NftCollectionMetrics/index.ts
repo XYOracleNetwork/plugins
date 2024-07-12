@@ -1,3 +1,3 @@
-export * from './BinomialDistributionParameters'
-export * from './NftCollectionMetrics'
-export * from './NftTraitMetrics'
+export * from './BinomialDistributionParameters.js'
+export * from './NftCollectionMetrics.js'
+export * from './NftTraitMetrics.js'

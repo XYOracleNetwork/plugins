@@ -1,2 +1,2 @@
-export * from './Request'
-export * from './Response'
+export * from './Request.js'
+export * from './Response.js'

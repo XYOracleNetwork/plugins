@@ -1,2 +1,2 @@
-export * from './calculateBinomialParamsFromOutcomes'
-export * from './calculateBinomialParamsFromProbability'
+export * from './calculateBinomialParamsFromOutcomes.js'
+export * from './calculateBinomialParamsFromProbability.js'

@@ -1,3 +1,3 @@
-export * from './checkIpfsUrl'
-export * from './createDataUrl'
-export * from './resolveDynamicSvg'
+export * from './checkIpfsUrl.js'
+export * from './createDataUrl.js'
+export * from './resolveDynamicSvg.js'

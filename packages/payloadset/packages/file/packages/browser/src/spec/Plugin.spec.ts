@@ -13,11 +13,9 @@ jest.mock('@xylabs/platform', () => ({
 // Polyfill JSDOM
 window.TextEncoder = TextEncoder
 
-import { HDWallet } from '@xyo-network/account'
-
-import { BrowserFileWitness } from '../BrowserFileWitness'
-import { FileWitnessConfigSchema } from '../Config'
-import { isFilePayload } from '../Payload'
+import { BrowserFileWitness } from '../BrowserFileWitness.js'
+import { FileWitnessConfigSchema } from '../Config.js'
+import { isFilePayload } from '../Payload.js'
 
 // Leave off modified since its a timestamp and won't be known till the test runs
 const expectedFilePayload = {
