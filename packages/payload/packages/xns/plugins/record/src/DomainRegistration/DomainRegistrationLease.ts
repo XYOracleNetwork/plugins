@@ -21,9 +21,17 @@ export const isDomainRegistrationLease = isPayloadOfSchemaType<DomainRegistratio
 /**
  * Identity function for DomainRegistrationLease payload with sources
  */
+export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+/**
+ * @deprecated Use isDomainRegistrationLeaseWithSources instead
+ */
 export const isDomainRegistrationLeaseSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
 
 /**
  * Identity function for DomainRegistrationLease payload with meta
+ */
+export const isDomainRegistrationLeaseWithMeta = isPayloadOfSchemaTypeWithMeta<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+/**
+ * @deprecated Use isDomainRegistrationLeaseWithMeta instead
  */
 export const isDomainRegistrationLeaseMeta = isPayloadOfSchemaTypeWithMeta<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
