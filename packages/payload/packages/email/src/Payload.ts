@@ -15,7 +15,8 @@ export type EmailAddressType = `${string}@${string}.${string}`
 /**
  * A regex for testing if a string is an email
  */
-export const emailRegex = /^(?!.*\.\.)[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/
+// eslint-disable-next-line unicorn/better-regex
+export const emailRegex = /^(?![._%+-])(?!.*\.\.)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 
 /**
  * Tests if a string is a valid email
