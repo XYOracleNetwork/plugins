@@ -1,4 +1,4 @@
-import { Email, isEmail, tryAsEmail } from '../Payload.js'
+import { asEmail, Email, isEmail, tryAsEmail } from '../Payload.js'
 import { EmailAddressSchema } from '../Schema.js'
 
 describe('Email', () => {
@@ -31,7 +31,7 @@ describe('Email', () => {
     'username@domain.com.',
     'username@domain..com',
   ]
-  describe('isEmailAddress', () => {
+  describe('isEmail', () => {
     describe('with valid email returns true', () => {
       it.each(validEmails)('%s', (address) => {
         const email: Email = { address, schema }
@@ -45,7 +45,7 @@ describe('Email', () => {
       })
     })
   })
-  describe('asEmailAddress', () => {
+  describe('tryAsEmail', () => {
     describe('with valid email returns payload', () => {
       it.each(validEmails)('%s', (address) => {
         expect(tryAsEmail(address)).toBeObject()
@@ -57,15 +57,15 @@ describe('Email', () => {
       })
     })
   })
-  describe('isEmailAddress', () => {
-    describe('with valid email returns true', () => {
+  describe('asEmail', () => {
+    describe('with valid email returns Email', () => {
       it.each(validEmails)('%s', (address) => {
-        expect(isEmail(tryAsEmail(address))).toBeTrue()
+        expect(asEmail(address)).toBeObject()
       })
     })
     describe('with invalid email returns false', () => {
       it.each(invalidEmails)('%s', (address) => {
-        expect(isEmail(tryAsEmail(address))).toBeFalse()
+        expect(() => asEmail(address)).toThrow('Invalid email address')
       })
     })
   })

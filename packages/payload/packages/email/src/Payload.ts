@@ -1,3 +1,4 @@
+import { assertEx } from '@xylabs/assert'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,
@@ -41,10 +42,16 @@ export type Email = PayloadWithSources<EmailFields, EmailAddressSchema>
  * @returns An Email if the address is valid, undefined otherwise
  */
 export const tryAsEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(address: string): T | undefined => {
-  if (isValidEmail(address)) {
-    return { address, schema: EmailAddressSchema } as T
-  }
-  return undefined
+  return isValidEmail(address) ? ({ address, schema: EmailAddressSchema } as T) : undefined
+}
+
+/**
+ * Create an Email from a string
+ * @param address The Email address to use
+ * @returns An Email if the address is valid, throws otherwise
+ */
+export const asEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(address: string): T => {
+  return assertEx(tryAsEmail<T>(address), 'Invalid email address')
 }
 
 /**
