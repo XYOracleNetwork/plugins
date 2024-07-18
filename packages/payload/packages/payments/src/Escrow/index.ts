@@ -1,5 +1,6 @@
 export * from './createEscrowIntent.js'
 export * from './getEscrowSecret.js'
+export * from './Outcome.js'
 export * from './Schema.js'
 export * from './Terms.js'
 export * from './validators/index.js'

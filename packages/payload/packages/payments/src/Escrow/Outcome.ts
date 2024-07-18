@@ -1,0 +1,44 @@
+import { Hash } from '@xylabs/hex'
+import {
+  isPayloadOfSchemaType,
+  isPayloadOfSchemaTypeWithMeta,
+  isPayloadOfSchemaTypeWithSources,
+  PayloadWithSources,
+} from '@xyo-network/payload-model'
+
+import { EscrowSchema } from './Schema.js'
+
+// TODO: Move to plugins
+
+export const EscrowOutcomeSchema = `${EscrowSchema}.outcome` as const
+export type EscrowOutcomeSchema = typeof EscrowOutcomeSchema
+
+/**
+ * The possible outcomes for an escrow
+ */
+export type EscrowOutcomes = 'fulfilled' | 'expired' // TODO: More outcomes
+
+export interface EscrowOutcomeFields {
+  outcome: EscrowOutcomes
+  terms: Hash
+}
+
+/**
+ * The terms of an escrow
+ */
+export type EscrowOutcome = PayloadWithSources<EscrowOutcomeFields, EscrowOutcomeSchema>
+
+/**
+ * Identity function for determining if an object is an EscrowOutcome
+ */
+export const isEscrowOutcome = isPayloadOfSchemaType<EscrowOutcome>(EscrowOutcomeSchema)
+
+/**
+ * Identity function for determining if an object is an EscrowOutcome with sources
+ */
+export const isEscrowOutcomeWithSources = isPayloadOfSchemaTypeWithSources<EscrowOutcome>(EscrowOutcomeSchema)
+
+/**
+ * Identity function for determining if an object is an EscrowOutcome with meta
+ */
+export const isEscrowOutcomeWithMeta = isPayloadOfSchemaTypeWithMeta<EscrowOutcome>(EscrowOutcomeSchema)
