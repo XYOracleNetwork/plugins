@@ -63,7 +63,7 @@ export const getNftCollectionNfts = async (
           if (tokenId !== undefined) {
             const supply =
               finalTypes.includes(toTokenType('ERC1155')) ?
-                (await tryCall(async () => await supply1155['totalSupply(uint256)'](tokenId))) ?? '0x01'
+                ((await tryCall(async () => await supply1155['totalSupply(uint256)'](tokenId))) ?? '0x01')
               : '0x01'
             const metadataUri = await tryCall(async () => await storage.tokenURI(tokenId, { blockTag: block }))
             const checkedMetaDataUri = metadataUri ? checkIpfsUrl(metadataUri, ipfsGateway) : undefined
