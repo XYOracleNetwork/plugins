@@ -9,7 +9,7 @@ describe('Email', () => {
       'jane_smith123@domain.net',
       'contact@company.org',
       'user+name@sub.domain.co',
-      'firstname.lastname@company-email.com',
+      'first.last@company-email.com',
       'my.email@domain.edu',
       'name@domain.travel',
       'support@domain.tech',
@@ -25,8 +25,8 @@ describe('Email', () => {
   })
   describe('with invalid email returns false', () => {
     const invalidEmails = [
-      'plainaddress',
-      '@missingusername.com',
+      'string',
+      '@username.com',
       'username@.com',
       'username@domain..com',
       'username@domain.c',
