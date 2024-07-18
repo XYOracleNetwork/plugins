@@ -62,11 +62,11 @@ export class EvmTokenInterfaceImplementedDiviner<
     if (!this._tokenInterfaces) {
       this._tokenInterfaces =
         this.config?.tokenInterfaces ?
-          (Object.fromEntries(
+          ((Object.fromEntries(
             this.config?.tokenInterfaces.map((tokenInterface) => {
               return [tokenInterface, EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces[tokenInterface]] as const
             }),
-          ) as TokenInterfaceDictionary) ?? {}
+          ) as TokenInterfaceDictionary) ?? {})
         : EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
     }
     return this._tokenInterfaces
