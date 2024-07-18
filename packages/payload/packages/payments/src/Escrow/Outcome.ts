@@ -8,8 +8,6 @@ import {
 
 import { EscrowSchema } from './Schema.js'
 
-// TODO: Move to plugins
-
 export const EscrowOutcomeSchema = `${EscrowSchema}.outcome` as const
 export type EscrowOutcomeSchema = typeof EscrowOutcomeSchema
 
