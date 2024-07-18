@@ -3,14 +3,11 @@ import {
   isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
   PayloadWithSources,
+  WithMeta,
+  WithSources,
 } from '@xyo-network/payload-model'
 
 import { EmailAddressSchema } from './Schema.js'
-
-/**
- * An email type
- */
-export type EmailAddressType = `${string}@${string}.${string}`
 
 /**
  * A regex for testing if a string is an email
@@ -22,7 +19,7 @@ export const emailRegex = /^(?![%+._-])(?!.*\.\.)[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-
  * @param email The string to test
  * @returns True if the string is a valid email, false otherwise
  */
-export const isValidEmail = (email: string): email is EmailAddressType => {
+export const isValidEmail = (email: string) => {
   return emailRegex.test(email)
 }
 
@@ -30,13 +27,25 @@ export const isValidEmail = (email: string): email is EmailAddressType => {
  * The fields for an email
  */
 export interface EmailAddressFields {
-  address: EmailAddressType | string
+  address: string
 }
 
 /**
  * The terms of an escrow
  */
 export type EmailAddress = PayloadWithSources<EmailAddressFields, EmailAddressSchema>
+
+/**
+ *
+ * @param address The address to use
+ * @returns
+ */
+export const asEmailAddress = <T = EmailAddress | WithMeta<EmailAddress> | WithSources<EmailAddress>>(address: string): T | undefined => {
+  if (isValidEmail(address)) {
+    return { address, schema: EmailAddressSchema } as T
+  }
+  return undefined
+}
 
 /**
  * Identity function for determining if an object is an Email
