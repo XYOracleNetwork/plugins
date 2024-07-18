@@ -26,21 +26,21 @@ export const isValidEmail = (email: string) => {
 /**
  * The fields for an email
  */
-export interface EmailAddressFields {
+export interface EmailFields {
   address: string
 }
 
 /**
- * The terms of an escrow
+ * An email address
  */
-export type EmailAddress = PayloadWithSources<EmailAddressFields, EmailAddressSchema>
+export type Email = PayloadWithSources<EmailFields, EmailAddressSchema>
 
 /**
- *
- * @param address The address to use
- * @returns
+ * Tries to create an Email from a string
+ * @param address The Email address to use
+ * @returns An Email if the address is valid, undefined otherwise
  */
-export const asEmailAddress = <T = EmailAddress | WithMeta<EmailAddress> | WithSources<EmailAddress>>(address: string): T | undefined => {
+export const tryAsEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(address: string): T | undefined => {
   if (isValidEmail(address)) {
     return { address, schema: EmailAddressSchema } as T
   }
@@ -50,20 +50,20 @@ export const asEmailAddress = <T = EmailAddress | WithMeta<EmailAddress> | WithS
 /**
  * Identity function for determining if an object is an Email
  */
-export const isEmailAddress = (value: unknown): value is EmailAddress => {
-  return isPayloadOfSchemaType<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+export const isEmail = (value: unknown): value is Email => {
+  return isPayloadOfSchemaType<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }
 
 /**
  * Identity function for determining if an object is an Email with sources
  */
-export const isEmailAddressWithSources = (value: unknown): value is EmailAddress => {
-  return isPayloadOfSchemaTypeWithSources<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+export const isEmailWithSources = (value: unknown): value is Email => {
+  return isPayloadOfSchemaTypeWithSources<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }
 
 /**
  * Identity function for determining if an object is an Email with meta
  */
-export const isEmailAddressWithMeta = (value: unknown): value is EmailAddress => {
-  return isPayloadOfSchemaTypeWithMeta<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+export const isEmailWithMeta = (value: unknown): value is Email => {
+  return isPayloadOfSchemaTypeWithMeta<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }
