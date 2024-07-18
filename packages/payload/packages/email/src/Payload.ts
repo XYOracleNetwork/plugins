@@ -7,12 +7,24 @@ import {
 
 import { EmailAddressSchema } from './Schema.js'
 
-// TODO: Move to SDK
-
 /**
  * An email type
  */
 export type EmailAddressType = `${string}@${string}.${string}`
+
+/**
+ * A regex for testing if a string is an email
+ */
+export const emailRegex = /^[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/
+
+/**
+ * Tests if a string is a valid email
+ * @param email The string to test
+ * @returns True if the string is a valid email, false otherwise
+ */
+export const isValidEmail = (email: string): email is EmailAddressType => {
+  return emailRegex.test(email)
+}
 
 /**
  * The fields for an email
@@ -29,14 +41,20 @@ export type EmailAddress = PayloadWithSources<EmailAddressFields, EmailAddressSc
 /**
  * Identity function for determining if an object is an Email
  */
-export const isEmailAddress = isPayloadOfSchemaType<EmailAddress>(EmailAddressSchema)
+export const isEmailAddress = (value: unknown): value is EmailAddress => {
+  return isPayloadOfSchemaType<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+}
 
 /**
  * Identity function for determining if an object is an Email with sources
  */
-export const isEmailAddressWithSources = isPayloadOfSchemaTypeWithSources<EmailAddress>(EmailAddressSchema)
+export const isEmailAddressWithSources = (value: unknown): value is EmailAddress => {
+  return isPayloadOfSchemaTypeWithSources<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+}
 
 /**
  * Identity function for determining if an object is an Email with meta
  */
-export const isEmailAddressWithMeta = isPayloadOfSchemaTypeWithMeta<EmailAddress>(EmailAddressSchema)
+export const isEmailAddressWithMeta = (value: unknown): value is EmailAddress => {
+  return isPayloadOfSchemaTypeWithMeta<EmailAddress>(EmailAddressSchema)(value) && isValidEmail(value.address)
+}
