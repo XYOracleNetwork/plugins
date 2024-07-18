@@ -1,7 +1,9 @@
-import {} from '../Payload.js'
+import { EmailAddress, isEmailAddress } from '../Payload.js'
+import { EmailAddressSchema } from '../Schema.js'
 
 describe('Email', () => {
-  describe('with valid email', () => {
+  const schema = EmailAddressSchema
+  describe('with valid email returns true', () => {
     const validEmails = [
       'john.doe@example.com',
       'jane_smith123@domain.net',
@@ -16,11 +18,12 @@ describe('Email', () => {
       'my-name@domain.gov',
       'name@sub.domain.tld',
     ]
-    it('with valid email', () => {
-      //
+    it.each(validEmails)('%s', (address) => {
+      const email: EmailAddress = { address, schema }
+      expect(isEmailAddress(email)).toBeTrue()
     })
   })
-  describe('with invalid email', () => {
+  describe('with invalid email returns false', () => {
     const invalidEmails = [
       'plainaddress',
       '@missingusername.com',
@@ -35,8 +38,9 @@ describe('Email', () => {
       'username@domain.com.',
       'username@domain..com',
     ]
-    it('with valid email', () => {
-      //
+    it.each(invalidEmails)('%s', (address) => {
+      const email: EmailAddress = { address, schema }
+      expect(isEmailAddress(email)).toBeFalse()
     })
   })
 })
