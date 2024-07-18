@@ -15,7 +15,7 @@ export type EmailAddressType = `${string}@${string}.${string}`
 /**
  * A regex for testing if a string is an email
  */
-export const emailRegex = /^[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/
+export const emailRegex = /^(?!.*\.\.)[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/
 
 /**
  * Tests if a string is a valid email
@@ -30,7 +30,7 @@ export const isValidEmail = (email: string): email is EmailAddressType => {
  * The fields for an email
  */
 export interface EmailAddressFields {
-  address: EmailAddressType
+  address: EmailAddressType | string
 }
 
 /**
