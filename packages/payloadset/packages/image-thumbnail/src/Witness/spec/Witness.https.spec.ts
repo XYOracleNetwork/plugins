@@ -4,7 +4,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 
-import { ImageThumbnailWitness } from '../Witness.js'
+import { ImageThumbnailWitness } from '../Witness.ts'
 
 const describeIfHasBin = (bin: string) => (hasbin.sync(bin) ? describe : describe.skip)
 
@@ -47,7 +47,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
 
-    //do a second pass and make sure we get cached result
+    // do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)
@@ -66,7 +66,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
 
-    //do a second pass and make sure we get cached result
+    // do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)
@@ -119,7 +119,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
 
-    //do a second pass and make sure we get cached result
+    // do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)

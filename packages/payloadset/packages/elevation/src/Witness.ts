@@ -57,9 +57,9 @@ export type ElevationWitnessConfig = WitnessConfig<{
 
 export const locationToQuadkey = (location: Location, zoom = 16) => {
   return assertEx(
-    (location as QuadkeyLocation).quadkey ?
-      Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
-    : Quadkey.fromLngLat(
+    (location as QuadkeyLocation).quadkey
+      ? Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
+      : Quadkey.fromLngLat(
         { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
         zoom,
       ),
@@ -70,8 +70,7 @@ export type ElevationWitnessParams = WitnessParams<AnyConfigSchema<ElevationWitn
 
 export class ElevationWitness<TParams extends ElevationWitnessParams = ElevationWitnessParams>
   extends AbstractWitness<TParams>
-  implements WitnessModule
-{
+  implements WitnessModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ElevationWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = ElevationWitnessConfigSchema
 
@@ -80,7 +79,7 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
   private _tiffs: Tiffs = {}
 
   get quadkeys() {
-    return this.config.locations?.map((location) => locationToQuadkey(location)) ?? []
+    return this.config.locations?.map(location => locationToQuadkey(location)) ?? []
   }
 
   get uri() {
@@ -133,8 +132,8 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
 
   protected override async observeHandler(payloads?: Payload[]): Promise<Payload[]> {
     const quadkeys: Quadkey[] = [
-      ...(payloads?.map((location) => locationToQuadkey(location as LocationPayload)) ?? []),
-      ...this.quadkeys.map((quadkey) => (typeof quadkey === 'string' ? Quadkey.fromString(12, quadkey) : quadkey)),
+      ...(payloads?.map(location => locationToQuadkey(location as LocationPayload)) ?? []),
+      ...this.quadkeys.map(quadkey => (typeof quadkey === 'string' ? Quadkey.fromString(12, quadkey) : quadkey)),
     ]
     const results: ElevationPayload[] = await Promise.all(
       quadkeys.map(async (quadkey) => {
@@ -148,11 +147,14 @@ export class ElevationWitness<TParams extends ElevationWitnessParams = Elevation
         const isWest = westBoundingBox.contains(quadkey.center)
         const isNorthEast = northEastBoundingBox.contains(quadkey.center)
         const isSouthEast = southEastBoundingBox.contains(quadkey.center)
-        const sectionToUse =
-          isWest ? 'west'
-          : isNorthEast ? 'northEast'
-          : isSouthEast ? 'southEast'
-          : null
+        const sectionToUse
+          = isWest
+            ? 'west'
+            : isNorthEast
+              ? 'northEast'
+              : isSouthEast
+                ? 'southEast'
+                : null
         const section = await this.getSectionImage(assertEx(sectionToUse, () => 'Unsupported Area'))
         const sectionInfo = await this.getSectionInfo(assertEx(sectionToUse, () => 'Unsupported Area'))
 

@@ -1,4 +1,4 @@
-export * from './Diviner.js'
+export * from './Diviner.ts'
 // eslint-disable-next-line import/no-default-export
-export { EthereumGasPlugin as default, EthereumGasPlugin } from './Plugin.js'
-export * from './Schema.js'
+export { EthereumGasPlugin as default, EthereumGasPlugin } from './Plugin.ts'
+export * from './Schema.ts'

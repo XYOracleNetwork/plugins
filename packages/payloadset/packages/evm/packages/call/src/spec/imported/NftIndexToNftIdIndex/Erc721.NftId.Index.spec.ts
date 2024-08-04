@@ -68,7 +68,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
   describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
     const tokensToCheck = 16
     const tokenIds = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => tokenIndex)
-    const tokenIndexes = tokenIds.map((tokenId) => tokenId)
+    const tokenIndexes = tokenIds.map(tokenId => tokenId)
     const chainId = 1
     const functionName = 'tokenByIndex'
     describe('Sentinel', () => {

@@ -1,2 +1,2 @@
-export * from './Card/index.js'
-export * from './Schema.js'
+export * from './Card/index.ts'
+export * from './Schema.ts'

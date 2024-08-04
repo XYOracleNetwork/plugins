@@ -1,5 +1,5 @@
-import { NftInfoFields } from '../NftInfo/index.js'
-import { OpenSeaNftMetadata } from './OpenSeaNftMetadata.js'
+import { NftInfoFields } from '../NftInfo/index.ts'
+import { OpenSeaNftMetadata } from './OpenSeaNftMetadata.ts'
 
 export interface OpenSeaNftInfoFields extends NftInfoFields {
   metadata: OpenSeaNftMetadata

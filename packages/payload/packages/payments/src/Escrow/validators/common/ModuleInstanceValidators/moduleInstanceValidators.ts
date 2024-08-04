@@ -1,7 +1,7 @@
 import { ModuleIdentifier } from '@xyo-network/module-model'
 import { PayloadValueExpression } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../../Terms.js'
+import { EscrowTerms } from '../../../Terms.ts'
 
 /**
  * Checks if property value of the escrow terms contains one of the valid moduleIdentifiers
@@ -21,7 +21,7 @@ export const moduleIdentifiersContainsOneOf = (
   if (termsValue === undefined) {
     return required ? false : true
   } else {
-    return Array.isArray(termsValue) ? termsValue.some((address) => moduleIdentifiers.includes(address)) : moduleIdentifiers.includes(termsValue)
+    return Array.isArray(termsValue) ? termsValue.some(address => moduleIdentifiers.includes(address)) : moduleIdentifiers.includes(termsValue)
   }
 }
 
@@ -43,6 +43,6 @@ export const moduleIdentifiersContainsAllOf = (
   if (termsValue === undefined) {
     return required ? false : true
   } else {
-    return Array.isArray(termsValue) ? termsValue.every((address) => moduleIdentifiers.includes(address)) : moduleIdentifiers.includes(termsValue)
+    return Array.isArray(termsValue) ? termsValue.every(address => moduleIdentifiers.includes(address)) : moduleIdentifiers.includes(termsValue)
   }
 }

@@ -1,1 +1,1 @@
-export * from './divineGas.js'
+export * from './divineGas.ts'

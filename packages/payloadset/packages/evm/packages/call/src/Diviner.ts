@@ -4,8 +4,8 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
 
-import { EvmCallDivinerLabels } from './Labels.js'
-import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload.js'
+import { EvmCallDivinerLabels } from './Labels.ts'
+import { asEvmCallSuccess, EvmCallResult, EvmCallResultSchema } from './Payload.ts'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 
@@ -41,7 +41,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
   static override labels: EvmCallDivinerLabels = { ...super.labels, ...EvmCallDivinerLabels }
 
   protected static findCallResult<TResult = string>(address: string, functionName: string, payloads: EvmCallResult[]): TResult | undefined {
-    const foundPayload = payloads.find((payload) => payload.functionName === functionName && payload.address === address)
+    const foundPayload = payloads.find(payload => payload.functionName === functionName && payload.address === address)
     return asEvmCallSuccess(foundPayload)?.result as TResult | undefined
   }
 
@@ -75,7 +75,7 @@ export class EvmCallDiviner<TParams extends EvmCallDivinerParams = EvmCallDivine
     )
     const result = await Promise.all(
       addresses.map(async (address) => {
-        const foundCallResults = callResults.filter((callResult) => callResult.address === address)
+        const foundCallResults = callResults.filter(callResult => callResult.address === address)
         const results: EvmCallResults = {
           results: await this.reduceResults(foundCallResults),
           ...this.contractInfoRequiredFields(foundCallResults),

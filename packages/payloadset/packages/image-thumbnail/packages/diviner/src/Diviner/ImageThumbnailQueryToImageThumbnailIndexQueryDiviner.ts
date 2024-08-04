@@ -6,8 +6,8 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.js'
-import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.js'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.ts'
 
 /**
  * A diviner that converts ImageThumbnailDivinerQuery to ImageThumbnailResultQuery
@@ -20,6 +20,7 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'divinerQueryToIndexQueryDiviner',
   }
+
   protected override async divineHandler(
     payloads: Payload[] = [],
   ): Promise<Omit<Omit<ImageThumbnailResultQuery, 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>>, 'timestamp'>[]> {

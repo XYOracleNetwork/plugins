@@ -10,20 +10,20 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/lodash": "^3.6.5",
-    "@xylabs/promise": "^3.6.5",
-    "@xyo-network/abstract-witness": "^2.110.10",
+    "@xylabs/lodash": "^3.6.8",
+    "@xylabs/promise": "^3.6.8",
+    "@xyo-network/abstract-witness": "^2.111.1",
     "@xyo-network/module-instance-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^2.110.10",
-    "@xyo-network/payload-model": "^2.110.10",
-    "@xyo-network/payloadset-plugin": "^2.110.10",
-    "@xyo-network/witness-model": "^2.110.10"
+    "@xyo-network/module-model": "^2.111.1",
+    "@xyo-network/payload-model": "^2.111.1",
+    "@xyo-network/payloadset-plugin": "^2.111.1",
+    "@xyo-network/witness-model": "^2.111.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.13.3",
-    "@xylabs/tsconfig": "^3.13.3",
-    "@xyo-network/archivist-memory": "^2.110.10",
-    "@xyo-network/payload-wrapper": "^2.110.10",
+    "@xylabs/ts-scripts-yarn3": "^3.15.13",
+    "@xylabs/tsconfig": "^3.15.13",
+    "@xyo-network/archivist-memory": "^2.111.1",
+    "@xyo-network/payload-wrapper": "^2.111.1",
     "typescript": "^5.5.4"
   },
   "description": "Contains the information about a module instance",
@@ -37,7 +37,7 @@
         },
         "import": {
           "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.js"
+          "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
@@ -47,14 +47,14 @@
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
   "main": "dist/node/index.cjs",
-  "module": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

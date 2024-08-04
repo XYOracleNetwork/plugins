@@ -16,7 +16,7 @@ import {
 import { Schema } from '@xyo-network/payload-model'
 import { Interface, JsonFragment } from 'ethers'
 
-import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload.js'
+import { EvmTokenInterfaceImplemented, EvmTokenInterfaceImplementedSchema, TokenInterface } from './Payload.ts'
 
 export const EvmTokenInterfaceImplementedDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
 export type EvmTokenInterfaceImplementedDivinerConfigSchema = typeof EvmTokenInterfaceImplementedDivinerConfigSchema
@@ -50,6 +50,7 @@ export class EvmTokenInterfaceImplementedDiviner<
     ERC721Metadata: IERC721Metadata__factory.abi,
     ERC721TokenReceiver: IERC721Receiver__factory.abi,
   }
+
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmTokenInterfaceImplementedDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = EvmTokenInterfaceImplementedDivinerConfigSchema
 
@@ -60,14 +61,14 @@ export class EvmTokenInterfaceImplementedDiviner<
    */
   get tokenInterfaces() {
     if (!this._tokenInterfaces) {
-      this._tokenInterfaces =
-        this.config?.tokenInterfaces ?
-          ((Object.fromEntries(
-            this.config?.tokenInterfaces.map((tokenInterface) => {
-              return [tokenInterface, EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces[tokenInterface]] as const
-            }),
-          ) as TokenInterfaceDictionary) ?? {})
-        : EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
+      this._tokenInterfaces
+        = this.config?.tokenInterfaces
+          ? ((Object.fromEntries(
+              this.config?.tokenInterfaces.map((tokenInterface) => {
+                return [tokenInterface, EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces[tokenInterface]] as const
+              }),
+            ) as TokenInterfaceDictionary) ?? {})
+          : EvmTokenInterfaceImplementedDiviner.SupportedTokenInterfaces
     }
     return this._tokenInterfaces
   }

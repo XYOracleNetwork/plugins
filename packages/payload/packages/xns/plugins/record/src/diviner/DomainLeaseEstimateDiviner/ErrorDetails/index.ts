@@ -1,2 +1,2 @@
-export * from './ErrorCodes.js'
-export * from './Payload.js'
+export * from './ErrorCodes.ts'
+export * from './Payload.ts'

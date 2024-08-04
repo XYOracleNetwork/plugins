@@ -1,2 +1,2 @@
-export * from './NftCollectionInfo/index.js'
-export * from './Payload.js'
+export * from './NftCollectionInfo/index.ts'
+export * from './Payload.ts'

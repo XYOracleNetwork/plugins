@@ -1,8 +1,8 @@
 import { EthereumGasBlocknativeSchema } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { EthereumGasBlocknativeWitnessConfigSchema } from '../Schema.js'
-import { EthereumGasBlocknativeWitness } from '../Witness.js'
+import { EthereumGasBlocknativeWitnessConfigSchema } from '../Schema.ts'
+import { EthereumGasBlocknativeWitness } from '../Witness.ts'
 
 describe('EthereumGasBlocknativeWitness', () => {
   it('returns observation', async () => {

@@ -1,6 +1,6 @@
 import { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { ImageThumbnailDivinerSchema } from './Schema.js'
+import { ImageThumbnailDivinerSchema } from './Schema.ts'
 
 export const ImageThumbnailDivinerConfigSchema = `${ImageThumbnailDivinerSchema}.config` as const
 export type ImageThumbnailDivinerConfigSchema = typeof ImageThumbnailDivinerConfigSchema

@@ -1,3 +1,3 @@
-export * from './NftId/index.js'
-export * from './NftIndex/index.js'
-export * from './NftMetadataUri/index.js'
+export * from './NftId/index.ts'
+export * from './NftIndex/index.ts'
+export * from './NftMetadataUri/index.ts'

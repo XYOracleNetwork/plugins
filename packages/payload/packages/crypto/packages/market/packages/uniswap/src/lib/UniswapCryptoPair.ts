@@ -1,4 +1,4 @@
-import { UniswapCryptoToken } from './UniswapCryptoToken.js'
+import { UniswapCryptoToken } from './UniswapCryptoToken.ts'
 
 export interface UniswapCryptoPair {
   tokens: UniswapCryptoToken[]

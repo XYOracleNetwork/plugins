@@ -1,3 +1,3 @@
-export * from './RebillyApiSettings.js'
-export * from './RebillyAuthSettings.js'
-export * from './RebillyOrganizationSettings.js'
+export * from './RebillyApiSettings.ts'
+export * from './RebillyAuthSettings.ts'
+export * from './RebillyOrganizationSettings.ts'

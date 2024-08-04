@@ -1,5 +1,5 @@
-import { EvmAddress } from './Payload.js'
-import { EvmAddressSchema } from './Schema.js'
+import { EvmAddress } from './Payload.ts'
+import { EvmAddressSchema } from './Schema.ts'
 
 export const addressPayloadTemplate = (): EvmAddress => ({
   address: '',

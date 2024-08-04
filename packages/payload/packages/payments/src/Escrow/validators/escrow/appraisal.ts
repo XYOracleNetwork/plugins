@@ -4,8 +4,8 @@ import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-
 import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import { Payload, PayloadValidationFunction, WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.js'
-import { validateWithinWindow } from '../common/index.js'
+import { EscrowTerms } from '../../Terms.ts'
+import { validateWithinWindow } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisal'
 
@@ -37,11 +37,11 @@ export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Ha
     // - We have a bw for each of the appraisal
     // - The bw is signed by an approved appraisal authority
     const appraisalBWsValid: Record<Hash, WithMeta<BoundWitness>[]> = Object.fromEntries(
-      appraisals.map<[Hash, WithMeta<BoundWitness>[]]>((hash) => [hash, []]),
+      appraisals.map<[Hash, WithMeta<BoundWitness>[]]>(hash => [hash, []]),
     )
     for (const bw of Object.values(dictionary).filter(isBoundWitnessWithMeta)) {
       for (const appraisal of appraisals) {
-        if (bw.payload_hashes.includes(appraisal) && bw.addresses.some((address) => appraisalAuthorities.includes(address))) {
+        if (bw.payload_hashes.includes(appraisal) && bw.addresses.some(address => appraisalAuthorities.includes(address))) {
           appraisalBWsValid[appraisal].push(bw)
         }
       }

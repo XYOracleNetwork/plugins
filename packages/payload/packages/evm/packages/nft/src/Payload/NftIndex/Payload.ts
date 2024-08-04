@@ -1,7 +1,7 @@
 import { EvmAddressFields } from '@xyo-network/evm-address-payload-plugin'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { NftIndexSchema } from './Schema.js'
+import { NftIndexSchema } from './Schema.ts'
 
 /**
  * The fields of an NFT Index payload

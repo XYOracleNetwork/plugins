@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { AssetInfo, Token } from './Model/index.js'
-import { CryptoMarketAssetSchema } from './Schema.js'
+import { AssetInfo, Token } from './Model/index.ts'
+import { CryptoMarketAssetSchema } from './Schema.ts'
 
 export type CryptoMarketAssetPayload = Payload<
   {

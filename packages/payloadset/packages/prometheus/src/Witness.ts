@@ -7,8 +7,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { collectDefaultMetrics, Registry } from 'prom-client'
 
-import { PrometheusMetricValuePayload } from './Payload.js'
-import { PrometheusMetricValueSchema } from './Schema.js'
+import { PrometheusMetricValuePayload } from './Payload.ts'
+import { PrometheusMetricValueSchema } from './Schema.ts'
 
 export type PrometheusNodeWitnessConfigSchema = 'network.xyo.prometheus.node.witness.config'
 export const PrometheusNodeWitnessConfigSchema: PrometheusNodeWitnessConfigSchema = 'network.xyo.prometheus.node.witness.config'

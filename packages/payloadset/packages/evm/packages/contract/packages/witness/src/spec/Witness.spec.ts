@@ -4,7 +4,7 @@ import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-
 import { EvmContractWitness, EvmContractWitnessConfigSchema } from '../Witness'
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
-  const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
+  const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' // XYO ERC20
   describe('observe', () => {
     it('get code from contract', async () => {
       const witness = await EvmContractWitness.create({

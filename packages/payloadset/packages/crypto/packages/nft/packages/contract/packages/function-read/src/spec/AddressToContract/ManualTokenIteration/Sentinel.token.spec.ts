@@ -22,9 +22,9 @@ import { Semaphore } from 'async-mutex'
 import { Provider } from 'ethers'
 
 // eslint-disable-next-line import/no-deprecated
-import { CryptoContractDiviner } from '../../../Diviner'
+import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 // eslint-disable-next-line import/no-deprecated
-import { CryptoContractFunctionReadWitness } from '../../../Witness'
+import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}
@@ -63,8 +63,8 @@ let tokenCount = 0
 const maxProviders = 32
 
 describe('Erc721Sentinel', () => {
-  //const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
-  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
+  // const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
+  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' // Bored Apes
 
   const getProviders = () => {
     const providers: Provider[] = []
@@ -80,11 +80,9 @@ describe('Erc721Sentinel', () => {
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
       const wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
-      // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
       locator.register(CryptoContractDiviner)
 
       locator.register(
-        // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC721__factory.abi },
           providers: getProviders(),
@@ -93,7 +91,6 @@ describe('Erc721Sentinel', () => {
       )
 
       locator.register(
-        // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: getProviders(),
@@ -102,7 +99,6 @@ describe('Erc721Sentinel', () => {
       )
 
       locator.register(
-        // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC1155__factory.abi },
           providers: getProviders(),

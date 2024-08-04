@@ -2,7 +2,7 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { RebillyOrganizationSettings, RebillyPublishableApiSettings } from '@xyo-network/rebilly-payment-payload-plugin'
 import { SentinelParams } from '@xyo-network/sentinel-model'
 
-import { RebillyPaymentCardAuthorizationSentinelConfig } from './Config.js'
+import { RebillyPaymentCardAuthorizationSentinelConfig } from './Config.ts'
 
 export type RebillyPaymentCardAuthorizationParams = Partial<RebillyPublishableApiSettings & RebillyOrganizationSettings>
 

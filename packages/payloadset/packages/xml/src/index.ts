@@ -1,3 +1,3 @@
-export * from './Diviner/index.js'
-export * from './Payload.js'
-export * from './Schema.js'
+export * from './Diviner/index.ts'
+export * from './Payload.ts'
+export * from './Schema.ts'

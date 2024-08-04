@@ -1,9 +1,9 @@
 import { Hash } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
-import { ApiCallResultSchema } from '../Schema.js'
-import { ApiCallJsonResult } from './ApiCallJsonResult.js'
-import { ApiCallXmlResult } from './ApiCallXmlResult.js'
+import { ApiCallResultSchema } from '../Schema.ts'
+import { ApiCallJsonResult } from './ApiCallJsonResult.ts'
+import { ApiCallXmlResult } from './ApiCallXmlResult.ts'
 
 export type ApiCallBase64Result = Payload<
   {

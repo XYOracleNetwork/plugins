@@ -2,7 +2,7 @@ import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 import { UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
-import { UniswapCryptoMarketWitness } from './Witness.js'
+import { UniswapCryptoMarketWitness } from './Witness.ts'
 
 export const UniswapCryptoMarketPlugin = () =>
   createPayloadSetWitnessPlugin<UniswapCryptoMarketWitness>(

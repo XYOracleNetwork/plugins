@@ -17,12 +17,12 @@ import { sha256 } from 'hash-wasm'
 import shajs from 'sha.js'
 import Url from 'url-parse'
 
-import { ImageThumbnailEncoding, ImageThumbnailWitnessConfigSchema } from './Config.js'
-import { getVideoFrameAsImageFluent } from './ffmpeg/index.js'
-import { checkIpfsUrl, createDataUrl, resolveDynamicSvg } from './lib/index.js'
-import { ImageThumbnailWitnessParams } from './Params.js'
+import { ImageThumbnailEncoding, ImageThumbnailWitnessConfigSchema } from './Config.ts'
+import { getVideoFrameAsImageFluent } from './ffmpeg/index.ts'
+import { checkIpfsUrl, createDataUrl, resolveDynamicSvg } from './lib/index.ts'
+import { ImageThumbnailWitnessParams } from './Params.ts'
 
-//TODO: Break this into two Witnesses?
+// TODO: Break this into two Witnesses?
 
 // setFfmpegPath(ffmpegPath)
 
@@ -85,7 +85,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     if (url.startsWith('data:image')) {
       const data = url.split(',')[1]
       if (data) {
-        return Uint8Array.from(atob(data), (c) => c.codePointAt(0) ?? 0)
+        return Uint8Array.from(atob(data), c => c.codePointAt(0) ?? 0)
       } else {
         const error: ImageThumbnailWitnessError = {
           message: 'Invalid data Url',
@@ -101,14 +101,14 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     if (!hasbin.sync('magick')) {
       throw new Error('ImageMagick is required for this witness')
     }
-    const urlPayloads = payloads.filter((payload) => payload.schema === UrlSchema)
+    const urlPayloads = payloads.filter(payload => payload.schema === UrlSchema)
     const process = async () => {
       return compact(
         await Promise.all(
           urlPayloads.map<Promise<ImageThumbnail>>(async ({ url }) => {
             let result: ImageThumbnail
 
-            //if it is a data URL, return a Buffer
+            // if it is a data URL, return a Buffer
             const dataBuffer = ImageThumbnailWitness.bufferFromDataUrl(url)
 
             if (dataBuffer) {
@@ -141,7 +141,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
                 )
               }
             } else {
-              //if it is ipfs, go through cloud flair
+              // if it is ipfs, go through cloud flair
               const mutatedUrl = checkIpfsUrl(url, this.ipfsGateway)
               result = await this.fromHttp(mutatedUrl, url)
             }
@@ -205,7 +205,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     } catch (ex) {
       const axiosError = ex as AxiosError
       if (axiosError.isAxiosError) {
-        //selectively pick fields from AxiosError
+        // selectively pick fields from AxiosError
         const result: ImageThumbnail = {
           http: {
             ipAddress: dnsResult[0],

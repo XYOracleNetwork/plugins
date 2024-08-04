@@ -5,8 +5,8 @@ import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 import { Contract, EventLog } from 'ethers'
 
-import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model.js'
-import { EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema } from './Payload.js'
+import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model.ts'
+import { EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema } from './Payload.ts'
 
 export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEventsWitnessParams> extends AbstractEvmWitness<
   TParams,
@@ -22,7 +22,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
 
   protected override async observeHandler(inPayloads: EvmEvents[] = []): Promise<EvmEvent[]> {
     await this.started('throw')
-    //calling it here to make sure we rests the cache
+    // calling it here to make sure we rests the cache
     await this.getProviders()
     try {
       const observations = (
@@ -41,7 +41,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
               const abiArray = assertEx(Array.isArray(this.abi) ? this.abi : undefined, () => 'Abi is not an array')
 
               const abiEvent = assertEx(
-                abiArray.find((entry) => entry.type === 'event' && entry.name === validatedEventName),
+                abiArray.find(entry => entry.type === 'event' && entry.name === validatedEventName),
                 () => 'Could not find event',
               )
 
@@ -49,7 +49,7 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
               const fromBlock = this.config.fromBlock ?? payloadFromBlock ?? 0
 
               const allRawEvents = await contract.queryFilter(contract.filters[validatedEventName], fromBlock, toBlock)
-              //console.log(`from-to: ${fromBlock}|${toBlock} = ${allRawEvents.length}`)
+              // console.log(`from-to: ${fromBlock}|${toBlock} = ${allRawEvents.length}`)
 
               const observation = allRawEvents
                 .map((rawLog) => {

@@ -2,7 +2,7 @@ import { NftCollectionMetadata } from '@xyo-network/crypto-nft-collection-payloa
 import { ERC721Enumerable__factory, IERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import { JsonRpcProvider } from 'ethers'
 
-import { contractHasFunctions } from './contractHasFunctions.js'
+import { contractHasFunctions } from './contractHasFunctions.ts'
 
 export const getNftCollectionMetadata = async (
   /**

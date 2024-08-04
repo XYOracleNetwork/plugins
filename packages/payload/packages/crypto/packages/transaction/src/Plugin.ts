@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { AddressTransactionHistoryPayload } from './Payload.js'
-import { AddressTransactionHistorySchema } from './Schema.js'
-import { addressTransactionHistoryPayloadTemplate } from './Template.js'
+import { AddressTransactionHistoryPayload } from './Payload.ts'
+import { AddressTransactionHistorySchema } from './Schema.ts'
+import { addressTransactionHistoryPayloadTemplate } from './Template.ts'
 
 export const AddressTransactionHistoryPayloadPlugin = () =>
   createPayloadPlugin<AddressTransactionHistoryPayload>({

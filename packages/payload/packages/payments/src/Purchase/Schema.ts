@@ -1,4 +1,4 @@
-import { PaymentsSchema } from '../Schema.js'
+import { PaymentsSchema } from '../Schema.ts'
 
 export const PurchaseSchema = `${PaymentsSchema}.purchase`
 export type PurchaseSchema = typeof PurchaseSchema

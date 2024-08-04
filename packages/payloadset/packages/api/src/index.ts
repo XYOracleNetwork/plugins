@@ -1,2 +1,2 @@
-export * from './Payload/index.js'
-export * from './Witness/index.js'
+export * from './Payload/index.ts'
+export * from './Witness/index.ts'

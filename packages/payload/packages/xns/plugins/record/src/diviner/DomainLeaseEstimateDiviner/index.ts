@@ -1,2 +1,2 @@
-export * from './ErrorDetails/index.js'
-export * from './Schema.js'
+export * from './ErrorDetails/index.ts'
+export * from './Schema.ts'

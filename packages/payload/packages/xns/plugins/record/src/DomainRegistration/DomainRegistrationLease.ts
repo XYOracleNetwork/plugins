@@ -1,7 +1,7 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../Duration/index.js'
-import { DomainRegistrationFields, DomainRegistrationSchema } from './DomainRegistration.js'
+import { DurationFields } from '../Duration/index.ts'
+import { DomainRegistrationFields, DomainRegistrationSchema } from './DomainRegistration.ts'
 
 export const DomainRegistrationLeaseSchema = `${DomainRegistrationSchema}.lease` as const
 export type DomainRegistrationLeaseSchema = typeof DomainRegistrationLeaseSchema

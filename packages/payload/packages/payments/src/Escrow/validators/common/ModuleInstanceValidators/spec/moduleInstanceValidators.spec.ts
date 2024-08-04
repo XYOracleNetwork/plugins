@@ -25,26 +25,26 @@ describe('RegistrarSentinel', () => {
   describe('moduleIdentifiersContainsOneOf', () => {
     // Positive test for scalar value
     test('returns true for a matching scalar value', () => {
-      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, (terms) => terms.escrowAgent, moduleIdentifiersExample)
+      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, terms => terms.escrowAgent, moduleIdentifiersExample)
       expect(result).toBeTruthy()
     })
 
     // Negative test for scalar value
     test('returns false for a non-matching scalar value', () => {
-      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, (terms) => terms.buyer, moduleIdentifiersExample)
+      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, terms => terms.buyer, moduleIdentifiersExample)
       expect(result).toBeFalsy()
     })
 
     // Positive test for array values
     test('returns true when at least one array value matches', () => {
-      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, (terms) => terms.appraisalAuthorities, moduleIdentifiersExample)
+      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, terms => terms.appraisalAuthorities, moduleIdentifiersExample)
       expect(result).toBeTruthy()
     })
 
     // Negative test for array values
     test('returns false when no array values match', () => {
       const nonMatchingModuleIdentifiers: ModuleIdentifier[] = ['nonMatching1', 'nonMatching2']
-      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, (terms) => terms.appraisalAuthorities, nonMatchingModuleIdentifiers)
+      const result = moduleIdentifiersContainsOneOf(escrowTermsExample, terms => terms.appraisalAuthorities, nonMatchingModuleIdentifiers)
       expect(result).toBeFalsy()
     })
 
@@ -52,7 +52,7 @@ describe('RegistrarSentinel', () => {
     test('returns false when termsValue is undefined and required is true', () => {
       const result = moduleIdentifiersContainsOneOf(
         { schema: EscrowTermsSchema }, // Empty object, no terms defined
-        (terms) => terms.buyer, // This will be undefined
+        terms => terms.buyer, // This will be undefined
         moduleIdentifiersExample,
         true, // Explicitly stating required is true
       )
@@ -63,7 +63,7 @@ describe('RegistrarSentinel', () => {
     test('returns true when termsValue is undefined and required is false', () => {
       const result = moduleIdentifiersContainsOneOf(
         { schema: EscrowTermsSchema }, // Empty object, no terms defined
-        (terms) => terms.buyer, // This will be undefined
+        terms => terms.buyer, // This will be undefined
         moduleIdentifiersExample,
         false, // Required is false
       )

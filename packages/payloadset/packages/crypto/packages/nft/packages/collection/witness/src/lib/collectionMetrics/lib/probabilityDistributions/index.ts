@@ -1,1 +1,1 @@
-export * from './binomial/index.js'
+export * from './binomial/index.ts'

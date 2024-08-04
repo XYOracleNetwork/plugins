@@ -4,8 +4,8 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { UrlSafetyPayload, UrlSafetySchema, UrlSafetyThreatType } from '@xyo-network/url-safety-payload-plugin'
 
-import { UrlSafetyWitnessConfigSchema } from './Config.js'
-import { UrlSafetyWitnessParams } from './Params.js'
+import { UrlSafetyWitnessConfigSchema } from './Config.ts'
+import { UrlSafetyWitnessParams } from './Params.ts'
 
 export type GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'
 export const GoogleSafeBrowsingMatchSchema: GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'
@@ -36,7 +36,7 @@ const checkUrlSafety = async (
   const axios = new AxiosJson()
   const endPoint = config?.endPoint ?? 'https://safebrowsing.googleapis.com/v4/threatMatches:find'
   const key = config?.key
-  const mutatedUrls = urls.map((url) => url.replace('ipfs://', 'https://cloudflare-ipfs.com/'))
+  const mutatedUrls = urls.map(url => url.replace('ipfs://', 'https://cloudflare-ipfs.com/'))
   if (mutatedUrls.length === 0) {
     return []
   }
@@ -47,14 +47,14 @@ const checkUrlSafety = async (
     },
     threatInfo: {
       platformTypes: ['WINDOWS', 'LINUX', 'OSX'],
-      threatEntries: mutatedUrls.map((url) => ({ url })),
+      threatEntries: mutatedUrls.map(url => ({ url })),
       threatEntryTypes: ['URL'],
       threatTypes: ['SOCIAL_ENGINEERING', 'POTENTIALLY_HARMFUL_APPLICATION', 'UNWANTED_SOFTWARE', 'THREAT_TYPE_UNSPECIFIED'],
     },
   }
   const result = (await axios.post<GoogleSafeBrowsingResult>(`${endPoint}?key=${key}`, postData, { headers: { referer: 'http://localhost:3000' } }))
     .data
-  return result.matches?.map<GoogleSafeBrowsingMatchPayload>((match) => ({ ...match, schema: GoogleSafeBrowsingMatchSchema })) ?? []
+  return result.matches?.map<GoogleSafeBrowsingMatchPayload>(match => ({ ...match, schema: GoogleSafeBrowsingMatchSchema })) ?? []
 }
 
 export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafetyWitnessParams> extends AbstractWitness<TParams> {
@@ -70,9 +70,9 @@ export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafety
   }
 
   protected override async observeHandler(payloads: UrlPayload[] = []): Promise<UrlSafetyPayload[]> {
-    const urls: string[] =
-      this.urls ??
-      payloads
+    const urls: string[]
+      = this.urls
+      ?? payloads
         .filter((p): p is UrlPayload => p.schema === UrlSchema)
         .map((p) => {
           return p.url

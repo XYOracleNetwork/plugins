@@ -1,1 +1,1 @@
-export * from './divinePrices.js'
+export * from './divinePrices.ts'

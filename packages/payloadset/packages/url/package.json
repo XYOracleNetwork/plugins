@@ -10,18 +10,18 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/assert": "^3.6.5",
-    "@xylabs/crypto": "^3.6.5",
-    "@xyo-network/abstract-witness": "^2.110.10",
-    "@xyo-network/module-model": "^2.110.10",
-    "@xyo-network/payload-model": "^2.110.10",
-    "@xyo-network/payloadset-plugin": "^2.110.10",
+    "@xylabs/assert": "^3.6.8",
+    "@xylabs/crypto": "^3.6.8",
+    "@xyo-network/abstract-witness": "^2.111.1",
+    "@xyo-network/module-model": "^2.111.1",
+    "@xyo-network/payload-model": "^2.111.1",
+    "@xyo-network/payloadset-plugin": "^2.111.1",
     "@xyo-network/url-payload-plugin": "workspace:^",
-    "@xyo-network/witness-model": "^2.110.10"
+    "@xyo-network/witness-model": "^2.111.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.13.3",
-    "@xylabs/tsconfig": "^3.13.3",
+    "@xylabs/ts-scripts-yarn3": "^3.15.13",
+    "@xylabs/tsconfig": "^3.15.13",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -34,7 +34,7 @@
         },
         "import": {
           "types": "./dist/browser/indexBrowser.d.mts",
-          "default": "./dist/browser/indexBrowser.js"
+          "default": "./dist/browser/indexBrowser.mjs"
         }
       },
       "node": {
@@ -44,14 +44,14 @@
         },
         "import": {
           "types": "./dist/node/indexNode.d.mts",
-          "default": "./dist/node/indexNode.js"
+          "default": "./dist/node/indexNode.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
   "main": "dist/node/indexNode.cjs",
-  "module": "dist/node/indexNode.js",
+  "module": "dist/node/indexNode.mjs",
   "types": "dist/node/indexNode.d.mts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",

@@ -1,4 +1,4 @@
-export * from './Payload/index.js'
+export * from './Payload/index.ts'
 // eslint-disable-next-line import/no-default-export
-export { NftIdPayloadPlugin as default, NftIdPayloadPlugin } from './Plugin.js'
-export * from './Template.js'
+export { NftIdPayloadPlugin as default, NftIdPayloadPlugin } from './Plugin.ts'
+export * from './Template.ts'

@@ -1,1 +1,1 @@
-export * from './evaluateAttributes.js'
+export * from './evaluateAttributes.ts'

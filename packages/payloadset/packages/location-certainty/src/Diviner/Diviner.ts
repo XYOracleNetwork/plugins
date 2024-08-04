@@ -8,14 +8,13 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config.js'
+import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config.ts'
 
 export type LocationCertaintyDivinerParams = DivinerParams<AnyConfigSchema<LocationCertaintyDivinerConfig>>
 
 export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerParams = LocationCertaintyDivinerParams>
   extends AbstractDiviner<TParam>
-  implements DivinerModule
-{
+  implements DivinerModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, LocationCertaintyDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = LocationCertaintyDivinerConfigSchema
   static override targetSchema = LocationCertaintySchema
@@ -26,9 +25,11 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
       // eslint-disable-next-line unicorn/no-array-reduce
       max: heuristic.reduce<number>((prev, value) => {
         return (
-          value === null ? prev
-          : value > prev ? value
-          : prev
+          value === null
+            ? prev
+            : value > prev
+              ? value
+              : prev
         )
       }, Number.NEGATIVE_INFINITY),
       mean: (() => {
@@ -44,9 +45,11 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
       // eslint-disable-next-line unicorn/no-array-reduce
       min: heuristic.reduce<number>((prev, value) => {
         return (
-          value === null ? prev
-          : value < prev ? value
-          : prev
+          value === null
+            ? prev
+            : value < prev
+              ? value
+              : prev
         )
       }, Number.POSITIVE_INFINITY),
     }
@@ -67,7 +70,7 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
         prev.variance.push(altitude !== undefined && altitude !== null ? altitude - elevation : null)
         return prev
       },
-      { altitude: [], elevation: [], variance: [] },
+    { altitude: [], elevation: [], variance: [] },
     )
     return heuristics
   }

@@ -12,7 +12,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.js'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
 
 /**
  * Transforms an ImageThumbnailIndex response into an ImageThumbnailResponse response

@@ -1,1 +1,1 @@
-export * from './getGasFromEthers.js'
+export * from './getGasFromEthers.ts'

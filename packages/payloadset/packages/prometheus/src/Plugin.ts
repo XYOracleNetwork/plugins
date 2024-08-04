@@ -1,8 +1,8 @@
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { PrometheusMetricValueSchema } from './Schema.js'
-import { PrometheusNodeWitness } from './Witness.js'
+import { PrometheusMetricValueSchema } from './Schema.ts'
+import { PrometheusNodeWitness } from './Witness.ts'
 
 export const PrometheusNodePlugin = () =>
   createPayloadSetWitnessPlugin<PrometheusNodeWitness>(

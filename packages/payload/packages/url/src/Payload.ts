@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { UrlSchema } from './Schema.js'
+import { UrlSchema } from './Schema.ts'
 
 export type UrlPayload = Payload<{
   schema: UrlSchema

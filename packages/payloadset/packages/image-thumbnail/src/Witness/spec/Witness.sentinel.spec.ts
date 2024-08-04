@@ -24,18 +24,18 @@ describe('Witness', () => {
     let archivist: MemoryArchivist
     let sentinel: MemorySentinel
     let node: MemoryNode
-    //const logger = mock<Console>()
+    // const logger = mock<Console>()
 
     beforeAll(async () => {
       thumbnailWitness = await ImageThumbnailWitness.create({
         account: 'random',
         config: { schema: ImageThumbnailWitness.defaultConfigSchema },
-        //logger,
+        // logger,
       })
       timestampWitness = await TimestampWitness.create({
         account: 'random',
         config: { schema: TimestampWitness.defaultConfigSchema },
-        //logger,
+        // logger,
       })
       archivist = await MemoryArchivist.create({
         account: 'random',
@@ -49,13 +49,13 @@ describe('Witness', () => {
           synchronous: true,
           tasks: [{ input: true, mod: thumbnailWitness.address }, { mod: timestampWitness.address }],
         },
-        //logger,
+        // logger,
       })
       const modules = [timestampWitness, thumbnailWitness, archivist, sentinel]
       node = await MemoryNode.create({
         account: 'random',
         config: { schema: MemoryNode.defaultConfigSchema },
-        //logger,
+        // logger,
       })
       await node.start()
       await Promise.all(
@@ -72,7 +72,7 @@ describe('Witness', () => {
       const url = 'https://placekitten.com/200/300'
       const query = await new PayloadBuilder<UrlPayload>({ schema: UrlSchema }).fields({ url }).build()
       const sentinelWrapper = SentinelWrapper.wrap(sentinel, await Account.random())
-      //using wrapper for archiving
+      // using wrapper for archiving
       const values = await sentinelWrapper.report([query])
       const timestamps = values.filter(isTimestamp)
       expect(timestamps.length).toBe(1)

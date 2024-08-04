@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../../Duration.js'
-import { validateDuration } from '../validateDuration.js'
+import { DurationFields } from '../../Duration.ts'
+import { validateDuration } from '../validateDuration.ts'
 
 describe('validateRecord', () => {
   const schema = 'network.xyo.test'

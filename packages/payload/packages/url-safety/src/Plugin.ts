@@ -1,7 +1,7 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { UrlSafetyPayload } from './Payload.js'
-import { UrlSafetySchema } from './Schema.js'
+import { UrlSafetyPayload } from './Payload.ts'
+import { UrlSafetySchema } from './Schema.ts'
 
 export const UrlSafetyPayloadPlugin = () =>
   createPayloadPlugin<UrlSafetyPayload>({

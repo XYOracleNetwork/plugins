@@ -1,8 +1,8 @@
 import { Hash } from '@xylabs/hex'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, Payload } from '@xyo-network/payload-model'
 
-import { NftCollectionMetadata } from '../Payload/index.js'
-import { NftCollectionScoreSchema } from './Schema.js'
+import { NftCollectionMetadata } from '../Payload/index.ts'
+import { NftCollectionScoreSchema } from './Schema.ts'
 
 export type NftCollectionAnalysis = Record<string, [score: number, total: number]>
 

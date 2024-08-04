@@ -1,2 +1,2 @@
-export * from './DomainRegistration.js'
-export * from './DomainRegistrationLease.js'
+export * from './DomainRegistration.ts'
+export * from './DomainRegistrationLease.ts'

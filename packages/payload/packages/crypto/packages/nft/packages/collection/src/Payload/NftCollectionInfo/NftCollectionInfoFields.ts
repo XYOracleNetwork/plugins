@@ -1,6 +1,6 @@
-import { NftCollectionAttributeMetrics } from './NftCollectionAttributeMetrics.js'
-import { NftCollectionCount } from './NftCollectionCount.js'
-import { NftCollectionMetadata } from './NftCollectionMetadata.js'
+import { NftCollectionAttributeMetrics } from './NftCollectionAttributeMetrics.ts'
+import { NftCollectionCount } from './NftCollectionCount.ts'
+import { NftCollectionMetadata } from './NftCollectionMetadata.ts'
 
 export type NftCollectionInfoFields = NftCollectionCount &
   NftCollectionMetadata &

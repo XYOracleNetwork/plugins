@@ -96,7 +96,7 @@ describe('Contract Node', () => {
       expect(tokenSentinel).toBeDefined()
       const tokenReport = await tokenSentinel?.report([contract])
       expect(tokenReport).toBeDefined()
-      const anyInterfacesImplemented = tokenReport?.filter(isEvmTokenInterfaceImplemented).some((i) => i.implemented)
+      const anyInterfacesImplemented = tokenReport?.filter(isEvmTokenInterfaceImplemented).some(i => i.implemented)
       expect(anyInterfacesImplemented).toBeTrue()
     })
   })

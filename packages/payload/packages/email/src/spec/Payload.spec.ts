@@ -1,5 +1,5 @@
-import { asEmail, Email, isEmail, tryAsEmail } from '../Payload.js'
-import { EmailAddressSchema } from '../Schema.js'
+import { asEmail, Email, isEmail, tryAsEmail } from '../Payload.ts'
+import { EmailAddressSchema } from '../Schema.ts'
 
 describe('Email', () => {
   const schema = EmailAddressSchema

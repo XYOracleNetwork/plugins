@@ -29,18 +29,18 @@ const averageProperty = (data: FeeData[], propertyExpression: (x: FeeData) => nu
 export const average = (input?: (FeeData | undefined)[]): FeeData => {
   const data = input?.filter(exists) || []
   const averaged: FeeData = {
-    baseFee: averageProperty(data, (x) => x.baseFee),
+    baseFee: averageProperty(data, x => x.baseFee),
     feePerGas: {
-      high: averageProperty(data, (x) => x.feePerGas.high),
-      low: averageProperty(data, (x) => x.feePerGas.low),
-      medium: averageProperty(data, (x) => x.feePerGas.medium),
-      veryHigh: averageProperty(data, (x) => x.feePerGas.veryHigh),
+      high: averageProperty(data, x => x.feePerGas.high),
+      low: averageProperty(data, x => x.feePerGas.low),
+      medium: averageProperty(data, x => x.feePerGas.medium),
+      veryHigh: averageProperty(data, x => x.feePerGas.veryHigh),
     },
     priorityFeePerGas: {
-      high: averageProperty(data, (x) => x.priorityFeePerGas.high),
-      low: averageProperty(data, (x) => x.priorityFeePerGas.low),
-      medium: averageProperty(data, (x) => x.priorityFeePerGas.medium),
-      veryHigh: averageProperty(data, (x) => x.priorityFeePerGas.veryHigh),
+      high: averageProperty(data, x => x.priorityFeePerGas.high),
+      low: averageProperty(data, x => x.priorityFeePerGas.low),
+      medium: averageProperty(data, x => x.priorityFeePerGas.medium),
+      veryHigh: averageProperty(data, x => x.priorityFeePerGas.veryHigh),
     },
   }
   return averaged

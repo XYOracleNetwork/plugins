@@ -2,7 +2,7 @@ import { AddressTransactionHistorySchema } from '@xyo-network/crypto-address-tra
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { AddressTransactionHistoryWitness } from './Witness.js'
+import { AddressTransactionHistoryWitness } from './Witness.ts'
 
 export const AddressTransactionHistoryPlugin = () =>
   createPayloadSetWitnessPlugin<AddressTransactionHistoryWitness>(

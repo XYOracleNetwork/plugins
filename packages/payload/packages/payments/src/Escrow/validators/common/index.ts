@@ -1,2 +1,2 @@
-export * from './ModuleInstanceValidators/index.js'
-export * from './TemporalValidators/index.js'
+export * from './ModuleInstanceValidators/index.ts'
+export * from './TemporalValidators/index.ts'

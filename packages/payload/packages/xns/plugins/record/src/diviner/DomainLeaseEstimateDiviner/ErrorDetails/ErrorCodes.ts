@@ -1,12 +1,12 @@
-import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.js'
-import { DomainLeaseEstimateDivinerValidationErrorDetails, ErrorDetailsDictionary } from './Payload.js'
+import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.ts'
+import { DomainLeaseEstimateDivinerValidationErrorDetails, ErrorDetailsDictionary } from './Payload.ts'
 
 // export type DomainLeaseEstimateDivinerErrorDetailsDictionaryErrorCode = keyof typeof DomainLeaseEstimateDivinerErrorDetailsDictionary
 export type DomainLeaseEstimateDivinerErrorDetailsDictionaryErrorCode = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8
 
 export const DomainLeaseEstimateDivinerErrorDetailsDictionary: Readonly<
   Readonly<Record<DomainLeaseEstimateDivinerErrorDetailsDictionaryErrorCode, DomainLeaseEstimateDivinerValidationErrorDetails>> &
-    ErrorDetailsDictionary
+  ErrorDetailsDictionary
 > = {
   0: { code: '0', schema: DomainLeaseEstimateDivinerValidationErrorDetailsSchema, title: 'Success' },
   1: { code: '1', schema: DomainLeaseEstimateDivinerValidationErrorDetailsSchema, title: 'Invalid casing' },

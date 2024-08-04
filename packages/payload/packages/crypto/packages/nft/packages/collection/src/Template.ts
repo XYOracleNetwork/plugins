@@ -1,5 +1,5 @@
-import { NftCollectionInfo } from './Payload/index.js'
-import { NftCollectionSchema } from './Schema.js'
+import { NftCollectionInfo } from './Payload/index.ts'
+import { NftCollectionSchema } from './Schema.ts'
 
 export const cryptoNftCollectionPayloadTemplate = (): Partial<NftCollectionInfo> => ({
   schema: NftCollectionSchema,

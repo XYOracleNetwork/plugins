@@ -1,6 +1,6 @@
-export * from './Config.js'
-export * from './lib/index.js'
+export * from './Config.ts'
+export * from './lib/index.ts'
 // eslint-disable-next-line import/no-default-export
-export { CoingeckoCryptoMarketPlugin, CoingeckoCryptoMarketPlugin as default } from './Plugin.js'
-export * from './Schema.js'
-export * from './Witness.js'
+export { CoingeckoCryptoMarketPlugin, CoingeckoCryptoMarketPlugin as default } from './Plugin.ts'
+export * from './Schema.ts'
+export * from './Witness.ts'

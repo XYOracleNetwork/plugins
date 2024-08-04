@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 import { Aggregator, MetricType } from 'prom-client'
 
-import { PrometheusMetricValueSchema } from './Schema.js'
+import { PrometheusMetricValueSchema } from './Schema.ts'
 
 export type PrometheusMetricValuePayload = Payload<
   {

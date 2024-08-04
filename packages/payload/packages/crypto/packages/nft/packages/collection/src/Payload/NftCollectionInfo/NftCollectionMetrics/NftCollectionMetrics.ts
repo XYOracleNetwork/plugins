@@ -1,4 +1,4 @@
-import { NftTraitMetrics } from './NftTraitMetrics.js'
+import { NftTraitMetrics } from './NftTraitMetrics.ts'
 
 export interface NftCollectionMetrics {
   metadata: {

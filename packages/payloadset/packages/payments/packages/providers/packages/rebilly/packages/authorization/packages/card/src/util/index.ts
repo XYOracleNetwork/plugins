@@ -1,1 +1,1 @@
-export * from './toTokenRequest.js'
+export * from './toTokenRequest.ts'

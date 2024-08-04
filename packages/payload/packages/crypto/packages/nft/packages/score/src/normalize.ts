@@ -1,4 +1,4 @@
-import { Score, SKIP } from './score.js'
+import { Score, SKIP } from './score.ts'
 
 export const normalize = (score: Score, maxScore: number): Score => {
   const [total, possible] = score

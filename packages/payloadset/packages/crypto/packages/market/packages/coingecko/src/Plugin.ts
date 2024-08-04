@@ -2,7 +2,7 @@ import { CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-marke
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { CoingeckoCryptoMarketWitness } from './Witness.js'
+import { CoingeckoCryptoMarketWitness } from './Witness.ts'
 
 export const CoingeckoCryptoMarketPlugin = () =>
   createPayloadSetWitnessPlugin<CoingeckoCryptoMarketWitness>(

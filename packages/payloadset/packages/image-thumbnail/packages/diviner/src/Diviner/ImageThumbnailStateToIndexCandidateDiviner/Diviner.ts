@@ -12,10 +12,10 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels.js'
-import { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState.js'
-import { ImageThumbnailStateToIndexCandidateDivinerConfigSchema } from './Config.js'
-import { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params.js'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState.ts'
+import { ImageThumbnailStateToIndexCandidateDivinerConfigSchema } from './Config.ts'
+import { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params.ts'
 
 /**
  * All Payload types involved in index candidates for indexing
@@ -75,10 +75,10 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
   }
 
   protected static async getPayloadsInBoundWitness(bw: BoundWitness, archivist: ArchivistInstance): Promise<IndexCandidate[] | undefined> {
-    const indexes = payload_schemas.map((schema) => bw.payload_schemas?.findIndex((s) => s === schema))
-    const hashes = indexes.map((index) => bw.payload_hashes?.[index])
+    const indexes = payload_schemas.map(schema => bw.payload_schemas?.findIndex(s => s === schema))
+    const hashes = indexes.map(index => bw.payload_hashes?.[index])
     const results = await archivist.get(hashes)
-    const filteredResults = indexCandidateIdentityFunctions.map((is) => results.find(is))
+    const filteredResults = indexCandidateIdentityFunctions.map(is => results.find(is))
     if (filteredResults.includes(undefined)) return undefined
     const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as WithMeta<IndexCandidate>[]
     return [bw, ...indexCandidates]
@@ -102,7 +102,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const sourceArchivist = await this.getArchivistForStore()
     const indexCandidates: IndexCandidate[] = (
       await Promise.all(
-        batch.filter(isBoundWitnessWithMeta).map((bw) => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+        batch.filter(isBoundWitnessWithMeta).map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
       )
     )
       .filter(exists)
@@ -110,6 +110,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const nextState = { schema: ModuleStateSchema, state: { ...lastState.state, offset: offset + batch.length } }
     return [nextState, ...indexCandidates]
   }
+
   /**
    * Retrieves the archivist for the payloadStore
    * @returns The archivist for the payloadStore

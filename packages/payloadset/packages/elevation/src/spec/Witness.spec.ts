@@ -12,12 +12,12 @@ import { ElevationWitness, ElevationWitnessConfig, ElevationWitnessConfigSchema 
 
 const locations = [
   { quadkey: assertEx(Quadkey.fromLngLat({ lat: 32.7157, lng: -117.1611 }, 16)?.base16String), schema: LocationSchema }, // San Diego
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 39.7392, lng: -104.9903 }, 16)?.base16String), schema: LocationSchema }, //Denver
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 41.8781, lng: -87.6298 }, 16)?.base16String), schema: LocationSchema }, //Chicago
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: -12.0464, lng: -77.0428 }, 16)?.base16String), schema: LocationSchema }, //Lima
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 39.9042, lng: 116.4074 }, 16)?.base16String), schema: LocationSchema }, //Beijing
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: -33.8688, lng: 151.2093 }, 16)?.base16String), schema: LocationSchema }, //Sydney
-  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 47.3769, lng: 8.5417 }, 16)?.base16String), schema: LocationSchema }, //Zurich
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 39.7392, lng: -104.9903 }, 16)?.base16String), schema: LocationSchema }, // Denver
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 41.8781, lng: -87.6298 }, 16)?.base16String), schema: LocationSchema }, // Chicago
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: -12.0464, lng: -77.0428 }, 16)?.base16String), schema: LocationSchema }, // Lima
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 39.9042, lng: 116.4074 }, 16)?.base16String), schema: LocationSchema }, // Beijing
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: -33.8688, lng: 151.2093 }, 16)?.base16String), schema: LocationSchema }, // Sydney
+  { quadkey: assertEx(Quadkey.fromLngLat({ lat: 47.3769, lng: 8.5417 }, 16)?.base16String), schema: LocationSchema }, // Zurich
 ]
 
 const testDataDir = Path.join(__dirname, '..', '.testdata')

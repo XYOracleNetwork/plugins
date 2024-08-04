@@ -3,7 +3,7 @@ import { AccessList, Transaction } from '@xyo-network/crypto-address-transaction
 import { EtherscanProvider } from 'ethers'
 
 // eslint-disable-next-line import/no-deprecated
-import { getTransactionsForAddress } from '../getTransactionsForAddress'
+import { getTransactionsForAddress } from '../getTransactionsForAddress.ts'
 
 const validateAccessList = (accessList: AccessList) => {
   expect(accessList).toBeArray()
@@ -47,7 +47,6 @@ describeIf(process.env.ETHERSCAN_API_KEY)('getTransactionsForAddress', () => {
   const apiKey = process.env.ETHERSCAN_API_KEY
   const provider = new EtherscanProvider(network, apiKey)
   test('observe', async () => {
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
     const transactions = await getTransactionsForAddress(address, provider)
     expect(transactions.length).toBeGreaterThan(0)
     for (const transaction of transactions) {

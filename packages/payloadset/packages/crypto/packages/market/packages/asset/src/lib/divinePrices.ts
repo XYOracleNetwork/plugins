@@ -4,9 +4,9 @@ import { CryptoMarketAssetPayload, CryptoMarketAssetSchema } from '@xyo-network/
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
-import { average } from './average.js'
-import { divineCoinGeckoPrices } from './divineCoinGeckoPrices.js'
-import { divineUniswapPrices } from './divineUniswapPrices.js'
+import { average } from './average.ts'
+import { divineCoinGeckoPrices } from './divineCoinGeckoPrices.ts'
+import { divineUniswapPrices } from './divineUniswapPrices.ts'
 
 const schema = CryptoMarketAssetSchema
 

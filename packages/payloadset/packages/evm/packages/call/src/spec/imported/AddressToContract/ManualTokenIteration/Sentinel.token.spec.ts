@@ -14,9 +14,9 @@ import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Semaphore } from 'async-mutex'
 
-import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner.js'
-import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../../../../Payload.js'
-import { EvmCallWitness } from '../../../../Witness.js'
+import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../../../../Diviner.ts'
+import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../../../../Payload.ts'
+import { EvmCallWitness } from '../../../../Witness.ts'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 
 const profileData: Record<string, number[]> = {}
@@ -54,8 +54,8 @@ const profileReport = () => {
 let tokenCount = 0
 
 describe.skip('Erc721Sentinel', () => {
-  //const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
-  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
+  // const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
+  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' // Bored Apes
 
   describe('report', () => {
     it('specifying address', async () => {

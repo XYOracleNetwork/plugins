@@ -5,14 +5,13 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import { get } from 'systeminformation'
 
-import { NodeSystemInfoWitnessConfig, NodeSystemInfoWitnessConfigSchema } from './Config.js'
+import { NodeSystemInfoWitnessConfig, NodeSystemInfoWitnessConfigSchema } from './Config.ts'
 
 export type NodeSystemInfoWitnessParams = WitnessParams<AnyConfigSchema<NodeSystemInfoWitnessConfig>>
 
 export class NodeSystemInfoWitness<TParams extends NodeSystemInfoWitnessParams = NodeSystemInfoWitnessParams>
   extends AbstractWitness<TParams>
-  implements WitnessModule
-{
+  implements WitnessModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, NodeSystemInfoWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = NodeSystemInfoWitnessConfigSchema
 

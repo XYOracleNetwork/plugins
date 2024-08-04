@@ -11,9 +11,9 @@ describe('calculateAllPropertiesDistribution', () => {
     const fileContents = await readFile(filePath, 'utf8')
     const nfts = JSON.parse(fileContents) as NftInfo[]
     const attributes = nfts
-      .map((nft) => nft.metadata?.attributes as OpenSeaNftAttribute[])
+      .map(nft => nft.metadata?.attributes as OpenSeaNftAttribute[])
       .map((attributes) => {
-        return Object.fromEntries(attributes.map((attribute) => [attribute.trait_type, attribute.value]))
+        return Object.fromEntries(attributes.map(attribute => [attribute.trait_type, attribute.value]))
       })
     const result = calculateAllPropertiesDistribution(attributes)
     expect(result).toBeObject()

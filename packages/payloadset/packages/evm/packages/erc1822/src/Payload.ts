@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { Erc1822SlotStatus } from './lib/index.js'
+import { Erc1822SlotStatus } from './lib/index.ts'
 
 export const Erc1822StatusSchema = 'network.xyo.erc1822.status'
 export type Erc1822StatusSchema = typeof Erc1822StatusSchema

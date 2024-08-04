@@ -1,1 +1,1 @@
-export * from './GenerateDataUri.js'
+export * from './GenerateDataUri.ts'

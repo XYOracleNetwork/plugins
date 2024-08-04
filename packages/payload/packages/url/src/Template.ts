@@ -1,5 +1,5 @@
-import { UrlPayload } from './Payload.js'
-import { UrlSchema } from './Schema.js'
+import { UrlPayload } from './Payload.ts'
+import { UrlSchema } from './Schema.ts'
 
 export const urlPayloadTemplate = (): UrlPayload => ({
   schema: UrlSchema,

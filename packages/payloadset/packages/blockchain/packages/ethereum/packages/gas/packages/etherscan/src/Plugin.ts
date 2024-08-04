@@ -2,7 +2,7 @@ import { EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { EthereumGasEtherscanWitness } from './Witness.js'
+import { EthereumGasEtherscanWitness } from './Witness.ts'
 
 export const EthereumGasEtherscanPlugin = () =>
   createPayloadSetWitnessPlugin<EthereumGasEtherscanWitness>(

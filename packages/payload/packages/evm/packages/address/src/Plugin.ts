@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { EvmAddress } from './Payload.js'
-import { EvmAddressSchema } from './Schema.js'
-import { addressPayloadTemplate } from './Template.js'
+import { EvmAddress } from './Payload.ts'
+import { EvmAddressSchema } from './Schema.ts'
+import { addressPayloadTemplate } from './Template.ts'
 
 export const EvmAddressPayloadPlugin = () =>
   createPayloadPlugin<EvmAddress>({

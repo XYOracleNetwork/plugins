@@ -24,8 +24,8 @@ export class IdWitness<TParams extends IdWitnessParams = IdWitnessParams> extend
   }
 
   protected override observeHandler(payloads: Payload[] = []): Promisable<Payload[]> {
-    return payloads.length > 0 ?
-        (payloads as IdPayload[]).map((fieldItems) => {
+    return payloads.length > 0
+      ? (payloads as IdPayload[]).map((fieldItems) => {
           return {
             salt: fieldItems?.salt ?? this.salt,
             schema: IdSchema,

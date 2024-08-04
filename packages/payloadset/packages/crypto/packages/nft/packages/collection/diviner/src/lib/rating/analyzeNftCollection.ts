@@ -1,7 +1,7 @@
 import { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { Score } from '@xyo-network/crypto-nft-score-model'
 
-import { scoringCriteria } from './criteria/index.js'
+import { scoringCriteria } from './criteria/index.ts'
 
 export type ScoringCriteriaKey = keyof typeof scoringCriteria & PropertyKey
 
@@ -19,7 +19,7 @@ export const analyzeNftCollection = async (
     await Promise.all(
       Object.entries(scoringCriteria).map(async ([key, { score, weight }]) => {
         const rawScore = await score(nft)
-        const weighted = rawScore.map((v) => v * weight) as Score
+        const weighted = rawScore.map(v => v * weight) as Score
         return [key, weighted] as const
       }),
     ),

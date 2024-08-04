@@ -4,7 +4,7 @@ import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
 import { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.js'
+import { EscrowTerms } from '../../Terms.ts'
 
 const name = 'EscrowTerms.buyerSecret'
 
@@ -52,9 +52,9 @@ export const getBuyerSecretSignedValidator = (dictionary: Record<Hash, WithMeta<
       // Find all BoundWitnesses
       .filter(isBoundWitnessWithMeta)
       // That contain the buyer secret
-      .filter((bw) => bw.payload_hashes.includes(buyerSecret))
+      .filter(bw => bw.payload_hashes.includes(buyerSecret))
       // That are signed by all the buyers
-      .filter((bw) => buyer.every((buyerAddress) => bw.addresses.includes(buyerAddress)))
+      .filter(bw => buyer.every(buyerAddress => bw.addresses.includes(buyerAddress)))
 
     // If there are no buyerSecret BWs, return false
     if (buyerSecretBWs.length === 0) {
@@ -63,8 +63,8 @@ export const getBuyerSecretSignedValidator = (dictionary: Record<Hash, WithMeta<
     }
 
     // Ensure each BW supplied for the buyerSecret is valid
-    const errors = await Promise.all(buyerSecretBWs.map((bw) => new BoundWitnessValidator(bw).validate()))
-    const validBoundWitnesses = errors.every((errors) => errors.length === 0)
+    const errors = await Promise.all(buyerSecretBWs.map(bw => new BoundWitnessValidator(bw).validate()))
+    const validBoundWitnesses = errors.every(errors => errors.length === 0)
     if (!validBoundWitnesses) {
       console.log(`${name}: Invalid BoundWitnesses supplied for buyerSecret: ${buyerSecret}`)
       return false

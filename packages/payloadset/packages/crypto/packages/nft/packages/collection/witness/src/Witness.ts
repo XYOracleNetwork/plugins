@@ -13,7 +13,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib/index.js'
+import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib/index.ts'
 
 export type CryptoNftCollectionWitnessParams = EvmWitnessParams<NftCollectionWitnessConfig>
 
@@ -43,7 +43,7 @@ export class CryptoNftCollectionWitness<
 
   protected override async observeHandler(payloads?: NftCollectionWitnessQuery[]): Promise<NftCollectionInfo[]> {
     await this.started('throw')
-    await this.getProviders() //make sure cache clears
+    await this.getProviders() // make sure cache clears
     const queries = payloads?.filter(isNftCollectionWitnessQuery) ?? []
     const observations = await Promise.all(
       queries.map<Promise<NftCollectionInfo>>(async (query) => {
@@ -70,7 +70,7 @@ export class CryptoNftCollectionWitness<
         const archivist = resolvedValue(archivistSettled)
         const [sources] = await Promise.all([
           // Hash all the payloads
-          Promise.all(nfts.map((nft) => PayloadBuilder.dataHash(nft))),
+          Promise.all(nfts.map(nft => PayloadBuilder.dataHash(nft))),
           // Insert them into the archivist if we have one
           archivist ? archivist.insert(nfts) : NoOp,
         ])

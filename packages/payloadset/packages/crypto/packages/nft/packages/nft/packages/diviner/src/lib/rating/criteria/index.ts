@@ -1,1 +1,1 @@
-export * from './scoringCriteria.js'
+export * from './scoringCriteria.ts'

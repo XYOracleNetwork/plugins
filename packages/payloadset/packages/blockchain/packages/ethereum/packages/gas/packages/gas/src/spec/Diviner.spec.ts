@@ -6,7 +6,7 @@ import { EthereumGasPayload, EthereumGasSchema } from '@xyo-network/gas-price-pa
 import { Payload, WithMeta } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { EthereumGasDiviner } from '../Diviner.js'
+import { EthereumGasDiviner } from '../Diviner.ts'
 import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas } from '../test'
 
 describe('Diviner', () => {

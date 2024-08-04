@@ -1,3 +1,3 @@
-export * from './checkIpfsUrl.js'
-export * from './createDataUrl.js'
-export * from './resolveDynamicSvg.js'
+export * from './checkIpfsUrl.ts'
+export * from './createDataUrl.ts'
+export * from './resolveDynamicSvg.ts'

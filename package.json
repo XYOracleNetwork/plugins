@@ -18,24 +18,24 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
     "@babel/preset-typescript": "^7.24.7",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@xylabs/eslint-config": "^3.13.3",
-    "@xylabs/eslint-config-flat": "^3.13.3",
-    "@xylabs/forget": "^3.6.5",
-    "@xylabs/ts-scripts-yarn3": "^3.13.3",
-    "@xylabs/tsconfig": "^3.13.3",
-    "@xylabs/tsconfig-dom-jest": "^3.13.3",
-    "@xyo-network/account": "^2.110.10",
-    "@xyo-network/archivist-memory": "^2.110.10",
-    "@xyo-network/boundwitness-builder": "^2.110.10",
-    "@xyo-network/hash": "^2.110.10",
-    "@xyo-network/manifest": "^2.110.10",
-    "@xyo-network/manifest-wrapper": "^2.110.10",
-    "@xyo-network/node-memory": "^2.110.10",
-    "@xyo-network/payload-builder": "^2.110.10",
+    "@xylabs/eslint-config": "^3.15.13",
+    "@xylabs/eslint-config-flat": "^3.15.13",
+    "@xylabs/forget": "^3.6.8",
+    "@xylabs/ts-scripts-yarn3": "^3.15.13",
+    "@xylabs/tsconfig": "^3.15.13",
+    "@xylabs/tsconfig-dom-jest": "^3.15.13",
+    "@xyo-network/account": "^2.111.1",
+    "@xyo-network/archivist-memory": "^2.111.1",
+    "@xyo-network/boundwitness-builder": "^2.111.1",
+    "@xyo-network/hash": "^2.111.1",
+    "@xyo-network/manifest": "^2.111.1",
+    "@xyo-network/manifest-wrapper": "^2.111.1",
+    "@xyo-network/node-memory": "^2.111.1",
+    "@xyo-network/payload-builder": "^2.111.1",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
     "eslint": "^9.8.0",
@@ -50,7 +50,7 @@
     "nodemon": "^3.1.4",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.0.0",
-    "ts-jest": "^29.2.3",
+    "ts-jest": "^29.2.4",
     "ts-node": "^10.9.2",
     "typedoc": "^0.26.5",
     "typescript": "^5.5.4"
@@ -73,7 +73,7 @@
         },
         "import": {
           "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.js"
+          "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
@@ -83,14 +83,14 @@
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
   "main": "dist/node/index.cjs",
-  "module": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",

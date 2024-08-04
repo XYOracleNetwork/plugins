@@ -2,7 +2,7 @@ import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { ElevationWitness } from './Witness.js'
+import { ElevationWitness } from './Witness.ts'
 
 export const ElevationPlugin = () =>
   createPayloadSetWitnessPlugin<ElevationWitness>(

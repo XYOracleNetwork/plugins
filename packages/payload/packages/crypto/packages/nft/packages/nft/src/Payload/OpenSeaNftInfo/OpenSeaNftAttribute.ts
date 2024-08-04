@@ -1,5 +1,5 @@
-import { NftAttribute } from '../NftInfo/index.js'
-import { DisplayType } from './DisplayType.js'
+import { NftAttribute } from '../NftInfo/index.ts'
+import { DisplayType } from './DisplayType.ts'
 
 export interface OpenSeaNftAttribute extends NftAttribute {
   /**

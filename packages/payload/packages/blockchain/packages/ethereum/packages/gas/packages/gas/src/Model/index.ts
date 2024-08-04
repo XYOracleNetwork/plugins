@@ -1,3 +1,3 @@
-export * from './FeeData.js'
-export * from './FeePerGas.js'
-export * from './PriorityFeePerGas.js'
+export * from './FeeData.ts'
+export * from './FeePerGas.ts'
+export * from './PriorityFeePerGas.ts'

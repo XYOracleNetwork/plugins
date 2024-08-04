@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { LocationHeadingSchema } from './HeadingSchema.js'
+import { LocationHeadingSchema } from './HeadingSchema.ts'
 
 export type Acceleration = {
   acceleration: number

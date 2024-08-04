@@ -1,4 +1,4 @@
-export * from './lib/index.js'
+export * from './lib/index.ts'
 // eslint-disable-next-line import/no-default-export
-export { CryptoNftCollectionWitnessPlugin, CryptoNftCollectionWitnessPlugin as default } from './Plugin.js'
-export * from './Witness.js'
+export { CryptoNftCollectionWitnessPlugin, CryptoNftCollectionWitnessPlugin as default } from './Plugin.ts'
+export * from './Witness.ts'

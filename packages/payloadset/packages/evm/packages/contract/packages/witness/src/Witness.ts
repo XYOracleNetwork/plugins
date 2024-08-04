@@ -3,7 +3,7 @@ import { creatableModule } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { EvmContract, EvmContractSchema } from './Payload.js'
+import { EvmContract, EvmContractSchema } from './Payload.ts'
 
 export const EvmContractWitnessConfigSchema = 'network.xyo.evm.contract.witness.config'
 export type EvmContractWitnessConfigSchema = typeof EvmContractWitnessConfigSchema

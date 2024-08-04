@@ -1,5 +1,5 @@
-import { CoingeckoCryptoMarketPayload } from './Payload.js'
-import { CoingeckoCryptoMarketSchema } from './Schema.js'
+import { CoingeckoCryptoMarketPayload } from './Payload.ts'
+import { CoingeckoCryptoMarketSchema } from './Schema.ts'
 
 export const coingeckoCryptoMarketPayloadTemplate = (): Partial<CoingeckoCryptoMarketPayload> => ({
   schema: CoingeckoCryptoMarketSchema,

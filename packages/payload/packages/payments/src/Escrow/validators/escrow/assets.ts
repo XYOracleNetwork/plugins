@@ -1,6 +1,6 @@
 import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.js'
+import { EscrowTerms } from '../../Terms.ts'
 
 const name = 'EscrowTerms.assets'
 

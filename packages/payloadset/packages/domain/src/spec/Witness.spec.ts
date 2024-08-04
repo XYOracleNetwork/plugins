@@ -1,5 +1,5 @@
-import { DomainWitnessConfigSchema } from '../Config.js'
-import { DomainWitness } from '../Witness.js'
+import { DomainWitnessConfigSchema } from '../Config.ts'
+import { DomainWitness } from '../Witness.ts'
 
 describe('DomainConfigWitness', () => {
   test('valid-instantiation', async () => {
