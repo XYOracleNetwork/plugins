@@ -1,1 +1,1 @@
-export * from './getTransactionsForAddress.js'
+export * from './getTransactionsForAddress.ts'

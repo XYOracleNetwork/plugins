@@ -1,7 +1,7 @@
 import { JsonObject } from '@xylabs/object'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { XmlSchema } from './Schema.js'
+import { XmlSchema } from './Schema.ts'
 
 /**
  * The fields of an Xml Payload

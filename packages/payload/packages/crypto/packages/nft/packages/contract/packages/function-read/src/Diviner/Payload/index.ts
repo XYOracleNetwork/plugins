@@ -1,3 +1,3 @@
-export * from './ContractInfo.js'
-export * from './Erc721ContractInfo.js'
-export * from './Erc1155ContractInfo.js'
+export * from './ContractInfo.ts'
+export * from './Erc721ContractInfo.ts'
+export * from './Erc1155ContractInfo.ts'

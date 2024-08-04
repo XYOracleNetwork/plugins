@@ -1,2 +1,2 @@
-export * from './analyzeNft.js'
-export * from './criteria/index.js'
+export * from './analyzeNft.ts'
+export * from './criteria/index.ts'

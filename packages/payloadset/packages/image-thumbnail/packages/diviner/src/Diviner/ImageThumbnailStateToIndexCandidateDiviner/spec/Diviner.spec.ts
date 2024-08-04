@@ -15,8 +15,8 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { WithMeta } from '@xyo-network/payload-model'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.js'
-import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.js'
+import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.ts'
+import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.ts'
 import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json'
 
 /**

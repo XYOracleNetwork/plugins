@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { AddressTransactionHistorySchema } from './Schema.js'
+import { AddressTransactionHistorySchema } from './Schema.ts'
 
 export type AccessList = {
   address: string

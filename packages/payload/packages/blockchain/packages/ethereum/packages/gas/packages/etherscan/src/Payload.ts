@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { EthereumGasEtherscanSchema } from './Schema.js'
+import { EthereumGasEtherscanSchema } from './Schema.ts'
 
 /**
  * https://docs.etherscan.io/api-endpoints/gas-tracker#get-gas-oracle

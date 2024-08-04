@@ -2,7 +2,7 @@ import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetDivinerPlugin } from '@xyo-network/payloadset-plugin'
 
-import { EthereumGasDiviner } from './Diviner.js'
+import { EthereumGasDiviner } from './Diviner.ts'
 
 export const EthereumGasPlugin = () =>
   createPayloadSetDivinerPlugin<EthereumGasDiviner>(

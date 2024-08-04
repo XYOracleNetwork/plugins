@@ -1,7 +1,7 @@
 import { asAddress } from '@xylabs/hex'
 import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.js'
+import { EscrowTerms } from '../../Terms.ts'
 
 const name = 'EscrowTerms.seller'
 
@@ -17,7 +17,7 @@ export const sellerExistsValidator: PayloadValidationFunction<EscrowTerms> = (te
     return false
   }
   // Validate the authorities are addresses
-  if (seller.map((x) => asAddress(x)).length !== seller.length) {
+  if (seller.map(x => asAddress(x)).length !== seller.length) {
     console.log(`${name}: Invalid address: ${terms.seller}`)
     return false
   }

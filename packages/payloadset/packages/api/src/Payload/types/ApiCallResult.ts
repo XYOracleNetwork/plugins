@@ -1,8 +1,8 @@
 import { JsonArray, JsonObject } from '@xylabs/object'
 
-import { ApiCallBase64Result } from './ApiCallBase64Result.js'
-import { ApiCallErrorResult } from './ApiCallErrorResult.js'
-import { ApiCallJsonResult } from './ApiCallJsonResult.js'
+import { ApiCallBase64Result } from './ApiCallBase64Result.ts'
+import { ApiCallErrorResult } from './ApiCallErrorResult.ts'
+import { ApiCallJsonResult } from './ApiCallJsonResult.ts'
 
 type NewType = JsonObject
 

@@ -1,3 +1,3 @@
-export * from './Ethers/index.js'
-export * from './pricesFromUniswap3.js'
-export * from './UniswapPoolContracts.js'
+export * from './Ethers/index.ts'
+export * from './pricesFromUniswap3.ts'
+export * from './UniswapPoolContracts.ts'

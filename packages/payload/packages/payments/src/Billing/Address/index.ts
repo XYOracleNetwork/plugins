@@ -1,2 +1,2 @@
-export * from './Address.js'
-export * from './Schema.js'
+export * from './Address.ts'
+export * from './Schema.ts'

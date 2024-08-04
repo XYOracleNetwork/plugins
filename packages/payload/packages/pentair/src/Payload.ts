@@ -14,7 +14,7 @@ import type {
   SLWeatherForecastData,
 } from 'node-screenlogic'
 
-import { PentairScreenlogicSchema } from './Schema.js'
+import { PentairScreenlogicSchema } from './Schema.ts'
 
 export type PentairScreenlogicPayload = Payload<
   {

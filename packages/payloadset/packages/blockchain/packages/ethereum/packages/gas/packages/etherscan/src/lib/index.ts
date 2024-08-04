@@ -1,1 +1,1 @@
-export * from './getGasFromEtherscan.js'
+export * from './getGasFromEtherscan.ts'

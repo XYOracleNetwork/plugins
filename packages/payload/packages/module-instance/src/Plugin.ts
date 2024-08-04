@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { AbstractModuleInstancePayload } from './Payload.js'
-import { AbstractModuleInstanceSchema } from './Schema.js'
-import { moduleInstancePayloadTemplate } from './Template.js'
+import { AbstractModuleInstancePayload } from './Payload.ts'
+import { AbstractModuleInstanceSchema } from './Schema.ts'
+import { moduleInstancePayloadTemplate } from './Template.ts'
 
 export const ModuleInstancePayloadPlugin = () =>
   createPayloadPlugin<AbstractModuleInstancePayload>({

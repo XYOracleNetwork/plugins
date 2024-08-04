@@ -3,7 +3,7 @@ import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { LocationHeadingPayload, LocationHeadingSchema, LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { CurrentLocationWitnessConfigSchema, CurrentLocationWitnessParams } from './Config.js'
+import { CurrentLocationWitnessConfigSchema, CurrentLocationWitnessParams } from './Config.ts'
 
 export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams = CurrentLocationWitnessParams> extends AbstractWitness<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CurrentLocationWitnessConfigSchema]
@@ -35,16 +35,16 @@ export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams
       longitude: location.coords.longitude,
       schema: LocationSchema,
     }
-    const heading: LocationHeadingPayload[] =
-      location.coords.heading ?
-        [
-          {
-            heading: location.coords.heading ?? undefined,
-            schema: LocationHeadingSchema,
-            speed: location.coords.speed ?? undefined,
-          },
-        ]
-      : []
+    const heading: LocationHeadingPayload[]
+      = location.coords.heading
+        ? [
+            {
+              heading: location.coords.heading ?? undefined,
+              schema: LocationHeadingSchema,
+              speed: location.coords.speed ?? undefined,
+            },
+          ]
+        : []
     return [locationPayload, ...heading]
   }
 }

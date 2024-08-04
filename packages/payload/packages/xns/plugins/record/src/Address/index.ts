@@ -1,1 +1,1 @@
-export * from './Payload.js'
+export * from './Payload.ts'

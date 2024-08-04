@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { CryptoCardsGamePayload } from './Payload.js'
-import { CryptoCardsGameSchema } from './Schema.js'
-import { cryptoCardsGamePayloadTemplate } from './Template.js'
+import { CryptoCardsGamePayload } from './Payload.ts'
+import { CryptoCardsGameSchema } from './Schema.ts'
+import { cryptoCardsGamePayloadTemplate } from './Template.ts'
 
 export const CryptoCardsGamePayloadPlugin = () =>
   createPayloadPlugin<CryptoCardsGamePayload>({

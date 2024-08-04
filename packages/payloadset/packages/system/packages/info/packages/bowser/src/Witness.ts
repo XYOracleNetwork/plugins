@@ -6,13 +6,12 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import Bowser from 'bowser'
 
-import { BowserSystemInfoWitnessConfig, BowserSystemInfoWitnessConfigSchema } from './Config.js'
+import { BowserSystemInfoWitnessConfig, BowserSystemInfoWitnessConfigSchema } from './Config.ts'
 
 export type BowserSystemInfoWitnessParams = WitnessParams<AnyConfigSchema<BowserSystemInfoWitnessConfig>>
 export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessParams = BowserSystemInfoWitnessParams>
   extends AbstractWitness<TParams>
-  implements WitnessModule
-{
+  implements WitnessModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, BowserSystemInfoWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = BowserSystemInfoWitnessConfigSchema
 

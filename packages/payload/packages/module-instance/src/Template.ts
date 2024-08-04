@@ -1,5 +1,5 @@
-import { AbstractModuleInstancePayload } from './Payload.js'
-import { AbstractModuleInstanceSchema } from './Schema.js'
+import { AbstractModuleInstancePayload } from './Payload.ts'
+import { AbstractModuleInstanceSchema } from './Schema.ts'
 
 export const moduleInstancePayloadTemplate = (): Partial<AbstractModuleInstancePayload> => {
   return {

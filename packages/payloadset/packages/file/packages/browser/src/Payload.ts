@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import { FileSchema } from './Schema.js'
+import { FileSchema } from './Schema.ts'
 
 export type BinaryDataHash = string
 

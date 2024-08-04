@@ -2,7 +2,7 @@ import { testIf } from '@xylabs/jest-helpers'
 import { EthereumGasEtherscanPayload, EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { EthereumGasEtherscanWitnessConfigSchema } from '../Schema.js'
+import { EthereumGasEtherscanWitnessConfigSchema } from '../Schema.ts'
 import { EthereumGasEtherscanWitness } from '../Witness'
 
 const apiKey = process.env.ETHERSCAN_API_KEY || ''
@@ -31,9 +31,9 @@ describe('EthereumGasEtherscanWitness', () => {
     expect(await answerWrapper.getValid()).toBe(true)
   })
 
-  /*describe('create', () => {
+  /* describe('create', () => {
     it('throws if no params provided', async () => {
       await expect(EthereumGasEtherscanWitness.create()).toReject()
     })
-  })*/
+  }) */
 })

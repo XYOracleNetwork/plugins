@@ -1,5 +1,5 @@
-export * from './Config.js'
+export * from './Config.ts'
 // eslint-disable-next-line import/no-default-export
-export { EthereumGasEtherchainV2Plugin as default, EthereumGasEtherchainV2Plugin } from './Plugin.js'
-export * from './Schema.js'
-export * from './Witness.js'
+export { EthereumGasEtherchainV2Plugin as default, EthereumGasEtherchainV2Plugin } from './Plugin.ts'
+export * from './Schema.ts'
+export * from './Witness.ts'

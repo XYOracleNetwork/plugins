@@ -2,7 +2,7 @@ import { AbstractModuleInstanceSchema } from '@xyo-network/module-instance-paylo
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { AbstractModuleInstanceWitness } from './Witness.js'
+import { AbstractModuleInstanceWitness } from './Witness.ts'
 
 export const AbstractModuleInstancePlugin = () =>
   createPayloadSetWitnessPlugin<AbstractModuleInstanceWitness>(

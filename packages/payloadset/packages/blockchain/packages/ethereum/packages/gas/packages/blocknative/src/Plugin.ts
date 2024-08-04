@@ -2,7 +2,7 @@ import { EthereumGasBlocknativeSchema } from '@xyo-network/blocknative-ethereum-
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { EthereumGasBlocknativeWitness } from './Witness.js'
+import { EthereumGasBlocknativeWitness } from './Witness.ts'
 
 export const EthereumGasBlocknativePlugin = () =>
   createPayloadSetWitnessPlugin<EthereumGasBlocknativeWitness>(

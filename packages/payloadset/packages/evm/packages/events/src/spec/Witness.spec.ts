@@ -14,7 +14,7 @@ const validateObservation = (observation: Payload[]) => {
 }
 
 describeIf(process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
-  const address = '0x6811f2f20c42f42656a3c8623ad5e9461b83f719' //ParallelPlanetFall
+  const address = '0x6811f2f20c42f42656a3c8623ad5e9461b83f719' // ParallelPlanetFall
   const eventName = 'TransferSingle'
   describe('observe', () => {
     describe('with no address or chainId in query', () => {

@@ -1,1 +1,1 @@
-export * from './tryMapToSnapshot.js'
+export * from './tryMapToSnapshot.ts'

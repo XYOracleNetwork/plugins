@@ -2,8 +2,8 @@ import { asAddress } from '@xylabs/hex'
 import { ModuleIdentifier } from '@xyo-network/module-model'
 import { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.js'
-import { moduleIdentifiersContainsAllOf } from '../common/index.js'
+import { EscrowTerms } from '../../Terms.ts'
+import { moduleIdentifiersContainsAllOf } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisalAuthorities'
 
@@ -19,7 +19,7 @@ export const appraisalAuthoritiesExistValidator: PayloadValidationFunction<Escro
     return false
   }
   // Validate the authorities are addresses
-  if (appraisalAuthorities.map((x) => asAddress(x)).length !== appraisalAuthorities.length) {
+  if (appraisalAuthorities.map(x => asAddress(x)).length !== appraisalAuthorities.length) {
     console.log(`${name}: Invalid address: ${terms.appraisalAuthorities}`)
     return false
   }
@@ -28,7 +28,7 @@ export const appraisalAuthoritiesExistValidator: PayloadValidationFunction<Escro
 
 export const getAppraisalAuthoritiesAllowedValidator = (allowed: ModuleIdentifier[]): PayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
-    const result = moduleIdentifiersContainsAllOf(terms, (t) => t.appraisalAuthorities, allowed, true)
+    const result = moduleIdentifiersContainsAllOf(terms, t => t.appraisalAuthorities, allowed, true)
     if (!result) {
       console.log(`${name}: Appraisal authority not allowed: ${terms.appraisalAuthorities}`)
     }

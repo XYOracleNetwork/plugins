@@ -1,7 +1,7 @@
 // import { isAddress } from '@xylabs/hex'
 import { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../Duration.js'
+import { DurationFields } from '../Duration.ts'
 
 // Record Validations
 export const validateDuration = (recordPayload: Payload<DurationFields>): boolean => {

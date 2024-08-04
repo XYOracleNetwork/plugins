@@ -1,1 +1,1 @@
-export * from './ApiCallJsonResultToSnapshot/index.js'
+export * from './ApiCallJsonResultToSnapshot/index.ts'

@@ -3,7 +3,7 @@ import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugi
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetDualPlugin } from '@xyo-network/payloadset-plugin'
 
-import { ImageThumbnailWitness } from './Witness/index.js'
+import { ImageThumbnailWitness } from './Witness/index.ts'
 
 export const ImageThumbnailPlugin = () =>
   createPayloadSetDualPlugin<ImageThumbnailWitness, ImageThumbnailDiviner>(

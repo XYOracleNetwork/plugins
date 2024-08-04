@@ -6,7 +6,7 @@ import {
   PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-import { EscrowSchema } from './Schema.js'
+import { EscrowSchema } from './Schema.ts'
 
 export const EscrowOutcomeSchema = `${EscrowSchema}.outcome` as const
 export type EscrowOutcomeSchema = typeof EscrowOutcomeSchema

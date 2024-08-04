@@ -1,5 +1,5 @@
-export * from './Payload.js'
+export * from './Payload.ts'
 // eslint-disable-next-line import/no-default-export
-export { LocationCertaintyPayloadPlugin as default, LocationCertaintyPayloadPlugin } from './Plugin.js'
-export * from './Schema.js'
-export * from './Template.js'
+export { LocationCertaintyPayloadPlugin as default, LocationCertaintyPayloadPlugin } from './Plugin.ts'
+export * from './Schema.ts'
+export * from './Template.ts'

@@ -27,7 +27,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
     functionName: string,
     payloads: CryptoContractFunctionCallResult[],
   ): TResult | undefined {
-    const foundPayload = payloads.find((payload) => payload.functionName === functionName && payload.address === address)
+    const foundPayload = payloads.find(payload => payload.functionName === functionName && payload.address === address)
     return asCryptoContractFunctionCallSuccess(foundPayload)?.result as TResult | undefined
   }
 
@@ -42,9 +42,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
 
   protected contractInfoRequiredFields(callResults: CryptoContractFunctionCallResult[]): ContractInfo {
     return {
-      // eslint-disable-next-line deprecation/deprecation
       address: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'address'), () => 'Mismatched address'),
-      // eslint-disable-next-line deprecation/deprecation
       chainId: assertEx(CryptoContractDiviner.matchingExistingField(callResults, 'chainId'), () => 'Mismatched chainId'),
       schema: ContractInfoSchema,
     }
@@ -63,7 +61,7 @@ export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams =
     )
     const result = await Promise.all(
       addresses.map(async (address) => {
-        const foundCallResults = callResults.filter((callResult) => callResult.address === address)
+        const foundCallResults = callResults.filter(callResult => callResult.address === address)
         const info: ContractInfo = {
           results: await this.reduceResults(foundCallResults),
           ...this.contractInfoRequiredFields(foundCallResults),

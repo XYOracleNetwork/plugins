@@ -6,11 +6,11 @@ import { ERC721__factory, ERC1155__factory, ERC1155Supply__factory } from '@xyo-
 import { Provider } from 'ethers'
 import { LRUCache } from 'lru-cache'
 
-import { getNftMetadata } from './getNftMetadata.js'
-import { getNftsFromWalletFromOpenSea } from './getNftsFromWalletFromOpenSea.js'
-import { getProvider } from './getProvider.js'
-import { tokenTypes } from './tokenTypes.js'
-import { tryCall } from './tryCall.js'
+import { getNftMetadata } from './getNftMetadata.ts'
+import { getNftsFromWalletFromOpenSea } from './getNftsFromWalletFromOpenSea.ts'
+import { getProvider } from './getProvider.ts'
+import { tokenTypes } from './tokenTypes.ts'
+import { tryCall } from './tryCall.ts'
 
 const tokenTypeCache = new LRUCache<string, TokenType[]>({ max: 100 })
 
@@ -104,7 +104,7 @@ export const getNftsOwnedByAddress = async (
   /** @param httpTimeout The connection timeout for http call to get metadata */
   timeout = 5000,
 ): Promise<NftInfoFields[]> => {
-  //const assets = await getAssetsFromWallet(publicAddress, maxNfts, timeout)
+  // const assets = await getAssetsFromWallet(publicAddress, maxNfts, timeout)
   const nfts = await getNftsFromWalletFromOpenSea(publicAddress, maxNfts, timeout)
 
   const nftResult = await Promise.all(
@@ -124,10 +124,10 @@ export const getNftsOwnedByAddress = async (
           getErc1822SlotStatus(provider, contract, block),
         ])
 
-        const implementation =
-          !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation) ?
-            erc1822Status.implementation
-          : erc1967Status.implementation
+        const implementation
+          = !erc1967Status.slots.implementation || isHexZero(erc1967Status.slots.implementation)
+            ? erc1822Status.implementation
+            : erc1967Status.implementation
 
         let supply = 1n
         const types = await getTokenTypes(provider, implementation)

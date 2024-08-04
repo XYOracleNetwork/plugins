@@ -12,7 +12,7 @@ import { ApiCallWitness } from '../Witness'
 import openseaNftsManifest from './opensea.nft-call.json'
 
 describe('OpenSeaApi', () => {
-  const address = '0xECA1bB9c8d3Fd8b926372f42c8D4c6c3ed0669B3' //Random Wallet
+  const address = '0xECA1bB9c8d3Fd8b926372f42c8D4c6c3ed0669B3' // Random Wallet
 
   const apiKey = process.env.OPENSEA_API_KEY
 

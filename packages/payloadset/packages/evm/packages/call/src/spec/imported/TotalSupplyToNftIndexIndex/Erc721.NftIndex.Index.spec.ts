@@ -92,7 +92,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
     describe('Index', () => {
       beforeAll(async () => {
         const delay = (ms: number) => {
-          return new Promise((resolve) => setTimeout(resolve, ms))
+          return new Promise(resolve => setTimeout(resolve, ms))
         }
         // Delay enough time for the diviners to index the results
         await delay(4000)

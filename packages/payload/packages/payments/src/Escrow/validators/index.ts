@@ -1,2 +1,2 @@
-export * from './common/index.js'
-export * from './escrow/index.js'
+export * from './common/index.ts'
+export * from './escrow/index.ts'

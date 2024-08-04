@@ -1,7 +1,7 @@
 import { Address } from '@xylabs/hex'
 import { isPayloadOfSchemaType, Payload, WithMeta } from '@xyo-network/payload-model'
 
-import { DomainFields } from '../Domain/index.js'
+import { DomainFields } from '../Domain/index.ts'
 
 export type AddressRecordSchema = 'network.xyo.ns.record.address'
 export const AddressRecordSchema: AddressRecordSchema = 'network.xyo.ns.record.address'

@@ -4,8 +4,8 @@ import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 
-import { FileWitnessConfig, FileWitnessConfigSchema } from './Config.js'
-import { FileSchema } from './Schema.js'
+import { FileWitnessConfig, FileWitnessConfigSchema } from './Config.ts'
+import { FileSchema } from './Schema.ts'
 
 export type FileWitnessParams = WitnessParams<AnyConfigSchema<FileWitnessConfig>>
 

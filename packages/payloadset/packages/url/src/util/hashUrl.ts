@@ -1,5 +1,5 @@
-import { hashFile } from './hashFile.js'
-import { hashHttpUrl } from './hashHttpUrl.js'
+import { hashFile } from './hashFile.ts'
+import { hashHttpUrl } from './hashHttpUrl.ts'
 
 export const hashUrl = (url: string): Promise<string> => {
   const scheme = url.split('://')[0]?.toLowerCase()

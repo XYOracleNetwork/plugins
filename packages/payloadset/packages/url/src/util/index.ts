@@ -1,1 +1,1 @@
-export * from './hashUrl.js'
+export * from './hashUrl.ts'

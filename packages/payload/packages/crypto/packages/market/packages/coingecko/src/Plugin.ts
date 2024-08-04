@@ -1,8 +1,8 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { CoingeckoCryptoMarketPayload } from './Payload.js'
-import { CoingeckoCryptoMarketSchema } from './Schema.js'
-import { coingeckoCryptoMarketPayloadTemplate } from './Template.js'
+import { CoingeckoCryptoMarketPayload } from './Payload.ts'
+import { CoingeckoCryptoMarketSchema } from './Schema.ts'
+import { coingeckoCryptoMarketPayloadTemplate } from './Template.ts'
 
 export const CoingeckoCryptoMarketPayloadPlugin = () =>
   createPayloadPlugin<CoingeckoCryptoMarketPayload>({

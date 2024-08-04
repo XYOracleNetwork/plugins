@@ -1,5 +1,5 @@
-import { Queries } from './Queries.js'
-import { Verb } from './Verb.js'
+import { Queries } from './Queries.ts'
+import { Verb } from './Verb.ts'
 
 export interface ApiCallFields {
   headers?: Record<string, string | undefined>

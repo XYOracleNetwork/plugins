@@ -29,9 +29,9 @@ import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
 // eslint-disable-next-line import/no-deprecated
-import { CryptoContractDiviner } from '../../../Diviner'
+import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 // eslint-disable-next-line import/no-deprecated
-import { CryptoContractFunctionReadWitness } from '../../../Witness'
+import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json'
 import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json'
 import sentinelNodeManifest from './Contract.Sentinel.Node.json'
@@ -66,20 +66,20 @@ describe.skip('Contract Node', () => {
     locator.register(MemoryBoundWitnessDiviner)
     locator.register(MemoryPayloadDiviner)
     locator.register(TimestampWitness)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(CryptoContractDiviner)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, CryptoContractDiviner.labels)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, CryptoContractDiviner.labels)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, CryptoContractDiviner.labels)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, CryptoContractDiviner.labels)
-    // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
     locator.register(TemporalIndexingDiviner, CryptoContractDiviner.labels)
     locator.register(
-      // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721__factory.abi },
         providers: getProviders(),
@@ -87,7 +87,7 @@ describe.skip('Contract Node', () => {
       { 'network.xyo.evm.interface': 'Erc721' },
     )
     locator.register(
-      // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProviders(),
@@ -95,7 +95,7 @@ describe.skip('Contract Node', () => {
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     locator.register(
-      // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
+
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC1155__factory.abi },
         providers: getProviders(),

@@ -1,5 +1,5 @@
-export * from './Payload.js'
+export * from './Payload.ts'
 // eslint-disable-next-line import/no-default-export
-export { CryptoCardsMovePayloadPlugin, CryptoCardsMovePayloadPlugin as default } from './Plugin.js'
-export * from './Schema.js'
-export * from './Template.js'
+export { CryptoCardsMovePayloadPlugin, CryptoCardsMovePayloadPlugin as default } from './Plugin.ts'
+export * from './Schema.ts'
+export * from './Template.ts'

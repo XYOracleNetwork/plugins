@@ -1,4 +1,4 @@
-import { TokenType } from './TokenType.js'
+import { TokenType } from './TokenType.ts'
 
 export interface NftContractInformation {
   address: string

@@ -1,7 +1,7 @@
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { ApiGraphqlWitness, GraphqlQuerySchema } from './Witness.js'
+import { ApiGraphqlWitness, GraphqlQuerySchema } from './Witness.ts'
 
 export const ApiGraphqlWitnessPlugin = () =>
   createPayloadSetWitnessPlugin<ApiGraphqlWitness>(

@@ -2,7 +2,7 @@ import { CryptoCardsMoveSchema } from '@xyo-network/crypto-cards-move-payload-pl
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-import { CryptoCardsMoveWitness } from './Witness.js'
+import { CryptoCardsMoveWitness } from './Witness.ts'
 
 export const CryptoCardsMovePlugin = () =>
   createPayloadSetWitnessPlugin<CryptoCardsMoveWitness>(

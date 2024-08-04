@@ -1,2 +1,2 @@
-export * from './PriceHistory/index.js'
-export * from './Snapshot/index.js'
+export * from './PriceHistory/index.ts'
+export * from './Snapshot/index.ts'

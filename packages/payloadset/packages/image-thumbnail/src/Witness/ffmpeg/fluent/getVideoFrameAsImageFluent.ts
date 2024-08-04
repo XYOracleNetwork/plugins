@@ -49,7 +49,7 @@ export const getVideoFrameAsImageFluent = async (videoBuffer: ArrayBuffer) => {
       ffmpeg()
         // NOTE: Uncomment to debug CLI args to ffmpeg
         // .on('start', (commandLine) => console.log('Spawned Ffmpeg with command: ' + commandLine))
-        .on('error', (err) => reject(err.message))
+        .on('error', err => reject(err.message))
         // Listen for the 'end' event to combine the output into a buffer holding the PNG image
         .on('end', () => resolve(ffmpegOutput.toBuffer()))
         .input(tmpFile) // Use temp file as input

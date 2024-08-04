@@ -1,7 +1,7 @@
 import { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 import { incrementTotal, PASS, ScaledScore } from '@xyo-network/crypto-nft-score-model'
 
-import { isSecure, isValidUrl } from './lib/index.js'
+import { isSecure, isValidUrl } from './lib/index.ts'
 
 export const scoreNftYoutubeUrl = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore => {
   return scoreYoutubeUrl(nft?.metadata?.youtube_url)

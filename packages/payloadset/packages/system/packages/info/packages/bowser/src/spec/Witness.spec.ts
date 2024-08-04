@@ -11,7 +11,7 @@ import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
 import { BowserSystemInfoWitnessConfigSchema } from '../Config'
 import { BowserSystemInfoWitness } from '../Witness'
 
-PayloadValidator.setSchemaNameValidatorFactory((schema) => new SchemaNameValidator(schema))
+PayloadValidator.setSchemaNameValidatorFactory(schema => new SchemaNameValidator(schema))
 
 const cryptoPolyfill = (window: Window & typeof globalThis) => {
   window.crypto = window.crypto ?? {

@@ -4,16 +4,15 @@ import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { divineGas } from './lib/index.js'
-import { EthereumGasDivinerConfigSchema } from './Schema.js'
+import { divineGas } from './lib/index.ts'
+import { EthereumGasDivinerConfigSchema } from './Schema.ts'
 
 export type EthereumGasDivinerConfig = DivinerConfig<{ schema: EthereumGasDivinerConfigSchema }>
 export type EthereumGasDivinerParams = DivinerParams<AnyConfigSchema<EthereumGasDivinerConfig>>
 
 export class EthereumGasDiviner<TParams extends EthereumGasDivinerParams = EthereumGasDivinerParams>
   extends AbstractDiviner<TParams>
-  implements DivinerModule
-{
+  implements DivinerModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = EthereumGasDivinerConfigSchema
   static override targetSchema: string = EthereumGasSchema

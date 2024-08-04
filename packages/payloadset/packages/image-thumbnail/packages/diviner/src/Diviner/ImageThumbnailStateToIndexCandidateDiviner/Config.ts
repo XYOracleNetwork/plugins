@@ -1,7 +1,7 @@
 import { DivinerConfig } from '@xyo-network/diviner-model'
 import { SearchableStorage } from '@xyo-network/image-thumbnail-payload-plugin'
 
-import { ImageThumbnailStateToIndexCandidateDivinerSchema } from './Schema.js'
+import { ImageThumbnailStateToIndexCandidateDivinerSchema } from './Schema.ts'
 
 export type ImageThumbnailStateToIndexCandidateDivinerConfigSchema = `${ImageThumbnailStateToIndexCandidateDivinerSchema}.config`
 export const ImageThumbnailStateToIndexCandidateDivinerConfigSchema: ImageThumbnailStateToIndexCandidateDivinerConfigSchema = `${ImageThumbnailStateToIndexCandidateDivinerSchema}.config`

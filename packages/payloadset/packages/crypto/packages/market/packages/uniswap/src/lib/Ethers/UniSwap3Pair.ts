@@ -6,8 +6,8 @@ import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-ty
 import { Pool } from '@xyo-network/uniswap-v3-sdk'
 import { Provider } from 'ethers'
 
-import { logErrors, logErrorsAsync } from '../logErrors.js'
-import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.js'
+import { logErrors, logErrorsAsync } from '../logErrors.ts'
+import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.ts'
 
 export enum ChainId {
   MAINNET = 1,
@@ -17,7 +17,7 @@ export enum ChainId {
   KOVAN = 42,
 }
 
-//null is used as 'in-progress'
+// null is used as 'in-progress'
 const waitNotNull = async (closure: () => unknown) => {
   while (closure() === null) await delay(10)
 }
@@ -42,9 +42,9 @@ export class EthersUniSwap3Pair {
       await waitNotNull(() => this._pool)
       this._pool = this._pool || null
       const slot0 = await this.slot0()
-      this._pool =
-        this._pool === null ?
-          new Pool(
+      this._pool
+        = this._pool === null
+          ? new Pool(
             await this.token(0),
             await this.token(1),
             Number(slot0.feeProtocol),
@@ -52,7 +52,7 @@ export class EthersUniSwap3Pair {
             `0x${(await this.poolContract().liquidity()).toString(16)}`,
             Number(slot0.tick),
           )
-        : this._pool
+          : this._pool
       return assertEx(this._pool)
     })
   }
@@ -68,9 +68,9 @@ export class EthersUniSwap3Pair {
     return await logErrorsAsync(async () => {
       const tokenIndexes: (0 | 1)[] = [0, 1]
       const pool = await this.pool()
-      const tokens = await Promise.all(tokenIndexes.map((value) => this.token(value)))
-      const tokenContracts = await Promise.all(tokenIndexes.map((value) => this.tokenContract(value)))
-      const tokenPrices = tokens.map((token) => Number.parseFloat(pool.priceOf(token).toSignificant()))
+      const tokens = await Promise.all(tokenIndexes.map(value => this.token(value)))
+      const tokenContracts = await Promise.all(tokenIndexes.map(value => this.tokenContract(value)))
+      const tokenPrices = tokens.map(token => Number.parseFloat(pool.priceOf(token).toSignificant()))
       const tokenSymbols = tokens.map((token, index) => assertEx(token.symbol, () => `Token[${index}] Missing Symbols`).toLowerCase())
       const result = {
         tokens: await Promise.all(
@@ -101,9 +101,9 @@ export class EthersUniSwap3Pair {
       await waitNotNull(() => this._tokens[index])
       this._tokens[index] = this._tokens[index] || null
       const tokenContract = await this.tokenContract(index)
-      this._tokens[index] =
-        this._tokens[index] ??
-        new Token(
+      this._tokens[index]
+        = this._tokens[index]
+        ?? new Token(
           ChainId.MAINNET,
           await tokenContract.getAddress(),
           Number(await tokenContract.decimals()),
@@ -118,9 +118,9 @@ export class EthersUniSwap3Pair {
     return await logErrorsAsync(async () => {
       await waitNotNull(() => this._tokenContracts[index])
       this._tokenContracts[index] = this._tokenContracts[index] || null
-      this._tokenContracts[index] =
-        this._tokenContracts[index] ??
-        IERC20Metadata__factory.connect(await (index === 0 ? this.poolContract().token0() : this.poolContract().token1()), this.provider)
+      this._tokenContracts[index]
+        = this._tokenContracts[index]
+        ?? IERC20Metadata__factory.connect(await (index === 0 ? this.poolContract().token0() : this.poolContract().token1()), this.provider)
       return assertEx(this._tokenContracts[index])
     })
   }

@@ -1,2 +1,2 @@
-export * from './metadata/index.js'
-export * from './total.js'
+export * from './metadata/index.ts'
+export * from './total.ts'

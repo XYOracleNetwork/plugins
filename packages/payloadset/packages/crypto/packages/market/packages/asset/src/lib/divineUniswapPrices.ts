@@ -17,24 +17,24 @@ const mapUniswapToken = (symbol: string): Token | Currency => {
 
 const pairsContainingToken = (uniswapPayload: UniswapCryptoMarketPayload, token: Token) => {
   return uniswapPayload?.pairs
-    .map((p) => p.tokens)
-    .filter((p) => p.some((x) => x.symbol.toLowerCase() === token))
+    .map(p => p.tokens)
+    .filter(p => p.some(x => x.symbol.toLowerCase() === token))
     .filter(exists)
 }
 
 const tokensFromPairs = (pairs: UniswapCryptoPair[]) => {
-  return pairs.flatMap((p) => p.tokens).map((t) => t.symbol.toLowerCase() as Token)
+  return pairs.flatMap(p => p.tokens).map(t => t.symbol.toLowerCase() as Token)
 }
 
 const valuesFromTokenPairs = (tokensPairs: UniswapCryptoToken[][], token: Token): ValueBasis => {
   return Object.fromEntries(
     tokensPairs
       .map((pair) => {
-        const current = pair.find((p) => p.symbol.toLowerCase() === token)
-        const other = pair.find((p) => p.symbol.toLowerCase() !== token)
+        const current = pair.find(p => p.symbol.toLowerCase() === token)
+        const other = pair.find(p => p.symbol.toLowerCase() !== token)
         return [other?.symbol.toLowerCase(), current?.value.toString()]
       })
-      .map((x) => [mapUniswapToken(assertEx(x[0], () => 'Undefined Token')), x[1]]),
+      .map(x => [mapUniswapToken(assertEx(x[0], () => 'Undefined Token')), x[1]]),
   )
 }
 

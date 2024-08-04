@@ -7,9 +7,9 @@ import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
 import { Provider } from 'ethers'
 import parseDataUrl from 'parse-data-url'
 
-import { isErc721, isErc1155 } from './tokenTypes.js'
+import { isErc721, isErc1155 } from './tokenTypes.ts'
 
-/*const baseUrlAbi = [
+/* const baseUrlAbi = [
   {
     inputs: [],
     name: 'baseUrl',
@@ -23,7 +23,7 @@ import { isErc721, isErc1155 } from './tokenTypes.js'
     stateMutability: 'view',
     type: 'function',
   },
-]*/
+] */
 
 const ipfsGateway = '5d7b6582.beta.decentralnetworkservices.com'
 
@@ -54,12 +54,12 @@ export const getNftMetadata = async (
     try {
       uri721 = await storage721.tokenURI(tokenId)
     } catch {
-      //const error = ex as Error
-      //console.error(`metaDataUri[${error.name}][${contractAddress}]: storage721.tokenURI(tokenId) failed`)
+      // const error = ex as Error
+      // console.error(`metaDataUri[${error.name}][${contractAddress}]: storage721.tokenURI(tokenId) failed`)
     }
   }
 
-  /*let baseUrl: string | undefined = undefined
+  /* let baseUrl: string | undefined = undefined
   if (is721) {
     try {
       const baseUrlContract = new Contract(contractAddress, baseUrlAbi, provider)
@@ -82,9 +82,9 @@ export const getNftMetadata = async (
       try {
         uri1155 = await storage1155.uri(tokenId)
       } catch {
-        //const error = ex as Error
-        //console.error(`metaDataUri[${error.name}][${contractAddress}]: storage1155.uri(tokenId) failed`)
-        //console.log(error.message)
+        // const error = ex as Error
+        // console.error(`metaDataUri[${error.name}][${contractAddress}]: storage1155.uri(tokenId) failed`)
+        // console.log(error.message)
       }
     }
   }
@@ -101,12 +101,12 @@ export const getNftMetadata = async (
       }
     } else {
       let checkedMetaDataUri: string | undefined
-      /*if (tokenMetadataUri && tokenMetadataUri.length < 5) {
+      /* if (tokenMetadataUri && tokenMetadataUri.length < 5) {
         console.log(`tokenMetadataUri [<5][${contractAddress}]: ${tokenMetadataUri}`)
         console.log(`tokenMetadataUri [uri721]: ${uri721}`)
         console.log(`tokenMetadataUri [uri1155]: ${uri1155}`)
         console.log(`tokenMetadataUri [defaultUri]: ${defaultUri}`)
-      }*/
+      } */
       const axios = new AxiosJson({ timeout: 5000 })
       try {
         if (tokenMetadataUri && tokenMetadataUri.length > 0) {
@@ -117,8 +117,8 @@ export const getNftMetadata = async (
         try {
           metadata = defaultUri ? (await axios.get(defaultUri)).data : undefined
         } catch {
-          //const error = ex as Error
-          //console.error(`metadata: ${error.message}`)
+          // const error = ex as Error
+          // console.error(`metadata: ${error.message}`)
         }
       }
     }

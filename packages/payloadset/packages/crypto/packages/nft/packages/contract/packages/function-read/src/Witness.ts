@@ -25,7 +25,6 @@ export type CryptoContractFunctionReadWitnessParams = WitnessParams<
 
 /** @deprecated use EvmCallWitness instead */
 export class CryptoContractFunctionReadWitness<
-  // eslint-disable-next-line deprecation/deprecation
   TParams extends CryptoContractFunctionReadWitnessParams = CryptoContractFunctionReadWitnessParams,
 > extends AbstractWitness<TParams, CryptoContractFunctionCall, CryptoContractFunctionCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoContractFunctionReadWitnessConfigSchema]
@@ -41,7 +40,7 @@ export class CryptoContractFunctionReadWitness<
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType(CryptoContractFunctionCallSchema)).map(async ({ functionName, args, address }) => {
           const { providers } = this.params
-          const provider = providers[Date.now() % providers.length] //pick a random provider
+          const provider = providers[Date.now() % providers.length] // pick a random provider
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]

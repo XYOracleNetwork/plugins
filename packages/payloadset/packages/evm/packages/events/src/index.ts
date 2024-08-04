@@ -1,3 +1,3 @@
-export * from './model.js'
-export * from './Payload.js'
-export * from './Witness.js'
+export * from './model.ts'
+export * from './Payload.ts'
+export * from './Witness.ts'

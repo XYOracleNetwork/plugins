@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.js'
+import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.ts'
 
 export interface ErrorDetails<TErrorCode extends string | undefined = string | undefined> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -41,11 +41,11 @@ export const isDomainLeaseEstimateDivinerValidationErrorDetails = isPayloadOfSch
 /**
  * Identity function for DomainLeaseEstimateDivinerValidationErrorDetails payload with sources
  */
-export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithSources =
-  isPayloadOfSchemaTypeWithSources<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)
+export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithSources
+  = isPayloadOfSchemaTypeWithSources<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)
 
 /**
  * Identity function for DomainLeaseEstimateDivinerValidationErrorDetails payload with meta
  */
-export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithMeta =
-  isPayloadOfSchemaTypeWithMeta<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)
+export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithMeta
+  = isPayloadOfSchemaTypeWithMeta<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)

@@ -7,9 +7,9 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessParams } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-import { EthereumGasEthersWitnessConfig } from './Config.js'
-import { getGasFromEthers } from './lib/index.js'
-import { EthereumGasEthersWitnessConfigSchema } from './Schema.js'
+import { EthereumGasEthersWitnessConfig } from './Config.ts'
+import { getGasFromEthers } from './lib/index.ts'
+import { EthereumGasEthersWitnessConfigSchema } from './Schema.ts'
 
 export type EthereumGasEthersWitnessParams = WitnessParams<
   AnyConfigSchema<EthereumGasEthersWitnessConfig>,

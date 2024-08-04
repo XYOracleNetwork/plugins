@@ -1,7 +1,7 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { UniswapCryptoPair } from './lib/index.js'
-import { UniswapCryptoMarketSchema } from './Schema.js'
+import { UniswapCryptoPair } from './lib/index.ts'
+import { UniswapCryptoMarketSchema } from './Schema.ts'
 
 export type UniswapCryptoMarketPayload = Payload<{
   pairs: UniswapCryptoPair[]

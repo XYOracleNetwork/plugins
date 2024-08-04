@@ -1,4 +1,4 @@
-export * from './Diviner.js'
-export * from './lib/index.js'
+export * from './Diviner.ts'
+export * from './lib/index.ts'
 // eslint-disable-next-line import/no-default-export
-export { NftCollectionScoreDivinerPlugin as default, NftCollectionScoreDivinerPlugin } from './Plugin.js'
+export { NftCollectionScoreDivinerPlugin as default, NftCollectionScoreDivinerPlugin } from './Plugin.ts'

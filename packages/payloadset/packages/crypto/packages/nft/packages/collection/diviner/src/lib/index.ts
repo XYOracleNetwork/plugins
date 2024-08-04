@@ -1,1 +1,1 @@
-export * from './rating/index.js'
+export * from './rating/index.ts'

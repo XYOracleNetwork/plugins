@@ -37,11 +37,11 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       // BAYC
       uri: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15',
     },
-    /*{
+    /* {
       schema: ApiCallSchema,
       // Gutter Cats
       uri: 'https://gutter-cats-metadata.s3.us-east-2.amazonaws.com/metadata/1347',
-    },*/
+    }, */
   ]
   beforeAll(async () => {
     const wallet = await HDWallet.random()

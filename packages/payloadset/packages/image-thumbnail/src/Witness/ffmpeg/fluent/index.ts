@@ -1,1 +1,1 @@
-export * from './getVideoFrameAsImageFluent.js'
+export * from './getVideoFrameAsImageFluent.ts'

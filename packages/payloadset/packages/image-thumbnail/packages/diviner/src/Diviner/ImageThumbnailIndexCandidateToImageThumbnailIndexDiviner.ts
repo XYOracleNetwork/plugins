@@ -15,7 +15,7 @@ import { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-mod
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.js'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
 
 /**
  * Transforms candidates for image thumbnail indexing into their indexed representation
@@ -38,8 +38,8 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
       // eslint-disable-next-line unicorn/no-array-reduce
       const tuples: [BoundWitness, ImageThumbnail, TimeStamp][] = bws.reduce<[BoundWitness, ImageThumbnail, TimeStamp][]>(
         (acc, curr) => {
-          const imageThumbnailIndex = curr.payload_schemas?.findIndex((schema) => schema === ImageThumbnailSchema)
-          const timestampIndex = curr.payload_schemas?.findIndex((schema) => schema === TimestampSchema)
+          const imageThumbnailIndex = curr.payload_schemas?.findIndex(schema => schema === ImageThumbnailSchema)
+          const timestampIndex = curr.payload_schemas?.findIndex(schema => schema === TimestampSchema)
           const imageThumbnailHash = curr.payload_hashes?.[imageThumbnailIndex]
           const timestampHash = curr.payload_hashes?.[timestampIndex]
           const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail) as WithMeta<ImageThumbnail> | undefined

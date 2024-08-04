@@ -1,2 +1,2 @@
-export * from './fluent/index.js'
-export * from './spawn/index.js'
+export * from './fluent/index.ts'
+export * from './spawn/index.ts'

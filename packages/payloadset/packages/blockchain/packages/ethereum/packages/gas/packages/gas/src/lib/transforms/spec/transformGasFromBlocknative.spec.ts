@@ -1,6 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
-import { sampleBlocknativeGas } from '../../../test'
-import { transformGasFromBlocknative } from '../transformGasFromBlocknative'
+import { sampleBlocknativeGas } from '../../../test/index.ts'
+import { transformGasFromBlocknative } from '../transformGasFromBlocknative.ts'
 
 describe('transformGasFromEtherscan', () => {
   it('returns values in the expected format', () => {

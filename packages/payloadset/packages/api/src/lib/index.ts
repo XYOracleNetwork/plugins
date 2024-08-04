@@ -1,1 +1,1 @@
-export * from './checkIpfsUrl.js'
+export * from './checkIpfsUrl.ts'

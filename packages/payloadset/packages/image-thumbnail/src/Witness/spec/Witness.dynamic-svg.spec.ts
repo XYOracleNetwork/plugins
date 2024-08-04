@@ -2,7 +2,7 @@ import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbna
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 
-import { ImageThumbnailWitness } from '../Witness.js'
+import { ImageThumbnailWitness } from '../Witness.ts'
 
 const testIfHasBin = (bin: string) => (hasbin.sync(bin) ? it : it.skip)
 

@@ -2,8 +2,8 @@ import { assertEx } from '@xylabs/assert'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getErc1822SlotStatus } from './lib/index.js'
-import { Erc1822Status, Erc1822StatusSchema } from './Payload.js'
+import { getErc1822SlotStatus } from './lib/index.ts'
+import { Erc1822Status, Erc1822StatusSchema } from './Payload.ts'
 
 export const Erc1822WitnessConfigSchema = 'network.xyo.erc1822.witness.config'
 export type Erc1822WitnessConfigSchema = typeof Erc1822WitnessConfigSchema
@@ -22,7 +22,7 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
 
   protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<Erc1822Status[]> {
     await this.started('throw')
-    //calling it here to make sure we rests the cache
+    // calling it here to make sure we rests the cache
     await this.getProviders()
     try {
       const observations = await Promise.all(

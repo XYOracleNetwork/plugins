@@ -1,2 +1,2 @@
-export * from './validateBoundWitnessWithDuration.js'
-export * from './validateDuration.js'
+export * from './validateBoundWitnessWithDuration.ts'
+export * from './validateDuration.ts'

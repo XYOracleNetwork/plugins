@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@xyo-network/gas-ethereum-blockchain-plugins": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^2.110.10"
+    "@xyo-network/payloadset-plugin": "^2.111.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.13.3",
-    "@xylabs/tsconfig": "^3.13.3",
+    "@xylabs/ts-scripts-yarn3": "^3.15.13",
+    "@xylabs/tsconfig": "^3.15.13",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -29,7 +29,7 @@
         },
         "import": {
           "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.js"
+          "default": "./dist/browser/index.mjs"
         }
       },
       "node": {
@@ -39,14 +39,14 @@
         },
         "import": {
           "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.js"
+          "default": "./dist/node/index.mjs"
         }
       }
     },
     "./package.json": "./package.json"
   },
   "main": "dist/node/index.cjs",
-  "module": "dist/node/index.js",
+  "module": "dist/node/index.mjs",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

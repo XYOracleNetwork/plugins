@@ -1,1 +1,1 @@
-export * from './getNftCollectionMetrics.js'
+export * from './getNftCollectionMetrics.ts'

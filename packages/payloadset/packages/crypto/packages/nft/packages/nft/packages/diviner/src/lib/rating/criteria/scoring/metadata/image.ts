@@ -1,7 +1,7 @@
 import { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 import { incrementTotal, PASS, ScaledScore } from '@xyo-network/crypto-nft-score-model'
 
-import { isSecure, isValidUrl, isWeb3 } from './lib/index.js'
+import { isSecure, isValidUrl, isWeb3 } from './lib/index.ts'
 
 const MaxPossibleImageScore = 3
 

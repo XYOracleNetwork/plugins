@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { EthereumGasEtherchainV2Schema } from './Schema.js'
+import { EthereumGasEtherchainV2Schema } from './Schema.ts'
 
 export interface EthereumGasEtherchainV2Response {
   code: number

@@ -1,3 +1,3 @@
-export * from './AssetSymbol.js'
-export * from './CryptoAsset.js'
-export * from './CryptoAssets.js'
+export * from './AssetSymbol.ts'
+export * from './CryptoAsset.ts'
+export * from './CryptoAssets.ts'

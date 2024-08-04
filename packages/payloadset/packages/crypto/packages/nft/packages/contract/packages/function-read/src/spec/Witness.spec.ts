@@ -19,14 +19,13 @@ const validateObservation = (observation: Payload[]) => {
 }
 
 describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
-  const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' //XYO ERC20
+  const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' // XYO ERC20
   const functionName = 'balanceOf'
-  const args = ['0xaDe7DFBC532A01dB67BFEA3b728D4eA22869f381'] //Random Holder
+  const args = ['0xaDe7DFBC532A01dB67BFEA3b728D4eA22869f381'] // Random Holder
   const provider = getProviderFromEnv()
   describe('observe', () => {
     describe('with no address or chainId in query', () => {
       it('uses values from config', async () => {
-        // eslint-disable-next-line deprecation/deprecation, import/no-deprecated
         const witness = await CryptoContractFunctionReadWitness.create({
           config: { abi: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },
           providers: [provider],

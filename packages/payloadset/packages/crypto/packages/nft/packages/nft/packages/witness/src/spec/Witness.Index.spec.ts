@@ -216,10 +216,10 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     describe('with filter criteria', () => {
       describe('for address', () => {
         const addresses = data
-          .filter((nft) => nft.chainId === 1)
-          .map((nft) => nft.address)
+          .filter(nft => nft.chainId === 1)
+          .map(nft => nft.address)
           .filter(distinct)
-        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+        const cases: NftInfo[] = addresses.map(address => data.findLast(nft => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address using the default chainId', async (payload) => {
           const { address } = payload
           const query = { address, schema } as Query
@@ -229,8 +229,8 @@ describe.skip('CryptoWalletNftWitness Index', () => {
         })
       })
       describe('for address & chainId', () => {
-        const addresses = data.map((nft) => nft.address).filter(distinct)
-        const cases: NftInfo[] = addresses.map((address) => data.findLast((nft) => nft.address === address)).filter(exists)
+        const addresses = data.map(nft => nft.address).filter(distinct)
+        const cases: NftInfo[] = addresses.map(address => data.findLast(nft => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address & chainId', async (payload) => {
           const { address, chainId } = payload
           const query = { address, chainId, schema } as Query

@@ -1,3 +1,3 @@
-export * from './ImageThumbnail.js'
-export * from './ImageThumbnailResult.js'
-export * from './ImageThumbnailResultIndex.js'
+export * from './ImageThumbnail.ts'
+export * from './ImageThumbnailResult.ts'
+export * from './ImageThumbnailResultIndex.ts'

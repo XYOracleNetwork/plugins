@@ -1,6 +1,6 @@
 import { Payload } from '@xyo-network/payload-model'
 
-import { EthereumGasEthgasstationSchema } from './Schema.js'
+import { EthereumGasEthgasstationSchema } from './Schema.ts'
 
 export interface EthereumGasEthgasstationResponse {
   baseFee: number

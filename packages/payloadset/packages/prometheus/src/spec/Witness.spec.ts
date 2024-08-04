@@ -1,6 +1,6 @@
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
-import { PrometheusNodeWitness } from '../Witness.js'
+import { PrometheusNodeWitness } from '../Witness.ts'
 
 describe('PrometheusNodeWitness', () => {
   it('Witnessing [no config]', async () => {

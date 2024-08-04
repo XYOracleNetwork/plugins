@@ -13,9 +13,9 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../Diviner.js'
-import { EvmCall, EvmCallSchema } from '../Payload.js'
-import { EvmCallWitness } from '../Witness.js'
+import { EvmCallDiviner, EvmCallResults, EvmCallResultsSchema } from '../Diviner.ts'
+import { EvmCall, EvmCallSchema } from '../Payload.ts'
+import { EvmCallWitness } from '../Witness.ts'
 import erc721TokenSentinelManifest from './Erc721TokenSentinel.json'
 
 const profiler = createProfiler()
@@ -24,10 +24,10 @@ const tokenCount = 0
 const maxProviders = 2
 
 describe('Erc721Sentinel - Token', () => {
-  //const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
-  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' //Bored Apes
-  //const address = '0x495f947276749Ce646f68AC8c248420045cb7b5e' //OpenSea Storefront
-  //const address = '0x6802df79bcbbf019fe5cb366ff25720d1365cfd3' //Upgradeable
+  // const address = '0x562fC2927c77cB975680088566ADa1dC6cB8b5Ea' //Random ERC721
+  const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D' // Bored Apes
+  // const address = '0x495f947276749Ce646f68AC8c248420045cb7b5e' //OpenSea Storefront
+  // const address = '0x6802df79bcbbf019fe5cb366ff25720d1365cfd3' //Upgradeable
 
   const tokenId = 1
 

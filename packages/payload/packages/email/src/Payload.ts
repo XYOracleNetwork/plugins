@@ -8,7 +8,7 @@ import {
   WithSources,
 } from '@xyo-network/payload-model'
 
-import { EmailAddressSchema } from './Schema.js'
+import { EmailAddressSchema } from './Schema.ts'
 
 /**
  * A regex for testing if a string is an email

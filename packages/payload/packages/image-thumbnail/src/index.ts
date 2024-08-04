@@ -1,5 +1,5 @@
-export * from './Diviner/index.js'
-export * from './Payload/index.js'
+export * from './Diviner/index.ts'
+export * from './Payload/index.ts'
 // eslint-disable-next-line import/no-default-export
-export { ImageThumbnailPayloadPlugin as default, ImageThumbnailPayloadPlugin } from './Plugin.js'
-export * from './Schema.js'
+export { ImageThumbnailPayloadPlugin as default, ImageThumbnailPayloadPlugin } from './Plugin.ts'
+export * from './Schema.ts'

@@ -11,7 +11,7 @@ import {
 import { Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 
-import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib/index.js'
+import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib/index.ts'
 
 export type CryptoWalletNftWitnessParams = EvmWitnessParams<CryptoWalletNftWitnessConfig>
 
@@ -38,7 +38,7 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
   protected override async observeHandler(payloads?: NftWitnessQuery[]): Promise<NftInfo[]> {
     await this.started('throw')
     const queries = payloads?.filter(isNftWitnessQuery) ?? []
-    //calling it here to make sure we rests the cache
+    // calling it here to make sure we rests the cache
     const providers = await this.getProviders()
     try {
       const observations = await Promise.all(
@@ -51,10 +51,10 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
           const chainId = assertEx(network.chainId, () => 'params.chainId is required')
           const maxNfts = query?.maxNfts || defaultMaxNfts
           try {
-            const nfts =
-              this.loadMetadata ?
-                await getNftsOwnedByAddressWithMetadata(address, providers, maxNfts, this.timeout)
-              : await getNftsOwnedByAddress(address, providers, maxNfts, this.timeout)
+            const nfts
+              = this.loadMetadata
+                ? await getNftsOwnedByAddressWithMetadata(address, providers, maxNfts, this.timeout)
+                : await getNftsOwnedByAddress(address, providers, maxNfts, this.timeout)
             const observation = nfts.map<NftInfo>((nft) => {
               return { ...nft, schema }
             })
