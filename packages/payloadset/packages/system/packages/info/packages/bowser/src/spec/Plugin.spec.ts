@@ -1,7 +1,7 @@
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 
-import { BowserSystemInfoPlugin } from '../Plugin'
+import { BowserSystemInfoPlugin } from '../Plugin.ts'
 
 describe('BowserSystemInfoPlugin', () => {
   test('Add to Resolver', async () => {

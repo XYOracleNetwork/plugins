@@ -3,7 +3,7 @@ import Path from 'node:path'
 
 import { NftInfo, OpenSeaNftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
 
-import { calculateAllPropertiesDistribution } from '../calculateAllPropertiesDistribution'
+import { calculateAllPropertiesDistribution } from '../calculateAllPropertiesDistribution.ts'
 
 describe('calculateAllPropertiesDistribution', () => {
   test('calculates the property distribution', async () => {

@@ -1,11 +1,12 @@
 import { assertEx } from '@xylabs/assert'
-import { AxiosJson, AxiosRequestConfig, HttpStatusCode } from '@xylabs/axios'
+import { AxiosJson } from '@xylabs/axios'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload, WithSources } from '@xyo-network/payload-model'
 import { isBillingAddress, isPaymentCard } from '@xyo-network/payment-payload-plugins'
 import { RebillyPaymentAuthorizationToken, RebillyPaymentAuthorizationTokenSchema } from '@xyo-network/rebilly-payment-payload-plugin'
 import { AbstractSentinel } from '@xyo-network/sentinel-abstract'
 import { SentinelInstance, SentinelModuleEventData } from '@xyo-network/sentinel-model'
+import { AxiosRequestConfig, HttpStatusCode } from 'axios'
 
 import { CreateTokenResponse } from './Api/index.ts'
 import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from './Config.ts'

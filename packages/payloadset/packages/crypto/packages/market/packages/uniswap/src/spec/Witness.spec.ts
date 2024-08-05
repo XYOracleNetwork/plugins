@@ -2,8 +2,8 @@ import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { UniswapCryptoMarketPayload, UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { UniswapPoolContracts } from '../lib'
-import { UniswapCryptoMarketWitness } from '../Witness'
+import { UniswapPoolContracts } from '../lib/index.ts'
+import { UniswapCryptoMarketWitness } from '../Witness.ts'
 
 describe('UniswapCryptoMarketWitness', () => {
   test('observe', async () => {

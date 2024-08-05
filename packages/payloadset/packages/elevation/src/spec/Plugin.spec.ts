@@ -2,11 +2,14 @@
  * @jest-environment jsdom
  */
 
+// Polyfill TextDecoder
+import 'fast-text-encoding'
+
 import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 
-import { ElevationPlugin } from '../Plugin'
-import { ElevationWitnessConfigSchema } from '../Witness'
+import { ElevationPlugin } from '../Plugin.ts'
+import { ElevationWitnessConfigSchema } from '../Witness.ts'
 
 describe('ElevationPlugin', () => {
   test('Add to Resolver', async () => {

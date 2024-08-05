@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext"
+    "lib": ["esnext", "dom"],
   },
   "extends": "@xylabs/tsconfig-dom-jest"
 }

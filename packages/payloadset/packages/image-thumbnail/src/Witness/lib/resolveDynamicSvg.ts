@@ -1,4 +1,4 @@
-import { axios, AxiosResponse } from '@xylabs/axios'
+import axios, { AxiosResponse } from 'axios'
 import { toByteArray } from 'base64-js'
 import { Builder, parseStringPromise } from 'xml2js'
 

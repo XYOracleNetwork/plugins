@@ -7,8 +7,8 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../../Payload'
-import { ApiCallWitness } from '../Witness'
+import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../../Payload/index.ts'
+import { ApiCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json'
 
 describe('OpenSeaApi', () => {

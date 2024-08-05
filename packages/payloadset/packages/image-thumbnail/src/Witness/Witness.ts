@@ -2,7 +2,6 @@
 import { Buffer } from 'node:buffer'
 import { promises as dnsPromises } from 'node:dns'
 
-import { axios, AxiosError, AxiosResponse } from '@xylabs/axios'
 import { compact } from '@xylabs/lodash'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
@@ -10,6 +9,8 @@ import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbna
 import { Schema } from '@xyo-network/payload-model'
 import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { Semaphore } from 'async-mutex'
+import type { AxiosError, AxiosResponse } from 'axios'
+import axios from 'axios'
 import FileType from 'file-type'
 import graphicsMagick from 'gm'
 import hasbin from 'hasbin'

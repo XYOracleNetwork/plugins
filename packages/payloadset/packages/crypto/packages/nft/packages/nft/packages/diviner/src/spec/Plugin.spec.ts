@@ -1,6 +1,6 @@
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 
-import { NftScoreDivinerPlugin } from '../Plugin'
+import { NftScoreDivinerPlugin } from '../Plugin.ts'
 
 describe('NftScoreDivinerPlugin', () => {
   test('Add to Resolver', async () => {

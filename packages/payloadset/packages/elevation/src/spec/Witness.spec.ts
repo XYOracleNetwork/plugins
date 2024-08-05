@@ -8,7 +8,7 @@ import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { Quadkey } from '@xyo-network/quadkey'
 
-import { ElevationWitness, ElevationWitnessConfig, ElevationWitnessConfigSchema } from '../Witness'
+import { ElevationWitness, ElevationWitnessConfig, ElevationWitnessConfigSchema } from '../Witness.ts'
 
 const locations = [
   { quadkey: assertEx(Quadkey.fromLngLat({ lat: 32.7157, lng: -117.1611 }, 16)?.base16String), schema: LocationSchema }, // San Diego

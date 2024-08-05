@@ -1,5 +1,3 @@
-import { URL } from '@xylabs/url'
-
 export const web3Protocols = ['ipfs:', 'ar:']
 
 export const toUrl = (url?: string | null): URL | undefined => {

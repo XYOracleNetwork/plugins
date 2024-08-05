@@ -26,8 +26,8 @@ import { EvmAddress, EvmAddressSchema, getProviderFromEnv } from '@xyo-network/w
 import { isTimestamp, TimeStamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
-import { EvmTokenInterfaceImplementedDiviner } from '../Diviner'
-import { isEvmTokenInterfaceImplemented, TokenInterface } from '../Payload'
+import { EvmTokenInterfaceImplementedDiviner } from '../Diviner.ts'
+import { isEvmTokenInterfaceImplemented, TokenInterface } from '../Payload.ts'
 import contractWitnessManifest from './Contract.Witness.Index.json'
 import tokenDivinerManifest from './Token.Diviner.Index.json'
 import tokenNodeManifest from './TokenNode.json'

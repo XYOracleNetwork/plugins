@@ -1,11 +1,13 @@
 /* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
-import { Axios, AxiosError, AxiosJson } from '@xylabs/axios'
+import { AxiosJson } from '@xylabs/axios'
 import { Hash } from '@xylabs/hex'
+import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
+import { Axios, AxiosError } from 'axios'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 

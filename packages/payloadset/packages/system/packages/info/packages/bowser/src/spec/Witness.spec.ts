@@ -8,8 +8,8 @@ import { PayloadValidator } from '@xyo-network/payload-validator'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
 
-import { BowserSystemInfoWitnessConfigSchema } from '../Config'
-import { BowserSystemInfoWitness } from '../Witness'
+import { BowserSystemInfoWitnessConfigSchema } from '../Config.ts'
+import { BowserSystemInfoWitness } from '../Witness.ts'
 
 PayloadValidator.setSchemaNameValidatorFactory(schema => new SchemaNameValidator(schema))
 

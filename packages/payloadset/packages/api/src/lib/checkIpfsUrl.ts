@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { URL } from '@xylabs/url'
 
 const allowIpfsIoRepair = true
 

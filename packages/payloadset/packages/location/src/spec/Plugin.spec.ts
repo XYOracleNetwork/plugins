@@ -5,8 +5,8 @@
 import { CurrentLocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 
-import { CurrentLocationWitnessConfigSchema } from '../Config'
-import { LocationPlugin } from '../Plugin'
+import { CurrentLocationWitnessConfigSchema } from '../Config.ts'
+import { LocationPlugin } from '../Plugin.ts'
 
 describe('LocationPlugin', () => {
   test('Add to Resolver', async () => {

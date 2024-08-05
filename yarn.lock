@@ -535,7 +535,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/compat-data@npm:^7.22.6, @babel/compat-data@npm:^7.25.2":
+"@babel/compat-data@npm:^7.25.2":
   version: 7.25.2
   resolution: "@babel/compat-data@npm:7.25.2"
   checksum: 10/fd61de9303db3177fc98173571f81f3f551eac5c9f839c05ad02818b11fe77a74daa632abebf7f423fbb4a29976ae9141e0d2bd7517746a0ff3d74cb659ad33a
@@ -577,26 +577,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-annotate-as-pure@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-annotate-as-pure@npm:7.24.7"
-  dependencies:
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/a9017bfc1c4e9f2225b967fbf818004703de7cf29686468b54002ffe8d6b56e0808afa20d636819fcf3a34b89ba72f52c11bdf1d69f303928ee10d92752cad95
-  languageName: node
-  linkType: hard
-
-"@babel/helper-builder-binary-assignment-operator-visitor@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-builder-binary-assignment-operator-visitor@npm:7.24.7"
-  dependencies:
-    "@babel/traverse": "npm:^7.24.7"
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/3ddff45d1e086c9c6dcef53ef46521a0c11ddb09fe3ab42dca5af6bb1b1703895a9f4f8056f49fdf53c2dbf6e5cf1ddb4baf17d7e3766c63f051ab8d60a919ee
-  languageName: node
-  linkType: hard
-
-"@babel/helper-compilation-targets@npm:^7.22.6, @babel/helper-compilation-targets@npm:^7.24.7, @babel/helper-compilation-targets@npm:^7.24.8, @babel/helper-compilation-targets@npm:^7.25.2":
+"@babel/helper-compilation-targets@npm:^7.25.2":
   version: 7.25.2
   resolution: "@babel/helper-compilation-targets@npm:7.25.2"
   dependencies:
@@ -606,82 +587,6 @@ __metadata:
     lru-cache: "npm:^5.1.1"
     semver: "npm:^6.3.1"
   checksum: 10/eccb2d75923d2d4d596f9ff64716e8664047c4192f1b44c7d5c07701d4a3498ac2587a72ddae1046e65a501bc630eb7df4557958b08ec2dcf5b4a264a052f111
-  languageName: node
-  linkType: hard
-
-"@babel/helper-create-class-features-plugin@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-create-class-features-plugin@npm:7.24.7"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    "@babel/helper-environment-visitor": "npm:^7.24.7"
-    "@babel/helper-function-name": "npm:^7.24.7"
-    "@babel/helper-member-expression-to-functions": "npm:^7.24.7"
-    "@babel/helper-optimise-call-expression": "npm:^7.24.7"
-    "@babel/helper-replace-supers": "npm:^7.24.7"
-    "@babel/helper-skip-transparent-expression-wrappers": "npm:^7.24.7"
-    "@babel/helper-split-export-declaration": "npm:^7.24.7"
-    semver: "npm:^6.3.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/8ecb1c2acc808e1e0c21dccc7ea6899de9a140cb1856946800176b4784de6fccd575661fbff7744bb895d01aa6956ce963446b8577c4c2334293ba5579d5cdb9
-  languageName: node
-  linkType: hard
-
-"@babel/helper-create-regexp-features-plugin@npm:^7.18.6, @babel/helper-create-regexp-features-plugin@npm:^7.24.7, @babel/helper-create-regexp-features-plugin@npm:^7.25.0":
-  version: 7.25.2
-  resolution: "@babel/helper-create-regexp-features-plugin@npm:7.25.2"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    regexpu-core: "npm:^5.3.1"
-    semver: "npm:^6.3.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/33dd627eef9e4229aba66789efd8fb7342fc2667b821d4b7947c7294f6d472cf025ff2db9b358a1e03de98376de44e839f0611a456a57127fd6e4b4dbfc96c51
-  languageName: node
-  linkType: hard
-
-"@babel/helper-define-polyfill-provider@npm:^0.6.1, @babel/helper-define-polyfill-provider@npm:^0.6.2":
-  version: 0.6.2
-  resolution: "@babel/helper-define-polyfill-provider@npm:0.6.2"
-  dependencies:
-    "@babel/helper-compilation-targets": "npm:^7.22.6"
-    "@babel/helper-plugin-utils": "npm:^7.22.5"
-    debug: "npm:^4.1.1"
-    lodash.debounce: "npm:^4.0.8"
-    resolve: "npm:^1.14.2"
-  peerDependencies:
-    "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10/bb32ec12024d3f16e70641bc125d2534a97edbfdabbc9f69001ec9c4ce46f877c7a224c566aa6c8c510c3b0def2e43dc4433bf6a40896ba5ce0cef4ea5ccbcff
-  languageName: node
-  linkType: hard
-
-"@babel/helper-environment-visitor@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-environment-visitor@npm:7.24.7"
-  dependencies:
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/079d86e65701b29ebc10baf6ed548d17c19b808a07aa6885cc141b690a78581b180ee92b580d755361dc3b16adf975b2d2058b8ce6c86675fcaf43cf22f2f7c6
-  languageName: node
-  linkType: hard
-
-"@babel/helper-function-name@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-function-name@npm:7.24.7"
-  dependencies:
-    "@babel/template": "npm:^7.24.7"
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/2ceb3d9b2b35a0fc4100fc06ed7be3bc38f03ff0bf128ff0edbc0cc7dd842967b1496fc70b5c616c747d7711c2b87e7d025c8888f48740631d6148a9d3614f85
-  languageName: node
-  linkType: hard
-
-"@babel/helper-member-expression-to-functions@npm:^7.24.7, @babel/helper-member-expression-to-functions@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/helper-member-expression-to-functions@npm:7.24.8"
-  dependencies:
-    "@babel/traverse": "npm:^7.24.8"
-    "@babel/types": "npm:^7.24.8"
-  checksum: 10/ac878761cfd0a46c081cda0da75cc186f922cf16e8ecdd0c4fb6dca4330d9fe4871b41a9976224cf9669c9e7fe0421b5c27349f2e99c125fa0be871b327fa770
   languageName: node
   linkType: hard
 
@@ -695,7 +600,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-transforms@npm:^7.24.7, @babel/helper-module-transforms@npm:^7.24.8, @babel/helper-module-transforms@npm:^7.25.0, @babel/helper-module-transforms@npm:^7.25.2":
+"@babel/helper-module-transforms@npm:^7.25.2":
   version: 7.25.2
   resolution: "@babel/helper-module-transforms@npm:7.25.2"
   dependencies:
@@ -709,45 +614,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-optimise-call-expression@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-optimise-call-expression@npm:7.24.7"
-  dependencies:
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/da7a7f2d1bb1be4cffd5fa820bd605bc075c7dd014e0458f608bb6f34f450fe9412c8cea93e788227ab396e0e02c162d7b1db3fbcb755a6360e354c485d61df0
-  languageName: node
-  linkType: hard
-
-"@babel/helper-plugin-utils@npm:^7.0.0, @babel/helper-plugin-utils@npm:^7.10.4, @babel/helper-plugin-utils@npm:^7.12.13, @babel/helper-plugin-utils@npm:^7.14.5, @babel/helper-plugin-utils@npm:^7.18.6, @babel/helper-plugin-utils@npm:^7.22.5, @babel/helper-plugin-utils@npm:^7.24.7, @babel/helper-plugin-utils@npm:^7.24.8, @babel/helper-plugin-utils@npm:^7.8.0, @babel/helper-plugin-utils@npm:^7.8.3":
+"@babel/helper-plugin-utils@npm:^7.0.0, @babel/helper-plugin-utils@npm:^7.10.4, @babel/helper-plugin-utils@npm:^7.12.13, @babel/helper-plugin-utils@npm:^7.14.5, @babel/helper-plugin-utils@npm:^7.24.7, @babel/helper-plugin-utils@npm:^7.8.0":
   version: 7.24.8
   resolution: "@babel/helper-plugin-utils@npm:7.24.8"
   checksum: 10/adbc9fc1142800a35a5eb0793296924ee8057fe35c61657774208670468a9fbfbb216f2d0bc46c680c5fefa785e5ff917cc1674b10bd75cdf9a6aa3444780630
-  languageName: node
-  linkType: hard
-
-"@babel/helper-remap-async-to-generator@npm:^7.24.7, @babel/helper-remap-async-to-generator@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/helper-remap-async-to-generator@npm:7.25.0"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    "@babel/helper-wrap-function": "npm:^7.25.0"
-    "@babel/traverse": "npm:^7.25.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/6b1ab73a067008c92e2fe5b7a9f39aab32e7f5a8c5eaf0a864436c21791f708ad8619d4a509febdfe934aeb373af4baa7c7d9f41181b385e09f39eaf11ca108e
-  languageName: node
-  linkType: hard
-
-"@babel/helper-replace-supers@npm:^7.24.7, @babel/helper-replace-supers@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/helper-replace-supers@npm:7.25.0"
-  dependencies:
-    "@babel/helper-member-expression-to-functions": "npm:^7.24.8"
-    "@babel/helper-optimise-call-expression": "npm:^7.24.7"
-    "@babel/traverse": "npm:^7.25.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/97c6c17780cb9692132f7243f5a21fb6420104cb8ff8752dc03cfc9a1912a243994c0290c77ff096637ab6f2a7363b63811cfc68c2bad44e6b39460ac2f6a63f
   languageName: node
   linkType: hard
 
@@ -758,25 +628,6 @@ __metadata:
     "@babel/traverse": "npm:^7.24.7"
     "@babel/types": "npm:^7.24.7"
   checksum: 10/5083e190186028e48fc358a192e4b93ab320bd016103caffcfda81302a13300ccce46c9cd255ae520c25d2a6a9b47671f93e5fe5678954a2329dc0a685465c49
-  languageName: node
-  linkType: hard
-
-"@babel/helper-skip-transparent-expression-wrappers@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-skip-transparent-expression-wrappers@npm:7.24.7"
-  dependencies:
-    "@babel/traverse": "npm:^7.24.7"
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/784a6fdd251a9a7e42ccd04aca087ecdab83eddc60fda76a2950e00eb239cc937d3c914266f0cc476298b52ac3f44ffd04c358e808bd17552a7e008d75494a77
-  languageName: node
-  linkType: hard
-
-"@babel/helper-split-export-declaration@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/helper-split-export-declaration@npm:7.24.7"
-  dependencies:
-    "@babel/types": "npm:^7.24.7"
-  checksum: 10/ff04a3071603c87de0d6ee2540b7291ab36305b329bd047cdbb6cbd7db335a12f9a77af1cf708779f75f13c4d9af46093c00b34432e50b2411872c658d1a2e5e
   languageName: node
   linkType: hard
 
@@ -794,21 +645,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-validator-option@npm:^7.24.7, @babel/helper-validator-option@npm:^7.24.8":
+"@babel/helper-validator-option@npm:^7.24.8":
   version: 7.24.8
   resolution: "@babel/helper-validator-option@npm:7.24.8"
   checksum: 10/a52442dfa74be6719c0608fee3225bd0493c4057459f3014681ea1a4643cd38b68ff477fe867c4b356da7330d085f247f0724d300582fa4ab9a02efaf34d107c
-  languageName: node
-  linkType: hard
-
-"@babel/helper-wrap-function@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/helper-wrap-function@npm:7.25.0"
-  dependencies:
-    "@babel/template": "npm:^7.25.0"
-    "@babel/traverse": "npm:^7.25.0"
-    "@babel/types": "npm:^7.25.0"
-  checksum: 10/08724128b9c540c02a59f02f9c1c9940fe5363d85d0f30ec826a4f926afdb26fa4ec33ca2b88b4aa745fe3dbe1f44be2969b8a03af259af7945d8cd3262168d3
   languageName: node
   linkType: hard
 
@@ -845,74 +685,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-bugfix-firefox-class-in-computed-class-key@npm:^7.25.3":
-  version: 7.25.3
-  resolution: "@babel/plugin-bugfix-firefox-class-in-computed-class-key@npm:7.25.3"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/traverse": "npm:^7.25.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/9743feb0152f2ac686aaee6dfd41e8ea211989a459d4c2b10b531442f6865057cd1a502515634c25462b155bc58f0710267afed72396780e9b72be25370dd577
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-bugfix-safari-class-field-initializer-scope@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-bugfix-safari-class-field-initializer-scope@npm:7.25.0"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/5e504bba884a4500e71224d344efb1e70ebbeabd621e07a58f2d3c0d14a71a49c97b4989259a288cdbbfacebfea224397acf1217d26c77aebf9aa35bdd988249
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression@npm:7.25.0"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/f574beb1d4f723bb9b913ce379259a55b50a308364585ccb83e00d933465c26c04cbbc85a06e6d4c829279eb1021b3236133d486b3ff11cfd90ad815c8b478d2
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-skip-transparent-expression-wrappers": "npm:^7.24.7"
-    "@babel/plugin-transform-optional-chaining": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.13.0
-  checksum: 10/887f1b8bd0ef61206ece47919fda78a32eef35da31c0d95ab8d7adc8b4722534dc5177c86c8d6d81bcf4343f3c08c6adab2b46cfd2bea8e33c6c04e51306f9cc
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly@npm:7.25.0"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/traverse": "npm:^7.25.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/de04a9342e9a0db1673683112c83cdc52173f489f45aeed864ceba72dfba8c8588e565171e64cb2a408a09269e5fb35c6ab4ef50e3e649c4f8c0c787feb5c048
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-proposal-private-property-in-object@npm:7.21.0-placeholder-for-preset-env.2":
-  version: 7.21.0-placeholder-for-preset-env.2
-  resolution: "@babel/plugin-proposal-private-property-in-object@npm:7.21.0-placeholder-for-preset-env.2"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/fab70f399aa869275690ec6c7cedb4ef361d4e8b6f55c3d7b04bfee61d52fb93c87cec2c65d73cddbaca89fb8ef5ec0921fce675c9169d9d51f18305ab34e78a
-  languageName: node
-  linkType: hard
-
 "@babel/plugin-syntax-async-generators@npm:^7.8.4":
   version: 7.8.4
   resolution: "@babel/plugin-syntax-async-generators@npm:7.8.4"
@@ -935,7 +707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-class-properties@npm:^7.12.13, @babel/plugin-syntax-class-properties@npm:^7.8.3":
+"@babel/plugin-syntax-class-properties@npm:^7.8.3":
   version: 7.12.13
   resolution: "@babel/plugin-syntax-class-properties@npm:7.12.13"
   dependencies:
@@ -946,62 +718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-class-static-block@npm:^7.14.5":
-  version: 7.14.5
-  resolution: "@babel/plugin-syntax-class-static-block@npm:7.14.5"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.14.5"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/3e80814b5b6d4fe17826093918680a351c2d34398a914ce6e55d8083d72a9bdde4fbaf6a2dcea0e23a03de26dc2917ae3efd603d27099e2b98380345703bf948
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-dynamic-import@npm:^7.8.3":
-  version: 7.8.3
-  resolution: "@babel/plugin-syntax-dynamic-import@npm:7.8.3"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.8.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/ce307af83cf433d4ec42932329fad25fa73138ab39c7436882ea28742e1c0066626d224e0ad2988724c82644e41601cef607b36194f695cb78a1fcdc959637bd
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-export-namespace-from@npm:^7.8.3":
-  version: 7.8.3
-  resolution: "@babel/plugin-syntax-export-namespace-from@npm:7.8.3"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/85740478be5b0de185228e7814451d74ab8ce0a26fcca7613955262a26e99e8e15e9da58f60c754b84515d4c679b590dbd3f2148f0f58025f4ae706f1c5a5d4a
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-import-assertions@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-syntax-import-assertions@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/bd065cd73ae3dbe69e6f9167aa605da3df77d69bbad2ede95e4aa9e7af7744d5bc1838b928c77338ca62df7691a7adf6e608279be50c18e4b3c70cf77e3013d7
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-import-attributes@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-syntax-import-attributes@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/22fc50bd85a491bb8d22065f330a41f60d66f2f2d7a1deb73e80c8a4b5d7a42a092a03f8da18800650eca0fc14585167cc4e5c9fab351f0d390d1592347162ae
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-import-meta@npm:^7.10.4, @babel/plugin-syntax-import-meta@npm:^7.8.3":
+"@babel/plugin-syntax-import-meta@npm:^7.8.3":
   version: 7.10.4
   resolution: "@babel/plugin-syntax-import-meta@npm:7.10.4"
   dependencies:
@@ -1023,7 +740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-jsx@npm:^7.24.7, @babel/plugin-syntax-jsx@npm:^7.7.2":
+"@babel/plugin-syntax-jsx@npm:^7.7.2":
   version: 7.24.7
   resolution: "@babel/plugin-syntax-jsx@npm:7.24.7"
   dependencies:
@@ -1034,7 +751,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-logical-assignment-operators@npm:^7.10.4, @babel/plugin-syntax-logical-assignment-operators@npm:^7.8.3":
+"@babel/plugin-syntax-logical-assignment-operators@npm:^7.8.3":
   version: 7.10.4
   resolution: "@babel/plugin-syntax-logical-assignment-operators@npm:7.10.4"
   dependencies:
@@ -1056,7 +773,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-numeric-separator@npm:^7.10.4, @babel/plugin-syntax-numeric-separator@npm:^7.8.3":
+"@babel/plugin-syntax-numeric-separator@npm:^7.8.3":
   version: 7.10.4
   resolution: "@babel/plugin-syntax-numeric-separator@npm:7.10.4"
   dependencies:
@@ -1100,18 +817,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-private-property-in-object@npm:^7.14.5":
-  version: 7.14.5
-  resolution: "@babel/plugin-syntax-private-property-in-object@npm:7.14.5"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.14.5"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/b317174783e6e96029b743ccff2a67d63d38756876e7e5d0ba53a322e38d9ca452c13354a57de1ad476b4c066dbae699e0ca157441da611117a47af88985ecda
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-syntax-top-level-await@npm:^7.14.5, @babel/plugin-syntax-top-level-await@npm:^7.8.3":
+"@babel/plugin-syntax-top-level-await@npm:^7.8.3":
   version: 7.14.5
   resolution: "@babel/plugin-syntax-top-level-await@npm:7.14.5"
   dependencies:
@@ -1122,7 +828,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-typescript@npm:^7.24.7, @babel/plugin-syntax-typescript@npm:^7.7.2":
+"@babel/plugin-syntax-typescript@npm:^7.7.2":
   version: 7.24.7
   resolution: "@babel/plugin-syntax-typescript@npm:7.24.7"
   dependencies:
@@ -1133,759 +839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-syntax-unicode-sets-regex@npm:^7.18.6":
-  version: 7.18.6
-  resolution: "@babel/plugin-syntax-unicode-sets-regex@npm:7.18.6"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.18.6"
-    "@babel/helper-plugin-utils": "npm:^7.18.6"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/a651d700fe63ff0ddfd7186f4ebc24447ca734f114433139e3c027bc94a900d013cf1ef2e2db8430425ba542e39ae160c3b05f06b59fd4656273a3df97679e9c
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-arrow-functions@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-arrow-functions@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/6720173645826046878015c579c2ca9d93cdba79a2832f0180f5cf147d9817c85bf9c8338b16d6bdaa71f87809b7a194a6902e6c82ec00b6354aca6b40abe5e6
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-async-generator-functions@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-transform-async-generator-functions@npm:7.25.0"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-remap-async-to-generator": "npm:^7.25.0"
-    "@babel/plugin-syntax-async-generators": "npm:^7.8.4"
-    "@babel/traverse": "npm:^7.25.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/c65757490005234719a9614dbaf5004ca815612eff251edf95d4149fb74f42ebf91ff079f6b3594b6aa93eec6f4b6d2cda9f2c924f6217bb0422896be58ed0fe
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-async-to-generator@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-async-to-generator@npm:7.24.7"
-  dependencies:
-    "@babel/helper-module-imports": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-remap-async-to-generator": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/b2041d9d50b09afef983c4f1dece63fdfc5a8e4646e42591db398bc4322958434d60b3cb0f5d0f9f9dbdad8577e8a1a33ba9859aacc3004bf6d25d094d20193f
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-block-scoped-functions@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-block-scoped-functions@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/33e2fb9f24c11889b2bacbe9c3625f738edafc2136c8206598e0422664267ec5ca9422cb4563cc42039ccfc333fb42ce5f8513382e56c5b02f934005d0d6e8ff
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-block-scoping@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-transform-block-scoping@npm:7.25.0"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/981e565a8ff1e1f8d539b5ff067328517233142b131329d11e6c60405204e2a4a993828c367f7dc729a9608aabebdada869616563816e5f8f1385e91ac0fa4d6
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-class-properties@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-class-properties@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-class-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/1c6f645dd3889257028f27bfbb04526ac7676763a923fc8203aa79aa5232820e0201cb858c73b684b1922327af10304121ac013c7b756876d54560a9c1a7bc79
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-class-static-block@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-class-static-block@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-class-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-class-static-block": "npm:^7.14.5"
-  peerDependencies:
-    "@babel/core": ^7.12.0
-  checksum: 10/00b4d35788bcfefb56b6a1d3506ca23f11dd55d4bb5a34eb70397c06283dc7f596cd9d40995c4a6cb897b45ad220de211f854e7a030a05e26a307c8f56b6ba4b
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-classes@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-transform-classes@npm:7.25.0"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    "@babel/helper-compilation-targets": "npm:^7.24.8"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-replace-supers": "npm:^7.25.0"
-    "@babel/traverse": "npm:^7.25.0"
-    globals: "npm:^11.1.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/59aeb33b91e462a9b01cc9691c6a27e6601c5b76d83e3e4f95fef4086c6561e3557597847fe5243006542723fe4288d8fa6824544b1d94bb3104438f4fd96ebc
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-computed-properties@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-computed-properties@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/template": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/fecf3c770b2dd8e70be6da12d4dd0273de9d8ef4d0f46be98d56fddb3a451932cdc9bb81de3057c9acb903e05ece657886cc31886d5762afa7b0a256db0f791e
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-destructuring@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/plugin-transform-destructuring@npm:7.24.8"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/e3bba0bb050592615fbf062ea07ae94f99e9cf22add006eaa66ed672d67ff7051b578a5ea68a7d79f9184fb3c27c65333d86b0b8ea04f9810bcccbeea2ffbe76
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-dotall-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-dotall-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/51b75638748f6e5adab95b711d3365b8d7757f881c178946618a43b15063ec1160b07f4aa3b116bf3f1e097a88226a01db4cae2c5c4aad4c71fe5568828a03f5
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-duplicate-keys@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-duplicate-keys@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/4284d8fe058c838f80d594bace1380ce02995fa9a271decbece59c40815bc2f7e715807dcbe4d5da8b444716e6d05cc6d79771f500fb044cd0dd00ce4324b619
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-duplicate-named-capturing-groups-regex@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-transform-duplicate-named-capturing-groups-regex@npm:7.25.0"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.25.0"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/869c08def8eb80e3619c77e7af962dd82323a8447697298f461624077593c7b7082fc2238989880a0c0ba94bc6442300fd23e33255ac225760bc8bb755268941
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-dynamic-import@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-dynamic-import@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-dynamic-import": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/e949c02aa57098d916eb6edcbef0f3f7d62640f37e1a061b0692523964e081f8182f2c4292173b4dbea4edb8d146e65d6a20ce4b6b5f8c33be34bd846ae114ea
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-exponentiation-operator@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-exponentiation-operator@npm:7.24.7"
-  dependencies:
-    "@babel/helper-builder-binary-assignment-operator-visitor": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/014b211f73a524ee98441541ddc4f6b067eefcf94d509e99074a45ea8c3f3ad0e36cab6f5f96666ac05b747a21fa6fda949aa25153656bb2821545a4b302e0d4
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-export-namespace-from@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-export-namespace-from@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-export-namespace-from": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/d59d21945d2fd1ead914bb21f909f75b70ebe0e7627c2b1326ce500babca4c8e4a2513af6899d92e06e87186c61ee5087209345f5102fb4ff5a0e47e7b159a2c
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-for-of@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-for-of@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-skip-transparent-expression-wrappers": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/ea471ad1345f1153f7f72f1f084e74f48dc349272ca1b2d8710b841b015c9861d673e12c3c98d42ab3c640cb6ab88bb9a8da1f4ca9c57a8f71f00815fa23ecef
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-function-name@npm:^7.25.1":
-  version: 7.25.1
-  resolution: "@babel/plugin-transform-function-name@npm:7.25.1"
-  dependencies:
-    "@babel/helper-compilation-targets": "npm:^7.24.8"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/traverse": "npm:^7.25.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/1b4cd214c8523f7fa024fcda540ffe5503eda0e0be08b7c21405c96a870b5fe8bb1bda9e23a43a31467bf3dfc3a08edca250cf7f55f09dc40759a1ca6c6d6a4a
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-json-strings@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-json-strings@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-json-strings": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/5549dc97fc2d429a089d14ccfd51d8b3ba23c39b79edfe6d754e804fb1d50e6a4c070e73550be514a919c4db1553d8e6f7406178d68756b5959afe025a602cb2
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-literals@npm:^7.25.2":
-  version: 7.25.2
-  resolution: "@babel/plugin-transform-literals@npm:7.25.2"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/d9728625a6d55305610dd37057fe1a3473df4f3789fef693c900516caf8958dfb341394ecf69ce9b60c82c422ad2954491a7e4d4533432fd5df812827443d6e9
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-logical-assignment-operators@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-logical-assignment-operators@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-logical-assignment-operators": "npm:^7.10.4"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/e39581cf1f9a43330b8340177c618fdb3232deb03faab1937819ef39327660a1fe94fd0ec2f66d1f5b5f98acba68871a77a9931588011c13dded3d7094ecc9de
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-member-expression-literals@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-member-expression-literals@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/837b60ea42fc69a430c8f7fb124247ba009ff6d93187a521fe9f83556fe124715bd46533b1684a3e139f272849a14d1d4faf3397bde13714f99ce0938526ea6f
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-amd@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-modules-amd@npm:7.24.7"
-  dependencies:
-    "@babel/helper-module-transforms": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/66465ffba49af7a7b7a62995eb58f591ecd23ab42b0c67f8a70020177b3789d2a379bd6cbb68cbd09a69fd75c38a91f5a09ea70f5c8347bf4c6ea81caa0f6c6b
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-commonjs@npm:^7.24.7, @babel/plugin-transform-modules-commonjs@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/plugin-transform-modules-commonjs@npm:7.24.8"
-  dependencies:
-    "@babel/helper-module-transforms": "npm:^7.24.8"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-simple-access": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/18e5d229767c7b5b6ff0cbf1a8d2d555965b90201839d0ac2dc043b56857624ea344e59f733f028142a8c1d54923b82e2a0185694ef36f988d797bfbaf59819c
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-systemjs@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/plugin-transform-modules-systemjs@npm:7.25.0"
-  dependencies:
-    "@babel/helper-module-transforms": "npm:^7.25.0"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-validator-identifier": "npm:^7.24.7"
-    "@babel/traverse": "npm:^7.25.0"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/2c38efdbaf6faf730cdcb0c5e42d2d15bb114eecf184db078319de496b5e3ce68d499e531265a0e13e29f0dcaa001f240773db5c4c078eac7f4456d6c8bddd88
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-modules-umd@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-modules-umd@npm:7.24.7"
-  dependencies:
-    "@babel/helper-module-transforms": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/cef9c8917b3c35c3b6cb424dc2e6f74016122f1d25c196e2c7e51eb080d95e96c5d34966c0d5b9d4e17b8e60d455a97ed271317ed104e0e70bff159830a59678
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-named-capturing-groups-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-named-capturing-groups-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/b0ecb1afd22946b21fb8f34e826cfbfea4b5337f7592a5ff8af7937eddec4440149c59d2d134b4f21b2ed91b57611f39b19827729e19d99b7c11eaf614435f83
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-new-target@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-new-target@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/91b6a7439b7622f80dc755ddfb9ab083355bedc0b2af18e7c7a948faed14467599609331c8d59cfab4273640e3fc36e4cd02ad5b6dcb4a428f5a8baefc507acc
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-nullish-coalescing-operator@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-nullish-coalescing-operator@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-nullish-coalescing-operator": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/113cd24b6ce4d0a8e54ad9324428244942ce752a3fd38f8b615c3a786641ec18a00a01b662fe4cbebf369358f5904a975bbde0a977b839f2438b16f0d7d1dd36
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-numeric-separator@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-numeric-separator@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-numeric-separator": "npm:^7.10.4"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/dc5bb0534889d207b1da125635471c42da61a4a4e9e68855f24b1cd04ccdcf8325b2c29112e719913c2097242e7e62d660e0fea2a46f3a9a983c9d02a0ec7a04
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-object-rest-spread@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-object-rest-spread@npm:7.24.7"
-  dependencies:
-    "@babel/helper-compilation-targets": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-object-rest-spread": "npm:^7.8.3"
-    "@babel/plugin-transform-parameters": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/d586995dc3396bbf8fb75b84f0a3548d923e4c3500bb414641a7fe30762a4ffd82987887fece6381f600d8de2da1e3310fc9a725271724d35f9020fcd5d4b2a3
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-object-super@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-object-super@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-replace-supers": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/382739a017972d7126416b958ea81b4b950b6275414908a54bfef6aeed9b9fcc6c8d247db3a1134b09a3b355a60039670ce41ee41c626f8acec70f49c3c8d2a6
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-optional-catch-binding@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-optional-catch-binding@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-optional-catch-binding": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/605ae3764354e83f73c1e6430bac29e308806abcce8d1369cf69e4921771ff3592e8f60ba60c15990070d79b8d8740f0841069d64b466b3ce8a8c43e9743da7e
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-optional-chaining@npm:^7.24.7, @babel/plugin-transform-optional-chaining@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/plugin-transform-optional-chaining@npm:7.24.8"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-skip-transparent-expression-wrappers": "npm:^7.24.7"
-    "@babel/plugin-syntax-optional-chaining": "npm:^7.8.3"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/1f873fb9d86c280b64dfe5ebc59244b459b717ed72a7682da2386db3d9e11fc9d831cfc2e11d37262b4325a7a0e3ccbccfb8cd0b944caf199d3c9e03fff7b0af
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-parameters@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-parameters@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/41ff6bda926fabfb2e5d90b70621f279330691bed92009297340a8e776cfe9c3f2dda6afbc31dd3cbdccdfa9a5c57f2046e3ccc84f963c3797356df003d1703a
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-private-methods@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-private-methods@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-class-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/5338df2aae53c43e6a7ea0c44f20a1100709778769c7e42d4901a61945c3200ba0e7fca83832f48932423a68528219fbea233cb5b8741a2501fdecbacdc08292
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-private-property-in-object@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-private-property-in-object@npm:7.24.7"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    "@babel/helper-create-class-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-private-property-in-object": "npm:^7.14.5"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/a23ee18340818e292abfcb98b1086a188c81d640b1045e6809e9a3e8add78f9cb26607774de4ed653cbecd4277965dc4f4f1affc3504682209bb2a65fd4251f8
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-property-literals@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-property-literals@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/71708890fe007d45ad7a130150a2ba1fea0205f575b925ca2e1bb65018730636a68e65c634a474e5b658378d72871c337c953560009c081a645e088769bf168a
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-regenerator@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-regenerator@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    regenerator-transform: "npm:^0.15.2"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/70fa2bb36d3e2ce69a25c7227da8ad92307ab7b50cb6dfcc4dc5ce8f1cc79b0fcf997292a1cb3b4ae7cb136f515d1b2c3fb78c927bdba8d719794430403eb0c6
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-reserved-words@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-reserved-words@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/64a2669671bb97c3dee3830a82c3e932fe6e02d56a4053c6ee4453d317b5f436d3d44907fbb0f4fbd8a56ebee34f6aee250e49743b7243d14d00c069215f3113
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-shorthand-properties@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-shorthand-properties@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/c68c2be965007e0cb6667daa209bc0af877cab4b327ef2e21b2114c38554243c3f7fdcc5b03679b20f72a26d966aa646af771f3165c882067e85a3887647f028
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-spread@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-spread@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-skip-transparent-expression-wrappers": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/76e2c8544129d727d5a698e2a67d74e438bc35df843adb5f769316ec432c5e1bbb4128123a95b2fe8ef0aec7b26d87efe81d64326291c77ad757ff184d38448a
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-sticky-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-sticky-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/3b9a99ae043ef363c81bfb097fa7a553fcf7c7d9fddc13dd2b47b3b2e45cf2741a9ca78cfe55f463983b043b365f0f8452f2d5eaadbdea20e6d6de50c16bed25
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-template-literals@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-template-literals@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/ecf05a8511176d5570cb0d481577a407a4e8a9a430f86522d809e0ac2c823913e854ef9e2a1c83c0bd7c12489d82e1b48fabb52e697e80d6a6962125197593ca
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-typeof-symbol@npm:^7.24.8":
-  version: 7.24.8
-  resolution: "@babel/plugin-transform-typeof-symbol@npm:7.24.8"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/5f113fed94b694ec4a40a27b8628ce736cfa172b69fcffa2833c9a41895032127f3daeea552e94fdb4a3ce4e8cd51de67a670ab87a1f447a0cf55c9cb2d7ed11
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-typescript@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-typescript@npm:7.24.7"
-  dependencies:
-    "@babel/helper-annotate-as-pure": "npm:^7.24.7"
-    "@babel/helper-create-class-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/plugin-syntax-typescript": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/6a4af5a96a90f08ea679829abc558b8478b8b31b40c84b887f2859110b75ab2c8c48a2cf80193621d988a6b064aefef2a74ea3ccc310166219f87959d06a3033
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-unicode-escapes@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-unicode-escapes@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/6b8bca3495acedc89e880942de7b83c263fb5b4c9599594dcf3923e2128ae25f1f4725a295fe101027f75d8ef081ef28319296adf274b5022e57039e42836103
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-unicode-property-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-unicode-property-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/c0c284bbbdead7e17e059d72e1b288f86b0baacc410398ef6c6c703fe4326b069e68515ccb84359601315cd8e888f9226731d00624b7c6959b1c0853f072b61f
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-unicode-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-unicode-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/b545310d0d592d75566b9cd158f4b8951e34d07d839656789d179b39b3fd92b32bd387cdfaf33a93e636609f3bfb9bb03d41f3e43be598116c9c6c80cc3418c4
-  languageName: node
-  linkType: hard
-
-"@babel/plugin-transform-unicode-sets-regex@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/plugin-transform-unicode-sets-regex@npm:7.24.7"
-  dependencies:
-    "@babel/helper-create-regexp-features-plugin": "npm:^7.24.7"
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0
-  checksum: 10/183b72d5987dc93f9971667ce3f26d28b0e1058e71b129733dd9d5282aecba4c062b67c9567526780d2defd2bfbf950ca58d8306dc90b2761fd1e960d867ddb7
-  languageName: node
-  linkType: hard
-
-"@babel/preset-env@npm:^7.25.3":
-  version: 7.25.3
-  resolution: "@babel/preset-env@npm:7.25.3"
-  dependencies:
-    "@babel/compat-data": "npm:^7.25.2"
-    "@babel/helper-compilation-targets": "npm:^7.25.2"
-    "@babel/helper-plugin-utils": "npm:^7.24.8"
-    "@babel/helper-validator-option": "npm:^7.24.8"
-    "@babel/plugin-bugfix-firefox-class-in-computed-class-key": "npm:^7.25.3"
-    "@babel/plugin-bugfix-safari-class-field-initializer-scope": "npm:^7.25.0"
-    "@babel/plugin-bugfix-safari-id-destructuring-collision-in-function-expression": "npm:^7.25.0"
-    "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining": "npm:^7.24.7"
-    "@babel/plugin-bugfix-v8-static-class-fields-redefine-readonly": "npm:^7.25.0"
-    "@babel/plugin-proposal-private-property-in-object": "npm:7.21.0-placeholder-for-preset-env.2"
-    "@babel/plugin-syntax-async-generators": "npm:^7.8.4"
-    "@babel/plugin-syntax-class-properties": "npm:^7.12.13"
-    "@babel/plugin-syntax-class-static-block": "npm:^7.14.5"
-    "@babel/plugin-syntax-dynamic-import": "npm:^7.8.3"
-    "@babel/plugin-syntax-export-namespace-from": "npm:^7.8.3"
-    "@babel/plugin-syntax-import-assertions": "npm:^7.24.7"
-    "@babel/plugin-syntax-import-attributes": "npm:^7.24.7"
-    "@babel/plugin-syntax-import-meta": "npm:^7.10.4"
-    "@babel/plugin-syntax-json-strings": "npm:^7.8.3"
-    "@babel/plugin-syntax-logical-assignment-operators": "npm:^7.10.4"
-    "@babel/plugin-syntax-nullish-coalescing-operator": "npm:^7.8.3"
-    "@babel/plugin-syntax-numeric-separator": "npm:^7.10.4"
-    "@babel/plugin-syntax-object-rest-spread": "npm:^7.8.3"
-    "@babel/plugin-syntax-optional-catch-binding": "npm:^7.8.3"
-    "@babel/plugin-syntax-optional-chaining": "npm:^7.8.3"
-    "@babel/plugin-syntax-private-property-in-object": "npm:^7.14.5"
-    "@babel/plugin-syntax-top-level-await": "npm:^7.14.5"
-    "@babel/plugin-syntax-unicode-sets-regex": "npm:^7.18.6"
-    "@babel/plugin-transform-arrow-functions": "npm:^7.24.7"
-    "@babel/plugin-transform-async-generator-functions": "npm:^7.25.0"
-    "@babel/plugin-transform-async-to-generator": "npm:^7.24.7"
-    "@babel/plugin-transform-block-scoped-functions": "npm:^7.24.7"
-    "@babel/plugin-transform-block-scoping": "npm:^7.25.0"
-    "@babel/plugin-transform-class-properties": "npm:^7.24.7"
-    "@babel/plugin-transform-class-static-block": "npm:^7.24.7"
-    "@babel/plugin-transform-classes": "npm:^7.25.0"
-    "@babel/plugin-transform-computed-properties": "npm:^7.24.7"
-    "@babel/plugin-transform-destructuring": "npm:^7.24.8"
-    "@babel/plugin-transform-dotall-regex": "npm:^7.24.7"
-    "@babel/plugin-transform-duplicate-keys": "npm:^7.24.7"
-    "@babel/plugin-transform-duplicate-named-capturing-groups-regex": "npm:^7.25.0"
-    "@babel/plugin-transform-dynamic-import": "npm:^7.24.7"
-    "@babel/plugin-transform-exponentiation-operator": "npm:^7.24.7"
-    "@babel/plugin-transform-export-namespace-from": "npm:^7.24.7"
-    "@babel/plugin-transform-for-of": "npm:^7.24.7"
-    "@babel/plugin-transform-function-name": "npm:^7.25.1"
-    "@babel/plugin-transform-json-strings": "npm:^7.24.7"
-    "@babel/plugin-transform-literals": "npm:^7.25.2"
-    "@babel/plugin-transform-logical-assignment-operators": "npm:^7.24.7"
-    "@babel/plugin-transform-member-expression-literals": "npm:^7.24.7"
-    "@babel/plugin-transform-modules-amd": "npm:^7.24.7"
-    "@babel/plugin-transform-modules-commonjs": "npm:^7.24.8"
-    "@babel/plugin-transform-modules-systemjs": "npm:^7.25.0"
-    "@babel/plugin-transform-modules-umd": "npm:^7.24.7"
-    "@babel/plugin-transform-named-capturing-groups-regex": "npm:^7.24.7"
-    "@babel/plugin-transform-new-target": "npm:^7.24.7"
-    "@babel/plugin-transform-nullish-coalescing-operator": "npm:^7.24.7"
-    "@babel/plugin-transform-numeric-separator": "npm:^7.24.7"
-    "@babel/plugin-transform-object-rest-spread": "npm:^7.24.7"
-    "@babel/plugin-transform-object-super": "npm:^7.24.7"
-    "@babel/plugin-transform-optional-catch-binding": "npm:^7.24.7"
-    "@babel/plugin-transform-optional-chaining": "npm:^7.24.8"
-    "@babel/plugin-transform-parameters": "npm:^7.24.7"
-    "@babel/plugin-transform-private-methods": "npm:^7.24.7"
-    "@babel/plugin-transform-private-property-in-object": "npm:^7.24.7"
-    "@babel/plugin-transform-property-literals": "npm:^7.24.7"
-    "@babel/plugin-transform-regenerator": "npm:^7.24.7"
-    "@babel/plugin-transform-reserved-words": "npm:^7.24.7"
-    "@babel/plugin-transform-shorthand-properties": "npm:^7.24.7"
-    "@babel/plugin-transform-spread": "npm:^7.24.7"
-    "@babel/plugin-transform-sticky-regex": "npm:^7.24.7"
-    "@babel/plugin-transform-template-literals": "npm:^7.24.7"
-    "@babel/plugin-transform-typeof-symbol": "npm:^7.24.8"
-    "@babel/plugin-transform-unicode-escapes": "npm:^7.24.7"
-    "@babel/plugin-transform-unicode-property-regex": "npm:^7.24.7"
-    "@babel/plugin-transform-unicode-regex": "npm:^7.24.7"
-    "@babel/plugin-transform-unicode-sets-regex": "npm:^7.24.7"
-    "@babel/preset-modules": "npm:0.1.6-no-external-plugins"
-    babel-plugin-polyfill-corejs2: "npm:^0.4.10"
-    babel-plugin-polyfill-corejs3: "npm:^0.10.4"
-    babel-plugin-polyfill-regenerator: "npm:^0.6.1"
-    core-js-compat: "npm:^3.37.1"
-    semver: "npm:^6.3.1"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/293c32dee33f138d22cea0c0e163b6d79ef3860ac269921a438edb4adbfa53976ce2cd3f7a79408c8e52c852b5feda45abdbc986a54e9d9aa0b6680d7a371a58
-  languageName: node
-  linkType: hard
-
-"@babel/preset-modules@npm:0.1.6-no-external-plugins":
-  version: 0.1.6-no-external-plugins
-  resolution: "@babel/preset-modules@npm:0.1.6-no-external-plugins"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.0.0"
-    "@babel/types": "npm:^7.4.4"
-    esutils: "npm:^2.0.2"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0 || ^8.0.0-0 <8.0.0
-  checksum: 10/039aba98a697b920d6440c622aaa6104bb6076d65356b29dad4b3e6627ec0354da44f9621bafbeefd052cd4ac4d7f88c9a2ab094efcb50963cb352781d0c6428
-  languageName: node
-  linkType: hard
-
-"@babel/preset-typescript@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/preset-typescript@npm:7.24.7"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.24.7"
-    "@babel/helper-validator-option": "npm:^7.24.7"
-    "@babel/plugin-syntax-jsx": "npm:^7.24.7"
-    "@babel/plugin-transform-modules-commonjs": "npm:^7.24.7"
-    "@babel/plugin-transform-typescript": "npm:^7.24.7"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 10/995e9783f8e474581e7533d6b10ec1fbea69528cc939ad8582b5937e13548e5215d25a8e2c845e7b351fdaa13139896b5e42ab3bde83918ea4e41773f10861ac
-  languageName: node
-  linkType: hard
-
-"@babel/regjsgen@npm:^0.8.0":
-  version: 0.8.0
-  resolution: "@babel/regjsgen@npm:0.8.0"
-  checksum: 10/c57fb730b17332b7572574b74364a77d70faa302a281a62819476fa3b09822974fd75af77aea603ad77378395be64e81f89f0e800bf86cbbf21652d49ce12ee8
-  languageName: node
-  linkType: hard
-
-"@babel/runtime@npm:^7.8.4":
-  version: 7.24.7
-  resolution: "@babel/runtime@npm:7.24.7"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10/7b77f566165dee62db3db0296e71d08cafda3f34e1b0dcefcd68427272e17c1704f4e4369bff76651b07b6e49d3ea5a0ce344818af9116e9292e4381e0918c76
-  languageName: node
-  linkType: hard
-
-"@babel/template@npm:^7.24.7, @babel/template@npm:^7.25.0, @babel/template@npm:^7.3.3":
+"@babel/template@npm:^7.25.0, @babel/template@npm:^7.3.3":
   version: 7.25.0
   resolution: "@babel/template@npm:7.25.0"
   dependencies:
@@ -1896,7 +850,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/traverse@npm:^7.23.2, @babel/traverse@npm:^7.24.7, @babel/traverse@npm:^7.24.8, @babel/traverse@npm:^7.25.0, @babel/traverse@npm:^7.25.1, @babel/traverse@npm:^7.25.2, @babel/traverse@npm:^7.25.3":
+"@babel/traverse@npm:^7.23.2, @babel/traverse@npm:^7.24.7, @babel/traverse@npm:^7.25.2":
   version: 7.25.3
   resolution: "@babel/traverse@npm:7.25.3"
   dependencies:
@@ -1911,7 +865,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.24.7, @babel/types@npm:^7.24.8, @babel/types@npm:^7.25.0, @babel/types@npm:^7.25.2, @babel/types@npm:^7.3.3, @babel/types@npm:^7.4.4":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.20.7, @babel/types@npm:^7.24.7, @babel/types@npm:^7.25.0, @babel/types@npm:^7.25.2, @babel/types@npm:^7.3.3":
   version: 7.25.2
   resolution: "@babel/types@npm:7.25.2"
   dependencies:
@@ -4131,6 +3085,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/eslint-plugin@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/eslint-plugin@npm:8.0.1"
+  dependencies:
+    "@eslint-community/regexpp": "npm:^4.10.0"
+    "@typescript-eslint/scope-manager": "npm:8.0.1"
+    "@typescript-eslint/type-utils": "npm:8.0.1"
+    "@typescript-eslint/utils": "npm:8.0.1"
+    "@typescript-eslint/visitor-keys": "npm:8.0.1"
+    graphemer: "npm:^1.4.0"
+    ignore: "npm:^5.3.1"
+    natural-compare: "npm:^1.4.0"
+    ts-api-utils: "npm:^1.3.0"
+  peerDependencies:
+    "@typescript-eslint/parser": ^8.0.0 || ^8.0.0-alpha.0
+    eslint: ^8.57.0 || ^9.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/eceb49205734a2838734b11f5c6e0bdea807859426d8bef6fbd6eebcf3df389c7ff31114ad9caf3a440ea36a62d44dd4ca8c0313a57eeccce194d28da7fbe7c2
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/parser@npm:^8.0.0":
   version: 8.0.0
   resolution: "@typescript-eslint/parser@npm:8.0.0"
@@ -4146,6 +3123,24 @@ __metadata:
     typescript:
       optional: true
   checksum: 10/044a7deb299bc988b7f33a99b9c1dc387133e7ce4b2f7751568e4fd07a2e541c1d628e332205ac3cbd797fcad95f89d097a38e6e7e42707d9022fbf0b8b26e6c
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/parser@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/parser@npm:8.0.1"
+  dependencies:
+    "@typescript-eslint/scope-manager": "npm:8.0.1"
+    "@typescript-eslint/types": "npm:8.0.1"
+    "@typescript-eslint/typescript-estree": "npm:8.0.1"
+    "@typescript-eslint/visitor-keys": "npm:8.0.1"
+    debug: "npm:^4.3.4"
+  peerDependencies:
+    eslint: ^8.57.0 || ^9.0.0
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/d483e236d13e40f00cb6590b956caee9ea4a68c0bc338aad7463a0183e1983d08d1a31b5f9107641d06cd7bcc55d5b7cb7d48d42d9cf3c4996573d798128ec46
   languageName: node
   linkType: hard
 
@@ -4169,6 +3164,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/scope-manager@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/scope-manager@npm:8.0.1"
+  dependencies:
+    "@typescript-eslint/types": "npm:8.0.1"
+    "@typescript-eslint/visitor-keys": "npm:8.0.1"
+  checksum: 10/e4509f69390dd51f87e9a998d96047330cb1d23262fdc6f4cf7c9475e10faf0a85cc19324d1a51102fcda5dbef5621395336177d55de7e1fe8a222e1823b9a43
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/type-utils@npm:8.0.0":
   version: 8.0.0
   resolution: "@typescript-eslint/type-utils@npm:8.0.0"
@@ -4184,6 +3189,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/type-utils@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/type-utils@npm:8.0.1"
+  dependencies:
+    "@typescript-eslint/typescript-estree": "npm:8.0.1"
+    "@typescript-eslint/utils": "npm:8.0.1"
+    debug: "npm:^4.3.4"
+    ts-api-utils: "npm:^1.3.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/228a6bfc9c81d2acadab28dd968d43477507d7811a3cef2755003c1b61a17e579ca1fc53ad9b18bedf08591c70bf5e443a8c7e85a7228ee3e7d16c908b1b3be8
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/types@npm:7.17.0":
   version: 7.17.0
   resolution: "@typescript-eslint/types@npm:7.17.0"
@@ -4195,6 +3215,13 @@ __metadata:
   version: 8.0.0
   resolution: "@typescript-eslint/types@npm:8.0.0"
   checksum: 10/e28e79d8b7acfa42c90781fa63e90e56807ae018a0a92fc71c8e441d2bb3a250527c9d44ff6450ff1d47ceed0c3df28de6599f97f6c4c65ac554088867fc3517
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/types@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/types@npm:8.0.1"
+  checksum: 10/821ed735ff34da599315eadc3145898f02d5fea850979ed5b27648be0c025fdca3a6f8965f31dc290425eeda7c320d278ac60838f43580dc0173bd6be384051a
   languageName: node
   linkType: hard
 
@@ -4236,6 +3263,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@typescript-eslint/typescript-estree@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/typescript-estree@npm:8.0.1"
+  dependencies:
+    "@typescript-eslint/types": "npm:8.0.1"
+    "@typescript-eslint/visitor-keys": "npm:8.0.1"
+    debug: "npm:^4.3.4"
+    globby: "npm:^11.1.0"
+    is-glob: "npm:^4.0.3"
+    minimatch: "npm:^9.0.4"
+    semver: "npm:^7.6.0"
+    ts-api-utils: "npm:^1.3.0"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 10/f0888381faaf6f1394adec1286c606dc41d8e27f1591d3fb20750c17e236f282627bf6c18b1ba34bf97e9af03f99b6e4b10a7625f615496cd506595da0c21186
+  languageName: node
+  linkType: hard
+
 "@typescript-eslint/utils@npm:8.0.0, @typescript-eslint/utils@npm:^8.0.0":
   version: 8.0.0
   resolution: "@typescript-eslint/utils@npm:8.0.0"
@@ -4247,6 +3293,20 @@ __metadata:
   peerDependencies:
     eslint: ^8.57.0 || ^9.0.0
   checksum: 10/f76e65763725d944d3c6f0e78ea566cdb08247fa7ee9e2ec15310527f3e2325c92cb67c80a63e4a6dd29a5a7d96db3839aebd0a2e98810dcc248f6762414c995
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/utils@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/utils@npm:8.0.1"
+  dependencies:
+    "@eslint-community/eslint-utils": "npm:^4.4.0"
+    "@typescript-eslint/scope-manager": "npm:8.0.1"
+    "@typescript-eslint/types": "npm:8.0.1"
+    "@typescript-eslint/typescript-estree": "npm:8.0.1"
+  peerDependencies:
+    eslint: ^8.57.0 || ^9.0.0
+  checksum: 10/e359a9e95d0b3f8dbccc3681607748f96b332667a882a5635a9876814159b8a723da7138f7fd890cf0c414c46257a8362d5a55a3bad78bc37743ee814c7a8de0
   languageName: node
   linkType: hard
 
@@ -4281,6 +3341,16 @@ __metadata:
     "@typescript-eslint/types": "npm:8.0.0"
     eslint-visitor-keys: "npm:^3.4.3"
   checksum: 10/328106878ed42f1543590317477275a3c95c0455ba8203355fede94b0970844ec430cc5e090d4e1f48d805ac40ab1bd339270514e256b0810cabd423c6b2d52a
+  languageName: node
+  linkType: hard
+
+"@typescript-eslint/visitor-keys@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@typescript-eslint/visitor-keys@npm:8.0.1"
+  dependencies:
+    "@typescript-eslint/types": "npm:8.0.1"
+    eslint-visitor-keys: "npm:^3.4.3"
+  checksum: 10/489da338e19422eadb3b29fcf4d594ed00534faa129f52419bf9eb5733b0a1c11198d18e8d089fa0cc204370c2d2dd1834157a183d1e3e94df41378c5a606545
   languageName: node
   linkType: hard
 
@@ -4396,12 +3466,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/array@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/array@npm:3.6.8"
+"@xylabs/array@npm:^3.6.12, @xylabs/array@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/array@npm:3.6.12"
   dependencies:
-    "@xylabs/exists": "npm:^3.6.8"
-  checksum: 10/a8da39408294e5d6acc2180ce7205d666aef4f8cd89d14b8541ea51b22a8858729f53600635a989dbabf8956a739eb9de7181078ba83c6e1143d3366383d098f
+    "@xylabs/exists": "npm:^3.6.12"
+  checksum: 10/036a2b61a39d7f1d5cf867a929c7284c1eaa5892d7e9f89eb2faf9b4160a5449851fa94d2e9d0a2b37bd5a95190caba1f871599469550bc18c5a7cb6459d858d
   languageName: node
   linkType: hard
 
@@ -4417,54 +3487,54 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/assert@npm:^3.0.14, @xylabs/assert@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/assert@npm:3.6.8"
-  checksum: 10/09ead299684bd9b7951cb80f96688e194c8b62339114b896e61510397643c840847a67ca7e3a54351093da92c9559cc1296551d1b67b04a4eaff03aad2974b32
+"@xylabs/assert@npm:^3.0.14, @xylabs/assert@npm:^3.6.12, @xylabs/assert@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/assert@npm:3.6.12"
+  checksum: 10/4697d08c2a3645399327a161c78805e4572716e3ac98aa0f412d386a291d8f23393a6d60eaea43fd96df70dd6dd763531577e024bb5dc8a3171582df0a0885b0
   languageName: node
   linkType: hard
 
-"@xylabs/axios@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/axios@npm:3.6.8"
+"@xylabs/axios@npm:^3.6.12, @xylabs/axios@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/axios@npm:3.6.12"
   dependencies:
     "@types/pako": "npm:^2.0.3"
-    "@xylabs/logger": "npm:^3.6.8"
+    "@xylabs/logger": "npm:^3.6.12"
     axios: "npm:^1.7.3"
     pako: "npm:^2.1.0"
-  checksum: 10/2f188c2231cb318e96ad66c16e43227e771838de7aecca32625ec367220f9c2b80dd2e22a3c61f70096476769b5f1fbbde16ccd70e5fa8aec340c4b11a0635f5
+  checksum: 10/32137e22a2c5bce37683d2f407c4ddd8d7f55f9b7dd9f34c0dff75b47c096a60035eecd1646fb78f2c91d0f5467352f73b5404f66ffd68bf68de5207722b3b4d
   languageName: node
   linkType: hard
 
-"@xylabs/crypto@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/crypto@npm:3.6.8"
+"@xylabs/crypto@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "@xylabs/crypto@npm:3.6.12"
   dependencies:
-    "@xylabs/platform": "npm:^3.6.8"
+    "@xylabs/platform": "npm:^3.6.12"
     crypto-js: "npm:^4.2.0"
-  checksum: 10/b05180fbdff36c42178f60fc601e7d6ef60676a29a5d0ee26fe5e9f0a3ca32dba00645739a0e3c994ec6a0d6e94ecd89f70dfdd67cf53746f117b8a4212a0b22
+  checksum: 10/f862fefd3fabb3ce9779f733cec7177022726b7ffe718569b6d94f6af91b5e755630e35499bba45e62cce2ed7aaa3219589435253cccef370bc97192962fd2d3
   languageName: node
   linkType: hard
 
-"@xylabs/delay@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/delay@npm:3.6.8"
+"@xylabs/delay@npm:^3.6.12, @xylabs/delay@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/delay@npm:3.6.12"
   dependencies:
-    "@xylabs/timer": "npm:^3.6.8"
-  checksum: 10/d40ffcf6dede6d5ef546bf4cc28948073d770ceb959d08668af2253171cd6e6cdfb05f4ddfa2f5a80461350a993ae30f7ea9d9f192de4f217198900159573794
+    "@xylabs/timer": "npm:^3.6.12"
+  checksum: 10/f2a3fbe127b48e878e31ac1ac841530a4211470c10de4c84a97bc966de0073242673ed3c5bfaac774daec8d69f4a7266835c5fc9e64f4e82d94ee40746f39b0c
   languageName: node
   linkType: hard
 
-"@xylabs/error@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/error@npm:3.6.8"
-  checksum: 10/efcee6ecbda77faa528b33574939cc1a769e9f2e5a362d129bd8874029f93437b6e1745bec01bf3abf9e753b5e006ce1cf91f12fad3fa221875664dde3473076
+"@xylabs/error@npm:^3.6.12, @xylabs/error@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/error@npm:3.6.12"
+  checksum: 10/697eef671253b45f327971f7ac895fb293c834624a47402d733483af0c96f855638b88c8a07c74470fc89e4caee993b740567e21d5200c7e5bd72213eeeb2d4c
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config-flat@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/eslint-config-flat@npm:3.15.13"
+"@xylabs/eslint-config-flat@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/eslint-config-flat@npm:3.15.14"
   dependencies:
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
@@ -4481,13 +3551,13 @@ __metadata:
     prettier: "npm:^3.3.3"
   peerDependencies:
     eslint: ^9
-  checksum: 10/932e9a8281fe6607ed7be7907b55c15de8a139c005f06cccd3986d9d0b0c10d7402891660bd07897fb15a534b68d646848280441888cf34b52ad02f54aa11a70
+  checksum: 10/25fb231b38873655d45b3c768caa8ecb08f1c35d3da44e323258d6aaed2679d3b8d299b792d69b7101800316d6a2ecd70f025a5c2067df011a2d088f87b8a6d3
   languageName: node
   linkType: hard
 
-"@xylabs/eslint-config@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/eslint-config@npm:3.15.13"
+"@xylabs/eslint-config@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/eslint-config@npm:3.15.14"
   dependencies:
     "@stylistic/eslint-plugin": "npm:^2.6.1"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
@@ -4517,107 +3587,108 @@ __metadata:
   peerDependenciesMeta:
     eslint:
       optional: true
-  checksum: 10/6c8d112e0ea54f2aab55bf0515da536d4b6d12571e42f8786181c42b7a50391778fa8ae65d8cbfb2f6ac20695d49b2075e74aafce1cae33c3fea4ffb745b0807
+  checksum: 10/6e87761f4c21368449340fd637377f2afcb2285d9e069d3fd0897e9113792e8ec5f29b935b91d40c5d1a2171ffc634d10e34244ecf8bc12ddb18aceb3c5acc6c
   languageName: node
   linkType: hard
 
-"@xylabs/eth-address@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/eth-address@npm:3.6.8"
+"@xylabs/eth-address@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "@xylabs/eth-address@npm:3.6.12"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
+    "@xylabs/assert": "npm:^3.6.12"
     ethers: "npm:^6.13.2"
-  checksum: 10/e69f4815d02acbb538c5ff74ed88c90317efed5ca53e55336740768abf22cebb4e91ab8ff79afcb08cee4d8dfc90400ce8518be01ef3b1ab260cdb47a17ddcd3
+  checksum: 10/27e25492f871c587d62fe488195bf46eff9f9043c9f792e2b10c0e24da8303403037a8dd4696702fe28954483e1cd891b09ae3ad52c4f0d1009ddc1f8f42c169
   languageName: node
   linkType: hard
 
-"@xylabs/exists@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/exists@npm:3.6.8"
-  checksum: 10/b8c1815dae6315d5c1233a544c6d502daf0143c340a36c42a5058d826a50abb66830f045fd57509eea6509edbd5bf7bd995a836fadcd0f591f59b41c67630218
+"@xylabs/exists@npm:^3.6.12, @xylabs/exists@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/exists@npm:3.6.12"
+  checksum: 10/2ce2fc118819c525cdef3c093f9cb14dbde14ab17b0d69574d97a20fc077b3c52320c3f5d023401003eb15946a3f0d86409a848a6b093e03f56368342726f66a
   languageName: node
   linkType: hard
 
-"@xylabs/forget@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/forget@npm:3.6.8"
+"@xylabs/forget@npm:^3.6.12, @xylabs/forget@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/forget@npm:3.6.12"
   dependencies:
-    "@xylabs/delay": "npm:^3.6.8"
-  checksum: 10/38587d1bc987f79b0878e6591d499d18930faccac0693d291a0dfc7379a79778d65c1c515e847869b0b4c5b368f0a75d0dec7be7c3607a5531edda0818c892cf
+    "@xylabs/delay": "npm:^3.6.12"
+  checksum: 10/e5a031b4662d847e20be5430fc5a51bc7c6492bc804f84777bd14d6d8c377c3822ad346d62d66990046c9ffdfe12f09afdf51d66727580a6526b2cdeae834e40
   languageName: node
   linkType: hard
 
-"@xylabs/hex@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/hex@npm:3.6.8"
-  checksum: 10/7fafb2e23611df0e34a9130b32136ba46f2ac7b594d4edcaa6f2fa8fde39756e30f01d7ea158f4f96d38ba98940f24cf119cf6a70bacb1290dfa02f3604f9e16
+"@xylabs/hex@npm:^3.6.12, @xylabs/hex@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/hex@npm:3.6.12"
+  checksum: 10/3bde1a03a9327d83ec8b9c7b32d0a4aa6de0302bab65691cd7949224c112098e776dd0770aa8d4a18f194b6efd879b5983260e233e908e7f260696a4e30b515c
   languageName: node
   linkType: hard
 
-"@xylabs/jest-helpers@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/jest-helpers@npm:3.6.8"
+"@xylabs/jest-helpers@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "@xylabs/jest-helpers@npm:3.6.12"
   peerDependencies:
     jest: "*"
-  checksum: 10/0a43e76e4c191c4e4ec395cbf98da363817257076f6599aa345d9acf009c54854b893960c40af31742fbc1479a7d6bf1233106082d7691c1e6371167d065f32e
+  checksum: 10/799c49d6d64c1e03c5b5d697bcedb8297dcc8cb2ed9e6df8ee37b69e6edf2af96e64f7ca5032ec650d65ca68b2033102a2fb575dbe7dc16ce47d6367ead8c008
   languageName: node
   linkType: hard
 
-"@xylabs/lodash@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/lodash@npm:3.6.8"
+"@xylabs/lodash@npm:^3.6.12, @xylabs/lodash@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/lodash@npm:3.6.12"
   dependencies:
     "@types/lodash": "npm:^4.17.7"
     "@types/lodash-es": "npm:^4.17.12"
-    lodash: "npm:^4.17.21"
-    lodash-es: "npm:^4.17.21"
-  dependenciesMeta:
+  peerDependencies:
+    lodash: ^4.17.21
+    lodash-es: ^4.17.21
+  peerDependenciesMeta:
     lodash:
       optional: true
     lodash-es:
       optional: true
-  checksum: 10/8021f9216c28b4de53b6922e8c27c73be073bdc9ae6de4b3f4805393078c39b7a6ede2444b480a654c9237691af39e117dccf8b09195093c697b830f253aa0d0
+  checksum: 10/885273011e7d51af60b0607611a6cdf81bf0785abe4abb96596553b6bdf30f1c83ccac551fa360ab257df6e0fd30db1ddec925d605426bf6af874f8b80ba05ff
   languageName: node
   linkType: hard
 
-"@xylabs/logger@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/logger@npm:3.6.8"
+"@xylabs/logger@npm:^3.6.12, @xylabs/logger@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/logger@npm:3.6.12"
   dependencies:
-    "@xylabs/error": "npm:^3.6.8"
-  checksum: 10/9c47f12a6aa4bc23d1c27b34988e8f38d81e744343bb8de0bf309355ad083797ff78f2f1c0c2c0264d10a79e7fbdac3c3f330ae0f09418c2552305fa1d344d18
+    "@xylabs/error": "npm:^3.6.12"
+  checksum: 10/aa99e9b83166ebf6fe9feb9d669fc712467ea16649d8f2d0f7eb4bde8be330c4f6212365fc4015e91af39b52b945af45620cde73f59b3db2ea25a2bf27930868
   languageName: node
   linkType: hard
 
-"@xylabs/object@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/object@npm:3.6.8"
+"@xylabs/object@npm:^3.6.12, @xylabs/object@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/object@npm:3.6.12"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/logger": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-  checksum: 10/63105355b88cad81f89db7ce3005c845375ac631733acd9851df8f200545f0c01ab49d329f1a6547ad9c1b9dd7bef61df32621de7f251dc8ed2a4ed97a925a79
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/logger": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+  checksum: 10/889e834671edc539bee10d8f7cb28320ee1b27adc13bbd965b42043f2f21ee6ce92576e88fb00b1f988c1a39afaf25aa0d42ab5760c9ce627c66e08d26a9759e
   languageName: node
   linkType: hard
 
-"@xylabs/platform@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/platform@npm:3.6.8"
-  checksum: 10/7de78f44cff4f849641ef97f90c9c951b362a22bda3d0d7032d180d96dd4e288bcf3d6a0fdfd7ebb7e7c65d64543d13d6211d40f1b20d97e90fc04950be223a6
+"@xylabs/platform@npm:^3.6.12, @xylabs/platform@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/platform@npm:3.6.12"
+  checksum: 10/92e9a48ba63e9233115eafcc9259e742193a37770a61ae859cb9ca23935c0929c7e799af5b39dd5972ff4429d22d90ae75c344c95be02c3867b17af7ea98b963
   languageName: node
   linkType: hard
 
-"@xylabs/profile@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/profile@npm:3.6.8"
-  checksum: 10/6f866ba87fb91eb0401b22151e578553fab9de2ce6b213d0b1fa1d478d89d37d60cc9a7d74bde5c71e44be553ef69c082551c9298c2b8ae4177f27ce05e2f8c6
+"@xylabs/profile@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "@xylabs/profile@npm:3.6.12"
+  checksum: 10/d70a432ca24ce905ce3329ca6a4078953fcfe042c27685dee0b1835e8b24271d8b31e5576956835dec1466ca1af3523244a840446f9192ff65993ccc2cfb8169
   languageName: node
   linkType: hard
 
-"@xylabs/promise@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/promise@npm:3.6.8"
-  checksum: 10/dbc28c8cf9912662f763cd5627d437acf0a1c152d9322966805368412f0a2a887b2b561b94abb9b759a69ec98f4193fbc475e47f3284ada4581107b9a60c9ded
+"@xylabs/promise@npm:^3.6.12, @xylabs/promise@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/promise@npm:3.6.12"
+  checksum: 10/774551bfb44aacd323cfbcaa5f98d9e737b581243ddc9b7a3b5c65af0d85420c02bc585ab5460e3044ed14d62ef59e4cdde3313076e21accf9d4c0c77743f226
   languageName: node
   linkType: hard
 
@@ -4682,18 +3753,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/timer@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/timer@npm:3.6.8"
+"@xylabs/timer@npm:^3.6.12, @xylabs/timer@npm:^3.6.8":
+  version: 3.6.12
+  resolution: "@xylabs/timer@npm:3.6.12"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-  checksum: 10/151ebb0975e5ddc39c7df2d3b90686db33922e2f585d41a5cdbcc767ec4b28142eced1303bf7232ea918da68f972328e398e8f101052204b10e5c2666ab25cd6
+    "@xylabs/assert": "npm:^3.6.12"
+  checksum: 10/19b7dace45ecd16741c9a8fe094c6edbda9818a691f941bfd3c735427ae3e2c51675172dee2fe8078c4f665a8580b0b9529097d8d20bd3923a371295cd4086f7
   languageName: node
   linkType: hard
 
-"@xylabs/ts-scripts-yarn3@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/ts-scripts-yarn3@npm:3.15.13"
+"@xylabs/ts-scripts-yarn3@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/ts-scripts-yarn3@npm:3.15.14"
   dependencies:
     "@rollup/plugin-commonjs": "npm:^26.0.1"
     "@rollup/plugin-json": "npm:^6.1.0"
@@ -4703,8 +3774,8 @@ __metadata:
     "@types/yargs": "npm:^17.0.32"
     "@typescript-eslint/eslint-plugin": "npm:^8.0.0"
     "@typescript-eslint/parser": "npm:^8.0.0"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom": "npm:^3.15.14"
     async-mutex: "npm:^0.5.0"
     chalk: "npm:^5.3.0"
     cosmiconfig: "npm:^9.0.0"
@@ -4793,50 +3864,50 @@ __metadata:
     xy: dist/bin/xy.mjs
     xy-ts: src/bin/xy-ts.ts
     yarn3only: dist/bin/yarn3only.mjs
-  checksum: 10/817f1d0e7bdfed4fa6a6a16b6073afd594d312cefe951297a284211a0b0edfbd987fc7779f91dc649e7c3637fa97f2d3cae246679481418e514eb854254ce840
+  checksum: 10/2e0a8b8edb79520c38ec14891382ca992e9796cef556fa7a0a695d6ddfbe033209514a6e84d825ad2ce467ebf61d490a6399b42ac91f797f6bc530d3a4d03332
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom-jest@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/tsconfig-dom-jest@npm:3.15.13"
+"@xylabs/tsconfig-dom-jest@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/tsconfig-dom-jest@npm:3.15.14"
   dependencies:
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^22.1.0"
     "@types/reflect-metadata": "npm:^0.1.0"
-    "@xylabs/tsconfig-dom": "npm:^3.15.13"
+    "@xylabs/tsconfig-dom": "npm:^3.15.14"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.15"
-  checksum: 10/7e3611e3293925b234ede04ab7e20eafcf8f6194aff75299dc90e80b3a7f386d6b7d7c575388dd28520f4e976d83806e37975b912cb8e7e85d574d7ef653873b
+  checksum: 10/99d77d67c70940c163cccdbbc7a40c7ff3ce9ff7e53334fbad69ebdb306abaac853194cd22eb9fb0537a72e5c610d374a69bd1986622287932bff30a223288c9
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-dom@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/tsconfig-dom@npm:3.15.13"
+"@xylabs/tsconfig-dom@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/tsconfig-dom@npm:3.15.14"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.15.13"
-  checksum: 10/6349332c2983de8919b3d0f42f9599377b05bd5d3c6df93be2cb3ccd24c87867bdaa4a902f5672255c94b53e8baf236dc9e9912914d3c9e5860cc63888e47ff0
+    "@xylabs/tsconfig": "npm:^3.15.14"
+  checksum: 10/0617329dcd77f924af3d7b4f49e57e3d03e3dbddc0f7ad8438792939670d5a3b64460d80324915e2193afc47f155e8c69d588f1ca8de11294b398e8376ff39f7
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig-jest@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/tsconfig-jest@npm:3.15.13"
+"@xylabs/tsconfig-jest@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/tsconfig-jest@npm:3.15.14"
   dependencies:
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     jest-extended: "npm:^4.0.2"
     jest-sorted: "npm:^1.0.15"
   peerDependencies:
     typescript: ^5
-  checksum: 10/577a8f7f07392299adb84057e3eb8571d57eb2931fff5703d21ddb54deaa4f41b254842e3f37d441994a53fecacfd29bd8d8edddda17e454007d591818cf7de4
+  checksum: 10/81b56580012f2c969cf0a37ff97b9b6642f61a7ea832531f806690bb3f7262ac1ddcfed2cb41611870a11c87bd6589c8b2b7a1771cd9fa8ca867739deac54fcf
   languageName: node
   linkType: hard
 
-"@xylabs/tsconfig@npm:^3.15.13":
-  version: 3.15.13
-  resolution: "@xylabs/tsconfig@npm:3.15.13"
-  checksum: 10/85fbbac7eec71be279041f64b4911d32068bedd2c9deabc9476f3e449233dbdc74c5ce9b8e43ba24638d5f731deb6d6f1455de1759e0ee991debb83583bc54ff
+"@xylabs/tsconfig@npm:^3.15.14":
+  version: 3.15.14
+  resolution: "@xylabs/tsconfig@npm:3.15.14"
+  checksum: 10/fda14747c0532e477548d833dc8aa19853b90be7d9f716440b489b4fcd4bb6ef1defe3874ebe096961c4b28d68b34655a93dfc38ea41acf796b1849040cefec3
   languageName: node
   linkType: hard
 
@@ -4847,10 +3918,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xylabs/url@npm:^3.6.8":
-  version: 3.6.8
-  resolution: "@xylabs/url@npm:3.6.8"
-  checksum: 10/26a7f2e6d56debfa957aea9de6c984b5012895e989b036d24b81c0e72160373a7efe4434d1e2c939b7752b7d9d053fbeb96287c17821286aa6f6ffd3f7fa1d8f
+"@xylabs/url@npm:^3.6.12":
+  version: 3.6.12
+  resolution: "@xylabs/url@npm:3.6.12"
+  checksum: 10/5831a1c4275e321a3a762cf60e44ca974e4a2fbd829a7ed92d8a937000de729cb2fa30588a0d66c6a039ff45029ec3d43401f319ad2ce6b48b699958c1f23fd8
   languageName: node
   linkType: hard
 
@@ -4919,13 +3990,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/api-call-witness@workspace:packages/payloadset/packages/api"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/object": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/object": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xylabs/url": "npm:^3.6.12"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/hash": "npm:^2.111.2"
@@ -4936,6 +4008,7 @@ __metadata:
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
     "@xyo-network/witness-model": "npm:^2.111.2"
+    axios: "npm:^1.7.3"
     base64-js: "npm:^1.5.1"
     es6-dynamic-template: "npm:^2.0.0"
     ethers: "npm:^6.13.2"
@@ -4948,11 +4021,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/api-graphql-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/wallet/quicknode"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -5064,8 +4137,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/blockchain-payload-plugins@workspace:packages/payload/packages/blockchain"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/ethereum-blockchain-payload-plugins": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5076,8 +4149,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/blockchain-plugins@workspace:packages/payloadset/packages/blockchain"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/ethereum-blockchain-plugins": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5088,8 +4161,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/blocknative-ethereum-gas-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/blocknative"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5100,9 +4173,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/blocknative-ethereum-gas-plugin@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/blocknative"
   dependencies:
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5182,8 +4255,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/bowser-system-info-payload-plugin@workspace:packages/payload/packages/system/packages/info/packages/bowser"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     bowser: "npm:^2.11.0"
@@ -5195,10 +4268,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/bowser-system-info-plugin@workspace:packages/payloadset/packages/system/packages/info/packages/bowser"
   dependencies:
-    "@xylabs/lodash": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom-jest": "npm:^3.15.13"
+    "@xylabs/lodash": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/bowser-system-info-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5301,8 +4374,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/coingecko-crypto-market-payload-plugin@workspace:packages/payload/packages/crypto/packages/market/packages/coingecko"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5313,9 +4386,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/coingecko-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/coingecko"
   dependencies:
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5342,8 +4415,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-address-transaction-history-payload-plugin@workspace:packages/payload/packages/crypto/packages/transaction"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5354,10 +4427,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-address-transaction-history-plugin@workspace:packages/payloadset/packages/crypto/packages/transaction"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/crypto-address-transaction-history-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5375,8 +4448,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-asset-payload-plugin@workspace:packages/payload/packages/crypto/packages/market/packages/asset"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5387,10 +4460,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-asset-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/asset"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:^"
     "@xyo-network/crypto-asset-payload-plugin": "workspace:^"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
@@ -5408,8 +4481,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-game-payload-plugin@workspace:packages/payload/packages/crypto/packages/cards/packages/game"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5420,9 +4493,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-game-plugin@workspace:packages/payloadset/packages/crypto/packages/cards/packages/game"
   dependencies:
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/crypto-cards-game-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5437,8 +4510,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-move-payload-plugin@workspace:packages/payload/packages/crypto/packages/cards/packages/move"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -5449,9 +4522,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-move-plugin@workspace:packages/payloadset/packages/crypto/packages/cards/packages/move"
   dependencies:
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/crypto-cards-move-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -5466,8 +4539,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-payload-plugins@workspace:packages/payload/packages/crypto/packages/cards"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-cards-game-payload-plugin": "workspace:^"
     "@xyo-network/crypto-cards-move-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -5479,8 +4552,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-cards-plugins@workspace:packages/payloadset/packages/crypto/packages/cards"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-cards-game-plugin": "workspace:^"
     "@xyo-network/crypto-cards-move-plugin": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
@@ -5492,9 +4565,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-contract-function-read-payload-plugin@workspace:packages/payload/packages/crypto/packages/nft/packages/contract/packages/function-read"
   dependencies:
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -5510,13 +4583,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-contract-function-read-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/contract/packages/function-read"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
@@ -5536,7 +4609,7 @@ __metadata:
     "@xyo-network/module-factory-locator": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-memory": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
@@ -5554,8 +4627,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-contract-payload-plugin@workspace:packages/payload/packages/crypto/packages/nft/packages/contract"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-contract-function-read-payload-plugin": "workspace:^"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
@@ -5566,8 +4639,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-contract-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/contract"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-contract-function-read-plugin": "workspace:^"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
@@ -5578,8 +4651,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-market-payload-plugins@workspace:packages/payload/packages/crypto/packages/market"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:^"
     "@xyo-network/crypto-asset-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -5592,8 +4665,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-market-plugins@workspace:packages/payloadset/packages/crypto/packages/market"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/coingecko-crypto-market-plugin": "workspace:^"
     "@xyo-network/crypto-asset-plugin": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
@@ -5606,9 +4679,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-collection-diviner-score-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/collection/diviner"
   dependencies:
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:^"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^"
@@ -5630,9 +4703,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-collection-payload-plugin@workspace:packages/payload/packages/crypto/packages/nft/packages/collection"
   dependencies:
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -5646,21 +4719,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-collection-witness-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/collection/witness"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/eth-address": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@types/node": "npm:^22.1.0"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/eth-address": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/account-model": "npm:^2.111.2"
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:^"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^"
     "@xyo-network/erc1822-witness": "workspace:^"
     "@xyo-network/erc1967-witness": "workspace:^"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-builder": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
@@ -5677,10 +4751,9 @@ __metadata:
   resolution: "@xyo-network/crypto-nft-diviner-score-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/nft/packages/diviner"
   dependencies:
     "@types/svg-parser": "npm:^2.0.6"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xylabs/url": "npm:^3.6.8"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^"
     "@xyo-network/crypto-nft-score-model": "workspace:^"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
@@ -5701,9 +4774,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-payload-plugin@workspace:packages/payload/packages/crypto/packages/nft/packages/nft"
   dependencies:
-    "@xylabs/object": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/object": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-score-model": "workspace:^"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -5717,8 +4790,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-payload-plugins@workspace:packages/payload/packages/crypto/packages/nft"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-collection-payload-plugin": "workspace:^"
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^"
     typescript: "npm:^5.5.4"
@@ -5729,8 +4802,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/nft"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-diviner-score-plugin": "workspace:^"
     "@xyo-network/crypto-nft-witness-wallet-plugin": "workspace:^"
     jest: "npm:^29.7.0"
@@ -5742,9 +4815,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-plugins@workspace:packages/payloadset/packages/crypto/packages/nft"
   dependencies:
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-nft-plugin": "workspace:^"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
@@ -5755,9 +4828,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-nft-score-model@workspace:packages/payload/packages/crypto/packages/nft/packages/score"
   dependencies:
-    "@xylabs/object": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/object": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -5768,16 +4841,16 @@ __metadata:
   resolution: "@xyo-network/crypto-nft-witness-wallet-plugin@workspace:packages/payloadset/packages/crypto/packages/nft/packages/nft/packages/witness"
   dependencies:
     "@types/parse-data-url": "npm:^3.0.2"
-    "@xylabs/array": "npm:^3.6.8"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/eth-address": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/array": "npm:^3.6.12"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/eth-address": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/archivist-model": "npm:^2.111.2"
@@ -5796,7 +4869,7 @@ __metadata:
     "@xyo-network/module-factory-locator": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-memory": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-builder": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-wrapper": "npm:^2.111.2"
@@ -5816,8 +4889,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-payload-plugins@workspace:packages/payload/packages/crypto"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-cards-payload-plugins": "workspace:^"
     "@xyo-network/crypto-market-payload-plugins": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -5829,8 +4902,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/crypto-plugins@workspace:packages/payloadset/packages/crypto"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/crypto-cards-plugins": "workspace:^"
     "@xyo-network/crypto-market-plugins": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
@@ -5917,9 +4990,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/diviner-evm-call-result-to-token-uri@workspace:packages/payloadset/packages/evm/packages/call/packages/token-uri/diviner"
   dependencies:
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/evm-call-witness": "workspace:^"
@@ -5962,12 +5035,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/archivist-model": "npm:^2.111.2"
@@ -6339,9 +5412,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/domain-plugin@workspace:packages/payloadset/packages/domain"
   dependencies:
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/domain-payload-plugin": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6356,8 +5429,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/elevation-payload-plugin@workspace:packages/payload/packages/elevation"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6369,10 +5442,12 @@ __metadata:
   resolution: "@xyo-network/elevation-plugin@workspace:packages/payloadset/packages/elevation"
   dependencies:
     "@types/mapbox-gl": "npm:^3.4.0"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@types/node": "npm:^22.1.0"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/elevation-payload-plugin": "workspace:^"
     "@xyo-network/location-payload-plugin": "workspace:^"
@@ -6383,6 +5458,7 @@ __metadata:
     "@xyo-network/quadkey": "npm:^2.111.2"
     "@xyo-network/sdk-geo": "npm:^2.11.4"
     "@xyo-network/witness-model": "npm:^2.111.2"
+    fast-text-encoding: "npm:^1.0.6"
     geotiff: "npm:^2.1.3"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
@@ -6393,9 +5469,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/email-payload-plugin@workspace:packages/payload/packages/email"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -6405,11 +5481,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/erc1822-witness@workspace:packages/payloadset/packages/evm/packages/erc1822"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
     ethers: "npm:^6.13.2"
@@ -6422,12 +5498,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/erc1967-witness@workspace:packages/payloadset/packages/evm/packages/erc1967"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
     ethers: "npm:^6.13.2"
@@ -6440,8 +5516,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain/packages/v2"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6452,9 +5528,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherchain-ethereum-gas-v2-plugin@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain/packages/v2"
   dependencies:
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6470,8 +5546,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6482,8 +5558,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherchain-gas-ethereum-blockchain-plugins@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/etherchain"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/etherchain-ethereum-gas-v2-plugin": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6494,8 +5570,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/gas-ethereum-blockchain-payload-plugins": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6506,8 +5582,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/ethereum-blockchain-plugins@workspace:packages/payloadset/packages/blockchain/packages/ethereum"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/gas-ethereum-blockchain-plugins": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6518,8 +5594,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/ethers-ethereum-gas-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/ethers"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6530,10 +5606,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/ethers-ethereum-gas-plugin@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/ethers"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/ethers-ethereum-gas-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6553,8 +5629,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherscan-ethereum-gas-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/etherscan"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6565,11 +5641,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/etherscan-ethereum-gas-plugin@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/etherscan"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6587,8 +5663,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/ethgasstation-ethereum-gas-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/ethgasstation"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6599,15 +5675,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-abi-diviner@workspace:packages/payloadset/packages/evm/packages/abi"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/evm-contract-witness": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
     ethers: "npm:^6.13.2"
@@ -6620,8 +5696,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-address-payload-plugin@workspace:packages/payload/packages/evm/packages/address"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6632,14 +5708,14 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-call-witness@workspace:packages/payloadset/packages/evm/packages/call"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/profile": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/profile": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/crypto-contract-function-read-payload-plugin": "workspace:^"
@@ -6662,7 +5738,7 @@ __metadata:
     "@xyo-network/module-factory-locator": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-memory": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
     "@xyo-network/witness-adhoc": "npm:^2.111.2"
@@ -6680,10 +5756,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-contract-witness@workspace:packages/payloadset/packages/evm/packages/contract/packages/witness"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
@@ -6697,13 +5773,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-events-witness@workspace:packages/payloadset/packages/evm/packages/events"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
     ethers: "npm:^6.13.2"
@@ -6716,8 +5792,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-nft-id-payload-plugin@workspace:packages/payload/packages/evm/packages/nft"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/evm-address-payload-plugin": "workspace:^"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -6729,8 +5805,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-payload-plugins@workspace:packages/payload/packages/evm"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/evm-address-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6741,10 +5817,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-plugins@workspace:packages/payloadset/packages/evm"
   dependencies:
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/api-call-witness": "workspace:^"
     "@xyo-network/archivist-model": "npm:^2.111.2"
@@ -6766,7 +5842,7 @@ __metadata:
     "@xyo-network/module-factory-locator": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-memory": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
@@ -6781,11 +5857,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/evm-token-interface-diviner@workspace:packages/payloadset/packages/evm/packages/token-interface/packages/diviner"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/boundwitness-model": "npm:^2.111.2"
@@ -6802,7 +5878,7 @@ __metadata:
     "@xyo-network/module-factory-locator": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-memory": "npm:^2.111.2"
-    "@xyo-network/open-zeppelin-typechain": "npm:^3.0.5"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.1.0"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
     "@xyo-network/witness-evm-abstract": "npm:^2.111.2"
@@ -6818,10 +5894,11 @@ __metadata:
   resolution: "@xyo-network/file-browser-plugin@workspace:packages/payloadset/packages/file/packages/browser"
   dependencies:
     "@scure/base": "npm:^1.1.7"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@types/sha.js": "npm:^2.4.4"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-builder": "npm:^2.111.2"
@@ -6837,8 +5914,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/file-plugins@workspace:packages/payloadset/packages/file"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/file-browser-plugin": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6849,8 +5926,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/gas-ethereum-blockchain-payload-plugins@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins": "workspace:^"
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -6862,8 +5939,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/gas-ethereum-blockchain-plugins@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/etherchain-gas-ethereum-blockchain-plugins": "workspace:^"
     "@xyo-network/etherscan-ethereum-gas-plugin": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
@@ -6875,8 +5952,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/gas-price-payload-plugin@workspace:packages/payload/packages/blockchain/packages/ethereum/packages/gas/packages/gas"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -6888,9 +5965,9 @@ __metadata:
   resolution: "@xyo-network/gas-price-plugin@workspace:packages/payloadset/packages/blockchain/packages/ethereum/packages/gas/packages/gas"
   dependencies:
     "@types/regression": "npm:^2.0.6"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:^"
     "@xyo-network/blocknative-ethereum-gas-plugin": "workspace:^"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
@@ -6957,9 +6034,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/id-plugin@workspace:packages/payloadset/packages/id"
   dependencies:
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/id-payload-plugin": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6975,9 +6052,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/image-thumbnail-payload-plugin@workspace:packages/payload/packages/image-thumbnail"
   dependencies:
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/diviner-model": "npm:^2.111.2"
     "@xyo-network/diviner-payload-model": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -6998,12 +6075,11 @@ __metadata:
     "@types/url-parse": "npm:^1.4.11"
     "@types/uuid": "npm:^10.0.0"
     "@types/xml2js": "npm:^0.4.14"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/lodash": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/lodash": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
@@ -7021,6 +6097,7 @@ __metadata:
     "@xyo-network/witness-model": "npm:^2.111.2"
     "@xyo-network/witness-timestamp": "npm:^2.111.2"
     async-mutex: "npm:^0.5.0"
+    axios: "npm:^1.7.3"
     base64-js: "npm:^1.5.1"
     file-type: "npm:^16.5.4"
     fluent-ffmpeg: "npm:^2.1.3"
@@ -7041,8 +6118,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/info-system-payload-plugins@workspace:packages/payload/packages/system/packages/info"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/bowser-system-info-payload-plugin": "workspace:^"
     "@xyo-network/node-system-info-payload-plugin": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
@@ -7054,8 +6131,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/info-system-plugins@workspace:packages/payloadset/packages/system/packages/info"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/bowser-system-info-payload-plugin": "workspace:^"
     "@xyo-network/bowser-system-info-plugin": "workspace:^"
     "@xyo-network/node-system-info-plugin": "workspace:^"
@@ -7077,8 +6154,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/location-certainty-payload-plugin@workspace:packages/payload/packages/location-certainty"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -7089,9 +6166,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/location-certainty-plugin@workspace:packages/payloadset/packages/location-certainty"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xylabs/tsconfig-jest": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xylabs/tsconfig-jest": "npm:^3.15.14"
     "@xyo-network/archivist-abstract": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
@@ -7105,6 +6182,7 @@ __metadata:
     "@xyo-network/payload-builder": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
+    fast-text-encoding: "npm:^1.0.6"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -7113,8 +6191,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/location-payload-plugin@workspace:packages/payload/packages/location"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -7125,10 +6203,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/location-plugin@workspace:packages/payloadset/packages/location"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom-jest": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/location-payload-plugin": "workspace:^"
     "@xyo-network/module-model": "npm:^2.111.2"
@@ -7249,8 +6327,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-instance-payload-plugin@workspace:packages/payload/packages/module-instance"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -7261,10 +6339,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/module-instance-plugin@workspace:packages/payloadset/packages/module-instance"
   dependencies:
-    "@xylabs/lodash": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/lodash": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/module-instance-payload-plugin": "workspace:^"
@@ -7411,8 +6489,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-system-info-payload-plugin@workspace:packages/payload/packages/system/packages/info/packages/node"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -7423,8 +6501,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/node-system-info-plugin@workspace:packages/payloadset/packages/system/packages/info/packages/node"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/node-system-info-payload-plugin": "workspace:^"
@@ -7471,12 +6549,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/open-zeppelin-typechain@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@xyo-network/open-zeppelin-typechain@npm:3.0.5"
+"@xyo-network/open-zeppelin-typechain@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@xyo-network/open-zeppelin-typechain@npm:3.1.0"
   dependencies:
-    ethers: "npm:^6.8.1"
-  checksum: 10/622a5767c9e13b6aff3d9967508ef2014dfa6a0b9c2dfa90fc6ed3b875b58a9efe3ffa944ec97f73a4d70d262bfec96b61e7b1999ca2ba994f31007c8f980c84
+    ethers: "npm:^6.13.2"
+  checksum: 10/965a36dda2af4646fe831ba23a0e72baf67383de5a96b9c11cfcae86f7aceebf7242d1aa1316eb57f67e5e6e13f033c5159e8329ef7399efe68f64ece36772b6
   languageName: node
   linkType: hard
 
@@ -7524,8 +6602,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payload-plugins@workspace:packages/payload"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/blockchain-payload-plugins": "workspace:^"
     "@xyo-network/crypto-payload-plugins": "workspace:^"
     "@xyo-network/elevation-payload-plugin": "workspace:^"
@@ -7617,8 +6695,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payloadset-plugins@workspace:packages/payloadset"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/api-call-witness": "workspace:^"
     "@xyo-network/blockchain-plugins": "workspace:^"
     "@xyo-network/crypto-plugins": "workspace:^"
@@ -7644,11 +6722,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/crypto": "npm:^3.6.8"
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/crypto": "npm:^3.6.12"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account-model": "npm:^2.111.2"
     "@xyo-network/boundwitness-builder": "npm:^2.111.2"
     "@xyo-network/boundwitness-model": "npm:^2.111.2"
@@ -7665,8 +6743,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/pentair-payload-plugin@workspace:packages/payload/packages/pentair"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     node-screenlogic: "npm:^2.1.0"
@@ -7678,10 +6756,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/pentair-plugin@workspace:packages/payloadset/packages/pentair"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -7700,16 +6778,18 @@ __metadata:
   resolution: "@xyo-network/plugins@workspace:."
   dependencies:
     "@babel/core": "npm:^7.25.2"
-    "@babel/preset-env": "npm:^7.25.3"
-    "@babel/preset-typescript": "npm:^7.24.7"
+    "@stylistic/eslint-plugin": "npm:^2.6.1"
     "@types/jest": "npm:^29.5.12"
     "@types/supertest": "npm:^6.0.2"
-    "@xylabs/eslint-config": "npm:^3.15.13"
-    "@xylabs/eslint-config-flat": "npm:^3.15.13"
-    "@xylabs/forget": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
-    "@xylabs/tsconfig-dom-jest": "npm:^3.15.13"
+    "@typescript-eslint/eslint-plugin": "npm:^8.0.1"
+    "@typescript-eslint/parser": "npm:^8.0.1"
+    "@xylabs/eslint-config": "npm:^3.15.14"
+    "@xylabs/eslint-config-flat": "npm:^3.15.14"
+    "@xylabs/forget": "npm:^3.6.12"
+    "@xylabs/platform": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
+    "@xylabs/tsconfig-dom-jest": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/archivist-memory": "npm:^2.111.2"
     "@xyo-network/boundwitness-builder": "npm:^2.111.2"
@@ -7723,7 +6803,12 @@ __metadata:
     babel-jest: "npm:^29.7.0"
     dotenv: "npm:^16.4.5"
     eslint: "npm:^9.8.0"
-    ethers: "npm:^6.13.2"
+    eslint-import-resolver-typescript: "npm:^3.6.1"
+    eslint-plugin-import: "npm:^2.29.1"
+    eslint-plugin-prettier: "npm:^5.2.1"
+    eslint-plugin-simple-import-sort: "npm:^12.1.1"
+    eslint-plugin-sonarjs: "npm:^1.0.4"
+    eslint-plugin-workspaces: "npm:^0.10.1"
     jest: "npm:^29.7.0"
     jest-docblock: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
@@ -7731,11 +6816,14 @@ __metadata:
     jest-runner: "npm:^29.7.0"
     jest-runner-groups: "npm:^2.2.0"
     jest-sorted: "npm:^1.0.15"
+    jsbi: "npm:^4.3.0"
+    lodash: "npm:^4.17.21"
     nodemon: "npm:^3.1.4"
     reflect-metadata: "npm:^0.2.2"
     supertest: "npm:^7.0.0"
     ts-jest: "npm:^29.2.4"
     ts-node: "npm:^10.9.2"
+    tslib: "npm:^2.6.3"
     typedoc: "npm:^0.26.5"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -7787,9 +6875,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/prometheus-node-plugin@workspace:packages/payloadset/packages/prometheus"
   dependencies:
-    "@xylabs/lodash": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/lodash": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -7827,11 +6915,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/rebilly-payment-card-authorization-plugin@workspace:packages/payloadset/packages/payments/packages/providers/packages/rebilly/packages/authorization/packages/card"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/boundwitness-model": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-builder": "npm:^2.111.2"
@@ -7840,6 +6928,7 @@ __metadata:
     "@xyo-network/rebilly-payment-payload-plugin": "workspace:^"
     "@xyo-network/sentinel-abstract": "npm:^2.111.2"
     "@xyo-network/sentinel-model": "npm:^2.111.2"
+    axios: "npm:^1.7.3"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -7849,8 +6938,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/rebilly-payment-payload-plugin@workspace:packages/payload/packages/payments/packages/providers/packages/rebilly"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -7879,9 +6968,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/schema-plugin@workspace:packages/payloadset/packages/schema"
   dependencies:
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -7979,8 +7068,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/tzero-stock-market-payload-plugin": "workspace:^"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -7990,8 +7079,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/stock-payload-plugins@workspace:packages/payload/packages/stock"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/stock-market-payload-plugins": "workspace:^"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -8001,8 +7090,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/system-payload-plugins@workspace:packages/payload/packages/system"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/info-system-payload-plugins": "workspace:^"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -8013,20 +7102,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/system-plugins@workspace:packages/payloadset/packages/system"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/info-system-plugins": "workspace:^"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
 
-"@xyo-network/typechain@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@xyo-network/typechain@npm:3.0.5"
+"@xyo-network/typechain@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@xyo-network/typechain@npm:3.1.0"
   dependencies:
-    ethers: "npm:^6.8.1"
-  checksum: 10/9ec98a44dc60fa599cca3a2bcdd8708691d8579966b0caac76ea15d37c8441fa9cf592cb7651c48c7fdfab0f013d5fb4f96fc099aba3523449f8e484e450b629
+    ethers: "npm:^6.13.2"
+  checksum: 10/14b098cefb0487721bc47e237ded1e8326744ac2e807ad7028cbeeb7384ed945653849002f3d229c364f61c951180d29be53a2a6a30aa98fc81602812060b801
   languageName: node
   linkType: hard
 
@@ -8034,8 +7123,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/tzero-stock-market-payload-plugin@workspace:packages/payload/packages/stock/packages/market/packages/tzero"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
   languageName: unknown
@@ -8045,13 +7134,13 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/tzero-stock-market-plugin@workspace:packages/payloadset/packages/stock/packages/market/packages/tzero"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/exists": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/object": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/exists": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/object": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/api-call-witness": "workspace:^"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
@@ -8071,8 +7160,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/uniswap-crypto-market-payload-plugin@workspace:packages/payload/packages/crypto/packages/market/packages/uniswap"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -8085,21 +7174,21 @@ __metadata:
   dependencies:
     "@uniswap/swap-router-contracts": "npm:^1.3.1"
     "@uniswap/v3-periphery": "npm:^1.4.4"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/delay": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/promise": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/delay": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/promise": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-wrapper": "npm:^2.111.2"
     "@xyo-network/payloadset-plugin": "npm:^2.111.2"
-    "@xyo-network/typechain": "npm:^3.0.5"
+    "@xyo-network/typechain": "npm:^3.1.0"
     "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:^"
     "@xyo-network/uniswap-sdk-core": "npm:^4.1.2"
-    "@xyo-network/uniswap-typechain": "npm:^3.0.5"
+    "@xyo-network/uniswap-typechain": "npm:^3.1.0"
     "@xyo-network/uniswap-v3-sdk": "npm:^3.12.3"
     "@xyo-network/witness-blockchain-abstract": "npm:^2.111.2"
     "@xyo-network/witness-model": "npm:^2.111.2"
@@ -8123,12 +7212,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@xyo-network/uniswap-typechain@npm:^3.0.5":
-  version: 3.0.5
-  resolution: "@xyo-network/uniswap-typechain@npm:3.0.5"
+"@xyo-network/uniswap-typechain@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@xyo-network/uniswap-typechain@npm:3.1.0"
   dependencies:
-    ethers: "npm:^6.8.1"
-  checksum: 10/937460fe85b748c0fb20dd047ccb2efd7ad5f730b7faa6c3427fd54fccb892422368c348343852960a9e17172bebfd6534e76617aff63eaf2f289a90af3b64e4
+    ethers: "npm:^6.13.2"
+  checksum: 10/14d5750b28feb26205b7ab95587bf79728eb496fc5b8bb7008d6a2849d83670018521e541efdf2da85b09aa9355adeb5cffc81b1ec8caa23e4e68faeb3129862
   languageName: node
   linkType: hard
 
@@ -8161,8 +7250,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/url-payload-plugin@workspace:packages/payload/packages/url"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     typescript: "npm:^5.5.4"
@@ -8173,10 +7262,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/url-plugin@workspace:packages/payloadset/packages/url"
   dependencies:
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/crypto": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/crypto": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -8191,8 +7280,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/url-safety-payload-plugin@workspace:packages/payload/packages/url-safety"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-model": "npm:^2.111.2"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     "@xyo-network/url-payload-plugin": "workspace:^"
@@ -8204,10 +7293,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/url-safety-plugin@workspace:packages/payloadset/packages/url-safety"
   dependencies:
-    "@xylabs/axios": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/axios": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/abstract-witness": "npm:^2.111.2"
     "@xyo-network/module-model": "npm:^2.111.2"
     "@xyo-network/payload-model": "npm:^2.111.2"
@@ -8344,11 +7433,11 @@ __metadata:
   resolution: "@xyo-network/xml-plugin@workspace:packages/payloadset/packages/xml"
   dependencies:
     "@types/xml2js": "npm:^0.4.14"
-    "@xylabs/assert": "npm:^3.6.8"
-    "@xylabs/jest-helpers": "npm:^3.6.8"
-    "@xylabs/object": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/assert": "npm:^3.6.12"
+    "@xylabs/jest-helpers": "npm:^3.6.12"
+    "@xylabs/object": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/api-call-witness": "workspace:^"
     "@xyo-network/diviner-abstract": "npm:^2.111.2"
     "@xyo-network/diviner-model": "npm:^2.111.2"
@@ -8364,8 +7453,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-payload-plugins@workspace:packages/payload/packages/xns"
   dependencies:
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/payload-plugin": "npm:^2.111.2"
     "@xyo-network/xns-record-payload-plugins": "workspace:^"
     typescript: "npm:^5.5.4"
@@ -8376,9 +7465,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record"
   dependencies:
-    "@xylabs/hex": "npm:^3.6.8"
-    "@xylabs/ts-scripts-yarn3": "npm:^3.15.13"
-    "@xylabs/tsconfig": "npm:^3.15.13"
+    "@xylabs/hex": "npm:^3.6.12"
+    "@xylabs/ts-scripts-yarn3": "npm:^3.15.14"
+    "@xylabs/tsconfig": "npm:^3.15.14"
     "@xyo-network/account": "npm:^2.111.2"
     "@xyo-network/boundwitness-builder": "npm:^2.111.2"
     "@xyo-network/boundwitness-model": "npm:^2.111.2"
@@ -8873,42 +7962,6 @@ __metadata:
     "@types/babel__core": "npm:^7.1.14"
     "@types/babel__traverse": "npm:^7.0.6"
   checksum: 10/9bfa86ec4170bd805ab8ca5001ae50d8afcb30554d236ba4a7ffc156c1a92452e220e4acbd98daefc12bf0216fccd092d0a2efed49e7e384ec59e0597a926d65
-  languageName: node
-  linkType: hard
-
-"babel-plugin-polyfill-corejs2@npm:^0.4.10":
-  version: 0.4.11
-  resolution: "babel-plugin-polyfill-corejs2@npm:0.4.11"
-  dependencies:
-    "@babel/compat-data": "npm:^7.22.6"
-    "@babel/helper-define-polyfill-provider": "npm:^0.6.2"
-    semver: "npm:^6.3.1"
-  peerDependencies:
-    "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10/9c79908bed61b9f52190f254e22d3dca6ce25769738642579ba8d23832f3f9414567a90d8367a31831fa45d9b9607ac43d8d07ed31167d8ca8cda22871f4c7a1
-  languageName: node
-  linkType: hard
-
-"babel-plugin-polyfill-corejs3@npm:^0.10.4":
-  version: 0.10.4
-  resolution: "babel-plugin-polyfill-corejs3@npm:0.10.4"
-  dependencies:
-    "@babel/helper-define-polyfill-provider": "npm:^0.6.1"
-    core-js-compat: "npm:^3.36.1"
-  peerDependencies:
-    "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10/a69ed5a95bb55e9b7ea37307d56113f7e24054d479c15de6d50fa61388b5334bed1f9b6414cde6c575fa910a4de4d1ab4f2d22720967d57c4fec9d1b8f61b355
-  languageName: node
-  linkType: hard
-
-"babel-plugin-polyfill-regenerator@npm:^0.6.1":
-  version: 0.6.2
-  resolution: "babel-plugin-polyfill-regenerator@npm:0.6.2"
-  dependencies:
-    "@babel/helper-define-polyfill-provider": "npm:^0.6.2"
-  peerDependencies:
-    "@babel/core": ^7.4.0 || ^8.0.0-0 <8.0.0
-  checksum: 10/150233571072b6b3dfe946242da39cba8587b7f908d1c006f7545fc88b0e3c3018d445739beb61e7a75835f0c2751dbe884a94ff9b245ec42369d9267e0e1b3f
   languageName: node
   linkType: hard
 
@@ -9639,7 +8692,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:^3.36.1, core-js-compat@npm:^3.37.0, core-js-compat@npm:^3.37.1":
+"core-js-compat@npm:^3.37.0":
   version: 3.37.1
   resolution: "core-js-compat@npm:3.37.1"
   dependencies:
@@ -11151,6 +10204,13 @@ __metadata:
   version: 2.1.1
   resolution: "fast-safe-stringify@npm:2.1.1"
   checksum: 10/dc1f063c2c6ac9533aee14d406441f86783a8984b2ca09b19c2fe281f9ff59d315298bc7bc22fd1f83d26fe19ef2f20e2ddb68e96b15040292e555c5ced0c1e4
+  languageName: node
+  linkType: hard
+
+"fast-text-encoding@npm:^1.0.6":
+  version: 1.0.6
+  resolution: "fast-text-encoding@npm:1.0.6"
+  checksum: 10/f7b9e2e7a21e4ae5f4b8d3729850be83fb45052b28c9c38c09b8366463a291d6dc5448359238bdaf87f6a9e907d5895a94319a2c5e0e9f0786859ad6312d1d06
   languageName: node
   linkType: hard
 
@@ -13264,6 +12324,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jsbi@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "jsbi@npm:4.3.0"
+  checksum: 10/c2195d79c1da263d4d00973c1d7c6676678eafd8cf2ef5fa4ffa684ae3e948a2267cb3de213744e767d22a10dcb6266c88320820ec19f11d282e99acb361e4c9
+  languageName: node
+  linkType: hard
+
 "jsbn@npm:1.1.0":
   version: 1.1.0
   resolution: "jsbn@npm:1.1.0"
@@ -13603,20 +12670,6 @@ __metadata:
   dependencies:
     p-locate: "npm:^5.0.0"
   checksum: 10/72eb661788a0368c099a184c59d2fee760b3831c9c1c33955e8a19ae4a21b4116e53fa736dc086cdeb9fce9f7cc508f2f92d2d3aae516f133e16a2bb59a39f5a
-  languageName: node
-  linkType: hard
-
-"lodash-es@npm:^4.17.21":
-  version: 4.17.21
-  resolution: "lodash-es@npm:4.17.21"
-  checksum: 10/03f39878ea1e42b3199bd3f478150ab723f93cc8730ad86fec1f2804f4a07c6e30deaac73cad53a88e9c3db33348bb8ceeb274552390e7a75d7849021c02df43
-  languageName: node
-  linkType: hard
-
-"lodash.debounce@npm:^4.0.8":
-  version: 4.0.8
-  resolution: "lodash.debounce@npm:4.0.8"
-  checksum: 10/cd0b2819786e6e80cb9f5cda26b1a8fc073daaf04e48d4cb462fa4663ec9adb3a5387aa22d7129e48eed1afa05b482e2a6b79bfc99b86886364449500cbb00fd
   languageName: node
   linkType: hard
 
@@ -15869,38 +14922,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerate-unicode-properties@npm:^10.1.0":
-  version: 10.1.1
-  resolution: "regenerate-unicode-properties@npm:10.1.1"
-  dependencies:
-    regenerate: "npm:^1.4.2"
-  checksum: 10/b855152efdcca0ecc37ceb0cb6647a544344555fc293af3b57191b918e1bc9c95ee404a9a64a1d692bf66d45850942c29d93f2740c0d1980d3a8ea2ca63b184e
-  languageName: node
-  linkType: hard
-
-"regenerate@npm:^1.4.2":
-  version: 1.4.2
-  resolution: "regenerate@npm:1.4.2"
-  checksum: 10/dc6c95ae4b3ba6adbd7687cafac260eee4640318c7a95239d5ce847d9b9263979758389e862fe9c93d633b5792ea4ada5708df75885dc5aa05a309fa18140a87
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.14.0":
-  version: 0.14.1
-  resolution: "regenerator-runtime@npm:0.14.1"
-  checksum: 10/5db3161abb311eef8c45bcf6565f4f378f785900ed3945acf740a9888c792f75b98ecb77f0775f3bf95502ff423529d23e94f41d80c8256e8fa05ed4b07cf471
-  languageName: node
-  linkType: hard
-
-"regenerator-transform@npm:^0.15.2":
-  version: 0.15.2
-  resolution: "regenerator-transform@npm:0.15.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.8.4"
-  checksum: 10/c4fdcb46d11bbe32605b4b9ed76b21b8d3f241a45153e9dc6f5542fed4c7744fed459f42701f650d5d5956786bf7de57547329d1c05a9df2ed9e367b9d903302
-  languageName: node
-  linkType: hard
-
 "regexp-tree@npm:^0.1.27":
   version: 0.1.27
   resolution: "regexp-tree@npm:0.1.27"
@@ -15922,20 +14943,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regexpu-core@npm:^5.3.1":
-  version: 5.3.2
-  resolution: "regexpu-core@npm:5.3.2"
-  dependencies:
-    "@babel/regjsgen": "npm:^0.8.0"
-    regenerate: "npm:^1.4.2"
-    regenerate-unicode-properties: "npm:^10.1.0"
-    regjsparser: "npm:^0.9.1"
-    unicode-match-property-ecmascript: "npm:^2.0.0"
-    unicode-match-property-value-ecmascript: "npm:^2.1.0"
-  checksum: 10/ed0d7c66d84c633fbe8db4939d084c780190eca11f6920807dfb8ebac59e2676952cd8f2008d9c86ae8cf0463ea5fd12c5cff09ef2ce7d51ee6b420a5eb4d177
-  languageName: node
-  linkType: hard
-
 "regjsparser@npm:^0.10.0":
   version: 0.10.0
   resolution: "regjsparser@npm:0.10.0"
@@ -15944,17 +14951,6 @@ __metadata:
   bin:
     regjsparser: bin/parser
   checksum: 10/06f7f0e59598de20769ce5637bbd8879387f67c0eeb8ccc8857331c623332718c25d8d20bd74df210bf636dde061474e8bd365cf73af20470f0b3cb42cd42019
-  languageName: node
-  linkType: hard
-
-"regjsparser@npm:^0.9.1":
-  version: 0.9.1
-  resolution: "regjsparser@npm:0.9.1"
-  dependencies:
-    jsesc: "npm:~0.5.0"
-  bin:
-    regjsparser: bin/parser
-  checksum: 10/be7757ef76e1db10bf6996001d1021048b5fb12f5cb470a99b8cf7f3ff943f0f0e2291c0dcdbb418b458ddc4ac10e48680a822b69ef487a0284c8b6b77beddc3
   languageName: node
   linkType: hard
 
@@ -17377,7 +16373,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.10.0, resolve@npm:^1.14.2, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.22.3, resolve@npm:^1.22.4":
+"resolve@npm:^1.10.0, resolve@npm:^1.20.0, resolve@npm:^1.22.1, resolve@npm:^1.22.3, resolve@npm:^1.22.4":
   version: 1.22.8
   resolution: "resolve@npm:1.22.8"
   dependencies:
@@ -17390,7 +16386,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.14.2#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.3#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>":
+"resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.20.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.3#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>":
   version: 1.22.8
   resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
   dependencies:
@@ -19104,37 +18100,6 @@ __metadata:
     inherits: "npm:^2.0.0"
     xtend: "npm:^4.0.0"
   checksum: 10/fd7922f84fc0bfb7c4df6d1f5a50b5b94a0218e3cda98a54dbbd209226ddd4072d742d3df44d0e295ab08d5ccfd304a1e193dfe31a86d2a91b7cb9fdac093194
-  languageName: node
-  linkType: hard
-
-"unicode-canonical-property-names-ecmascript@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "unicode-canonical-property-names-ecmascript@npm:2.0.0"
-  checksum: 10/39be078afd014c14dcd957a7a46a60061bc37c4508ba146517f85f60361acf4c7539552645ece25de840e17e293baa5556268d091ca6762747fdd0c705001a45
-  languageName: node
-  linkType: hard
-
-"unicode-match-property-ecmascript@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "unicode-match-property-ecmascript@npm:2.0.0"
-  dependencies:
-    unicode-canonical-property-names-ecmascript: "npm:^2.0.0"
-    unicode-property-aliases-ecmascript: "npm:^2.0.0"
-  checksum: 10/1f34a7434a23df4885b5890ac36c5b2161a809887000be560f56ad4b11126d433c0c1c39baf1016bdabed4ec54829a6190ee37aa24919aa116dc1a5a8a62965a
-  languageName: node
-  linkType: hard
-
-"unicode-match-property-value-ecmascript@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "unicode-match-property-value-ecmascript@npm:2.1.0"
-  checksum: 10/06661bc8aba2a60c7733a7044f3e13085808939ad17924ffd4f5222a650f88009eb7c09481dc9c15cfc593d4ad99bd1cde8d54042733b335672591a81c52601c
-  languageName: node
-  linkType: hard
-
-"unicode-property-aliases-ecmascript@npm:^2.0.0":
-  version: 2.1.0
-  resolution: "unicode-property-aliases-ecmascript@npm:2.1.0"
-  checksum: 10/243524431893649b62cc674d877bd64ef292d6071dd2fd01ab4d5ad26efbc104ffcd064f93f8a06b7e4ec54c172bf03f6417921a0d8c3a9994161fe1f88f815b
   languageName: node
   linkType: hard
 

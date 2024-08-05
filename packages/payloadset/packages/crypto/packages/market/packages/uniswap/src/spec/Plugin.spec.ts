@@ -1,6 +1,6 @@
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 
-import { UniswapCryptoMarketPlugin } from '../Plugin'
+import { UniswapCryptoMarketPlugin } from '../Plugin.ts'
 
 describe('CryptoMarketUniswapPlugin', () => {
   test('Add to Resolver', async () => {
