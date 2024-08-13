@@ -1,4 +1,3 @@
-import { merge } from '@xylabs/lodash'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
@@ -22,6 +21,6 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
   }
 
   protected override observeHandler(payloads?: Payload[]) {
-    return [merge({ bowser: this.bowser }, payloads?.[0], { schema: BowserSystemInfoSchema })]
+    return [{ bowser: this.bowser, ...payloads?.[0], schema: BowserSystemInfoSchema }]
   }
 }

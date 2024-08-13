@@ -1,6 +1,6 @@
 import { createServer, Server } from 'node:http'
 
-import { compact } from '@xylabs/lodash'
+import { exists } from '@xylabs/exists'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
@@ -55,13 +55,11 @@ export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams =
   }
 
   private async generateMetricValues(): Promise<PrometheusMetricValuePayload[]> {
-    return compact(
-      (await this._registry.getMetricsAsJSON()).map((metric) => {
-        const values = metric.values
-        if (values) {
-          return { aggregator: metric.aggregator, name: metric.name, schema: PrometheusMetricValueSchema, type: metric.type, values }
-        }
-      }),
-    )
+    return (await this._registry.getMetricsAsJSON()).map((metric) => {
+      const values = metric.values
+      if (values) {
+        return { aggregator: metric.aggregator, name: metric.name, schema: PrometheusMetricValueSchema, type: metric.type, values }
+      }
+    }).filter(exists)
   }
 }

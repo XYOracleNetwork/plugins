@@ -1,14 +1,13 @@
 import { XyTsupConfig } from '@xylabs/ts-scripts-yarn3'
 const config: XyTsupConfig = {
   compile: {
-    browser: {
-      src: true,
-    },
+    browser: {},
     node: {
       src: true,
     },
+    neutral: {},
   },
 }
 
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default config

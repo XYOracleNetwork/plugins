@@ -18,9 +18,9 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Provider } from 'ethers'
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../../Diviner'
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../../Witness'
 import erc721SentinelManifest from '../Erc721Sentinel.json'
 

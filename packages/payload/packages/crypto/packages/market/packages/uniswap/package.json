@@ -10,43 +10,24 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xyo-network/payload-model": "^2.111.3",
-    "@xyo-network/payload-plugin": "^2.111.3"
+    "@xyo-network/payload-model": "^3.0.1",
+    "@xyo-network/payload-plugin": "^3.0.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "exports": {
     ".": {
-      "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
-        "import": {
-          "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.mjs"
-        }
-      },
-      "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
-        "import": {
-          "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
-        }
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
-  "module": "dist/node/index.mjs",
-  "types": "dist/node/index.d.ts",
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/neutral/index.d.ts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

@@ -7,5 +7,5 @@ import { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 
 export const CryptoPayloadPlugins: PayloadPluginFunc[] = [...CryptoCardsPayloadPlugins, ...CryptoMarketPayloadPlugins]
 
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export default CryptoPayloadPlugins

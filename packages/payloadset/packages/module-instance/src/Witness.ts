@@ -1,7 +1,6 @@
-import { merge } from '@xylabs/lodash'
 import { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { AbstractModuleInstanceSchema } from '@xyo-network/module-instance-payload-plugin'
+import { AbstractModuleInstancePayload } from '@xyo-network/module-instance-payload-plugin'
 import { AnyConfigSchema, Module } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
@@ -30,7 +29,8 @@ export class AbstractModuleInstanceWitness<
     return this.params?.mod
   }
 
-  protected override observeHandler(payloads?: Partial<Payload>[]): Promisable<Payload[]> {
-    return [merge({ queries: this.mod?.queries ?? [] }, payloads?.[0], { schema: AbstractModuleInstanceSchema })]
+  protected override observeHandler(_payloads?: Partial<Payload>[]): Promisable<AbstractModuleInstancePayload[]> {
+    // This was broken anyway (previous use of merge made it compile, but would not have worked)
+    return [] // [{ queries: this.mod?.queries ?? [], ...payloads?.[0], schema: AbstractModuleInstanceSchema }]
   }
 }

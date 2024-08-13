@@ -9,7 +9,7 @@ import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../Witness'
 
 const validateObservation = (observation: Payload[]) => {

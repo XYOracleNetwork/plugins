@@ -10,61 +10,42 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/exists": "^3.6.12",
+    "@xylabs/exists": "^4.0.0",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:^",
-    "@xyo-network/diviner-abstract": "^2.111.3",
-    "@xyo-network/diviner-model": "^2.111.3",
+    "@xyo-network/diviner-abstract": "^3.0.1",
+    "@xyo-network/diviner-model": "^3.0.1",
     "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/ethgasstation-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/gas-price-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^2.111.3",
-    "@xyo-network/payload-builder": "^2.111.3",
-    "@xyo-network/payload-model": "^2.111.3",
-    "@xyo-network/payloadset-plugin": "^2.111.3",
+    "@xyo-network/module-model": "^3.0.1",
+    "@xyo-network/payload-builder": "^3.0.1",
+    "@xyo-network/payload-model": "^3.0.1",
+    "@xyo-network/payloadset-plugin": "^3.0.1",
     "regression": "^2.0.1"
   },
   "devDependencies": {
     "@types/regression": "^2.0.6",
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
     "@xyo-network/blocknative-ethereum-gas-plugin": "workspace:^",
     "@xyo-network/etherchain-gas-ethereum-blockchain-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-plugin": "workspace:^",
-    "@xyo-network/witness-blockchain-abstract": "^2.111.3",
+    "@xyo-network/witness-blockchain-abstract": "^3.0.1",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
-  "types": "dist/node/index.d.ts",
+  "types": "dist/neutral/index.d.ts",
   "exports": {
     ".": {
-      "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
-        "import": {
-          "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.mjs"
-        }
-      },
-      "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
-        "import": {
-          "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
-        }
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
-  "module": "dist/node/index.mjs",
+  "module": "dist/neutral/index.mjs",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

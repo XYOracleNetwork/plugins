@@ -26,9 +26,9 @@ import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import { Provider } from 'ethers'
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
 import nodeManifest from './Erc721.NftIndex.Index.json'
 

@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-default-export
+// eslint-disable-next-line import-x/no-default-export
 export { CryptoCardsMovePlugin, CryptoCardsMovePlugin as default } from './Plugin.ts'
 export * from './Schema.ts'
 export * from './Witness.ts'

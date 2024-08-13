@@ -2,7 +2,7 @@ import { describeIf } from '@xylabs/jest-helpers'
 import { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { EtherscanProvider } from 'ethers'
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { getTransactionsForAddress } from '../getTransactionsForAddress.ts'
 
 const validateAccessList = (accessList: AccessList) => {

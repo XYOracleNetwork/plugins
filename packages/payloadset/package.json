@@ -21,7 +21,7 @@
     "@xyo-network/location-certainty-plugin": "workspace:^",
     "@xyo-network/location-plugin": "workspace:^",
     "@xyo-network/module-instance-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^2.111.3",
+    "@xyo-network/payloadset-plugin": "^3.0.1",
     "@xyo-network/prometheus-node-plugin": "workspace:^",
     "@xyo-network/schema-plugin": "workspace:^",
     "@xyo-network/system-plugins": "workspace:^",
@@ -29,37 +29,24 @@
     "@xyo-network/url-safety-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "exports": {
     ".": {
       "browser": {
-        "require": {
-          "types": "./dist/browser/indexBrowser.d.cts",
-          "default": "./dist/browser/indexBrowser.cjs"
-        },
-        "import": {
-          "types": "./dist/browser/indexBrowser.d.mts",
-          "default": "./dist/browser/indexBrowser.mjs"
-        }
+        "types": "./dist/browser/indexBrowser.d.ts",
+        "default": "./dist/browser/indexBrowser.mjs"
       },
       "node": {
-        "require": {
-          "types": "./dist/node/indexNode.d.cts",
-          "default": "./dist/node/indexNode.cjs"
-        },
-        "import": {
-          "types": "./dist/node/indexNode.d.mts",
-          "default": "./dist/node/indexNode.mjs"
-        }
+        "types": "./dist/node/indexNode.d.ts",
+        "default": "./dist/node/indexNode.mjs"
       }
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/indexNode.cjs",
   "module": "dist/node/indexNode.mjs",
   "types": "dist/node/indexNode.d.ts",
   "homepage": "https://xyo.network",

@@ -18,29 +18,29 @@
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@stylistic/eslint-plugin": "^2.6.1",
+    "@stylistic/eslint-plugin": "^2.6.2",
     "@types/jest": "^29.5.12",
     "@types/supertest": "^6.0.2",
-    "@typescript-eslint/eslint-plugin": "^8.0.1",
-    "@typescript-eslint/parser": "^8.0.1",
-    "@xylabs/eslint-config": "^3.15.14",
-    "@xylabs/eslint-config-flat": "^3.15.14",
-    "@xylabs/forget": "^3.6.12",
-    "@xylabs/platform": "^3.6.12",
-    "@xylabs/ts-scripts-yarn3": "^3.15.14",
-    "@xylabs/tsconfig": "^3.15.14",
-    "@xylabs/tsconfig-dom-jest": "^3.15.14",
-    "@xyo-network/account": "^2.111.3",
-    "@xyo-network/archivist-memory": "^2.111.3",
-    "@xyo-network/boundwitness-builder": "^2.111.3",
-    "@xyo-network/hash": "^2.111.3",
-    "@xyo-network/manifest": "^2.111.3",
-    "@xyo-network/manifest-wrapper": "^2.111.3",
-    "@xyo-network/node-memory": "^2.111.3",
-    "@xyo-network/payload-builder": "^2.111.3",
+    "@typescript-eslint/eslint-plugin": "^8.1.0",
+    "@typescript-eslint/parser": "^8.1.0",
+    "@xylabs/eslint-config-flat": "^4.0.0-rc.15",
+    "@xylabs/forget": "^4.0.0",
+    "@xylabs/platform": "^4.0.0",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xylabs/tsconfig-dom-jest": "^4.0.0-rc.15",
+    "@xylabs/tsconfig-jest": "^4.0.0-rc.15",
+    "@xyo-network/account": "^3.0.1",
+    "@xyo-network/archivist-memory": "^3.0.1",
+    "@xyo-network/boundwitness-builder": "^3.0.1",
+    "@xyo-network/hash": "^3.0.1",
+    "@xyo-network/manifest": "^3.0.1",
+    "@xyo-network/manifest-wrapper": "^3.0.1",
+    "@xyo-network/node-memory": "^3.0.1",
+    "@xyo-network/payload-builder": "^3.0.1",
     "babel-jest": "^29.7.0",
     "dotenv": "^16.4.5",
-    "eslint": "^9.8.0",
+    "eslint": "^9.9.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-prettier": "^5.2.1",
@@ -55,7 +55,9 @@
     "jest-runner-groups": "^2.2.0",
     "jest-sorted": "^1.0.15",
     "jsbi": "^3.2.5",
+    "jsdom": "^24.1.1",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "nodemon": "^3.1.4",
     "reflect-metadata": "^0.2.2",
     "supertest": "^7.0.0",
@@ -63,7 +65,8 @@
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typedoc": "^0.26.5",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
   },
   "resolutions": {
     "axios": "^1",
@@ -75,32 +78,13 @@
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "exports": {
     ".": {
-      "browser": {
-        "require": {
-          "types": "./dist/browser/index.d.cts",
-          "default": "./dist/browser/index.cjs"
-        },
-        "import": {
-          "types": "./dist/browser/index.d.mts",
-          "default": "./dist/browser/index.mjs"
-        }
-      },
-      "node": {
-        "require": {
-          "types": "./dist/node/index.d.cts",
-          "default": "./dist/node/index.cjs"
-        },
-        "import": {
-          "types": "./dist/node/index.d.mts",
-          "default": "./dist/node/index.mjs"
-        }
-      }
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/node/index.cjs",
-  "module": "dist/node/index.mjs",
-  "types": "dist/node/index.d.ts",
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/neutral/index.d.ts",
   "homepage": "https://xyo.network",
   "license": "LGPL-3.0-only",
   "publishConfig": {

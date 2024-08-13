@@ -2,7 +2,7 @@ import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
 import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from './Witness.ts'
 
 /** @deprecated use EvmCallWitness instead */

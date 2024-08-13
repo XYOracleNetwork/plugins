@@ -2,7 +2,7 @@
 import { Buffer } from 'node:buffer'
 import { promises as dnsPromises } from 'node:dns'
 
-import { compact } from '@xylabs/lodash'
+import { exists } from '@xylabs/exists'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
@@ -104,52 +104,50 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     }
     const urlPayloads = payloads.filter(payload => payload.schema === UrlSchema)
     const process = async () => {
-      return compact(
-        await Promise.all(
-          urlPayloads.map<Promise<ImageThumbnail>>(async ({ url }) => {
-            let result: ImageThumbnail
+      return (await Promise.all(
+        urlPayloads.map<Promise<ImageThumbnail>>(async ({ url }) => {
+          let result: ImageThumbnail
 
-            // if it is a data URL, return a Buffer
-            const dataBuffer = ImageThumbnailWitness.bufferFromDataUrl(url)
+          // if it is a data URL, return a Buffer
+          const dataBuffer = ImageThumbnailWitness.bufferFromDataUrl(url)
 
-            if (dataBuffer) {
-              if (this.config.dataUrlPassthrough) {
-                result = {
-                  schema: ImageThumbnailSchema,
-                  sourceHash: await ImageThumbnailWitness.binaryToSha256(dataBuffer),
-                  sourceUrl: url,
-                  url,
-                }
-              } else {
-                let cookedDataBuffer = dataBuffer
-                const urlParts = url.split(';')
-                const [, contentType] = urlParts[0].split(':')
-                if (contentType.startsWith('image/svg')) {
-                  const [encoding, byteString] = urlParts[1].split(',')
-                  if (encoding === 'base64') {
-                    const newSvg = await resolveDynamicSvg(byteString)
-                    const newSvgDataUrl = createDataUrl(Buffer.from(newSvg), contentType)
-                    cookedDataBuffer = ImageThumbnailWitness.bufferFromDataUrl(newSvgDataUrl) ?? dataBuffer
-                  }
-                }
-                result = await this.processMedia(
-                  cookedDataBuffer,
-                  {
-                    schema: ImageThumbnailSchema,
-                    sourceUrl: url,
-                  },
-                  contentType,
-                )
+          if (dataBuffer) {
+            if (this.config.dataUrlPassthrough) {
+              result = {
+                schema: ImageThumbnailSchema,
+                sourceHash: await ImageThumbnailWitness.binaryToSha256(dataBuffer),
+                sourceUrl: url,
+                url,
               }
             } else {
-              // if it is ipfs, go through cloud flair
-              const mutatedUrl = checkIpfsUrl(url, this.ipfsGateway)
-              result = await this.fromHttp(mutatedUrl, url)
+              let cookedDataBuffer = dataBuffer
+              const urlParts = url.split(';')
+              const [, contentType] = urlParts[0].split(':')
+              if (contentType.startsWith('image/svg')) {
+                const [encoding, byteString] = urlParts[1].split(',')
+                if (encoding === 'base64') {
+                  const newSvg = await resolveDynamicSvg(byteString)
+                  const newSvgDataUrl = createDataUrl(Buffer.from(newSvg), contentType)
+                  cookedDataBuffer = ImageThumbnailWitness.bufferFromDataUrl(newSvgDataUrl) ?? dataBuffer
+                }
+              }
+              result = await this.processMedia(
+                cookedDataBuffer,
+                {
+                  schema: ImageThumbnailSchema,
+                  sourceUrl: url,
+                },
+                contentType,
+              )
             }
-            return result
-          }),
-        ),
-      )
+          } else {
+            // if it is ipfs, go through cloud flair
+            const mutatedUrl = checkIpfsUrl(url, this.ipfsGateway)
+            result = await this.fromHttp(mutatedUrl, url)
+          }
+          return result
+        }),
+      )).filter(exists)
     }
     return this.config.runExclusive ? await this._semaphore.runExclusive(() => process()) : process()
   }
