@@ -1,10 +1,10 @@
+import { Pool } from '@uniswap/v3-sdk'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { IERC20Metadata, IERC20Metadata__factory } from '@xyo-network/typechain'
 import { Token } from '@xyo-network/uniswap-sdk-core'
 import { IUniswapV3Pool, IUniswapV3Pool__factory } from '@xyo-network/uniswap-typechain'
 import { Provider } from 'ethers'
-import { Pool } from 'uniswap-v3-sdk'
 
 import { logErrors, logErrorsAsync } from '../logErrors.ts'
 import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.ts'
