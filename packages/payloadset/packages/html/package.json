@@ -10,11 +10,13 @@
     "url": "https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
+    "@xylabs/exists": "^4.0.1",
     "@xylabs/object": "^4.0.1",
     "@xyo-network/diviner-abstract": "^3.0.2",
     "@xyo-network/diviner-model": "^3.0.2",
     "@xyo-network/module-model": "^3.0.2",
     "@xyo-network/payload-model": "^3.0.2",
+    "cheerio": "^1.0.0",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {
