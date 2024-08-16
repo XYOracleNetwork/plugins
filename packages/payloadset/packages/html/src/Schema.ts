@@ -1,2 +1,2 @@
-export const XmlSchema = 'network.xyo.xml'
-export type XmlSchema = typeof XmlSchema
+export const HtmlSchema = 'network.xyo.html'
+export type HtmlSchema = typeof HtmlSchema

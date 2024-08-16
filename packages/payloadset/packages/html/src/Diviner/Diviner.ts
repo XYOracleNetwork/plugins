@@ -3,29 +3,29 @@ import { DivinerInstance, DivinerModuleEventData } from '@xyo-network/diviner-mo
 import { creatableModule } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 
-import { Xml } from '../Payload.ts'
-import { XmlSchema } from '../Schema.ts'
-import { hasStringDataField, StringDataField, toXml } from './lib/index.ts'
-import { XmlParsingDivinerParams } from './Params.ts'
-import { XmlParsingDivinerConfigSchema } from './Schema.ts'
+import { Html } from '../Payload.ts'
+import { HtmlSchema } from '../Schema.ts'
+import { hasStringDataField, StringDataField, toHtml } from './lib/index.ts'
+import { HtmlQuerySelectorDivinerParams } from './Params.ts'
+import { HtmlQuerySelectorDivinerConfigSchema } from './Schema.ts'
 
 @creatableModule()
-export class XmlParsingDiviner<
-  TParams extends XmlParsingDivinerParams = XmlParsingDivinerParams,
+export class HtmlQuerySelectorDiviner<
+  TParams extends HtmlQuerySelectorDivinerParams = HtmlQuerySelectorDivinerParams,
   TIn extends Payload<StringDataField> = Payload<StringDataField>,
-  TOut extends Xml | Payload = Xml | Payload,
+  TOut extends Html | Payload = Html | Payload,
   TEventData extends DivinerModuleEventData<DivinerInstance<TParams, TIn, TOut>, TIn, TOut> = DivinerModuleEventData<
     DivinerInstance<TParams, TIn, TOut>,
     TIn,
     TOut
   >,
 > extends AbstractDiviner<TParams, TIn, TOut, TEventData> {
-  static override readonly configSchemas: Schema[] = [...super.configSchemas, XmlParsingDivinerConfigSchema]
-  static override readonly defaultConfigSchema: Schema = XmlParsingDivinerConfigSchema
-  static override targetSchema = XmlSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, HtmlQuerySelectorDivinerConfigSchema]
+  static override readonly defaultConfigSchema: Schema = HtmlQuerySelectorDivinerConfigSchema
+  static override targetSchema = HtmlSchema
 
   protected override async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
-    const results = await Promise.all(payloads.filter(hasStringDataField).map(toXml))
+    const results = await Promise.all(payloads.filter(hasStringDataField).map(toHtml))
     return results as TOut[]
   }
 }

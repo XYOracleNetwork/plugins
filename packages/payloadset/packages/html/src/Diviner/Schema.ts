@@ -1,2 +1,2 @@
-export const XmlParsingDivinerConfigSchema = 'network.xyo.diviner.xml.config' as const
-export type XmlParsingDivinerConfigSchema = typeof XmlParsingDivinerConfigSchema
+export const HtmlQuerySelectorDivinerConfigSchema = 'network.xyo.diviner.html.config' as const
+export type HtmlQuerySelectorDivinerConfigSchema = typeof HtmlQuerySelectorDivinerConfigSchema

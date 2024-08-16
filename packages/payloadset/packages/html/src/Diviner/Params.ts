@@ -1,7 +1,7 @@
 import { DivinerParams } from '@xyo-network/diviner-model'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 
-import { XmlParsingDivinerConfig } from './Config.ts'
+import { HtmlQuerySelectorDivinerConfig } from './Config.ts'
 
-export type XmlParsingDivinerParams<TConfig extends AnyConfigSchema<XmlParsingDivinerConfig> = AnyConfigSchema<XmlParsingDivinerConfig>> =
+export type HtmlQuerySelectorDivinerParams<TConfig extends AnyConfigSchema<HtmlQuerySelectorDivinerConfig> = AnyConfigSchema<HtmlQuerySelectorDivinerConfig>> =
   DivinerParams<TConfig>

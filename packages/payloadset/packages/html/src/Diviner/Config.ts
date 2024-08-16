@@ -1,10 +1,10 @@
 import { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { XmlParsingDivinerConfigSchema } from './Schema.ts'
+import { HtmlQuerySelectorDivinerConfigSchema } from './Schema.ts'
 
-export type XmlParsingDivinerConfig = DivinerConfig<
+export type HtmlQuerySelectorDivinerConfig = DivinerConfig<
   {
-    //
+    // TODO: Optional config query selector
   },
-  XmlParsingDivinerConfigSchema
+  HtmlQuerySelectorDivinerConfigSchema
 >

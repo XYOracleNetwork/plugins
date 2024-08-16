@@ -1,31 +1,31 @@
 import { JsonObject } from '@xylabs/object'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
-import { XmlSchema } from './Schema.ts'
+import { HtmlSchema } from './Schema.ts'
 
 /**
- * The fields of an Xml Payload
+ * The fields of an Html Payload
  */
-export interface XmlFields {
-  xml: JsonObject
+export interface HtmlFields {
+  html: JsonObject
 }
 
 /**
- * An Xml Payload
+ * An Html Payload
  */
-export type Xml = Payload<XmlFields, XmlSchema>
+export type Html = Payload<HtmlFields, HtmlSchema>
 
 /**
- * Identity function for determine if an object is an Xml Payload
+ * Identity function for determine if an object is an Html Payload
  */
-export const isXml = isPayloadOfSchemaType<Xml>(XmlSchema)
+export const isHtml = isPayloadOfSchemaType<Html>(HtmlSchema)
 
 /**
- * Identity function for determine if an object is an Xml Payload with sources
+ * Identity function for determine if an object is an Html Payload with sources
  */
-export const isXmlWithSources = isPayloadOfSchemaTypeWithSources<Xml>(XmlSchema)
+export const isHtmlWithSources = isPayloadOfSchemaTypeWithSources<Html>(HtmlSchema)
 
 /**
- * Identity function for determine if an object is an Xml Payload with meta
+ * Identity function for determine if an object is an Html Payload with meta
  */
-export const isXmlWithMeta = isPayloadOfSchemaTypeWithMeta<Xml>(XmlSchema)
+export const isHtmlWithMeta = isPayloadOfSchemaTypeWithMeta<Html>(HtmlSchema)
