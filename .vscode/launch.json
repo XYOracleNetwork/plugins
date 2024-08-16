@@ -21,82 +21,19 @@
       "pauseForSourceMap": true,
     },
     {
-      "type": "node",
-      "request": "launch",
-      "name": "MemoryNode (Yarn)",
-      "runtimeExecutable": "yarn",
-      "runtimeArgs": [
-        "start"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "CLI",
-      "program": "${workspaceFolder}/packages/cli/src/xyo.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "runtimeArgs": [
-        "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
-        "--loader=ts-node/esm"
-      ],
-      "args": [
-        "--network",
-        "local",
-        "node",
-        "discover",
-      ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "AutomationWitness",
-      "program": "${workspaceFolder}/packages/automation-witness-server/src/launchServer.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "runtimeArgs": [
-        // "--inspect",
-        "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
-        "--loader=ts-node/esm"
-      ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
       "name": "Test",
       "type": "node",
       "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
       "request": "launch",
       "args": [
         "--run",
+        "--poolOptions.threads.singleThread", // Run in single thread for linear debugging
         "packages/payloadset/packages/xml/src/Diviner/spec/Diviner.spec.ts",
       ],
+      "autoAttachChildProcesses": true, // Attach to any child processes created by the test runner
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
       "cwd": "${workspaceFolder}",
+      "internalConsoleOptions": "neverOpen",
       "sourceMaps": true,
       "skipFiles": [
         "<node_internals>/**"
