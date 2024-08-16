@@ -33,8 +33,7 @@ export class HtmlQuerySelectorDiviner<
     return this._querySelector
   }
 
-  protected override async divineHandler(payloads: TIn[] = []) {
-    await Promise.resolve()
+  protected override divineHandler(payloads: TIn[] = []) {
     return payloads.filter(hasStringDataField)
       .map(p => querySelector(p.data, this.querySelector))
       .filter(exists)
