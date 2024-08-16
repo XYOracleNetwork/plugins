@@ -1,4 +1,3 @@
-import { JsonObject } from '@xylabs/object'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
 
 import { HtmlSchema } from './Schema.ts'
@@ -7,7 +6,7 @@ import { HtmlSchema } from './Schema.ts'
  * The fields of an Html Payload
  */
 export interface HtmlFields {
-  html: JsonObject
+  html: string
 }
 
 /**
