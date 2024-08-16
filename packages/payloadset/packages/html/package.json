@@ -1,0 +1,52 @@
+{
+  "name": "@xyo-network/html-plugin",
+  "author": {
+    "email": "support@xyo.network",
+    "name": "XYO Development Team",
+    "url": "https://xyo.network"
+  },
+  "bugs": {
+    "email": "support@xyo.network",
+    "url": "https://github.com/XYOracleNetwork/plugins/issues"
+  },
+  "dependencies": {
+    "@xylabs/object": "^4.0.1",
+    "@xyo-network/diviner-abstract": "^3.0.2",
+    "@xyo-network/diviner-model": "^3.0.2",
+    "@xyo-network/module-model": "^3.0.2",
+    "@xyo-network/payload-model": "^3.0.2",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@types/xml2js": "^0.4.14",
+    "@xylabs/assert": "^4.0.1",
+    "@xylabs/jest-helpers": "^4.0.1",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
+    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xyo-network/api-call-witness": "workspace:^",
+    "jest": "^29.7.0",
+    "typescript": "^5.5.4"
+  },
+  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "exports": {
+    ".": {
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/neutral/index.d.ts",
+  "homepage": "https://xyo.network",
+  "license": "LGPL-3.0-only",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "sideEffects": false,
+  "version": "3.0.2",
+  "type": "module"
+}
