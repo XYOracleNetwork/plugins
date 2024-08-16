@@ -1,4 +1,4 @@
-import { AssetSymbol } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import type { AssetSymbol } from '@xyo-network/coingecko-crypto-market-payload-plugin'
 
 export const coingeckoCoinToAssetMap: Record<string, AssetSymbol> = {
   'binance-usd': 'busd',

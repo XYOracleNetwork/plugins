@@ -1,7 +1,9 @@
-import { Address } from '@xylabs/hex'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
+import type { Address } from '@xylabs/hex'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
-import { DomainFields, DomainSchema } from '../Domain/index.ts'
+import type { DomainFields } from '../Domain/index.ts'
+import { DomainSchema } from '../Domain/index.ts'
 
 export const DomainRegistrationSchema = `${DomainSchema}.registration` as const
 export type DomainRegistrationSchema = typeof DomainRegistrationSchema

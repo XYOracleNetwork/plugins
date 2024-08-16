@@ -1,6 +1,6 @@
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { CryptoCardsMoveSchema } from './Schema.ts'
+import type { CryptoCardsMoveSchema } from './Schema.ts'
 
 export type CryptoCardsMovePayload = Payload<{
   /** @field The Huri of each of the cards you play - some are globally available */

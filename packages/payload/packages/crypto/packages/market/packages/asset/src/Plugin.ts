@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { CryptoMarketAssetPayload } from './Payload.ts'
+import type { CryptoMarketAssetPayload } from './Payload.ts'
 import { CryptoMarketAssetSchema } from './Schema.ts'
 import { cryptoMarketAssetPayloadTemplate } from './Template.ts'
 

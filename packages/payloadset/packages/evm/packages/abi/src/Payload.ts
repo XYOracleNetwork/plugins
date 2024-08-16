@@ -1,5 +1,5 @@
-import { Payload } from '@xyo-network/payload-model'
-import { JsonFragment } from 'ethers'
+import type { Payload } from '@xyo-network/payload-model'
+import type { JsonFragment } from 'ethers'
 
 export type InterfaceAbi = ReadonlyArray<JsonFragment>
 

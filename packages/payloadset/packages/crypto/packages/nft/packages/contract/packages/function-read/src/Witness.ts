@@ -1,19 +1,22 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import {
+import type {
   CryptoContractFunctionCall,
   CryptoContractFunctionCallFailure,
   CryptoContractFunctionCallResult,
+  CryptoContractFunctionCallSuccess,
+  CryptoContractFunctionReadWitnessConfig } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import {
   CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
-  CryptoContractFunctionCallSuccess,
-  CryptoContractFunctionReadWitnessConfig,
   CryptoContractFunctionReadWitnessConfigSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
-import { WitnessParams } from '@xyo-network/witness-model'
-import { Contract, Provider } from 'ethers'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Schema } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import type { WitnessParams } from '@xyo-network/witness-model'
+import type { Provider } from 'ethers'
+import { Contract } from 'ethers'
 
 /** @deprecated use EvmCallWitness instead */
 export type CryptoContractFunctionReadWitnessParams = WitnessParams<

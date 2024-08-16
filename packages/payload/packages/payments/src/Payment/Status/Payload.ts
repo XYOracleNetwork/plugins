@@ -1,8 +1,9 @@
+import type {
+  PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
-  PayloadWithSources,
 } from '@xyo-network/payload-model'
 
 import { PaymentStatusSchema } from './Schema.ts'

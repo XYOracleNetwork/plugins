@@ -1,6 +1,6 @@
-import { WitnessConfig } from '@xyo-network/witness-model'
+import type { WitnessConfig } from '@xyo-network/witness-model'
 
-import { NftWitnessConfigSchema } from './Schema.ts'
+import type { NftWitnessConfigSchema } from './Schema.ts'
 
 export type CryptoWalletNftWitnessConfig = WitnessConfig<{
   address?: string

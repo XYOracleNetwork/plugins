@@ -1,7 +1,7 @@
-import { BoundWitness } from '@xyo-network/boundwitness-model'
-import { Payload } from '@xyo-network/payload-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../Duration.ts'
+import type { DurationFields } from '../Duration.ts'
 import { validateBoundWitness } from './validateBoundWitness.ts'
 import { validateBoundWitnessAndDuration } from './validateBoundWitnessAndDuration.ts'
 import { validateDuration } from './validateDuration.ts'

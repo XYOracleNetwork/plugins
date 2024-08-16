@@ -7,7 +7,7 @@
   },
   "bugs": {
     "email": "support@xyo.network",
-    "url": "https://github.com/XYOracleNetwork/plugins/issues"
+    "url": "git+https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
     "@xyo-network/api-call-witness": "workspace:^",
@@ -21,7 +21,7 @@
     "@xyo-network/location-certainty-plugin": "workspace:^",
     "@xyo-network/location-plugin": "workspace:^",
     "@xyo-network/module-instance-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^3.0.2",
+    "@xyo-network/payloadset-plugin": "^3.0.3",
     "@xyo-network/prometheus-node-plugin": "workspace:^",
     "@xyo-network/schema-plugin": "workspace:^",
     "@xyo-network/system-plugins": "workspace:^",
@@ -29,8 +29,8 @@
     "@xyo-network/url-safety-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.20",
+    "@xylabs/tsconfig": "^4.0.0-rc.20",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -56,9 +56,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/XYOracleNetwork/plugins.git"
+    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "3.0.2",
+  "version": "3.0.3",
   "type": "module"
 }

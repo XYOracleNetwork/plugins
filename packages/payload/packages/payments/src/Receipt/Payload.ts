@@ -1,11 +1,12 @@
+import type {
+  PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
-  PayloadWithSources,
 } from '@xyo-network/payload-model'
 
-import { SupportedCurrency } from '../Currency.ts'
+import type { SupportedCurrency } from '../Currency.ts'
 import { ReceiptSchema } from './Schema.ts'
 
 export interface ReceiptFields {

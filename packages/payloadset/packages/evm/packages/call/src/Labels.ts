@@ -1,4 +1,4 @@
-import { Labels } from '@xyo-network/module-model'
+import type { Labels } from '@xyo-network/module-model'
 
 /**
  * Labels for Crypto Contract Diviner components

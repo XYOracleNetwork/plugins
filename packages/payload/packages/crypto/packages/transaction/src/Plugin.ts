@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { AddressTransactionHistoryPayload } from './Payload.ts'
+import type { AddressTransactionHistoryPayload } from './Payload.ts'
 import { AddressTransactionHistorySchema } from './Schema.ts'
 import { addressTransactionHistoryPayloadTemplate } from './Template.ts'
 

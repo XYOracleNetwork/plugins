@@ -1,6 +1,7 @@
 import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet, WalletInstance } from '@xyo-network/account'
+import type { WalletInstance } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
 import { CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
@@ -17,15 +18,16 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { isNftId } from '@xyo-network/evm-nft-id-payload-plugin'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
@@ -82,7 +84,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
     const tokensToCheck = 16
     const tokenIndexes = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => {
       // Add one to prevent 0 index
-      tokenIndex + 1
+      return tokenIndex + 1
     })
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {

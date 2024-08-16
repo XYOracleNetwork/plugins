@@ -2,8 +2,9 @@ import { EthereumGasBlocknativeWitness, EthereumGasBlocknativeWitnessConfigSchem
 import { EtherchainEthereumGasWitnessV2, EthereumGasEtherchainV2WitnessConfigSchema } from '@xyo-network/etherchain-gas-ethereum-blockchain-plugins'
 import { EthereumGasEthersWitness, EthereumGasEthersWitnessConfigSchema } from '@xyo-network/ethers-ethereum-gas-plugin'
 import { EthereumGasEtherscanWitness, EthereumGasEtherscanWitnessConfigSchema } from '@xyo-network/etherscan-ethereum-gas-plugin'
-import { EthereumGasPayload, EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
-import { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { EthereumGasPayload } from '@xyo-network/gas-price-payload-plugin'
+import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
+import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
 import { EthereumGasDiviner } from '../Diviner.ts'

@@ -2,14 +2,15 @@ import { writeFile } from 'node:fs/promises'
 
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type {
+  NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionInfo,
   NftCollectionWitnessConfigSchema,
-  NftCollectionWitnessQuery,
   NftCollectionWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
 import { CryptoNftCollectionWitness } from '../Witness'

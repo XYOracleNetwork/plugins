@@ -1,15 +1,16 @@
-import { Hash } from '@xylabs/hex'
-import {
+import type { Hash } from '@xylabs/hex'
+import type {
   ImageThumbnailDivinerQuery,
-  ImageThumbnailDivinerQuerySchema,
   ImageThumbnailResult,
-  ImageThumbnailResultIndex,
+  ImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
+import {
+  ImageThumbnailDivinerQuerySchema,
   ImageThumbnailResultIndexSchema,
   ImageThumbnailResultSchema,
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta } from '@xyo-network/payload-model'
+import type { WithMeta } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner } from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner'

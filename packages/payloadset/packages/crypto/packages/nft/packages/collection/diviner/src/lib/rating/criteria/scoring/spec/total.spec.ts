@@ -1,4 +1,4 @@
-import { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import type { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
 
 import { scoreTotal } from '../total'
 

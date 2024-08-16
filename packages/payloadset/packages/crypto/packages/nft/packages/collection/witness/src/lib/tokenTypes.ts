@@ -1,6 +1,6 @@
-import { TokenType } from '@xyo-network/crypto-nft-payload-plugin'
+import type { TokenType } from '@xyo-network/crypto-nft-payload-plugin'
 import { ERC721__factory, ERC1155URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 import { contractHasFunctions } from './contractHasFunctions.ts'
 

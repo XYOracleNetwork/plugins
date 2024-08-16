@@ -1,5 +1,6 @@
-import { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
-import { FAIL, PASS, PassFailScoringFunction } from '@xyo-network/crypto-nft-score-model'
+import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import type { PassFailScoringFunction } from '@xyo-network/crypto-nft-score-model'
+import { FAIL, PASS } from '@xyo-network/crypto-nft-score-model'
 
 /**
  * Callers SHALL NOT assume that ID numbers have any specific pattern to them, and

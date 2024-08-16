@@ -1,7 +1,8 @@
-import { Address } from '@xylabs/hex'
-import { ModuleIdentifier } from '@xyo-network/module-model'
+import type { Address } from '@xylabs/hex'
+import type { ModuleIdentifier } from '@xyo-network/module-model'
 
-import { EscrowTerms, EscrowTermsSchema } from '../../../../Terms'
+import type { EscrowTerms } from '../../../../Terms'
+import { EscrowTermsSchema } from '../../../../Terms'
 import { moduleIdentifiersContainsOneOf } from '../moduleInstanceValidators'
 
 describe('RegistrarSentinel', () => {

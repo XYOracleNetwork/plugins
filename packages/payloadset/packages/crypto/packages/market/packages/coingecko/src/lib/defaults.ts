@@ -1,4 +1,4 @@
-import { CryptoAsset } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import type { CryptoAsset } from '@xyo-network/coingecko-crypto-market-payload-plugin'
 
 export const defaultCoins: CryptoAsset[] = [
   { name: 'bitcoin' },

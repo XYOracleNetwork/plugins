@@ -1,7 +1,9 @@
-import { HDWallet, WalletInstance } from '@xyo-network/account'
+import type { WalletInstance } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
+import type {
+  CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
-  CryptoContractFunctionCall,
   CryptoContractFunctionCallSchema,
   isErc721ContractInfo,
   isErc1155ContractInfo,
@@ -10,7 +12,8 @@ import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-mem
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -18,15 +21,16 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { ManifestWrapper, ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
+import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'

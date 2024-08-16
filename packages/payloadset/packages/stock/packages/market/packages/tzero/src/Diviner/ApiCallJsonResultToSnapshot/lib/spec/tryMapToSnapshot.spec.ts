@@ -1,4 +1,4 @@
-import { ApiCallResult } from '@xyo-network/api-call-witness'
+import type { ApiCallResult } from '@xyo-network/api-call-witness'
 
 import { tryMapToSnapshot } from '../tryMapToSnapshot'
 

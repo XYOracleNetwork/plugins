@@ -1,7 +1,7 @@
 import { fulfilled } from '@xylabs/promise'
-import { UniswapCryptoPair } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import type { UniswapCryptoPair } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
-import { EthersUniSwap3Pair } from './Ethers/index.ts'
+import type { EthersUniSwap3Pair } from './Ethers/index.ts'
 import { logErrorsAsync } from './logErrors.ts'
 
 export const pricesFromUniswap3 = async (pools: EthersUniSwap3Pair[]): Promise<UniswapCryptoPair[]> => {

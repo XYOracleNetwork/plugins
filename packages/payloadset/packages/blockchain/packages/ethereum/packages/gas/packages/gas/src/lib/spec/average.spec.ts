@@ -1,4 +1,4 @@
-import { FeeData } from '@xyo-network/gas-price-payload-plugin'
+import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
 
 import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthgasstationGas } from '../../test'
 import { average } from '../average'

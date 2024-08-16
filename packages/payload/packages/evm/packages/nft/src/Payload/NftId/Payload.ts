@@ -1,5 +1,6 @@
-import { EvmAddressFields } from '@xyo-network/evm-address-payload-plugin'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import type { EvmAddressFields } from '@xyo-network/evm-address-payload-plugin'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import { NftIdSchema } from './Schema.ts'
 

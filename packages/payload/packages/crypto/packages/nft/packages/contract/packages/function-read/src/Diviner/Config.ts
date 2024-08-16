@@ -1,4 +1,4 @@
-import { DivinerConfig } from '@xyo-network/diviner-model'
+import type { DivinerConfig } from '@xyo-network/diviner-model'
 
 import { CryptoContractDivinerSchema } from './Schema.ts'
 

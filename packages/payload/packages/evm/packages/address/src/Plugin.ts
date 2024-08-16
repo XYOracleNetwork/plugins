@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { EvmAddress } from './Payload.ts'
+import type { EvmAddress } from './Payload.ts'
 import { EvmAddressSchema } from './Schema.ts'
 import { addressPayloadTemplate } from './Template.ts'
 

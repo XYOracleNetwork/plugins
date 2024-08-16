@@ -1,9 +1,11 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { LocationHeadingPayload, LocationHeadingSchema, LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { LocationHeadingPayload, LocationPayload } from '@xyo-network/location-payload-plugin'
+import { LocationHeadingSchema, LocationSchema } from '@xyo-network/location-payload-plugin'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 
-import { CurrentLocationWitnessConfigSchema, CurrentLocationWitnessParams } from './Config.ts'
+import type { CurrentLocationWitnessParams } from './Config.ts'
+import { CurrentLocationWitnessConfigSchema } from './Config.ts'
 
 export class CurrentLocationWitness<TParams extends CurrentLocationWitnessParams = CurrentLocationWitnessParams> extends AbstractWitness<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CurrentLocationWitnessConfigSchema]

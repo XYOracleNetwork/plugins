@@ -1,7 +1,8 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { ModuleError } from '@xyo-network/payload-model'
-import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
-import { UrlSafetyPayload } from '@xyo-network/url-safety-payload-plugin'
+import type { ModuleError } from '@xyo-network/payload-model'
+import type { UrlPayload } from '@xyo-network/url-payload-plugin'
+import { UrlSchema } from '@xyo-network/url-payload-plugin'
+import type { UrlSafetyPayload } from '@xyo-network/url-safety-payload-plugin'
 
 import { UrlSafetyWitness } from '../Witness/index.ts'
 

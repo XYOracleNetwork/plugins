@@ -3,11 +3,12 @@ import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { isImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
-import { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.ts'
+import type { ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels.ts'
+import type { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.ts'
 
 /**
  * A diviner that converts ImageThumbnailDivinerQuery to ImageThumbnailResultQuery

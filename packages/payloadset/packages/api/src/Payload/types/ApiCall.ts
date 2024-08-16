@@ -1,4 +1,4 @@
-import { ApiUriCall } from './ApiUriCall.ts'
-import { ApiUriTemplateCall } from './ApiUriTemplateCall.ts'
+import type { ApiUriCall } from './ApiUriCall.ts'
+import type { ApiUriTemplateCall } from './ApiUriTemplateCall.ts'
 
 export type ApiCall = ApiUriCall | ApiUriTemplateCall

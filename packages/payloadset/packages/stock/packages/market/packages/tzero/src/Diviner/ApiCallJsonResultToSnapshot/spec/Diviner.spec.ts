@@ -1,5 +1,5 @@
 import { HDWallet } from '@xyo-network/account'
-import { ApiCallResult } from '@xyo-network/api-call-witness'
+import type { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'

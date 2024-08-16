@@ -1,7 +1,8 @@
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
-import { isNftInfo, NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
+import type { NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
+import { isNftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { isNftScore, NftScoreDiviner } from '../Diviner.ts'

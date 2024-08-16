@@ -1,13 +1,15 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 
-import { ApiCallJsonResult, ApiCallResultSchema, ApiCallSchema, ApiUriTemplateCall } from '../../Payload/index.ts'
+import type { ApiCallJsonResult, ApiUriTemplateCall } from '../../Payload/index.ts'
+import { ApiCallResultSchema, ApiCallSchema } from '../../Payload/index.ts'
 import { ApiCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json'
 

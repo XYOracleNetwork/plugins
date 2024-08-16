@@ -1,7 +1,7 @@
-import { ModuleIdentifier } from '@xyo-network/module-model'
-import { PayloadValidationFunction } from '@xyo-network/payload-model'
+import type { ModuleIdentifier } from '@xyo-network/module-model'
+import type { PayloadValidationFunction } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms.ts'
 import { moduleIdentifiersContainsOneOf } from '../common/index.ts'
 
 const name = 'EscrowTerms.escrowAgent'

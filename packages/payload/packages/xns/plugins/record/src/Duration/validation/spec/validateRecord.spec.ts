@@ -1,6 +1,6 @@
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../../Duration.ts'
+import type { DurationFields } from '../../Duration.ts'
 import { validateDuration } from '../validateDuration.ts'
 
 describe('validateRecord', () => {

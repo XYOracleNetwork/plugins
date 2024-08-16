@@ -1,5 +1,5 @@
-import { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
-import { Score } from '@xyo-network/crypto-nft-score-model'
+import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import type { Score } from '@xyo-network/crypto-nft-score-model'
 
 import { scoringCriteria } from './criteria/index.ts'
 

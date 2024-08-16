@@ -1,6 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { isNftInfo, NftWitnessConfigSchema, NftWitnessQuery, NftWitnessQuerySchema } from '@xyo-network/crypto-nft-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { NftWitnessQuery } from '@xyo-network/crypto-nft-payload-plugin'
+import { isNftInfo, NftWitnessConfigSchema, NftWitnessQuerySchema } from '@xyo-network/crypto-nft-payload-plugin'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain'
 

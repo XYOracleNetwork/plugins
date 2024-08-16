@@ -6,27 +6,33 @@ import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { NftInfo, NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
+import type { NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
+import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type {
+  TemporalIndexingDivinerResultIndex } from '@xyo-network/diviner-temporal-indexing'
 import {
   isTemporalIndexingDivinerResultIndex,
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
   TemporalIndexingDivinerIndexCandidateToIndexDiviner,
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
-  TemporalIndexingDivinerResultIndex,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { isModuleState, Labels, ModuleState } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { Labels, ModuleState } from '@xyo-network/module-model'
+import { isModuleState } from '@xyo-network/module-model'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { WithMeta } from '@xyo-network/payload-model'
+import type { WithMeta } from '@xyo-network/payload-model'
 
 import imageThumbnailDivinerManifest from './Witness.Index.json'
 

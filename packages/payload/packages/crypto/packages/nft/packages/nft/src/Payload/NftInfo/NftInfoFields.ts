@@ -1,5 +1,5 @@
-import { NftContractInformation } from './NftContractInformation.ts'
-import { NftMetadata } from './NftMetadata.ts'
+import type { NftContractInformation } from './NftContractInformation.ts'
+import type { NftMetadata } from './NftMetadata.ts'
 
 export interface NftInfoFields extends NftContractInformation {
   metadata?: NftMetadata

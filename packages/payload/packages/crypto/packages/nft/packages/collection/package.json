@@ -7,19 +7,19 @@
   },
   "bugs": {
     "email": "support@xyo.network",
-    "url": "https://github.com/XYOracleNetwork/plugins/issues"
+    "url": "git+https://github.com/XYOracleNetwork/plugins/issues"
   },
   "dependencies": {
-    "@xylabs/hex": "^4.0.1",
+    "@xylabs/hex": "^4.0.2",
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^",
-    "@xyo-network/diviner-model": "^3.0.2",
-    "@xyo-network/payload-model": "^3.0.2",
-    "@xyo-network/payload-plugin": "^3.0.2",
-    "@xyo-network/witness-model": "^3.0.2"
+    "@xyo-network/diviner-model": "^3.0.3",
+    "@xyo-network/payload-model": "^3.0.3",
+    "@xyo-network/payload-plugin": "^3.0.3",
+    "@xyo-network/witness-model": "^3.0.3"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.15",
-    "@xylabs/tsconfig": "^4.0.0-rc.15",
+    "@xylabs/ts-scripts-yarn3": "^4.0.0-rc.20",
+    "@xylabs/tsconfig": "^4.0.0-rc.20",
     "typescript": "^5.5.4"
   },
   "description": "Typescript/Javascript Plugins for XYO Platform",
@@ -39,9 +39,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/XYOracleNetwork/plugins.git"
+    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
   },
   "sideEffects": false,
-  "version": "3.0.2",
+  "version": "3.0.3",
   "type": "module"
 }
