@@ -1,13 +1,16 @@
-import { exists } from '@xylabs/exists'
 import { load } from 'cheerio'
 
 const opts = {}
 // const opts = { decodeEntities: false }
 
 /**
- * Takes a string data field containing html and converts it to an XML object
- * @param html The input object which contains the stringified html data
- * @returns A promise that resolves to an XML payload
+ * Queries the html string and returns the first element that matches
+ * the specified set of CSS selectors.
+ * @param html The string of HTML to search
+ * @param selector The CSS selector to search for
+ * @returns An string representing the first element in the document
+ * that matches the specified set of CSS selectors, or null is
+ * returned if there are no matches.
  */
 export const querySelector = (html: string, selector: string): string | null => {
   // Check if the input string is empty or null
@@ -15,15 +18,5 @@ export const querySelector = (html: string, selector: string): string | null => 
   // Parse the HTML
   const dom = load(html, opts)
   const element = dom(selector)
-  // TODO: .toString() instead of .html()?
-  return element.html()
-}
-
-export const querySelectorAll = (html: string, selectors: string): string[] => {
-  // Check if the input string is empty or null
-  if (!html.trim()) return []
-  // Parse the HTML
-  const dom = load(html, opts)
-  const elements = dom(selectors) as unknown as ReturnType<typeof dom>[]
-  return elements.map(element => element.html()).filter(exists)
+  return element.first()?.toString() || null
 }

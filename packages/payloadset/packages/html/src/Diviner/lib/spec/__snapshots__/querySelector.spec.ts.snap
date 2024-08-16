@@ -1,38 +1,32 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute 1`] = `""`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute 1`] = `"<input type="text" name="username" value="testUser">"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute starts with 1`] = `"Click Here"`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute starts with 1`] = `"<a href="/link" class="link">Click Here</a>"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute with specific value 1`] = `""`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by attribute with specific value 1`] = `"<img src="image.png" alt="Test Image">"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by class and tag name combination 1`] = `"Hello, World!"`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by class and tag name combination 1`] = `"<h1 class="title">Hello, World!</h1>"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by class name 1`] = `"This is a test paragraph."`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by class name 1`] = `"<p class="description">This is a test paragraph.</p>"`;
 
 exports[`querySelector > returns the first matching element from the supplied HTML > should find element by id 1`] = `
-"
-      <h1 class="title">Hello, World!</h1>
-      <p class="description">This is a test paragraph.</p>
-      <a href="/link" class="link">Click Here</a>
-      <ul>
-        <li class="item">Item 1</li>
-        <li class="item">Item 2</li>
-        <li class="item">Item 3</li>
-      </ul>
-      <input type="text" name="username" value="testUser">
-      <img src="image.png" alt="Test Image">
-    "
+"<div id="main" class="container">
+    <h1 class="title">Hello, World!</h1>
+    <p class="description">This is a test paragraph.</p>
+    <a href="/link" class="link">Click Here</a>
+    <ul>
+      <li class="item">Item 1</li>
+      <li class="item">Item 2</li>
+      <li class="item">Item 3</li>
+    </ul>
+    <input type="text" name="username" value="testUser">
+    <img src="image.png" alt="Test Image">
+  </div>"
 `;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by tag name 1`] = `"Hello, World!"`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by tag name 1`] = `"<h1 class="title">Hello, World!</h1>"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find element by tag name inside another element 1`] = `"Hello, World!"`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find element by tag name inside another element 1`] = `"<h1 class="title">Hello, World!</h1>"`;
 
-exports[`querySelector > returns the first matching element from the supplied HTML > should find multiple elements by class name 1`] = `"Item 1"`;
-
-exports[`querySelector > returns the first matching element from the supplied HTML > with valid selector and matching data 1`] = `null`;
-
-exports[`querySelector > returns the first matching element from the supplied HTML > with valid selector and matching data 2`] = `null`;
-
-exports[`querySelector > returns the first matching element from the supplied HTML > with valid selector and matching data 3`] = `null`;
+exports[`querySelector > returns the first matching element from the supplied HTML > should find single elements by class name 1`] = `"<li class="item">Item 1</li>"`;

@@ -9,7 +9,7 @@
       "args": [
         "--run",
         "--poolOptions.threads.singleThread", // Run in single thread for linear debugging
-        "packages/payloadset/packages/xml/src/Diviner/spec/Diviner.spec.ts",
+        "packages/payloadset/packages/html/src/Diviner/lib/spec/querySelectorAll.spec.ts",
       ],
       "autoAttachChildProcesses": true, // Attach to any child processes created by the test runner
       "console": "integratedTerminal",
