@@ -1,25 +1,6 @@
 {
   "version": "0.2.0",
   "configurations": [
-
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "MemoryNode",
-      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/src/app.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "env": {
-        "NODE_OPTIONS": "-r ts-node/register --loader ts-node/esm --max-old-space-size=8192"
-      },
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
     {
       "name": "Test",
       "type": "node",
