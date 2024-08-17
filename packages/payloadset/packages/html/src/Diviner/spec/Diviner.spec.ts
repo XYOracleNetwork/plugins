@@ -1,9 +1,9 @@
 import { assertEx } from '@xylabs/assert'
-import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallHtmlResult } from '@xyo-network/api-call-witness'
+import { ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallXmlResult } from '@xyo-network/api-call-witness'
 
 import { isHtmlWithMeta } from '../../Payload.ts'
 import { HtmlSchema } from '../../Schema.ts'
-import { HtmlParsingDiviner } from '../Diviner.ts'
+import { HtmlQuerySelectorDiviner } from '../Diviner.ts'
 import { HtmlQuerySelectorDivinerConfigSchema } from '../Schema.ts'
 
 describe('HtmlParsingDiviner', () => {
@@ -14,13 +14,14 @@ describe('HtmlParsingDiviner', () => {
         account: 'random',
         config: { accept: 'text/html', schema: ApiCallWitnessConfigSchema },
       })
-      const diviner = await HtmlParsingDiviner.create({
+      const diviner = await HtmlQuerySelectorDiviner.create({
         account: 'random',
-        config: { schema: HtmlQuerySelectorDivinerConfigSchema },
+        config: { schema: HtmlQuerySelectorDivinerConfigSchema, querySelector: 'titlebody > title' },
       })
       const observations = await witness.observe([{ schema: ApiCallSchema, uri }])
       expect(observations).toBeArrayOfSize(1)
-      const observation = observations.find(isApiCallHtmlResult)
+      // TODO: Add HTML result identity function
+      const observation = observations.find(isApiCallXmlResult)
       expect(observation).toBeDefined()
       expect(observation).toBeObject()
       expect(observation?.schema).toBe(ApiCallResultSchema)
