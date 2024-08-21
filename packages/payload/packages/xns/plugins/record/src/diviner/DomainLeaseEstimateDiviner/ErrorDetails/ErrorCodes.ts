@@ -1,5 +1,5 @@
 import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.ts'
-import { DomainLeaseEstimateDivinerValidationErrorDetails, ErrorDetailsDictionary } from './Payload.ts'
+import type { DomainLeaseEstimateDivinerValidationErrorDetails, ErrorDetailsDictionary } from './Payload.ts'
 
 // export type DomainLeaseEstimateDivinerErrorDetailsDictionaryErrorCode = keyof typeof DomainLeaseEstimateDivinerErrorDetailsDictionary
 export type DomainLeaseEstimateDivinerErrorDetailsDictionaryErrorCode = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8

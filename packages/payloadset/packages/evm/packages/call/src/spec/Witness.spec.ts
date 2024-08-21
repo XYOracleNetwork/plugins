@@ -1,10 +1,12 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmCallWitnessConfigSchema } from '../model'
-import { EvmCall, EvmCallResultSchema, EvmCallSchema } from '../Payload'
+import type { EvmCall } from '../Payload'
+import { EvmCallResultSchema, EvmCallSchema } from '../Payload'
 import { EvmCallWitness } from '../Witness'
 
 const validateObservation = (observation: Payload[]) => {

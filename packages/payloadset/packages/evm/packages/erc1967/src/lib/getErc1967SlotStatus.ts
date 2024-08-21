@@ -1,4 +1,5 @@
-import { Address, hexFromHexString, isHexZero } from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
+import { hexFromHexString, isHexZero } from '@xylabs/hex'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Provider } from 'ethers'
 

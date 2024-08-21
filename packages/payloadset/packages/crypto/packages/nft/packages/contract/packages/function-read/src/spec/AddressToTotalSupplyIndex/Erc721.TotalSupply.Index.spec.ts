@@ -1,5 +1,6 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { HDWallet, WalletInstance } from '@xyo-network/account'
+import type { WalletInstance } from '@xyo-network/account'
+import { HDWallet } from '@xyo-network/account'
 import {
   CryptoContractFunctionCallSchema,
   isCryptoContractFunctionCallResult,
@@ -16,15 +17,16 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'

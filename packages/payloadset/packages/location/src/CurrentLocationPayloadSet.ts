@@ -1,5 +1,6 @@
 import { LocationHeadingSchema, LocationSchema } from '@xyo-network/location-payload-plugin'
-import { PayloadSetPayload, PayloadSetSchema } from '@xyo-network/payload-model'
+import type { PayloadSetPayload } from '@xyo-network/payload-model'
+import { PayloadSetSchema } from '@xyo-network/payload-model'
 
 export const CurrentLocationPayloadSet: PayloadSetPayload = {
   optional: {

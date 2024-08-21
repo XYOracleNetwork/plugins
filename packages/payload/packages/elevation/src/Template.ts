@@ -1,4 +1,4 @@
-import { ElevationPayload } from './Payload.ts'
+import type { ElevationPayload } from './Payload.ts'
 import { ElevationSchema } from './Schema.ts'
 
 export const elevationPayloadTemplate = (): ElevationPayload => {

@@ -1,5 +1,6 @@
-import { NftCollectionAttributeMetrics } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { normalize, Score } from '@xyo-network/crypto-nft-score-model'
+import type { NftCollectionAttributeMetrics } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import type { Score } from '@xyo-network/crypto-nft-score-model'
+import { normalize } from '@xyo-network/crypto-nft-score-model'
 
 const maxScore = 10
 

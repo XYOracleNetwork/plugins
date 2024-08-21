@@ -1,4 +1,4 @@
-import { EthersUniswapV3Slot0Fields } from './UniswapV3Slot0Fields.ts'
+import type { EthersUniswapV3Slot0Fields } from './UniswapV3Slot0Fields.ts'
 
 export class EthersUniswap3PoolSlot0Wrapper {
   protected values: EthersUniswapV3Slot0Fields

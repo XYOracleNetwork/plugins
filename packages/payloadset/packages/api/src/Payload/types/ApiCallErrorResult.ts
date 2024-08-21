@@ -1,8 +1,8 @@
-import { Hash } from '@xylabs/hex'
-import { Payload } from '@xyo-network/payload-model'
+import type { Hash } from '@xylabs/hex'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { ApiCallResultSchema } from '../Schema.ts'
-import { HttpMeta } from './HttpMeta.ts'
+import type { ApiCallResultSchema } from '../Schema.ts'
+import type { HttpMeta } from './HttpMeta.ts'
 
 export type ApiCallErrorResult = Payload<
   {

@@ -1,11 +1,11 @@
 // eslint-disable-next-line workspaces/no-absolute-imports
 import { EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Config'
 import { EvmCallResultToNftTokenUriDiviner } from '../Diviner'
-import { EvmTokenUriCallResults } from '../Payload'
+import type { EvmTokenUriCallResults } from '../Payload'
 
 const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[]) => {
   const results = actual.filter(isNftMetadataUri)

@@ -8,19 +8,22 @@ import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import {
+import type {
   ImageThumbnail,
-  ImageThumbnailDivinerQuery,
+  ImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
+import {
   ImageThumbnailDivinerQuerySchema,
   isImageThumbnailResult,
   isImageThumbnailResultIndex,
 } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { isModuleStateWithMeta } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
+import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
+import type { TimeStamp } from '@xyo-network/witness-timestamp'
+import { TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDiviner } from '../Diviner.ts'
 import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.ts'

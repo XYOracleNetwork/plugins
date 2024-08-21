@@ -1,5 +1,6 @@
-import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { IdPayload } from '@xyo-network/id-payload-plugin'
+import { IdSchema } from '@xyo-network/id-payload-plugin'
+import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { IdWitness, IdWitnessConfigSchema } from '../Witness.ts'

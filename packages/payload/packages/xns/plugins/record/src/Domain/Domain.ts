@@ -1,4 +1,5 @@
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 export type DomainSchema = 'network.xyo.ns.domain'
 export const DomainSchema: DomainSchema = 'network.xyo.ns.domain'

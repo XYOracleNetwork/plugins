@@ -1,6 +1,6 @@
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { EthereumGasBlocknativeSchema } from './Schema.ts'
+import type { EthereumGasBlocknativeSchema } from './Schema.ts'
 
 export type WithConfidence<T> = T & {
   confidence: number

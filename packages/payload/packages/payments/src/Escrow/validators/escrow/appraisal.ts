@@ -1,10 +1,12 @@
 import { assertEx } from '@xylabs/assert'
-import { Hash } from '@xylabs/hex'
-import { BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
-import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
-import { Payload, PayloadValidationFunction, WithMeta, WithSources } from '@xyo-network/payload-model'
+import type { Hash } from '@xylabs/hex'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
+import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
+import { isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
+import type { Payload, PayloadValidationFunction, WithMeta, WithSources } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms.ts'
 import { validateWithinWindow } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisal'

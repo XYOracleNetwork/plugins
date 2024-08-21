@@ -1,7 +1,8 @@
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
-import { DurationFields } from '../Duration/index.ts'
-import { DomainFields } from './Domain.ts'
+import type { DurationFields } from '../Duration/index.ts'
+import type { DomainFields } from './Domain.ts'
 
 export type DomainLeaseSchema = 'network.xyo.ns.domain.lease'
 export const DomainLeaseSchema: DomainLeaseSchema = 'network.xyo.ns.domain.lease'

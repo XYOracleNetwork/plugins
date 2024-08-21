@@ -1,9 +1,11 @@
-import { ImageThumbnailDivinerQuery, ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import type { ImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
+import { ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner'
-import { ImageThumbnailResultQuery, isImageThumbnailResultQuery } from '../ImageThumbnailResultQuery'
+import type { ImageThumbnailResultQuery } from '../ImageThumbnailResultQuery'
+import { isImageThumbnailResultQuery } from '../ImageThumbnailResultQuery'
 
 describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
   let diviner: ImageThumbnailQueryToImageThumbnailIndexQueryDiviner

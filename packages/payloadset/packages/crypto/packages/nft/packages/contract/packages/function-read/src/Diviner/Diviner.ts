@@ -1,17 +1,19 @@
 import { assertEx } from '@xylabs/assert'
-import { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/promise'
+import type {
+  ContractInfo,
+  CryptoContractDivinerParams,
+  CryptoContractFunctionCallResult } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   asCryptoContractFunctionCallSuccess,
-  ContractInfo,
   ContractInfoSchema,
   CryptoContractDivinerConfigSchema,
   CryptoContractDivinerLabels,
-  CryptoContractDivinerParams,
-  CryptoContractFunctionCallResult,
   CryptoContractFunctionCallResultSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import { isPayloadOfSchemaType, Payload, Schema } from '@xyo-network/payload-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 /** @deprecated use EvmCallDiviner instead */
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]

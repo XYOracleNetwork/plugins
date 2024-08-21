@@ -1,4 +1,4 @@
-import { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 
 import { analyzeNft } from '../analyzeNft'
 

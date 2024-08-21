@@ -1,7 +1,9 @@
 import { removeEmptyFields } from '@xyo-network/hash'
-import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
+import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
+import type { UrlPayload } from '@xyo-network/url-payload-plugin'
+import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 
 import { ImageThumbnailWitness } from '../Witness.ts'

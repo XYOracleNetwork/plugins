@@ -1,12 +1,13 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { EthereumGasEtherscanPayload, EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
-import { AnyConfigSchema } from '@xyo-network/module-model'
+import type { EthereumGasEtherscanPayload } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
+import { EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { WitnessParams } from '@xyo-network/witness-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { WitnessParams } from '@xyo-network/witness-model'
 
-import { EthereumGasEtherscanWitnessConfig } from './Config.ts'
+import type { EthereumGasEtherscanWitnessConfig } from './Config.ts'
 import { getGasFromEtherscan } from './lib/index.ts'
 import { EthereumGasEtherscanWitnessConfigSchema } from './Schema.ts'
 

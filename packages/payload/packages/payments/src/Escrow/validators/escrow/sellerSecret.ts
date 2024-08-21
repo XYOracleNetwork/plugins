@@ -1,10 +1,10 @@
 import { assertEx } from '@xylabs/assert'
-import { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/hex'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
-import { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
+import type { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms.ts'
 
 const name = 'EscrowTerms.sellerSecret'
 

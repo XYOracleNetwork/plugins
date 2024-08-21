@@ -1,16 +1,17 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
+import type {
+  AddressTransactionHistoryPayload } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import {
-  AddressTransactionHistoryPayload,
   AddressTransactionHistorySchema,
   AddressTransactionHistoryWitnessConfigSchema,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { WitnessParams } from '@xyo-network/witness-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
 
-import { AddressTransactionHistoryWitnessConfig } from './Config.ts'
+import type { AddressTransactionHistoryWitnessConfig } from './Config.ts'
 // eslint-disable-next-line import-x/no-deprecated
 import { getTransactionsForAddress } from './lib/index.ts'
 

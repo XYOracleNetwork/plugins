@@ -1,6 +1,6 @@
-import { DivinerConfig } from '@xyo-network/diviner-model'
+import type { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { XmlParsingDivinerConfigSchema } from './Schema.ts'
+import type { XmlParsingDivinerConfigSchema } from './Schema.ts'
 
 export type XmlParsingDivinerConfig = DivinerConfig<
   {

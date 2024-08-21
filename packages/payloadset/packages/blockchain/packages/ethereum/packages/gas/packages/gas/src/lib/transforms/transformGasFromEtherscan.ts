@@ -1,5 +1,5 @@
-import { EthereumGasEtherscanPayload } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
-import { FeeData, FeePerGas } from '@xyo-network/gas-price-payload-plugin'
+import type { EthereumGasEtherscanPayload } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
+import type { FeeData, FeePerGas } from '@xyo-network/gas-price-payload-plugin'
 import { linear } from 'regression'
 
 const getBaseFee = (payload: EthereumGasEtherscanPayload): number | undefined => {

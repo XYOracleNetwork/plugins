@@ -1,7 +1,7 @@
-import { Score } from '@xyo-network/crypto-nft-score-model'
-import { Payload } from '@xyo-network/payload-model'
+import type { Score } from '@xyo-network/crypto-nft-score-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { NftContractInformation } from '../Payload/index.ts'
+import type { NftContractInformation } from '../Payload/index.ts'
 import { NftScoreSchema } from './Schema.ts'
 
 export type AttributesScoringCriteria = 'Attributes'

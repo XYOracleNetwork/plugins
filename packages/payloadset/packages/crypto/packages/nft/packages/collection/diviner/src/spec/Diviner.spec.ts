@@ -1,13 +1,14 @@
 import { readFile, writeFile } from 'node:fs/promises'
 
 import { Account } from '@xyo-network/account'
+import type {
+  NftCollectionInfo,
+  NftCollectionScore } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionScoreWithMeta,
-  NftCollectionInfo,
   NftCollectionSchema,
-  NftCollectionScore,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { WithMeta } from '@xyo-network/payload-model'
+import type { WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { NftCollectionScoreDiviner } from '../Diviner'

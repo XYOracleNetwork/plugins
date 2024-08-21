@@ -1,4 +1,5 @@
-import { EthereumGasEthgasstationPayload, EthereumGasEthgasstationSchema } from '@xyo-network/ethgasstation-ethereum-gas-payload-plugin'
+import type { EthereumGasEthgasstationPayload } from '@xyo-network/ethgasstation-ethereum-gas-payload-plugin'
+import { EthereumGasEthgasstationSchema } from '@xyo-network/ethgasstation-ethereum-gas-payload-plugin'
 
 export const sampleEthgasstationGas: EthereumGasEthgasstationPayload = {
   baseFee: 10,

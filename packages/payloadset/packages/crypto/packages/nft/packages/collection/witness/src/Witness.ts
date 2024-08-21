@@ -1,17 +1,19 @@
 import { assertEx } from '@xylabs/assert'
 import { EthAddress } from '@xylabs/eth-address'
+import type {
+  NftCollectionInfo,
+  NftCollectionWitnessConfig,
+  NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionWitnessQuery,
-  NftCollectionInfo,
   NftCollectionSchema,
-  NftCollectionWitnessConfig,
   NftCollectionWitnessConfigSchema,
-  NftCollectionWitnessQuery,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Schema } from '@xyo-network/payload-model'
-import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import type { Schema } from '@xyo-network/payload-model'
+import type { EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 
 import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib/index.ts'
 

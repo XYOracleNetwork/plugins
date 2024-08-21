@@ -1,5 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import type { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { EtherscanProvider } from 'ethers'
 
 // eslint-disable-next-line import-x/no-deprecated
@@ -36,6 +36,7 @@ const validateTransaction = (t: Transaction) => {
   if (t?.s !== undefined) expect(t.s).toBeString()
   if (t?.timestamp !== undefined) expect(t.timestamp).toBeNumber()
   if (t?.to !== undefined) expect(t.to).toBeString()
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   if (t?.type !== undefined) t.type === null ? expect(t.type).toBeNull() : expect(t.type).toBeNumber()
   if (t?.v !== undefined) expect(t.v).toBeNumber()
   if (t?.value !== undefined) expect(t.value).toBeString()

@@ -1,4 +1,5 @@
-import { EthereumGasEtherchainV2Payload, EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
+import type { EthereumGasEtherchainV2Payload } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
+import { EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 
 import { EthereumGasEtherchainV2WitnessConfigSchema } from '../Schema.ts'

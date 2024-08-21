@@ -1,5 +1,6 @@
-import { NftAttribute, NftInfoFields, OpenSeaNftAttribute, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
-import { incrementPossible, incrementTotal, incrementTotalAndPossible, ScaledScore } from '@xyo-network/crypto-nft-score-model'
+import type { NftAttribute, NftInfoFields, OpenSeaNftAttribute, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import type { ScaledScore } from '@xyo-network/crypto-nft-score-model'
+import { incrementPossible, incrementTotal, incrementTotalAndPossible } from '@xyo-network/crypto-nft-score-model'
 
 const isDate = (value: unknown): value is Date => {
   if (isNumber(value)) {

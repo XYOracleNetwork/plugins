@@ -1,4 +1,4 @@
-import { Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import type { Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import type { EtherscanProvider } from 'ethers'
 
 /** @deprecated - no longer supported by EtherScan */

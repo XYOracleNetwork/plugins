@@ -3,7 +3,7 @@ import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema }
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner'
-import { TokenInterface } from '../Payload'
+import type { TokenInterface } from '../Payload'
 
 describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
   type TestData = readonly [string, TokenInterface[]]
