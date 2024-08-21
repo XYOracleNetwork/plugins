@@ -29,7 +29,7 @@ import {
   HttpCallResultSchema,
   HttpCallSchema,
 } from '../Payload/index.ts'
-import type { HttpCallHtmlResult } from '../Payload/types/HttpCallHtmlResult.ts'
+import type { HttpCallHtmlResult } from '../Payload/types/index.ts'
 import { asHttpUriCallWitnessConfig, asHttpUriTemplateCallWitnessConfig } from './Config.ts'
 import type { HttpCallWitnessParams } from './Params.ts'
 import { HttpCallWitnessConfigSchema } from './Schema.ts'
