@@ -1,111 +1,24 @@
 {
   "version": "0.2.0",
   "configurations": [
-
     {
+      "name": "Test",
       "type": "node",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
       "request": "launch",
-      "name": "MemoryNode",
-      "program": "${workspaceFolder}/packages/node/packages/core/packages/app/src/app.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "env": {
-        "NODE_OPTIONS": "-r ts-node/register --loader ts-node/esm --max-old-space-size=8192"
-      },
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "MemoryNode (Yarn)",
-      "runtimeExecutable": "yarn",
-      "runtimeArgs": [
-        "start"
-      ],
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "CLI",
-      "program": "${workspaceFolder}/packages/cli/src/xyo.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "runtimeArgs": [
-        "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
-        "--loader=ts-node/esm"
-      ],
       "args": [
-        "--network",
-        "local",
-        "node",
-        "discover",
+        "--run",
+        "--poolOptions.threads.singleThread", // Run in single thread for linear debugging
+        "packages/payloadset/packages/html/src/Diviner/spec/Diviner.spec.ts",
       ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "AutomationWitness",
-      "program": "${workspaceFolder}/packages/automation-witness-server/src/launchServer.ts",
-      "outFiles": [
-        "${workspaceFolder}/dist/**/*.js"
-      ],
-      "runtimeArgs": [
-        // "--inspect",
-        "--max-old-space-size=8192",
-        "--experimental-specifier-resolution=node",
-        "--loader=ts-node/esm"
-      ],
-      "envFile": "${workspaceFolder}/.env",
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "pauseForSourceMap": true,
-    },
-    {
-      "name": "Jest",
-      "type": "node",
-      "request": "launch",
-      "osx": {
-        "program": "${workspaceRoot}/node_modules/.bin/jest"
-      },
-      "windows": {
-        "program": "${workspaceRoot}/node_modules/jest/bin/jest.js"
-      },
-      "args": [
-        "--forceExit",
-        "--runInBand",
-        "--testTimeout=120000",
-        "packages/payloadset/packages/xml/src/Diviner/spec/Diviner.spec.ts"
-      ],
+      "autoAttachChildProcesses": true, // Attach to any child processes created by the test runner
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
       "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env",
+      "internalConsoleOptions": "neverOpen",
       "sourceMaps": true,
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "**/node_modules/**"
