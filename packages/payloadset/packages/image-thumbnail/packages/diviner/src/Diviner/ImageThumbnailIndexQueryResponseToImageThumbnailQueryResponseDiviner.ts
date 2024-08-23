@@ -3,7 +3,8 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import type {
   ImageThumbnailResult,
-  ImageThumbnailResultFields } from '@xyo-network/image-thumbnail-payload-plugin'
+  ImageThumbnailResultFields,
+} from '@xyo-network/image-thumbnail-payload-plugin'
 import {
   ImageThumbnailResultSchema,
   isImageThumbnailDivinerQuery,
@@ -53,7 +54,10 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
         await Promise.all(
           imageThumbnailResultIndexes.map(async (imageThumbnailResultIndex) => {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
-            const { key, schema, ...commonFields } = imageThumbnailResultIndex
+            const {
+              // eslint-disable-next-line @typescript-eslint/no-unused-vars
+              key, schema, ...commonFields
+            } = imageThumbnailResultIndex
             const url = keyToUrlDictionary?.[key]
             if (url) {
               const fields: ImageThumbnailResultFields = { ...commonFields, url }

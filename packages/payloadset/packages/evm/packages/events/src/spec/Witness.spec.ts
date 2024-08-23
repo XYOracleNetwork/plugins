@@ -23,10 +23,14 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
       it('uses values from config', async () => {
         const witness = await EvmEventsWitness.create({
           account: 'random',
-          config: { abi: ERC1155__factory.abi, fromBlock: 19_180_000, schema: EvmEventsWitnessConfigSchema },
+          config: {
+            abi: ERC1155__factory.abi, fromBlock: 19_180_000, schema: EvmEventsWitnessConfigSchema,
+          },
           providers: getProvidersFromEnv,
         })
-        const call: EvmEvents = { address, eventName, schema: EvmEventsSchema }
+        const call: EvmEvents = {
+          address, eventName, schema: EvmEventsSchema,
+        }
         const observation = await witness.observe([call])
         validateObservation(observation)
       })

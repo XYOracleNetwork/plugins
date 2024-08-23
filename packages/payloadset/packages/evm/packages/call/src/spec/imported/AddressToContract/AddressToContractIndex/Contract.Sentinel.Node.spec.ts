@@ -23,9 +23,13 @@ import { Erc1967Witness } from '@xyo-network/erc1967-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { ModuleFactory, resolveLocalNameToAddress, resolveLocalNameToInstance, resolvePathToAddress } from '@xyo-network/module-model'
+import {
+  ModuleFactory, resolveLocalNameToAddress, resolveLocalNameToInstance, resolvePathToAddress,
+} from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
-import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
+import {
+  ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
+} from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
@@ -94,14 +98,10 @@ describe('Contract Node', () => {
     locator.register(JsonPatchDiviner)
     locator.register(TemporalIndexingDiviner)
     locator.register(
-      new ModuleFactory(Erc1822Witness, {
-        providers: getProvidersFromEnv,
-      }),
+      new ModuleFactory(Erc1822Witness, { providers: getProvidersFromEnv }),
     )
     locator.register(
-      new ModuleFactory(Erc1967Witness, {
-        providers: getProvidersFromEnv,
-      }),
+      new ModuleFactory(Erc1967Witness, { providers: getProvidersFromEnv }),
     )
 
     const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator)

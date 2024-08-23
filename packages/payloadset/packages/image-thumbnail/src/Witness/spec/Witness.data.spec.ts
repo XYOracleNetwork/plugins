@@ -1,3 +1,4 @@
+/* eslint-disable @stylistic/max-len */
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'

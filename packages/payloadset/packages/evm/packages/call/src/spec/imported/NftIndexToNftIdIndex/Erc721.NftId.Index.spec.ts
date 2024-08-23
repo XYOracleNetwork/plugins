@@ -77,7 +77,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
       it.each(cases)('returns NftIndexes', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
         for (const tokenIndex of tokenIndexes) {
-          const inputs = [{ address, args: [`0x${BigInt(tokenIndex).toString(16)}`], chainId, functionName, schema: EvmCallSchema }]
+          const inputs = [{
+            address, args: [`0x${BigInt(tokenIndex).toString(16)}`], chainId, functionName, schema: EvmCallSchema,
+          }]
           const observations = await sentinel?.report(inputs)
           const nftIds = observations?.filter(isNftId)
           expect(nftIds?.length).toBe(1)
@@ -97,7 +99,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
         expect(diviner).toBeDefined()
         for (const tokenIndex of tokenIndexes) {
           const tokenId = `0x${BigInt(tokenIndex).toString(16)}`
-          const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
+          const query = {
+            address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId,
+          }
           const result = await diviner?.divine([query])
           expect(result).toBeDefined()
           expect(result).toBeArrayOfSize(1)

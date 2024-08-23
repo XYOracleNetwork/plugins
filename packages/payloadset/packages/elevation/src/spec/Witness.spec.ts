@@ -25,7 +25,12 @@ const testDataDir = Path.join(__dirname, '..', '.testdata')
 const northEast = Path.join(testDataDir, 'SRTM_NE_250m.tif')
 const southEast = Path.join(testDataDir, 'SRTM_SE_250m.tif')
 const west = Path.join(testDataDir, 'SRTM_W_250m.tif')
-const config: ElevationWitnessConfig = { files: { northEast, southEast, west }, schema: ElevationWitnessConfigSchema }
+const config: ElevationWitnessConfig = {
+  files: {
+    northEast, southEast, west,
+  },
+  schema: ElevationWitnessConfigSchema,
+}
 
 describe('ElevationWitness', () => {
   const hasTestData = existsSync(testDataDir)

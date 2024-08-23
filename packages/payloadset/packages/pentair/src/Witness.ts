@@ -5,7 +5,9 @@ import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { PentairScreenlogicPayload } from '@xyo-network/pentair-payload-plugin'
 import { PentairScreenlogicSchema } from '@xyo-network/pentair-payload-plugin'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
-import { FindUnits, SchedTypes, screenlogic } from 'node-screenlogic'
+import {
+  FindUnits, SchedTypes, screenlogic,
+} from 'node-screenlogic'
 
 export type PentairScreenlogicWitnessConfigSchema = 'network.xyo.pentair.screenlogic.witness.config'
 export const PentairScreenlogicWitnessConfigSchema: PentairScreenlogicWitnessConfigSchema = 'network.xyo.pentair.screenlogic.witness.config'

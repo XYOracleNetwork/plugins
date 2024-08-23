@@ -86,9 +86,7 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
       queries.map(async ({ query, variables }) => {
         const httpResult = await axios.post(this.endpoint, { query, variables })
         const result: GraphqlResult = {
-          http: {
-            status: httpResult.status,
-          },
+          http: { status: httpResult.status },
           result: httpResult.data,
           schema: GraphqlResultSchema,
         }

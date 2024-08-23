@@ -38,7 +38,9 @@ export const getNftCollectionMetadata = async (
       console.log(`is1155: ${error.message}`)
       is1155 = false
     }
-    return { address: contractAddress, chainId: Number((await provider.getNetwork()).chainId), name, symbol, type: is1155 ? 'ERC1155' : 'ERC721' }
+    return {
+      address: contractAddress, chainId: Number((await provider.getNetwork()).chainId), name, symbol, type: is1155 ? 'ERC1155' : 'ERC721',
+    }
   } catch (ex) {
     const error = ex as Error
     console.error(`getNftCollectionMetadata: ${error.message}`)

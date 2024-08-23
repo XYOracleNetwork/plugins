@@ -1,6 +1,8 @@
 import type { Address, Hash } from '@xylabs/hex'
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import { EscrowSchema } from './Schema.ts'
 

@@ -17,9 +17,7 @@ export class EthereumGasBlocknativeWitness extends AbstractWitness<EthereumGasBl
 
   protected override async observeHandler(): Promise<Payload[]> {
     const fields = await getGasFromBlocknative()
-    const payload = await new PayloadBuilder<EthereumGasBlocknativePayload>({
-      schema: EthereumGasBlocknativeSchema,
-    })
+    const payload = await new PayloadBuilder<EthereumGasBlocknativePayload>({ schema: EthereumGasBlocknativeSchema })
       .fields(fields)
       .build()
     return [payload]

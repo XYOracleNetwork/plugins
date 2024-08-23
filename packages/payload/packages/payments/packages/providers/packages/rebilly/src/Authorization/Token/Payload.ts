@@ -1,5 +1,7 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 export const RebillyPaymentAuthorizationTokenSchema = 'network.xyo.payments.payment.authorization.token.rebilly'
 export type RebillyPaymentAuthorizationTokenSchema = typeof RebillyPaymentAuthorizationTokenSchema

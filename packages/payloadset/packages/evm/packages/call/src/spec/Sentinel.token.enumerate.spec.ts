@@ -1,7 +1,9 @@
 /* eslint-disable max-statements */
 
 import { describeIf } from '@xylabs/jest-helpers'
-import { createProfiler, profile, profileReport } from '@xylabs/profile'
+import {
+  createProfiler, profile, profileReport,
+} from '@xylabs/profile'
 import { HDWallet } from '@xyo-network/account'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch-memory'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -15,7 +17,9 @@ import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { ERC721__factory, ERC721Enumerable__factory, ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
+import {
+  ERC721__factory, ERC721Enumerable__factory, ERC721URIStorage__factory,
+} from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { AdhocWitness } from '@xyo-network/witness-adhoc'
 import type { EvmAddress } from '@xyo-network/witness-evm-abstract'
@@ -47,21 +51,15 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
       locator.register(EvmCallDiviner)
       locator.register(AdhocWitness)
       locator.register(
-        new ModuleFactory(Erc1822Witness, {
-          providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        new ModuleFactory(Erc1822Witness, { providers: () => getProvidersFromEnv(maxProviders) }),
       )
       locator.register(
-        new ModuleFactory(Erc1967Witness, {
-          providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        new ModuleFactory(Erc1967Witness, { providers: () => getProvidersFromEnv(maxProviders) }),
       )
       locator.register(JsonPathAggregateDiviner)
       locator.register(JsonPatchDiviner)
       locator.register(
-        new ModuleFactory(EvmContractWitness, {
-          providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        new ModuleFactory(EvmContractWitness, { providers: () => getProvidersFromEnv(maxProviders) }),
       )
       locator.register(EvmTokenInterfaceImplementedDiviner)
       locator.register(RangeDiviner)
@@ -114,7 +112,9 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
       const diviner = asDivinerInstance(await node.resolve('TokenInfoDiviner'))
       expect(diviner).toBeDefined()
 
-      const addressPayload: EvmAddress = { address, chainId: 1, schema: EvmAddressSchema }
+      const addressPayload: EvmAddress = {
+        address, chainId: 1, schema: EvmAddressSchema,
+      }
       profile(profiler, 'tokenReport')
       const report = await tokenSentinel?.report([addressPayload])
       console.log(`report: ${JSON.stringify(report, null, 2)}`)

@@ -1,7 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import type { EvmAddress, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import type {
+  EvmAddress, EvmWitnessConfig, EvmWitnessParams,
+} from '@xyo-network/witness-evm-abstract'
 import { AbstractEvmWitness, EvmAddressSchema } from '@xyo-network/witness-evm-abstract'
 
 import { getErc1822SlotStatus } from './lib/index.ts'

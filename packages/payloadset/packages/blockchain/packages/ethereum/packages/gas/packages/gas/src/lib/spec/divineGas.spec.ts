@@ -1,4 +1,6 @@
-import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas } from '../../test'
+import {
+  sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas,
+} from '../../test'
 import { divineGas } from '../divineGas'
 
 describe('divineGas', () => {

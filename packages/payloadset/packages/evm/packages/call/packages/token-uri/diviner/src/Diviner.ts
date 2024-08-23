@@ -25,12 +25,16 @@ export class EvmCallResultToNftTokenUriDiviner<
         return casted.results?.tokenURI?.result !== undefined && (p.results?.tokenURI?.args?.length ?? 0) > 0
       })
       .map<NftMetadataUri>((p) => {
-        const { address, chainId, results } = p
+        const {
+          address, chainId, results,
+        } = p
         const { args, result } = results.tokenURI
         const tokenId = args[0]
         const num = Number(BigInt(tokenId)).toString()
         const metadataUri = result?.includes('{id}') ? result.replace('{id}', num) : result
-        return { address, chainId, metadataUri, schema: NftMetadataUriSchema, tokenId }
+        return {
+          address, chainId, metadataUri, schema: NftMetadataUriSchema, tokenId,
+        }
       })
     return erc721CallResults
   }

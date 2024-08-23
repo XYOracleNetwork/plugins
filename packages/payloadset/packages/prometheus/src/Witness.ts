@@ -60,7 +60,9 @@ export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams =
     return (await this._registry.getMetricsAsJSON()).map((metric) => {
       const values = metric.values
       if (values) {
-        return { aggregator: metric.aggregator, name: metric.name, schema: PrometheusMetricValueSchema, type: metric.type, values }
+        return {
+          aggregator: metric.aggregator, name: metric.name, schema: PrometheusMetricValueSchema, type: metric.type, values,
+        }
       }
     }).filter(exists)
   }

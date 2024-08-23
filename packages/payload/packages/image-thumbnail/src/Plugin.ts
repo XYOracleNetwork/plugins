@@ -4,6 +4,4 @@ import type { ImageThumbnail } from './Payload/index.ts'
 import { ImageThumbnailSchema } from './Schema.ts'
 
 export const ImageThumbnailPayloadPlugin = () =>
-  createPayloadPlugin<ImageThumbnail>({
-    schema: ImageThumbnailSchema,
-  })
+  createPayloadPlugin<ImageThumbnail>({ schema: ImageThumbnailSchema })

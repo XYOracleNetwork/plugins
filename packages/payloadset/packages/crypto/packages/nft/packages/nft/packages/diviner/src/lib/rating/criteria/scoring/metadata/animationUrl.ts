@@ -1,8 +1,12 @@
 import type { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 import type { ScaledScore } from '@xyo-network/crypto-nft-score-model'
-import { incrementPossible, incrementTotal, incrementTotalAndPossible, PASS } from '@xyo-network/crypto-nft-score-model'
+import {
+  incrementPossible, incrementTotal, incrementTotalAndPossible, PASS,
+} from '@xyo-network/crypto-nft-score-model'
 
-import { isSecure, isValidUrl, isWeb3 } from './lib/index.ts'
+import {
+  isSecure, isValidUrl, isWeb3,
+} from './lib/index.ts'
 
 export const scoreNftAnimationUrl = (nft: NftInfoFields | OpenSeaNftInfoFields): ScaledScore => {
   return scoreAnimationUrl(nft.metadata?.animation_url)

@@ -73,9 +73,7 @@ describe('Contract Node', () => {
     locator.register(StatefulDiviner)
     locator.register(EvmTokenInterfaceImplementedDiviner)
     locator.register(
-      new ModuleFactory(EvmContractWitness, {
-        providers: getProviders,
-      }),
+      new ModuleFactory(EvmContractWitness, { providers: getProviders }),
     )
     const publicChildren: ModuleManifest[] = [...contractWitnessManifest.nodes, ...tokenDivinerManifest.nodes]
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
@@ -87,7 +85,9 @@ describe('Contract Node', () => {
     it.each(cases)('With %s (%s)', async (tokenInterface, address) => {
       const contractSentinel = asSentinelInstance(await node.resolve('EvmContractSentinel'))
       expect(contractSentinel).toBeDefined()
-      const collectionCallPayload: EvmAddress = { address, chainId, schema: EvmAddressSchema }
+      const collectionCallPayload: EvmAddress = {
+        address, chainId, schema: EvmAddressSchema,
+      }
       const report = await contractSentinel?.report([collectionCallPayload])
       expect(report).toBeDefined()
       expect(report).toBeArrayOfSize(3)
@@ -117,7 +117,9 @@ describe('Contract Node', () => {
       expect(divinerModule).toBeDefined()
       const diviner = asDivinerInstance(divinerModule)
       expect(diviner).toBeDefined()
-      const query = { address, chainId, implemented: true, schema: PayloadDivinerQuerySchema, tokenInterface }
+      const query = {
+        address, chainId, implemented: true, schema: PayloadDivinerQuerySchema, tokenInterface,
+      }
       const result = await diviner?.divine([query])
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

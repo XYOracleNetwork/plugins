@@ -15,8 +15,7 @@ import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
-import type {
-  TemporalIndexingDivinerResultIndex } from '@xyo-network/diviner-temporal-indexing'
+import type { TemporalIndexingDivinerResultIndex } from '@xyo-network/diviner-temporal-indexing'
 import {
   isTemporalIndexingDivinerResultIndex,
   TemporalIndexingDiviner,
@@ -128,9 +127,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     },
   ]
   beforeAll(async () => {
-    const labels: Labels = {
-      'network.xyo.crypto.nft': 'diviner',
-    }
+    const labels: Labels = { 'network.xyo.crypto.nft': 'diviner' }
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
     locator.register(MemoryArchivist)
@@ -239,7 +236,9 @@ describe.skip('CryptoWalletNftWitness Index', () => {
         const cases: NftInfo[] = addresses.map(address => data.findLast(nft => nft.address === address)).filter(exists)
         it.each(cases)('returns the most recent instance of that address & chainId', async (payload) => {
           const { address, chainId } = payload
-          const query = { address, chainId, schema } as Query
+          const query = {
+            address, chainId, schema,
+          } as Query
           const results = (await sut.divine([query])) as WithMeta<TemporalIndexingDivinerResultIndex>[]
           const result = results.find(isTemporalIndexingDivinerResultIndex)
           await verifyIsExpectedNft(result, payload)

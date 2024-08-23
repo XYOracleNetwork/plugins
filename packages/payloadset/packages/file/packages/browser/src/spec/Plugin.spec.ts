@@ -6,9 +6,7 @@ import { webcrypto } from 'node:crypto'
 import { TextEncoder } from 'node:util'
 
 // Force subtle from webcrypto to be used as subtle from @xylabs/platform
-jest.mock('@xylabs/platform', () => ({
-  subtle: webcrypto.subtle,
-}))
+jest.mock('@xylabs/platform', () => ({ subtle: webcrypto.subtle }))
 
 // Polyfill JSDOM
 window.TextEncoder = TextEncoder
@@ -34,7 +32,9 @@ describe('FileWitness', () => {
 
     browserFileWitness = await BrowserFileWitness.create({
       account: 'random',
-      config: { name: 'BrowserFileWitness', schema: FileWitnessConfigSchema, storage: 'data-uri' },
+      config: {
+        name: 'BrowserFileWitness', schema: FileWitnessConfigSchema, storage: 'data-uri',
+      },
       ...(file ? { file } : {}),
     })
   })

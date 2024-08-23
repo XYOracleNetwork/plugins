@@ -3,7 +3,8 @@ import { readFile, writeFile } from 'node:fs/promises'
 import { Account } from '@xyo-network/account'
 import type {
   NftCollectionInfo,
-  NftCollectionScore } from '@xyo-network/crypto-nft-collection-payload-plugin'
+  NftCollectionScore,
+} from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionScoreWithMeta,
   NftCollectionSchema,
@@ -18,11 +19,7 @@ describe('NftCollectionScoreDiviner', () => {
     {
       address: '0x0000000000',
       chainId: 1,
-      metrics: {
-        metadata: {
-          attributes: {},
-        },
-      },
+      metrics: { metadata: { attributes: {} } },
       name: 'test',
       schema: NftCollectionSchema,
       symbol: 'TEST',

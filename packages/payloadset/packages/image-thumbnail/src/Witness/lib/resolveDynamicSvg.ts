@@ -13,9 +13,7 @@ export const resolveDynamicSvg = async (base64Bytes: string) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     svgNode['image'].map(async (img: any) => [
       img.$,
-      await axios.get(img.$.href, {
-        responseType: 'arraybuffer',
-      }),
+      await axios.get(img.$.href, { responseType: 'arraybuffer' }),
     ]),
   )) as [string, AxiosResponse][]
   const image = imageResults.map(([href, response]) => {

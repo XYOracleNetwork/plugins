@@ -1,4 +1,6 @@
-import { isSecure, isValidUrl, isWeb2, isWeb3, toUrl } from '../urlHelpers'
+import {
+  isSecure, isValidUrl, isWeb2, isWeb3, toUrl,
+} from '../urlHelpers'
 
 const ipfsUrl = 'ipfs://QmRyBBrLYWy6zZRyDUR5JWLJ2mrbvHFtptosrM3jAwBXTc/'
 const httpUrl = 'http://www.google.com'

@@ -6,14 +6,17 @@ import { DivinerConfigSchema } from '@xyo-network/diviner-model'
 import type {
   ImageThumbnail,
   ImageThumbnailResultIndex,
-  ImageThumbnailResultIndexFields } from '@xyo-network/image-thumbnail-payload-plugin'
+  ImageThumbnailResultIndexFields,
+} from '@xyo-network/image-thumbnail-payload-plugin'
 import {
   ImageThumbnailResultIndexSchema,
   ImageThumbnailSchema,
   isImageThumbnail,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
+import type {
+  Payload, Schema, WithMeta, WithSources,
+} from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
@@ -62,11 +65,11 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const sources: Hash[] = await PayloadBuilder.dataHashes([bw, imageThumbnailPayload, timestampPayload])
           const urlPayload = { schema: UrlSchema, url }
           const key: Hash = await PayloadBuilder.dataHash(urlPayload)
-          const fields: ImageThumbnailResultIndexFields = { key, sources, success, timestamp }
+          const fields: ImageThumbnailResultIndexFields = {
+            key, sources, success, timestamp,
+          }
           if (status) fields.status = status
-          const result = await new PayloadBuilder<WithSources<ImageThumbnailResultIndex>>({
-            schema: ImageThumbnailResultIndexSchema,
-          })
+          const result = await new PayloadBuilder<WithSources<ImageThumbnailResultIndex>>({ schema: ImageThumbnailResultIndexSchema })
             .fields(fields)
             .build()
           return [result]

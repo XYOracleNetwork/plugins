@@ -1,5 +1,7 @@
 import type { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
-import type { FeeData, FeePerGas, PriorityFeePerGas } from '@xyo-network/gas-price-payload-plugin'
+import type {
+  FeeData, FeePerGas, PriorityFeePerGas,
+} from '@xyo-network/gas-price-payload-plugin'
 
 const getBaseFee = (payload: EthereumGasEthersPayload): number | undefined => {
   const { gasPrice } = payload
@@ -22,5 +24,7 @@ export const transformGasFromEthers = (payload: EthereumGasEthersPayload): FeeDa
   const baseFee = getBaseFee(payload)
   const feePerGas = getFeePerGas(payload)
   const priorityFeePerGas = getPriorityFeePerGas(payload)
-  return { baseFee, feePerGas, priorityFeePerGas }
+  return {
+    baseFee, feePerGas, priorityFeePerGas,
+  }
 }

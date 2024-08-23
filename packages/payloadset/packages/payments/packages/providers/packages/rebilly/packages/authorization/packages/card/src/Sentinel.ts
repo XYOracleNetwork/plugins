@@ -111,7 +111,9 @@ export class RebillyPaymentCardAuthorizationSentinel<
       assertEx(response.status === HttpStatusCode.Created, () => `Failed to tokenize payment card: ${response.status}`)
       const { id } = response.data
       const sources = await PayloadBuilder.dataHashes([paymentCard, billingAddress])
-      results.push({ id, schema: RebillyPaymentAuthorizationTokenSchema, sources })
+      results.push({
+        id, schema: RebillyPaymentAuthorizationTokenSchema, sources,
+      })
     } catch (error) {
       this.logger?.error?.(`${moduleName}: Error creating payment token: ${error}`)
     }

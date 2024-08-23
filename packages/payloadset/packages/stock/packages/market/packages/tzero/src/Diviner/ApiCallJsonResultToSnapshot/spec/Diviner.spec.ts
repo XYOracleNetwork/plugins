@@ -6,9 +6,7 @@ import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
 import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema.ts'
 
 describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
-  const config = {
-    schema: TZeroApiCallJsonResultToSnapshotDivinerConfigSchema,
-  }
+  const config = { schema: TZeroApiCallJsonResultToSnapshotDivinerConfigSchema }
   describe('with API Response', () => {
     const cases: ApiCallResult[] = [
       {
@@ -49,9 +47,7 @@ describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
     const cases: ApiCallResult[] = [
       {
         call: 'a04445ce5b67bca9bf1da8d2f85eea60c9baf566342cf29ffd3bdfbb01c8fcfe',
-        http: {
-          status: 404,
-        },
+        http: { status: 404 },
         schema: 'network.xyo.api.call.result',
       },
     ]

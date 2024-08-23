@@ -10,6 +10,4 @@ export interface CryptoContractDivinerLabels extends Labels {
 /**
  * Labels for Crypto Contract Diviner components
  */
-export const CryptoContractDivinerLabels: CryptoContractDivinerLabels = {
-  'network.xyo.crypto.contract.info': 'diviner',
-}
+export const CryptoContractDivinerLabels: CryptoContractDivinerLabels = { 'network.xyo.crypto.contract.info': 'diviner' }

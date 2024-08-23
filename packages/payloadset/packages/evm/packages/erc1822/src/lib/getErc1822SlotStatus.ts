@@ -27,9 +27,7 @@ export const getErc1822SlotStatus = async (provider: Provider, address: string, 
   const status: Erc1822SlotStatus = {
     address,
     implementation: address,
-    slots: {
-      implementation: await readAddressFromSlot(provider, address, ERC1822_PROXY_LOGIC_SLOT, block),
-    },
+    slots: { implementation: await readAddressFromSlot(provider, address, ERC1822_PROXY_LOGIC_SLOT, block) },
   }
 
   if (status.slots.implementation && !isHexZero(status.slots.implementation)) {

@@ -1,5 +1,4 @@
-import type {
-  PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,

@@ -22,7 +22,8 @@ import type {
   HttpCallJsonResultType,
   HttpCallResult,
   HttpCallXmlResult,
-  MimeTypes } from '../Payload/index.ts'
+  MimeTypes,
+} from '../Payload/index.ts'
 import {
   asHttpUriCall,
   asHttpUriTemplateCall,
@@ -52,9 +53,13 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
 
   getFullUri(call?: HttpCall): string {
     const { uri: callUri } = asHttpUriCall(call) ?? {}
-    const { uriTemplate: callUriTemplate, params: callParams, queries: callQueries } = asHttpUriTemplateCall(call) ?? {}
+    const {
+      uriTemplate: callUriTemplate, params: callParams, queries: callQueries,
+    } = asHttpUriTemplateCall(call) ?? {}
     const { uri: configUri } = asHttpUriCallWitnessConfig(this.config) ?? {}
-    const { uriTemplate: configUriTemplate, params: configParams, queries: configQueries } = asHttpUriTemplateCallWitnessConfig(this.config) ?? {}
+    const {
+      uriTemplate: configUriTemplate, params: configParams, queries: configQueries,
+    } = asHttpUriTemplateCallWitnessConfig(this.config) ?? {}
 
     const params = { ...configParams, ...callParams }
 
@@ -80,7 +85,9 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
   }
 
   getHeaders(headers?: Record<string, string | undefined>): Record<string, string | undefined> {
-    return { ...this.params.headers, ...this.config.headers, ...headers }
+    return {
+      ...this.params.headers, ...this.config.headers, ...headers,
+    }
   }
 
   protected override async observeHandler(inPayloads: HttpCall[] = []): Promise<HttpCallResult[]> {
@@ -124,7 +131,9 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
     try {
       switch (this.accept) {
         case 'application/json': {
-          const axios = new AxiosJson({ headers: { ...this.getHeaders(headers), Accept: 'application/json' }, timeout: this.timeout, decompress: true })
+          const axios = new AxiosJson({
+            headers: { ...this.getHeaders(headers), Accept: 'application/json' }, timeout: this.timeout, decompress: true,
+          })
           const response = await axios.get<HttpCallJsonResultType>(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as HttpCallJsonResult
@@ -132,9 +141,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
             jsonResult.contentType = 'application/json'
           } else {
             const errorResult = result as HttpCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }
@@ -153,9 +160,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
             xmlResult.contentType = response.headers['content-type']?.toString() ?? 'application/xml'
           } else {
             const errorResult = result as HttpCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }
@@ -173,14 +178,14 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
             htmlResult.contentType = response.headers['content-type']?.toString() ?? 'text/html'
           } else {
             const errorResult = result as HttpCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }
         default: {
-          const axios = new Axios({ headers: this.params.headers, responseType: 'arraybuffer', timeout: this.timeout, decompress: true })
+          const axios = new Axios({
+            headers: this.params.headers, responseType: 'arraybuffer', timeout: this.timeout, decompress: true,
+          })
           const response = await axios.get(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as HttpCallBase64Result
@@ -188,9 +193,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
             jsonResult.contentType = response.headers['content-type']?.toString() ?? 'application/octet-stream'
           } else {
             const errorResult = result as HttpCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }

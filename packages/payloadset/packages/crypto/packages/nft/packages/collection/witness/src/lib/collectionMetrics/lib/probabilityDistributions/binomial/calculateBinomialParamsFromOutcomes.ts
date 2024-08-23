@@ -16,5 +16,7 @@ export const calculateBinomialParamsFromOutcomes = (outcomes: number[]): Binomia
   const variance = n * p * (1 - p)
   // Standard Deviation (σ)
   const stdDev = Math.sqrt(variance)
-  return { mean, p, stdDev, variance }
+  return {
+    mean, p, stdDev, variance,
+  }
 }

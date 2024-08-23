@@ -29,7 +29,9 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
     if (queries.length > 0) {
       const results = await Promise.all(
         queries.map(async (query) => {
-          const { limit: payloadLimit, offset: payloadOffset, order: payloadOrder, status: payloadStatus, success: payloadSuccess, url } = query
+          const {
+            limit: payloadLimit, offset: payloadOffset, order: payloadOrder, status: payloadStatus, success: payloadSuccess, url,
+          } = query
           const limit = payloadLimit ?? 1
           const order = payloadOrder ?? 'desc'
           const offset = payloadOffset ?? 0

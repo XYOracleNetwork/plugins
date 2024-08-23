@@ -2,7 +2,9 @@ import { assertEx } from '@xylabs/assert'
 import type { Hash } from '@xylabs/hex'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
-import type { Payload, PayloadValidationFunction, WithMeta } from '@xyo-network/payload-model'
+import type {
+  Payload, PayloadValidationFunction, WithMeta,
+} from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms.ts'
 

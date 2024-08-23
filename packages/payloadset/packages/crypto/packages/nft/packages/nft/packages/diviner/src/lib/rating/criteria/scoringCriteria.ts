@@ -14,9 +14,7 @@ import {
   scoreType,
 } from './scoring/index.ts'
 
-const attributesScoringCriteria = {
-  Attributes: { score: evaluateNftAttributes, weight: 1 },
-}
+const attributesScoringCriteria = { Attributes: { score: evaluateNftAttributes, weight: 1 } }
 
 const metadataScoringCriteria = {
   'Animation URL': { score: scoreNftAnimationUrl, weight: 1 },

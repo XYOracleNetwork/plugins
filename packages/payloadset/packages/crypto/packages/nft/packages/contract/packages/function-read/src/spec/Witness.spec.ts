@@ -1,6 +1,5 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import type {
-  CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import type { CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
@@ -32,7 +31,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
           config: { abi: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },
           providers: [provider],
         })
-        const call: CryptoContractFunctionCall = { address, args, functionName, schema: CryptoContractFunctionCallSchema }
+        const call: CryptoContractFunctionCall = {
+          address, args, functionName, schema: CryptoContractFunctionCallSchema,
+        }
         const observation = await witness.observe([call])
         validateObservation(observation)
       })

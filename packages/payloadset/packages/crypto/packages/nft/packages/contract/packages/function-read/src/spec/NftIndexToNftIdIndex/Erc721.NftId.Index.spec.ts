@@ -116,7 +116,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
         // Check we've indexed the results by sampling the first and last index
         const sampleIndexes = [0, tokensToCheck - 1]
         for (const index of sampleIndexes) {
-          const query = { address, chainId: 1, index, schema: PayloadDivinerQuerySchema }
+          const query = {
+            address, chainId: 1, index, schema: PayloadDivinerQuerySchema,
+          }
           const result = await diviner?.divine([query])
           expect(result).toBeDefined()
           expect(result).toBeArrayOfSize(1)

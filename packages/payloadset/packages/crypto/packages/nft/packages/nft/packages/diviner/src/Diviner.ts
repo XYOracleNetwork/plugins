@@ -1,7 +1,8 @@
 import type {
   NftInfo,
   NftScore,
-  NftScoreDivinerConfig } from '@xyo-network/crypto-nft-payload-plugin'
+  NftScoreDivinerConfig,
+} from '@xyo-network/crypto-nft-payload-plugin'
 import {
   isNftInfo,
   NftScoreDivinerConfigSchema,
@@ -19,8 +20,12 @@ import { analyzeNft } from './lib/index.ts'
 export type NftScoreDivinerParams = DivinerParams<AnyConfigSchema<NftScoreDivinerConfig>>
 
 const toNftScorePayload = (nftInfo: NftInfo, scores: NftAnalysis): NftScore => {
-  const { address, chainId, type } = nftInfo
-  return { address, chainId, schema: NftScoreSchema, scores, type }
+  const {
+    address, chainId, type,
+  } = nftInfo
+  return {
+    address, chainId, schema: NftScoreSchema, scores, type,
+  }
 }
 
 export const isNftScore = (payload: Payload): payload is NftScore => payload.schema === NftScoreSchema

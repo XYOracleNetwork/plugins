@@ -5,7 +5,8 @@ import type {
   CryptoContractFunctionCallFailure,
   CryptoContractFunctionCallResult,
   CryptoContractFunctionCallSuccess,
-  CryptoContractFunctionReadWitnessConfig } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+  CryptoContractFunctionReadWitnessConfig,
+} from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
@@ -41,7 +42,9 @@ export class CryptoContractFunctionReadWitness<
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(CryptoContractFunctionCallSchema)).map(async ({ functionName, args, address }) => {
+        inPayloads.filter(isPayloadOfSchemaType(CryptoContractFunctionCallSchema)).map(async ({
+          functionName, args, address,
+        }) => {
           const { providers } = this.params
           const provider = providers[Date.now() % providers.length] // pick a random provider
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')

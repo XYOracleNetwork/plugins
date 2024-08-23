@@ -38,7 +38,9 @@ describeIf(process.env.REB_PUB_APIKEY)('RebillyPaymentCardAuthorizationSentinel'
   const organizationId = assertEx(process.env.REB_ORGANIZATION_ID)
   let sentinel: RebillyPaymentCardAuthorizationSentinel
   beforeAll(async () => {
-    const config = { schema: RebillyPaymentCardAuthorizationSentinelConfigSchema, synchronous: true, tasks: [] }
+    const config = {
+      schema: RebillyPaymentCardAuthorizationSentinelConfigSchema, synchronous: true, tasks: [],
+    }
     const domain = 'https://api-sandbox.rebilly.com'
     sentinel = await RebillyPaymentCardAuthorizationSentinel.create({
       account: 'random',

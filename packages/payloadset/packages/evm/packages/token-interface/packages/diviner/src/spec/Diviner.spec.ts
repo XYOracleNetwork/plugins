@@ -1,5 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
-import { EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema } from '@xyo-network/evm-contract-witness'
+import {
+  EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema,
+} from '@xyo-network/evm-contract-witness'
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
 import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner'
@@ -27,7 +29,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner',
         const observations = await witness.observe([{ address, schema: EvmAddressSchema }])
         expect(observations?.length).toBeGreaterThan(0)
         const code = observations?.[0].code
-        const results = await diviner.divine([{ address, block: 0, chainId: 1, code, schema: EvmContractSchema }])
+        const results = await diviner.divine([{
+          address, block: 0, chainId: 1, code, schema: EvmContractSchema,
+        }])
         expect(results?.length).toBeGreaterThan(0)
         for (const result of results ?? []) {
           expect(result.address).toBe(address)
@@ -41,7 +45,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner',
           account: 'random',
           config: { schema: EvmTokenInterfaceImplementedDivinerConfigSchema, tokenInterfaces },
         })
-        const results = await diviner.divine([{ address, block: 0, chainId: 1, code: '0x00', schema: EvmContractSchema }])
+        const results = await diviner.divine([{
+          address, block: 0, chainId: 1, code: '0x00', schema: EvmContractSchema,
+        }])
         expect(results?.length).toBeGreaterThan(0)
         for (const result of results ?? []) {
           expect(result.address).toBe(address)

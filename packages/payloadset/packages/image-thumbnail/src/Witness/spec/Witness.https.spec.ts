@@ -58,6 +58,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
   it('HTTPS [medium/ens]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
+      // eslint-disable-next-line @stylistic/max-len
       url: 'https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x7d26d96c6c36f4edabfb87287e2ebfca83a454b05c34d684b9b19a5af30d7994/image',
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]

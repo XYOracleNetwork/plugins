@@ -3,7 +3,9 @@ import { CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-marke
 import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { DivinerConfig, DivinerModule, DivinerParams } from '@xyo-network/diviner-model'
+import type {
+  DivinerConfig, DivinerModule, DivinerParams,
+} from '@xyo-network/diviner-model'
 import type { AnyConfigSchema, Module } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'

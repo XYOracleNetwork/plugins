@@ -11,9 +11,7 @@ export interface ImageThumbnailDivinerLabels extends Labels {
 /**
  * Labels for Image Thumbnail Diviner components
  */
-export const ImageThumbnailDivinerLabels: ImageThumbnailDivinerLabels = {
-  'network.xyo.image.thumbnail': 'diviner',
-}
+export const ImageThumbnailDivinerLabels: ImageThumbnailDivinerLabels = { 'network.xyo.image.thumbnail': 'diviner' }
 
 /**
  * Labels for Image Thumbnail Diviner Stage Diviners

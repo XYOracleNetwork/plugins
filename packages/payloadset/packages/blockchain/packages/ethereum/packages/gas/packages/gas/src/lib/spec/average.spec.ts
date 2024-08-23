@@ -1,8 +1,12 @@
 import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
 
-import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthgasstationGas } from '../../test'
+import {
+  sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthgasstationGas,
+} from '../../test'
 import { average } from '../average'
-import { transformGasFromBlocknative, transformGasFromEtherchainV2, transformGasFromEtherscan, transformGasFromEthgasstation } from '../transforms'
+import {
+  transformGasFromBlocknative, transformGasFromEtherchainV2, transformGasFromEtherscan, transformGasFromEthgasstation,
+} from '../transforms'
 
 const results: FeeData[] = [
   transformGasFromBlocknative(sampleBlocknativeGas),

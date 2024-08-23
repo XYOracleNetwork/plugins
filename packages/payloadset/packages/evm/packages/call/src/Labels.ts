@@ -10,6 +10,4 @@ export interface EvmCallDivinerLabels extends Labels {
 /**
  * Labels for Crypto Contract Diviner components
  */
-export const EvmCallDivinerLabels: EvmCallDivinerLabels = {
-  'network.xyo.crypto.contract.info': 'diviner',
-}
+export const EvmCallDivinerLabels: EvmCallDivinerLabels = { 'network.xyo.crypto.contract.info': 'diviner' }

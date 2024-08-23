@@ -1,5 +1,7 @@
 import type { EthereumGasBlocknativePayload } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
-import type { FeeData, FeePerGas, PriorityFeePerGas } from '@xyo-network/gas-price-payload-plugin'
+import type {
+  FeeData, FeePerGas, PriorityFeePerGas,
+} from '@xyo-network/gas-price-payload-plugin'
 import { linear } from 'regression'
 
 const getBaseFee = (payload: EthereumGasBlocknativePayload): number | undefined => {
@@ -46,5 +48,7 @@ export const transformGasFromBlocknative = (payload: EthereumGasBlocknativePaylo
   const baseFee = getBaseFee(payload)
   const feePerGas = getFeePerGas(payload)
   const priorityFeePerGas = getPriorityFeePerGas(payload)
-  return { baseFee, feePerGas, priorityFeePerGas }
+  return {
+    baseFee, feePerGas, priorityFeePerGas,
+  }
 }

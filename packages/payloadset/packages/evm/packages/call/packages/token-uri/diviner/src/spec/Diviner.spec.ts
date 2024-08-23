@@ -13,11 +13,7 @@ const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[
   const {
     address,
     chainId,
-    results: {
-      tokenURI: {
-        args: [tokenId],
-      },
-    },
+    results: { tokenURI: { args: [tokenId] } },
   } = evmCallResults
   expect(results[0].address).toBe(address)
   expect(results[0].chainId).toBe(chainId)

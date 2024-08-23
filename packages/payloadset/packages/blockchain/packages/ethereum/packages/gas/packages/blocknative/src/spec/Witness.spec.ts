@@ -8,9 +8,7 @@ describe('EthereumGasBlocknativeWitness', () => {
   it('returns observation', async () => {
     const sut = await EthereumGasBlocknativeWitness.create({
       account: 'random',
-      config: {
-        schema: EthereumGasBlocknativeWitnessConfigSchema,
-      },
+      config: { schema: EthereumGasBlocknativeWitnessConfigSchema },
     })
     const [actual] = await sut.observe()
     expect(actual.schema).toBe(EthereumGasBlocknativeSchema)

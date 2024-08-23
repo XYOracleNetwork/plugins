@@ -3,7 +3,8 @@ import { EthAddress } from '@xylabs/eth-address'
 import type {
   CryptoWalletNftWitnessConfig,
   NftInfo,
-  NftWitnessQuery } from '@xyo-network/crypto-nft-payload-plugin'
+  NftWitnessQuery,
+} from '@xyo-network/crypto-nft-payload-plugin'
 import {
   isNftWitnessQuery,
   NftSchema,

@@ -15,9 +15,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
   const timestampA = 1_234_567_890
   const timestampPayloadA: TimeStamp = { schema: TimestampSchema, timestamp: timestampA }
   const imageThumbnailPayloadA: ImageThumbnail = {
-    http: {
-      status: 200,
-    },
+    http: { status: 200 },
     schema: ImageThumbnailSchema,
     sourceUrl: 'https://xyo.network',
     url: 'data',
@@ -25,9 +23,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
   const timestampB = 1_234_567_891
   const timestampPayloadB: TimeStamp = { schema: TimestampSchema, timestamp: timestampB }
   const imageThumbnailPayloadB: ImageThumbnail = {
-    http: {
-      status: 500,
-    },
+    http: { status: 500 },
     schema: ImageThumbnailSchema,
     sourceUrl: 'https://xyo.network',
   }

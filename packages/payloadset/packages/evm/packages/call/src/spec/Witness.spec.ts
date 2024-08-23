@@ -27,7 +27,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
           config: { abi: ERC20__factory.abi, schema: EvmCallWitnessConfigSchema },
           providers: getProvidersFromEnv,
         })
-        const call: EvmCall = { address, args, functionName, schema: EvmCallSchema }
+        const call: EvmCall = {
+          address, args, functionName, schema: EvmCallSchema,
+        }
         const observation = await witness.observe([call])
         validateObservation(observation)
       })

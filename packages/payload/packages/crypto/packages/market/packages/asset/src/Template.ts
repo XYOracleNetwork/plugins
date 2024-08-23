@@ -1,6 +1,4 @@
 import type { CryptoMarketAssetPayload } from './Payload.ts'
 import { CryptoMarketAssetSchema } from './Schema.ts'
 
-export const cryptoMarketAssetPayloadTemplate = (): Partial<CryptoMarketAssetPayload> => ({
-  schema: CryptoMarketAssetSchema,
-})
+export const cryptoMarketAssetPayloadTemplate = (): Partial<CryptoMarketAssetPayload> => ({ schema: CryptoMarketAssetSchema })

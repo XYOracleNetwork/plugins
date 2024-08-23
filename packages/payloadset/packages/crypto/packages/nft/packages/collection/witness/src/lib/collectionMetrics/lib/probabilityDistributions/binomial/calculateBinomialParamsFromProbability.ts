@@ -16,5 +16,7 @@ export const calculateBinomialParamsFromProbability = (n: number, p: number): Bi
   // Standard Deviation (σ)
   const stdDev = Math.sqrt(variance)
 
-  return { mean, p, stdDev, variance }
+  return {
+    mean, p, stdDev, variance,
+  }
 }

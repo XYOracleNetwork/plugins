@@ -9,7 +9,9 @@ import type { CreatePaymentTokenRequest } from '../Api/index.ts'
  * @returns The token request
  */
 export const toTokenRequest = (paymentCard: PaymentCard, billingAddress: BillingAddress): CreatePaymentTokenRequest => {
-  const { cvv, expMonth, expYear, cardNumber } = paymentCard
+  const {
+    cvv, expMonth, expYear, cardNumber,
+  } = paymentCard
   // NOTE: We are destructuring all but the schema and passing it along to the billingAddress. This
   // is to allow for missing fields to be omitted rather than set to undefined and for any new fields
   // that might be added later to be automatically picked up on. It is fine to pass this along since
@@ -19,6 +21,8 @@ export const toTokenRequest = (paymentCard: PaymentCard, billingAddress: Billing
   return {
     billingAddress: { ...fields },
     method: 'payment-card',
-    paymentInstrument: { cvv, expMonth, expYear, pan: cardNumber },
+    paymentInstrument: {
+      cvv, expMonth, expYear, pan: cardNumber,
+    },
   }
 }

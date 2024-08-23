@@ -1,4 +1,6 @@
-import { ApiCallResultSchema, ApiCallSchema, isApiCallErrorResult } from '../../Payload'
+import {
+  ApiCallResultSchema, ApiCallSchema, isApiCallErrorResult,
+} from '../../Payload'
 import { ApiCallWitnessConfigSchema } from '../Schema.ts'
 import { ApiCallWitness } from '../Witness'
 

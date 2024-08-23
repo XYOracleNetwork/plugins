@@ -12,7 +12,9 @@ const numberOrNull = (value: unknown): number | null => (typeof value === 'numbe
 export const tryMapToSnapshot = (response?: unknown): Snapshot | undefined => {
   if (isSnapshotApiCallJsonResult(response)) {
     const data: Partial<SnapshotFields> = response.data
-    const { symbol, timestamp, volume } = data
+    const {
+      symbol, timestamp, volume,
+    } = data
     if (symbol === undefined || timestamp === undefined || volume === undefined) return undefined
     const fields = {
       askPrice: numberOrNull(data.askPrice),

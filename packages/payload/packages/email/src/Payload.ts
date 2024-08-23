@@ -2,7 +2,8 @@ import { assertEx } from '@xylabs/assert'
 import type {
   PayloadWithSources,
   WithMeta,
-  WithSources } from '@xyo-network/payload-model'
+  WithSources,
+} from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,

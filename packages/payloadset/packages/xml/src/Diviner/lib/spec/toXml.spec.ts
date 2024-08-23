@@ -1,4 +1,5 @@
-import { toXml } from '../toXml'
+/* eslint-disable @stylistic/max-len */
+import { toXml } from '../toXml.ts'
 
 describe('toXml', () => {
   const cases = [

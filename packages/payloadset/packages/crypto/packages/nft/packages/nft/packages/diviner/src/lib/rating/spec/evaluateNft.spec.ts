@@ -1,6 +1,7 @@
+/* eslint-disable @stylistic/max-len */
 import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
 
-import { analyzeNft } from '../analyzeNft'
+import { analyzeNft } from '../analyzeNft.ts'
 
 const nfts: NftInfoFields[] = [
   {

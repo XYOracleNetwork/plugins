@@ -8,7 +8,9 @@ const getBaseFee = (payload: EthereumGasEtherscanPayload): number | undefined =>
 }
 
 const getFeePerGas = (payload: EthereumGasEtherscanPayload): Partial<FeePerGas> => {
-  const { FastGasPrice, ProposeGasPrice, SafeGasPrice } = payload.result
+  const {
+    FastGasPrice, ProposeGasPrice, SafeGasPrice,
+  } = payload.result
   const low = Number.parseFloat(SafeGasPrice)
   const medium = Number.parseFloat(ProposeGasPrice)
   const high = Number.parseFloat(FastGasPrice)
@@ -17,12 +19,16 @@ const getFeePerGas = (payload: EthereumGasEtherscanPayload): Partial<FeePerGas> 
     [1, medium],
     [2, high],
   ]).predict(3)[1]
-  return { high, low, medium, veryHigh }
+  return {
+    high, low, medium, veryHigh,
+  }
 }
 
 export const transformGasFromEtherscan = (payload: EthereumGasEtherscanPayload): FeeData => {
   const baseFee = getBaseFee(payload)
   const feePerGas = getFeePerGas(payload)
   const priorityFeePerGas = {}
-  return { baseFee, feePerGas, priorityFeePerGas }
+  return {
+    baseFee, feePerGas, priorityFeePerGas,
+  }
 }

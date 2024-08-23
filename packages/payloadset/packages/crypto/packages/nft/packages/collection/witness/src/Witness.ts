@@ -3,7 +3,8 @@ import { EthAddress } from '@xylabs/eth-address'
 import type {
   NftCollectionInfo,
   NftCollectionWitnessConfig,
-  NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
+  NftCollectionWitnessQuery,
+} from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionWitnessQuery,
   NftCollectionSchema,
@@ -15,7 +16,9 @@ import type { Schema } from '@xyo-network/payload-model'
 import type { EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 
-import { getNftCollectionMetrics, getNftCollectionNfts, tokenTypes } from './lib/index.ts'
+import {
+  getNftCollectionMetrics, getNftCollectionNfts, tokenTypes,
+} from './lib/index.ts'
 
 export type CryptoNftCollectionWitnessParams = EvmWitnessParams<NftCollectionWitnessConfig>
 

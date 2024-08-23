@@ -3,7 +3,8 @@ import type { Promisable } from '@xylabs/promise'
 import type {
   ContractInfo,
   CryptoContractDivinerParams,
-  CryptoContractFunctionCallResult } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+  CryptoContractFunctionCallResult,
+} from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   asCryptoContractFunctionCallSuccess,
   ContractInfoSchema,

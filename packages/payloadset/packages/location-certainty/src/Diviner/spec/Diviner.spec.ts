@@ -94,8 +94,12 @@ describe.skip('MongoDBLocationCertaintyDiviner', () => {
         const noLocationsResult = await sut.divine(noLocations)
         expect(noLocationsResult).toBeArrayOfSize(0)
         const locations: LocationPayload[] = [
-          { altitude: 5, quadkey: '0203', schema: LocationSchema },
-          { altitude: 300, quadkey: '0102', schema: LocationSchema },
+          {
+            altitude: 5, quadkey: '0203', schema: LocationSchema,
+          },
+          {
+            altitude: 300, quadkey: '0102', schema: LocationSchema,
+          },
         ]
         const locationsResult = await sut.divine(locations)
         expect(locationsResult).toBeArrayOfSize(1)

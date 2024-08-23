@@ -10,7 +10,8 @@ import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
 import type {
   ImageThumbnail,
-  ImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
+  ImageThumbnailDivinerQuery,
+} from '@xyo-network/image-thumbnail-payload-plugin'
 import {
   ImageThumbnailDivinerQuerySchema,
   isImageThumbnailResult,
@@ -27,7 +28,8 @@ import { TimestampSchema } from '@xyo-network/witness-timestamp'
 
 import { ImageThumbnailDiviner } from '../Diviner.ts'
 import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.ts'
-import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner } from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.ts'
+import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner }
+  from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.ts'
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../ImageThumbnailStateToIndexCandidateDiviner/index.ts'
 import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json'
@@ -38,9 +40,7 @@ import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json'
 describe('ImageThumbnailDiviner', () => {
   const sourceUrl = 'https://placekitten.com/200/300'
   const thumbnailHttpSuccess: ImageThumbnail = {
-    http: {
-      status: 200,
-    },
+    http: { status: 200 },
     schema: 'network.xyo.image.thumbnail',
     sourceHash: '7f39363514d9d9b958a5a993edeba35cb44f912c7072ed9ddd628728ac0fd681',
     sourceUrl,
@@ -57,17 +57,13 @@ describe('ImageThumbnailDiviner', () => {
   }
 
   const thumbnailCodeFail: ImageThumbnail = {
-    http: {
-      code: 'FAILED',
-    },
+    http: { code: 'FAILED' },
     schema: 'network.xyo.image.thumbnail',
     sourceUrl,
   }
 
   const thumbnailWitnessFail: ImageThumbnail = {
-    http: {
-      ipAddress: '104.17.96.13',
-    },
+    http: { ipAddress: '104.17.96.13' },
     schema: 'network.xyo.image.thumbnail',
     sourceUrl,
   }
@@ -192,7 +188,9 @@ describe('ImageThumbnailDiviner', () => {
     const schema = ImageThumbnailDivinerQuerySchema
     describe('with no filter criteria', () => {
       it('returns the most recent success', async () => {
-        const query: ImageThumbnailDivinerQuery = { schema, success: true, url }
+        const query: ImageThumbnailDivinerQuery = {
+          schema, success: true, url,
+        }
         const results = await sut.divine([query])
         const result = results.find(isImageThumbnailResult)
         expect(result).toBeDefined()
@@ -205,7 +203,9 @@ describe('ImageThumbnailDiviner', () => {
         const cases: ImageThumbnail[] = [thumbnailHttpSuccess, thumbnailHttpFail]
         it.each(cases)('returns the most recent instance of that status code', async (payload) => {
           const { status } = payload.http ?? {}
-          const query: ImageThumbnailDivinerQuery = { schema, status, url }
+          const query: ImageThumbnailDivinerQuery = {
+            schema, status, url,
+          }
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()
@@ -217,7 +217,9 @@ describe('ImageThumbnailDiviner', () => {
         const cases: ImageThumbnail[] = [thumbnailHttpSuccess]
         it.each(cases)('returns the most recent instance of that success state', async (payload) => {
           const success = !!(payload.url ?? false)
-          const query: ImageThumbnailDivinerQuery = { schema, success, url }
+          const query: ImageThumbnailDivinerQuery = {
+            schema, success, url,
+          }
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()
@@ -229,7 +231,9 @@ describe('ImageThumbnailDiviner', () => {
         const cases: ImageThumbnail[] = [thumbnailCodeFail]
         it.each(cases)('returns the most recent instance of that success state', async (payload) => {
           const success = !!(payload.url ?? false)
-          const query: ImageThumbnailDivinerQuery = { schema, success, url }
+          const query: ImageThumbnailDivinerQuery = {
+            schema, success, url,
+          }
           const results = await sut.divine([query])
           const result = results.find(isImageThumbnailResult)
           expect(result).toBeDefined()

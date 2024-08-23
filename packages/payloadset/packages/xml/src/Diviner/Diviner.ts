@@ -5,7 +5,9 @@ import { Payload, Schema } from '@xyo-network/payload-model'
 
 import { Xml } from '../Payload.ts'
 import { XmlSchema } from '../Schema.ts'
-import { hasStringDataField, StringDataField, toXml } from './lib/index.ts'
+import {
+  hasStringDataField, StringDataField, toXml,
+} from './lib/index.ts'
 import { XmlParsingDivinerParams } from './Params.ts'
 import { XmlParsingDivinerConfigSchema } from './Schema.ts'
 

@@ -77,7 +77,9 @@ export class EthersUniSwap3Pair {
       const result = {
         tokens: await Promise.all(
           tokenIndexes.map(async (value) => {
-            return { address: await tokenContracts[value].getAddress(), symbol: tokenSymbols[value], value: tokenPrices[value] }
+            return {
+              address: await tokenContracts[value].getAddress(), symbol: tokenSymbols[value], value: tokenPrices[value],
+            }
           }),
         ),
       }

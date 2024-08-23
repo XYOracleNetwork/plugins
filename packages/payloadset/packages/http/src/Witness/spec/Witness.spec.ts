@@ -1,4 +1,6 @@
-import { HttpCallResultSchema, HttpCallSchema, isHttpCallErrorResult } from '../../Payload/index.ts'
+import {
+  HttpCallResultSchema, HttpCallSchema, isHttpCallErrorResult,
+} from '../../Payload/index.ts'
 import { HttpCallWitnessConfigSchema } from '../Schema.ts'
 import { HttpCallWitness } from '../Witness.ts'
 

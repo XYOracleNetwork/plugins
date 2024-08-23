@@ -9,7 +9,9 @@ import { Contract } from 'ethers'
 
 import type { EvmCallWitnessParams } from './model.ts'
 import { EvmCallWitnessConfigSchema } from './model.ts'
-import type { EvmCall, EvmCallResult, EvmCallSuccess } from './Payload.ts'
+import type {
+  EvmCall, EvmCallResult, EvmCallSuccess,
+} from './Payload.ts'
 import { EvmCallResultSchema, EvmCallSchema } from './Payload.ts'
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
@@ -26,7 +28,9 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
     await this.getProviders()
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType<EvmCall>(EvmCallSchema)).map(async ({ functionName, args, address, block: payloadBlock }) => {
+        inPayloads.filter(isPayloadOfSchemaType<EvmCall>(EvmCallSchema)).map(async ({
+          functionName, args, address, block: payloadBlock,
+        }) => {
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])]

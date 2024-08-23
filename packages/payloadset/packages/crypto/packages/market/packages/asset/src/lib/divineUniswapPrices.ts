@@ -1,9 +1,13 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import type { AssetInfo, CryptoMarketAssetPayload, Currency, Token, ValueBasis } from '@xyo-network/crypto-asset-payload-plugin'
+import type {
+  AssetInfo, CryptoMarketAssetPayload, Currency, Token, ValueBasis,
+} from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { UniswapCryptoMarketPayload, UniswapCryptoPair, UniswapCryptoToken } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import type {
+  UniswapCryptoMarketPayload, UniswapCryptoPair, UniswapCryptoToken,
+} from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 const schema = CryptoMarketAssetSchema
 

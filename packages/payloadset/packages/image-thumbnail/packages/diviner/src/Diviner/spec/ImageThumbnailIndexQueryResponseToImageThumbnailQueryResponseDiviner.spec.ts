@@ -2,7 +2,8 @@ import type { Hash } from '@xylabs/hex'
 import type {
   ImageThumbnailDivinerQuery,
   ImageThumbnailResult,
-  ImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
+  ImageThumbnailResultIndex,
+} from '@xyo-network/image-thumbnail-payload-plugin'
 import {
   ImageThumbnailDivinerQuerySchema,
   ImageThumbnailResultIndexSchema,

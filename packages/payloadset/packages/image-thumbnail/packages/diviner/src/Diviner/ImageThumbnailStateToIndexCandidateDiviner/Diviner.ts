@@ -13,7 +13,9 @@ import { ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumb
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema, WithMeta, WithSources } from '@xyo-network/payload-model'
+import type {
+  Payload, Schema, WithMeta, WithSources,
+} from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
@@ -100,7 +102,9 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     // Get next batch of results starting from the offset
     const boundWitnessDiviner = await this.getBoundWitnessDivinerForStore()
     const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
-      .fields({ limit: this.payloadDivinerLimit, offset, order, payload_schemas })
+      .fields({
+        limit: this.payloadDivinerLimit, offset, order, payload_schemas,
+      })
       .build()
     const batch = (await boundWitnessDiviner.divine([query])) as WithSources<WithMeta<BoundWitness>>[]
     if (batch.length === 0) return [lastState]

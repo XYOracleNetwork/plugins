@@ -14,9 +14,8 @@ import { LocationCertaintyPlugin } from '../Plugin.ts'
 describe('LocationCertaintyPlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = LocationCertaintyPlugin()
-    const resolver = await new PayloadSetPluginResolver().register(plugin, {
-      config: { schema: LocationCertaintyDivinerConfigSchema, targetSchema: LocationCertaintySchema },
-    })
+    const resolver = await new PayloadSetPluginResolver()
+      .register(plugin, { config: { schema: LocationCertaintyDivinerConfigSchema, targetSchema: LocationCertaintySchema } })
     expect(resolver.resolve(plugin.set)).toBeObject()
     expect(resolver.diviner(LocationCertaintySchema)).toBeObject()
   })

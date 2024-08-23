@@ -3,8 +3,7 @@ import { writeFile } from 'node:fs/promises'
 import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
-import type {
-  NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import type { NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionInfo,
   NftCollectionWitnessConfigSchema,
@@ -43,7 +42,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
       it('uses values from config', async () => {
         const witness = await CryptoNftCollectionWitness.create({
           account,
-          config: { address, chainId, schema: NftCollectionWitnessConfigSchema },
+          config: {
+            address, chainId, schema: NftCollectionWitnessConfigSchema,
+          },
           providers: () => getProvidersFromEnv(1, chainId),
         })
         const query: NftCollectionWitnessQuery = { maxNfts: 10, schema: NftCollectionWitnessQuerySchema }
@@ -58,7 +59,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
           config: { schema: NftCollectionWitnessConfigSchema },
           providers: () => getProvidersFromEnv(1, chainId),
         })
-        const query: NftCollectionWitnessQuery = { address, chainId, maxNfts: 10, schema: NftCollectionWitnessQuerySchema }
+        const query: NftCollectionWitnessQuery = {
+          address, chainId, maxNfts: 10, schema: NftCollectionWitnessQuerySchema,
+        }
         const observation = await witness.observe([query])
         validateObservation(observation)
       })
@@ -80,7 +83,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
           config: { schema: NftCollectionWitnessConfigSchema },
           providers: () => getProvidersFromEnv(1, chainId),
         })
-        const query: NftCollectionWitnessQuery = { address, chainId, maxNfts: 20_000, schema: NftCollectionWitnessQuerySchema }
+        const query: NftCollectionWitnessQuery = {
+          address, chainId, maxNfts: 20_000, schema: NftCollectionWitnessQuerySchema,
+        }
         const observation = await witness.observe([query])
         validateObservation(observation)
         await writeFile(`./nftData/witness/${address}-witness.json`, JSON.stringify(observation, null, 2))

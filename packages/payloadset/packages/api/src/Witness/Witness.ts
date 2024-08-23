@@ -22,7 +22,8 @@ import type {
   ApiCallJsonResultType,
   ApiCallResult,
   ApiCallXmlResult,
-  MimeTypes } from '../Payload/index.ts'
+  MimeTypes,
+} from '../Payload/index.ts'
 import {
   ApiCallResultSchema,
   ApiCallSchema,
@@ -51,9 +52,13 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
 
   getFullUri(call?: ApiCall): string {
     const { uri: callUri } = asApiUriCall(call) ?? {}
-    const { uriTemplate: callUriTemplate, params: callParams, queries: callQueries } = asApiUriTemplateCall(call) ?? {}
+    const {
+      uriTemplate: callUriTemplate, params: callParams, queries: callQueries,
+    } = asApiUriTemplateCall(call) ?? {}
     const { uri: configUri } = asApiUriCallWitnessConfig(this.config) ?? {}
-    const { uriTemplate: configUriTemplate, params: configParams, queries: configQueries } = asApiUriTemplateCallWitnessConfig(this.config) ?? {}
+    const {
+      uriTemplate: configUriTemplate, params: configParams, queries: configQueries,
+    } = asApiUriTemplateCallWitnessConfig(this.config) ?? {}
 
     const params = { ...configParams, ...callParams }
 
@@ -79,7 +84,9 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
   }
 
   getHeaders(headers?: Record<string, string | undefined>): Record<string, string | undefined> {
-    return { ...this.params.headers, ...this.config.headers, ...headers }
+    return {
+      ...this.params.headers, ...this.config.headers, ...headers,
+    }
   }
 
   protected override async observeHandler(inPayloads: ApiCall[] = []): Promise<ApiCallResult[]> {
@@ -131,9 +138,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
             jsonResult.contentType = 'application/json'
           } else {
             const errorResult = result as ApiCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }
@@ -151,14 +156,14 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
             xmlResult.contentType = response.headers['content-type']?.toString() ?? 'application/xml'
           } else {
             const errorResult = result as ApiCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }
         default: {
-          const axios = new Axios({ headers: this.params.headers, responseType: 'arraybuffer', timeout: this.timeout })
+          const axios = new Axios({
+            headers: this.params.headers, responseType: 'arraybuffer', timeout: this.timeout,
+          })
           const response = await axios.get(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as ApiCallBase64Result
@@ -166,9 +171,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
             jsonResult.contentType = response.headers['content-type']?.toString() ?? 'application/octet-stream'
           } else {
             const errorResult = result as ApiCallErrorResult
-            errorResult.http = {
-              status: response.status,
-            }
+            errorResult.http = { status: response.status }
           }
           break
         }

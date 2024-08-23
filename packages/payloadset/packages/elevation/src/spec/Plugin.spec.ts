@@ -14,9 +14,7 @@ import { ElevationWitnessConfigSchema } from '../Witness.ts'
 describe('ElevationPlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = ElevationPlugin()
-    const resolver = await new PayloadSetPluginResolver().register(plugin, {
-      config: { schema: ElevationWitnessConfigSchema },
-    })
+    const resolver = await new PayloadSetPluginResolver().register(plugin, { config: { schema: ElevationWitnessConfigSchema } })
     expect(resolver.resolve(plugin.set)).toBeObject()
     expect(resolver.witness(ElevationSchema)).toBeObject()
   })

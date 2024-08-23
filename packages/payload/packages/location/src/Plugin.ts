@@ -4,6 +4,4 @@ import type { LocationPayload } from './GeographicCoordinateSystemLocationPayloa
 import { LocationSchema } from './GeographicCoordinateSystemLocationSchema.ts'
 
 export const LocationPayloadPlugin = () =>
-  createPayloadPlugin<LocationPayload>({
-    schema: LocationSchema,
-  })
+  createPayloadPlugin<LocationPayload>({ schema: LocationSchema })

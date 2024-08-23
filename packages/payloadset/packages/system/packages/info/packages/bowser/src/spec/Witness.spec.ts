@@ -14,9 +14,7 @@ import { BowserSystemInfoWitness } from '../Witness.ts'
 PayloadValidator.setSchemaNameValidatorFactory(schema => new SchemaNameValidator(schema))
 
 const cryptoPolyfill = (window: Window & typeof globalThis) => {
-  window.crypto = window.crypto ?? {
-    getRandomValues: (arr: []) => Crypto.randomBytes(arr.length),
-  }
+  window.crypto = window.crypto ?? { getRandomValues: (arr: []) => Crypto.randomBytes(arr.length) }
 }
 
 cryptoPolyfill(window)
@@ -25,9 +23,7 @@ describe('BowserSystemInfo', () => {
   test('observe', async () => {
     const witness = await BowserSystemInfoWitness.create({
       account: 'random',
-      config: {
-        schema: BowserSystemInfoWitnessConfigSchema,
-      },
+      config: { schema: BowserSystemInfoWitnessConfigSchema },
     })
     const [observation] = await witness.observe()
     expect(observation.schema).toBe(BowserSystemInfoSchema)

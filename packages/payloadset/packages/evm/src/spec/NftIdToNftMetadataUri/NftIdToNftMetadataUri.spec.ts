@@ -14,7 +14,9 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import type { EvmCall } from '@xyo-network/evm-call-witness'
-import { EvmCallDiviner, EvmCallSchema, EvmCallWitness } from '@xyo-network/evm-call-witness'
+import {
+  EvmCallDiviner, EvmCallSchema, EvmCallWitness,
+} from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -70,7 +72,9 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
   })
   describe('Sentinel', () => {
     it.each(cases)('returns metadata URI for token ID', async (address, tokenId) => {
-      const tokenCallPayload: EvmCall = { address, args: [tokenId], schema: EvmCallSchema }
+      const tokenCallPayload: EvmCall = {
+        address, args: [tokenId], schema: EvmCallSchema,
+      }
       const tokenSentinel = asSentinelInstance(await node.resolve('NftTokenUriSentinel'))
       expect(tokenSentinel).toBeDefined()
       const report = await tokenSentinel?.report([tokenCallPayload])
@@ -94,7 +98,9 @@ describeIf(providers.length)('NftIdToNftMetadataUri', () => {
     it.each(cases)('returns indexed NftIndex results', async (address, tokenId) => {
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query = { address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId }
+      const query = {
+        address, chainId, length: 1, schema: PayloadDivinerQuerySchema, tokenId,
+      }
       const result = (await diviner?.divine([query])) as unknown as Payload<{ address?: string; chainId?: number; tokenId?: string }>[]
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

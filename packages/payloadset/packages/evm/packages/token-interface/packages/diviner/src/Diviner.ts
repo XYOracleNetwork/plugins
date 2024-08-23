@@ -81,7 +81,9 @@ export class EvmTokenInterfaceImplementedDiviner<
     try {
       const allResults = await Promise.all(
         // Iterate over each contract passed in
-        inPayloads.filter(isEvmContract).map(({ address, code, chainId }) => {
+        inPayloads.filter(isEvmContract).map(({
+          address, code, chainId,
+        }) => {
           // Ensure we have the contract code
           const byteCode = assertEx(code, () => 'Missing code')
           const results: EvmTokenInterfaceImplemented[] = []

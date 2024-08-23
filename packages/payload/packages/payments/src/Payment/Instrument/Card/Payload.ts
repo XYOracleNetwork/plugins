@@ -1,5 +1,7 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import { PaymentCardSchema } from './Schema.ts'
 

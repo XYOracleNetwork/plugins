@@ -22,9 +22,7 @@ describe('EthereumGasEthersWitness', () => {
     const provider = getProviderFromEnv()
     const sut = await EthereumGasEthersWitness.create({
       account: 'random',
-      config: {
-        schema: EthereumGasEthersWitnessConfigSchema,
-      },
+      config: { schema: EthereumGasEthersWitnessConfigSchema },
       provider,
     })
     const observed = await sut.observe()

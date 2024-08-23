@@ -10,7 +10,7 @@ import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailWitness } from '../Witness'
+import { ImageThumbnailWitness } from '../Witness.ts'
 
 /**
  * @group thumbnail
@@ -69,6 +69,7 @@ describe('Witness', () => {
     it('witnesses thumbnail for url', async () => {
       // TODO: Replace with data url for speed
       // const url =
+      // eslint-disable-next-line @stylistic/max-len
       //   "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='yellow' stroke='black' stroke-width='2'/><circle cx='35' cy='35' r='5' fill='black'/><circle cx='65' cy='35' r='5' fill='black'/><path d='M 35 70 Q 50 85, 65 70' fill='none' stroke='black' stroke-width='2'/></svg>"
       const url = 'https://placekitten.com/200/300'
       const query = await new PayloadBuilder<UrlPayload>({ schema: UrlSchema }).fields({ url }).build()

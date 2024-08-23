@@ -1,5 +1,7 @@
 import { scoreYoutubeUrl } from '../youtubeUrl.ts'
-import { expectLoweredScore, expectMaxPossibleScore, expectMiniumScore, expectNoScore } from './testHelpers.ts'
+import {
+  expectLoweredScore, expectMaxPossibleScore, expectMiniumScore, expectNoScore,
+} from './testHelpers.ts'
 
 const secure = ['https://lostpoets.xyz/']
 const insecure = ['http://lvcidia.xyz/']

@@ -79,7 +79,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     describe('Sentinel', () => {
       it.each(cases)('returns totalSupply', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const input = { address, chainId: 1, schema: CryptoContractFunctionCallSchema }
+        const input = {
+          address, chainId: 1, schema: CryptoContractFunctionCallSchema,
+        }
         const observations = await sentinel?.report([input])
         expect(observations?.length).toBe(3)
         const totalSupply = observations?.filter(isCryptoContractFunctionCallResult).find(isCryptoContractFunctionCallSuccess)
@@ -100,7 +102,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
       it.each(cases)('returns indexed result', async (address) => {
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
-        const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
+        const query = {
+          address, chainId: 1, schema: PayloadDivinerQuerySchema,
+        }
         const result = await diviner?.divine([query])
         expect(result).toBeDefined()
         expect(result).toBeArrayOfSize(1)

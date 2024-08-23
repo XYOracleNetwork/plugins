@@ -1,7 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type {
-  AddressTransactionHistoryPayload } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import type { AddressTransactionHistoryPayload } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import {
   AddressTransactionHistorySchema,
   AddressTransactionHistoryWitnessConfigSchema,

@@ -3,7 +3,9 @@ import type { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerParams } from '@xyo-network/diviner-model'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema, WithSources } from '@xyo-network/payload-model'
+import type {
+  Payload, Schema, WithSources,
+} from '@xyo-network/payload-model'
 import type { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 
 import type { TZeroStockMarketDivinerConfig } from './Config.ts'

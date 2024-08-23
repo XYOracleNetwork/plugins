@@ -4,6 +4,4 @@ import type { CryptoContractFunctionCallResult } from './Payload.ts'
 import { CryptoContractFunctionCallResultSchema } from './Payload.ts'
 
 export const CryptoContractFunctionCallPayloadPlugin = () =>
-  createPayloadPlugin<CryptoContractFunctionCallResult>({
-    schema: CryptoContractFunctionCallResultSchema,
-  })
+  createPayloadPlugin<CryptoContractFunctionCallResult>({ schema: CryptoContractFunctionCallResultSchema })

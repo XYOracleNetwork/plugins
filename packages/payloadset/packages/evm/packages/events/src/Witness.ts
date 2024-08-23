@@ -33,7 +33,9 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
         await Promise.all(
           inPayloads
             .filter(isPayloadOfSchemaType<EvmEvents>(EvmEventsSchema))
-            .map(async ({ eventName, address, fromBlock: payloadFromBlock, toBlock: payloadToBlock }) => {
+            .map(async ({
+              eventName, address, fromBlock: payloadFromBlock, toBlock: payloadToBlock,
+            }) => {
               const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
               const validatedEventName = assertEx(eventName ?? this.config.eventName, () => 'Missing eventName')
 

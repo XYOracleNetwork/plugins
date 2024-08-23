@@ -8,7 +8,9 @@ import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
 import { EthereumGasDiviner } from '../Diviner.ts'
-import { sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas } from '../test'
+import {
+  sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas,
+} from '../test'
 
 describe('Diviner', () => {
   const cases: [title: string, data: Payload[]][] = [
@@ -40,9 +42,7 @@ describe('Diviner', () => {
       await (
         await EthereumGasBlocknativeWitness.create({
           account: 'random',
-          config: {
-            schema: EthereumGasBlocknativeWitnessConfigSchema,
-          },
+          config: { schema: EthereumGasBlocknativeWitnessConfigSchema },
         })
       ).observe()
     )?.[0]
@@ -50,9 +50,7 @@ describe('Diviner', () => {
       await (
         await EtherchainEthereumGasWitnessV2.create({
           account: 'random',
-          config: {
-            schema: EthereumGasEtherchainV2WitnessConfigSchema,
-          },
+          config: { schema: EthereumGasEtherchainV2WitnessConfigSchema },
         })
       ).observe()
     )?.[0]
@@ -71,9 +69,7 @@ describe('Diviner', () => {
       await (
         await EthereumGasEthersWitness.create({
           account: 'random',
-          config: {
-            schema: EthereumGasEthersWitnessConfigSchema,
-          },
+          config: { schema: EthereumGasEthersWitnessConfigSchema },
           provider,
         })
       ).observe()

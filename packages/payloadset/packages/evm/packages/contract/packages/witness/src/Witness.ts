@@ -1,7 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { creatableModule } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
-import { AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import {
+  AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams,
+} from '@xyo-network/witness-evm-abstract'
 
 import { EvmContract, EvmContractSchema } from './Payload.ts'
 

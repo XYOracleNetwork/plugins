@@ -6,7 +6,9 @@ import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { ERC721__factory, ERC721Enumerable__factory, ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
+import {
+  ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
+} from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'

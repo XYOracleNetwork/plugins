@@ -2,7 +2,9 @@ import { delay } from '@xylabs/delay'
 import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import type { ApiUriCall } from '@xyo-network/api-call-witness'
-import { ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult } from '@xyo-network/api-call-witness'
+import {
+  ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult,
+} from '@xyo-network/api-call-witness'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import type { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
@@ -99,7 +101,9 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       expect(allPayload).toBeArrayOfSize(1)
       const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
       expect(diviner).toBeDefined()
-      const query = { limit: 1, schema: PayloadDivinerQuerySchema, uri }
+      const query = {
+        limit: 1, schema: PayloadDivinerQuerySchema, uri,
+      }
       const result = (await diviner?.divine([query])) as unknown as Payload<{ uri: string }>[]
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)

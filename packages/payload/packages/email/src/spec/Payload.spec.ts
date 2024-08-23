@@ -1,5 +1,7 @@
 import type { Email } from '../Payload.ts'
-import { asEmail, isEmail, tryAsEmail } from '../Payload.ts'
+import {
+  asEmail, isEmail, tryAsEmail,
+} from '../Payload.ts'
 import { EmailAddressSchema } from '../Schema.ts'
 
 describe('Email', () => {

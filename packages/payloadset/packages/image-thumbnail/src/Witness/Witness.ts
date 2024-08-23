@@ -23,7 +23,9 @@ import Url from 'url-parse'
 import type { ImageThumbnailEncoding } from './Config.ts'
 import { ImageThumbnailWitnessConfigSchema } from './Config.ts'
 import { getVideoFrameAsImageFluent } from './ffmpeg/index.ts'
-import { checkIpfsUrl, createDataUrl, resolveDynamicSvg } from './lib/index.ts'
+import {
+  checkIpfsUrl, createDataUrl, resolveDynamicSvg,
+} from './lib/index.ts'
 import type { ImageThumbnailWitnessParams } from './Params.ts'
 
 // TODO: Break this into two Witnesses?
@@ -192,26 +194,20 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     } catch (ex) {
       const error = ex as DnsError
       const result: ImageThumbnail = {
-        http: {
-          code: error.code,
-        },
+        http: { code: error.code },
         schema: ImageThumbnailSchema,
         sourceUrl: sourceUrl ?? url,
       }
       return result
     }
     try {
-      response = await axios.get(url, {
-        responseType: 'arraybuffer',
-      })
+      response = await axios.get(url, { responseType: 'arraybuffer' })
     } catch (ex) {
       const axiosError = ex as AxiosError
       if (axiosError.isAxiosError) {
         // selectively pick fields from AxiosError
         const result: ImageThumbnail = {
-          http: {
-            ipAddress: dnsResult[0],
-          },
+          http: { ipAddress: dnsResult[0] },
           schema: ImageThumbnailSchema,
           sourceUrl: sourceUrl ?? url,
         }
@@ -230,9 +226,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     }
 
     const result: ImageThumbnail = {
-      http: {
-        status: response.status,
-      },
+      http: { status: response.status },
       schema: ImageThumbnailSchema,
       sourceUrl: sourceUrl ?? url,
     }

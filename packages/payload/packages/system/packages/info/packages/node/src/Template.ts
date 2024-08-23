@@ -19,8 +19,6 @@ const defaultSystemInfoConfig = () => {
   }
 }
 
-const systemInfoNodeWitnessTemplate = (): NodeSystemInfoPayload => ({
-  schema: NodeSystemInfoSchema,
-})
+const systemInfoNodeWitnessTemplate = (): NodeSystemInfoPayload => ({ schema: NodeSystemInfoSchema })
 
 export { defaultSystemInfoConfig, systemInfoNodeWitnessTemplate }

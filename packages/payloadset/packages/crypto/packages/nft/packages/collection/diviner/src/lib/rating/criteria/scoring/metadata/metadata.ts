@@ -9,6 +9,4 @@ export const attributeScoringCriteria: { [key: string]: WeightedScoringCriteria<
   'Metadata Attributes Total': { score: scoreTotalAttributes, weight: 2 },
 }
 
-export const scoreMetadata: { [key: string]: WeightedScoringCriteria<NftCollectionInfo> } = {
-  ...attributeScoringCriteria,
-}
+export const scoreMetadata: { [key: string]: WeightedScoringCriteria<NftCollectionInfo> } = { ...attributeScoringCriteria }

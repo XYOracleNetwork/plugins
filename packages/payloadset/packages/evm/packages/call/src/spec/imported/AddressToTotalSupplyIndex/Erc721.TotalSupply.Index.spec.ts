@@ -24,7 +24,9 @@ import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 
 import { EvmCallDiviner } from '../../../Diviner'
-import { EvmCallSchema, isEvmCallResult, isEvmCallSuccess } from '../../../Payload'
+import {
+  EvmCallSchema, isEvmCallResult, isEvmCallSuccess,
+} from '../../../Payload'
 import { EvmCallWitness } from '../../../Witness'
 import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json'
 
@@ -64,7 +66,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
     describe('Sentinel', () => {
       it.each(cases)('returns totalSupply', async (address) => {
         const sentinel = asSentinelInstance(await node.resolve('Sentinel'))
-        const input = { address, chainId: 1, schema: EvmCallSchema }
+        const input = {
+          address, chainId: 1, schema: EvmCallSchema,
+        }
         const observations = await sentinel?.report([input])
         expect(observations?.length).toBe(3)
         const totalSupply = observations?.filter(isEvmCallResult).find(isEvmCallSuccess)
@@ -79,7 +83,9 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
         await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))
         expect(diviner).toBeDefined()
-        const query = { address, chainId: 1, schema: PayloadDivinerQuerySchema }
+        const query = {
+          address, chainId: 1, schema: PayloadDivinerQuerySchema,
+        }
         const result = await diviner?.divine([query])
         expect(result).toBeDefined()
         expect(result).toBeArrayOfSize(1)

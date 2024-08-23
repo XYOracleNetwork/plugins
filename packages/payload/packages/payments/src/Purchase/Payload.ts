@@ -1,6 +1,5 @@
 import type { Hash } from '@xylabs/hex'
-import type {
-  PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithMeta,
