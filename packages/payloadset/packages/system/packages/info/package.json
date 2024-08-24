@@ -1,26 +1,24 @@
 {
   "name": "@xyo-network/info-system-plugins",
+  "version": "3.0.3",
+  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/plugins/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "license": "LGPL-3.0-only",
   "author": {
-    "email": "support@xyo.network",
     "name": "XYO Development Team",
+    "email": "support@xyo.network",
     "url": "https://xyo.network"
   },
-  "bugs": {
-    "email": "support@xyo.network",
-    "url": "git+https://github.com/XYOracleNetwork/plugins/issues"
-  },
-  "dependencies": {
-    "@xyo-network/bowser-system-info-payload-plugin": "workspace:^",
-    "@xyo-network/bowser-system-info-plugin": "workspace:^",
-    "@xyo-network/node-system-info-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^3.0.7"
-  },
-  "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.0.0",
-    "@xylabs/tsconfig": "^4.0.0",
-    "typescript": "^5.5.4"
-  },
-  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "browser": {
@@ -34,18 +32,20 @@
     },
     "./package.json": "./package.json"
   },
-  "types": "./dist/node/index.d.ts",
   "module": "./dist/node/index.mjs",
-  "type": "module",
-  "homepage": "https://xyo.network",
-  "license": "LGPL-3.0-only",
+  "types": "./dist/node/index.d.ts",
+  "dependencies": {
+    "@xyo-network/bowser-system-info-payload-plugin": "workspace:^",
+    "@xyo-network/bowser-system-info-plugin": "workspace:^",
+    "@xyo-network/node-system-info-plugin": "workspace:^",
+    "@xyo-network/payloadset-plugin": "^3.0.9"
+  },
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
+    "typescript": "^5.5.4"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
-  },
-  "sideEffects": false,
-  "version": "3.0.3"
+  }
 }

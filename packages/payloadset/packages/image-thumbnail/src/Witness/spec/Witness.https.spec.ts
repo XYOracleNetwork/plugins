@@ -28,7 +28,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
   it.skip('HTTPS [medium/png/unsafe]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -39,11 +39,11 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result[0].schema).toBe(ImageThumbnailSchema)
     expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
   it('HTTPS [medium/svg]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
-      url: 'https://xyo.network/static/media/XYO_Network_Logo_Full_Colored.409bc88a38e9fbe5184378e61c2a795e.svg',
+      url: 'https://dev.w3.org/SVG/tools/svgweb/samples/svg-files/AJ_Digital_Camera.svg',
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
@@ -54,7 +54,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
   it('HTTPS [medium/ens]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -74,7 +74,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
   it('HTTPS [large/gif (animated)]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -84,7 +84,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     expect(result[0].url?.length).toBeLessThan(64_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
   it('HTTPS [html/error]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -93,7 +93,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     expect(result[0]?.mime?.invalid).toBe(true)
-  })
+  }, 20_000)
   it('HTTPS [dns/error]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -102,7 +102,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     expect(result[0]?.http?.code).toBe('ENOTFOUND')
-  })
+  }, 20_000)
   it('HTTPS [other/error]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -112,7 +112,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result.length).toBe(1)
     console.log(`HTTPS [other/error]: ${JSON.stringify(result)}`)
     expect(result[0]?.http?.code).toBe('ENOTFOUND')
-  })
+  }, 20_000)
   it.skip('HTTPS [medium/png]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
@@ -127,5 +127,5 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     expect(result2.length).toBe(1)
     expect(result2[0].url?.length).toEqual(result[0].url?.length)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
 })

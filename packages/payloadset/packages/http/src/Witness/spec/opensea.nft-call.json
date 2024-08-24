@@ -11,24 +11,24 @@
           {
             "config": {
               "language": "javascript",
-              "name": "ApiCallWitness",
+              "name": "HttpCallWitness",
               "queries": {
                 "limit": 1
               },
-              "schema": "network.xyo.api.call.witness.config",
+              "schema": "network.xyo.http.call.witness.config",
               "uriTemplate": "https://api.opensea.io/api/v2/chain/ethereum/account/${address}/nfts"
             }
           },
           {
             "config": {
               "language": "javascript",
-              "name": "ApiCallSentinel",
+              "name": "HttpCallSentinel",
               "schema": "network.xyo.sentinel.config",
               "synchronous": "true",
               "tasks": [
                 {
                   "input": true,
-                  "mod": "ApiCallWitness"
+                  "mod": "HttpCallWitness"
                 }
               ]
             }

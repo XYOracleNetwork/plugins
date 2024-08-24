@@ -4,10 +4,10 @@ import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 
-import { EvmEventsWitnessConfigSchema } from '../model'
-import type { EvmEvents } from '../Payload'
-import { EvmEventSchema, EvmEventsSchema } from '../Payload'
-import { EvmEventsWitness } from '../Witness'
+import { EvmEventsWitnessConfigSchema } from '../model.ts'
+import type { EvmEvents } from '../Payload.ts'
+import { EvmEventSchema, EvmEventsSchema } from '../Payload.ts'
+import { EvmEventsWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
   const results = observation.filter(isPayloadOfSchemaType(EvmEventSchema))
@@ -33,7 +33,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
         }
         const observation = await witness.observe([call])
         validateObservation(observation)
-      })
+      }, 20_000)
     })
   })
 })

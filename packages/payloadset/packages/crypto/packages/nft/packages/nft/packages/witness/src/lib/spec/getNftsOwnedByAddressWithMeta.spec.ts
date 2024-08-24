@@ -1,7 +1,7 @@
 import { describeIf } from '@xylabs/jest-helpers'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 
-import { getNftsOwnedByAddressWithMetadata } from '../getNftsOwnedByAddress'
+import { getNftsOwnedByAddressWithMetadata } from '../getNftsOwnedByAddress.ts'
 
 type TestData = [chainName: string, address: string, chainId: number]
 
@@ -25,5 +25,5 @@ describeIf(process.env.INFURA_PROJECT_ID)('getNftsOwnedByAddressWithMeta', () =>
       expect(nft.types).toBeArray()
     }
     console.log(`getNftsOwnedByAddressWithMeta [${nfts.length}] Time: ${Date.now() - start}ms`)
-  })
+  }, 20_000)
 })

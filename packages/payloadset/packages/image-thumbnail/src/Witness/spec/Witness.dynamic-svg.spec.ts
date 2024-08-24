@@ -25,5 +25,5 @@ describe('ImageThumbnailWitness', () => {
     // console.log(`DATA/PNG Size: ${result[0].url?.length}}`)
     expect(result[0].url?.length).toBeLessThan(128_000)
     expect(result[0].schema).toBe(ImageThumbnailSchema)
-  })
+  }, 20_000)
 })

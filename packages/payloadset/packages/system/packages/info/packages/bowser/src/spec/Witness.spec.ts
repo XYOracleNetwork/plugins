@@ -1,7 +1,6 @@
 /**
  * @jest-environment jsdom
  */
-import Crypto from 'node:crypto'
 
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { PayloadValidator } from '@xyo-network/payload-validator'
@@ -13,11 +12,12 @@ import { BowserSystemInfoWitness } from '../Witness.ts'
 
 PayloadValidator.setSchemaNameValidatorFactory(schema => new SchemaNameValidator(schema))
 
-const cryptoPolyfill = (window: Window & typeof globalThis) => {
+/* const cryptoPolyfill = (window: Window & typeof globalThis) => {
   window.crypto = window.crypto ?? { getRandomValues: (arr: []) => Crypto.randomBytes(arr.length) }
 }
 
 cryptoPolyfill(window)
+*/
 
 describe('BowserSystemInfo', () => {
   test('observe', async () => {

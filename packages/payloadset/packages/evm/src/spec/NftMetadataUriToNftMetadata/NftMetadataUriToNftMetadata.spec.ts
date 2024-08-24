@@ -86,8 +86,8 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
   })
   describe('Index', () => {
     beforeAll(async () => {
-      await delay(100)
-    })
+      await delay(1000)
+    }, 60_000)
     it.each(cases)('returns indexed NftIndex results', async (apiCall) => {
       const { uri } = apiCall
       const archivistModule = await node.resolvePrivate('IndexArchivist')
@@ -108,6 +108,6 @@ describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
       expect(result).toBeDefined()
       expect(result).toBeArrayOfSize(1)
       expect(result?.[0]?.uri).toBe(uri)
-    })
+    }, 20_000)
   })
 })

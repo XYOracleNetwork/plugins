@@ -1,51 +1,24 @@
 {
   "name": "@xyo-network/diviner-image-thumbnail",
+  "version": "3.0.3",
+  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/plugins/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "license": "LGPL-3.0-only",
   "author": {
-    "email": "support@xyo.network",
     "name": "XYO Development Team",
+    "email": "support@xyo.network",
     "url": "https://xyo.network"
   },
-  "bugs": {
-    "email": "support@xyo.network",
-    "url": "git+https://github.com/XYOracleNetwork/plugins/issues"
-  },
-  "dependencies": {
-    "@xylabs/assert": "^4.0.3",
-    "@xylabs/exists": "^4.0.3",
-    "@xylabs/hex": "^4.0.3",
-    "@xyo-network/archivist-model": "^3.0.7",
-    "@xyo-network/archivist-wrapper": "^3.0.7",
-    "@xyo-network/boundwitness-model": "^3.0.7",
-    "@xyo-network/diviner-abstract": "^3.0.7",
-    "@xyo-network/diviner-boundwitness-model": "^3.0.7",
-    "@xyo-network/diviner-indexing": "^3.0.7",
-    "@xyo-network/diviner-model": "^3.0.7",
-    "@xyo-network/diviner-payload-model": "^3.0.7",
-    "@xyo-network/diviner-wrapper": "^3.0.7",
-    "@xyo-network/image-thumbnail-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.0.7",
-    "@xyo-network/payload-builder": "^3.0.7",
-    "@xyo-network/payload-model": "^3.0.7",
-    "@xyo-network/url-payload-plugin": "workspace:^",
-    "@xyo-network/witness-timestamp": "^3.0.7"
-  },
-  "devDependencies": {
-    "@xylabs/delay": "^4.0.3",
-    "@xylabs/hex": "^4.0.3",
-    "@xylabs/ts-scripts-yarn3": "^4.0.0",
-    "@xylabs/tsconfig": "^4.0.0",
-    "@xyo-network/account": "^3.0.7",
-    "@xyo-network/archivist-memory": "^3.0.7",
-    "@xyo-network/boundwitness-builder": "^3.0.7",
-    "@xyo-network/diviner-boundwitness-memory": "^3.0.7",
-    "@xyo-network/diviner-payload-memory": "^3.0.7",
-    "@xyo-network/manifest": "^3.0.7",
-    "@xyo-network/module-factory-locator": "^3.0.7",
-    "@xyo-network/node-memory": "^3.0.7",
-    "typescript": "^5.5.4"
-  },
-  "description": "Typescript/Javascript Plugins for XYO Platform",
-  "types": "dist/neutral/index.d.ts",
+  "sideEffects": false,
+  "type": "module",
   "exports": {
     ".": {
       "types": "./dist/neutral/index.d.ts",
@@ -54,16 +27,43 @@
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "homepage": "https://xyo.network",
-  "license": "LGPL-3.0-only",
+  "types": "dist/neutral/index.d.ts",
+  "dependencies": {
+    "@xylabs/assert": "^4.0.4",
+    "@xylabs/exists": "^4.0.4",
+    "@xylabs/hex": "^4.0.4",
+    "@xyo-network/archivist-model": "^3.0.9",
+    "@xyo-network/archivist-wrapper": "^3.0.9",
+    "@xyo-network/boundwitness-model": "^3.0.9",
+    "@xyo-network/diviner-abstract": "^3.0.9",
+    "@xyo-network/diviner-boundwitness-model": "^3.0.9",
+    "@xyo-network/diviner-indexing": "^3.0.9",
+    "@xyo-network/diviner-model": "^3.0.9",
+    "@xyo-network/diviner-payload-model": "^3.0.9",
+    "@xyo-network/diviner-wrapper": "^3.0.9",
+    "@xyo-network/image-thumbnail-payload-plugin": "workspace:^",
+    "@xyo-network/module-model": "^3.0.9",
+    "@xyo-network/payload-builder": "^3.0.9",
+    "@xyo-network/payload-model": "^3.0.9",
+    "@xyo-network/url-payload-plugin": "workspace:^",
+    "@xyo-network/witness-timestamp": "^3.0.9"
+  },
+  "devDependencies": {
+    "@xylabs/delay": "^4.0.4",
+    "@xylabs/hex": "^4.0.4",
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
+    "@xyo-network/account": "^3.0.9",
+    "@xyo-network/archivist-memory": "^3.0.9",
+    "@xyo-network/boundwitness-builder": "^3.0.9",
+    "@xyo-network/diviner-boundwitness-memory": "^3.0.9",
+    "@xyo-network/diviner-payload-memory": "^3.0.9",
+    "@xyo-network/manifest": "^3.0.9",
+    "@xyo-network/module-factory-locator": "^3.0.9",
+    "@xyo-network/node-memory": "^3.0.9",
+    "typescript": "^5.5.4"
+  },
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
-  },
-  "sideEffects": false,
-  "version": "3.0.3",
-  "type": "module"
+  }
 }
