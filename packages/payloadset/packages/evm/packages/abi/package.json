@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/evm-abi-diviner",
-  "version": "3.0.3",
+  "version": "3.0.4",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -30,11 +30,11 @@
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "^4.0.4",
-    "@xyo-network/diviner-abstract": "^3.0.9",
-    "@xyo-network/diviner-model": "^3.0.9",
+    "@xyo-network/diviner-abstract": "^3.0.10",
+    "@xyo-network/diviner-model": "^3.0.10",
     "@xyo-network/evm-contract-witness": "workspace:^",
-    "@xyo-network/module-model": "^3.0.9",
-    "@xyo-network/payload-model": "^3.0.9",
+    "@xyo-network/module-model": "^3.0.10",
+    "@xyo-network/payload-model": "^3.0.10",
     "ethers": "^6.13.2"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@xylabs/ts-scripts-yarn3": "^4.0.7",
     "@xylabs/tsconfig": "^4.0.7",
     "@xyo-network/open-zeppelin-typechain": "^3.1.0",
-    "@xyo-network/witness-evm-abstract": "^3.0.9",
+    "@xyo-network/witness-evm-abstract": "^3.0.10",
     "jest": "^29.7.0",
     "typescript": "^5.5.4"
   },
