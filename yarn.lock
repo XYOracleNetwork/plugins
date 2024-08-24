@@ -3591,7 +3591,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@uniswap/swap-router-contracts@npm:^1.3.0, @uniswap/swap-router-contracts@npm:^1.3.1":
+"@uniswap/swap-router-contracts@npm:^1.3.0":
   version: 1.3.1
   resolution: "@uniswap/swap-router-contracts@npm:1.3.1"
   dependencies:
@@ -5758,7 +5758,6 @@ __metadata:
     fast-text-encoding: "npm:^1.0.6"
     geotiff: "npm:^2.1.3"
     jest: "npm:^29.7.0"
-    mapbox-gl: "npm:^3.6.0"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -7496,8 +7495,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/uniswap-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap"
   dependencies:
-    "@uniswap/swap-router-contracts": "npm:^1.3.1"
-    "@uniswap/v3-periphery": "npm:^1.4.4"
+    "@uniswap/sdk-core": "npm:^5.3.1"
     "@uniswap/v3-sdk": "npm:^3.13.1"
     "@xylabs/assert": "npm:^4.0.4"
     "@xylabs/delay": "npm:^4.0.4"
@@ -7512,7 +7510,6 @@ __metadata:
     "@xyo-network/payloadset-plugin": "npm:^3.0.9"
     "@xyo-network/typechain": "npm:^3.1.0"
     "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:^"
-    "@xyo-network/uniswap-sdk-core": "npm:^4.1.2"
     "@xyo-network/uniswap-typechain": "npm:^3.1.0"
     "@xyo-network/witness-blockchain-abstract": "npm:^3.0.9"
     "@xyo-network/witness-model": "npm:^3.0.9"
@@ -7521,20 +7518,6 @@ __metadata:
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
-
-"@xyo-network/uniswap-sdk-core@npm:^4.1.2":
-  version: 4.1.2
-  resolution: "@xyo-network/uniswap-sdk-core@npm:4.1.2"
-  dependencies:
-    big.js: "npm:^5.2.2"
-    decimal.js-light: "npm:^2.5.0"
-    ethers: "npm:^6.8.1"
-    jsbi: "npm:^3.1.4"
-    tiny-invariant: "npm:^1.1.0"
-    toformat: "npm:^2.0.0"
-  checksum: 10/20e084e24001da9f60b2296e44fb918898d7813494b81d47953166c508754517e3c812416f41e6cadf5c1414b8631ecebaf00f94996a6dd8eab2bb89a5dcca6c
-  languageName: node
-  linkType: hard
 
 "@xyo-network/uniswap-typechain@npm:^3.1.0":
   version: 3.1.0
