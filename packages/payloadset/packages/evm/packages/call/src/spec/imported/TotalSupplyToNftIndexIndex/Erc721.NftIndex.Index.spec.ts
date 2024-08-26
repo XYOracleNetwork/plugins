@@ -26,9 +26,9 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 
-import { EvmCallDiviner } from '../../../Diviner'
-import type { EvmCallResult } from '../../../Payload'
-import { EvmCallWitness } from '../../../Witness'
+import { EvmCallDiviner } from '../../../Diviner.ts'
+import type { EvmCallResult } from '../../../Payload.ts'
+import { EvmCallWitness } from '../../../Witness.ts'
 import nodeManifest from './Erc721.NftIndex.Index.json'
 
 describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
