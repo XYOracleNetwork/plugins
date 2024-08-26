@@ -1,5 +1,6 @@
 export * from './Address/index.ts'
 export * from './diviner/index.ts'
+export * from './DNS/index.ts'
 export * from './Domain/index.ts'
 export * from './DomainRegistration/index.ts'
 export * from './Duration/index.ts'
