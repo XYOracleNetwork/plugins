@@ -29,18 +29,18 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xylabs/axios": "^4.0.4",
-    "@xyo-network/abstract-witness": "^3.0.10",
+    "@xylabs/axios": "^4.0.5",
+    "@xyo-network/abstract-witness": "^3.0.11",
     "@xyo-network/etherchain-ethereum-gas-v2-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.0.10",
-    "@xyo-network/payload-model": "^3.0.10",
-    "@xyo-network/payloadset-plugin": "^3.0.10",
-    "@xyo-network/witness-model": "^3.0.10"
+    "@xyo-network/module-model": "^3.0.11",
+    "@xyo-network/payload-model": "^3.0.11",
+    "@xyo-network/payloadset-plugin": "^3.0.11",
+    "@xyo-network/witness-model": "^3.0.11"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.0.7",
     "@xylabs/tsconfig": "^4.0.7",
-    "@xyo-network/payload-wrapper": "^3.0.10",
+    "@xyo-network/payload-wrapper": "^3.0.11",
     "typescript": "^5.5.4"
   },
   "publishConfig": {
