@@ -9,10 +9,13 @@ export const DNSWitnessConfigSchema: DNSWitnessConfigSchema = `${DNSSchema}.witn
 
 export type DNSWitnessConfig = WitnessConfig<{
   /**
-   * The domain lease registrant diviner to be used to determine the domain lease registrant
-   * for XNS domains
+   * The address record index diviner to be used to determine the address record index
    */
-  domainLeaseRegistrantDiviner?: ModuleIdentifier
+  addressRecordIndexDiviner?: ModuleIdentifier
+  /**
+   * The hash record index diviner to be used to determine the hash record index
+   */
+  hashRecordIndexDiviner?: ModuleIdentifier
   /**
    * The config schema for the DNS witness
    */
