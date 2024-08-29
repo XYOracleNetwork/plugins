@@ -6,19 +6,19 @@ import {
 } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, WithMeta, WithOptionalMeta, WithSources,
+  Payload, WithMeta, WithSources,
 } from '@xyo-network/payload-model'
-
 import {
+  type DomainEstimate,
   type DomainRegistrationLease, DomainRegistrationLeaseSchema, isDomainRegistrationLeaseWithMeta,
-} from '../../DomainRegistration/index.ts'
+} from '@xyo-network/xns-record-payload-plugins'
 
 /**
  * Parses a generic array of payloads into estimates
  * @param payloads An array of payloads
  * @returns Parsed estimates
  */
-export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<Estimate[]> => {
+export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<DomainEstimate[]> => {
   if (!payloads) return []
   const bws = payloads
     // Find all bound witnesses
