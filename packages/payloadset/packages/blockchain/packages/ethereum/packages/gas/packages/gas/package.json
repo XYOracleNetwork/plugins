@@ -29,19 +29,19 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xylabs/exists": "^4.0.5",
+    "@xylabs/exists": "^4.0.9",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:^",
-    "@xyo-network/diviner-abstract": "^3.0.15",
-    "@xyo-network/diviner-model": "^3.0.15",
+    "@xyo-network/diviner-abstract": "^3.1.4",
+    "@xyo-network/diviner-model": "^3.1.4",
     "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/ethgasstation-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/gas-price-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.0.15",
-    "@xyo-network/payload-builder": "^3.0.15",
-    "@xyo-network/payload-model": "^3.0.15",
-    "@xyo-network/payloadset-plugin": "^3.0.15",
+    "@xyo-network/module-model": "^3.1.4",
+    "@xyo-network/payload-builder": "^3.1.4",
+    "@xyo-network/payload-model": "^3.1.4",
+    "@xyo-network/payloadset-plugin": "^3.1.4",
     "regression": "^2.0.1"
   },
   "devDependencies": {
@@ -52,7 +52,7 @@
     "@xyo-network/etherchain-gas-ethereum-blockchain-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-plugin": "workspace:^",
-    "@xyo-network/witness-blockchain-abstract": "^3.0.15",
+    "@xyo-network/witness-blockchain-abstract": "^3.1.4",
     "typescript": "^5.5.4"
   },
   "publishConfig": {
