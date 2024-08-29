@@ -28,7 +28,7 @@ export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<Est
     // that have the required estimate payloads
     .filter(hasEstimatePayloads) ?? []
   if (bws.length === 0) return []
-  const hashMap = await PayloadBuilder.toHashMap(payloads)
+  const hashMap = await PayloadBuilder.toAllHashMap(payloads)
   return bws.map<Estimate | undefined>((bw) => {
     const hashLeaseEstimate = getPayloadBySchemaFromBoundWitness<WithSources<HashLeaseEstimate>>(
       bw,
