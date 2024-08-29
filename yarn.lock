@@ -6918,6 +6918,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/payload-model@npm:^3.1.4":
+  version: 3.1.4
+  resolution: "@xyo-network/payload-model@npm:3.1.4"
+  dependencies:
+    "@xylabs/hex": "npm:^4.0.5"
+    "@xylabs/object": "npm:^4.0.5"
+  checksum: 10/bcf311626a8f9ebc7f570e20dd5646242361c20e2db21229e99ee3f65a4c71c2340f32927720b0e9ffb3ec010e6a15b422e7edef428306f7a05544e500e0ddd4
+  languageName: node
+  linkType: hard
+
 "@xyo-network/payload-plugin@npm:^3.0.15":
   version: 3.0.15
   resolution: "@xyo-network/payload-plugin@npm:3.0.15"
@@ -7392,6 +7402,28 @@ __metadata:
   checksum: 10/f7c04c7b82bcc8e6b68c0d3a41a85483137eae8859db0ab6c62013363f3f40953b7bdbf9545f6c5b8c76cda87d5e5f537bcab947137c37c7b6e0c191e150f7eb
   languageName: node
   linkType: hard
+
+"@xyo-network/signature-payload-plugin@workspace:^, @xyo-network/signature-payload-plugin@workspace:packages/payload/packages/signature/packages/signature":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/signature-payload-plugin@workspace:packages/payload/packages/signature/packages/signature"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
+    "@xylabs/tsconfig": "npm:^4.0.7"
+    "@xyo-network/payload-model": "npm:^3.1.4"
+    typescript: "npm:^5.5.4"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/signature-payload-plugins@workspace:packages/payload/packages/signature":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/signature-payload-plugins@workspace:packages/payload/packages/signature"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
+    "@xylabs/tsconfig": "npm:^4.0.7"
+    "@xyo-network/signature-payload-plugin": "workspace:^"
+    typescript: "npm:^5.5.4"
+  languageName: unknown
+  linkType: soft
 
 "@xyo-network/stock-market-payload-plugins@workspace:^, @xyo-network/stock-market-payload-plugins@workspace:packages/payload/packages/stock/packages/market":
   version: 0.0.0-use.local
