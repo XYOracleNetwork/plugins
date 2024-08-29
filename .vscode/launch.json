@@ -86,34 +86,32 @@
       "pauseForSourceMap": true,
     },
     {
-      "name": "Jest",
-      "type": "node",
+      "name": "Tests",
       "request": "launch",
-      "osx": {
-        "program": "${workspaceRoot}/node_modules/.bin/jest"
-      },
-      "windows": {
-        "program": "${workspaceRoot}/node_modules/jest/bin/jest.js"
-      },
+      "type": "node",
+      "program": "${workspaceFolder}/node_modules/vitest/vitest.mjs",
       "args": [
-        "--forceExit",
-        "--runInBand",
-        "--testTimeout=120000",
-        "packages/payloadset/packages/xml/src/Diviner/spec/Diviner.spec.ts"
+        "--run",
+        "--inspect-brk",
+        "--no-file-parallelism",
+        "packages/payload/packages/xns/plugins/record/src/diviner/lib/spec/parseEstimatesFromArray.spec.ts"
       ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen",
-      "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env",
       "sourceMaps": true,
       "resolveSourceMapLocations": [
         "${workspaceFolder}/**",
         "**/node_modules/**"
       ],
       "outFiles": [
-        "${workspaceFolder}/dist/**/*.js",
-        "${workspaceFolder}/node_modules/**/*.js"
+        "${workspaceFolder}/dist/**/*.*",
+        "${workspaceFolder}/node_modules/**/*.*"
       ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "cwd": "${workspaceRoot}",
+      "env": {
+        "NODE_ENV": "test"
+      },
+      "envFile": "${workspaceRoot}/.env",
     }
   ]
 }
