@@ -1,10 +1,10 @@
 import type { Payload } from '@xyo-network/payload-model'
+import type { DomainEstimate } from '@xyo-network/xns-record-payload-plugins'
 
-import type { Estimate } from '../parseEstimatesFromArray.ts'
-import { parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'
+import { parseDomainEstimates } from '../parseDomainEstimates.ts'
 
-describe('parseEstimatesFromArray', () => {
-  const estimateA: Estimate = [
+describe('parseDomainEstimates', () => {
+  const estimateA: DomainEstimate = [
     {
       schema: 'network.xyo.boundwitness',
       addresses: ['2486705072e91a1d80d97cdcccd5db47b584e4bd'],
@@ -88,7 +88,7 @@ describe('parseEstimatesFromArray', () => {
       [...estimateB, ...estimateA],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
-      expect(await parseEstimatesFromArray(data)).toMatchSnapshot()
+      expect(await parseDomainEstimates(data)).toMatchSnapshot()
     })
   })
   describe('with valid jagged data', () => {
@@ -100,12 +100,12 @@ describe('parseEstimatesFromArray', () => {
       [...estimateB, ...estimateA.slice(0, -1)],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
-      expect(await parseEstimatesFromArray(data)).toMatchSnapshot()
+      expect(await parseDomainEstimates(data)).toMatchSnapshot()
     })
   })
   describe('with no data', () => {
     it('returns empty array', async () => {
-      expect(await parseEstimatesFromArray([])).toBeArrayOfSize(0)
+      expect(await parseDomainEstimates([])).toBeArrayOfSize(0)
     })
   })
 })

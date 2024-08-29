@@ -1,1 +1,1 @@
-export * from './parseEstimatesFromArray.ts'
+export * from './parseDomainEstimates.ts'

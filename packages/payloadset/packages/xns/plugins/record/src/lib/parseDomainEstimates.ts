@@ -18,7 +18,7 @@ import {
  * @param payloads An array of payloads
  * @returns Parsed estimates
  */
-export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<DomainEstimate[]> => {
+export const parseDomainEstimates = async (payloads?: Payload[]): Promise<DomainEstimate[]> => {
   if (!payloads) return []
   const bws = payloads
     // Find all bound witnesses
