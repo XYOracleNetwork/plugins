@@ -1,8 +1,11 @@
+import type { Payload } from '@xyo-network/payload-model'
+
+import type { Estimate } from '../parseEstimatesFromArray.ts'
 import { parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'
 
 describe('parseEstimatesFromArray', () => {
   describe('with valid data', () => {
-    const data = [
+    const estimateA: Estimate = [
       {
         schema: 'network.xyo.boundwitness',
         addresses: ['2486705072e91a1d80d97cdcccd5db47b584e4bd'],
@@ -21,6 +24,15 @@ describe('parseEstimatesFromArray', () => {
         },
       },
       {
+        schema: 'network.xyo.hash.lease.estimate',
+        currency: 'USD',
+        exp: 1_725_225_427_392,
+        nbf: 1_724_966_227_392,
+        price: 16,
+        sources: ['dcc7ab18c86d90311bb1b59361f6698e2714294a91aa3126c554aa8483a7ae37'],
+        $hash: '06882b9889a7649d7172e96c2c5046d5472685cf893c2e38dacd7ef154d7808d',
+      },
+      {
         schema: 'network.xyo.ns.domain.registration.lease',
         domain: 'test8446e171-46ca-47d5-a3b7-1a658cb7f451',
         exp: 1_756_502_227_392,
@@ -31,15 +43,8 @@ describe('parseEstimatesFromArray', () => {
         tld: 'xyo',
         $hash: 'dcc7ab18c86d90311bb1b59361f6698e2714294a91aa3126c554aa8483a7ae37',
       },
-      {
-        schema: 'network.xyo.hash.lease.estimate',
-        currency: 'USD',
-        exp: 1_725_225_427_392,
-        nbf: 1_724_966_227_392,
-        price: 16,
-        sources: ['dcc7ab18c86d90311bb1b59361f6698e2714294a91aa3126c554aa8483a7ae37'],
-        $hash: '06882b9889a7649d7172e96c2c5046d5472685cf893c2e38dacd7ef154d7808d',
-      },
+    ]
+    const estimateB: Estimate = [
       {
         schema: 'network.xyo.boundwitness',
         addresses: ['2486705072e91a1d80d97cdcccd5db47b584e4bd'],
@@ -56,6 +61,15 @@ describe('parseEstimatesFromArray', () => {
         },
       },
       {
+        schema: 'network.xyo.hash.lease.estimate',
+        currency: 'USD',
+        exp: 1_725_225_514_773,
+        nbf: 1_724_966_314_773,
+        price: 16,
+        sources: ['90259bc9ecde9d4c0061bc92dbfcf32e0f7b2603e49443d9f3c67a6d7e82c7d5'],
+        $hash: '7037fc16e12c7cffec09ed1d2ef3f65737668864be38f4a1268026d17601b5ca',
+      },
+      {
         schema: 'network.xyo.ns.domain.registration.lease',
         domain: 'testb88a0ee2-9665-48b3-b9c6-047eadc475ee',
         exp: 1_756_502_314_773,
@@ -66,17 +80,14 @@ describe('parseEstimatesFromArray', () => {
         tld: 'xyo',
         $hash: '90259bc9ecde9d4c0061bc92dbfcf32e0f7b2603e49443d9f3c67a6d7e82c7d5',
       },
-      {
-        schema: 'network.xyo.hash.lease.estimate',
-        currency: 'USD',
-        exp: 1_725_225_514_773,
-        nbf: 1_724_966_314_773,
-        price: 16,
-        sources: ['90259bc9ecde9d4c0061bc92dbfcf32e0f7b2603e49443d9f3c67a6d7e82c7d5'],
-        $hash: '7037fc16e12c7cffec09ed1d2ef3f65737668864be38f4a1268026d17601b5ca',
-      },
     ]
-    it('parses estimates from array', async () => {
+    const cases: Payload[][] = [
+      [...estimateA],
+      [...estimateB],
+      [...estimateA, ...estimateB],
+      [...estimateB, ...estimateA],
+    ]
+    it.each(cases)('parses estimates from array', async (...data) => {
       expect(await parseEstimatesFromArray(data)).toMatchSnapshot()
     })
   })
