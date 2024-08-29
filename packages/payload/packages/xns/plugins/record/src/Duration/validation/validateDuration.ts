@@ -1,4 +1,3 @@
-// import { isAddress } from '@xylabs/hex'
 import type { Payload } from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration.ts'
@@ -10,11 +9,7 @@ export const validateDuration = (recordPayload: Payload<DurationFields>): boolea
   return true
 }
 
-// const isValidAddress = (recordPayload: Payload<DomainLeaseFields>): boolean => {
-//   return isAddress(recordPayload.nameserver, { prefix: false })
-// }
-
-const isWithinDelegatedTimeframe = (recordPayload: Payload<DurationFields>, now = Date.now()): boolean => {
+export const isWithinDelegatedTimeframe = (recordPayload: Payload<DurationFields>, now = Date.now()): boolean => {
   // nbf < now < exp
   return recordPayload.nbf < now && now < recordPayload.exp
 }
