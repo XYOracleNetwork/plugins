@@ -6,14 +6,18 @@ import {
 } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, WithMeta, WithSources,
+  Payload, WithMeta, WithOptionalMeta, WithSources,
 } from '@xyo-network/payload-model'
 
 import {
   type DomainRegistrationLease, DomainRegistrationLeaseSchema, isDomainRegistrationLeaseWithMeta,
 } from '../../DomainRegistration/index.ts'
 
-export type Estimate = [BoundWitness, WithSources<HashLeaseEstimate>, DomainRegistrationLease]
+export type Estimate = [
+  WithOptionalMeta<BoundWitness>,
+  WithOptionalMeta<WithSources<HashLeaseEstimate>>,
+  WithOptionalMeta<WithSources<DomainRegistrationLease>>,
+]
 
 /**
  * Parses a generic array of payloads into estimates
