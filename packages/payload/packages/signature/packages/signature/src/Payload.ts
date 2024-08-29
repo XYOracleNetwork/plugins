@@ -5,11 +5,20 @@ import {
 
 import { SignatureSchema } from './Schema.ts'
 
-// TODO: openssl list -digest-algorithms
+// TODO: Overlap of outputs from:
+// openssl list -digest-algorithms
+// AND
+// inputs to node.js crypto.createHash
 export type Digest = 'sha512' | 'sha3-256'
 
 export interface SignatureFields {
+  /**
+   * The digest algorithm used to create the signature
+   */
   digestAlgorithm: Digest
+  /**
+   * The signature
+   */
   signature: string
 }
 
