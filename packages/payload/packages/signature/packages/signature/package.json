@@ -1,0 +1,40 @@
+{
+  "name": "@xyo-network/signature-payload-plugin",
+  "version": "3.0.9",
+  "description": "Typescript/Javascript Plugins for XYO Platform",
+  "homepage": "https://xyo.network",
+  "bugs": {
+    "url": "git+https://github.com/XYOracleNetwork/plugins/issues",
+    "email": "support@xyo.network"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XYOracleNetwork/plugins.git"
+  },
+  "license": "LGPL-3.0-only",
+  "author": {
+    "name": "XYO Development Team",
+    "email": "support@xyo.network",
+    "url": "https://xyo.network"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/neutral/index.d.ts",
+      "default": "./dist/neutral/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "dist/neutral/index.mjs",
+  "types": "dist/neutral/index.d.ts",
+  "dependencies": {},
+  "devDependencies": {
+    "@xylabs/ts-scripts-yarn3": "^4.0.7",
+    "@xylabs/tsconfig": "^4.0.7",
+    "typescript": "^5.5.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
