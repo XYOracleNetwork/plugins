@@ -1,14 +1,14 @@
 import type { WithSources } from '@xyo-network/payload-model'
 
-import type { DomainRegistration } from '../../DomainRegistration/index.ts'
-import { DomainRegistrationSchema } from '../../DomainRegistration/index.ts'
+import type { DomainRegistration } from '../../../DomainRegistration/index.ts'
+import { DomainRegistrationSchema } from '../../../DomainRegistration/index.ts'
 import {
   domainRegistrationCasingValidator,
   domainRegistrationModuleNameValidator,
   domainRegistrationTldValidator,
   getDomainRegistrationAllowedHyphensValidator,
   getDomainRegistrationLengthValidator,
-} from '../public/index.ts'
+} from '../index.ts'
 
 const baseDomainRegistrationFields: DomainRegistration = {
   domain: '',
@@ -154,6 +154,4 @@ describe('XNS Name Validators', () => {
       })
     })
   })
-  // describe('Private Validators', () => {
-  // })
 })
