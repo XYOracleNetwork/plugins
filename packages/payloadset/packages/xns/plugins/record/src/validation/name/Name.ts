@@ -7,6 +7,7 @@ import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-paylo
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { XnsNamePublicValidators } from '../validation/index.ts'
+import { removeDisallowedCharacters } from './lib/index.ts'
 import type { ValidSourceTypes } from './types/index.ts'
 
 export class XnsNameHelper {
@@ -90,11 +91,6 @@ export class XnsNameHelper {
     formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
 
     // Filter out disallowed characters.
-    // NOTE: not necessary because of the regex/replacement above, but leaving for when certain special characters become allowed
-    for (const reservedCharacter in DisallowedModuleIdentifierCharacters) {
-      formattedXnsName = formattedXnsName.replaceAll(reservedCharacter, '')
-    }
-
-    return formattedXnsName
+    return removeDisallowedCharacters(formattedXnsName)
   }
 }
