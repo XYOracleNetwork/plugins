@@ -75,7 +75,7 @@ export const getDomainAllowedHyphensValidator = (
   }
 }
 
-export const XnsNamePublicValidators = [
+export const XnsNameSimpleValidators = [
   domainCasingValidator,
   domainModuleNameValidator,
   domainTldValidator,

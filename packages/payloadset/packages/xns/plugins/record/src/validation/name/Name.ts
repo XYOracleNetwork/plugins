@@ -5,7 +5,7 @@ import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import { XnsNamePublicValidators } from '../validation/index.ts'
+import { XnsNameSimpleValidators } from '../validation/index.ts'
 import { removeDisallowedCharacters } from './lib/index.ts'
 import type { ValidSourceTypes } from './types/index.ts'
 
@@ -71,7 +71,7 @@ export class XnsNameHelper {
   }
 
   static isValid(domain: Payload<DomainFields>) {
-    return XnsNamePublicValidators.every(validator => validator(domain))
+    return XnsNameSimpleValidators.every(validator => validator(domain))
   }
 
   /**
