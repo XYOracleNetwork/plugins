@@ -65,10 +65,9 @@ export class XnsNameHelper {
    * @returns ValidSourceTypes
    */
   static isPotentialXnsNameOrHash(source?: string): ValidSourceTypes {
+    if (isHash(source)) return 'hash'
     const xnsName = XnsNameHelper.ValidTLDs.some(tld => source?.endsWith(tld)) ? source : null
-    const hash = isHash(source) ? source : null
-
-    return xnsName ? 'xnsName' : hash ? 'hash' : null
+    return xnsName ? 'xnsName' : null
   }
 
   static isValid(domainRegistration: DomainRegistration) {
