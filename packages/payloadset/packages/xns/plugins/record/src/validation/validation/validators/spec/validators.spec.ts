@@ -3,9 +3,8 @@
  * and require no special access to private data.
  */
 
-import type { WithSources } from '@xyo-network/payload-model'
-import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins'
-import { DomainRegistrationSchema } from '@xyo-network/xns-record-payload-plugins'
+import type { Domain } from '@xyo-network/xns-record-payload-plugins'
+import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import {
   domainCasingValidator,
@@ -15,11 +14,9 @@ import {
   getDomainLengthValidator,
 } from '../index.ts'
 
-const baseDomainRegistrationFields: DomainRegistration = {
+const baseDomainFields: Domain = {
   domain: '',
-  registrant: [],
-  registrar: [],
-  schema: DomainRegistrationSchema,
+  schema: DomainSchema,
   tld: 'xyo',
 }
 
@@ -27,13 +24,13 @@ describe('XNS Name Validators', () => {
   describe('Public Validators', () => {
     const cases = [
       {
-        name: 'domainRegistrationCasingValidator',
+        name: 'domainCasingValidator',
         validator: domainCasingValidator,
         valid: ['example'],
         invalid: ['Example'],
       },
       {
-        name: 'domainRegistrationModuleNameValidator',
+        name: 'domainModuleNameValidator',
         validator: domainModuleNameValidator,
         valid: ['valid-domain'],
         invalid: ['invalid_domain'],
@@ -45,22 +42,22 @@ describe('XNS Name Validators', () => {
     }) => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(validator(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(validator(payload)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(validator(domainRegistration)).toBe(false)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(validator(payload)).toBe(false)
         })
       })
     })
 
     const casesTld = [
       {
-        name: 'domainRegistrationTldValidator',
+        name: 'domainTldValidator',
         valid: ['xyo'],
         invalid: ['com', 'Xyo'],
       },
@@ -69,22 +66,22 @@ describe('XNS Name Validators', () => {
     describe.each(casesTld)('$name', ({ valid, invalid }) => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (tld) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, tld: tld as unknown as 'xyo' }
-          expect(domainTldValidator(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, tld: tld as unknown as 'xyo' }
+          expect(domainTldValidator(payload)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (tld) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, tld: tld as unknown as 'xyo' }
-          expect(domainTldValidator(domainRegistration)).toBe(false)
+          const payload: Domain = { ...baseDomainFields, tld: tld as unknown as 'xyo' }
+          expect(domainTldValidator(payload)).toBe(false)
         })
       })
     })
 
     const casesLength = [
       {
-        name: 'getDomainRegistrationLengthValidator',
+        name: 'getDomainLengthValidator',
         minNameLength: 3,
         valid: ['abc', 'abcd'],
         invalid: ['', 'a'],
@@ -96,40 +93,40 @@ describe('XNS Name Validators', () => {
     }) => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(getDomainLengthValidator(minNameLength)(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(getDomainLengthValidator(minNameLength)(payload)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(getDomainLengthValidator(minNameLength)(domainRegistration)).toBe(false)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(getDomainLengthValidator(minNameLength)(payload)).toBe(false)
         })
       })
     })
 
     const casesHyphens = [
       {
-        name: 'getDomainRegistrationAllowedHyphensValidator',
+        name: 'getDomainAllowedHyphensValidator',
         options: {},
         valid: ['example'],
         invalid: ['example-', '-example', '-example-'],
       },
       {
-        name: 'getDomainRegistrationAllowedHyphensValidator',
+        name: 'getDomainAllowedHyphensValidator',
         options: { start: true },
         valid: ['example', '-example'],
         invalid: ['example-', '-example-'],
       },
       {
-        name: 'getDomainRegistrationAllowedHyphensValidator',
+        name: 'getDomainAllowedHyphensValidator',
         options: { end: true },
         valid: ['example', 'example-'],
         invalid: ['-example', '-example-'],
       },
       {
-        name: 'getDomainRegistrationAllowedHyphensValidator',
+        name: 'getDomainAllowedHyphensValidator',
         options: { start: true, end: true },
         valid: ['example', '-example', 'example-', '-example-'],
         invalid: [''],
@@ -142,16 +139,16 @@ describe('XNS Name Validators', () => {
       const validator = getDomainAllowedHyphensValidator(options)
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(validator(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(validator(payload)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
           if (domain) {
-            const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-            expect(validator(domainRegistration)).toBe(false)
+            const payload: Domain = { ...baseDomainFields, domain }
+            expect(validator(payload)).toBe(false)
           } else {
             return true
           }
