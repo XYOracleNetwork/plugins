@@ -2,6 +2,8 @@ import { isModuleName } from '@xyo-network/module-model'
 import type { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
 import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
+import { MAX_DOMAIN_LENGTH, MIN_DOMAIN_LENGTH } from '../Constants.ts'
+
 export const domainCasingValidator: PayloadValidationFunction<Payload<DomainFields>> = (
   payload: Payload<DomainFields>,
 ) => {
@@ -45,12 +47,19 @@ export const domainTldValidator: PayloadValidationFunction<Payload<DomainFields>
   return true
 }
 
-export const getDomainLengthValidator = (minNameLength = 3): PayloadValidationFunction<Payload<DomainFields>> => {
+export const getDomainLengthValidator = (
+  minNameLength = MIN_DOMAIN_LENGTH,
+  maxLength = MAX_DOMAIN_LENGTH,
+): PayloadValidationFunction<Payload<DomainFields>> => {
   return (payload: Payload<DomainFields>) => {
     const { domain } = payload
     // Check if min length
     if (domain.length < minNameLength) {
       console.log(`name must be at least ${minNameLength} characters`)
+      return false
+    }
+    if (domain.length > maxLength) {
+      console.log(`name must be at least ${maxLength} characters`)
       return false
     }
     return true
