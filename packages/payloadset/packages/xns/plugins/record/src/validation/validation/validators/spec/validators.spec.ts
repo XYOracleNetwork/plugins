@@ -8,11 +8,11 @@ import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins
 import { DomainRegistrationSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import {
-  domainRegistrationCasingValidator,
-  domainRegistrationModuleNameValidator,
-  domainRegistrationTldValidator,
-  getDomainRegistrationAllowedHyphensValidator,
-  getDomainRegistrationLengthValidator,
+  domainCasingValidator,
+  domainModuleNameValidator,
+  domainTldValidator,
+  getDomainAllowedHyphensValidator,
+  getDomainLengthValidator,
 } from '../index.ts'
 
 const baseDomainRegistrationFields: DomainRegistration = {
@@ -28,13 +28,13 @@ describe('XNS Name Validators', () => {
     const cases = [
       {
         name: 'domainRegistrationCasingValidator',
-        validator: domainRegistrationCasingValidator,
+        validator: domainCasingValidator,
         valid: ['example'],
         invalid: ['Example'],
       },
       {
         name: 'domainRegistrationModuleNameValidator',
-        validator: domainRegistrationModuleNameValidator,
+        validator: domainModuleNameValidator,
         valid: ['valid-domain'],
         invalid: ['invalid_domain'],
       },
@@ -70,14 +70,14 @@ describe('XNS Name Validators', () => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (tld) => {
           const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, tld: tld as unknown as 'xyo' }
-          expect(domainRegistrationTldValidator(domainRegistration)).toBe(true)
+          expect(domainTldValidator(domainRegistration)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (tld) => {
           const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, tld: tld as unknown as 'xyo' }
-          expect(domainRegistrationTldValidator(domainRegistration)).toBe(false)
+          expect(domainTldValidator(domainRegistration)).toBe(false)
         })
       })
     })
@@ -97,14 +97,14 @@ describe('XNS Name Validators', () => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
           const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(getDomainRegistrationLengthValidator(minNameLength)(domainRegistration)).toBe(true)
+          expect(getDomainLengthValidator(minNameLength)(domainRegistration)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
           const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(getDomainRegistrationLengthValidator(minNameLength)(domainRegistration)).toBe(false)
+          expect(getDomainLengthValidator(minNameLength)(domainRegistration)).toBe(false)
         })
       })
     })
@@ -139,7 +139,7 @@ describe('XNS Name Validators', () => {
     describe.each(casesHyphens)('$name with $options', ({
       options, valid, invalid,
     }) => {
-      const validator = getDomainRegistrationAllowedHyphensValidator(options)
+      const validator = getDomainAllowedHyphensValidator(options)
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
           const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }

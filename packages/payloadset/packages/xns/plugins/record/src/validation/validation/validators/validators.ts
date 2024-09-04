@@ -1,11 +1,11 @@
 import { isModuleName } from '@xyo-network/module-model'
-import type { PayloadValidationFunction, WithSources } from '@xyo-network/payload-model'
-import type { Domain } from '@xyo-network/xns-record-payload-plugins'
+import type { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
+import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
-export const domainRegistrationCasingValidator: PayloadValidationFunction<WithSources<Domain>> = (
-  domainRegistration: WithSources<Domain>,
+export const domainCasingValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+  payload: Payload<DomainFields>,
 ) => {
-  const { domain } = domainRegistration
+  const { domain } = payload
   // Check if all lowercase
   if (domain.toLowerCase() !== domain) {
     console.log('name must be lowercase')
@@ -14,10 +14,10 @@ export const domainRegistrationCasingValidator: PayloadValidationFunction<WithSo
   return true
 }
 
-export const domainRegistrationModuleNameValidator: PayloadValidationFunction<WithSources<Domain>> = (
-  domainRegistration: WithSources<Domain>,
+export const domainModuleNameValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+  payload: Payload<DomainFields>,
 ) => {
-  const { domain } = domainRegistration
+  const { domain } = payload
 
   // check if domain is a valid name
   if (!isModuleName(domain)) {
@@ -28,10 +28,10 @@ export const domainRegistrationModuleNameValidator: PayloadValidationFunction<Wi
   return true
 }
 
-export const domainRegistrationTldValidator: PayloadValidationFunction<WithSources<Domain>> = (
-  domainRegistration: WithSources<Domain>,
+export const domainTldValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+  payload: Payload<DomainFields>,
 ) => {
-  const { tld } = domainRegistration
+  const { tld } = payload
   // Check if all lowercase
   if (tld.toLowerCase() !== tld) {
     console.log('TLD must be lowercase')
@@ -45,9 +45,9 @@ export const domainRegistrationTldValidator: PayloadValidationFunction<WithSourc
   return true
 }
 
-export const getDomainRegistrationLengthValidator = (minNameLength = 3): PayloadValidationFunction<WithSources<Domain>> => {
-  return (domainRegistration: WithSources<Domain>) => {
-    const { domain } = domainRegistration
+export const getDomainLengthValidator = (minNameLength = 3): PayloadValidationFunction<Payload<DomainFields>> => {
+  return (payload: Payload<DomainFields>) => {
+    const { domain } = payload
     // Check if min length
     if (domain.length < minNameLength) {
       console.log(`name must be at least ${minNameLength} characters`)
@@ -57,11 +57,11 @@ export const getDomainRegistrationLengthValidator = (minNameLength = 3): Payload
   }
 }
 
-export const getDomainRegistrationAllowedHyphensValidator = (
+export const getDomainAllowedHyphensValidator = (
   options?: { end?: boolean; start?: boolean },
-): PayloadValidationFunction<WithSources<Domain>> => {
-  return (domainRegistration: WithSources<Domain>) => {
-    const { domain } = domainRegistration
+): PayloadValidationFunction<Payload<DomainFields>> => {
+  return (payload: Payload<DomainFields>) => {
+    const { domain } = payload
     const { start, end } = options ?? {}
     if (!start && domain.startsWith('-')) {
       console.log('name cannot start with hyphen')
@@ -76,9 +76,9 @@ export const getDomainRegistrationAllowedHyphensValidator = (
 }
 
 export const XnsNamePublicValidators = [
-  domainRegistrationCasingValidator,
-  domainRegistrationModuleNameValidator,
-  domainRegistrationTldValidator,
-  getDomainRegistrationLengthValidator(),
-  getDomainRegistrationAllowedHyphensValidator(),
+  domainCasingValidator,
+  domainModuleNameValidator,
+  domainTldValidator,
+  getDomainLengthValidator(),
+  getDomainAllowedHyphensValidator(),
 ]

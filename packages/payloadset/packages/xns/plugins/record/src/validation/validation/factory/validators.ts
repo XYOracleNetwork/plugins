@@ -1,14 +1,10 @@
-/**
- * NOTE: These validators are private because they rely on private data that cannot be shared with clients.
- */
+import type { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
+import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
-import type { PayloadValidationFunction, WithSources } from '@xyo-network/payload-model'
-import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins'
-
-export const getDomainRegistrationReservedStringsValidator = (
+export const getDomainReservedStringsValidator = (
   reservedStrings: string[],
-): PayloadValidationFunction<WithSources<DomainRegistration>> => {
-  return (domainRegistration: WithSources<DomainRegistration>) => {
+): PayloadValidationFunction<Payload<DomainFields>> => {
+  return (domainRegistration: Payload<DomainFields>) => {
     const { domain } = domainRegistration
     // Check if in one of the reserved name lists
     if (reservedStrings.includes(domain)) {
@@ -19,10 +15,10 @@ export const getDomainRegistrationReservedStringsValidator = (
   }
 }
 
-export const getDomainRegistrationReservedFragmentsValidator = (
+export const getDomainReservedFragmentsValidator = (
   reservedFragments: string[],
-): PayloadValidationFunction<WithSources<DomainRegistration>> => {
-  return (domainRegistration: WithSources<DomainRegistration>) => {
+): PayloadValidationFunction<Payload<DomainFields>> => {
+  return (domainRegistration: Payload<DomainFields>) => {
     const { domain } = domainRegistration
     // Check if any of our fragments are in the name
     for (const reserved of reservedFragments) {
@@ -35,8 +31,8 @@ export const getDomainRegistrationReservedFragmentsValidator = (
   }
 }
 
-export const getDomainRegistrationReservedNamesValidator = (reservedNames: string[]): PayloadValidationFunction<WithSources<DomainRegistration>> => {
-  return (domainRegistration: WithSources<DomainRegistration>) => {
+export const getDomainReservedNamesValidator = (reservedNames: string[]): PayloadValidationFunction<Payload<DomainFields>> => {
+  return (domainRegistration: Payload<DomainFields>) => {
     const { domain } = domainRegistration
     // Check if any of our fragments are in the name
     for (const reserved of reservedNames) {
