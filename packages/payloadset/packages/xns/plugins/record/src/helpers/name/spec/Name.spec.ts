@@ -1,5 +1,5 @@
-import type { Domain } from '../../../Domain/index.ts'
-import { DomainSchema } from '../../../Domain/index.ts'
+import type { Domain } from '../../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
+import { DomainSchema } from '../../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
 import { XnsNameHelper } from '../Name.ts'
 
 describe('XnsNameHelper', () => {

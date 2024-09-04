@@ -6,8 +6,8 @@ import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import type {
   Domain,
   TopLevelDomain,
-} from '../../Domain/index.ts'
-import { DomainSchema } from '../../Domain/index.ts'
+} from '../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
+import { DomainSchema } from '../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
 import { XnsNamePublicValidators } from '../validation/index.ts'
 
 export type ValidSourceTypes = 'xnsName' | 'hash' | null

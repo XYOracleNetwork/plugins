@@ -4,7 +4,7 @@
 
 import type { PayloadValidationFunction, WithSources } from '@xyo-network/payload-model'
 
-import type { DomainRegistration } from '../../../DomainRegistration/index.ts'
+import type { DomainRegistration } from '../../../../../../../../../payload/packages/xns/plugins/record/src/DomainRegistration/index.ts'
 
 export const getDomainRegistrationReservedStringsValidator = (
   reservedStrings: string[],
