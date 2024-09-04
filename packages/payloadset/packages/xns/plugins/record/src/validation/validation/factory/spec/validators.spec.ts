@@ -11,8 +11,8 @@ const baseDomainFields: Domain = {
   tld: 'xyo',
 }
 
-describe('XNS Name Validators', () => {
-  describe('Private Validators', () => {
+describe('XNS Name', () => {
+  describe('Factory Validators', () => {
     const cases = [
       {
         getValidator: getDomainReservedStringsValidator,

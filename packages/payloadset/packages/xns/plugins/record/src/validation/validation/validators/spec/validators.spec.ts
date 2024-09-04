@@ -1,11 +1,7 @@
-/**
- * NOTE: These validators are public because they can be validated by clients
- * and require no special access to private data.
- */
+import type { Payload } from '@xyo-network/payload-model'
+import { type Domain, DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import type { Domain } from '@xyo-network/xns-record-payload-plugins'
-import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
-
+import { MAX_DOMAIN_LENGTH } from '../../Constants.ts'
 import {
   domainCasingValidator,
   domainModuleNameValidator,
@@ -14,14 +10,14 @@ import {
   getDomainLengthValidator,
 } from '../index.ts'
 
-const baseDomainFields: Domain = {
+const baseDomainFields: Payload<Domain> = {
   domain: '',
-  schema: DomainSchema,
   tld: 'xyo',
+  schema: DomainSchema,
 }
 
-describe('XNS Name Validators', () => {
-  describe('Public Validators', () => {
+describe('XNS Name', () => {
+  describe('Validators', () => {
     const cases = [
       {
         name: 'domainCasingValidator',
@@ -82,26 +78,23 @@ describe('XNS Name Validators', () => {
     const casesLength = [
       {
         name: 'getDomainLengthValidator',
-        minNameLength: 3,
         valid: ['abc', 'abcd'],
-        invalid: ['', 'a'],
+        invalid: ['', 'a', 'a'.repeat(MAX_DOMAIN_LENGTH + 1)],
       },
     ]
 
-    describe.each(casesLength)('$name', ({
-      minNameLength, valid, invalid,
-    }) => {
+    describe.each(casesLength)('$name', ({ valid, invalid }) => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
           const payload: Domain = { ...baseDomainFields, domain }
-          expect(getDomainLengthValidator(minNameLength)(payload)).toBe(true)
+          expect(getDomainLengthValidator()(payload)).toBe(true)
         })
       })
 
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
           const payload: Domain = { ...baseDomainFields, domain }
-          expect(getDomainLengthValidator(minNameLength)(payload)).toBe(false)
+          expect(getDomainLengthValidator()(payload)).toBe(false)
         })
       })
     })
