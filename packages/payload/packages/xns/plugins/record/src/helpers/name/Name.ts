@@ -31,11 +31,21 @@ export class XnsNameHelper {
     return assertEx(this._xnsName, () => 'XnsNameHelper xnsName not set')
   }
 
+  /**
+   * Create an XnsNameHelper from a domain registration payload
+   * @param  {DomainRegistration} domainRegistration
+   * @returns Promise<XnsNameHelper>
+   */
   static fromPayload(domainRegistration: DomainRegistration): Promisable<XnsNameHelper> {
     return new XnsNameHelper(domainRegistration)
   }
 
-  static async fromString(xnsName: string) {
+  /**
+   * Create an XnsNameHelper from a string
+   * @param  {string} xnsName
+   * @returns Promise<XnsNameHelper>
+   */
+  static async fromString(xnsName: string): Promise<XnsNameHelper> {
     const parts = xnsName.split('.')
     assertEx(parts.length === 2, () => 'Unable to parse xnsName')
 
