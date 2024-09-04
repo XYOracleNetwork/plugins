@@ -1,12 +1,12 @@
 import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
+import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { XnsNamePublicValidators } from '../validation/index.ts'
-import { REMOVE_DISALLOWED_CHARS } from './lib/index.ts'
 import type { ValidSourceTypes } from './types/index.ts'
 
 export class XnsNameHelper {
@@ -91,7 +91,9 @@ export class XnsNameHelper {
 
     // Filter out disallowed characters.
     // NOTE: not necessary because of the regex/replacement above, but leaving for when certain special characters become allowed
-    formattedXnsName = formattedXnsName.replaceAll(REMOVE_DISALLOWED_CHARS, '')
+    for (const reservedCharacter in DisallowedModuleIdentifierCharacters) {
+      formattedXnsName = formattedXnsName.replaceAll(reservedCharacter, '')
+    }
 
     return formattedXnsName
   }
