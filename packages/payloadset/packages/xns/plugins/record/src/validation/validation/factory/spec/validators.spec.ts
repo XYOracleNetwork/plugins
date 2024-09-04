@@ -3,7 +3,7 @@ import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins
 import { DomainRegistrationSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import {
-  getDomainRegistrationReservedFragmentsValidator, getDomainRegistrationReservedNamesValidator, getDomainRegistrationReservedStringsValidator,
+  getDomainReservedFragmentsValidator, getDomainReservedNamesValidator, getDomainReservedStringsValidator,
 } from '../index.ts'
 
 const baseDomainRegistrationFields: DomainRegistration = {
@@ -18,42 +18,42 @@ describe('XNS Name Validators', () => {
   describe('Private Validators', () => {
     const cases = [
       {
-        getValidator: getDomainRegistrationReservedStringsValidator,
+        getValidator: getDomainReservedStringsValidator,
         name: 'ReservedStringsValidator',
         reservedList: ['foo'],
         valid: ['bar'],
         invalid: ['foo'],
       },
       {
-        getValidator: getDomainRegistrationReservedStringsValidator,
+        getValidator: getDomainReservedStringsValidator,
         name: 'ReservedStringsValidator',
         reservedList: [],
         valid: ['bar', 'foobar'],
         invalid: [''],
       },
       {
-        getValidator: getDomainRegistrationReservedFragmentsValidator,
+        getValidator: getDomainReservedFragmentsValidator,
         name: 'ReservedFragmentsValidator',
         reservedList: ['foo'],
         valid: ['bar'],
         invalid: ['foobar', 'bar-foo'],
       },
       {
-        getValidator: getDomainRegistrationReservedFragmentsValidator,
+        getValidator: getDomainReservedFragmentsValidator,
         name: 'ReservedFragmentsValidator',
         reservedList: [],
         valid: ['foobar', 'bar-foo'],
         invalid: [''],
       },
       {
-        getValidator: getDomainRegistrationReservedNamesValidator,
+        getValidator: getDomainReservedNamesValidator,
         name: 'ReservedNamesValidator',
         reservedList: ['john doe'],
         valid: ['john1'],
         invalid: ['johndoe', 'doejohn'],
       },
       {
-        getValidator: getDomainRegistrationReservedNamesValidator,
+        getValidator: getDomainReservedNamesValidator,
         name: 'ReservedNamesValidator',
         reservedList: [],
         valid: ['john', 'doe'],
