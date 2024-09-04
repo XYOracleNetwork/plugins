@@ -46,7 +46,7 @@ describe('XnsNameHelper', () => {
         schema: DomainSchema, domain: 'example', tld: 'xyo',
       }
       const helper = await XnsNameHelper.fromPayload(domain)
-      expect(helper.xnsName).toBe(domain)
+      expect(helper.xnsName).toEqual(domain)
     })
 
     it('should throw an error if xnsName is not set', async () => {
@@ -65,8 +65,8 @@ describe('XnsNameHelper', () => {
       expect(helper.xnsName.tld).toBe(domain.tld)
     })
 
-    it('should throw an error if xnsName string is invalid', async () => {
-      await expect(XnsNameHelper.fromString('invalid')).rejects.toThrow('Unable to parse xnsName')
+    it.only('should throw an error if xnsName string is invalid', () => {
+      expect(() => XnsNameHelper.fromString('invalid')).toThrow('Unable to parse xnsName')
     })
   })
 

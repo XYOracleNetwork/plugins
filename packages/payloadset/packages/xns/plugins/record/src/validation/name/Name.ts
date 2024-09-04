@@ -27,17 +27,18 @@ const REMOVE_DISALLOWED_CHARS = new RegExp(`[${disallowedCharsPattern}]`, 'g')
 export class XnsNameHelper {
   static ValidTLDs = ['.xyo'] as const
 
-  private _xnsName: Domain
+  private _xnsName: Payload<DomainFields>
 
   private constructor(xnsName: Payload<DomainFields>) {
-    const { domain, tld } = xnsName
-    this._xnsName = {
-      domain, tld, schema: DomainSchema,
-    }
+    this._xnsName = xnsName
   }
 
   get domain() {
     return assertEx(this.xnsName.domain, () => 'domain not found in payload')
+  }
+
+  get name() {
+    return `${this.domain}.${this.tld}`
   }
 
   get tld() {
