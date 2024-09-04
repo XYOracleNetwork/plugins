@@ -4,12 +4,12 @@ import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 import { XnsNameHelper } from '../Name.ts'
 
 describe('XnsNameHelper', () => {
+  const validDomain: Domain = {
+    schema: DomainSchema, domain: 'example', tld: 'xyo',
+  }
   describe('domain getter', () => {
     it('should return the domain if set', async () => {
-      const domain: Domain = {
-        schema: DomainSchema, domain: 'example', tld: 'xyo',
-      }
-      const helper = await XnsNameHelper.fromPayload(domain)
+      const helper = await XnsNameHelper.fromPayload(validDomain)
       expect(helper.domain).toBe('example')
     })
 
@@ -24,10 +24,7 @@ describe('XnsNameHelper', () => {
 
   describe('tld getter', () => {
     it('should return the tld if set', async () => {
-      const domain: Domain = {
-        schema: DomainSchema, domain: 'example', tld: 'xyo',
-      }
-      const helper = await XnsNameHelper.fromPayload(domain)
+      const helper = await XnsNameHelper.fromPayload(validDomain)
       expect(helper.tld).toBe('xyo')
     })
 
@@ -42,11 +39,8 @@ describe('XnsNameHelper', () => {
 
   describe('xnsName getter', () => {
     it('should return the xnsName if set', async () => {
-      const domain: Domain = {
-        schema: DomainSchema, domain: 'example', tld: 'xyo',
-      }
-      const helper = await XnsNameHelper.fromPayload(domain)
-      expect(helper.xnsName).toEqual(domain)
+      const helper = await XnsNameHelper.fromPayload(validDomain)
+      expect(helper.xnsName).toEqual(validDomain)
     })
 
     it('should throw an error if xnsName is not set', async () => {
@@ -56,16 +50,16 @@ describe('XnsNameHelper', () => {
   })
 
   describe('fromString', () => {
-    it('should create an instance from a valid xnsName string', async () => {
-      const domain: Domain = {
-        schema: DomainSchema, domain: 'example', tld: 'xyo',
-      }
-      const helper = await XnsNameHelper.fromString('example.xyo')
-      expect(helper.xnsName.domain).toBe(domain.domain)
-      expect(helper.xnsName.tld).toBe(domain.tld)
+    it('should create an instance from a valid xnsName string', () => {
+      const { domain, tld } = validDomain
+      const helper = XnsNameHelper.fromString(`${domain}.${tld}`)
+      expect(helper.domain).toBe(domain)
+      expect(helper.xnsName.domain).toBe(domain)
+      expect(helper.tld).toBe(tld)
+      expect(helper.xnsName.tld).toBe(tld)
     })
 
-    it.only('should throw an error if xnsName string is invalid', () => {
+    it('should throw an error if xnsName string is invalid', () => {
       expect(() => XnsNameHelper.fromString('invalid')).toThrow('Unable to parse xnsName')
     })
   })
@@ -86,10 +80,7 @@ describe('XnsNameHelper', () => {
 
   describe('isValid', () => {
     it('should return true for valid xns names', () => {
-      const domain: Domain = {
-        schema: DomainSchema, domain: 'example', tld: 'xyo',
-      }
-      expect(XnsNameHelper.isValid(domain)).toBe(true)
+      expect(XnsNameHelper.isValid(validDomain)).toBe(true)
     })
 
     it('should return false for invalid xns names', () => {
