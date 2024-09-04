@@ -75,3 +75,11 @@ export const getDomainRegistrationAllowedHyphensValidator = (
     return true
   }
 }
+
+export const XnsNamePublicValidators = [
+  domainRegistrationCasingValidator,
+  domainRegistrationModuleNameValidator,
+  domainRegistrationTldValidator,
+  getDomainRegistrationLengthValidator(),
+  getDomainRegistrationAllowedHyphensValidator(),
+]
