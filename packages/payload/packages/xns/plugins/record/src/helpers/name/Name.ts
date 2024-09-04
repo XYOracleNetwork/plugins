@@ -5,6 +5,7 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 import type { DomainRegistration } from '../../DomainRegistration/index.ts'
 import { DomainRegistrationSchema } from '../../DomainRegistration/index.ts'
+import { XnsNamePublicValidators } from '../validation/index.ts'
 
 export type ValidSourceTypes = 'xnsName' | 'hash' | null
 
@@ -45,6 +46,10 @@ export class XnsNameHelper {
     const payload = await PayloadBuilder.build(domainRegistration)
 
     return new XnsNameHelper(payload)
+  }
+
+  static isValid(domainRegistration: DomainRegistration) {
+    return XnsNamePublicValidators.every(validator => validator(domainRegistration))
   }
 
   static isXnsNameOrHash(source?: string): ValidSourceTypes {

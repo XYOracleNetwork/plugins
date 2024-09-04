@@ -82,4 +82,20 @@ describe('XnsNameHelper', () => {
       expect(XnsNameHelper.isXnsNameOrHash('invalid')).toBe(null)
     })
   })
+
+  describe('isValid', () => {
+    it('should return true for valid xns names', () => {
+      const domainRegistration: DomainRegistration = {
+        schema: DomainRegistrationSchema, domain: 'example', tld: 'xyo', registrant: [], registrar: [],
+      }
+      expect(XnsNameHelper.isValid(domainRegistration)).toBe(true)
+    })
+
+    it('should return false for invalid xns names', () => {
+      const domainRegistration: DomainRegistration = {
+        schema: DomainRegistrationSchema, domain: 'example-', tld: 'xyo', registrant: [], registrar: [],
+      }
+      expect(XnsNameHelper.isValid(domainRegistration)).toBe(false)
+    })
+  })
 })
