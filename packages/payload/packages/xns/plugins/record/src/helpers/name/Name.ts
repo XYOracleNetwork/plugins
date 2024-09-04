@@ -91,9 +91,8 @@ export class XnsNameHelper {
 
     // Filter out disallowed characters.
     // NOTE: not necessary because of the regex/replacement above, but leaving for when certain special characters become allowed
-    for (const char of Object.keys(DisallowedModuleIdentifierCharacters)) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-      formattedXnsName.includes(char) ? (formattedXnsName = formattedXnsName.replaceAll(char, '')) : formattedXnsName
+    for (const c of Object.keys(DisallowedModuleIdentifierCharacters)) {
+      formattedXnsName = formattedXnsName.replaceAll(c, '')
     }
 
     return formattedXnsName
