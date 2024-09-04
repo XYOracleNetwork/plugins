@@ -10,6 +10,16 @@ import { XnsNamePublicValidators } from '../validation/index.ts'
 
 export type ValidSourceTypes = 'xnsName' | 'hash' | null
 
+// Escaping special regex characters in the disallowed keys
+const escapeRegex = (str: string) => str.replaceAll(/[$()*+.?[\\\]^{|}]/g, String.raw`\$&`)
+
+// Escaping and then creating the regex
+const disallowedCharsPattern = Object.keys(DisallowedModuleIdentifierCharacters)
+  .map(escapeRegex)
+  .join('')
+// Creating the final regex
+const REMOVE_DISALLOWED_CHARS = new RegExp(`[${disallowedCharsPattern}]`, 'g')
+
 export class XnsNameHelper {
   static ValidTLDs = ['.xyo'] as const
 
@@ -83,17 +93,15 @@ export class XnsNameHelper {
     // convert to lowercase
     const lowercaseXnsName = str.toLowerCase()
 
-    // remove everything except letters, numbers, and dashes
+    // Remove everything except letters, numbers, and dashes
     let formattedXnsName = lowercaseXnsName.replaceAll(/[^\dA-Za-z-]+$/g, '')
 
-    // remove leading and trailing dashes
+    // Remove leading and trailing dashes
     formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
 
     // Filter out disallowed characters.
     // NOTE: not necessary because of the regex/replacement above, but leaving for when certain special characters become allowed
-    for (const c of Object.keys(DisallowedModuleIdentifierCharacters)) {
-      formattedXnsName = formattedXnsName.replaceAll(c, '')
-    }
+    formattedXnsName = formattedXnsName.replaceAll(REMOVE_DISALLOWED_CHARS, '')
 
     return formattedXnsName
   }
