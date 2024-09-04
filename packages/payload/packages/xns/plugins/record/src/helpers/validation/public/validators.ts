@@ -46,7 +46,7 @@ export const domainRegistrationTldValidator: PayloadValidationFunction<WithSourc
   return true
 }
 
-export const getDomainRegistrationLengthValidator = (minNameLength: number): PayloadValidationFunction<WithSources<DomainRegistration>> => {
+export const getDomainRegistrationLengthValidator = (minNameLength = 3): PayloadValidationFunction<WithSources<DomainRegistration>> => {
   return (domainRegistration: WithSources<DomainRegistration>) => {
     const { domain } = domainRegistration
     // Check if min length
