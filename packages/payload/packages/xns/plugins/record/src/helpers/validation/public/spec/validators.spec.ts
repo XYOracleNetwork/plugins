@@ -1,7 +1,7 @@
 import type { WithSources } from '@xyo-network/payload-model'
 
-import type { DomainRegistration } from '../../../DomainRegistration/index.ts'
-import { DomainRegistrationSchema } from '../../../DomainRegistration/index.ts'
+import type { DomainRegistration } from '../../../../DomainRegistration/index.ts'
+import { DomainRegistrationSchema } from '../../../../DomainRegistration/index.ts'
 import {
   domainRegistrationCasingValidator,
   domainRegistrationModuleNameValidator,
