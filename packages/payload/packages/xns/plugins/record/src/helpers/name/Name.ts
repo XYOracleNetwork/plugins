@@ -2,10 +2,12 @@ import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
 import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import type { DomainRegistration } from '../../DomainRegistration/index.ts'
-import { DomainRegistrationSchema } from '../../DomainRegistration/index.ts'
+import type {
+  Domain,
+  TopLevelDomain,
+} from '../../Domain/index.ts'
+import { DomainSchema } from '../../Domain/index.ts'
 import { XnsNamePublicValidators } from '../validation/index.ts'
 
 export type ValidSourceTypes = 'xnsName' | 'hash' | null
@@ -23,9 +25,9 @@ const REMOVE_DISALLOWED_CHARS = new RegExp(`[${disallowedCharsPattern}]`, 'g')
 export class XnsNameHelper {
   static ValidTLDs = ['.xyo'] as const
 
-  private _xnsName: DomainRegistration
+  private _xnsName: Domain
 
-  private constructor(xnsName: DomainRegistration) {
+  private constructor(xnsName: Domain) {
     this._xnsName = xnsName
   }
 
@@ -43,11 +45,11 @@ export class XnsNameHelper {
 
   /**
    * Create an XnsNameHelper from a domain registration payload
-   * @param  {DomainRegistration} domainRegistration
+   * @param  {Domain} domain
    * @returns Promise<XnsNameHelper>
    */
-  static fromPayload(domainRegistration: DomainRegistration): Promisable<XnsNameHelper> {
-    return new XnsNameHelper(domainRegistration)
+  static fromPayload(domain: Domain): Promisable<XnsNameHelper> {
+    return new XnsNameHelper(domain)
   }
 
   /**
@@ -55,18 +57,15 @@ export class XnsNameHelper {
    * @param  {string} xnsName
    * @returns Promise<XnsNameHelper>
    */
-  static async fromString(xnsName: string): Promise<XnsNameHelper> {
+  static fromString(xnsName: string): XnsNameHelper {
     const parts = xnsName.split('.')
     assertEx(parts.length === 2, () => 'Unable to parse xnsName')
 
     const domain = parts[0]
-    const tld = parts[1] as 'xyo'
-    const domainRegistration: DomainRegistration = {
-      schema: DomainRegistrationSchema, domain, tld, registrant: [], registrar: [],
-    }
-    const payload = await PayloadBuilder.build(domainRegistration)
-
-    return new XnsNameHelper(payload)
+    const tld = parts[1] as TopLevelDomain
+    return new XnsNameHelper({
+      schema: DomainSchema, domain, tld,
+    })
   }
 
   /**
@@ -80,7 +79,7 @@ export class XnsNameHelper {
     return xnsName ? 'xnsName' : null
   }
 
-  static isValid(domainRegistration: DomainRegistration) {
+  static isValid(domainRegistration: Domain) {
     return XnsNamePublicValidators.every(validator => validator(domainRegistration))
   }
 
