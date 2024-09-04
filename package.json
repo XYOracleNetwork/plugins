@@ -38,8 +38,7 @@
     "coverage": "yarn jest --coverage --forceExit",
     "deploy": "xy deploy",
     "lint-pkg": "npmPkgJsonLint .",
-    "test": "jest --no-cache --forceExit",
-    "test-esm": "node $(yarn jest --no-cache --forceExit)"
+    "test": "vitest run"
   },
   "resolutions": {
     "axios": "^1",
