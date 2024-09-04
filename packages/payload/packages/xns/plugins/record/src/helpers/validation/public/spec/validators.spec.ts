@@ -1,3 +1,8 @@
+/**
+ * NOTE: These validators are public because they can be validated by clients
+ * and require no special access to private data.
+ */
+
 import type { WithSources } from '@xyo-network/payload-model'
 
 import type { DomainRegistration } from '../../../../DomainRegistration/index.ts'

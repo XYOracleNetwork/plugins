@@ -1,3 +1,7 @@
+/**
+ * NOTE: These validators are private because they rely on private data that cannot be shared with clients.
+ */
+
 import type { PayloadValidationFunction, WithSources } from '@xyo-network/payload-model'
 
 import type { DomainRegistration } from '../../../DomainRegistration/index.ts'
