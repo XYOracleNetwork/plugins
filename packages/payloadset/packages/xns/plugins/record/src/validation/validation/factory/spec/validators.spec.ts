@@ -1,16 +1,13 @@
-import type { WithSources } from '@xyo-network/payload-model'
+import type { Domain } from '@xyo-network/xns-record-payload-plugins'
+import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import type { DomainRegistration } from '../../../../DomainRegistration/index.ts'
-import { DomainRegistrationSchema } from '../../../../DomainRegistration/index.ts'
 import {
-  getDomainRegistrationReservedFragmentsValidator, getDomainRegistrationReservedNamesValidator, getDomainRegistrationReservedStringsValidator,
+  getDomainReservedFragmentsValidator, getDomainReservedNamesValidator, getDomainReservedStringsValidator,
 } from '../index.ts'
 
-const baseDomainRegistrationFields: DomainRegistration = {
+const baseDomainFields: Domain = {
   domain: '',
-  registrant: [],
-  registrar: [],
-  schema: DomainRegistrationSchema,
+  schema: DomainSchema,
   tld: 'xyo',
 }
 
@@ -18,42 +15,42 @@ describe('XNS Name Validators', () => {
   describe('Private Validators', () => {
     const cases = [
       {
-        getValidator: getDomainRegistrationReservedStringsValidator,
+        getValidator: getDomainReservedStringsValidator,
         name: 'ReservedStringsValidator',
         reservedList: ['foo'],
         valid: ['bar'],
         invalid: ['foo'],
       },
       {
-        getValidator: getDomainRegistrationReservedStringsValidator,
+        getValidator: getDomainReservedStringsValidator,
         name: 'ReservedStringsValidator',
         reservedList: [],
         valid: ['bar', 'foobar'],
         invalid: [''],
       },
       {
-        getValidator: getDomainRegistrationReservedFragmentsValidator,
+        getValidator: getDomainReservedFragmentsValidator,
         name: 'ReservedFragmentsValidator',
         reservedList: ['foo'],
         valid: ['bar'],
         invalid: ['foobar', 'bar-foo'],
       },
       {
-        getValidator: getDomainRegistrationReservedFragmentsValidator,
+        getValidator: getDomainReservedFragmentsValidator,
         name: 'ReservedFragmentsValidator',
         reservedList: [],
         valid: ['foobar', 'bar-foo'],
         invalid: [''],
       },
       {
-        getValidator: getDomainRegistrationReservedNamesValidator,
+        getValidator: getDomainReservedNamesValidator,
         name: 'ReservedNamesValidator',
         reservedList: ['john doe'],
         valid: ['john1'],
         invalid: ['johndoe', 'doejohn'],
       },
       {
-        getValidator: getDomainRegistrationReservedNamesValidator,
+        getValidator: getDomainReservedNamesValidator,
         name: 'ReservedNamesValidator',
         reservedList: [],
         valid: ['john', 'doe'],
@@ -67,18 +64,15 @@ describe('XNS Name Validators', () => {
       const validator = getValidator(reservedList)
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(validator(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(validator(payload)).toBe(true)
         })
       })
-
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
           if (domain) {
-            const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-            expect(validator(domainRegistration)).toBe(false)
-          } else {
-            expect(true).toBe(true)
+            const payload: Domain = { ...baseDomainFields, domain }
+            expect(validator(payload)).toBe(false)
           }
         })
       })
