@@ -3819,17 +3819,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/assert@npm:4.0.9, @xylabs/assert@npm:^4.0.5, @xylabs/assert@npm:^4.0.9":
+  version: 4.0.9
+  resolution: "@xylabs/assert@npm:4.0.9"
+  checksum: 10/1287f1bab9fe1fd6580edd0ef2a8ea408928bf4540fb613e9a7f16e648c76256311104dda7b3cd032e888ba4992dfe66e95c4a9489f80fab1298dc0d0c137994
+  languageName: node
+  linkType: hard
+
 "@xylabs/assert@npm:^3.0.14":
   version: 3.6.12
   resolution: "@xylabs/assert@npm:3.6.12"
   checksum: 10/4697d08c2a3645399327a161c78805e4572716e3ac98aa0f412d386a291d8f23393a6d60eaea43fd96df70dd6dd763531577e024bb5dc8a3171582df0a0885b0
-  languageName: node
-  linkType: hard
-
-"@xylabs/assert@npm:^4.0.5, @xylabs/assert@npm:^4.0.9":
-  version: 4.0.9
-  resolution: "@xylabs/assert@npm:4.0.9"
-  checksum: 10/1287f1bab9fe1fd6580edd0ef2a8ea408928bf4540fb613e9a7f16e648c76256311104dda7b3cd032e888ba4992dfe66e95c4a9489f80fab1298dc0d0c137994
   languageName: node
   linkType: hard
 
@@ -7791,8 +7791,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/xns-record-payload-plugins@workspace:packages/payload/packages/xns/plugins/record"
   dependencies:
+    "@xylabs/assert": "npm:4.0.9"
     "@xylabs/exists": "npm:^4.0.9"
     "@xylabs/hex": "npm:^4.0.9"
+    "@xylabs/promise": "npm:^4.0.9"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
     "@xylabs/tsconfig": "npm:^4.0.7"
     "@xyo-network/account": "npm:^3.1.4"
