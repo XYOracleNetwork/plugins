@@ -1,7 +1,7 @@
 import type { Domain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import { MAX_DOMAIN_LENGTH } from '../../validation/Constants.ts'
+import { MAX_DOMAIN_LENGTH } from '../../validation/index.ts'
 import { XnsNameHelper } from '../Name.ts'
 
 describe('XnsNameHelper', () => {
