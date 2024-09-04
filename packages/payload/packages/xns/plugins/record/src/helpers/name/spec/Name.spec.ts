@@ -71,15 +71,15 @@ describe('XnsNameHelper', () => {
 
   describe('isXnsNameOrHash', () => {
     it('should return "xnsName" if the source ends with a valid TLD', () => {
-      expect(XnsNameHelper.isXnsNameOrHash('example.xyo')).toBe('xnsName')
+      expect(XnsNameHelper.isPotentialXnsNameOrHash('example.xyo')).toBe('xnsName')
     })
 
     it('should return "hash" if the source is a valid hash', () => {
-      expect(XnsNameHelper.isXnsNameOrHash('c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2')).toBe('hash')
+      expect(XnsNameHelper.isPotentialXnsNameOrHash('c3ab8ff13720e8ad9047dd39466b3c8974e592c2fa383d4a3960714caef0c4f2')).toBe('hash')
     })
 
     it('should return null if the source is neither a valid xnsName nor a hash', () => {
-      expect(XnsNameHelper.isXnsNameOrHash('invalid')).toBe(null)
+      expect(XnsNameHelper.isPotentialXnsNameOrHash('invalid')).toBe(null)
     })
   })
 

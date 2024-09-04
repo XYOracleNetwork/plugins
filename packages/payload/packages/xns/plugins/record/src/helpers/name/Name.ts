@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
+import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 import type { DomainRegistration } from '../../DomainRegistration/index.ts'
@@ -48,14 +49,41 @@ export class XnsNameHelper {
     return new XnsNameHelper(payload)
   }
 
-  static isValid(domainRegistration: DomainRegistration) {
-    return XnsNamePublicValidators.every(validator => validator(domainRegistration))
-  }
-
-  static isXnsNameOrHash(source?: string): ValidSourceTypes {
+  /**
+   * Determine if a string is a valid XNS name or hash
+   * @param  {string} source?
+   * @returns ValidSourceTypes
+   */
+  static isPotentialXnsNameOrHash(source?: string): ValidSourceTypes {
     const xnsName = XnsNameHelper.ValidTLDs.some(tld => source?.endsWith(tld)) ? source : null
     const hash = isHash(source) ? source : null
 
     return xnsName ? 'xnsName' : hash ? 'hash' : null
+  }
+
+  static isValid(domainRegistration: DomainRegistration) {
+    return XnsNamePublicValidators.every(validator => validator(domainRegistration))
+  }
+
+  /**
+   * Mask a string to be a valid XNS name
+   * @param {string} str
+   * @returns string
+   */
+  static mask(str: string) {
+    // convert to lowercase
+    const lowercaseXnsName = str.toLowerCase()
+
+    // remove everything except letters, numbers, and dashes
+    let formattedXnsName = lowercaseXnsName.replaceAll(/[^\dA-Za-z-]+$/g, '')
+
+    // Filter out disallowed characters.
+    // NOTE: not necessary because of the previous formatting, but leaving for when certain special characters become allowed
+    for (const char of Object.keys(DisallowedModuleIdentifierCharacters)) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      formattedXnsName.includes(char) ? (formattedXnsName = formattedXnsName.replaceAll(char, '')) : formattedXnsName
+    }
+
+    return formattedXnsName
   }
 }
