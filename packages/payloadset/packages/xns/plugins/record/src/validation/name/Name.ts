@@ -2,8 +2,10 @@ import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
 import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
+import type { Payload } from '@xyo-network/payload-model'
 import type {
   Domain,
+  DomainFields,
   TopLevelDomain,
 } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
@@ -27,8 +29,11 @@ export class XnsNameHelper {
 
   private _xnsName: Domain
 
-  private constructor(xnsName: Domain) {
-    this._xnsName = xnsName
+  private constructor(xnsName: Payload<DomainFields>) {
+    const { domain, tld } = xnsName
+    this._xnsName = {
+      domain, tld, schema: DomainSchema,
+    }
   }
 
   get domain() {
@@ -48,7 +53,7 @@ export class XnsNameHelper {
    * @param  {Domain} domain
    * @returns Promise<XnsNameHelper>
    */
-  static fromPayload(domain: Domain): Promisable<XnsNameHelper> {
+  static fromPayload(domain: Payload<DomainFields>): Promisable<XnsNameHelper> {
     return new XnsNameHelper(domain)
   }
 
