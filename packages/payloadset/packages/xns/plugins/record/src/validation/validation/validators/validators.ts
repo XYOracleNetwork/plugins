@@ -1,7 +1,6 @@
 import { isModuleName } from '@xyo-network/module-model'
 import type { PayloadValidationFunction, WithSources } from '@xyo-network/payload-model'
-
-import type { Domain } from '../../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
+import type { Domain } from '@xyo-network/xns-record-payload-plugins'
 
 export const domainRegistrationCasingValidator: PayloadValidationFunction<WithSources<Domain>> = (
   domainRegistration: WithSources<Domain>,

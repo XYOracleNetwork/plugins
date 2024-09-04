@@ -1,7 +1,7 @@
 import type { WithSources } from '@xyo-network/payload-model'
+import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins'
+import { DomainRegistrationSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import type { DomainRegistration } from '../../../../DomainRegistration/index.ts'
-import { DomainRegistrationSchema } from '../../../../DomainRegistration/index.ts'
 import {
   getDomainRegistrationReservedFragmentsValidator, getDomainRegistrationReservedNamesValidator, getDomainRegistrationReservedStringsValidator,
 } from '../index.ts'

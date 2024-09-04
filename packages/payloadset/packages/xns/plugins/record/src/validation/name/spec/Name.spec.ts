@@ -1,5 +1,6 @@
-import type { Domain } from '../../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
-import { DomainSchema } from '../../../../../../../../../payload/packages/xns/plugins/record/src/Domain/index.ts'
+import type { Domain } from '@xyo-network/xns-record-payload-plugins'
+import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
+
 import { XnsNameHelper } from '../Name.ts'
 
 describe('XnsNameHelper', () => {
