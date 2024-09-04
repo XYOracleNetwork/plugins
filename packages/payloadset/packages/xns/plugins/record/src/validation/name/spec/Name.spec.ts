@@ -1,6 +1,7 @@
 import type { Domain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
+import { MAX_DOMAIN_LENGTH } from '../../validation/Constants.ts'
 import { XnsNameHelper } from '../Name.ts'
 
 describe('XnsNameHelper', () => {
@@ -111,6 +112,13 @@ describe('XnsNameHelper', () => {
     describe.each(cases)('mask(%s)', (input, expected) => {
       it(`should return ${expected}`, () => {
         expect(XnsNameHelper.mask(input)).toBe(expected)
+      })
+    })
+
+    describe('With invalid input', () => {
+      it('should throw an error', () => {
+        expect(() => XnsNameHelper.mask('a'.repeat(MAX_DOMAIN_LENGTH + 1)))
+          .toThrow('Domain name too long: 129 exceeds max length: 128')
       })
     })
   })

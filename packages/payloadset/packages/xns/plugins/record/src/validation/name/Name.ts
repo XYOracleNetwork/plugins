@@ -5,7 +5,7 @@ import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
-import { XnsNameSimpleValidators } from '../validation/index.ts'
+import { MAX_DOMAIN_LENGTH, XnsNameSimpleValidators } from '../validation/index.ts'
 import { removeDisallowedCharacters } from './lib/index.ts'
 import type { ValidSourceTypes } from './types/index.ts'
 
@@ -80,6 +80,11 @@ export class XnsNameHelper {
    * @returns string
    */
   static mask(str: string) {
+    // Check if the domain name is too long
+    if (str.length > MAX_DOMAIN_LENGTH) {
+      throw new Error(`Domain name too long: ${str.length} exceeds max length: ${MAX_DOMAIN_LENGTH}`)
+    }
+
     // convert to lowercase
     const lowercaseXnsName = str.toLowerCase()
 
