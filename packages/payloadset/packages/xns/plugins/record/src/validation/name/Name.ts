@@ -1,24 +1,13 @@
 import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
-import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { XnsNamePublicValidators } from '../validation/index.ts'
-
-export type ValidSourceTypes = 'xnsName' | 'hash' | null
-
-// Escaping special regex characters in the disallowed keys
-const escapeRegex = (str: string) => str.replaceAll(/[$()*+.?[\\\]^{|}]/g, String.raw`\$&`)
-
-// Escaping and then creating the regex
-const disallowedCharsPattern = Object.keys(DisallowedModuleIdentifierCharacters)
-  .map(escapeRegex)
-  .join('')
-// Creating the final regex
-const REMOVE_DISALLOWED_CHARS = new RegExp(`[${disallowedCharsPattern}]`, 'g')
+import { REMOVE_DISALLOWED_CHARS } from './lib/index.ts'
+import type { ValidSourceTypes } from './types/index.ts'
 
 export class XnsNameHelper {
   static ValidTLDs = ['.xyo'] as const
