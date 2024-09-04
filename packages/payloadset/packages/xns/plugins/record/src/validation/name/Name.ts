@@ -1,7 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
-import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
