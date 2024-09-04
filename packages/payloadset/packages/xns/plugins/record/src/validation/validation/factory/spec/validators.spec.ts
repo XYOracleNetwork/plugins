@@ -1,16 +1,13 @@
-import type { WithSources } from '@xyo-network/payload-model'
-import type { DomainRegistration } from '@xyo-network/xns-record-payload-plugins'
-import { DomainRegistrationSchema } from '@xyo-network/xns-record-payload-plugins'
+import type { Domain } from '@xyo-network/xns-record-payload-plugins'
+import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import {
   getDomainReservedFragmentsValidator, getDomainReservedNamesValidator, getDomainReservedStringsValidator,
 } from '../index.ts'
 
-const baseDomainRegistrationFields: DomainRegistration = {
+const baseDomainFields: Domain = {
   domain: '',
-  registrant: [],
-  registrar: [],
-  schema: DomainRegistrationSchema,
+  schema: DomainSchema,
   tld: 'xyo',
 }
 
@@ -67,18 +64,15 @@ describe('XNS Name Validators', () => {
       const validator = getValidator(reservedList)
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
-          const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-          expect(validator(domainRegistration)).toBe(true)
+          const payload: Domain = { ...baseDomainFields, domain }
+          expect(validator(payload)).toBe(true)
         })
       })
-
       describe('Invalid', () => {
         it.each(invalid)('should return false for %s', (domain) => {
           if (domain) {
-            const domainRegistration: WithSources<DomainRegistration> = { ...baseDomainRegistrationFields, domain }
-            expect(validator(domainRegistration)).toBe(false)
-          } else {
-            expect(true).toBe(true)
+            const payload: Domain = { ...baseDomainFields, domain }
+            expect(validator(payload)).toBe(false)
           }
         })
       })

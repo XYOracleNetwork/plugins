@@ -3,11 +3,7 @@ import { isHash } from '@xylabs/hex'
 import type { Promisable } from '@xylabs/promise'
 import { DisallowedModuleIdentifierCharacters } from '@xyo-network/module-model'
 import type { Payload } from '@xyo-network/payload-model'
-import type {
-  Domain,
-  DomainFields,
-  TopLevelDomain,
-} from '@xyo-network/xns-record-payload-plugins'
+import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { XnsNamePublicValidators } from '../validation/index.ts'
@@ -50,7 +46,7 @@ export class XnsNameHelper {
   }
 
   /**
-   * Create an XnsNameHelper from a domain registration payload
+   * Create an XnsNameHelper from a domain payload
    * @param  {Domain} domain
    * @returns Promise<XnsNameHelper>
    */
@@ -85,8 +81,8 @@ export class XnsNameHelper {
     return xnsName ? 'xnsName' : null
   }
 
-  static isValid(domainRegistration: Domain) {
-    return XnsNamePublicValidators.every(validator => validator(domainRegistration))
+  static isValid(domain: Payload<DomainFields>) {
+    return XnsNamePublicValidators.every(validator => validator(domain))
   }
 
   /**
