@@ -87,8 +87,11 @@ export class XnsNameHelper {
     // remove everything except letters, numbers, and dashes
     let formattedXnsName = lowercaseXnsName.replaceAll(/[^\dA-Za-z-]+$/g, '')
 
+    // remove leading and trailing dashes
+    formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
+
     // Filter out disallowed characters.
-    // NOTE: not necessary because of the previous formatting, but leaving for when certain special characters become allowed
+    // NOTE: not necessary because of the regex/replacement above, but leaving for when certain special characters become allowed
     for (const char of Object.keys(DisallowedModuleIdentifierCharacters)) {
       // eslint-disable-next-line @typescript-eslint/no-unused-expressions
       formattedXnsName.includes(char) ? (formattedXnsName = formattedXnsName.replaceAll(char, '')) : formattedXnsName

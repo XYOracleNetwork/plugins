@@ -98,4 +98,28 @@ describe('XnsNameHelper', () => {
       expect(XnsNameHelper.isValid(domainRegistration)).toBe(false)
     })
   })
+
+  describe('mask', () => {
+    const cases = [
+      ['Example$123', 'example123'],
+      ['Example/123', 'example123'],
+      ['Example.123', 'example123'],
+      ['Example-123', 'example-123'],
+      ['Example 123', 'example123'],
+      ['Example_123', 'example123'],
+      ['-Example_123-', 'example123'],
+      ['-Example_123', 'example123'],
+      ['Example_123-', 'example123'],
+      ['--Example_123', 'example123'],
+      ['Example_123--', 'example123'],
+      ['--Example_123--', 'example123'],
+      ['- Example_123 -', 'example123'],
+    ]
+
+    describe.each(cases)('mask(%s)', (input, expected) => {
+      it(`should return ${expected}`, () => {
+        expect(XnsNameHelper.mask(input)).toBe(expected)
+      })
+    })
+  })
 })
