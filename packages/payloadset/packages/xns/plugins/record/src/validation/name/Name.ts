@@ -9,6 +9,8 @@ import { MAX_DOMAIN_LENGTH, XnsNameSimpleValidators } from '../validation/index.
 import { removeDisallowedCharacters } from './lib/index.ts'
 import type { ValidSourceTypes } from './types/index.ts'
 
+const defaultMaskOptions = { maskStartEndHyphens: false }
+
 export class XnsNameHelper {
   static ValidTLDs = ['.xyo'] as const
 
@@ -70,7 +72,7 @@ export class XnsNameHelper {
     return xnsName ? 'xnsName' : null
   }
 
-  static isValid(domain: Payload<DomainFields>) {
+  static isValid(domain: Payload<DomainFields>): boolean {
     return XnsNameSimpleValidators.every(validator => validator(domain))
   }
 
@@ -79,7 +81,7 @@ export class XnsNameHelper {
    * @param {string} str
    * @returns string
    */
-  static mask(str: string) {
+  static mask(str: string, options: { maskStartEndHyphens: boolean } = defaultMaskOptions): string {
     // Check if the domain name is too long
     if (str.length > MAX_DOMAIN_LENGTH) {
       throw new Error(`Domain name too long: ${str.length} exceeds max length: ${MAX_DOMAIN_LENGTH}`)
@@ -92,7 +94,7 @@ export class XnsNameHelper {
     let formattedXnsName = lowercaseXnsName.replaceAll(/[^\dA-Za-z-]+$/g, '')
 
     // Remove leading and trailing dashes
-    formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
+    if (options.maskStartEndHyphens) formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
 
     // Filter out disallowed characters.
     return removeDisallowedCharacters(formattedXnsName)

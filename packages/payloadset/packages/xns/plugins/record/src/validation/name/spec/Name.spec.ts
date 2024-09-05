@@ -93,6 +93,13 @@ describe('XnsNameHelper', () => {
   })
 
   describe('mask', () => {
+    describe('with invalid input', () => {
+      it('should throw an error', () => {
+        expect(() => XnsNameHelper.mask('a'.repeat(MAX_DOMAIN_LENGTH + 1)))
+          .toThrow('Domain name too long: 129 exceeds max length: 128')
+      })
+    })
+
     const cases = [
       ['Example$123', 'example123'],
       ['Example/123', 'example123'],
@@ -100,13 +107,7 @@ describe('XnsNameHelper', () => {
       ['Example-123', 'example-123'],
       ['Example 123', 'example123'],
       ['Example_123', 'example123'],
-      ['-Example_123-', 'example123'],
-      ['-Example_123', 'example123'],
-      ['Example_123-', 'example123'],
-      ['--Example_123', 'example123'],
-      ['Example_123--', 'example123'],
-      ['--Example_123--', 'example123'],
-      ['- Example_123 -', 'example123'],
+      ['Example-123', 'example-123'],
     ]
 
     describe.each(cases)('mask(%s)', (input, expected) => {
@@ -115,10 +116,24 @@ describe('XnsNameHelper', () => {
       })
     })
 
-    describe('With invalid input', () => {
-      it('should throw an error', () => {
-        expect(() => XnsNameHelper.mask('a'.repeat(MAX_DOMAIN_LENGTH + 1)))
-          .toThrow('Domain name too long: 129 exceeds max length: 128')
+    describe('with options', () => {
+      const options = { maskStartEndHyphens: true }
+      const cases = [
+        ['-Example_123-', 'example123'],
+        ['-Example_123', 'example123'],
+        ['Example_123-', 'example123'],
+        ['--Example_123', 'example123'],
+        ['Example_123--', 'example123'],
+        ['--Example_123--', 'example123'],
+        ['- Example_123 -', 'example123'],
+      ]
+
+      describe('stripDashes: true', () => {
+        describe.each(cases)('mask(%s)', (input, expected) => {
+          it(`should return ${expected}`, () => {
+            expect(XnsNameHelper.mask(input, options)).toBe(expected)
+          })
+        })
       })
     })
   })
