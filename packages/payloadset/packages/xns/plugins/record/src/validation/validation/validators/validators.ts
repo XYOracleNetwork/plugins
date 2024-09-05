@@ -1,47 +1,56 @@
 import { isModuleName } from '@xyo-network/module-model'
-import type { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
 import { MAX_DOMAIN_LENGTH, MIN_DOMAIN_LENGTH } from '../Constants.ts'
 
-export const domainCasingValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+export type PayloadValidationFunctionWithError<T extends Payload = Payload> = (payload: T, onErrors?: (message: string[]) => void) => boolean | Promise<boolean>
+
+export const domainCasingValidator: PayloadValidationFunctionWithError<Payload<DomainFields>> = (
   payload: Payload<DomainFields>,
+  onErrors?: (message: string[]) => void,
 ) => {
   const { domain } = payload
   // Check if all lowercase
   if (domain.toLowerCase() !== domain) {
-    console.log('name must be lowercase')
+    onErrors?.(['name must be lowercase'])
     return false
   }
   return true
 }
 
-export const domainModuleNameValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+export const domainModuleNameValidator: PayloadValidationFunctionWithError<Payload<DomainFields>> = (
   payload: Payload<DomainFields>,
+  onErrors?: (message: string[]) => void,
 ) => {
   const { domain } = payload
 
   // check if domain is a valid name
   if (!isModuleName(domain)) {
-    console.log(`Domain is not a valid module name: ${domain}`)
+    onErrors?.([`Domain is not a valid module name: ${domain}`])
     return false
   }
 
   return true
 }
 
-export const domainTldValidator: PayloadValidationFunction<Payload<DomainFields>> = (
+export const domainTldValidator: PayloadValidationFunctionWithError<Payload<DomainFields>> = (
   payload: Payload<DomainFields>,
+  onErrors?: (message: string[]) => void,
 ) => {
   const { tld } = payload
+  const errorMessages: string[] = []
+
   // Check if all lowercase
   if (tld.toLowerCase() !== tld) {
-    console.log('TLD must be lowercase')
-    return false
+    errorMessages.push('TLD must be lowercase')
   }
   // Check if supported TLDs
   if (tld !== 'xyo') {
-    console.log('Only XYO TLD currently supported')
+    errorMessages.push('Only XYO TLD currently supported')
+  }
+  if (errorMessages.length > 0) {
+    onErrors?.(errorMessages)
     return false
   }
   return true
@@ -50,34 +59,53 @@ export const domainTldValidator: PayloadValidationFunction<Payload<DomainFields>
 export const getDomainLengthValidator = (
   minNameLength = MIN_DOMAIN_LENGTH,
   maxLength = MAX_DOMAIN_LENGTH,
-): PayloadValidationFunction<Payload<DomainFields>> => {
-  return (payload: Payload<DomainFields>) => {
+): PayloadValidationFunctionWithError<Payload<DomainFields>> => {
+  return (
+    payload: Payload<DomainFields>,
+    onErrors?: (message: string[]) => void,
+  ) => {
     const { domain } = payload
+    const errorMessages: string[] = []
+
     // Check if min length
     if (domain.length < minNameLength) {
-      console.log(`name must be at least ${minNameLength} characters`)
-      return false
+      errorMessages.push(`name must be at least ${minNameLength} characters`)
     }
+
     if (domain.length > maxLength) {
-      console.log(`name must be at least ${maxLength} characters`)
+      errorMessages.push(`name must be no more than ${maxLength} characters`)
+    }
+
+    if (errorMessages.length > 0) {
+      onErrors?.(errorMessages)
       return false
     }
+
     return true
   }
 }
 
 export const getDomainAllowedHyphensValidator = (
   options?: { end?: boolean; start?: boolean },
-): PayloadValidationFunction<Payload<DomainFields>> => {
-  return (payload: Payload<DomainFields>) => {
+): PayloadValidationFunctionWithError<Payload<DomainFields>> => {
+  return (
+    payload: Payload<DomainFields>,
+    onErrors?: (message: string[]) => void,
+  ) => {
     const { domain } = payload
     const { start, end } = options ?? {}
+    const errorMessages: string[] = []
+
     if (!start && domain.startsWith('-')) {
-      console.log('name cannot start with hyphen')
-      return false
+      errorMessages.push('name cannot start with hyphen')
     }
+
     if (!end && domain.endsWith('-')) {
-      console.log('name cannot end with hyphen')
+      errorMessages.push('name cannot end with hyphen')
+    }
+
+    if (errorMessages.length > 0) {
+      onErrors?.(errorMessages)
       return false
     }
     return true
