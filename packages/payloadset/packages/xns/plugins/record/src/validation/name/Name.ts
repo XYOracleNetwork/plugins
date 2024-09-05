@@ -99,4 +99,19 @@ export class XnsNameHelper {
     // Filter out disallowed characters.
     return removeDisallowedCharacters(formattedXnsName)
   }
+
+  async validate(): Promise<[boolean, string[]]> {
+    const errorMessages: string[] = []
+    const onErrorsInternal = (message: string[]) => errorMessages.push(...message)
+
+    for (const validator of XnsNameSimpleValidators) {
+      await validator(this.xnsName, onErrorsInternal)
+    }
+
+    if (errorMessages.length > 0) {
+      return [false, errorMessages]
+    }
+
+    return [true, []]
+  }
 }

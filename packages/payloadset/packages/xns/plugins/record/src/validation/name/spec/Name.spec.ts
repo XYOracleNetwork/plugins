@@ -137,4 +137,13 @@ describe('XnsNameHelper', () => {
       })
     })
   })
+
+  describe('validate', () => {
+    it('should validate and return errors', async () => {
+      const helper = XnsNameHelper.fromString('Example.Xyo')
+      const [valid, errors] = await helper.validate()
+      expect(valid).toBe(false)
+      expect(errors).toEqual(['name must be lowercase', 'TLD must be lowercase', 'Only XYO TLD currently supported'])
+    })
+  })
 })

@@ -119,3 +119,11 @@ export const XnsNameSimpleValidators = [
   getDomainLengthValidator(),
   getDomainAllowedHyphensValidator(),
 ]
+
+export const XnsNameSimpleValidatorsWithErrors = (onErrors: (message: string[]) => void) => [
+  domainCasingValidator,
+  domainModuleNameValidator,
+  domainTldValidator,
+  getDomainLengthValidator(),
+  getDomainAllowedHyphensValidator(),
+].map(validator => (payload: Payload<DomainFields>) => validator(payload, onErrors))
