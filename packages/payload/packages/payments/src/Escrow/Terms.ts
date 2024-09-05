@@ -32,6 +32,10 @@ export interface EscrowTermsFields {
    */
   buyerSecret: Hash
   /**
+   * Any discounts (coupons, vouchers, credits, etc.) to be applied to the escrow
+   */
+  discounts: Hash[]
+  /**
    * The escrow agent responsible for the escrow
    */
   escrowAgent: Address
