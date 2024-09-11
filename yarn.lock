@@ -3909,6 +3909,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/exists@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "@xylabs/exists@npm:4.0.10"
+  checksum: 10/2dade3d4ff6ee1842feb0e378e23ae214fd53ddf2cd399c65a05edfb0261de9b5eb8a280d654bf61172f41a7cbe19cd062fab69fee399b1d86fe22033677e743
+  languageName: node
+  linkType: hard
+
 "@xylabs/exists@npm:^4.0.9":
   version: 4.0.9
   resolution: "@xylabs/exists@npm:4.0.9"
@@ -3922,6 +3929,13 @@ __metadata:
   dependencies:
     "@xylabs/delay": "npm:^4.0.9"
   checksum: 10/d9214a7008ad4a9d9cea261c202d3775d7c9849f5f973f116a609095a5e691469af2f1434c02d0f500cfc0c0789e0077e3481e511cebafe211f405f85e244273
+  languageName: node
+  linkType: hard
+
+"@xylabs/hex@npm:^4.0.10":
+  version: 4.0.10
+  resolution: "@xylabs/hex@npm:4.0.10"
+  checksum: 10/cad87986ced0e46e66c305d88dfd753772bd99701fe3b1fdbe97dee4d3ad05f7505dabbb1f5db9506c90caa69eeb8984b1031ebb5205c40839beb269982a5e73
   languageName: node
   linkType: hard
 
@@ -7064,24 +7078,31 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/payment-payload-plugins@workspace:^, @xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments":
+"@xyo-network/payment-payload-plugins@npm:^3.0.17, @xyo-network/payment-payload-plugins@workspace:^, @xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments":
   version: 0.0.0-use.local
   resolution: "@xyo-network/payment-payload-plugins@workspace:packages/payload/packages/payments"
   dependencies:
     "@xylabs/assert": "npm:^4.0.9"
     "@xylabs/crypto": "npm:^4.0.9"
+    "@xylabs/exists": "npm:^4.0.10"
     "@xylabs/hex": "npm:^4.0.9"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
     "@xylabs/tsconfig": "npm:^4.0.7"
     "@xyo-network/account-model": "npm:^3.1.9"
+    "@xyo-network/archivist-model": "npm:^3.1.9"
     "@xyo-network/boundwitness-builder": "npm:^3.1.9"
     "@xyo-network/boundwitness-model": "npm:^3.1.9"
     "@xyo-network/boundwitness-validator": "npm:^3.1.9"
+    "@xyo-network/diviner-abstract": "npm:^3.1.9"
+    "@xyo-network/diviner-boundwitness-model": "npm:^3.1.9"
     "@xyo-network/diviner-hash-lease": "npm:^3.1.9"
     "@xyo-network/diviner-model": "npm:^3.1.9"
     "@xyo-network/id-payload-plugin": "npm:^3.1.9"
     "@xyo-network/module-model": "npm:^3.1.9"
+    "@xyo-network/payload-builder": "npm:^3.1.9"
     "@xyo-network/payload-model": "npm:^3.1.9"
+    "@xyo-network/payment-payload-plugins": "npm:^3.0.17"
+    "@xyo-network/xns-record-payload-plugins": "workspace:^"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft
@@ -7092,10 +7113,17 @@ __metadata:
   dependencies:
     "@xylabs/assert": "npm:^4.0.9"
     "@xylabs/axios": "npm:^4.0.9"
+    "@xylabs/exists": "npm:^4.0.10"
+    "@xylabs/hex": "npm:^4.0.10"
     "@xylabs/jest-helpers": "npm:^4.0.9"
     "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
     "@xylabs/tsconfig": "npm:^4.0.7"
+    "@xyo-network/archivist-model": "npm:^3.1.9"
     "@xyo-network/boundwitness-model": "npm:^3.1.9"
+    "@xyo-network/diviner-abstract": "npm:^3.1.9"
+    "@xyo-network/diviner-boundwitness-model": "npm:^3.1.9"
+    "@xyo-network/diviner-hash-lease": "npm:^3.1.9"
+    "@xyo-network/diviner-model": "npm:^3.1.9"
     "@xyo-network/module-model": "npm:^3.1.9"
     "@xyo-network/payload-builder": "npm:^3.1.9"
     "@xyo-network/payload-model": "npm:^3.1.9"
@@ -7103,6 +7131,7 @@ __metadata:
     "@xyo-network/rebilly-payment-payload-plugin": "workspace:^"
     "@xyo-network/sentinel-abstract": "npm:^3.1.9"
     "@xyo-network/sentinel-model": "npm:^3.1.9"
+    "@xyo-network/xns-record-payload-plugins": "workspace:^"
     axios: "npm:^1.7.7"
     jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"

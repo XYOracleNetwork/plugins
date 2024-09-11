@@ -2,16 +2,12 @@ import type { Hash } from '@xylabs/hex'
 import type { DivinerInstance } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
-import type { EscrowTerms, Payment } from '@xyo-network/payment-payload-plugins'
-import { PaymentSchema } from '@xyo-network/payment-payload-plugins'
-
-import type { Discount } from '../Discount/index.ts'
-import { isDiscount } from '../Discount/index.ts'
-import type { Subtotal } from '../Subtotal/index.ts'
-import { isSubtotal } from '../Subtotal/index.ts'
-import type { Total } from '../Total/index.ts'
-import { isTotal } from '../Total/index.ts'
-import type { Invoice } from './Invoice.ts'
+import type {
+  Discount, EscrowTerms, Invoice, Payment, Subtotal, Total,
+} from '@xyo-network/payment-payload-plugins'
+import {
+  isDiscount, isSubtotal, isTotal, PaymentSchema,
+} from '@xyo-network/payment-payload-plugins'
 
 /**
  * Validates the escrow terms to ensure they are valid for a purchase

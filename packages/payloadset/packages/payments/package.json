@@ -31,6 +31,13 @@
   "dependencies": {
     "@xylabs/assert": "^4.0.9",
     "@xylabs/axios": "^4.0.9",
+    "@xylabs/exists": "^4.0.10",
+    "@xylabs/hex": "^4.0.10",
+    "@xyo-network/archivist-model": "^3.1.9",
+    "@xyo-network/diviner-abstract": "^3.1.9",
+    "@xyo-network/diviner-boundwitness-model": "^3.1.9",
+    "@xyo-network/diviner-hash-lease": "^3.1.9",
+    "@xyo-network/diviner-model": "^3.1.9",
     "@xyo-network/module-model": "^3.1.9",
     "@xyo-network/payload-builder": "^3.1.9",
     "@xyo-network/payload-model": "^3.1.9",
@@ -38,6 +45,7 @@
     "@xyo-network/rebilly-payment-payload-plugin": "workspace:^",
     "@xyo-network/sentinel-abstract": "^3.1.9",
     "@xyo-network/sentinel-model": "^3.1.9",
+    "@xyo-network/xns-record-payload-plugins": "workspace:^",
     "axios": "^1.7.7"
   },
   "devDependencies": {
