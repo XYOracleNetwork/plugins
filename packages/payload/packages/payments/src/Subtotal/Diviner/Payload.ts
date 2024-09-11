@@ -5,7 +5,7 @@ import {
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
-import type { AmountFields } from '../Amount/index.ts'
+import type { AmountFields } from '../../Amount/index.ts'
 
 export const SubtotalSchema = 'network.xyo.payments.subtotal' as const
 export type SubtotalSchema = typeof SubtotalSchema

@@ -7078,9 +7078,33 @@ __metadata:
     "@xyo-network/boundwitness-model": "npm:^3.1.9"
     "@xyo-network/boundwitness-validator": "npm:^3.1.9"
     "@xyo-network/diviner-hash-lease": "npm:^3.1.9"
+    "@xyo-network/diviner-model": "npm:^3.1.9"
     "@xyo-network/id-payload-plugin": "npm:^3.1.9"
     "@xyo-network/module-model": "npm:^3.1.9"
     "@xyo-network/payload-model": "npm:^3.1.9"
+    typescript: "npm:^5.5.4"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/payment-plugin@workspace:packages/payloadset/packages/payments":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/payment-plugin@workspace:packages/payloadset/packages/payments"
+  dependencies:
+    "@xylabs/assert": "npm:^4.0.9"
+    "@xylabs/axios": "npm:^4.0.9"
+    "@xylabs/jest-helpers": "npm:^4.0.9"
+    "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
+    "@xylabs/tsconfig": "npm:^4.0.7"
+    "@xyo-network/boundwitness-model": "npm:^3.1.9"
+    "@xyo-network/module-model": "npm:^3.1.9"
+    "@xyo-network/payload-builder": "npm:^3.1.9"
+    "@xyo-network/payload-model": "npm:^3.1.9"
+    "@xyo-network/payment-payload-plugins": "workspace:^"
+    "@xyo-network/rebilly-payment-payload-plugin": "workspace:^"
+    "@xyo-network/sentinel-abstract": "npm:^3.1.9"
+    "@xyo-network/sentinel-model": "npm:^3.1.9"
+    axios: "npm:^1.7.7"
+    jest: "npm:^29.7.0"
     typescript: "npm:^5.5.4"
   languageName: unknown
   linkType: soft

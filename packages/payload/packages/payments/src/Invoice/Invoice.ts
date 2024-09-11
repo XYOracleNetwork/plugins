@@ -1,6 +1,5 @@
-import type { Payment } from '@xyo-network/payment-payload-plugins'
-
 import type { Discount } from '../Discount/index.ts'
+import type { Payment } from '../Payment/index.ts'
 import type { Subtotal } from '../Subtotal/index.ts'
 import type { Total } from '../Total/index.ts'
 
