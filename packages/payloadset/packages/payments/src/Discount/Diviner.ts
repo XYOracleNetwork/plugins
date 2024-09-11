@@ -14,18 +14,15 @@ import {
 import { creatableModule } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { EscrowTerms, isEscrowTerms } from '@xyo-network/payment-payload-plugins'
-
-import { PaymentDiscountDivinerConfigSchema } from './Config.ts'
-import { applyCoupons } from './lib/index.ts'
-import { PaymentDiscountDivinerParams } from './Params.ts'
 import {
   Coupon,
   Discount,
-  isCoupon,
+  EscrowTerms, isCoupon,
   isCouponWithMeta,
-  NO_DISCOUNT,
-} from './Payload/index.ts'
+  isEscrowTerms, NO_DISCOUNT, PaymentDiscountDivinerConfigSchema, PaymentDiscountDivinerParams,
+} from '@xyo-network/payment-payload-plugins'
+
+import { applyCoupons } from './lib/index.ts'
 
 const DEFAULT_BOUND_WITNESS_DIVINER_QUERY_PROPS: Readonly<BoundWitnessDivinerQueryPayload> = {
   limit: 1,

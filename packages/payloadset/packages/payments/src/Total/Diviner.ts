@@ -7,7 +7,7 @@ import {
 import { creatableModule } from '@xyo-network/module-model'
 import {
   Discount,
-  isDiscount, isDiscountWithMeta, isSubtotal,
+  isDiscountWithMeta,
   isSubtotalWithMeta,
   PaymentTotalDivinerConfigSchema, PaymentTotalDivinerParams, Subtotal, Total, TotalSchema,
 } from '@xyo-network/payment-payload-plugins'
