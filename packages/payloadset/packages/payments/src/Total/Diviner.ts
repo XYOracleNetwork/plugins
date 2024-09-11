@@ -5,18 +5,15 @@ import {
   asDivinerInstance, DivinerInstance, DivinerModuleEventData,
 } from '@xyo-network/diviner-model'
 import { creatableModule } from '@xyo-network/module-model'
-
 import {
   Discount,
-  isDiscount, PaymentDiscountDiviner,
-  PaymentDiscountDivinerInputType,
-} from '../Discount/index.ts'
-import {
-  isSubtotal, PaymentSubtotalDiviner, PaymentSubtotalDivinerInputType, Subtotal,
-} from '../Subtotal/index.ts'
-import { PaymentTotalDivinerConfigSchema } from './Config.ts'
-import { PaymentTotalDivinerParams } from './Params.ts'
-import { Total, TotalSchema } from './Payload.ts'
+  isDiscount, isDiscountWithMeta, isSubtotal,
+  isSubtotalWithMeta,
+  PaymentTotalDivinerConfigSchema, PaymentTotalDivinerParams, Subtotal, Total, TotalSchema,
+} from '@xyo-network/payment-payload-plugins'
+
+import { PaymentDiscountDiviner, PaymentDiscountDivinerInputType } from '../Discount/index.ts'
+import { PaymentSubtotalDiviner, PaymentSubtotalDivinerInputType } from '../Subtotal/index.ts'
 
 type InputType = PaymentDiscountDivinerInputType | PaymentSubtotalDivinerInputType
 type OutputType = Subtotal | Discount | Total
@@ -38,11 +35,11 @@ export class PaymentTotalDiviner<
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
     const subtotalDiviner = await this.getPaymentSubtotalDiviner()
     const subtotalResult = await subtotalDiviner.divine(payloads)
-    const subtotal = subtotalResult.find(isSubtotal)
+    const subtotal = subtotalResult.find(isSubtotalWithMeta)
     if (!subtotal) return []
     const discountDiviner = await this.getPaymentDiscountsDiviner()
     const discountResult = await discountDiviner.divine(payloads)
-    const discount = discountResult.find(isDiscount)
+    const discount = discountResult.find(isDiscountWithMeta)
     if (!discount) return []
     const { currency: subtotalCurrency } = subtotal
     const { currency: discountCurrency } = discount

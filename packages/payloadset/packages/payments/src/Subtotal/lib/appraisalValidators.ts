@@ -1,6 +1,6 @@
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
+import { isIso4217CurrencyCode } from '@xyo-network/payment-payload-plugins'
 
-import { isIso4217CurrencyCode } from '../../Amount/index.ts'
 import { validateDuration } from './durationValidators.ts'
 
 const validateAppraisalAmount = (appraisals: HashLeaseEstimate[]): boolean => {

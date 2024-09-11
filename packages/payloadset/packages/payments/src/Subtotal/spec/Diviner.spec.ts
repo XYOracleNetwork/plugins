@@ -2,16 +2,16 @@ import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
-import { EscrowTermsSchema } from '@xyo-network/payment-payload-plugins'
+import {
+  EscrowTermsSchema,
+  isSubtotal,
+  SubtotalSchema,
+} from '@xyo-network/payment-payload-plugins'
 import {
   beforeAll, beforeEach, describe, it, vi,
 } from 'vitest'
 
 import { PaymentSubtotalDiviner } from '../Diviner.ts'
-import {
-  isSubtotal,
-  SubtotalSchema,
-} from '../Payload.ts'
 
 describe('PaymentSubtotalDiviner', () => {
   let sut: PaymentSubtotalDiviner

@@ -6,22 +6,19 @@ import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
-import { EscrowTermsSchema } from '@xyo-network/payment-payload-plugins'
+import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
+import {
+  EscrowTermsSchema,
+  FixedAmountCouponSchema, FixedPercentageCouponSchema, isTotal,
+  TotalSchema,
+} from '@xyo-network/payment-payload-plugins'
 import {
   beforeAll, beforeEach, describe, it, vi,
 } from 'vitest'
 
-import type { Coupon } from '../../Discount/index.ts'
-import {
-  FixedAmountCouponSchema, FixedPercentageCouponSchema, PaymentDiscountDiviner,
-} from '../../Discount/index.ts'
+import { PaymentDiscountDiviner } from '../../Discount/index.ts'
 import { PaymentSubtotalDiviner } from '../../Subtotal/index.ts'
 import { PaymentTotalDiviner } from '../Diviner.ts'
-import {
-  isTotal,
-  TotalSchema,
-} from '../Payload.ts'
 
 describe('PaymentTotalDiviner', () => {
   let sut: PaymentTotalDiviner

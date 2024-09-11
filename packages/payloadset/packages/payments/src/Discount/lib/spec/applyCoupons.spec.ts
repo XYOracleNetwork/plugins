@@ -1,13 +1,13 @@
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import type { Coupon } from '@xyo-network/payment-payload-plugins'
+import {
+  DiscountSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
+} from '@xyo-network/payment-payload-plugins'
 import {
   beforeEach, describe, it, vi,
 } from 'vitest'
 
-import type { Coupon } from '../../Payload/index.ts'
-import {
-  DiscountSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
-} from '../../Payload/index.ts'
 import { applyCoupons } from '../applyCoupons.ts'
 
 describe('applyCoupons', () => {

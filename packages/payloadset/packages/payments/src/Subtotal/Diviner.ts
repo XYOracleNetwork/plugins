@@ -4,14 +4,13 @@ import { DivinerInstance, DivinerModuleEventData } from '@xyo-network/diviner-mo
 import { creatableModule } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
-import { EscrowTerms, isEscrowTerms } from '@xyo-network/payment-payload-plugins'
+import {
+  EscrowTerms, isEscrowTerms, PaymentSubtotalDivinerConfigSchema, PaymentSubtotalDivinerParams, Subtotal, SubtotalSchema,
+} from '@xyo-network/payment-payload-plugins'
 
-import { PaymentSubtotalDivinerConfigSchema } from './Config.ts'
 import {
   appraisalValidators, termsValidators, ValidEscrowTerms,
 } from './lib/index.ts'
-import { PaymentSubtotalDivinerParams } from './Params.ts'
-import { Subtotal, SubtotalSchema } from './Payload.ts'
 
 const currency = 'USD'
 

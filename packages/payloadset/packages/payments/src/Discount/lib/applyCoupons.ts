@@ -1,16 +1,15 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
-
-import type { AmountFields } from '../../Amount/index.ts'
 import type {
+  AmountFields,
   Coupon, Discount, FixedAmountCoupon,
   FixedPercentageCoupon,
-} from '../Payload/index.ts'
+} from '@xyo-network/payment-payload-plugins'
 import {
   DiscountSchema, isFixedAmountCoupon, isFixedPercentageCoupon,
   isStackable,
-} from '../Payload/index.ts'
+} from '@xyo-network/payment-payload-plugins'
 
 export const applyCoupons = (appraisals: HashLeaseEstimate[], coupons: Coupon[]): Discount => {
   // Ensure all appraisals and coupons are in USD
