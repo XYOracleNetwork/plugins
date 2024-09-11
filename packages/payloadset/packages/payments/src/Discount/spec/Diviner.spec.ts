@@ -7,18 +7,17 @@ import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
-import { EscrowTermsSchema } from '@xyo-network/payment-payload-plugins'
+import {
+  DiscountSchema, EscrowTermsSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
+  isDiscount,
+  PaymentDiscountDivinerConfigSchema,
+} from '@xyo-network/payment-payload-plugins'
 import {
   beforeEach, describe, it, vi,
 } from 'vitest'
 
-import { PaymentDiscountDivinerConfigSchema } from '../Config.ts'
 import { PaymentDiscountDiviner } from '../Diviner.ts'
 import type { Coupon } from '../Payload/index.ts'
-import {
-  DiscountSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
-  isDiscount,
-} from '../Payload/index.ts'
 
 describe('PaymentDiscountDiviner', () => {
   let sut: PaymentDiscountDiviner
