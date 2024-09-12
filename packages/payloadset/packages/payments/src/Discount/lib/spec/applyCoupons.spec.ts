@@ -3,6 +3,7 @@ import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import {
   DiscountSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
+  FixedPriceCouponSchema,
 } from '@xyo-network/payment-payload-plugins'
 import {
   beforeEach, describe, it, vi,
@@ -20,6 +21,10 @@ describe('applyCoupons', () => {
   const TEN_PERCENT_OFF_COUPON: Coupon = {
     percentage: 0.1, exp, nbf, schema: FixedPercentageCouponSchema,
   }
+  const TEN_DOLLAR_ITEM_COUPON: Coupon = {
+    amount: 10, exp, nbf, schema: FixedPriceCouponSchema, currency: 'USD',
+  }
+
   // Appraisals
   const HUNDRED_DOLLAR_ESTIMATE: HashLeaseEstimate = {
     price: 100, currency: 'USD', exp, nbf, schema: HashLeaseEstimateSchema,
@@ -35,16 +40,18 @@ describe('applyCoupons', () => {
     vi.clearAllMocks()
   })
   describe('when coupon is less than total', () => {
-    const validCoupons: [HashLeaseEstimate[], Coupon[]][] = [
-      [[HUNDRED_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON]],
-      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON]],
-      [[HUNDRED_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON]],
-      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON]],
+    const validCoupons: [estimates: HashLeaseEstimate[], coupons: Coupon[], total: number][] = [
+      [[HUNDRED_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON], 10],
+      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON], 10],
+      [[HUNDRED_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON], 10],
+      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON], 10],
+      [[HUNDRED_DOLLAR_ESTIMATE], [TEN_DOLLAR_ITEM_COUPON], 90],
+      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_ITEM_COUPON], 80],
     ]
-    it.each(validCoupons)('Applies coupon discount', (estimates, coupons) => {
+    it.each(validCoupons)('Applies coupon discount', (estimates, coupons, amount) => {
       const results = applyCoupons(estimates, coupons)
       expect(results).toEqual({
-        amount: 10, schema: DiscountSchema, currency: 'USD',
+        amount, schema: DiscountSchema, currency: 'USD',
       })
     })
   })
