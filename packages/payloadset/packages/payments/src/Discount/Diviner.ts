@@ -89,7 +89,7 @@ export class PaymentDiscountDiviner<
     const foundDiscountsHashes = Object.keys(discountsMap) as Hash[]
 
     // Parse coupons
-    const coupons = await this.getEscrowDiscounts(terms, payloads)
+    const coupons = await this.getEscrowDiscounts(terms, hashMap)
     // Log individual discounts that were not found
     for (const hash of discountHashes) {
       if (foundDiscountsHashes.includes(hash)) {
