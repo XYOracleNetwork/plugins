@@ -13,7 +13,6 @@ export type FixedPercentageCouponSchema = typeof FixedPercentageCouponSchema
 
 export interface FixedPercentageCouponFields extends CouponFields {
   percentage: number
-
 }
 
 /**
