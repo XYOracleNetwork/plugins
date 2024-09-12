@@ -152,26 +152,23 @@ export class PaymentDiscountDiviner<
    * @returns The appraisals found in the payloads
    */
   protected getEscrowAppraisals(terms: EscrowTerms, hashMap: Record<Hash, Payload>): HashLeaseEstimate[] {
-    const termsAppraisals = terms?.appraisals
-    if (!termsAppraisals || termsAppraisals.length === 0) return []
-    return termsAppraisals
-      .map(appraisalHash => hashMap[appraisalHash])
-      .filter(exists)
-      .filter(isHashLeaseEstimate) as unknown as HashLeaseEstimate[] // TODO: Cast should not be required
+    const hashes = terms?.appraisals ?? []
+    if (hashes.length === 0) return []
+    return hashes.map(hash => hashMap[hash]).filter(exists).filter(isHashLeaseEstimate)
   }
 
   protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<Coupon[]> {
     // Parse discounts
-    const discountHashes = terms.discounts ?? []
-    if (discountHashes.length === 0) return []
+    const hashes = terms.discounts ?? []
+    if (hashes.length === 0) return []
 
     // Use the supplied payloads to find the discounts
-    const discounts = discountHashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon) as unknown as Coupon[]
+    const discounts = hashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon)
     // Find any remaining coupons from the archivist
-    if (discounts.length !== discountHashes.length) {
+    if (discounts.length !== hashes.length) {
       // Find remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
-      const foundDiscounts = await discountsArchivist.get(discountHashes)
+      const foundDiscounts = await discountsArchivist.get(hashes)
       discounts.push(...foundDiscounts.filter(isCouponWithMeta))
     }
     const discountsMap = await PayloadBuilder.toAllHashMap(discounts)
@@ -181,7 +178,7 @@ export class PaymentDiscountDiviner<
     const foundDiscountsHashes = Object.keys(discountsMap) as Hash[]
 
     // Log individual discounts that were not found
-    for (const hash of discountHashes) {
+    for (const hash of hashes) {
       if (!foundDiscountsHashes.includes(hash)) {
         console.warn(`Discount ${hash} not found for terms ${await PayloadBuilder.hash(terms)}`)
       }
