@@ -163,13 +163,14 @@ export class PaymentDiscountDiviner<
     if (hashes.length === 0) return []
 
     // Use the supplied payloads to find the discounts
-    const discounts = hashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon)
-    // Find any remaining coupons from the archivist
-    if (discounts.length !== hashes.length) {
-      // Find remaining from discounts archivist
+    const discounts: Coupon[] = hashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon)
+    const missing = hashes.filter(hash => !hashMap[hash])
+    // If not all discounts are found
+    if (missing.length > 0) {
+      // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
-      const foundDiscounts = await discountsArchivist.get(hashes)
-      discounts.push(...foundDiscounts.filter(isCouponWithMeta))
+      const payloads = await discountsArchivist.get(missing)
+      discounts.push(...payloads.filter(isCouponWithMeta))
     }
     const discountsMap = await PayloadBuilder.toAllHashMap(discounts)
     if (Object.keys(discountsMap).length === 0) return []
