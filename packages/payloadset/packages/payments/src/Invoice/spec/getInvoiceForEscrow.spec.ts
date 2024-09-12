@@ -6,7 +6,7 @@ import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { EscrowTerms, PaymentTotalDivinerConfig } from '@xyo-network/payment-payload-plugins'
+import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import { EscrowTermsSchema, NO_DISCOUNT } from '@xyo-network/payment-payload-plugins'
 
 import { PaymentDiscountDiviner } from '../../Discount/index.ts'
@@ -16,8 +16,6 @@ import { getInvoiceForEscrow } from '../getInvoiceForEscrow.ts'
 
 describe('getInvoiceForEscrow', () => {
   let node: MemoryNode
-  let paymentDiscountDiviner: PaymentDiscountDiviner
-  let paymentSubtotalDiviner: PaymentSubtotalDiviner
   let paymentTotalDiviner: PaymentTotalDiviner
   beforeAll(async () => {
     node = await MemoryNode.create({ account: 'random' })
@@ -26,20 +24,29 @@ describe('getInvoiceForEscrow', () => {
       account: 'random',
       config: { archivist: discountsArchivist.address, schema: BoundWitnessDivinerConfigSchema },
     })
-    paymentDiscountDiviner = await PaymentDiscountDiviner.create({
+    const paymentDiscountDiviner = await PaymentDiscountDiviner.create({
       account: 'random',
       config: {
-        archivist: discountsArchivist.address, boundWitnessDiviner: discountsBoundWitnessDiviner.address, schema: PaymentDiscountDiviner.defaultConfigSchema,
+        archivist: discountsArchivist.address,
+        boundWitnessDiviner: discountsBoundWitnessDiviner.address,
+        schema: PaymentDiscountDiviner.defaultConfigSchema,
       },
     })
-    paymentSubtotalDiviner = await PaymentSubtotalDiviner.create({ account: 'random' })
-    const config: PaymentTotalDivinerConfig = {
-      paymentDiscountDiviner: paymentDiscountDiviner.address,
-      paymentSubtotalDiviner: paymentSubtotalDiviner.address,
-      schema: PaymentTotalDiviner.defaultConfigSchema,
-    }
-    paymentTotalDiviner = await PaymentTotalDiviner.create({ account: 'random', config })
-    const modules = [discountsArchivist, discountsBoundWitnessDiviner, paymentDiscountDiviner, paymentSubtotalDiviner, paymentTotalDiviner]
+    const paymentSubtotalDiviner = await PaymentSubtotalDiviner.create({ account: 'random' })
+    paymentTotalDiviner = await PaymentTotalDiviner.create({
+      account: 'random',
+      config: {
+        paymentDiscountDiviner: paymentDiscountDiviner.address,
+        paymentSubtotalDiviner: paymentSubtotalDiviner.address,
+        schema: PaymentTotalDiviner.defaultConfigSchema,
+      },
+    })
+    const modules = [
+      discountsArchivist,
+      discountsBoundWitnessDiviner,
+      paymentDiscountDiviner,
+      paymentSubtotalDiviner,
+      paymentTotalDiviner]
     for (const module of modules) {
       await node.register(module)
       await node.attach(module.address, true)
