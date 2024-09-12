@@ -40,13 +40,23 @@ describe('applyCoupons', () => {
     vi.clearAllMocks()
   })
   describe('when coupon is less than total', () => {
-    const validCoupons: [estimates: HashLeaseEstimate[], coupons: Coupon[], total: number][] = [
+    const validCoupons: [estimates: HashLeaseEstimate[], coupons: Coupon[], discount: number][] = [
+      // $100 item with $10 off coupon = $90 total/$10 discount
       [[HUNDRED_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON], 10],
+      // Two items (totalling $100) with $10 off coupon = $90 total/$10 discount
       [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_OFF_COUPON], 10],
+      // $100 item with 10% off coupon = $90 total/$10 discount
       [[HUNDRED_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON], 10],
+      // Two items (totalling $100) with 10% off coupon = $90 total/$10 discount
       [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON], 10],
+      // Two items (totalling $100) with 10% off coupon = $90 total/$10 discount
+      [[THIRTY_DOLLAR_ESTIMATE, SEVENTY_DOLLAR_ESTIMATE], [TEN_PERCENT_OFF_COUPON], 10],
+      // $100 item with $10 per item coupon = $10 total/$90 discount
       [[HUNDRED_DOLLAR_ESTIMATE], [TEN_DOLLAR_ITEM_COUPON], 90],
+      // Two items (totalling $100) with $10 per item coupon = $20 total/$80 discount
       [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_ITEM_COUPON], 80],
+      // Four items (totalling $200) with $10 per item coupon = $40 total/$160 discount
+      [[SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE, SEVENTY_DOLLAR_ESTIMATE, THIRTY_DOLLAR_ESTIMATE], [TEN_DOLLAR_ITEM_COUPON], 160],
     ]
     it.each(validCoupons)('Applies coupon discount', (estimates, coupons, amount) => {
       const results = applyCoupons(estimates, coupons)
