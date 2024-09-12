@@ -6,7 +6,7 @@ import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
+import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import {
   DiscountSchema, EscrowTermsSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
   isDiscount,
@@ -17,7 +17,6 @@ import {
 } from 'vitest'
 
 import { PaymentDiscountDiviner } from '../Diviner.ts'
-import type { Coupon } from '../Payload/index.ts'
 
 describe('PaymentDiscountDiviner', () => {
   let sut: PaymentDiscountDiviner

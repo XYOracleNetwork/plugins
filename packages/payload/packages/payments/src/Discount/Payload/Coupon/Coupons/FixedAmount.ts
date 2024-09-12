@@ -12,9 +12,7 @@ import type { CouponFields } from '../types/index.ts'
 export const FixedAmountCouponSchema = `${CouponSchema}.fixed.amount` as const
 export type FixedAmountCouponSchema = typeof FixedAmountCouponSchema
 
-export interface FixedAmountCouponFields extends CouponFields, AmountFields {
-
-}
+export interface FixedAmountCouponFields extends CouponFields, AmountFields {}
 
 /**
  * A coupon that provides a fixed discount amount

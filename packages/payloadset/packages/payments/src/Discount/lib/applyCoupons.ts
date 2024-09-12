@@ -5,9 +5,11 @@ import type {
   AmountFields,
   Coupon, Discount, FixedAmountCoupon,
   FixedPercentageCoupon,
+  FixedPriceCoupon,
 } from '@xyo-network/payment-payload-plugins'
 import {
   DiscountSchema, isFixedAmountCoupon, isFixedPercentageCoupon,
+  isFixedPriceCoupon,
   isStackable,
 } from '@xyo-network/payment-payload-plugins'
 
@@ -26,6 +28,7 @@ export const applyCoupons = (appraisals: HashLeaseEstimate[], coupons: Coupon[])
   const singularPercentageDiscount = (Math.max(...coupons
     .filter(coupon => isFixedPercentageCoupon(coupon) && !isStackable(coupon))
     .map(coupon => (coupon as FixedPercentageCoupon).percentage), 0)) * total
+  const singularFixedPriceDiscount = calculateSingularFixedPriceDiscount(total, appraisals, coupons, false)
 
   // Calculate stackable discount coupons
   // First calculate the total discount from fixed amount coupons
@@ -37,12 +40,16 @@ export const applyCoupons = (appraisals: HashLeaseEstimate[], coupons: Coupon[])
   const stackedPercentageDiscount = coupons
     .filter(coupon => isFixedPercentageCoupon(coupon) && isStackable(coupon))
     .reduce((acc, coupon) => acc + (coupon as FixedPercentageCoupon).percentage, 0) * (total - stackedFixedDiscount)
+  // Then calculate the total discount from fixed price coupons
+  const stackedFixedPriceDiscount = calculateSingularFixedPriceDiscount(total, appraisals, coupons, true)
+
   // Sum all stackable discounts
-  const stackedDiscount = stackedFixedDiscount + stackedPercentageDiscount
+  const stackedDiscount = stackedFixedDiscount + stackedPercentageDiscount + stackedFixedPriceDiscount
 
   // Find the best coupon(s) to apply
   const maxDiscount = Math.max(
     singularFixedDiscount,
+    singularFixedPriceDiscount,
     singularPercentageDiscount,
     stackedDiscount,
     0,
@@ -55,4 +62,38 @@ export const applyCoupons = (appraisals: HashLeaseEstimate[], coupons: Coupon[])
   return {
     amount, schema: DiscountSchema, currency: 'USD',
   }
+}
+
+const calculateSingularFixedPriceDiscount = (total: number, appraisals: HashLeaseEstimate[], coupons: Coupon[], stackable = false): number => {
+  // Find all singular fixed price discounts
+  const singularFixedPriceDiscounts = coupons
+    .filter(isFixedPriceCoupon)
+    .filter(coupon => stackable ? isStackable(coupon) : !isStackable(coupon))
+    .map(coupon => (coupon as FixedPriceCoupon).amount)
+    // Ensure all fixed price discounts are positive
+    .filter(amount => amount > 0)
+
+  // If there are no singular fixed price discounts, return no discount
+  if (singularFixedPriceDiscounts.length === 0) return 0
+
+  // Find the maximum discount (the lowest fixed price)
+  const lowestFixedPrice = Math.min(...singularFixedPriceDiscounts)
+
+  // Apply the fixed price to all appraisals to get the reduced prices
+  const reducedPrices = appraisals.map(appraisal =>
+  // If the appraisal price is less than the fixed price
+    appraisal.price < lowestFixedPrice
+      // Use the appraisal price as the coupon will result in a higher price
+      ? appraisal.price
+      // Otherwise, apply the fixed price discount
+      : lowestFixedPrice)
+
+  // Calculate the reduced total using the reduced prices
+  const reducedTotal = reducedPrices.reduce((acc, price) => acc + price, 0)
+
+  // Calculate the discount
+  const discount = total - reducedTotal
+
+  // Return the discount or 0 if the discount would have resulted in a negative value
+  return discount > 0 ? discount : 0
 }
