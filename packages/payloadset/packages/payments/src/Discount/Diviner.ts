@@ -72,11 +72,12 @@ export class PaymentDiscountDiviner<
     // Parse coupons
     const coupons = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
-    // NOTE: Should we throw if not all coupons are found? Not all valid?
+    // NOTE: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
     sources.push(...couponHashes)
 
     const validCoupons = await this.filterToSigned(coupons.filter(this.isCouponCurrent))
+    // NOTE: Should we throw if not all coupons are valid?
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
     // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic
@@ -124,7 +125,7 @@ export class PaymentDiscountDiviner<
   }
 
   /**
-   * Find the appraisals for the escrow terms from the supplied payloads
+   * Finds the appraisals specified by the escrow terms from the supplied payloads
    * @param terms The escrow terms
    * @param payloads The payloads to search for the appraisals
    * @returns The appraisals found in the payloads
@@ -135,6 +136,12 @@ export class PaymentDiscountDiviner<
     return hashes.map(hash => hashMap[hash]).filter(exists).filter(isHashLeaseEstimate)
   }
 
+  /**
+   * Finds the discounts specified by the escrow terms from the supplied payloads
+   * @param terms The escrow terms
+   * @param hashMap The payloads to search for the discounts
+   * @returns The discounts found in the payloads
+   */
   protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<Coupon[]> {
     // Parse discounts
     const hashes = terms.discounts ?? []
