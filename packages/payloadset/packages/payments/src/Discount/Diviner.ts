@@ -87,17 +87,17 @@ export class PaymentDiscountDiviner<
 
     // Add the found discounts to the sources
     const foundDiscountsHashes = Object.keys(discountsMap) as Hash[]
-    sources.push(...foundDiscountsHashes)
 
+    // Parse coupons
+    const coupons = await this.getEscrowDiscounts(terms, payloads)
     // Log individual discounts that were not found
     for (const hash of discountHashes) {
-      if (!foundDiscountsHashes.includes(hash)) {
+      if (foundDiscountsHashes.includes(hash)) {
+        sources.push(hash)
+      } else {
         console.warn(`Discount ${hash} not found for terms ${await PayloadBuilder.hash(terms)}`)
       }
     }
-
-    // Parse coupons
-    const coupons = Object.values(discountsMap)
     const validCoupons = await this.filterToSigned(coupons.filter(this.isCouponCurrent))
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
@@ -159,6 +159,39 @@ export class PaymentDiscountDiviner<
       .map(appraisalHash => hashMap[appraisalHash])
       .filter(exists)
       .filter(isHashLeaseEstimate) as unknown as HashLeaseEstimate[] // TODO: Cast should not be required
+  }
+
+  protected async getEscrowDiscounts(terms: EscrowTerms, payloads: Payload[]): Promise<Coupon[]> {
+    // Parse discounts
+    const discountHashes = terms.discounts ?? []
+    if (discountHashes.length === 0) return []
+
+    // Use the supplied payloads to find the discounts
+    const hashMap = await PayloadBuilder.toAllHashMap(payloads)
+    const discounts = discountHashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon) as unknown as Coupon[]
+    // Find any remaining coupons from the archivist
+    if (discounts.length !== discountHashes.length) {
+      // Find remaining from discounts archivist
+      const discountsArchivist = await this.getDiscountsArchivist()
+      const foundDiscounts = await discountsArchivist.get(discountHashes)
+      discounts.push(...foundDiscounts.filter(isCouponWithMeta))
+    }
+    const discountsMap = await PayloadBuilder.toAllHashMap(discounts)
+    if (Object.keys(discountsMap).length === 0) return []
+
+    // Add the found discounts to the sources
+    const foundDiscountsHashes = Object.keys(discountsMap) as Hash[]
+
+    // Log individual discounts that were not found
+    for (const hash of discountHashes) {
+      if (!foundDiscountsHashes.includes(hash)) {
+        console.warn(`Discount ${hash} not found for terms ${await PayloadBuilder.hash(terms)}`)
+      }
+    }
+
+    // Parse coupons
+    const coupons = Object.values(discountsMap)
+    return coupons
   }
 
   protected isCouponCurrent(coupon: Coupon): boolean {
