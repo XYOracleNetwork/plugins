@@ -58,26 +58,22 @@ export class PaymentDiscountDiviner<
     if (!terms) return [{ ...NO_DISCOUNT, sources }] as TOut[]
     sources.push(await PayloadBuilder.hash(terms))
 
+    // Parse appraisals
+    const termsAppraisals = terms?.appraisals
+    // If the escrow terms do not have appraisals, return no discount
+    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    const appraisals = await this.getEscrowAppraisals(terms, payloads)
+    // Add the appraisals that were found to the sources
+    sources.push(...termsAppraisals)
+    // If not all appraisals are found, return no discount
+    if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+
     // Parse discounts
     const discountHashes = terms.discounts ?? []
     if (discountHashes.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
-    // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic
-    // Parse appraisals
-    const termsAppraisals = terms?.appraisals
-    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
-    const hashMap = await PayloadBuilder.toAllHashMap(payloads)
-    const foundAppraisals = termsAppraisals.filter(hash => hashMap[hash])
-    // Add the appraisals that were found to the sources
-    sources.push(...foundAppraisals)
-    // If not all appraisals are found, return no discount
-    if (foundAppraisals.length !== termsAppraisals.length) {
-      return [{ ...NO_DISCOUNT, sources }] as TOut[]
-    }
-    // TODO: Cast should not be required
-    const appraisals = foundAppraisals.map(hash => hashMap[hash]).filter(exists).filter(isHashLeaseEstimate) as unknown as HashLeaseEstimate[]
-
     // Use the supplied payloads to find the discounts
+    const hashMap = await PayloadBuilder.toAllHashMap(payloads)
     const discounts = discountHashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon) as Coupon[]
     // Find any remaining coupons from the archivist
     if (discounts.length !== discountHashes.length) {
@@ -105,6 +101,7 @@ export class PaymentDiscountDiviner<
     const validCoupons = await this.filterToSigned(coupons.filter(this.isCouponCurrent))
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
+    // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic
     const discount = applyCoupons(appraisals, validCoupons)
     return [{ ...discount, sources }] as TOut[]
   }
@@ -146,6 +143,22 @@ export class PaymentDiscountDiviner<
     const name = assertEx(this.config.boundWitnessDiviner, () => 'Missing boundWitnessDiviner in config')
     const mod = assertEx(await this.resolve(name), () => `Error resolving boundWitnessDiviner: ${name}`)
     return assertEx(asDivinerInstance(mod), () => `Resolved module ${mod.address} not a valid Diviner`)
+  }
+
+  /**
+   * Find the appraisals for the escrow terms from the supplied payloads
+   * @param terms The escrow terms
+   * @param payloads The payloads to search for the appraisals
+   * @returns The appraisals found in the payloads
+   */
+  protected async getEscrowAppraisals(terms: EscrowTerms, payloads: Payload[]): Promise<HashLeaseEstimate[]> {
+    const termsAppraisals = terms?.appraisals
+    if (!termsAppraisals || termsAppraisals.length === 0) return []
+    const hashMap = await PayloadBuilder.toAllHashMap(payloads)
+    return termsAppraisals
+      .map(appraisalHash => hashMap[appraisalHash])
+      .filter(exists)
+      .filter(isHashLeaseEstimate) as unknown as HashLeaseEstimate[] // TODO: Cast should not be required
   }
 
   protected isCouponCurrent(coupon: Coupon): boolean {
