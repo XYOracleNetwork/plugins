@@ -10,10 +10,12 @@ import {
 import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
+import type { ValidateFunction } from 'ajv'
 import { Ajv } from 'ajv'
 
-// const ajv = new Ajv({ strict: false }) // Create the Ajv instance once
-// const schemaCache = new Map() // Cache to store compiled validators
+// TODO: Use our schema cache
+const ajv = new Ajv({ strict: false }) // Create the Ajv instance once
+const schemaCache = new Map() // Cache to store compiled validators
 
 // TODO: Migrate to and pull from core SDK
 /**
@@ -69,9 +71,18 @@ export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payloa
 
   // Test each condition
   for (const payload of conditions) {
-    const ajv = new Ajv({ strict: false })
-    // check if it is a valid schema def
-    const validator = ajv.compile(payload.definition)
+    let validator: ValidateFunction
+
+    // Check if the schema is already cached
+    if (schemaCache.has(payload.definition)) {
+      validator = schemaCache.get(payload.definition)
+    } else {
+      // Compile and cache the validator
+      validator = ajv.compile(payload.definition)
+      schemaCache.set(payload.definition, validator)
+    }
+
+    // Validate the payload
     if (!validator(payloads)) unfulfilledConditions.push(payload.$hash)
   }
 
