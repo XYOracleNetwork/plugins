@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/no-thenable */
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { type HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
@@ -43,16 +44,19 @@ describe('findUnfulfilledConditions', () => {
       type: 'array',
       contains: {
         type: 'object',
-        properties: {
-          schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' },
-          price: { type: 'number', exclusiveMaximum: 100 },
-        },
-        required: ['schema', 'price'],
+        properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } },
+        required: ['schema'],
+      },
+      items: {
+        type: 'object',
+        if: { properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } } },
+        then: { properties: { price: { type: 'number', maximum: 20 } }, required: ['price'] },
       },
     },
+
   }
 
-  const validRules = [
+  const metCondition = [
     [BUY_TWO],
     [APPRAISAL_DOES_NOT_EXCEED_AMOUNT],
   ]
@@ -62,9 +66,13 @@ describe('findUnfulfilledConditions', () => {
   const baseTerms: EscrowTerms = {
     schema: EscrowTermsSchema, appraisals: [], exp, nbf,
   }
-  const appraisal: HashLeaseEstimate = {
+  const appraisal1: HashLeaseEstimate = {
     schema: HashLeaseEstimateSchema, price: 10, currency: 'USD', exp, nbf,
   }
+  const appraisal2: HashLeaseEstimate = {
+    schema: HashLeaseEstimateSchema, price: 20, currency: 'USD', exp, nbf,
+  }
+  const appraisals = [appraisal1, appraisal2]
 
   const asset1: IdPayload = { schema: IdSchema, salt: nbf.toString() }
   const asset2: IdPayload = { schema: IdSchema, salt: exp.toString() }
@@ -76,21 +84,21 @@ describe('findUnfulfilledConditions', () => {
     seller = await HDWallet.random()
     baseTerms.buyer = [buyer.address]
     baseTerms.seller = [seller.address]
-    baseTerms.appraisals = [await PayloadBuilder.dataHash(appraisal)]
+    baseTerms.appraisals = await PayloadBuilder.dataHashes(appraisals)
     baseTerms.assets = await PayloadBuilder.dataHashes(assets)
   })
   describe('when conditions are fulfilled', () => {
-    it.each(validRules)('Returns empty array', async (rule) => {
+    it.each(metCondition)('Returns empty array', async (rule) => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
-      const payloads = [terms, appraisal, coupon, rule, ...assets]
+      const payloads = [terms, appraisal1, coupon, rule, ...assets, ...appraisals]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual([])
     })
   })
   describe('when conditions are not fulfilled', () => {
-    it.each(validRules)('Returns all unfulfilled condition hashes', async (rule) => {
+    it.each(metCondition)('Returns all unfulfilled condition hashes', async (rule) => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = {
