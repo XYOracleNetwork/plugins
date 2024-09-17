@@ -1,4 +1,3 @@
-import { assertEx } from '@xylabs/assert'
 import type { Hash } from '@xylabs/hex'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
