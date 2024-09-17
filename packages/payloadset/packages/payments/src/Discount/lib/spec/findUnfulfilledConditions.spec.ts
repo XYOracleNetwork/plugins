@@ -41,17 +41,32 @@ describe('findUnfulfilledConditions', () => {
   const CONDITION_REQUIRES_APPRAISAL_DOES_NOT_EXCEED_AMOUNT = {
     schema: SchemaSchema,
     definition: {
-      type: 'array',
-      contains: {
-        type: 'object',
-        properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } },
-        required: ['schema'],
-      },
-      items: {
-        type: 'object',
-        if: { properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } } },
-        then: { properties: { price: { type: 'number', maximum: 20 } }, required: ['price'] },
-      },
+      allOf: [
+        {
+          type: 'array',
+          contains: {
+            type: 'object',
+            properties: {
+              schema: { type: 'string', const: 'network.xyo.escrow.terms' },
+              appraisals: { type: 'array', minItems: 1 },
+            },
+            required: ['schema', 'appraisals'],
+          },
+        },
+        {
+          type: 'array',
+          contains: {
+            type: 'object',
+            properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } },
+            required: ['schema'],
+          },
+          items: {
+            type: 'object',
+            if: { properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } } },
+            then: { properties: { price: { type: 'number', maximum: 20 } }, required: ['price'] },
+          },
+        },
+      ],
     },
   }
 
@@ -108,7 +123,7 @@ describe('findUnfulfilledConditions', () => {
     // Configure condition for specific buyer
     CONDITION_FOR_SPECIFIC_BUYER.definition.contains.properties.buyer.items.const = buyer.address
   })
-  describe('when conditions are fulfilled', () => {
+  describe('when all conditions are fulfilled', () => {
     describe('returns empty array', () => {
       it.each(allConditions)('for single condition', async (rule) => {
         const conditions = [await PayloadBuilder.dataHash(rule)]
