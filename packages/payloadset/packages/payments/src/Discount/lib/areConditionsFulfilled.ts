@@ -9,6 +9,7 @@ import {
 import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
+import { Ajv } from 'ajv'
 
 // TODO: Migrate to and pull from core SDK
 /**
@@ -33,6 +34,17 @@ export const areConditionsFulfilled = async (coupon: Coupon, payloads: Payload[]
   // Find all the conditions
   const conditions = coupon.conditions.map(hash => hashMap[hash]).filter(isSchemaWithMeta) as WithMeta<SchemaPayload>[]
   assertEx(conditions.length === coupon.conditions.length, () => 'Not all conditions were found')
-  // TODO: Implement condition fulfillment
-  return false
+
+  // TODO: Compile all conditions and return array of failing conditions
+  // Compile the conditions iteratively to allow for
+  // bailing early if a condition is not met
+  for (const payload of conditions) {
+    const ajv = new Ajv({ strict: false })
+    // check if it is a valid schema def
+    const validator = ajv.compile(payload.definition)
+    if (!validator(payloads)) return false
+  }
+
+  // All conditions passed
+  return true
 }
