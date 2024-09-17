@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import type { Hash } from '@xylabs/hex'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import {
@@ -10,6 +11,9 @@ import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 import { Ajv } from 'ajv'
+
+// const ajv = new Ajv({ strict: false }) // Create the Ajv instance once
+// const schemaCache = new Map() // Cache to store compiled validators
 
 // TODO: Migrate to and pull from core SDK
 /**
@@ -47,4 +51,30 @@ export const areConditionsFulfilled = async (coupon: Coupon, payloads: Payload[]
 
   // All conditions passed
   return true
+}
+
+export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payload[]): Promise<Hash[]> => {
+  const unfulfilledConditions: Hash[] = []
+  // If there are no conditions, then they are fulfilled
+  if (!coupon.conditions || coupon.conditions.length === 0) return unfulfilledConditions
+  const hashMap = await PayloadBuilder.toAllHashMap(payloads)
+  // Find all the conditions
+  const conditions = coupon.conditions.map(hash => hashMap[hash]).filter(isSchemaWithMeta) as WithMeta<SchemaPayload>[]
+  // Not all conditions were found
+  if (conditions.length !== coupon.conditions.length) {
+    const missing = coupon.conditions.filter(hash => !hashMap[hash])
+    unfulfilledConditions.push(...missing)
+    return unfulfilledConditions
+  }
+
+  // Test each condition
+  for (const payload of conditions) {
+    const ajv = new Ajv({ strict: false })
+    // check if it is a valid schema def
+    const validator = ajv.compile(payload.definition)
+    if (!validator(payloads)) unfulfilledConditions.push(payload.$hash)
+  }
+
+  // All conditions passed
+  return unfulfilledConditions
 }
