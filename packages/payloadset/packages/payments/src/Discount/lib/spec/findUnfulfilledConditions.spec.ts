@@ -37,7 +37,6 @@ describe('findUnfulfilledConditions', () => {
       },
     },
   }
-  // TODO: Appraisal payload does not exceed X
   const APPRAISAL_DOES_NOT_EXCEED_AMOUNT: SchemaPayload = {
     schema: SchemaSchema,
     definition: {
@@ -45,10 +44,10 @@ describe('findUnfulfilledConditions', () => {
       contains: {
         type: 'object',
         properties: {
-          schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-          assets: { type: 'array', minItems: 2 },
+          schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' },
+          price: { type: 'number', exclusiveMaximum: 100 },
         },
-        required: ['schema', 'assets'],
+        required: ['schema', 'price'],
       },
     },
   }
@@ -95,9 +94,9 @@ describe('findUnfulfilledConditions', () => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = {
-        ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [],
+        ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [], appraisals: [],
       }
-      const payloads = [terms, appraisal, coupon, rule, ...assets]
+      const payloads = [terms, coupon, rule]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual(conditions)
     })
