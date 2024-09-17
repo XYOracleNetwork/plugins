@@ -33,28 +33,16 @@ export const isSchemaWithSources = isPayloadOfSchemaTypeWithSources<SchemaPayloa
  */
 export const isSchemaWithMeta = isPayloadOfSchemaTypeWithMeta<SchemaPayload>(SchemaSchema)
 
-export const areConditionsFulfilled = async (coupon: Coupon, payloads: Payload[]): Promise<boolean> => {
-  // If there are no conditions, then they are fulfilled
-  if (!coupon.conditions || coupon.conditions.length === 0) return true
-  const hashMap = await PayloadBuilder.toAllHashMap(payloads)
-  // Find all the conditions
-  const conditions = coupon.conditions.map(hash => hashMap[hash]).filter(isSchemaWithMeta) as WithMeta<SchemaPayload>[]
-  assertEx(conditions.length === coupon.conditions.length, () => 'Not all conditions were found')
+export const areConditionsFulfilled = async (coupon: Coupon, payloads: Payload[]): Promise<boolean> =>
+  (await findUnfulfilledConditions(coupon, payloads)).length === 0
 
-  // TODO: Compile all conditions and return array of failing conditions
-  // Compile the conditions iteratively to allow for
-  // bailing early if a condition is not met
-  for (const payload of conditions) {
-    const ajv = new Ajv({ strict: false })
-    // check if it is a valid schema def
-    const validator = ajv.compile(payload.definition)
-    if (!validator(payloads)) return false
-  }
-
-  // All conditions passed
-  return true
-}
-
+// TODO: Should we separate conditions and payloads to prevent conflating data and "operands" (schemas to validate against data)?
+/**
+ * Validates the conditions of a coupon against the provided payloads
+ * @param coupon The coupon to check
+ * @param payloads The associated payloads (containing the conditions and data to validate the conditions against)
+ * @returns The unfulfilled condition hashes
+ */
 export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payload[]): Promise<Hash[]> => {
   const unfulfilledConditions: Hash[] = []
   // If there are no conditions, then they are fulfilled
@@ -70,20 +58,27 @@ export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payloa
   }
 
   // Test each condition
-  for (const payload of conditions) {
+  for (const hash of coupon.conditions) {
     let validator: ValidateFunction
 
     // Check if the schema is already cached
-    if (schemaCache.has(payload.definition)) {
-      validator = schemaCache.get(payload.definition)
+    if (schemaCache.has(hash)) {
+      validator = schemaCache.get(hash)
     } else {
-      // Compile and cache the validator
-      validator = ajv.compile(payload.definition)
-      schemaCache.set(payload.definition, validator)
-    }
+      const payload = hashMap[hash]
+      const definition = isSchemaWithMeta(payload) ? payload.definition : undefined
+      if (definition) {
+        // Compile and cache the validator
+        validator = ajv.compile(definition)
+        schemaCache.set(hash, validator)
 
-    // Validate the payload
-    if (!validator(payloads)) unfulfilledConditions.push(payload.$hash)
+        // Validate the payload
+        if (!validator(payloads)) unfulfilledConditions.push(payload.$hash)
+      } else {
+        unfulfilledConditions.push(hash)
+        continue
+      }
+    }
   }
 
   // All conditions passed
