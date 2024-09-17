@@ -154,17 +154,35 @@ describe('findUnfulfilledConditions', () => {
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when appraisals do not exist', async () => {
+        it('when escrow terms appraisals do not exist', async () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const terms: EscrowTerms = {
-            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [], appraisals: [],
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], appraisals: undefined,
           }
-          const payloads = [terms, coupon, rule]
+          const payloads = [terms, coupon, rule, ...appraisals, ...assets]
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when appraisal price exceeds the maximum amount', async () => {
+        it('when escrow terms appraisals is empty', async () => {
+          const conditions = [await PayloadBuilder.dataHash(rule)]
+          const coupon: Coupon = { ...validCoupon, conditions }
+          const terms: EscrowTerms = {
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], appraisals: [],
+          }
+          const payloads = [terms, coupon, rule, ...appraisals, ...assets]
+          const results = await findUnfulfilledConditions(coupon, payloads)
+          expect(results).toEqual(conditions)
+        })
+        it('when appraisals not supplied', async () => {
+          const conditions = [await PayloadBuilder.dataHash(rule)]
+          const coupon: Coupon = { ...validCoupon, conditions }
+          const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
+          const payloads = [terms, coupon, rule, ...assets]
+          const results = await findUnfulfilledConditions(coupon, payloads)
+          expect(results).toEqual(conditions)
+        })
+        it('when supplied appraisal price exceeds the maximum amount', async () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const assets = [asset1]
@@ -192,26 +210,32 @@ describe('findUnfulfilledConditions', () => {
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when appraisals do not exist', async () => {
+        it('when escrow terms assets do not exist', async () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const terms: EscrowTerms = {
-            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [], appraisals: [],
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: undefined,
           }
-          const payloads = [terms, coupon, rule, ...assets, ...appraisals]
+          const payloads = [terms, coupon, rule, ...appraisals, ...assets]
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when appraisal quantity does not exceed the required amount', async () => {
+        it('when escrow terms assets is empty', async () => {
+          const conditions = [await PayloadBuilder.dataHash(rule)]
+          const coupon: Coupon = { ...validCoupon, conditions }
+          const terms: EscrowTerms = {
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [],
+          }
+          const payloads = [terms, coupon, rule, ...appraisals, ...assets]
+          const results = await findUnfulfilledConditions(coupon, payloads)
+          expect(results).toEqual(conditions)
+        })
+        it('when escrow terms assets quantity does not exceed the required amount', async () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const assets = [asset1]
-          const appraisals = [appraisal1]
           const terms: EscrowTerms = {
-            ...baseTerms,
-            discounts: [await PayloadBuilder.dataHash(coupon)],
-            assets: await PayloadBuilder.dataHashes(assets),
-            appraisals: await PayloadBuilder.dataHashes(appraisals),
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: await PayloadBuilder.dataHashes(assets),
           }
           const payloads = [terms, coupon, rule, ...assets, ...appraisals]
           const results = await findUnfulfilledConditions(coupon, payloads)
@@ -227,7 +251,17 @@ describe('findUnfulfilledConditions', () => {
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when escrow terms contains no buyers', async () => {
+        it('when escrow terms buyer does not exist', async () => {
+          const conditions = [await PayloadBuilder.dataHash(rule)]
+          const coupon: Coupon = { ...validCoupon, conditions }
+          const terms: EscrowTerms = {
+            ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], buyer: undefined,
+          }
+          const payloads = [terms, coupon, rule, ...assets, ...appraisals]
+          const results = await findUnfulfilledConditions(coupon, payloads)
+          expect(results).toEqual(conditions)
+        })
+        it('when escrow terms buyers is empty', async () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const terms: EscrowTerms = {
@@ -237,7 +271,7 @@ describe('findUnfulfilledConditions', () => {
           const results = await findUnfulfilledConditions(coupon, payloads)
           expect(results).toEqual(conditions)
         })
-        it('when escrow terms buyers does not contain specified address', async () => {
+        it('when escrow terms buyer does not contain specified address', async () => {
           const buyer = await HDWallet.random()
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
