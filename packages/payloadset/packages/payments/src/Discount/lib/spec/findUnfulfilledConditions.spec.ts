@@ -96,7 +96,7 @@ describe('findUnfulfilledConditions', () => {
   let buyer: WalletInstance
   let seller: WalletInstance
   const baseTerms: EscrowTerms = {
-    schema: EscrowTermsSchema, appraisals: [], exp, nbf, buyer: ['abcdefg'],
+    schema: EscrowTermsSchema, appraisals: [], exp, nbf,
   }
   const appraisal1: HashLeaseEstimate = {
     schema: HashLeaseEstimateSchema, price: 10, currency: 'USD', exp, nbf,
