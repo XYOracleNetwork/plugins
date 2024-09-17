@@ -92,7 +92,7 @@ describe('findUnfulfilledConditions', () => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
-      const payloads = [terms, appraisal1, coupon, rule, ...assets, ...appraisals]
+      const payloads = [terms, coupon, rule, ...assets, ...appraisals]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual([])
     })
@@ -104,7 +104,7 @@ describe('findUnfulfilledConditions', () => {
       const terms: EscrowTerms = {
         ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [], appraisals: [],
       }
-      const payloads = [terms, coupon, rule]
+      const payloads = [terms, coupon, rule, ...assets, ...appraisals]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual(conditions)
     })
