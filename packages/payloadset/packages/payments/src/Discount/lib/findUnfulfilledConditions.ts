@@ -1,36 +1,15 @@
 import type { Hash } from '@xylabs/hex'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
-  isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
 import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
-import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
+import { isSchemaPayloadWithMeta } from '@xyo-network/schema-payload-plugin'
 import type { ValidateFunction } from 'ajv'
 import { Ajv } from 'ajv'
 
 // TODO: Use our schema cache
 const ajv = new Ajv({ strict: false }) // Create the Ajv instance once
 const schemaCache = new Map() // Cache to store compiled validators
-
-// TODO: Migrate to and pull from core SDK
-/**
- * Identity function for determining if an object is an Schema
- */
-export const isSchema = isPayloadOfSchemaType<SchemaPayload>(SchemaSchema)
-
-/**
- * Identity function for determining if an object is an Schema with sources
- */
-export const isSchemaWithSources = isPayloadOfSchemaTypeWithSources<SchemaPayload>(SchemaSchema)
-
-/**
- * Identity function for determining if an object is an Schema with meta
- */
-export const isSchemaWithMeta = isPayloadOfSchemaTypeWithMeta<SchemaPayload>(SchemaSchema)
 
 export const areConditionsFulfilled = async (coupon: Coupon, payloads: Payload[]): Promise<boolean> =>
   (await findUnfulfilledConditions(coupon, payloads)).length === 0
@@ -48,7 +27,7 @@ export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payloa
   if (!coupon.conditions || coupon.conditions.length === 0) return unfulfilledConditions
   const hashMap = await PayloadBuilder.toAllHashMap(payloads)
   // Find all the conditions
-  const conditions = coupon.conditions.map(hash => hashMap[hash]).filter(isSchemaWithMeta) as WithMeta<SchemaPayload>[]
+  const conditions = coupon.conditions.map(hash => hashMap[hash]).filter(isSchemaPayloadWithMeta) as WithMeta<SchemaPayload>[]
   // Not all conditions were found
   if (conditions.length !== coupon.conditions.length) {
     const missing = coupon.conditions.filter(hash => !hashMap[hash])
@@ -65,7 +44,7 @@ export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payloa
       validator = schemaCache.get(hash)
     } else {
       const payload = hashMap[hash]
-      const definition = isSchemaWithMeta(payload) ? payload.definition : undefined
+      const definition = isSchemaPayloadWithMeta(payload) ? payload.definition : undefined
       if (definition) {
         // Compile and cache the validator
         validator = ajv.compile(definition)
