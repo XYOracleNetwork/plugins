@@ -56,10 +56,7 @@ describe('findUnfulfilledConditions', () => {
 
   }
 
-  const metCondition = [
-    [BUY_TWO],
-    [APPRAISAL_DOES_NOT_EXCEED_AMOUNT],
-  ]
+  const allConditions = [BUY_TWO, APPRAISAL_DOES_NOT_EXCEED_AMOUNT]
 
   let buyer: WalletInstance
   let seller: WalletInstance
@@ -88,17 +85,29 @@ describe('findUnfulfilledConditions', () => {
     baseTerms.assets = await PayloadBuilder.dataHashes(assets)
   })
   describe('when conditions are fulfilled', () => {
-    it.each(metCondition)('Returns empty array', async (rule) => {
-      const conditions = [await PayloadBuilder.dataHash(rule)]
-      const coupon: Coupon = { ...validCoupon, conditions }
-      const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
-      const payloads = [terms, coupon, rule, ...assets, ...appraisals]
-      const results = await findUnfulfilledConditions(coupon, payloads)
-      expect(results).toEqual([])
+    describe('for single condition', () => {
+      it.each(allConditions)('returns empty array', async (rule) => {
+        const conditions = [await PayloadBuilder.dataHash(rule)]
+        const coupon: Coupon = { ...validCoupon, conditions }
+        const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
+        const payloads = [terms, coupon, rule, ...assets, ...appraisals]
+        const results = await findUnfulfilledConditions(coupon, payloads)
+        expect(results).toEqual([])
+      })
+    })
+    describe('for multiple conditions', () => {
+      it('returns empty array', async () => {
+        const conditions = await PayloadBuilder.dataHashes(allConditions)
+        const coupon: Coupon = { ...validCoupon, conditions }
+        const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
+        const payloads = [terms, coupon, ...allConditions, ...assets, ...appraisals]
+        const results = await findUnfulfilledConditions(coupon, payloads)
+        expect(results).toEqual([])
+      })
     })
   })
   describe('when conditions are not fulfilled', () => {
-    it.each(metCondition)('Returns all unfulfilled condition hashes', async (rule) => {
+    it.each(allConditions)('Returns all unfulfilled condition hashes', async (rule) => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = {
