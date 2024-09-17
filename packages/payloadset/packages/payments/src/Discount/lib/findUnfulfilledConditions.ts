@@ -51,12 +51,12 @@ export const findUnfulfilledConditions = async (coupon: Coupon, payloads: Payloa
         schemaCache.set(hash, validator)
 
         // Validate the payload
-        if (!validator(payloads)) unfulfilledConditions.push(payload.$hash)
       } else {
         unfulfilledConditions.push(hash)
         continue
       }
     }
+    if (!validator(payloads)) unfulfilledConditions.push(hash)
   }
 
   // All conditions passed

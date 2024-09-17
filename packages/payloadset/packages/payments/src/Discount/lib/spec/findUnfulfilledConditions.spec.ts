@@ -66,10 +66,11 @@ describe('findUnfulfilledConditions', () => {
   })
   describe('when conditions are not fulfilled', () => {
     it.each(validRules)('Returns all unfulfilled condition hashes', async (rule) => {
-      const coupon: Coupon = { ...validCoupon, conditions: [await PayloadBuilder.dataHash(rule)] }
+      const conditions = [await PayloadBuilder.dataHash(rule)]
+      const coupon: Coupon = { ...validCoupon, conditions }
       const payloads = [rule]
       const results = await findUnfulfilledConditions(coupon, payloads)
-      expect(results).toEqual([])
+      expect(results).toEqual(conditions)
     })
   })
 })
