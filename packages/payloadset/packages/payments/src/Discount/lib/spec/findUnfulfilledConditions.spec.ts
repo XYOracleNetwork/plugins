@@ -1,6 +1,8 @@
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { type HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import type { IdPayload } from '@xyo-network/id-payload-plugin'
+import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import { EscrowTermsSchema, FixedAmountCouponSchema } from '@xyo-network/payment-payload-plugins'
@@ -65,6 +67,10 @@ describe('findUnfulfilledConditions', () => {
     schema: HashLeaseEstimateSchema, price: 10, currency: 'USD', exp, nbf,
   }
 
+  const asset1: IdPayload = { schema: IdSchema, salt: nbf.toString() }
+  const asset2: IdPayload = { schema: IdSchema, salt: exp.toString() }
+  const assets = [asset1, asset2]
+
   beforeEach(async () => {
     vi.clearAllMocks()
     buyer = await HDWallet.random()
@@ -72,13 +78,14 @@ describe('findUnfulfilledConditions', () => {
     baseTerms.buyer = [buyer.address]
     baseTerms.seller = [seller.address]
     baseTerms.appraisals = [await PayloadBuilder.dataHash(appraisal)]
+    baseTerms.assets = await PayloadBuilder.dataHashes(assets)
   })
   describe('when conditions are fulfilled', () => {
     it.each(validRules)('Returns empty array', async (rule) => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
       const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
-      const payloads = [terms, appraisal, coupon, rule]
+      const payloads = [terms, appraisal, coupon, rule, ...assets]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual([])
     })
@@ -87,8 +94,10 @@ describe('findUnfulfilledConditions', () => {
     it.each(validRules)('Returns all unfulfilled condition hashes', async (rule) => {
       const conditions = [await PayloadBuilder.dataHash(rule)]
       const coupon: Coupon = { ...validCoupon, conditions }
-      const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
-      const payloads = [terms, appraisal, coupon, rule]
+      const terms: EscrowTerms = {
+        ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], assets: [],
+      }
+      const payloads = [terms, appraisal, coupon, rule, ...assets]
       const results = await findUnfulfilledConditions(coupon, payloads)
       expect(results).toEqual(conditions)
     })
