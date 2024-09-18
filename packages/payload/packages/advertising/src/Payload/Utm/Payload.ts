@@ -7,6 +7,9 @@ import {
 
 import { UtmSchema } from './Schema.ts'
 
+/**
+ * The fields of a Utm payload
+ */
 export interface UtmFields {
   /**
    * Names the specific campaign for tracking purposes (e.g., summer_sale, launch_campaign).
