@@ -4281,6 +4281,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xyo-network/advertising-payload-plugins@workspace:packages/payload/packages/advertising":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/advertising-payload-plugins@workspace:packages/payload/packages/advertising"
+  dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^4.0.7"
+    "@xylabs/tsconfig": "npm:^4.0.7"
+    "@xyo-network/payload-model": "npm:^3.1.10"
+    "@xyo-network/payload-plugin": "npm:^3.1.10"
+    typescript: "npm:^5.5.4"
+  languageName: unknown
+  linkType: soft
+
 "@xyo-network/api-call-witness@workspace:^, @xyo-network/api-call-witness@workspace:packages/payloadset/packages/api":
   version: 0.0.0-use.local
   resolution: "@xyo-network/api-call-witness@workspace:packages/payloadset/packages/api"
