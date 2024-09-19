@@ -15,6 +15,7 @@ import { creatableModule } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import {
+  Condition,
   Coupon,
   Discount,
   EscrowTerms, isCoupon,
@@ -70,16 +71,17 @@ export class PaymentDiscountDiviner<
     if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
     // Parse coupons
-    const [coupons] = await this.getEscrowDiscounts(terms, hashMap)
+    const [coupons, conditions] = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
     // NOTE: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
     sources.push(...couponHashes)
 
+    const valuesAndConditions = [...payloads, ...conditions]
     const validCoupons = await this.filterToSigned(
       coupons
         .filter(this.isCouponCurrent)
-        .filter(coupon => areConditionsFulfilled(coupon, payloads)),
+        .filter(coupon => areConditionsFulfilled(coupon, valuesAndConditions)),
     )
     // NOTE: Should we throw if not all coupons are valid?
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
@@ -146,10 +148,10 @@ export class PaymentDiscountDiviner<
    * @param hashMap The payloads to search for the discounts
    * @returns The discounts found in the payloads
    */
-  protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<[Coupon[]]> {
+  protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<[Coupon[], Condition[]]> {
     // Parse discounts
     const hashes = terms.discounts ?? []
-    if (hashes.length === 0) return [[]]
+    if (hashes.length === 0) return [[], []]
 
     // Use the supplied payloads to find the discounts
     const discounts: Coupon[] = hashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon)
@@ -172,7 +174,7 @@ export class PaymentDiscountDiviner<
     }
 
     // TODO: Find all non-supplied coupon conditions here as well
-    return [discounts]
+    return [discounts, []]
   }
 
   protected isCouponCurrent(coupon: Coupon): boolean {
