@@ -1,14 +1,20 @@
 /* eslint-disable unicorn/no-thenable */
+import type { Address } from '@xylabs/hex'
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { type HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import type { IdPayload } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
-import { EscrowTermsSchema, FixedAmountCouponSchema } from '@xyo-network/payment-payload-plugins'
+import type {
+  BuyerCondition,
+  Condition, Coupon, EscrowTerms,
+} from '@xyo-network/payment-payload-plugins'
+import {
+  createConditionForMaximumAppraisalAmount,
+  createConditionForMinimumAssetQuantity, createConditionForRequiredBuyer, EscrowTermsSchema, FixedAmountCouponSchema,
+} from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
-import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 import {
   beforeEach, describe, it,
 } from 'vitest'
@@ -24,68 +30,9 @@ describe('findUnfulfilledConditions', () => {
   }
 
   // Conditions
-  const CONDITION_REQUIRES_BUYING_TWO = {
-    schema: SchemaSchema,
-    definition: {
-      type: 'array',
-      contains: {
-        type: 'object',
-        properties: {
-          schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-          assets: { type: 'array', minItems: 2 },
-        },
-        required: ['schema', 'assets'],
-      },
-    },
-  }
-  const CONDITION_REQUIRES_APPRAISAL_DOES_NOT_EXCEED_AMOUNT = {
-    schema: SchemaSchema,
-    definition: {
-      allOf: [
-        {
-          type: 'array',
-          contains: {
-            type: 'object',
-            properties: {
-              schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-              appraisals: { type: 'array', minItems: 1 },
-            },
-            required: ['schema', 'appraisals'],
-          },
-        },
-        {
-          type: 'array',
-          contains: {
-            type: 'object',
-            properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } },
-            required: ['schema'],
-          },
-          items: {
-            type: 'object',
-            if: { properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } } },
-            then: { properties: { price: { type: 'number', maximum: 20 } }, required: ['price'] },
-          },
-        },
-      ],
-    },
-  }
-
-  const CONDITION_FOR_SPECIFIC_BUYER = {
-    schema: SchemaSchema,
-    definition: {
-      type: 'array',
-      contains: {
-        type: 'object',
-        properties: {
-          schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-          buyer: {
-            type: 'array', items: { type: 'string', const: '' }, minItems: 1,
-          },
-        },
-        required: ['schema', 'buyer'],
-      },
-    },
-  }
+  const CONDITION_REQUIRES_BUYING_TWO: Condition = createConditionForMinimumAssetQuantity(2)
+  const CONDITION_REQUIRES_APPRAISAL_DOES_NOT_EXCEED_AMOUNT: Condition = createConditionForMaximumAppraisalAmount(20)
+  const CONDITION_FOR_SPECIFIC_BUYER: BuyerCondition = createConditionForRequiredBuyer('TODO: Replace in beforeAll' as Address)
 
   const allConditions: SchemaPayload[] = [
     CONDITION_REQUIRES_BUYING_TWO,
