@@ -22,7 +22,7 @@ import {
   isEscrowTerms, NO_DISCOUNT, PaymentDiscountDivinerConfigSchema, PaymentDiscountDivinerParams,
 } from '@xyo-network/payment-payload-plugins'
 
-import { applyCoupons } from './lib/index.ts'
+import { applyCoupons, areConditionsFulfilled } from './lib/index.ts'
 
 const DEFAULT_BOUND_WITNESS_DIVINER_QUERY_PROPS: Readonly<BoundWitnessDivinerQueryPayload> = {
   limit: 1,
@@ -70,13 +70,17 @@ export class PaymentDiscountDiviner<
     if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
     // Parse coupons
-    const coupons = await this.getEscrowDiscounts(terms, hashMap)
+    const [coupons] = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
     // NOTE: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
     sources.push(...couponHashes)
 
-    const validCoupons = await this.filterToSigned(coupons.filter(this.isCouponCurrent))
+    const validCoupons = await this.filterToSigned(
+      coupons
+        .filter(this.isCouponCurrent)
+        .filter(coupon => areConditionsFulfilled(coupon, payloads)),
+    )
     // NOTE: Should we throw if not all coupons are valid?
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 
@@ -142,10 +146,10 @@ export class PaymentDiscountDiviner<
    * @param hashMap The payloads to search for the discounts
    * @returns The discounts found in the payloads
    */
-  protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<Coupon[]> {
+  protected async getEscrowDiscounts(terms: EscrowTerms, hashMap: Record<Hash, Payload>): Promise<[Coupon[]]> {
     // Parse discounts
     const hashes = terms.discounts ?? []
-    if (hashes.length === 0) return []
+    if (hashes.length === 0) return [[]]
 
     // Use the supplied payloads to find the discounts
     const discounts: Coupon[] = hashes.map(hash => hashMap[hash]).filter(exists).filter(isCoupon)
@@ -166,7 +170,9 @@ export class PaymentDiscountDiviner<
         if (!foundHashes.includes(hash)) console.warn(`Discount ${hash} not found for terms ${termsHash}`)
       }
     }
-    return discounts
+
+    // TODO: Find all non-supplied coupon conditions here as well
+    return [discounts]
   }
 
   protected isCouponCurrent(coupon: Coupon): boolean {
