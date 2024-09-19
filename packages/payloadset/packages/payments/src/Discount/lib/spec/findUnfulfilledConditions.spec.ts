@@ -6,7 +6,10 @@ import type { IdPayload } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
-import { EscrowTermsSchema, FixedAmountCouponSchema } from '@xyo-network/payment-payload-plugins'
+import {
+  createConditionForMaximumAppraisalAmount,
+  createConditionForMinimumAssetQuantity, EscrowTermsSchema, FixedAmountCouponSchema,
+} from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 import {
@@ -24,52 +27,8 @@ describe('findUnfulfilledConditions', () => {
   }
 
   // Conditions
-  const CONDITION_REQUIRES_BUYING_TWO = {
-    schema: SchemaSchema,
-    definition: {
-      type: 'array',
-      contains: {
-        type: 'object',
-        properties: {
-          schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-          assets: { type: 'array', minItems: 2 },
-        },
-        required: ['schema', 'assets'],
-      },
-    },
-  }
-  const CONDITION_REQUIRES_APPRAISAL_DOES_NOT_EXCEED_AMOUNT = {
-    schema: SchemaSchema,
-    definition: {
-      allOf: [
-        {
-          type: 'array',
-          contains: {
-            type: 'object',
-            properties: {
-              schema: { type: 'string', const: 'network.xyo.escrow.terms' },
-              appraisals: { type: 'array', minItems: 1 },
-            },
-            required: ['schema', 'appraisals'],
-          },
-        },
-        {
-          type: 'array',
-          contains: {
-            type: 'object',
-            properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } },
-            required: ['schema'],
-          },
-          items: {
-            type: 'object',
-            if: { properties: { schema: { type: 'string', const: 'network.xyo.hash.lease.estimate' } } },
-            then: { properties: { price: { type: 'number', maximum: 20 } }, required: ['price'] },
-          },
-        },
-      ],
-    },
-  }
-
+  const CONDITION_REQUIRES_BUYING_TWO = createConditionForMinimumAssetQuantity(2)
+  const CONDITION_REQUIRES_APPRAISAL_DOES_NOT_EXCEED_AMOUNT = createConditionForMaximumAppraisalAmount(20)
   const CONDITION_FOR_SPECIFIC_BUYER = {
     schema: SchemaSchema,
     definition: {
