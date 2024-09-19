@@ -151,7 +151,7 @@ describe('findUnfulfilledConditions', () => {
           const conditions = [await PayloadBuilder.dataHash(rule)]
           const coupon: Coupon = { ...validCoupon, conditions }
           const payloads = [coupon, rule, ...assets, ...appraisals]
-          const results = await findUnfulfilledConditions(coupon, payloads)
+          const results = await findUnfulfilledConditions(coupon, [rule], payloads)
           expect(results).toEqual(conditions)
         })
         it('when escrow terms appraisals do not exist', async () => {
@@ -161,7 +161,7 @@ describe('findUnfulfilledConditions', () => {
             ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], appraisals: undefined,
           }
           const payloads = [terms, coupon, rule, ...appraisals, ...assets]
-          const results = await findUnfulfilledConditions(coupon, payloads)
+          const results = await findUnfulfilledConditions(coupon, [rule], payloads)
           expect(results).toEqual(conditions)
         })
         it('when escrow terms appraisals is empty', async () => {
@@ -171,7 +171,7 @@ describe('findUnfulfilledConditions', () => {
             ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)], appraisals: [],
           }
           const payloads = [terms, coupon, rule, ...appraisals, ...assets]
-          const results = await findUnfulfilledConditions(coupon, payloads)
+          const results = await findUnfulfilledConditions(coupon, [rule], payloads)
           expect(results).toEqual(conditions)
         })
         it('when appraisals not supplied', async () => {
@@ -179,7 +179,7 @@ describe('findUnfulfilledConditions', () => {
           const coupon: Coupon = { ...validCoupon, conditions }
           const terms: EscrowTerms = { ...baseTerms, discounts: [await PayloadBuilder.dataHash(coupon)] }
           const payloads = [terms, coupon, rule, ...assets]
-          const results = await findUnfulfilledConditions(coupon, payloads)
+          const results = await findUnfulfilledConditions(coupon, [rule], payloads)
           expect(results).toEqual(conditions)
         })
         it('when supplied appraisal price exceeds the maximum amount', async () => {
@@ -197,7 +197,7 @@ describe('findUnfulfilledConditions', () => {
             appraisals: await PayloadBuilder.dataHashes(appraisals),
           }
           const payloads = [terms, coupon, rule, ...assets, ...appraisals]
-          const results = await findUnfulfilledConditions(coupon, payloads)
+          const results = await findUnfulfilledConditions(coupon, [rule], payloads)
           expect(results).toEqual(conditions)
         })
       })

@@ -12,10 +12,16 @@ import { Ajv } from 'ajv'
 const ajv = new Ajv({ strict: false }) // Create the Ajv instance once
 const schemaCache = new Map() // Cache to store compiled validators
 
+/**
+ * Validates the conditions of a coupon against the provided payloads
+ * @param coupon The coupon to check
+ * @param conditions The conditions associated with the coupon
+ * @param payloads The associated payloads (containing the conditions and data to validate the conditions against)
+ * @returns True if all conditions are fulfilled, false otherwise
+ */
 export const areConditionsFulfilled = async (coupon: Coupon, conditions: Condition[] = [], payloads: Payload[] = []): Promise<boolean> =>
   (await findUnfulfilledConditions(coupon, conditions, payloads)).length === 0
 
-// TODO: Should we separate conditions and payloads to prevent conflating data and "operands" (schemas to validate against data)?
 /**
  * Validates the conditions of a coupon against the provided payloads
  * @param coupon The coupon to check
