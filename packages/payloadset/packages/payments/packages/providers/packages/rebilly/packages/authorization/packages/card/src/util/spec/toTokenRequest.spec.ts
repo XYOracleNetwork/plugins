@@ -1,7 +1,7 @@
 import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
 import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 
-import { toTokenRequest } from '../toTokenRequest'
+import { toTokenRequest } from '../toTokenRequest.ts'
 
 describe('toTokenRequest', () => {
   const cases: [PaymentCard, BillingAddress][] = [
