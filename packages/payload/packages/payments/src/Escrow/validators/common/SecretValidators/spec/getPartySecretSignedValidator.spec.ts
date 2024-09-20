@@ -5,6 +5,7 @@ import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Id } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { Payload } from '@xyo-network/payload-model'
 
 import type { EscrowParty, EscrowTerms } from '../../../../Terms/index.ts'
 import { EscrowTermsSchema } from '../../../../Terms/index.ts'
@@ -40,38 +41,49 @@ describe('RegistrarSentinel', () => {
     describe.each(cases)('for %s', (party) => {
       describe('returns true', () => {
         it('with valid escrow terms and values supplied', async () => {
-          const payloads = party === 'buyer' ? [buyerSecret, buyerSecretSignature] : [sellerSecret, sellerSecretSignature]
+          const payloads = party === 'buyer' ? [baseTerms, buyerSecret, buyerSecretSignature] : [baseTerms, sellerSecret, sellerSecretSignature]
           const dictionary = await PayloadBuilder.toAllHashMap(payloads)
           const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
           const result = await partySecretValidator(baseTerms)
           expect(result).toBeTrue()
         })
       })
-      describe('throws', () => {
+      describe('returns false', () => {
         describe('with invalid terms for', () => {
-          it('secret undefined', async () => {
-            const payloads = party === 'buyer' ? [buyerSecret, buyerSecretSignature] : [sellerSecret, sellerSecretSignature]
-            const terms = { ...baseTerms, [`${party}Secret`]: undefined }
+          describe('secret', () => {
+            it('undefined', async () => {
+              const terms = { ...baseTerms, [`${party}Secret`]: undefined }
+              const payloads = party === 'buyer' ? [terms, buyerSecret, buyerSecretSignature] : [terms, sellerSecret, sellerSecretSignature]
+              const dictionary = await PayloadBuilder.toAllHashMap(payloads)
+              const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
+              const result = await partySecretValidator(terms)
+              expect(result).toBeFalse()
+            })
+            it('incorrect', async () => {
+              const secret: Id = { schema: IdSchema, salt: '0' }
+              const terms = { ...baseTerms, [`${party}Secret`]: await PayloadBuilder.dataHash(secret) }
+              const payloads = party === 'buyer' ? [terms, buyerSecret, buyerSecretSignature] : [terms, sellerSecret, sellerSecretSignature]
+              const dictionary = await PayloadBuilder.toAllHashMap(payloads)
+              const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
+              const result = await partySecretValidator(terms)
+              expect(result).toBeFalse()
+            })
+          })
+        })
+        describe('with missing value for', () => {
+          it('secret', async () => {
+            const payloads = party === 'buyer' ? [baseTerms, buyerSecretSignature] : [baseTerms, sellerSecretSignature]
             const dictionary = await PayloadBuilder.toAllHashMap(payloads)
             const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
-            const result = await partySecretValidator(terms)
-            expect(result).toBeFalse()
+            const result = await partySecretValidator(baseTerms)
+            expect(result).toBeTrue()
           })
-          describe('with missing value for', () => {
-            it('without boundwitness for buyerSecret', async () => {
-              const payloads = party === 'buyer' ? [buyerSecret, buyerSecretSignature] : [sellerSecret, sellerSecretSignature]
-              const dictionary = await PayloadBuilder.toAllHashMap(payloads)
-              const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
-              const result = await partySecretValidator(baseTerms)
-              expect(result).toBeTrue()
-            })
-            it('without secret for buyerSecret', async () => {
-              const payloads = party === 'buyer' ? [buyerSecret, buyerSecretSignature] : [sellerSecret, sellerSecretSignature]
-              const dictionary = await PayloadBuilder.toAllHashMap(payloads)
-              const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
-              const result = await partySecretValidator(baseTerms)
-              expect(result).toBeTrue()
-            })
+          it('boundwitness', async () => {
+            const payloads: Payload[] = party === 'buyer' ? [baseTerms, buyerSecret] : [baseTerms, sellerSecret]
+            const dictionary = await PayloadBuilder.toAllHashMap(payloads)
+            const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
+            const result = await partySecretValidator(baseTerms)
+            expect(result).toBeTrue()
           })
         })
       })
