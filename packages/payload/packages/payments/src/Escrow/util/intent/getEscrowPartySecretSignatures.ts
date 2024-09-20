@@ -5,7 +5,7 @@ import type { Payload, WithMeta } from '@xyo-network/payload-model'
 
 import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
-} from '../../Terms.ts'
+} from '../../Terms/index.ts'
 
 /**
  * Returns the log prefix for the party

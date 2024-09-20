@@ -6,7 +6,7 @@ import type {
   AsyncPayloadValidationFunction, Payload, SyncPayloadValidationFunction, WithMeta,
 } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms/index.ts'
 
 const name = 'EscrowTerms.sellerSecret'
 

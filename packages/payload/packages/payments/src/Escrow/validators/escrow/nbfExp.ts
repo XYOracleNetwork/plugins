@@ -1,6 +1,6 @@
 import type { SyncPayloadValidationFunction } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms/index.ts'
 
 export const getNbfExpValidator = (now: number, minRequiredDuration: number): SyncPayloadValidationFunction<EscrowTerms> => {
   const minExp = now + minRequiredDuration

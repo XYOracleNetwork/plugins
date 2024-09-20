@@ -1,7 +1,7 @@
 import type { ModuleIdentifier } from '@xyo-network/module-model'
 import type { PayloadValueExpression } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../../Terms.ts'
+import type { EscrowTerms } from '../../../Terms/index.ts'
 
 /**
  * Checks if property value of the escrow terms contains one of the valid moduleIdentifiers
