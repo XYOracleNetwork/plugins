@@ -5,7 +5,7 @@ import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import type {
-  Payload, PayloadValidationFunction, WithMeta, WithSources,
+  Payload, SyncPayloadValidationFunction, WithMeta, WithSources,
 } from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms.ts'
@@ -17,7 +17,7 @@ const name = 'EscrowTerms.appraisal'
  * A function that validates the escrow terms for tbe existence of appraisals
  * @returns True if the escrow terms contain appraisals, false otherwise
  */
-export const appraisalsExistValidator: PayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
+export const appraisalsExistValidator: SyncPayloadValidationFunction<EscrowTerms> = (terms: EscrowTerms) => {
   // Validate we have appraisals
   const appraisals = terms.appraisals
   if (!appraisals || appraisals.length === 0) {
@@ -32,7 +32,7 @@ export const appraisalsExistValidator: PayloadValidationFunction<EscrowTerms> = 
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for appraisals which are from valid authorities
  */
-export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
+export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Hash, WithMeta<Payload>>): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const appraisals = assertEx(terms.appraisals, () => `${name}: No appraisals: ${terms.appraisals}`)
     const appraisalAuthorities = assertEx(terms.appraisalAuthorities, () => `${name}: No appraisalAuthorities: ${terms.appraisalAuthorities}`)
@@ -70,7 +70,7 @@ export const getAppraisalsFromValidAuthoritiesValidator = (dictionary: Record<Ha
 export const getAppraisalsValidValidator = (
   dictionary: Record<Hash, WithMeta<Payload>>,
   minimumExp: number,
-): PayloadValidationFunction<EscrowTerms> => {
+): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
     const estimatesByAsset = getEstimatesByAsset(terms, dictionary)
@@ -94,7 +94,7 @@ export const getAppraisalsValidValidator = (
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for appraisals
  */
-export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, WithMeta<Payload>>): PayloadValidationFunction<EscrowTerms> => {
+export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, WithMeta<Payload>>): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
     const estimatesByAsset = getEstimatesByAsset(terms, dictionary)
