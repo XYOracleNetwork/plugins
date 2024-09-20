@@ -1,1 +1,1 @@
-export * from './intent/index.ts'
+export * from './secret/index.ts'
