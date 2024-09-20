@@ -1,9 +1,9 @@
 import type { Address } from '@xylabs/hex'
 import type { ModuleIdentifier } from '@xyo-network/module-model'
 
-import type { EscrowTerms } from '../../../../Terms'
-import { EscrowTermsSchema } from '../../../../Terms'
-import { moduleIdentifiersContainsOneOf } from '../moduleInstanceValidators'
+import type { EscrowTerms } from '../../../../Terms/index.ts'
+import { EscrowTermsSchema } from '../../../../Terms/index.ts'
+import { moduleIdentifiersContainsOneOf } from '../moduleInstanceValidators.ts'
 
 describe('RegistrarSentinel', () => {
   const appraisalAuthority1: Address = 'address1'
