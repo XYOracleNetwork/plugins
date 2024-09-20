@@ -1,12 +1,11 @@
-import { assertEx } from '@xylabs/assert'
 import type { Hash } from '@xylabs/hex'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
 
 import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
 } from '../../Terms/index.ts'
-
 /**
  * Returns the log prefix for the party
  * @param party The party
@@ -24,10 +23,18 @@ const getLogPrefix = (party: EscrowParty) => {
  * @param party The party to get the secret signatures for
  * @returns An array of BoundWitnesses containing the secret signed by all the parties
  */
-export const findEscrowPartySecretSignatures = (terms: EscrowTerms, dictionary: Record<Hash, WithMeta<Payload>>, party: EscrowParty) => {
-  const partyAddresses = assertEx(terms[party], () => `${getLogPrefix(party)}: No ${party}: ${terms[party]}`)
+export const findEscrowPartySecretSignatures = (terms: EscrowTerms, dictionary: Record<Hash, WithMeta<Payload>>, party: EscrowParty): BoundWitness[] => {
+  const partyAddresses = terms[party]
+  if (partyAddresses === undefined || partyAddresses.length === 0) {
+    console.log(`${getLogPrefix(party)}: No ${party}: ${terms[party]}`)
+    return []
+  }
   const partySecret: EscrowPartySecret = party === 'seller' ? 'sellerSecret' : 'buyerSecret'
-  const secretHash = assertEx(terms[partySecret], () => `${getLogPrefix(party)}: No ${partySecret}: ${terms[partySecret]}`)
+  const secretHash = terms[partySecret]
+  if (secretHash === undefined) {
+    console.log(`${getLogPrefix(party)}: No ${partySecret}: ${terms[partySecret]}`)
+    return []
+  }
   // BWs containing the secret signed by all the parties
   const partySignedBWs = Object.values(dictionary)
     // Find all BoundWitnesses
