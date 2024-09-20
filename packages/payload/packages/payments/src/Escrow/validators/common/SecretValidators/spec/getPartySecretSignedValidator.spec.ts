@@ -49,7 +49,7 @@ describe('RegistrarSentinel', () => {
         })
       })
       describe('returns false', () => {
-        describe('with invalid terms for', () => {
+        describe('with invalid escrow terms value for', () => {
           describe('secret', () => {
             it('undefined', async () => {
               const terms = { ...baseTerms, [`${party}Secret`]: undefined }
@@ -59,7 +59,7 @@ describe('RegistrarSentinel', () => {
               const result = await partySecretValidator(terms)
               expect(result).toBeFalse()
             })
-            it('incorrect', async () => {
+            it('different from signature', async () => {
               const secret: Id = { schema: IdSchema, salt: '0' }
               const terms = { ...baseTerms, [`${party}Secret`]: await PayloadBuilder.dataHash(secret) }
               const payloads = party === 'buyer' ? [terms, buyerSecret, buyerSecretSignature] : [terms, sellerSecret, sellerSecretSignature]
@@ -71,19 +71,12 @@ describe('RegistrarSentinel', () => {
           })
         })
         describe('with missing value for', () => {
-          it('secret', async () => {
-            const payloads = party === 'buyer' ? [baseTerms, buyerSecretSignature] : [baseTerms, sellerSecretSignature]
-            const dictionary = await PayloadBuilder.toAllHashMap(payloads)
-            const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
-            const result = await partySecretValidator(baseTerms)
-            expect(result).toBeTrue()
-          })
           it('boundwitness', async () => {
             const payloads: Payload[] = party === 'buyer' ? [baseTerms, buyerSecret] : [baseTerms, sellerSecret]
             const dictionary = await PayloadBuilder.toAllHashMap(payloads)
             const partySecretValidator = getPartySecretSignedValidator(dictionary, party)
             const result = await partySecretValidator(baseTerms)
-            expect(result).toBeTrue()
+            expect(result).toBeFalse()
           })
         })
       })
