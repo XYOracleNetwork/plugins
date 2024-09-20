@@ -12,7 +12,10 @@ import type {
  * @param party The party
  * @returns The log prefix for the party
  */
-const getLogPrefix = (party: EscrowParty) => party === 'seller' ? 'EscrowTerms.sellerSecret' : 'EscrowTerms.buyerSecret'
+const getLogPrefix = (party: EscrowParty) => {
+  const partySecret: EscrowPartySecret = party === 'seller' ? 'sellerSecret' : 'buyerSecret'
+  return `EscrowTerms.${partySecret}`
+}
 
 /**
  * Returns an array of BoundWitnesses containing the secret signed by all the parties
@@ -21,7 +24,7 @@ const getLogPrefix = (party: EscrowParty) => party === 'seller' ? 'EscrowTerms.s
  * @param party The party to get the secret signatures for
  * @returns An array of BoundWitnesses containing the secret signed by all the parties
  */
-export const getEscrowPartySecretSignatures = (terms: EscrowTerms, dictionary: Record<Hash, WithMeta<Payload>>, party: EscrowParty) => {
+export const findEscrowPartySecretSignatures = (terms: EscrowTerms, dictionary: Record<Hash, WithMeta<Payload>>, party: EscrowParty) => {
   const partyAddresses = assertEx(terms[party], () => `${getLogPrefix(party)}: No ${party}: ${terms[party]}`)
   const partySecret: EscrowPartySecret = party === 'seller' ? 'sellerSecret' : 'buyerSecret'
   const secretHash = assertEx(terms[partySecret], () => `${getLogPrefix(party)}: No ${partySecret}: ${terms[partySecret]}`)
