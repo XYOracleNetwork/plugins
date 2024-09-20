@@ -4,7 +4,7 @@ import {
   isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
-import { EscrowSchema } from './Schema.ts'
+import { EscrowSchema } from '../Schema.ts'
 
 export const EscrowTermsSchema = `${EscrowSchema}.terms` as const
 export type EscrowTermsSchema = typeof EscrowTermsSchema

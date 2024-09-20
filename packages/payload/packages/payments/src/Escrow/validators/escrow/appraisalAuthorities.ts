@@ -2,7 +2,7 @@ import { asAddress } from '@xylabs/hex'
 import type { ModuleIdentifier } from '@xyo-network/module-model'
 import type { SyncPayloadValidationFunction } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms/index.ts'
 import { moduleIdentifiersContainsAllOf } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisalAuthorities'

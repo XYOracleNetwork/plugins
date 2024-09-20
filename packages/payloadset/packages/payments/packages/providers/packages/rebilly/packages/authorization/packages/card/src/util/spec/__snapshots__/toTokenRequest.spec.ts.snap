@@ -20,24 +20,3 @@ exports[`toTokenRequest > convert a payment card and billing address to a token 
   },
 }
 `;
-
-exports[`toTokenRequest convert a payment card and billing address to a token request 1`] = `
-{
-  "billingAddress": {
-    "address": "123 Fake Street",
-    "city": "Oak Lawn",
-    "country": "US",
-    "firstName": "Marge",
-    "lastName": "Simpson",
-    "postalCode": "60453",
-    "region": "IL",
-  },
-  "method": "payment-card",
-  "paymentInstrument": {
-    "cvv": "123",
-    "expMonth": 1,
-    "expYear": 3030,
-    "pan": "4111111111111111",
-  },
-}
-`;

@@ -8,7 +8,7 @@ import type {
   Payload, SyncPayloadValidationFunction, WithMeta, WithSources,
 } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms.ts'
+import type { EscrowTerms } from '../../Terms/index.ts'
 import { validateWithinWindow } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisal'
