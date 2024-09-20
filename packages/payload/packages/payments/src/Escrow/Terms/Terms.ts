@@ -62,16 +62,6 @@ export interface EscrowTermsFields {
 }
 
 /**
- * The party in an escrow transaction
- */
-export type EscrowParty = keyof Pick<EscrowTermsFields, 'buyer' | 'seller'>
-
-/**
- * The party's secret in an escrow transaction
- */
-export type EscrowPartySecret = keyof Pick<EscrowTermsFields, 'buyerSecret' | 'sellerSecret'>
-
-/**
  * The terms of an escrow
  */
 export type EscrowTerms = Payload<Partial<EscrowTermsFields>, EscrowTermsSchema>
