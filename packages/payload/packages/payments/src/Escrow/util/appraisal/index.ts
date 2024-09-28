@@ -1,2 +1,2 @@
 export * from './getAppraisalsByAsset.ts'
-export * from './getAppraisalToSignaturesDictionary.ts'
+export * from './getSignaturesByAppraisal.ts'

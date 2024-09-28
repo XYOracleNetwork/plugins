@@ -11,7 +11,7 @@ import type { EscrowTerms } from '../../Terms/index.ts'
  * @param dictionary The diction of payloads associated with the escrow terms
  * @returns A dictionary of appraisals and their associated bound witnesses
  */
-export const getBoundWitnessesForEscrowAppraisals = (
+export const getSignaturesByAppraisal = (
   terms: EscrowTerms,
   dictionary: Record<Hash, WithMeta<Payload>>,
 ): Record<Hash, WithMeta<BoundWitness>[]> => {
