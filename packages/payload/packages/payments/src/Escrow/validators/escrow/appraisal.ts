@@ -3,12 +3,12 @@ import type { Hash } from '@xylabs/hex'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
-import { isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import type {
   Payload, SyncPayloadValidationFunction, WithMeta, WithSources,
 } from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms/index.ts'
+import { getAppraisalsByAsset } from '../../util/index.ts'
 import { validateWithinWindow } from '../common/index.ts'
 
 const name = 'EscrowTerms.appraisal'
@@ -73,7 +73,7 @@ export const getAppraisalsValidValidator = (
 ): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
-    const estimatesByAsset = getEstimatesByAsset(terms, dictionary)
+    const estimatesByAsset = getAppraisalsByAsset(terms, dictionary)
     // Validate each of the estimates are valid (time, price, etc)
     const now = Date.now()
     const exp = now + minimumExp
@@ -97,8 +97,8 @@ export const getAppraisalsValidValidator = (
 export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, WithMeta<Payload>>): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     // Verify we have an estimate for each of the assets
-    const estimatesByAsset = getEstimatesByAsset(terms, dictionary)
     const assets = assertEx(terms.assets, () => `${name}: No assets: ${terms.assets}`)
+    const estimatesByAsset = getAppraisalsByAsset(terms, dictionary)
     if (Object.keys(estimatesByAsset).length !== assets.length) {
       console.log(`${name}: Missing appraisals for all assets: ${assets}`)
       return false
@@ -112,24 +112,4 @@ const validateEstimate = (estimate: WithSources<HashLeaseEstimate>, exp: number)
   if (estimate.currency !== 'USD') return false
   if (estimate.price < 0) return false
   return true
-}
-
-const getEstimatesByAsset = (terms: EscrowTerms, dictionary: Record<Hash, WithMeta<Payload>>): Record<Hash, WithSources<HashLeaseEstimate>[]> => {
-  const assets = assertEx(terms.assets, () => `${name}: No assets: ${terms.assets}`)
-  const estimates = Object.values(dictionary).filter(isHashLeaseEstimateWithSources) as unknown as WithSources<HashLeaseEstimate>[]
-  const estimatesByAsset: Record<Hash, WithSources<HashLeaseEstimate>[]> = {}
-  for (const estimate of estimates) {
-    const { sources } = estimate
-    if (sources === undefined || sources.length === 0) {
-      console.log(`${name}: No sources: ${estimate}`)
-      continue
-    }
-    for (const asset of assets) {
-      if (sources.includes(asset)) {
-        if (!estimatesByAsset[asset]) estimatesByAsset[asset] = []
-        estimatesByAsset[asset].push(estimate)
-      }
-    }
-  }
-  return estimatesByAsset
 }
