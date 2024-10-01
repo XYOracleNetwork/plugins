@@ -4,6 +4,7 @@ import {
   isFixedPercentageCouponWithMeta,
   isFixedPercentageCouponWithSources,
   isFixedPriceCoupon,
+  isFixedPriceCouponWithMeta,
   isFixedPriceCouponWithSources,
 } from './Coupons/index.ts'
 
@@ -37,3 +38,4 @@ export const isCouponWithSources = (x?: unknown | null) =>
 export const isCouponWithMeta = (x?: unknown | null) =>
   isFixedAmountCouponWithMeta(x)
   || isFixedPercentageCouponWithMeta(x)
+  || isFixedPriceCouponWithMeta(x)
