@@ -9,7 +9,7 @@ import { TextEncoder } from 'node:util'
 jest.mock('@xylabs/platform', () => ({ subtle: webcrypto.subtle }))
 
 // Polyfill JSDOM
-window.TextEncoder = TextEncoder
+globalThis.TextEncoder = TextEncoder
 
 import { BrowserFileWitness } from '../BrowserFileWitness.ts'
 import { FileWitnessConfigSchema } from '../Config.ts'

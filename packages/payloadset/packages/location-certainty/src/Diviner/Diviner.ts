@@ -30,9 +30,7 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
         return (
           value === null
             ? prev
-            : value > prev
-              ? value
-              : prev
+            : Math.max(value, prev)
         )
       }, Number.NEGATIVE_INFINITY),
       mean: (() => {
@@ -50,9 +48,7 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
         return (
           value === null
             ? prev
-            : value < prev
-              ? value
-              : prev
+            : Math.min(value, prev)
         )
       }, Number.POSITIVE_INFINITY),
     }

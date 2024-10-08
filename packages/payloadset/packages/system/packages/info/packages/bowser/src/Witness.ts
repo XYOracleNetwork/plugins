@@ -18,7 +18,7 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
   protected get bowser() {
     // we do this to fix importing in node-esm
 
-    return Bowser.parse(window.navigator.userAgent)
+    return Bowser.parse(globalThis.navigator.userAgent)
   }
 
   protected override observeHandler(payloads?: Payload[]) {

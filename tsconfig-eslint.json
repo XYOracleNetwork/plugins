@@ -1,10 +1,4 @@
 {
-  "compilerOptions": {
-    "declaration": true,
-    "declarationMap": true,
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext"
-  },
   "exclude": [".yarn", "node_modules", "**/node_modules", "dist", "**/dist", "./**/docs"],
-  "extends": "@xylabs/tsconfig"
+  "extends": "./tsconfig.json"
 }

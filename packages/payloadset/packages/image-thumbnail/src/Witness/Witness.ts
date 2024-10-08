@@ -13,7 +13,7 @@ import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import { Semaphore } from 'async-mutex'
 import type { AxiosError, AxiosResponse } from 'axios'
 import axios from 'axios'
-import FileType from 'file-type'
+import { fileTypeFromBuffer } from 'file-type'
 import graphicsMagick from 'gm'
 import hasbin from 'hasbin'
 import { sha256 } from 'hash-wasm'
@@ -246,7 +246,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     imageThumbnail.mime.returned = mediaType
 
     try {
-      imageThumbnail.mime.detected = await FileType.fromBuffer(sourceBuffer)
+      imageThumbnail.mime.detected = await fileTypeFromBuffer(sourceBuffer)
     } catch (ex) {
       const error = ex as Error
       this.logger?.error(`FileType error: ${error.message}`)

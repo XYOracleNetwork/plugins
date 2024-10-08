@@ -77,11 +77,11 @@ export class PaymentDiscountDiviner<
     const couponHashes = await PayloadBuilder.hashes(coupons)
     sources.push(...couponHashes)
 
-    const validCoupons = await this.filterToSigned(
-      coupons
-        .filter(this.isCouponCurrent)
-        .filter(coupon => areConditionsFulfilled(coupon, conditions, payloads)),
-    )
+    const currentCoupons = coupons.filter(this.isCouponCurrent)
+    const conditionsMetCoupons = (
+      await Promise.all(currentCoupons.map(async coupon => await areConditionsFulfilled(coupon, conditions, payloads) ? coupon : undefined))).filter(exists)
+
+    const validCoupons = await this.filterToSigned(conditionsMetCoupons)
     // NOTE: Should we throw if not all coupons are valid?
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
 

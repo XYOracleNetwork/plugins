@@ -189,7 +189,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
           const response = await axios.get(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as HttpCallBase64Result
-            jsonResult.data = fromByteArray(Buffer.from(response.data, 'binary'))
+            jsonResult.data = fromByteArray(response.data)
             jsonResult.contentType = response.headers['content-type']?.toString() ?? 'application/octet-stream'
           } else {
             const errorResult = result as HttpCallErrorResult

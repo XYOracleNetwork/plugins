@@ -82,11 +82,7 @@ const calculateSingularFixedPriceDiscount = (total: number, appraisals: HashLeas
   // Apply the fixed price to all appraisals to get the reduced prices
   const reducedPrices = appraisals.map(appraisal =>
   // If the appraisal price is less than the fixed price
-    appraisal.price < lowestFixedPrice
-      // Use the appraisal price as the coupon will result in a higher price
-      ? appraisal.price
-      // Otherwise, apply the fixed price discount
-      : lowestFixedPrice)
+    Math.min(appraisal.price, lowestFixedPrice))
 
   // Calculate the reduced total using the reduced prices
   const reducedTotal = reducedPrices.reduce((acc, price) => acc + price, 0)
@@ -95,5 +91,5 @@ const calculateSingularFixedPriceDiscount = (total: number, appraisals: HashLeas
   const discount = total - reducedTotal
 
   // Return the discount or 0 if the discount would have resulted in a negative value
-  return discount > 0 ? discount : 0
+  return Math.max(discount, 0)
 }

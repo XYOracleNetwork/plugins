@@ -72,8 +72,12 @@ export class XnsNameHelper {
     return xnsName ? 'xnsName' : null
   }
 
-  static isValid(domain: Payload<DomainFields>): boolean {
-    return XnsNameSimpleValidators.every(validator => validator(domain))
+  static async isValid(domain: Payload<DomainFields>): Promise<boolean> {
+    const results = await Promise.all(XnsNameSimpleValidators.map(validator => validator(domain)))
+    for (const result of results) {
+      if (!result) return false
+    }
+    return true
   }
 
   /**
