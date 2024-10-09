@@ -2,7 +2,7 @@ import type { EthereumGasBlocknativePayload } from '@xyo-network/blocknative-eth
 import type {
   FeeData, FeePerGas, PriorityFeePerGas,
 } from '@xyo-network/gas-price-payload-plugin'
-import { linear } from 'regression'
+import regression from 'regression'
 
 const getBaseFee = (payload: EthereumGasBlocknativePayload): number | undefined => {
   return payload?.blockPrices?.[0]?.baseFeePerGas
@@ -10,7 +10,7 @@ const getBaseFee = (payload: EthereumGasBlocknativePayload): number | undefined 
 
 const getFeePerGas = (payload: EthereumGasBlocknativePayload): Partial<FeePerGas> => {
   const sorted = payload.blockPrices?.[0].estimatedPrices?.sort((a, b) => a.confidence - b.confidence)
-  const trend = linear([
+  const trend = regression.linear([
     [0, sorted?.[0].price],
     [1, sorted?.[1].price],
     [2, sorted?.[2].price],
@@ -28,7 +28,7 @@ const getFeePerGas = (payload: EthereumGasBlocknativePayload): Partial<FeePerGas
 
 const getPriorityFeePerGas = (payload: EthereumGasBlocknativePayload): Partial<PriorityFeePerGas> => {
   const sorted = payload.blockPrices?.[0].estimatedPrices?.sort((a, b) => a.confidence - b.confidence)
-  const trend = linear([
+  const trend = regression.linear([
     [0, sorted?.[0].maxPriorityFeePerGas],
     [1, sorted?.[1].maxPriorityFeePerGas],
     [2, sorted?.[2].maxPriorityFeePerGas],

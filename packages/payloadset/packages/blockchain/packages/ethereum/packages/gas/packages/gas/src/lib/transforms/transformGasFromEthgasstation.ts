@@ -2,7 +2,7 @@ import type { EthereumGasEthgasstationPayload } from '@xyo-network/ethgasstation
 import type {
   FeeData, FeePerGas, PriorityFeePerGas,
 } from '@xyo-network/gas-price-payload-plugin'
-import { linear } from 'regression'
+import regression from 'regression'
 
 const getBaseFee = (payload: EthereumGasEthgasstationPayload): number | undefined => {
   const { baseFee } = payload
@@ -13,7 +13,7 @@ const getFeePerGas = (payload: EthereumGasEthgasstationPayload): Partial<FeePerG
   const {
     standard: medium, fast: high, instant: veryHigh,
   } = payload.gasPrice
-  const trend = linear([
+  const trend = regression.linear([
     [1, medium],
     [2, high],
     [3, veryHigh],
@@ -28,7 +28,7 @@ const getPriorityFeePerGas = (payload: EthereumGasEthgasstationPayload): Partial
   const {
     standard: medium, fast: high, instant: veryHigh,
   } = payload.priorityFee
-  const trend = linear([
+  const trend = regression.linear([
     [1, medium],
     [2, high],
     [3, veryHigh],
