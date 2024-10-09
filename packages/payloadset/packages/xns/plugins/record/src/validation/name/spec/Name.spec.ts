@@ -80,15 +80,15 @@ describe('XnsNameHelper', () => {
   })
 
   describe('isValid', () => {
-    it('should return true for valid xns names', () => {
-      expect(XnsNameHelper.isValid(validDomain)).toBe(true)
+    it('should return true for valid xns names', async () => {
+      expect(await XnsNameHelper.isValid(validDomain)).toBe(true)
     })
 
-    it('should return false for invalid xns names', () => {
+    it('should return false for invalid xns names', async () => {
       const domain: Domain = {
         schema: DomainSchema, domain: 'example-', tld: 'xyo',
       }
-      expect(XnsNameHelper.isValid(domain)).toBe(false)
+      expect(await XnsNameHelper.isValid(domain)).toBe(false)
     })
   })
 

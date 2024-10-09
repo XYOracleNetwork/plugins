@@ -44,7 +44,8 @@
     "axios": "^1",
     "eslint": "^8",
     "ethers": "^6",
-    "quick-lru": "^5"
+    "quick-lru": "^5",
+    "jsbi": "^3"
   },
   "dependencies": {
     "@xyo-network/payload-plugins": "workspace:^",
@@ -82,7 +83,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-extended": "^4.0.2",
     "jest-sorted": "^1.0.15",
-    "jsbi": "^4.3.0",
+    "jsbi": "^3.2.5",
     "jsdom": "^25.0.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
@@ -91,7 +92,7 @@
     "supertest": "^7.0.0",
     "tslib": "^2.7.0",
     "typedoc": "^0.26.8",
-    "typescript": "^5.6.2",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.2"
   },
   "packageManager": "yarn@4.5.0",
