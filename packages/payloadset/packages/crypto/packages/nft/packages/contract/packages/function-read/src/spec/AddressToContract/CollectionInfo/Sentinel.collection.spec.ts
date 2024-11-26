@@ -1,5 +1,7 @@
 /* eslint-disable max-statements */
 
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import type {
   ContractInfo,
@@ -22,12 +24,16 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import type { Provider } from 'ethers'
+import {
+  afterAll,
+  describe, expect, it,
+} from 'vitest'
 
 // eslint-disable-next-line import-x/no-deprecated
-import { CryptoContractDiviner } from '../../../Diviner'
+import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 // eslint-disable-next-line import-x/no-deprecated
-import { CryptoContractFunctionReadWitness } from '../../../Witness'
-import erc721SentinelManifest from '../Erc721Sentinel.json'
+import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
+import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
 
 const profileData: Record<string, number[]> = {}
 

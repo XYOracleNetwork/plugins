@@ -1,3 +1,10 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
 import { DomainWitnessConfigSchema } from '../Config.ts'
 import { DomainWitness } from '../Witness.ts'
 

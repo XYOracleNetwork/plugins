@@ -2,10 +2,16 @@
  * @jest-environment jsdom
  */
 
+import '@xylabs/vitest-extended'
+
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
 import { PayloadValidator } from '@xyo-network/payload-validator'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { BowserSystemInfoWitnessConfigSchema } from '../Config.ts'
 import { BowserSystemInfoWitness } from '../Witness.ts'

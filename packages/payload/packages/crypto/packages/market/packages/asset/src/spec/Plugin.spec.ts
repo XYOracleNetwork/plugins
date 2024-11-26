@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { CryptoMarketAssetPayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { CryptoMarketAssetPayloadPlugin } from '../Plugin.ts'
 
 describe('CryptoMarketAssetPayloadPlugin', () => {
   test('Add to Resolver', () => {

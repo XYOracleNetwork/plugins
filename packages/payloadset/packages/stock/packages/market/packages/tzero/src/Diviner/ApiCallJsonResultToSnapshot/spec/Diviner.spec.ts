@@ -1,8 +1,14 @@
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import type { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
+import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner.ts'
 import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from '../Schema.ts'
 
 describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {

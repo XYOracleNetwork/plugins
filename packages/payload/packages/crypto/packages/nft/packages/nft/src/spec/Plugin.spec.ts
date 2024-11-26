@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { NftInfoPayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { NftInfoPayloadPlugin } from '../Plugin.ts'
 
 describe('NftInfoPayloadPlugin', () => {
   test('Add to Resolver', () => {

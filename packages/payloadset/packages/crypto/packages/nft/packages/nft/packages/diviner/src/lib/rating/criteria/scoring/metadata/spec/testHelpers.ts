@@ -1,5 +1,8 @@
+import '@xylabs/vitest-extended'
+
 import type { ScaledScore } from '@xyo-network/crypto-nft-score-model'
 import { PASS } from '@xyo-network/crypto-nft-score-model'
+import { expect } from 'vitest'
 
 export const expectMaxPossibleScore = (score: ScaledScore) => {
   const [total, possible] = score

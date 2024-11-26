@@ -1,11 +1,16 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { getNftsOwnedByAddressWithMetadata } from '../getNftsOwnedByAddress.ts'
 
 type TestData = [chainName: string, address: string, chainId: number]
 
-describeIf(process.env.INFURA_PROJECT_ID)('getNftsOwnedByAddressWithMeta', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('getNftsOwnedByAddressWithMeta', () => {
   const testData: TestData[] = [
     ['Ethereum Mainnet', '0xacdaEEb57ff6886fC8e203B9Dd4C2b241DF89b7a', 1],
     // ['Ethereum Mainnet', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', 1],

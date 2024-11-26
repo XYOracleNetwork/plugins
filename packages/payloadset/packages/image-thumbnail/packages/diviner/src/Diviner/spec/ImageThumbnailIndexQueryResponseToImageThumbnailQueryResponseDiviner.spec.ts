@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { Hash } from '@xylabs/hex'
 import type {
   ImageThumbnailDivinerQuery,
@@ -13,8 +15,13 @@ import {
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { WithMeta } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
-import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner } from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner'
+import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner }
+  from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.ts'
 
 describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner', () => {
   const queries: ImageThumbnailDivinerQuery[] = [

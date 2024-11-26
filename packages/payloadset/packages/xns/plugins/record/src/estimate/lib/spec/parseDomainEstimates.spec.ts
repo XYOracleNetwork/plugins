@@ -1,5 +1,10 @@
+import '@xylabs/vitest-extended'
+
 import type { Payload } from '@xyo-network/payload-model'
-import type { DomainEstimate } from '@xyo-network/xns-record-payload-plugins'
+import type { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { parseDomainEstimates } from '../parseDomainEstimates.ts'
 

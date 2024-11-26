@@ -1,4 +1,6 @@
 /* eslint-disable max-statements */
+import '@xylabs/vitest-extended'
+
 import type { Address } from '@xylabs/hex'
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
@@ -33,14 +35,18 @@ import {
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { EvmCallDiviner } from '../../../../Diviner.ts'
 import type { EvmCall } from '../../../../Payload.ts'
 import { EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
-import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json'
-import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json'
-import sentinelNodeManifest from './Contract.Sentinel.Node.json'
+import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
+import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }
+import sentinelNodeManifest from './Contract.Sentinel.Node.json' assert { type: 'json' }
 
 describe('Contract Node', () => {
   type TokenType = 'ERC721' | 'ERC1155'

@@ -1,11 +1,16 @@
-import { testIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
 
-import { getGasFromEtherscan } from '../getGasFromEtherscan'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { getGasFromEtherscan } from '../getGasFromEtherscan.ts'
 
 const apiKey = process.env.ETHERSCAN_API_KEY || ''
 
 describe('getGasFromEtherscan', () => {
-  testIf(apiKey)('returns prices', async () => {
+  test.skipIf(!apiKey)('returns prices', async () => {
     const gas = await getGasFromEtherscan(apiKey)
     expect(gas).toBeTruthy()
     expect(gas.status).toEqual('1')

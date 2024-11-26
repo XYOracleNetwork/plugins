@@ -1,5 +1,12 @@
-import { sampleEtherchainGasV2 } from '../../../test'
-import { isEthereumGasEtherchainV2Payload } from '../isEthereumGasEtherchainV2Payload'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleEtherchainGasV2 } from '../../../test/index.ts'
+import { isEthereumGasEtherchainV2Payload } from '../isEthereumGasEtherchainV2Payload.ts'
 
 describe('isEthereumGasEtherchainV2Payload', () => {
   describe('returns true', () => {

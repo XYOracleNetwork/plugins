@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -13,7 +15,7 @@ import {
   PaymentDiscountDivinerConfigSchema,
 } from '@xyo-network/payment-payload-plugins'
 import {
-  beforeEach, describe, it, vi,
+  beforeAll, beforeEach, describe, expect, it, vi,
 } from 'vitest'
 
 import { PaymentDiscountDiviner } from '../Diviner.ts'

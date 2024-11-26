@@ -1,13 +1,18 @@
-import { EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
-import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import '@xylabs/vitest-extended'
 
-import { EthereumGasEtherchainV2Plugin } from '../Plugin'
+import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { EthereumGasEtherchainV2Plugin } from '../Plugin.ts'
 
 describe('EthereumGasEtherchainV2Plugin', () => {
   test('Add to Resolver', async () => {
     const plugin = EthereumGasEtherchainV2Plugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin)
-    expect(resolver.resolve(plugin.set)).toBeObject()
-    expect(resolver.witness(EthereumGasEtherchainV2Schema)).toBeObject()
+    expect(await resolver.resolve(plugin.set)).toBeObject()
+    expect(await resolver.witness(plugin.set)).toBeObject()
   })
 })

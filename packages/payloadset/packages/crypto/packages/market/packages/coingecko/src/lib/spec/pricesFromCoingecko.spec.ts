@@ -1,5 +1,12 @@
-import { defaultCoins, defaultCurrencies } from '../defaults'
-import { pricesFromCoingecko } from '../pricesFromCoingecko'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { defaultCoins, defaultCurrencies } from '../defaults.ts'
+import { pricesFromCoingecko } from '../pricesFromCoingecko.ts'
 
 describe('pricesFromCoingecko', () => {
   test('observe', async () => {

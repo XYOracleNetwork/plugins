@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import type { WalletInstance } from '@xyo-network/account'
@@ -31,13 +33,17 @@ import { EvmAddressSchema, getProviderFromEnv } from '@xyo-network/witness-evm-a
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import type { Provider } from 'ethers'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { EvmTokenInterfaceImplementedDiviner } from '../Diviner.ts'
 import type { TokenInterface } from '../Payload.ts'
 import { isEvmTokenInterfaceImplemented } from '../Payload.ts'
-import contractWitnessManifest from './Contract.Witness.Index.json'
-import tokenDivinerManifest from './Token.Diviner.Index.json'
-import tokenNodeManifest from './TokenNode.json'
+import contractWitnessManifest from './Contract.Witness.Index.json' assert { type: 'json' }
+import tokenDivinerManifest from './Token.Diviner.Index.json' assert { type: 'json' }
+import tokenNodeManifest from './TokenNode.json' assert { type: 'json' }
 
 const maxProviders = 32
 

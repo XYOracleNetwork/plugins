@@ -1,7 +1,14 @@
-import { scoreAnimationUrl } from '../animationUrl'
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
+import { scoreAnimationUrl } from '../animationUrl.ts'
 import {
   expectLoweredScore, expectMaxPossibleScore, expectNoScore,
-} from './testHelpers'
+} from './testHelpers.ts'
 
 const web3Urls = ['ipfs://QmaXTuWjEbDuvcA3dHypqHfxMzDLq78Zj5kBLN4JdMEYDB/3.mp4', 'ipfs://QmTxDYfccVVWoucpbvFECxtysRkMBADDL8j4zVYSRM7Kp3/']
 const web2Urls = ['https://media.niftygateway.com/video/upload/v1659986036/Julian/KennyScharfWestinghouse/WESTINGHOUSE_20-26X44.5X4.5B_x2mz3r.mp4']

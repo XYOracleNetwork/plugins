@@ -1,12 +1,18 @@
+import '@xylabs/vitest-extended'
+
 import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import {
   sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthgasstationGas,
-} from '../../test'
-import { average } from '../average'
+} from '../../test/index.ts'
+import { average } from '../average.ts'
 import {
   transformGasFromBlocknative, transformGasFromEtherchainV2, transformGasFromEtherscan, transformGasFromEthgasstation,
-} from '../transforms'
+} from '../transforms/index.ts'
 
 const results: FeeData[] = [
   transformGasFromBlocknative(sampleBlocknativeGas),

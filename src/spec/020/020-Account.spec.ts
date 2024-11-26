@@ -1,4 +1,7 @@
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
+import { describe, it } from 'vitest'
 
 describe('Account', () => {
   it('create random', async () => {

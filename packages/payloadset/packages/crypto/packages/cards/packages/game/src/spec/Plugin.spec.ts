@@ -1,13 +1,18 @@
-import { CryptoCardsGameSchema } from '@xyo-network/crypto-cards-game-payload-plugin'
-import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import '@xylabs/vitest-extended'
 
-import { CryptoCardsGamePlugin } from '../Plugin'
+import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { CryptoCardsGamePlugin } from '../Plugin.ts'
 
 describe('CryptoCardsGamePlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = CryptoCardsGamePlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin)
-    expect(resolver.resolve(plugin.set)).toBeObject()
-    expect(resolver.witness(CryptoCardsGameSchema)).toBeObject()
+    expect(await resolver.resolve(plugin.set)).toBeObject()
+    expect(await resolver.witness(plugin.set)).toBeObject()
   })
 })

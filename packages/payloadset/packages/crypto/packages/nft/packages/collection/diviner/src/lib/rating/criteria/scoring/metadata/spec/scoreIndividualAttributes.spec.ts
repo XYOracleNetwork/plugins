@@ -1,9 +1,15 @@
+import '@xylabs/vitest-extended'
+
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
 import type { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
-import { scoreIndividualAttributes } from '../scoreIndividualAttributes'
+import { scoreIndividualAttributes } from '../scoreIndividualAttributes.ts'
 
 describe('scoreIndividualAttributes', () => {
   let collections: NftCollectionInfo[]

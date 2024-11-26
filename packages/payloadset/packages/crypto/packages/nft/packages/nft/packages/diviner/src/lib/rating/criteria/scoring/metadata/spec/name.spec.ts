@@ -1,5 +1,12 @@
-import { scoreName } from '../name'
-import { expectMaxPossibleScore, expectMiniumScore } from './testHelpers'
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
+import { scoreName } from '../name.ts'
+import { expectMaxPossibleScore, expectMiniumScore } from './testHelpers.ts'
 
 const valid = ['Foo Friends #3042', '🔥 Fire & Such']
 const invalid = [{}]

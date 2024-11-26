@@ -1,4 +1,11 @@
 /* eslint-disable @stylistic/max-len */
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import { toXml } from '../toXml.ts'
 
 describe('toXml', () => {

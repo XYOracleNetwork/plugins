@@ -1,15 +1,20 @@
-import { testIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import type { EthereumGasEtherscanPayload } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
 import { EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { EthereumGasEtherscanWitnessConfigSchema } from '../Schema.ts'
-import { EthereumGasEtherscanWitness } from '../Witness'
+import { EthereumGasEtherscanWitness } from '../Witness.ts'
 
 const apiKey = process.env.ETHERSCAN_API_KEY || ''
 
 describe('EthereumGasEtherscanWitness', () => {
-  testIf(apiKey)('returns observation', async () => {
+  test.skipIf(!apiKey)('returns observation', async () => {
     const sut = await EthereumGasEtherscanWitness.create({
       config: {
         apiKey,

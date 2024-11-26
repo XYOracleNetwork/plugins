@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { ModuleError } from '@xyo-network/payload-model'
@@ -5,6 +7,10 @@ import { ModuleErrorSchema } from '@xyo-network/payload-model'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { ImageThumbnailWitness } from '../Witness.ts'
 

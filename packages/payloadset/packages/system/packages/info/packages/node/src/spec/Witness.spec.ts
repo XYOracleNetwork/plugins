@@ -1,7 +1,13 @@
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import '@xylabs/vitest-extended'
 
-import { NodeSystemInfoWitnessConfigSchema } from '../Config'
-import { NodeSystemInfoWitness } from '../Witness'
+import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { NodeSystemInfoWitnessConfigSchema } from '../Config.ts'
+import { NodeSystemInfoWitness } from '../Witness.ts'
 
 describe('SystemInfoWitness', () => {
   test('observe', async () => {

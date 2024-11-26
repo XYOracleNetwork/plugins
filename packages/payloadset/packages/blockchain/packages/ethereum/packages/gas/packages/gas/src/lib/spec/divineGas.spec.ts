@@ -1,7 +1,14 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import {
   sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas,
-} from '../../test'
-import { divineGas } from '../divineGas'
+} from '../../test/index.ts'
+import { divineGas } from '../divineGas.ts'
 
 describe('divineGas', () => {
   describe('with no payloads supplied', () => {

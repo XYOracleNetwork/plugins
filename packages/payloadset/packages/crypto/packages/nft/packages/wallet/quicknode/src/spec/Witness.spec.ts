@@ -1,3 +1,10 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import type { GraphqlQuery } from '../Witness.ts'
 import { ApiGraphqlWitness, GraphqlQuerySchema } from '../Witness.ts'
 

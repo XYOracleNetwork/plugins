@@ -1,8 +1,15 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import {
   ApiCallResultSchema, ApiCallSchema, isApiCallErrorResult,
-} from '../../Payload'
+} from '../../Payload/index.ts'
 import { ApiCallWitnessConfigSchema } from '../Schema.ts'
-import { ApiCallWitness } from '../Witness'
+import { ApiCallWitness } from '../Witness.ts'
 
 describe('CryptoWalletNftWitness', () => {
   const uri = 'https://cnn.com'

@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
-import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import type { ApiUriTemplateCall } from '@xyo-network/api-call-witness'
 import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
@@ -11,14 +12,18 @@ import type { SentinelInstance } from '@xyo-network/sentinel-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
-import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner'
-import tzeroMarketdataManifest from './ApiCallWitnessManifest.json'
+import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner.ts'
+import tzeroMarketdataManifest from './ApiCallWitnessManifest.json' assert { type: 'json' }
 
 describe('tZero', () => {
   const symbol = 'XYLB'
   const apiKey = process.env.TZERO_MARKETDATA_API_KEY
-  describeIf(apiKey)('snapshots', () => {
+  describe.skipIf(!apiKey)('snapshots', () => {
     let sentinel: SentinelInstance
     beforeAll(async () => {
       const wallet = await HDWallet.random()

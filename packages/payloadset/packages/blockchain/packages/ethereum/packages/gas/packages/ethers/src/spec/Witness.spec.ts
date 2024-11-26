@@ -9,8 +9,13 @@ import { EthereumGasEthersWitness } from '../Witness.ts'
 const projectId = process.env.INFURA_PROJECT_ID || ''
 const projectSecret = process.env.INFURA_PROJECT_SECRET || ''
 
-import { testIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 /**
  * @group crypto
@@ -18,7 +23,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
  */
 
 describe('EthereumGasEthersWitness', () => {
-  testIf(projectId && projectSecret)('returns observation', async () => {
+  test.skipIf(!projectId || !projectSecret)('returns observation', async () => {
     const provider = getProviderFromEnv()
     const sut = await EthereumGasEthersWitness.create({
       account: 'random',

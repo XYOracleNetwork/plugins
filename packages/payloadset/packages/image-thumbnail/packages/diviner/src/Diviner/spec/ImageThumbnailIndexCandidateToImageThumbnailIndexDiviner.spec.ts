@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
@@ -7,8 +9,12 @@ import type { Payload } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { TimestampSchema } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
-import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner'
+import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.ts'
 
 describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
   let diviner: ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner

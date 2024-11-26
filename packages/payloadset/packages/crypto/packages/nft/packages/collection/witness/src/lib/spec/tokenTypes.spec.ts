@@ -1,9 +1,14 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { isErc721, isErc1155 } from '../tokenTypes'
+import { isErc721, isErc1155 } from '../tokenTypes.ts'
 
-describeIf(process.env.INFURA_PROJECT_ID)('getNftCollectionMetadata', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('getNftCollectionMetadata', () => {
   it('Check ERC721', async () => {
     const provider = getProviderFromEnv(0x01)
     const address = '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'

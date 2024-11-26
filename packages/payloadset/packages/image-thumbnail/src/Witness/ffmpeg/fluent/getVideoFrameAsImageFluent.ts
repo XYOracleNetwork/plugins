@@ -34,7 +34,7 @@ class FfmpegOutputStream extends Writable {
  * @param videoBuffer Input video buffer.
  * @returns Output buffer containing the video thumbnail image.
  */
-export const getVideoFrameAsImageFluent = async (videoBuffer: ArrayBuffer) => {
+export const getVideoFrameAsImageFluent = async (videoBuffer: ArrayBufferLike) => {
   // Get a temp file name
   const tmpFile = `/${tmpdir()}/${uuid()}`
   try {

@@ -1,5 +1,12 @@
-import { sampleUniswapPayload } from '../../test'
-import { divineUniswapPrices } from '../divineUniswapPrices'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleUniswapPayload } from '../../test/index.ts'
+import { divineUniswapPrices } from '../divineUniswapPrices.ts'
 
 describe('divineUniswapPrices', () => {
   it('divines prices from Uniswap', async () => {

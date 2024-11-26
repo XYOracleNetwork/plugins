@@ -1,6 +1,12 @@
+import '@xylabs/vitest-extended'
+
 import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { CryptoMarketAssetDiviner } from '../Diviner.ts'
 import { sampleCoinGeckoPayload, sampleUniswapPayload } from '../test/index.ts'

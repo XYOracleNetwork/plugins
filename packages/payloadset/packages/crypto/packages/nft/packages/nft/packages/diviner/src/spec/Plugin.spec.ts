@@ -1,4 +1,10 @@
+import '@xylabs/vitest-extended'
+
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { NftScoreDivinerPlugin } from '../Plugin.ts'
 

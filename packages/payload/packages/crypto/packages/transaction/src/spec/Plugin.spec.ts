@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { AddressTransactionHistoryPayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { AddressTransactionHistoryPayloadPlugin } from '../Plugin.ts'
 
 describe('AddressTransactionHistoryPayloadPlugin', () => {
   test('Add to Resolver', () => {

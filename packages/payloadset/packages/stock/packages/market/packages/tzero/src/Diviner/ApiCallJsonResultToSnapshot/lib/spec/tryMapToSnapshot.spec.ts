@@ -1,6 +1,12 @@
-import type { ApiCallResult } from '@xyo-network/api-call-witness'
+import '@xylabs/vitest-extended'
 
-import { tryMapToSnapshot } from '../tryMapToSnapshot'
+import type { ApiCallResult } from '@xyo-network/api-call-witness'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { tryMapToSnapshot } from '../tryMapToSnapshot.ts'
 
 describe('mapToPublicSnapshot', () => {
   describe('with successful response', () => {

@@ -1,9 +1,13 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect, it,
+} from 'vitest'
 
-import { getNftCollectionNfts } from '../getNftCollectionNfts'
+import { getNftCollectionNfts } from '../getNftCollectionNfts.ts'
 
-describeIf(process.env.INFURA_PROJECT_ID)('getNftCollectionNfts', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('getNftCollectionNfts', () => {
   const cases: [address: string, chainId: number][] = [
     // ['0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB', 1], //CryptoPunks - Need special handling
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D', 1],

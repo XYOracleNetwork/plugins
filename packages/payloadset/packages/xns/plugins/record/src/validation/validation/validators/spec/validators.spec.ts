@@ -16,6 +16,13 @@ const baseDomainFields: Payload<Domain> = {
   schema: DomainSchema,
 }
 
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it, vi,
+} from 'vitest'
+
 describe('XNS Name', () => {
   describe('Validators', () => {
     const cases = [
@@ -36,7 +43,7 @@ describe('XNS Name', () => {
     describe.each(cases)('$name', ({
       validator, valid, invalid,
     }) => {
-      const onErrors = jest.fn()
+      const onErrors = vi.fn()
 
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
@@ -67,7 +74,7 @@ describe('XNS Name', () => {
     ]
 
     describe.each(casesTld)('$name', ({ valid, invalid }) => {
-      const onErrors = jest.fn()
+      const onErrors = vi.fn()
 
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (tld) => {
@@ -99,7 +106,7 @@ describe('XNS Name', () => {
     ]
 
     describe.each(casesLength)('$name', ({ valid, invalid }) => {
-      const onErrors = jest.fn()
+      const onErrors = vi.fn()
 
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
@@ -159,7 +166,7 @@ describe('XNS Name', () => {
       describe('Valid', () => {
         it.each(valid)('should return true for %s', (domain) => {
           const payload: Domain = { ...baseDomainFields, domain }
-          const onErrors = jest.fn()
+          const onErrors = vi.fn()
           expect(validator(payload)).toBe(true)
           expect(onErrors).not.toHaveBeenCalled()
         })
@@ -169,11 +176,11 @@ describe('XNS Name', () => {
         it.each(invalid)('should return false for %s', (domain, expectedErrorMessage) => {
           if (domain) {
             const payload: Domain = { ...baseDomainFields, domain }
-            const onErrors = jest.fn()
+            const onErrors = vi.fn()
             expect(validator(payload, onErrors)).toBe(false)
             if (expectedErrorMessage) expect(onErrors).toHaveBeenCalledWith(expectedErrorMessage)
           } else {
-            return true
+            return
           }
         })
       })

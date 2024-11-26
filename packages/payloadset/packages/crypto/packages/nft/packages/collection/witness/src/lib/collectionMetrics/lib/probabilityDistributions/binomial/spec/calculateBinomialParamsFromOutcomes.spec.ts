@@ -1,6 +1,12 @@
-import type { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { calculateBinomialParamsFromOutcomes } from '../calculateBinomialParamsFromOutcomes'
+import type { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { calculateBinomialParamsFromOutcomes } from '../calculateBinomialParamsFromOutcomes.ts'
 
 describe('calculateBinomialParamsFromOutcomes', () => {
   const data: [values: number[], outcome: BinomialDistributionParameters][] = [

@@ -1,23 +1,27 @@
-import { testIf } from '@xylabs/jest-helpers'
-import { EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import '@xylabs/vitest-extended'
+
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
-import { EthereumGasEthersPlugin } from '../Plugin'
-import { EthereumGasEthersWitness } from '../Witness'
+import { EthereumGasEthersPlugin } from '../Plugin.ts'
+import { EthereumGasEthersWitness } from '../Witness.ts'
 
 const projectId = process.env.INFURA_PROJECT_ID || ''
 const projectSecret = process.env.INFURA_PROJECT_SECRET || ''
 
 describe('EthereumGasEthersPlugin', () => {
-  testIf(projectId && projectSecret)('Add to Resolver', async () => {
+  test.skipIf(!(projectId && projectSecret))('Add to Resolver', async () => {
     const provider = getProviderFromEnv()
     const plugin = EthereumGasEthersPlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin, {
       config: { schema: EthereumGasEthersWitness.defaultConfigSchema },
       provider,
     })
-    expect(resolver.resolve(plugin.set)).toBeObject()
-    expect(resolver.witness(EthereumGasEthersSchema)).toBeObject()
+    expect(await resolver.resolve(plugin.set)).toBeObject()
+    expect(await resolver.witness(plugin.set)).toBeObject()
   })
 })

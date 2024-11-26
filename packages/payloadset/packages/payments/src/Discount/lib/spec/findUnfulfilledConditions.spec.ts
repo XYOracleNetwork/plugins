@@ -16,7 +16,8 @@ import {
 } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import {
-  beforeEach, describe, it,
+  beforeEach, describe, expect,
+  it,
 } from 'vitest'
 
 import { findUnfulfilledConditions } from '../findUnfulfilledConditions.ts'

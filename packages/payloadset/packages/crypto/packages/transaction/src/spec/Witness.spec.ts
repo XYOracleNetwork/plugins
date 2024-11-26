@@ -1,14 +1,19 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import {
   AddressTransactionHistoryWitnessConfigSchema,
   isAddressTransactionHistoryPayload,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { EtherscanProvider } from 'ethers'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
-import { AddressTransactionHistoryWitness } from '../Witness'
+import { AddressTransactionHistoryWitness } from '../Witness.ts'
 
-describeIf(process.env.ETHERSCAN_API_KEY)('AddressTransactionHistoryWitness', () => {
+describe.skipIf(!process.env.ETHERSCAN_API_KEY)('AddressTransactionHistoryWitness', () => {
   const address = '0x35C556C8e97509Bf1f6D286BB0137512E11711a6'
   const network = 'homestead'
   const apiKey = process.env.ETHERSCAN_API_KEY

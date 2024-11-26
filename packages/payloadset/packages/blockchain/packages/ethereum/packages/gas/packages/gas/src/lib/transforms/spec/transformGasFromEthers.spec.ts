@@ -1,5 +1,11 @@
-import { sampleEthersGas } from '../../../test'
-import { transformGasFromEthers } from '../transformGasFromEthers'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
+import { sampleEthersGas } from '../../../test/index.ts'
+import { transformGasFromEthers } from '../transformGasFromEthers.ts'
 
 describe('transformGasFromEthers', () => {
   it('returns values in the expected format', () => {

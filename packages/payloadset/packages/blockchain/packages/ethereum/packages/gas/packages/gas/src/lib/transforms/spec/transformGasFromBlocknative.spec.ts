@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import { sampleBlocknativeGas } from '../../../test/index.ts'
 import { transformGasFromBlocknative } from '../transformGasFromBlocknative.ts'
 

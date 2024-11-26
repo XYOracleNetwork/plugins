@@ -2,11 +2,18 @@
  * @jest-environment jsdom
  */
 
+import '@xylabs/vitest-extended'
+
 import { webcrypto } from 'node:crypto'
 import { TextEncoder } from 'node:util'
 
+import {
+  beforeEach,
+  describe, expect, test, vi,
+} from 'vitest'
+
 // Force subtle from webcrypto to be used as subtle from @xylabs/platform
-jest.mock('@xylabs/platform', () => ({ subtle: webcrypto.subtle }))
+vi.mock('@xylabs/platform', () => ({ subtle: webcrypto.subtle }))
 
 // Polyfill JSDOM
 globalThis.TextEncoder = TextEncoder

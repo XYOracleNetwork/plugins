@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { CryptoCardsGamePayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { CryptoCardsGamePayloadPlugin } from '../Plugin.ts'
 
 describe('CryptoCardsGamePayloadPlugin', () => {
   test('Add to Resolver', () => {

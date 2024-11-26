@@ -1,6 +1,7 @@
 /* eslint-disable max-statements */
 
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import {
   createProfiler, profile, profileReport,
 } from '@xylabs/profile'
@@ -18,13 +19,17 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import type { Provider } from 'ethers'
+import {
+  afterAll, describe, expect,
+  it,
+} from 'vitest'
 
-import type { EvmCallResults } from '../Diviner'
-import { EvmCallDiviner, EvmCallResultsSchema } from '../Diviner'
-import type { EvmCall } from '../Payload'
-import { EvmCallSchema } from '../Payload'
-import { EvmCallWitness } from '../Witness'
-import erc721SentinelManifest from './Erc721Sentinel.json'
+import type { EvmCallResults } from '../Diviner.ts'
+import { EvmCallDiviner, EvmCallResultsSchema } from '../Diviner.ts'
+import type { EvmCall } from '../Payload.ts'
+import { EvmCallSchema } from '../Payload.ts'
+import { EvmCallWitness } from '../Witness.ts'
+import erc721SentinelManifest from './Erc721Sentinel.json' assert { type: 'json' }
 
 const profiler = createProfiler()
 
@@ -47,7 +52,7 @@ describe('Erc721Sentinel - Collection', () => {
 
   const providers = getProviders()
 
-  describeIf(providers)('report', () => {
+  describe.skipIf(!providers)('report', () => {
     it('specifying address', async () => {
       profile(profiler, 'setup')
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'

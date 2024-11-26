@@ -1,4 +1,9 @@
+import '@xylabs/vitest-extended'
+
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import type { Estimate } from '../parseEstimatesFromArray.ts'
 import { parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'

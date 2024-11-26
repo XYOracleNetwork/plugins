@@ -1,5 +1,11 @@
+import '@xylabs/vitest-extended'
+
 import { EthereumGasBlocknativeSchema } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { EthereumGasBlocknativeWitnessConfigSchema } from '../Schema.ts'
 import { EthereumGasBlocknativeWitness } from '../Witness.ts'

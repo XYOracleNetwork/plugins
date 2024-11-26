@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { distinct } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
@@ -32,8 +34,12 @@ import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { WithMeta } from '@xyo-network/payload-model'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
-import imageThumbnailDivinerManifest from './Witness.Index.json'
+import imageThumbnailDivinerManifest from './Witness.Index.json' assert { type: 'json' }
 
 type Query = PayloadDivinerQueryPayload & { address: string; chainId?: number }
 

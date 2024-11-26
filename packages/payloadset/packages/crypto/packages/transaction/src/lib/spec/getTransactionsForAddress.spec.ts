@@ -1,6 +1,11 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import type { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { EtherscanProvider } from 'ethers'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 // eslint-disable-next-line import-x/no-deprecated
 import { getTransactionsForAddress } from '../getTransactionsForAddress.ts'
@@ -42,7 +47,7 @@ const validateTransaction = (t: Transaction) => {
   if (t?.value !== undefined) expect(t.value).toBeString()
 }
 
-describeIf(process.env.ETHERSCAN_API_KEY)('getTransactionsForAddress', () => {
+describe.skipIf(!process.env.ETHERSCAN_API_KEY)('getTransactionsForAddress', () => {
   const address = '0x35C556C8e97509Bf1f6D286BB0137512E11711a6'
   const network = 'homestead'
   const apiKey = process.env.ETHERSCAN_API_KEY

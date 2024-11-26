@@ -1,4 +1,12 @@
-import { hashFile } from '../hashFile'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { hashFile } from '../hashFile.ts'
+
 describe('hashFile', () => {
   describe('with existing file', () => {
     const expected = '5359b8ebfd4e9251c27a40cc12e64a4cc182e8cfacafc53d2e0c591651d4cc42'

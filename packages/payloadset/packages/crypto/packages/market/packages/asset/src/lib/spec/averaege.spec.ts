@@ -1,8 +1,14 @@
+import '@xylabs/vitest-extended'
+
 import type { AssetInfo, CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { average } from '../average'
+import { average } from '../average.ts'
 
 const schema = CryptoMarketAssetSchema
 

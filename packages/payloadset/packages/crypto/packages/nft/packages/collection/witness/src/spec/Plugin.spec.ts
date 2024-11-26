@@ -1,6 +1,12 @@
-import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import '@xylabs/vitest-extended'
 
-import { CryptoNftCollectionWitnessPlugin } from '../Plugin'
+import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { CryptoNftCollectionWitnessPlugin } from '../Plugin.ts'
 
 describe('CryptoNftCollectionWitnessPlugin', () => {
   test('Add to Resolver', async () => {

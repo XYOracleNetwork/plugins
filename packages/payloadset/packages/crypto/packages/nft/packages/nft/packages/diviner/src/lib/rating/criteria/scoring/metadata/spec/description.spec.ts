@@ -1,3 +1,7 @@
+import '@xylabs/vitest-extended'
+
+import { describe, it } from 'vitest'
+
 import { scoreDescription } from '../description.ts'
 import { expectMaxPossibleScore, expectMiniumScore } from './testHelpers.ts'
 

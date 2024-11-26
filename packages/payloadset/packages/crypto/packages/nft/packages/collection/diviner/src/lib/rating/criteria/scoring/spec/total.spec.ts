@@ -1,6 +1,12 @@
-import type { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { scoreTotal } from '../total'
+import type { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { scoreTotal } from '../total.ts'
 
 describe('scoreTotal', () => {
   const values: [total: number, expected: number][] = [

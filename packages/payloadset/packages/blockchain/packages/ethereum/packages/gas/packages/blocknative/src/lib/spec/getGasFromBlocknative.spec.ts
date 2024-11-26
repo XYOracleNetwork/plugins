@@ -1,6 +1,13 @@
 // import { PendingBlockNumber } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 
-import { getGasFromBlocknative } from '../getGasFromBlocknative'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { getGasFromBlocknative } from '../getGasFromBlocknative.ts'
 
 describe('getGasFromBlocknative', () => {
   test('returns prices', async () => {

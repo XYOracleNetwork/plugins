@@ -1,4 +1,10 @@
+import '@xylabs/vitest-extended'
+
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { PrometheusNodeWitness } from '../Witness.ts'
 

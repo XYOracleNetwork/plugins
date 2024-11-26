@@ -1,6 +1,7 @@
+import '@xylabs/vitest-extended'
+
 import { writeFile } from 'node:fs/promises'
 
-import { describeIf } from '@xylabs/jest-helpers'
 import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
@@ -11,8 +12,12 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import type { Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
-import { CryptoNftCollectionWitness } from '../Witness'
+import { CryptoNftCollectionWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
   const results = observation.filter(isNftCollectionInfo)
@@ -30,7 +35,7 @@ const validateObservation = (observation: Payload[]) => {
  * @group slow
  */
 
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoNftCollectionWitness', () => {
   let account: AccountInstance
   beforeAll(async () => {
     account = await Account.random()

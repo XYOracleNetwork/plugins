@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
@@ -32,14 +34,18 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import type { Provider } from 'ethers'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
-import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json'
-import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json'
-import sentinelNodeManifest from './Contract.Sentinel.Node.json'
+import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
+import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }
+import sentinelNodeManifest from './Contract.Sentinel.Node.json' assert { type: 'json' }
 
 const maxProviders = 32
 

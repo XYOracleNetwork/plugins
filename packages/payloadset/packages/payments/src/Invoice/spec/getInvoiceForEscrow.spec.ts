@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
@@ -8,6 +10,10 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import { EscrowTermsSchema, NO_DISCOUNT } from '@xyo-network/payment-payload-plugins'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { PaymentDiscountDiviner } from '../../Discount/index.ts'
 import { PaymentSubtotalDiviner } from '../../Subtotal/index.ts'

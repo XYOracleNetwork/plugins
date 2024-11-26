@@ -1,7 +1,14 @@
-import { scoreExternalUrl } from '../externalUrl'
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
+import { scoreExternalUrl } from '../externalUrl.ts'
 import {
   expectLoweredScore, expectMaxPossibleScore, expectMiniumScore,
-} from './testHelpers'
+} from './testHelpers.ts'
 
 const secure = ['https://lostpoets.xyz/']
 const insecure = ['http://lvcidia.xyz/']

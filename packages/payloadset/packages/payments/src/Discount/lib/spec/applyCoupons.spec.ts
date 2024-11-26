@@ -6,7 +6,8 @@ import {
   FixedPriceCouponSchema,
 } from '@xyo-network/payment-payload-plugins'
 import {
-  beforeEach, describe, it, vi,
+  beforeEach, describe, expect,
+  it, vi,
 } from 'vitest'
 
 import { applyCoupons } from '../applyCoupons.ts'

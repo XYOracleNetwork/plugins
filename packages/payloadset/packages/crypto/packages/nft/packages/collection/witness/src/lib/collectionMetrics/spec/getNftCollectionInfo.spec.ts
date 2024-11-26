@@ -1,9 +1,15 @@
+import '@xylabs/vitest-extended'
+
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
 import type { NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
-import { getNftCollectionMetrics } from '../getNftCollectionMetrics'
+import { getNftCollectionMetrics } from '../getNftCollectionMetrics.ts'
 
 describe('getNftCollectionMetrics', () => {
   test('gets NFTs collection metrics', async () => {

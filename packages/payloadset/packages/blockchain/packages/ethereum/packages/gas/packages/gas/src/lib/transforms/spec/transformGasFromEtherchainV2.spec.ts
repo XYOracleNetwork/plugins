@@ -1,5 +1,11 @@
-import { sampleEtherchainGasV2 } from '../../../test'
-import { transformGasFromEtherchainV2 } from '../transformGasFromEtherchainV2'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
+import { sampleEtherchainGasV2 } from '../../../test/index.ts'
+import { transformGasFromEtherchainV2 } from '../transformGasFromEtherchainV2.ts'
 
 describe('transformGasFromEtherchainV2', () => {
   it('returns values in the expected format', () => {

@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { PentairScreenlogicPayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { PentairScreenlogicPayloadPlugin } from '../Plugin.ts'
 
 describe('PentairScreenlogicPayloadPlugin', () => {
   test('Add to Resolver', () => {

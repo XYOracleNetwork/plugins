@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { AbstractArchivist } from '@xyo-network/archivist-abstract'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import type { LocationCertaintyPayload } from '@xyo-network/location-certainty-payload-plugin'
@@ -6,9 +8,13 @@ import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { CompositeModuleResolver } from '@xyo-network/module-resolver'
 import type { WithMeta } from '@xyo-network/payload-model'
+import {
+  beforeEach,
+  describe, expect, it,
+} from 'vitest'
 
-import { LocationCertaintyDivinerConfigSchema } from '../Config'
-import { LocationCertaintyDiviner } from '../Diviner'
+import { LocationCertaintyDivinerConfigSchema } from '../Config.ts'
+import { LocationCertaintyDiviner } from '../Diviner.ts'
 
 const sample1: LocationPayload[] = [
   {

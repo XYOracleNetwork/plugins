@@ -1,7 +1,14 @@
-import { scoreBackgroundColor } from '../backgroundColor'
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
+import { scoreBackgroundColor } from '../backgroundColor.ts'
 import {
   expectLoweredScore, expectMaxPossibleScore, expectNoScore,
-} from './testHelpers'
+} from './testHelpers.ts'
 
 const valid = ['ffffff', 'FFFFFF']
 const invalid = ['#ffffff', '#FFFFFF', '', 'not a color', {}]

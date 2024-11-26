@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import type { CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   CryptoContractFunctionCallResultSchema,
@@ -9,9 +10,13 @@ import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 // eslint-disable-next-line import-x/no-deprecated
-import { CryptoContractFunctionReadWitness } from '../Witness'
+import { CryptoContractFunctionReadWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
   const results = observation.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema))
@@ -19,7 +24,7 @@ const validateObservation = (observation: Payload[]) => {
   expect(observation.length).toEqual(results.length)
 }
 
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' // XYO ERC20
   const functionName = 'balanceOf'
   const args = ['0xaDe7DFBC532A01dB67BFEA3b728D4eA22869f381'] // Random Holder

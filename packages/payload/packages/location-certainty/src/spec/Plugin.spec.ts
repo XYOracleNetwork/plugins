@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { LocationCertaintyPayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { LocationCertaintyPayloadPlugin } from '../Plugin.ts'
 
 describe('LocationCertaintyPayloadPlugin', () => {
   test('Add to Resolver', () => {

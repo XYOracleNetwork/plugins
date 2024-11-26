@@ -1,13 +1,18 @@
-import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
-import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { SchemaPlugin } from '../Plugin'
+import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { SchemaPlugin } from '../Plugin.ts'
 
 describe('SchemaPlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = SchemaPlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin)
-    expect(resolver.resolve(plugin.set)).toBeObject()
-    expect(resolver.witness(SchemaSchema)).toBeObject()
+    expect(await resolver.resolve(plugin.set)).toBeObject()
+    expect(await resolver.witness(plugin.set)).toBeObject()
   })
 })

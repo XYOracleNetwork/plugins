@@ -1,6 +1,12 @@
-import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import '@xylabs/vitest-extended'
 
-import { NftCollectionScoreDivinerPlugin } from '../Plugin'
+import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { NftCollectionScoreDivinerPlugin } from '../Plugin.ts'
 
 describe('NftCollectionScoreDivinerPlugin', () => {
   test('Add to Resolver', async () => {

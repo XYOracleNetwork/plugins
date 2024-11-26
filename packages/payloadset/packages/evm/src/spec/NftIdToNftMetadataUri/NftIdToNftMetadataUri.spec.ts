@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import { delay } from '@xylabs/delay'
-import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
@@ -28,13 +29,17 @@ import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
-import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json'
+import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json' assert { type: 'json' }
 
 const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)
 
-describeIf(providers.length)('NftIdToNftMetadataUri', () => {
+describe.skipIf(providers.length === 0)('NftIdToNftMetadataUri', () => {
   const chainId = 1
   let node: MemoryNode
   const cases = [

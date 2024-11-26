@@ -1,6 +1,11 @@
-import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { ModuleInstancePayloadPlugin } from '../Plugin'
+import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
+import {
+  describe, expect, test,
+} from 'vitest'
+
+import { ModuleInstancePayloadPlugin } from '../Plugin.ts'
 
 describe('ModuleInstancePayloadPlugin', () => {
   test('Add to Resolver', () => {

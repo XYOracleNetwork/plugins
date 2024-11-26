@@ -1,12 +1,17 @@
+import '@xylabs/vitest-extended'
+
 import type { Hash } from '@xylabs/hex'
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll, describe, expect, it,
+} from 'vitest'
 
-import type { DurationFields } from '../../Duration'
-import { validateBoundWitnessAndDuration } from '../validateBoundWitnessAndDuration'
+import type { DurationFields } from '../../Duration.ts'
+import { validateBoundWitnessAndDuration } from '../validateBoundWitnessAndDuration.ts'
 
 describe('validateBoundWitnessAndDuration', () => {
   let nameServer: WalletInstance

@@ -4,7 +4,7 @@ import { promises as dnsPromises } from 'node:dns'
 
 import { exists } from '@xylabs/exists'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { PayloadHasher } from '@xyo-network/hash'
+import { ObjectHasher } from '@xyo-network/hash'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { Schema } from '@xyo-network/payload-model'
@@ -73,25 +73,25 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     return this.config.width ?? 128
   }
 
-  private static async binaryToSha256(data: ArrayBuffer) {
+  private static async binaryToSha256(data: ArrayBufferLike) {
     const viewData = new Uint8Array(data)
-    await PayloadHasher.wasmInitialized
-    if (PayloadHasher.wasmSupport.canUseWasm) {
+    await ObjectHasher.wasmInitialized
+    if (ObjectHasher.wasmSupport.canUseWasm) {
       try {
         return await sha256(viewData)
       } catch {
-        PayloadHasher.wasmSupport.allowWasm = false
+        ObjectHasher.wasmSupport.allowWasm = false
       }
     }
 
     return shajs('sha256').update(viewData).digest().toString()
   }
 
-  private static bufferFromDataUrl(url: string): ArrayBuffer | undefined {
+  private static bufferFromDataUrl(url: string): ArrayBufferLike | undefined {
     if (url.startsWith('data:image')) {
       const data = url.split(',')[1]
       if (data) {
-        return Uint8Array.from(atob(data), c => c.codePointAt(0) ?? 0)
+        return Uint8Array.from(atob(data), c => c.codePointAt(0) ?? 0).buffer
       } else {
         const error: ImageThumbnailWitnessError = {
           message: 'Invalid data Url',
@@ -132,7 +132,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
                 const [encoding, byteString] = urlParts[1].split(',')
                 if (encoding === 'base64') {
                   const newSvg = await resolveDynamicSvg(byteString)
-                  const newSvgDataUrl = createDataUrl(Buffer.from(newSvg), contentType)
+                  const newSvgDataUrl = createDataUrl(Buffer.from(newSvg).buffer, contentType)
                   cookedDataBuffer = ImageThumbnailWitness.bufferFromDataUrl(newSvgDataUrl) ?? dataBuffer
                 }
               }
@@ -157,7 +157,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
     return this.config.runExclusive ? await this._semaphore.runExclusive(() => process()) : process()
   }
 
-  private async createThumbnailDataUrl(sourceBuffer: ArrayBuffer, encoding?: ImageThumbnailEncoding) {
+  private async createThumbnailDataUrl(sourceBuffer: ArrayBufferLike, encoding?: ImageThumbnailEncoding) {
     const thumb = await new Promise<Buffer>((resolve, reject) => {
       gm(Buffer.from(sourceBuffer))
         .quality(this.quality)
@@ -171,7 +171,7 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
           }
         })
     })
-    return createDataUrl(thumb, 'image/png')
+    return createDataUrl(thumb.buffer, 'image/png')
   }
 
   /**
@@ -179,9 +179,9 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
    * @param videoBuffer The input video buffer.
    * @returns An buffer containing an image thumbnail for the video.
    */
-  private async createThumbnailFromVideo(videoBuffer: ArrayBuffer) {
+  private async createThumbnailFromVideo(videoBuffer: ArrayBufferLike) {
     const imageBuffer = await getVideoFrameAsImageFluent(videoBuffer)
-    return this.createThumbnailDataUrl(imageBuffer)
+    return this.createThumbnailDataUrl(imageBuffer.buffer)
   }
 
   // eslint-disable-next-line complexity
@@ -233,20 +233,20 @@ export class ImageThumbnailWitness<TParams extends ImageThumbnailWitnessParams =
 
     if (response.status >= 200 && response.status < 300) {
       const contentType: string | undefined = response.headers['content-type']?.toString()
-      const sourceBuffer = Buffer.from(response.data, 'binary')
+      const sourceBuffer = Buffer.from(response.data, 'binary').buffer
 
       return this.processMedia(sourceBuffer, result, contentType)
     }
     return result
   }
 
-  private async processMedia(sourceBuffer: ArrayBuffer, imageThumbnail: ImageThumbnail, contentType?: string): Promise<ImageThumbnail> {
+  private async processMedia(sourceBuffer: ArrayBufferLike, imageThumbnail: ImageThumbnail, contentType?: string): Promise<ImageThumbnail> {
     const [mediaType, fileType] = contentType?.split('/') ?? ['', '']
     imageThumbnail.mime = imageThumbnail.mime ?? {}
     imageThumbnail.mime.returned = mediaType
 
     try {
-      imageThumbnail.mime.detected = await fileTypeFromBuffer(sourceBuffer)
+      imageThumbnail.mime.detected = await fileTypeFromBuffer(sourceBuffer as ArrayBuffer)
     } catch (ex) {
       const error = ex as Error
       this.logger?.error(`FileType error: ${error.message}`)

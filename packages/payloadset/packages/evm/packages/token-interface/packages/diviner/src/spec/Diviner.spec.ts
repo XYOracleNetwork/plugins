@@ -1,13 +1,18 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import {
   EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema,
 } from '@xyo-network/evm-contract-witness'
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner'
-import type { TokenInterface } from '../Payload'
+import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner.ts'
+import type { TokenInterface } from '../Payload.ts'
 
-describeIf(process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
   type TestData = readonly [string, TokenInterface[]]
   const cases: readonly TestData[] = [
     ['0x55296f69f40ea6d20e478533c15a6b08b654e758', ['ERC20'] as TokenInterface[]], // XYO ERC20

@@ -1,9 +1,14 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { EvmContractWitness, EvmContractWitnessConfigSchema } from '../Witness'
+import { EvmContractWitness, EvmContractWitnessConfigSchema } from '../Witness.ts'
 
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' // XYO ERC20
   describe('observe', () => {
     it('get code from contract', async () => {

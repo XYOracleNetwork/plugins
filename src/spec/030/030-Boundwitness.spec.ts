@@ -1,5 +1,8 @@
+import '@xylabs/vitest-extended'
+
 import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
+import { describe, it } from 'vitest'
 
 describe('BoundWitness', () => {
   it('create boundwitness', async () => {

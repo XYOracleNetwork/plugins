@@ -1,3 +1,10 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
 import { scoreImageData } from '../imageData.ts'
 import { expectMaxPossibleScore, expectMiniumScore } from './testHelpers.ts'
 

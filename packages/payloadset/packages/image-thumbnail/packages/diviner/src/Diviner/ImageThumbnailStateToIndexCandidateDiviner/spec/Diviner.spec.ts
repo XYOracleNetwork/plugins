@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
@@ -18,10 +20,15 @@ import type { MemoryNode } from '@xyo-network/node-memory'
 import type { WithMeta } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll,
+  describe, expect,
+  it,
+} from 'vitest'
 
 import type { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.ts'
-import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json'
+import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json' assert { type: 'json' }
 
 /**
  * @group slow

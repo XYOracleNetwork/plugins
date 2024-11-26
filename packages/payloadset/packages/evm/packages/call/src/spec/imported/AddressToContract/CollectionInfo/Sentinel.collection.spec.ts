@@ -1,5 +1,7 @@
 /* eslint-disable max-statements */
 
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
@@ -13,13 +15,17 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import {
+  afterAll,
+  describe, expect, it,
+} from 'vitest'
 
 import type { EvmCallResults } from '../../../../Diviner.ts'
 import { EvmCallDiviner, EvmCallResultsSchema } from '../../../../Diviner.ts'
 import type { EvmCall } from '../../../../Payload.ts'
 import { EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
-import erc721SentinelManifest from '../Erc721Sentinel.json'
+import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
 
 const profileData: Record<string, number[]> = {}
 

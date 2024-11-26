@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { EthereumGasBlocknativeWitness, EthereumGasBlocknativeWitnessConfigSchema } from '@xyo-network/blocknative-ethereum-gas-plugin'
 import { EtherchainEthereumGasWitnessV2, EthereumGasEtherchainV2WitnessConfigSchema } from '@xyo-network/etherchain-gas-ethereum-blockchain-plugins'
 import { EthereumGasEthersWitness, EthereumGasEthersWitnessConfigSchema } from '@xyo-network/ethers-ethereum-gas-plugin'
@@ -6,11 +8,14 @@ import type { EthereumGasPayload } from '@xyo-network/gas-price-payload-plugin'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
 import type { Payload, WithMeta } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
+import {
+  describe, expect, test,
+} from 'vitest'
 
 import { EthereumGasDiviner } from '../Diviner.ts'
 import {
   sampleBlocknativeGas, sampleEtherchainGasV2, sampleEtherscanGas, sampleEthersGas, sampleEthgasstationGas,
-} from '../test'
+} from '../test/index.ts'
 
 describe('Diviner', () => {
   const cases: [title: string, data: Payload[]][] = [

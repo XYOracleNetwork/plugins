@@ -1,6 +1,12 @@
-import type { NftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
+import '@xylabs/vitest-extended'
 
-import { evaluateAttributes } from '../evaluateAttributes'
+import type { NftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { evaluateAttributes } from '../evaluateAttributes.ts'
 
 const attributes: NftAttribute[][] = [
   [

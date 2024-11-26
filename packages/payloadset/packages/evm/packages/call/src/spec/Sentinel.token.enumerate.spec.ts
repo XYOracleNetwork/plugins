@@ -1,6 +1,7 @@
 /* eslint-disable max-statements */
 
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import {
   createProfiler, profile, profileReport,
 } from '@xylabs/profile'
@@ -25,10 +26,14 @@ import { AdhocWitness } from '@xyo-network/witness-adhoc'
 import type { EvmAddress } from '@xyo-network/witness-evm-abstract'
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import {
+  afterAll,
+  describe, expect, it,
+} from 'vitest'
 
-import { EvmCallDiviner } from '../Diviner'
-import { EvmCallWitness } from '../Witness'
-import erc721TokenEnumerateSentinelManifest from './Erc721TokenEnumerateSentinel.json'
+import { EvmCallDiviner } from '../Diviner.ts'
+import { EvmCallWitness } from '../Witness.ts'
+import erc721TokenEnumerateSentinelManifest from './Erc721TokenEnumerateSentinel.json' assert { type: 'json' }
 
 const profiler = createProfiler()
 
@@ -43,7 +48,7 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
 
   const providers = getProvidersFromEnv(maxProviders)
 
-  describeIf(providers.length)('report', () => {
+  describe.skipIf(providers.length === 0)('report', () => {
     it('specifying address', async () => {
       profile(profiler, 'setup')
       const wallet = await HDWallet.random()

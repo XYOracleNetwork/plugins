@@ -1,8 +1,13 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { EvmEventsWitnessConfigSchema } from '../model.ts'
 import type { EvmEvents } from '../Payload.ts'
@@ -15,7 +20,7 @@ const validateObservation = (observation: Payload[]) => {
   expect(observation.length).toEqual(results.length)
 }
 
-describeIf(process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
   const address = '0x6811f2f20c42f42656a3c8623ad5e9461b83f719' // ParallelPlanetFall
   const eventName = 'TransferSingle'
   describe('observe', () => {

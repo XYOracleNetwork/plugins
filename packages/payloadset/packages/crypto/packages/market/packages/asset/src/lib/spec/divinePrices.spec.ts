@@ -1,5 +1,12 @@
-import { sampleCoinGeckoPayload, sampleUniswapPayload } from '../../test'
-import { divinePrices } from '../divinePrices'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleCoinGeckoPayload, sampleUniswapPayload } from '../../test/index.ts'
+import { divinePrices } from '../divinePrices.ts'
 
 describe('divinePrices', () => {
   it('divines prices', async () => {

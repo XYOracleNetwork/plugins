@@ -2,8 +2,13 @@
  * @jest-environment jsdom
  */
 
-import { CurrentLocationSchema } from '@xyo-network/location-payload-plugin'
+import '@xylabs/vitest-extended'
+
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { CurrentLocationWitnessConfigSchema } from '../Config.ts'
 import { LocationPlugin } from '../Plugin.ts'
@@ -15,7 +20,7 @@ describe('LocationPlugin', () => {
       config: { schema: CurrentLocationWitnessConfigSchema },
       geolocation: navigator.geolocation,
     })
-    expect(resolver.resolve(plugin.set)).toBeObject()
-    expect(resolver.witness(CurrentLocationSchema)).toBeObject()
+    expect(await resolver.resolve(plugin.set)).toBeObject()
+    expect(await resolver.witness(plugin.set)).toBeObject()
   })
 })

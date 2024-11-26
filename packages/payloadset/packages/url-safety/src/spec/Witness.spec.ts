@@ -1,12 +1,14 @@
-import { describeIf } from '@xylabs/jest-helpers'
 import type { ModuleError } from '@xyo-network/payload-model'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { UrlSafetyPayload } from '@xyo-network/url-safety-payload-plugin'
+import {
+  beforeAll, describe, expect, test,
+} from 'vitest'
 
 import { UrlSafetyWitness } from '../Witness/index.ts'
 
-describeIf(process.env.GOOGLE_SAFEBROWSING_KEY)('UrlSafetyWitness', () => {
+describe.skipIf(!process.env.GOOGLE_SAFEBROWSING_KEY)('UrlSafetyWitness', () => {
   let witness: UrlSafetyWitness
   const schema = UrlSchema
   beforeAll(async () => {

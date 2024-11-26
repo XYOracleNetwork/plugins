@@ -1,5 +1,11 @@
+import '@xylabs/vitest-extended'
+
 import type { Domain } from '@xyo-network/xns-record-payload-plugins'
 import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import {
   getDomainReservedFragmentsValidator, getDomainReservedNamesValidator, getDomainReservedStringsValidator,

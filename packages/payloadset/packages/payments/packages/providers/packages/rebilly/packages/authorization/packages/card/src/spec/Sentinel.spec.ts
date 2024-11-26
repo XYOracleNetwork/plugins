@@ -1,14 +1,19 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
-import { describeIf } from '@xylabs/jest-helpers'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
 import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-payload-plugin'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
-import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from '../Config'
-import { RebillyPaymentCardAuthorizationSentinel } from '../Sentinel'
+import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from '../Config.ts'
+import { RebillyPaymentCardAuthorizationSentinel } from '../Sentinel.ts'
 
 const getTestPaymentCardRequest = (cardNumber: string, cvv: string): [PaymentCard, BillingAddress] => {
   const paymentCard: PaymentCard = {
@@ -32,7 +37,7 @@ const getTestPaymentCardRequest = (cardNumber: string, cvv: string): [PaymentCar
   return [paymentCard, billingAddress]
 }
 
-describeIf(process.env.REB_PUB_APIKEY)('RebillyPaymentCardAuthorizationSentinel', () => {
+describe.skipIf(!process.env.REB_PUB_APIKEY)('RebillyPaymentCardAuthorizationSentinel', () => {
   const publishableApiKey = assertEx(process.env.REB_PUB_APIKEY)
   assertEx(publishableApiKey.includes('sandbox'), () => 'RebillyPaymentCardAuthorizationSentinel should only be tested in sandbox environment')
   const organizationId = assertEx(process.env.REB_ORGANIZATION_ID)

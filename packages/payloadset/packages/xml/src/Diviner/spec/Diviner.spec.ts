@@ -1,11 +1,17 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import {
   ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallXmlResult,
 } from '@xyo-network/api-call-witness'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { isXmlWithMeta } from '../../Payload'
-import { XmlSchema } from '../../Schema'
-import { XmlParsingDiviner } from '../Diviner'
+import { isXmlWithMeta } from '../../Payload.ts'
+import { XmlSchema } from '../../Schema.ts'
+import { XmlParsingDiviner } from '../Diviner.ts'
 import { XmlParsingDivinerConfigSchema } from '../Schema.ts'
 
 describe('XmlParsingDiviner', () => {

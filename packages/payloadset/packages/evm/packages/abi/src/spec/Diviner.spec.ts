@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import {
   EvmContractSchema, EvmContractWitness, EvmContractWitnessConfigSchema,
 } from '@xyo-network/evm-contract-witness'
@@ -14,10 +15,14 @@ import {
   IERC721Metadata__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner'
+import { EvmAbiImplementedDiviner, EvmAbiImplementedDivinerConfigSchema } from '../Diviner.ts'
 
-describeIf(process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('EvmAbiImplementedDiviner', () => {
   const name = ERC1155__factory.abi[11].name
   console.log(name)
   const cases = [

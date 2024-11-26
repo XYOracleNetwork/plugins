@@ -1,4 +1,11 @@
-import { hashHttpUrl } from '../hashHttpUrl'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { hashHttpUrl } from '../hashHttpUrl.ts'
 
 describe('hashHttpUrl', () => {
   describe('with existing URL', () => {

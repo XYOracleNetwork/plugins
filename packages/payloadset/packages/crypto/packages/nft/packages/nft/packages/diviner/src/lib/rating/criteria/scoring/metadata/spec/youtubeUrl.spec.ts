@@ -1,3 +1,10 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
 import { scoreYoutubeUrl } from '../youtubeUrl.ts'
 import {
   expectLoweredScore, expectMaxPossibleScore, expectMiniumScore, expectNoScore,

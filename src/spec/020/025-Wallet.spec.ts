@@ -1,4 +1,7 @@
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
+import { describe, it } from 'vitest'
 
 describe('Wallet', () => {
   describe('create', () => {

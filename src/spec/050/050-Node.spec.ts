@@ -1,14 +1,17 @@
+import '@xylabs/vitest-extended'
+
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
-import { HDWallet } from '@xyo-network/account'
+import { Account, HDWallet } from '@xyo-network/account'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest-wrapper'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { describe, it } from 'vitest'
 
 describe('Node', () => {
   it('create', async () => {
-    const node = await MemoryNode.create()
+    const node = await MemoryNode.create({ account: await Account.random() })
     const state = await node.state()
     console.log(state)
   })

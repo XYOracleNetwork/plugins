@@ -1,5 +1,10 @@
 /* eslint-disable @stylistic/max-len */
+import '@xylabs/vitest-extended'
+
 import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import {
+  describe, expect, it,
+} from 'vitest'
 
 import { analyzeNft } from '../analyzeNft.ts'
 

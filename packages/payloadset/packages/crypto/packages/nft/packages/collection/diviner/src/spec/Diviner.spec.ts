@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { readFile, writeFile } from 'node:fs/promises'
 
 import { Account } from '@xyo-network/account'
@@ -11,8 +13,12 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import type { WithMeta } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  beforeAll,
+  describe, expect, it, test,
+} from 'vitest'
 
-import { NftCollectionScoreDiviner } from '../Diviner'
+import { NftCollectionScoreDiviner } from '../Diviner.ts'
 
 describe('NftCollectionScoreDiviner', () => {
   const data: NftCollectionInfo[] = [

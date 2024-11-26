@@ -1,12 +1,16 @@
+import '@xylabs/vitest-extended'
+
 import { existsSync } from 'node:fs'
 import Path from 'node:path'
 
 import { assertEx } from '@xylabs/assert'
-import { testIf } from '@xylabs/jest-helpers'
 import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { Quadkey } from '@xyo-network/quadkey'
+import {
+  describe, expect, test,
+} from 'vitest'
 
 import type { ElevationWitnessConfig } from '../Witness.ts'
 import { ElevationWitness, ElevationWitnessConfigSchema } from '../Witness.ts'
@@ -34,13 +38,13 @@ const config: ElevationWitnessConfig = {
 
 describe('ElevationWitness', () => {
   const hasTestData = existsSync(testDataDir)
-  testIf(hasTestData)('Witnessing via Observe', async () => {
+  test.skipIf(!hasTestData)('Witnessing via Observe', async () => {
     const witness = await ElevationWitness.create({ config })
     const result = (await witness.observe(locations)) as ElevationPayload[]
     await validateResult(result)
   })
 
-  testIf(hasTestData)('Witnessing via Config', async () => {
+  test.skipIf(!hasTestData)('Witnessing via Config', async () => {
     const witness = await ElevationWitness.create({ config: { ...config, locations } })
     const result = (await witness.observe()) as ElevationPayload[]
     await validateResult(result)

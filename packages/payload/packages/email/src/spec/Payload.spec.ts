@@ -1,3 +1,9 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect, it,
+} from 'vitest'
+
 import type { Email } from '../Payload.ts'
 import {
   asEmail, isEmail, tryAsEmail,

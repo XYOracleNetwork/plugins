@@ -1,3 +1,10 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import {
   HttpCallResultSchema, HttpCallSchema, isHttpCallErrorResult,
 } from '../../Payload/index.ts'

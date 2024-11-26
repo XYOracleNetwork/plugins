@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import type { NftWitnessQuery } from '@xyo-network/crypto-nft-payload-plugin'
 import {
   isNftInfo, NftWitnessConfigSchema, NftWitnessQuerySchema,
@@ -6,6 +7,10 @@ import {
 import type { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { CryptoWalletNftWitness } from '../Witness.ts'
 
@@ -22,7 +27,7 @@ const validateObservation = async (observation: Payload[]) => {
 /**
  * @group slow
  */
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0xacdaEEb57ff6886fC8e203B9Dd4C2b241DF89b7a'
   // const address = '0xD3EaBb661771911f87c50cf105BDA74468C75b01'
   describe('observe', () => {

@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { HDWallet } from '@xyo-network/account'
@@ -25,6 +27,11 @@ import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { TimestampSchema } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll,
+  describe, expect,
+  it,
+} from 'vitest'
 
 import { ImageThumbnailDiviner } from '../Diviner.ts'
 import { ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner } from '../ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.ts'
@@ -32,7 +39,7 @@ import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner }
   from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.ts'
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../ImageThumbnailStateToIndexCandidateDiviner/index.ts'
-import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json'
+import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json' assert { type: 'json' }
 
 /**
  * @group slow

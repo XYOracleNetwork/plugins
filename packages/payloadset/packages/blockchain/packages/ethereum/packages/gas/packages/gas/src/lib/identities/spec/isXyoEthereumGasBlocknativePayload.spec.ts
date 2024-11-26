@@ -1,5 +1,12 @@
-import { sampleBlocknativeGas } from '../../../test'
-import { isEthereumGasBlocknativePayload } from '../isEthereumGasBlocknativePayload'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleBlocknativeGas } from '../../../test/index.ts'
+import { isEthereumGasBlocknativePayload } from '../isEthereumGasBlocknativePayload.ts'
 
 describe('isEthereumGasBlocknativePayload', () => {
   describe('returns true', () => {

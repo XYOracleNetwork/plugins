@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
@@ -8,7 +10,8 @@ import {
   SubtotalSchema,
 } from '@xyo-network/payment-payload-plugins'
 import {
-  beforeAll, beforeEach, describe, it, vi,
+  beforeAll, beforeEach, describe, expect,
+  it, vi,
 } from 'vitest'
 
 import { PaymentSubtotalDiviner } from '../Diviner.ts'

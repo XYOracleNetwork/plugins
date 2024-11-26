@@ -1,4 +1,11 @@
-import { getV2GasFromEtherchain } from '../getV2GasFromEtherchain'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  test,
+} from 'vitest'
+
+import { getV2GasFromEtherchain } from '../getV2GasFromEtherchain.ts'
 
 describe('getV2GasFromEtherchain', () => {
   test('returns prices', async () => {

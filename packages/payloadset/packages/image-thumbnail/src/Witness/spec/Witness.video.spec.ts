@@ -1,9 +1,15 @@
+import '@xylabs/vitest-extended'
+
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
-import FileType from 'file-type'
+import { fileTypeFromBuffer } from 'file-type'
 import hasbin from 'hasbin'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { ImageThumbnailWitness } from '../Witness.ts'
 
@@ -19,7 +25,7 @@ const testVideoFormat = async (witness: ImageThumbnailWitness, url: string) => {
   expect(result[0].url?.length).toBeGreaterThan(0)
   const imageData = result[0].url?.split(',')[1] ?? ''
   const buffer = Buffer.from(Uint8Array.from(atob(imageData), c => c.codePointAt(0) ?? 0))
-  const fileType = await FileType.fromBuffer(buffer)
+  const fileType = await fileTypeFromBuffer(buffer)
   expect(fileType?.mime).toBe('image/png')
 }
 

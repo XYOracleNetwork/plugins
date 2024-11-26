@@ -37,19 +37,21 @@
   "module": "dist/node/indexNode.mjs",
   "types": "dist/node/indexNode.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.3.13",
-    "@xylabs/crypto": "^4.3.13",
-    "@xyo-network/abstract-witness": "^3.4.0",
-    "@xyo-network/module-model": "^3.4.0",
-    "@xyo-network/payload-model": "^3.4.0",
-    "@xyo-network/payloadset-plugin": "^3.4.0",
+    "@xylabs/assert": "^4.4.5",
+    "@xylabs/crypto": "^4.4.5",
+    "@xyo-network/abstract-witness": "^3.5.0",
+    "@xyo-network/module-model": "^3.5.0",
+    "@xyo-network/payload-model": "^3.5.0",
+    "@xyo-network/payloadset-plugin": "^3.5.0",
     "@xyo-network/url-payload-plugin": "workspace:^",
-    "@xyo-network/witness-model": "^3.4.0"
+    "@xyo-network/witness-model": "^3.5.0"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
-    "typescript": "^5.6.3"
+    "@xylabs/vitest-extended": "^4.4.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.5"
   },
   "publishConfig": {
     "access": "public"

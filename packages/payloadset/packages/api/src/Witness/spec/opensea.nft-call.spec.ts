@@ -1,4 +1,5 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { HDWallet } from '@xyo-network/account'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -7,18 +8,22 @@ import { ModuleFactory } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { asWitnessInstance } from '@xyo-network/witness-model'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
 import type { ApiCallJsonResult, ApiUriTemplateCall } from '../../Payload/index.ts'
 import { ApiCallResultSchema, ApiCallSchema } from '../../Payload/index.ts'
 import { ApiCallWitness } from '../Witness.ts'
-import openseaNftsManifest from './opensea.nft-call.json'
+import openseaNftsManifest from './opensea.nft-call.json' assert { type: 'json' }
 
 describe('OpenSeaApi', () => {
   const address = '0xECA1bB9c8d3Fd8b926372f42c8D4c6c3ed0669B3' // Random Wallet
 
   const apiKey = process.env.OPENSEA_API_KEY
 
-  describeIf(apiKey)('report', () => {
+  describe.skipIf(!apiKey)('report', () => {
     type OpenSeaNft = {
       /*
        * Collection slug. A unique string to identify a collection on OpenSea

@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import { delay } from '@xylabs/delay'
-import { describeIf } from '@xylabs/jest-helpers'
 import { HDWallet } from '@xyo-network/account'
 import type { ApiUriCall } from '@xyo-network/api-call-witness'
 import {
@@ -27,13 +28,17 @@ import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
-import nftIdToNftMetadataUri from './NftMetadataUriToNftMetadata.json'
+import nftIdToNftMetadataUri from './NftMetadataUriToNftMetadata.json' assert { type: 'json' }
 
 const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)
 
-describeIf(providers.length)('NftMetadataUriToNftMetadata', () => {
+describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
   let node: MemoryNode
   const cases: ApiUriCall[] = [
     {

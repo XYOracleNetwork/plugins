@@ -1,5 +1,11 @@
+import '@xylabs/vitest-extended'
+
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import {
+  describe, expect,
+  test,
+} from 'vitest'
 
 import { AbstractModuleInstanceWitness, AbstractModuleInstanceWitnessConfigSchema } from '../Witness.ts'
 

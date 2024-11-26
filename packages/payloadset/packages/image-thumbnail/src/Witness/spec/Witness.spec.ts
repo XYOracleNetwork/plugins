@@ -1,4 +1,11 @@
-import { checkIpfsUrl } from '../lib'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { checkIpfsUrl } from '../lib/index.ts'
 
 /**
  * @group thumbnail

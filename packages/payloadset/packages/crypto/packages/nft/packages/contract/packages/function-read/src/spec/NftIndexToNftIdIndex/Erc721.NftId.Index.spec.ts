@@ -1,5 +1,6 @@
+import '@xylabs/vitest-extended'
+
 import { delay } from '@xylabs/delay'
-import { describeIf } from '@xylabs/jest-helpers'
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'
 import { CryptoContractFunctionCallSchema } from '@xyo-network/crypto-contract-function-read-payload-plugin'
@@ -28,16 +29,20 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import type { Provider } from 'ethers'
+import {
+  beforeAll, describe, expect,
+  it,
+} from 'vitest'
 
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
 // eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
-import nodeManifest from './Erc721.NftId.Index.json'
+import nodeManifest from './Erc721.NftId.Index.json' assert { type: 'json' }
 
 const maxProviders = 32
 
-describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
   let wallet: WalletInstance
   let node: MemoryNode
 
@@ -80,7 +85,7 @@ describeIf(process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
   const cases: readonly TestData[] = [
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
-  describeIf(process.env.INFURA_PROJECT_ID)('Sentinel', () => {
+  describe.skipIf(!process.env.INFURA_PROJECT_ID)('Sentinel', () => {
     const tokensToCheck = 16
     const tokenIndexes = Array.from({ length: tokensToCheck }).map((_, tokenIndex) => {
       // Add one to prevent 0 index

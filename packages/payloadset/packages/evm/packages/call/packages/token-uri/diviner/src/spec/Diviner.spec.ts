@@ -1,11 +1,17 @@
 // eslint-disable-next-line workspaces/no-absolute-imports
-import { EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
+import '@xylabs/vitest-extended'
+
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import type { Payload } from '@xyo-network/payload-model'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
-import { EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Config'
-import { EvmCallResultToNftTokenUriDiviner } from '../Diviner'
-import type { EvmTokenUriCallResults } from '../Payload'
+import { EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Config.ts'
+import { EvmCallResultToNftTokenUriDiviner } from '../Diviner.ts'
+import type { EvmTokenUriCallResults } from '../Payload.ts'
+import { EvmCallResultToNftTokenUriDivinerSchema } from '../Schema.ts'
 
 const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[]) => {
   const results = actual.filter(isNftMetadataUri)
@@ -32,7 +38,7 @@ describe('CryptoWalletNftDiviner', () => {
       address: '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D',
       chainId: 1,
       results: { tokenURI: { args: ['0x0f'], result: 'ipfs://QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/15' } },
-      schema: EvmCallResultsSchema,
+      schema: EvmCallResultToNftTokenUriDivinerSchema,
     },
     {
       address: '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452',

@@ -1,3 +1,5 @@
+import '@xylabs/vitest-extended'
+
 import { removeEmptyFields } from '@xyo-network/hash'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
@@ -5,6 +7,10 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
+import {
+  beforeAll,
+  describe, expect, it,
+} from 'vitest'
 
 import { ImageThumbnailWitness } from '../Witness.ts'
 

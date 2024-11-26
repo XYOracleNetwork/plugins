@@ -1,5 +1,12 @@
-import { sampleEtherscanGas } from '../../../test'
-import { isEthereumGasEtherscanPayload } from '../isEthereumGasEtherscanPayload'
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleEtherscanGas } from '../../../test/index.ts'
+import { isEthereumGasEtherscanPayload } from '../isEthereumGasEtherscanPayload.ts'
 
 describe('isEthereumGasEtherscanPayload', () => {
   describe('returns true', () => {

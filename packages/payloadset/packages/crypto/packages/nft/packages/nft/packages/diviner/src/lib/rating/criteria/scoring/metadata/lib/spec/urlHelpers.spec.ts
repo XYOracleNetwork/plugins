@@ -1,6 +1,13 @@
+import '@xylabs/vitest-extended'
+
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
 import {
   isSecure, isValidUrl, isWeb2, isWeb3, toUrl,
-} from '../urlHelpers'
+} from '../urlHelpers.ts'
 
 const ipfsUrl = 'ipfs://QmRyBBrLYWy6zZRyDUR5JWLJ2mrbvHFtptosrM3jAwBXTc/'
 const httpUrl = 'http://www.google.com'

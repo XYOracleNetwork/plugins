@@ -1,13 +1,18 @@
-import { describeIf } from '@xylabs/jest-helpers'
+import '@xylabs/vitest-extended'
+
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
 
-import { EvmCallWitnessConfigSchema } from '../model'
-import type { EvmCall } from '../Payload'
-import { EvmCallResultSchema, EvmCallSchema } from '../Payload'
-import { EvmCallWitness } from '../Witness'
+import { EvmCallWitnessConfigSchema } from '../model.ts'
+import type { EvmCall } from '../Payload.ts'
+import { EvmCallResultSchema, EvmCallSchema } from '../Payload.ts'
+import { EvmCallWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
   const results = observation.filter(isPayloadOfSchemaType(EvmCallResultSchema))
@@ -15,7 +20,7 @@ const validateObservation = (observation: Payload[]) => {
   expect(observation.length).toEqual(results.length)
 }
 
-describeIf(process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => {
   const address = '0x55296f69f40ea6d20e478533c15a6b08b654e758' // XYO ERC20
   const functionName = 'balanceOf'
   const args = ['0xaDe7DFBC532A01dB67BFEA3b728D4eA22869f381'] // Random Holder

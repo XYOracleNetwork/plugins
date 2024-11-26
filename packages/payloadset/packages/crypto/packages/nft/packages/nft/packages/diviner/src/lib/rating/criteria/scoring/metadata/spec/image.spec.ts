@@ -1,7 +1,14 @@
-import { scoreImage } from '../image'
+import '@xylabs/vitest-extended'
+
+import {
+  describe,
+  it,
+} from 'vitest'
+
+import { scoreImage } from '../image.ts'
 import {
   expectLoweredScore, expectMaxPossibleScore, expectMiniumScore,
-} from './testHelpers'
+} from './testHelpers.ts'
 
 const web3Urls = ['ipfs://QmaXTuWjEbDuvcA3dHypqHfxMzDLq78Zj5kBLN4JdMEYDB/3.mp4', 'ipfs://QmTxDYfccVVWoucpbvFECxtysRkMBADDL8j4zVYSRM7Kp3/']
 const secureWeb2Urls = [

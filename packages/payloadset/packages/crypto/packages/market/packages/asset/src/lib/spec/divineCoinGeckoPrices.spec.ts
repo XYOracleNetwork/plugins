@@ -1,7 +1,13 @@
-import { assertEx } from '@xylabs/assert'
+import '@xylabs/vitest-extended'
 
-import { sampleCoinGeckoPayload } from '../../test'
-import { divineCoinGeckoPrices } from '../divineCoinGeckoPrices'
+import { assertEx } from '@xylabs/assert'
+import {
+  describe, expect,
+  it,
+} from 'vitest'
+
+import { sampleCoinGeckoPayload } from '../../test/index.ts'
+import { divineCoinGeckoPrices } from '../divineCoinGeckoPrices.ts'
 
 describe('divineCoinGeckoPrices', () => {
   it('divines prices from CoinGecko', async () => {
