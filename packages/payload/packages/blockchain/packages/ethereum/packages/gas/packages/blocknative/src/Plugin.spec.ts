@@ -1,5 +1,4 @@
-import '@xylabs/vitest-extended'
-
+import { extend } from '@xylabs/vitest-extended'
 import { PayloadPluginResolver } from '@xyo-network/payload-plugin'
 import {
   describe, expect, test,

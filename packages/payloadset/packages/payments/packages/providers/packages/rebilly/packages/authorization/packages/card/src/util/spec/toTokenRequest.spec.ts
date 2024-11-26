@@ -1,5 +1,3 @@
-import '@xylabs/vitest-extended'
-
 import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
 import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 import {

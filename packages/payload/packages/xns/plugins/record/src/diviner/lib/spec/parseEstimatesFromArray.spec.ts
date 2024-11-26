@@ -1,5 +1,4 @@
-import '@xylabs/vitest-extended'
-
+import { matchers } from '@xylabs/vitest-matchers'
 import type { Payload } from '@xyo-network/payload-model'
 import {
   describe, expect, it,
@@ -7,6 +6,8 @@ import {
 
 import type { Estimate } from '../parseEstimatesFromArray.ts'
 import { parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'
+
+expect.extend(matchers)
 
 describe('parseEstimatesFromArray', () => {
   const estimateA: Estimate = [

@@ -1,5 +1,3 @@
-import '@xylabs/vitest-extended'
-
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
 import {
@@ -7,6 +5,9 @@ import {
 } from 'vitest'
 
 import { parseDomainEstimates } from '../parseDomainEstimates.ts'
+import { matchers } from './matchers/index.ts'
+
+expect.extend(matchers)
 
 describe('parseDomainEstimates', () => {
   const estimateA: DomainEstimate = [
