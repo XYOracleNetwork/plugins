@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/xml-plugin",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -30,10 +30,10 @@
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xylabs/object": "^4.4.9",
-    "@xyo-network/diviner-abstract": "^3.5.0",
-    "@xyo-network/diviner-model": "^3.5.0",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
+    "@xyo-network/diviner-abstract": "^3.5.1",
+    "@xyo-network/diviner-model": "^3.5.1",
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "@xylabs/vitest-extended": "^4.4.9",
     "@xyo-network/api-call-witness": "workspace:^",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/xns-record-payloadset-plugins",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -33,11 +33,11 @@
     "@xylabs/exists": "^4.4.9",
     "@xylabs/hex": "^4.4.9",
     "@xylabs/promise": "^4.4.9",
-    "@xyo-network/boundwitness-model": "^3.5.0",
-    "@xyo-network/diviner-hash-lease": "^3.5.0",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-builder": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
+    "@xyo-network/boundwitness-model": "^3.5.1",
+    "@xyo-network/diviner-hash-lease": "^3.5.1",
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-builder": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
     "@xyo-network/xns-record-payload-plugins": "workspace:^"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-extended": "^4.4.9",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

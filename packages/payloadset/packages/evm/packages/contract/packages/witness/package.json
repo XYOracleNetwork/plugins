@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/evm-contract-witness",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -30,9 +30,9 @@
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "^4.4.9",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
-    "@xyo-network/witness-evm-abstract": "^3.5.0"
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
+    "@xyo-network/witness-evm-abstract": "^3.5.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
@@ -40,7 +40,7 @@
     "@xylabs/vitest-extended": "^4.4.9",
     "ethers": "^6.13.4",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

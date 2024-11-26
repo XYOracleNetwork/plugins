@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/xns-record-payload-plugins",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -31,22 +31,22 @@
   "dependencies": {
     "@xylabs/exists": "^4.4.9",
     "@xylabs/hex": "^4.4.9",
-    "@xyo-network/boundwitness-model": "^3.5.0",
-    "@xyo-network/boundwitness-validator": "^3.5.0",
-    "@xyo-network/diviner-hash-lease": "^3.5.0",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-builder": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
-    "@xyo-network/witness-model": "^3.5.0"
+    "@xyo-network/boundwitness-model": "^3.5.1",
+    "@xyo-network/boundwitness-validator": "^3.5.1",
+    "@xyo-network/diviner-hash-lease": "^3.5.1",
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-builder": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
+    "@xyo-network/witness-model": "^3.5.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-matchers": "^4.4.9",
-    "@xyo-network/account": "^3.5.0",
-    "@xyo-network/boundwitness-builder": "^3.5.0",
+    "@xyo-network/account": "^3.5.1",
+    "@xyo-network/boundwitness-builder": "^3.5.1",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

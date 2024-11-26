@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/tzero-stock-market-plugin",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -33,10 +33,10 @@
     "@xylabs/object": "^4.4.9",
     "@xylabs/promise": "^4.4.9",
     "@xyo-network/api-call-witness": "workspace:^",
-    "@xyo-network/diviner-abstract": "^3.5.0",
-    "@xyo-network/diviner-model": "^3.5.0",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
+    "@xyo-network/diviner-abstract": "^3.5.1",
+    "@xyo-network/diviner-model": "^3.5.1",
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
     "@xyo-network/tzero-stock-market-payload-plugin": "workspace:^"
   },
   "devDependencies": {
@@ -44,13 +44,13 @@
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-extended": "^4.4.9",
-    "@xyo-network/account": "^3.5.0",
-    "@xyo-network/manifest": "^3.5.0",
-    "@xyo-network/module-factory-locator": "^3.5.0",
-    "@xyo-network/sentinel-model": "^3.5.0",
-    "@xyo-network/witness-model": "^3.5.0",
+    "@xyo-network/account": "^3.5.1",
+    "@xyo-network/manifest": "^3.5.1",
+    "@xyo-network/module-factory-locator": "^3.5.1",
+    "@xyo-network/sentinel-model": "^3.5.1",
+    "@xyo-network/witness-model": "^3.5.1",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

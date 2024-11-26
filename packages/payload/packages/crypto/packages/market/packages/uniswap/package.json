@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/uniswap-crypto-market-payload-plugin",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,15 +29,15 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xyo-network/payload-model": "^3.5.0",
-    "@xyo-network/payload-plugin": "^3.5.0"
+    "@xyo-network/payload-model": "^3.5.1",
+    "@xyo-network/payload-plugin": "^3.5.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-extended": "^4.4.9",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"

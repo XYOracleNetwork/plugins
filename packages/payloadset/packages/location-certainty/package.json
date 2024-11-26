@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/location-certainty-plugin",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,27 +29,27 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xyo-network/diviner-abstract": "^3.5.0",
-    "@xyo-network/diviner-model": "^3.5.0",
+    "@xyo-network/diviner-abstract": "^3.5.1",
+    "@xyo-network/diviner-model": "^3.5.1",
     "@xyo-network/elevation-payload-plugin": "workspace:^",
     "@xyo-network/elevation-plugin": "workspace:^",
     "@xyo-network/location-certainty-payload-plugin": "workspace:^",
     "@xyo-network/location-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.5.0",
-    "@xyo-network/payload-builder": "^3.5.0",
-    "@xyo-network/payload-model": "^3.5.0",
-    "@xyo-network/payloadset-plugin": "^3.5.0"
+    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/payload-builder": "^3.5.1",
+    "@xyo-network/payload-model": "^3.5.1",
+    "@xyo-network/payloadset-plugin": "^3.5.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
     "@xylabs/vitest-extended": "^4.4.9",
-    "@xyo-network/archivist-abstract": "^3.5.0",
-    "@xyo-network/archivist-memory": "^3.5.0",
-    "@xyo-network/module-resolver": "^3.5.0",
+    "@xyo-network/archivist-abstract": "^3.5.1",
+    "@xyo-network/archivist-memory": "^3.5.1",
+    "@xyo-network/module-resolver": "^3.5.1",
     "fast-text-encoding": "^1.0.6",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.5"
+    "vitest": "^2.1.6"
   },
   "publishConfig": {
     "access": "public"
