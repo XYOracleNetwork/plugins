@@ -1,8 +1,6 @@
 import type { Address } from '@xylabs/hex'
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DomainFields } from '../Domain/index.ts'
 import { DomainSchema } from '../Domain/index.ts'
@@ -35,8 +33,3 @@ export const isDomainRegistration = isPayloadOfSchemaType<DomainRegistration>(Do
  * Identity function for DomainRegistration payload with sources
  */
 export const isDomainRegistrationWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistration>(DomainRegistrationSchema)
-
-/**
- * Identity function for DomainRegistration payload with meta
- */
-export const isDomainRegistrationWithMeta = isPayloadOfSchemaTypeWithMeta<DomainRegistration>(DomainRegistrationSchema)

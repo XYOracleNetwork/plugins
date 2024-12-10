@@ -1,6 +1,6 @@
 import type { Hash } from '@xylabs/hex'
-import { type BoundWitness, isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import type { Payload } from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms/index.ts'
 
@@ -13,8 +13,8 @@ import type { EscrowTerms } from '../../Terms/index.ts'
  */
 export const getSignaturesByAppraisal = (
   terms: EscrowTerms,
-  dictionary: Record<Hash, WithMeta<Payload>>,
-): Record<Hash, WithMeta<BoundWitness>[]> => {
+  dictionary: Record<Hash, Payload>,
+): Record<Hash, BoundWitness[]> => {
   // Validate inputs
   const appraisals = terms.appraisals
   if (!appraisals || appraisals.length === 0) return {}
@@ -24,10 +24,10 @@ export const getSignaturesByAppraisal = (
   // Validate the appraisals are signed by valid appraisal authorities. Validation criteria:
   // - The bw includes the appraisal hash from the escrow terms appraisal
   // - The bw is signed by an approved appraisal authority from the escrow terms appraisalAuthorities
-  const appraisalBWsValid: Record<Hash, WithMeta<BoundWitness>[]> = Object.fromEntries(
-    appraisals.map<[Hash, WithMeta<BoundWitness>[]]>(hash => [hash, []]),
+  const appraisalBWsValid: Record<Hash, BoundWitness[]> = Object.fromEntries(
+    appraisals.map<[Hash, BoundWitness[]]>(hash => [hash, []]),
   )
-  for (const bw of Object.values(dictionary).filter(isBoundWitnessWithMeta)) {
+  for (const bw of Object.values(dictionary).filter(isBoundWitness)) {
     for (const appraisal of appraisals) {
       if (bw.payload_hashes.includes(appraisal) && bw.addresses.some(address => appraisalAuthorities.includes(address))) {
         appraisalBWsValid[appraisal].push(bw)

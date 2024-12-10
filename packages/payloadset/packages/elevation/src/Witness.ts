@@ -67,9 +67,9 @@ export const locationToQuadkey = (location: Location, zoom = 16) => {
     (location as QuadkeyLocation).quadkey
       ? Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
       : Quadkey.fromLngLat(
-        { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
-        zoom,
-      ),
+          { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
+          zoom,
+        ),
   )
 }
 

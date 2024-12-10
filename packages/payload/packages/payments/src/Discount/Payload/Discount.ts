@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -26,8 +25,3 @@ export const isDiscount = isPayloadOfSchemaType<Discount>(DiscountSchema)
  * Identity function for determining if an object is an Discount with sources
  */
 export const isDiscountWithSources = isPayloadOfSchemaTypeWithSources<Discount>(DiscountSchema)
-
-/**
- * Identity function for determining if an object is an Discount with meta
- */
-export const isDiscountWithMeta = isPayloadOfSchemaTypeWithMeta<Discount>(DiscountSchema)

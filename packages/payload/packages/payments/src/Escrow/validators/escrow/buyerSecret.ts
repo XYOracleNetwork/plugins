@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import type { Hash } from '@xylabs/hex'
 import type {
-  AsyncPayloadValidationFunction, Payload, SyncPayloadValidationFunction, WithMeta,
+  AsyncPayloadValidationFunction, Payload, SyncPayloadValidationFunction,
 } from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms/index.ts'
@@ -28,7 +28,7 @@ export const buyerSecretExistsValidator: SyncPayloadValidationFunction<EscrowTer
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for the existence of the buyerSecret in the dictionary
  */
-export const getBuyerSecretSuppliedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): SyncPayloadValidationFunction<EscrowTerms> => {
+export const getBuyerSecretSuppliedValidator = (dictionary: Record<Hash, Payload>): SyncPayloadValidationFunction<EscrowTerms> => {
   return (terms: EscrowTerms) => {
     const buyerSecret = assertEx(terms.buyerSecret, () => `${name}: No buyerSecret: ${terms.buyerSecret}`)
     if (!dictionary[buyerSecret]) {
@@ -44,6 +44,6 @@ export const getBuyerSecretSuppliedValidator = (dictionary: Record<Hash, WithMet
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for the existence of the buyerSecret signed by the buyer
  */
-export const getBuyerSecretSignedValidator = (dictionary: Record<Hash, WithMeta<Payload>>): AsyncPayloadValidationFunction<EscrowTerms> => {
+export const getBuyerSecretSignedValidator = (dictionary: Record<Hash, Payload>): AsyncPayloadValidationFunction<EscrowTerms> => {
   return getPartySecretSignedValidator(dictionary, 'buyer')
 }

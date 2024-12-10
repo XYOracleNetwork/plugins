@@ -2,7 +2,6 @@ import type { Hash } from '@xylabs/hex'
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -35,8 +34,3 @@ export const isEscrowOutcome = isPayloadOfSchemaType<EscrowOutcome>(EscrowOutcom
  * Identity function for determining if an object is an EscrowOutcome with sources
  */
 export const isEscrowOutcomeWithSources = isPayloadOfSchemaTypeWithSources<EscrowOutcome>(EscrowOutcomeSchema)
-
-/**
- * Identity function for determining if an object is an EscrowOutcome with meta
- */
-export const isEscrowOutcomeWithMeta = isPayloadOfSchemaTypeWithMeta<EscrowOutcome>(EscrowOutcomeSchema)

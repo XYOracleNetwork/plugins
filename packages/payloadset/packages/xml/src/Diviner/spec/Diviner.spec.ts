@@ -9,7 +9,7 @@ import {
   it,
 } from 'vitest'
 
-import { isXmlWithMeta } from '../../Payload.ts'
+import { isXml } from '../../Payload.ts'
 import { XmlSchema } from '../../Schema.ts'
 import { XmlParsingDiviner } from '../Diviner.ts'
 import { XmlParsingDivinerConfigSchema } from '../Schema.ts'
@@ -35,7 +35,7 @@ describe('XmlParsingDiviner', () => {
       const xml = assertEx(observation, () => 'Error in observation')
       const results = await diviner.divine([xml])
       expect(results).toBeArrayOfSize(1)
-      const result = results.find(isXmlWithMeta)
+      const result = results.find(isXml)
       expect(result).toBeDefined()
       expect(result?.schema).toBe(XmlSchema)
       expect(result?.xml).toBeDefined()

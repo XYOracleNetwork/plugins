@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { PaymentCardSchema } from './Schema.ts'
 
@@ -45,8 +43,3 @@ export const isPaymentCard = isPayloadOfSchemaType<PaymentCard>(PaymentCardSchem
  * Identity function for determine if an object is a PaymentCard with sources
  */
 export const isPaymentCardWithSources = isPayloadOfSchemaTypeWithSources<PaymentCard>(PaymentCardSchema)
-
-/**
- * Identity function for determine if an object is a PaymentCard with meta
- */
-export const isPaymentCardWithMeta = isPayloadOfSchemaTypeWithMeta<PaymentCard>(PaymentCardSchema)

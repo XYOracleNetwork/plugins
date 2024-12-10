@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
 import type { DomainFields } from './Domain.ts'
@@ -28,8 +26,3 @@ export const isDomainLease = isPayloadOfSchemaType<DomainLease>(DomainLeaseSchem
  * Identity function for DomainLease payload with sources
  */
 export const isDomainLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainLease>(DomainLeaseSchema)
-
-/**
- * Identity function for DomainLease payload with meta
- */
-export const isDomainLeaseWithMeta = isPayloadOfSchemaTypeWithMeta<DomainLease>(DomainLeaseSchema)

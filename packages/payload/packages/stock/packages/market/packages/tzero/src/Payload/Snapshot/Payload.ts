@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { SnapshotSchema } from './Schema.ts'
 
@@ -42,8 +40,3 @@ export const isSnapshot = isPayloadOfSchemaType<Snapshot>(SnapshotSchema)
  * Identity function for determine if an object is a Snapshot with sources
  */
 export const isSnapshotWithSources = isPayloadOfSchemaTypeWithSources<Snapshot>(SnapshotSchema)
-
-/**
- * Identity function for determine if an object is a Snapshot with meta
- */
-export const isSnapshotWithMeta = isPayloadOfSchemaTypeWithMeta<Snapshot>(SnapshotSchema)

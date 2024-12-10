@@ -6,7 +6,6 @@
 import 'fast-text-encoding'
 import '@xylabs/vitest-extended'
 
-import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 import {
   describe, expect,

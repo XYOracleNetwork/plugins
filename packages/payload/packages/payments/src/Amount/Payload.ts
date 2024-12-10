@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -29,8 +28,3 @@ export const isAmount = isPayloadOfSchemaType<Amount>(AmountSchema)
  * Identity function for determining if an object is an Amount with sources
  */
 export const isAmountWithSources = isPayloadOfSchemaTypeWithSources<Amount>(AmountSchema)
-
-/**
- * Identity function for determining if an object is an Amount with meta
- */
-export const isAmountWithMeta = isPayloadOfSchemaTypeWithMeta<Amount>(AmountSchema)

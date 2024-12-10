@@ -1,5 +1,5 @@
 import type { Hash } from '@xylabs/hex'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import type { DomainFields } from '../Domain/index.ts'
@@ -20,4 +20,3 @@ export interface HashRecordFields extends DomainFields {
 export type HashRecord = Payload<HashRecordFields, HashRecordSchema>
 
 export const isHashRecord = isPayloadOfSchemaType<HashRecord>(HashRecordSchema)
-export const isHashRecordWithMeta = isPayloadOfSchemaType<WithMeta<HashRecord>>(HashRecordSchema)

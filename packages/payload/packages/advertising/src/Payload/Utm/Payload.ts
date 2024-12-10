@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -47,8 +46,3 @@ export const isUtm = isPayloadOfSchemaType<Utm>(UtmSchema)
  * Identity function for determining if an object is a Utm payload with sources
  */
 export const isUtmWithSources = isPayloadOfSchemaTypeWithSources<Utm>(UtmSchema)
-
-/**
- * Identity function for determining if an object is a Utm payload with meta
- */
-export const isUtmWithMeta = isPayloadOfSchemaTypeWithMeta<Utm>(UtmSchema)

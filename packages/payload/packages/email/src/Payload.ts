@@ -1,12 +1,10 @@
 import { assertEx } from '@xylabs/assert'
 import type {
   PayloadWithSources,
-  WithMeta,
   WithSources,
 } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -43,7 +41,7 @@ export type Email = PayloadWithSources<EmailFields, EmailAddressSchema>
  * @param address The Email address to use
  * @returns An Email if the address is valid, undefined otherwise
  */
-export const tryAsEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(address: string): T | undefined => {
+export const tryAsEmail = <T = Email | WithSources<Email>>(address: string): T | undefined => {
   return isValidEmail(address) ? ({ address, schema: EmailAddressSchema } as T) : undefined
 }
 
@@ -52,7 +50,7 @@ export const tryAsEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(add
  * @param address The Email address to use
  * @returns An Email if the address is valid, throws otherwise
  */
-export const asEmail = <T = Email | WithMeta<Email> | WithSources<Email>>(address: string): T => {
+export const asEmail = <T = Email | WithSources<Email>>(address: string): T => {
   return assertEx(tryAsEmail<T>(address), 'Invalid email address')
 }
 
@@ -68,11 +66,4 @@ export const isEmail = (value: unknown): value is Email => {
  */
 export const isEmailWithSources = (value: unknown): value is Email => {
   return isPayloadOfSchemaTypeWithSources<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
-}
-
-/**
- * Identity function for determining if an object is an Email with meta
- */
-export const isEmailWithMeta = (value: unknown): value is Email => {
-  return isPayloadOfSchemaTypeWithMeta<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }

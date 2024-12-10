@@ -1,10 +1,8 @@
 import {
   type FixedAmountCoupon, type FixedPercentageCoupon, type FixedPriceCoupon,
-  isFixedAmountCoupon, isFixedAmountCouponWithMeta, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
-  isFixedPercentageCouponWithMeta,
+  isFixedAmountCoupon, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
   isFixedPercentageCouponWithSources,
   isFixedPriceCoupon,
-  isFixedPriceCouponWithMeta,
   isFixedPriceCouponWithSources,
 } from './Coupons/index.ts'
 
@@ -31,11 +29,3 @@ export const isCouponWithSources = (x?: unknown | null) =>
   isFixedAmountCouponWithSources(x)
   || isFixedPercentageCouponWithSources(x)
   || isFixedPriceCouponWithSources(x)
-
-/**
- * Identity function for determining if an object is an Coupon with meta
- */
-export const isCouponWithMeta = (x?: unknown | null) =>
-  isFixedAmountCouponWithMeta(x)
-  || isFixedPercentageCouponWithMeta(x)
-  || isFixedPriceCouponWithMeta(x)

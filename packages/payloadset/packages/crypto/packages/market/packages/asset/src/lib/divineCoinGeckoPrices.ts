@@ -18,17 +18,17 @@ export const divineCoinGeckoPrices = async (payload: CoingeckoCryptoMarketPayloa
   const assets: Record<string, AssetInfo>
     = payload && payload?.assets
       ? Object.fromEntries(
-        Object.entries(payload.assets)
-          .filter(valuationExists)
-          .map(([asset, valuation]) => {
-            const value = Object.fromEntries(
-              Object.entries(valuation)
-                .filter(otherValueExists)
-                .map(([symbol, price]) => [symbol.toLowerCase(), price?.toString()]),
-            )
-            return [asset, { value }]
-          }),
-      )
+          Object.entries(payload.assets)
+            .filter(valuationExists)
+            .map(([asset, valuation]) => {
+              const value = Object.fromEntries(
+                Object.entries(valuation)
+                  .filter(otherValueExists)
+                  .map(([symbol, price]) => [symbol.toLowerCase(), price?.toString()]),
+              )
+              return [asset, { value }]
+            }),
+        )
       : {}
   const timestamp = Date.now()
   return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()

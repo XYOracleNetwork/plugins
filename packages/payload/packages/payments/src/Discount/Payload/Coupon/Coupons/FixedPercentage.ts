@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -29,8 +28,3 @@ export const isFixedPercentageCoupon = isPayloadOfSchemaType<FixedPercentageCoup
  * Identity function for determining if an object is an FixedPercentageCoupon with sources
  */
 export const isFixedPercentageCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedPercentageCoupon>(FixedPercentageCouponSchema)
-
-/**
- * Identity function for determining if an object is an FixedPercentageCoupon with meta
- */
-export const isFixedPercentageCouponWithMeta = isPayloadOfSchemaTypeWithMeta<FixedPercentageCoupon>(FixedPercentageCouponSchema)

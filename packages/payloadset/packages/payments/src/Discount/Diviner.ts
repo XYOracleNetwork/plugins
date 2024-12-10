@@ -18,8 +18,7 @@ import {
   Condition,
   Coupon,
   Discount,
-  EscrowTerms, isConditionWithMeta, isCoupon,
-  isCouponWithMeta,
+  EscrowTerms, isCondition, isCoupon,
   isEscrowTerms, NO_DISCOUNT, PaymentDiscountDivinerConfigSchema, PaymentDiscountDivinerParams,
 } from '@xyo-network/payment-payload-plugins'
 
@@ -161,7 +160,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingDiscounts)
-      discounts.push(...payloads.filter(isCouponWithMeta))
+      discounts.push(...payloads.filter(isCoupon))
     }
     // If not all discounts are found
     if (discounts.length !== discountsHashes.length) {
@@ -174,7 +173,7 @@ export class PaymentDiscountDiviner<
     }
 
     const conditionsHashes: Hash[] = discounts.flatMap(discount => discount.conditions ?? [])
-    const conditions: Condition[] = conditionsHashes.map(hash => hashMap[hash]).filter(exists).filter(isConditionWithMeta)
+    const conditions: Condition[] = conditionsHashes.map(hash => hashMap[hash]).filter(exists).filter(isCondition)
     const missingConditions = conditionsHashes.filter(hash => !hashMap[hash])
 
     // If not all conditions are found
@@ -182,7 +181,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingConditions)
-      conditions.push(...payloads.filter(isConditionWithMeta))
+      conditions.push(...payloads.filter(isCondition))
     }
     // If not all conditions are found
     if (conditions.length !== conditionsHashes.length) {

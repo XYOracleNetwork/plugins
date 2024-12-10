@@ -30,15 +30,15 @@
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xyo-network/evm-address-payload-plugin": "workspace:^",
-    "@xyo-network/payload-model": "^3.5.1",
-    "@xyo-network/payload-plugin": "^3.5.1"
+    "@xyo-network/payload-model": "^3.6.0-rc.1",
+    "@xyo-network/payload-plugin": "^3.6.0-rc.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^4.2.4",
     "@xylabs/tsconfig": "^4.2.4",
-    "@xylabs/vitest-extended": "^4.4.9",
+    "@xylabs/vitest-extended": "^4.4.12",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"

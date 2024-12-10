@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -28,8 +27,3 @@ export const isFixedPriceCoupon = isPayloadOfSchemaType<FixedPriceCoupon>(FixedP
  * Identity function for determining if an object is an FixedPriceCoupon with sources
  */
 export const isFixedPriceCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedPriceCoupon>(FixedPriceCouponSchema)
-
-/**
- * Identity function for determining if an object is an FixedPriceCoupon with meta
- */
-export const isFixedPriceCouponWithMeta = isPayloadOfSchemaTypeWithMeta<FixedPriceCoupon>(FixedPriceCouponSchema)

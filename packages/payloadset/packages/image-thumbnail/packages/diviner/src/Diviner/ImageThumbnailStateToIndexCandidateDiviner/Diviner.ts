@@ -3,7 +3,7 @@ import { exists } from '@xylabs/exists'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
 import { BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
@@ -14,7 +14,7 @@ import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, Schema, WithMeta, WithSources,
+  Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
@@ -88,7 +88,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map(is => results.find(is))
     if (filteredResults.includes(undefined)) return undefined
-    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as WithMeta<IndexCandidate>[]
+    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as IndexCandidate[]
     return [bw, ...indexCandidates]
   }
 
@@ -106,13 +106,13 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
         limit: this.payloadDivinerLimit, offset, order, payload_schemas,
       })
       .build()
-    const batch = (await boundWitnessDiviner.divine([query])) as WithSources<WithMeta<BoundWitness>>[]
+    const batch = (await boundWitnessDiviner.divine([query])) as WithSources<BoundWitness>[]
     if (batch.length === 0) return [lastState]
     // Get source data
     const sourceArchivist = await this.getArchivistForStore()
     const indexCandidates: IndexCandidate[] = (
       await Promise.all(
-        batch.filter(isBoundWitnessWithMeta).map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+        batch.filter(isBoundWitness).map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
       )
     )
       .filter(exists)

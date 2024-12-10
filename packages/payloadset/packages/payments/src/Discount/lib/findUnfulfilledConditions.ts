@@ -4,7 +4,7 @@ import type { Payload } from '@xyo-network/payload-model'
 import {
   type Condition, type Coupon, isCondition,
 } from '@xyo-network/payment-payload-plugins'
-import { isSchemaPayloadWithMeta } from '@xyo-network/schema-payload-plugin'
+import { isSchemaPayload } from '@xyo-network/schema-payload-plugin'
 import type { ValidateFunction } from 'ajv'
 import { Ajv } from 'ajv'
 
@@ -52,7 +52,7 @@ export const findUnfulfilledConditions = async (coupon: Coupon, conditions: Cond
       validator = schemaCache.get(hash)
     } else {
       const payload = hashMap[hash]
-      const definition = isSchemaPayloadWithMeta(payload) ? payload.definition : undefined
+      const definition = isSchemaPayload(payload) ? payload.definition : undefined
       if (definition) {
         // Compile and cache the validator
         validator = ajv.compile(definition)
