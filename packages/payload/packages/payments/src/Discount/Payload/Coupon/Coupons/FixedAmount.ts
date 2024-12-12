@@ -1,3 +1,4 @@
+import { AsObjectFactory } from '@xylabs/object'
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
@@ -22,8 +23,10 @@ export type FixedAmountCoupon = PayloadWithSources<FixedAmountCouponFields, Fixe
  * Identity function for determining if an object is an FixedAmountCoupon
  */
 export const isFixedAmountCoupon = isPayloadOfSchemaType<FixedAmountCoupon>(FixedAmountCouponSchema)
+export const asFixedAmountCoupon = AsObjectFactory.create(isFixedAmountCoupon)
 
 /**
  * Identity function for determining if an object is an FixedAmountCoupon with sources
- */
+*/
 export const isFixedAmountCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedAmountCoupon>(FixedAmountCouponSchema)
+export const asFixedAmountCouponWithSources = AsObjectFactory.create(isFixedAmountCouponWithSources)
