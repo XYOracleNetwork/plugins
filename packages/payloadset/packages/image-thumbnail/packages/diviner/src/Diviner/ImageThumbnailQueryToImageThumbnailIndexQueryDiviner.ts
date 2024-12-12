@@ -30,22 +30,20 @@ export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends Abstra
       const results = await Promise.all(
         queries.map(async (query) => {
           const {
-            limit: payloadLimit, offset: payloadOffset, order: payloadOrder, status: payloadStatus, success: payloadSuccess, url,
+            limit: payloadLimit, order: payloadOrder, status: payloadStatus, success: payloadSuccess, url,
           } = query
           const limit = payloadLimit ?? 1
           const order = payloadOrder ?? 'desc'
-          const offset = payloadOffset ?? 0
           const urlPayload = { schema: UrlSchema, url }
           const key = await PayloadBuilder.dataHash(urlPayload)
           const fields: Omit<ImageThumbnailResultQuery, 'schema' | 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>> = {
             key,
             limit,
-            offset,
             order,
           }
           if (payloadSuccess !== undefined) fields.success = payloadSuccess
           if (payloadStatus !== undefined) fields.status = payloadStatus
-          return await new PayloadBuilder<
+          return new PayloadBuilder<
             Omit<ImageThumbnailResultQuery, 'timestamp' | 'success'> & Partial<Pick<ImageThumbnailResultQuery, 'success'>>
           >({ schema: PayloadDivinerQuerySchema })
             .fields(fields)

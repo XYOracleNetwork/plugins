@@ -5,19 +5,15 @@ import { AsObjectFactory } from '@xylabs/object'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { isBoundWitness } from '@xyo-network/boundwitness-model'
+import { asBoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { payloadSchemasContainsAll } from '@xyo-network/boundwitness-validator'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
-import { BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
 import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type {
-  Payload, Schema, WithSources,
-} from '@xyo-network/payload-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
@@ -102,28 +98,30 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     // Retrieve the last state from what was passed in
     const lastState = payloads.find(isModuleState<ImageThumbnailDivinerState>)
     // If there is no last state, start from the beginning
-    if (!lastState) return [{ schema: ModuleStateSchema, state: { offset: 0 } }]
+    if (!lastState) return [{ schema: ModuleStateSchema, state: { cursor: '0' } }]
     // Otherwise, get the last offset
-    const { offset } = lastState.state
-    // Get next batch of results starting from the offset
-    const boundWitnessDiviner = await this.getBoundWitnessDivinerForStore()
-    const query = new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
-      .fields({
-        limit: this.payloadDivinerLimit, offset, order, payload_schemas,
-      })
-      .build()
-    const batch = (await boundWitnessDiviner.divine([query])) as WithSources<BoundWitness>[]
-    if (batch.length === 0) return [lastState]
+    const { cursor } = lastState.state
+    const archivist = await this.getArchivistForStore()
+    const next = await archivist.next({
+      limit: this.payloadDivinerLimit, order, cursor,
+    })
+    if (next.length === 0) return [lastState]
+    const batch = filterAs(next, asBoundWitness)
+      .filter(exists)
+      .filter(bw => payloadSchemasContainsAll(bw, payload_schemas))
     // Get source data
     const sourceArchivist = await this.getArchivistForStore()
     const indexCandidates: IndexCandidate[] = (
       await Promise.all(
-        batch.filter(isBoundWitness).map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+        batch
+          .filter(isBoundWitness)
+          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
       )
     )
       .filter(exists)
       .flat()
-    const nextState = { schema: ModuleStateSchema, state: { ...lastState.state, offset: offset + batch.length } }
+    const nextCursor = assertEx(next.at(-1)?._sequence, () => `${moduleName}: Expected next to have a sequence`)
+    const nextState: ModuleState<ImageThumbnailDivinerState> = { schema: ModuleStateSchema, state: { ...lastState.state, cursor: nextCursor } }
     return [nextState, ...indexCandidates]
   }
 
