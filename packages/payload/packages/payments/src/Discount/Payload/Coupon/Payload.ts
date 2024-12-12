@@ -1,3 +1,5 @@
+import { AsObjectFactory } from '@xylabs/object'
+
 import {
   type FixedAmountCoupon, type FixedPercentageCoupon, type FixedPriceCoupon,
   isFixedAmountCoupon, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
@@ -21,6 +23,7 @@ export const isCoupon = (x?: unknown | null) =>
   isFixedAmountCoupon(x)
   || isFixedPercentageCoupon(x)
   || isFixedPriceCoupon(x)
+export const asCoupon = AsObjectFactory.create(isCoupon)
 
 /**
  * Identity function for determining if an object is an Coupon with sources
@@ -29,3 +32,4 @@ export const isCouponWithSources = (x?: unknown | null) =>
   isFixedAmountCouponWithSources(x)
   || isFixedPercentageCouponWithSources(x)
   || isFixedPriceCouponWithSources(x)
+export const asCouponWithSources = AsObjectFactory.create(isCouponWithSources)
