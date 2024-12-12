@@ -6269,10 +6269,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/diviner-image-thumbnail@workspace:packages/payloadset/packages/image-thumbnail/packages/diviner"
   dependencies:
+    "@xylabs/array": "npm:^4.4.13"
     "@xylabs/assert": "npm:^4.4.12"
     "@xylabs/delay": "npm:^4.4.12"
     "@xylabs/exists": "npm:^4.4.12"
     "@xylabs/hex": "npm:^4.4.12"
+    "@xylabs/object": "npm:^4.4.13"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.4"
     "@xylabs/tsconfig": "npm:^4.2.4"
     "@xylabs/vitest-extended": "npm:^4.4.12"

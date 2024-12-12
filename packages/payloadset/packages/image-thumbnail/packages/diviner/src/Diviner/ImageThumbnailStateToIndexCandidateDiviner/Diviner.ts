@@ -1,5 +1,7 @@
+import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
+import { AsObjectFactory } from '@xylabs/object'
 import type { ArchivistInstance } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
@@ -53,6 +55,10 @@ const payload_schemas = [ImageThumbnailSchema, TimestampSchema]
  * Index candidate identity functions
  */
 const indexCandidateIdentityFunctions = [isImageThumbnail, isTimestamp] as const
+const isIndexCandidate = (x?: unknown | null): x is IndexCandidate => {
+  return indexCandidateIdentityFunctions.map(is => is(x)).some(Boolean)
+}
+const asIndexCandidate = AsObjectFactory.create(isIndexCandidate)
 
 /**
  * The default order to search Bound Witnesses to identify index candidates
@@ -88,7 +94,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map(is => results.find(is))
     if (filteredResults.includes(undefined)) return undefined
-    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as IndexCandidate[]
+    const indexCandidates: IndexCandidate[] = filterAs(filteredResults, asIndexCandidate)
     return [bw, ...indexCandidates]
   }
 
@@ -101,7 +107,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const { offset } = lastState.state
     // Get next batch of results starting from the offset
     const boundWitnessDiviner = await this.getBoundWitnessDivinerForStore()
-    const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
+    const query = new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
       .fields({
         limit: this.payloadDivinerLimit, offset, order, payload_schemas,
       })
