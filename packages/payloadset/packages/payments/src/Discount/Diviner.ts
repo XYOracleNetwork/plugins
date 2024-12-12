@@ -1,3 +1,4 @@
+import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Address, Hash } from '@xylabs/hex'
@@ -15,6 +16,8 @@ import { creatableModule } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import {
+  asCondition,
+  asCoupon,
   Condition,
   Coupon,
   Discount,
@@ -160,7 +163,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingDiscounts)
-      discounts.push(...payloads.filter(isCoupon))
+      discounts.push(...filterAs(payloads, asCoupon))
     }
     // If not all discounts are found
     if (discounts.length !== discountsHashes.length) {
@@ -181,7 +184,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingConditions)
-      conditions.push(...payloads.filter(isCondition))
+      conditions.push(...filterAs(payloads, asCondition))
     }
     // If not all conditions are found
     if (conditions.length !== conditionsHashes.length) {
