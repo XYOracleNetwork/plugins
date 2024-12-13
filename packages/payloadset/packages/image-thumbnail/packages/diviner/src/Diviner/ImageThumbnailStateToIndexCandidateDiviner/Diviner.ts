@@ -102,8 +102,9 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     // Otherwise, get the last offset
     const { cursor } = lastState.state
     // Get next batch of results starting from the offset
-    const archivist = await this.getArchivistForStore()
-    const next = await archivist.next({
+    const sourceArchivist = await this.getArchivistForStore()
+    if (!sourceArchivist) return [lastState]
+    const next = await sourceArchivist.next({
       limit: this.payloadDivinerLimit, order, cursor,
     })
     if (next.length === 0) return [lastState]
@@ -115,7 +116,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
       await Promise.all(
         batch
           .filter(isBoundWitness)
-          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, archivist)),
+          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
       )
     )
       .filter(exists)
