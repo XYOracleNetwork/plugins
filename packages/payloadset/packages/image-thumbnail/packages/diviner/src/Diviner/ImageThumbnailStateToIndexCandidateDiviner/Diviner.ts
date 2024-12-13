@@ -101,6 +101,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     if (!lastState) return [{ schema: ModuleStateSchema, state: { cursor: '0' } }]
     // Otherwise, get the last offset
     const { cursor } = lastState.state
+    // Get next batch of results starting from the offset
     const archivist = await this.getArchivistForStore()
     const next = await archivist.next({
       limit: this.payloadDivinerLimit, order, cursor,
@@ -110,12 +111,11 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
       .filter(exists)
       .filter(bw => payloadSchemasContainsAll(bw, payload_schemas))
     // Get source data
-    const sourceArchivist = await this.getArchivistForStore()
     const indexCandidates: IndexCandidate[] = (
       await Promise.all(
         batch
           .filter(isBoundWitness)
-          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, archivist)),
       )
     )
       .filter(exists)
