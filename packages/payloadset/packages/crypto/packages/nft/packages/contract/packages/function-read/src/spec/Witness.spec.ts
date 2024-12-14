@@ -15,7 +15,6 @@ import {
   it,
 } from 'vitest'
 
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {

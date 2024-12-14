@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-thenable */
 import type { Address } from '@xylabs/hex'
 import type { WalletInstance } from '@xyo-network/account'
 import { HDWallet } from '@xyo-network/account'

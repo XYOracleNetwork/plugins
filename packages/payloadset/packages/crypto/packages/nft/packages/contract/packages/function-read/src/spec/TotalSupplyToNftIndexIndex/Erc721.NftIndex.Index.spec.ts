@@ -33,9 +33,7 @@ import {
   it,
 } from 'vitest'
 
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
 import nodeManifest from './Erc721.NftIndex.Index.json' assert { type: 'json' }
 

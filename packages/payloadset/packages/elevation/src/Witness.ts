@@ -12,7 +12,6 @@ import { MercatorBoundingBox } from '@xyo-network/sdk-geo'
 import type {
   WitnessConfig, WitnessModule, WitnessParams,
 } from '@xyo-network/witness-model'
-// eslint-disable-next-line import-x/no-named-as-default
 import type { GeoTIFFImage, TypedArray } from 'geotiff'
 import type GeoTIFF from 'geotiff'
 import { fromFile } from 'geotiff'

@@ -1,4 +1,3 @@
-// eslint-disable-next-line workspaces/no-absolute-imports
 import '@xylabs/vitest-extended'
 
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'

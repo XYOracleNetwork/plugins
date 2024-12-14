@@ -53,7 +53,6 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
       return (
         await Promise.all(
           imageThumbnailResultIndexes.map(async (imageThumbnailResultIndex) => {
-            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const {
               // eslint-disable-next-line @typescript-eslint/no-unused-vars
               key, schema, ...commonFields
