@@ -1,10 +1,12 @@
 import { assertEx } from '@xylabs/assert'
 import { isHexZero } from '@xylabs/hex'
+import type { JsonObject } from '@xylabs/object'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
+import type { InterfaceAbi } from 'ethers'
 import { Contract } from 'ethers'
 
 import type { EvmCallWitnessParams } from './model.ts'
@@ -19,7 +21,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
   static override readonly defaultConfigSchema: Schema = EvmCallWitnessConfigSchema
 
   get abi() {
-    return assertEx(this.config.abi, () => 'Missing abi')
+    return assertEx(this.config.abi, () => 'Missing abi') as InterfaceAbi
   }
 
   protected override async observeHandler(inPayloads: EvmCall[] = []): Promise<EvmCallResult[]> {
@@ -33,7 +35,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
         }) => {
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
-          const mergedArgs = [...(args ?? this.config.args ?? [])]
+          const mergedArgs = [...(args ?? this.config.args ?? [])] as JsonObject[]
 
           const provider = await this.getProvider(true, true)
 

@@ -16,12 +16,12 @@ export const getAppraisalsByAsset = (terms: EscrowTerms, dictionary: Record<Hash
   const appraisals = Object.values(dictionary).filter(isHashLeaseEstimateWithSources) as unknown as WithSources<HashLeaseEstimate>[]
   const appraisalsByAsset: Record<Hash, WithSources<HashLeaseEstimate>[]> = {}
   for (const estimate of appraisals) {
-    const { sources } = estimate
-    if (sources === undefined || sources.length === 0) {
+    const { $sources } = estimate
+    if ($sources === undefined || $sources.length === 0) {
       continue
     }
     for (const asset of assets) {
-      if (sources.includes(asset)) {
+      if ($sources.includes(asset)) {
         if (!appraisalsByAsset[asset]) appraisalsByAsset[asset] = []
         appraisalsByAsset[asset].push(estimate)
       }

@@ -26,9 +26,9 @@ export const getInvoiceForEscrow = async (
   if (!subtotal || !total) return undefined
   const { amount, currency } = total
   if (currency !== 'USD') return undefined
-  const sources = await getSources(terms, subtotal, total, discount)
+  const $sources = await getSources(terms, subtotal, total, discount)
   const payment: Payment = {
-    amount, currency, schema: PaymentSchema, sources,
+    amount, currency, schema: PaymentSchema, $sources,
   }
   return discount ? [subtotal, total, payment, discount] : [subtotal, total, payment]
 }

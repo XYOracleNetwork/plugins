@@ -47,9 +47,9 @@ export class PaymentTotalDiviner<
     assertEx(subtotalCurrency === discountCurrency, () => `Subtotal currency ${subtotalCurrency} does not match discount currency ${discountCurrency}`)
     const amount = Math.max(0, subtotal.amount - discount.amount)
     const currency = subtotalCurrency
-    const sources = [await PayloadBuilder.dataHash(subtotal), await PayloadBuilder.dataHash(discount)] as Hash[]
+    const $sources = [await PayloadBuilder.dataHash(subtotal), await PayloadBuilder.dataHash(discount)] as Hash[]
     const total: Total = {
-      amount, currency, sources, schema: TotalSchema,
+      amount, currency, $sources, schema: TotalSchema,
     }
     return [subtotal, discount, total] as TOut[]
   }

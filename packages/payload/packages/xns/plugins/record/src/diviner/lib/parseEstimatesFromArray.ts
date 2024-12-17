@@ -7,7 +7,8 @@ import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
 
 import {
-  type DomainRegistrationLease, DomainRegistrationLeaseSchema, isDomainRegistrationLease,
+  type DomainRegistrationLease, DomainRegistrationLeaseSchema,
+  isDomainRegistrationLeaseWithSources,
 } from '../../DomainRegistration/index.ts'
 
 export type Estimate = [
@@ -38,11 +39,11 @@ export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<Est
       isHashLeaseEstimate,
     )
     if (!hashLeaseEstimate) return
-    const domainLease = getPayloadBySchemaFromBoundWitness<DomainRegistrationLease>(
+    const domainLease = getPayloadBySchemaFromBoundWitness<WithSources<DomainRegistrationLease>>(
       bw,
       DomainRegistrationLeaseSchema,
       hashMap,
-      isDomainRegistrationLease,
+      isDomainRegistrationLeaseWithSources,
     )
     if (!domainLease) return
     return [bw, hashLeaseEstimate, domainLease]

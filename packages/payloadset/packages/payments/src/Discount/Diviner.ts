@@ -54,30 +54,30 @@ export class PaymentDiscountDiviner<
   }
 
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
-    const sources: Hash[] = []
+    const $sources: Hash[] = []
 
     // Parse terms
     const terms = payloads.find(isEscrowTerms) as EscrowTerms | undefined
-    if (!terms) return [{ ...NO_DISCOUNT, sources }] as TOut[]
-    sources.push(await PayloadBuilder.hash(terms))
+    if (!terms) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
+    $sources.push(await PayloadBuilder.hash(terms))
 
     // Parse appraisals
     const termsAppraisals = terms?.appraisals
     // If the escrow terms do not have appraisals, return no discount
-    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
     const hashMap = await PayloadBuilder.toAllHashMap(payloads) as Record<Hash, Payload>
     const appraisals = this.getEscrowAppraisals(terms, hashMap)
     // Add the appraisals that were found to the sources
-    sources.push(...termsAppraisals)
+    $sources.push(...termsAppraisals)
     // If not all appraisals are found, return no discount
-    if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
 
     // Parse coupons
     const [coupons, conditions] = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
     // NOTE: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
-    sources.push(...couponHashes)
+    $sources.push(...couponHashes)
 
     const currentCoupons = coupons.filter(this.isCouponCurrent)
     const conditionsMetCoupons = (
@@ -85,11 +85,11 @@ export class PaymentDiscountDiviner<
 
     const validCoupons = await this.filterToSigned(conditionsMetCoupons)
     // NOTE: Should we throw if not all coupons are valid?
-    if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
 
     // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic
     const discount = applyCoupons(appraisals, validCoupons)
-    return [{ ...discount, sources }] as TOut[]
+    return [{ ...discount, $sources }] as TOut[]
   }
 
   /**

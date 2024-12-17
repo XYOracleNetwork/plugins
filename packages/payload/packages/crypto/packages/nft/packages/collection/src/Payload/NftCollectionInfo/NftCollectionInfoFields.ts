@@ -4,6 +4,4 @@ import type { NftCollectionMetadata } from './NftCollectionMetadata.ts'
 
 export type NftCollectionInfoFields = NftCollectionCount &
   NftCollectionMetadata &
-  NftCollectionAttributeMetrics & {
-    sources?: string[]
-  }
+  NftCollectionAttributeMetrics

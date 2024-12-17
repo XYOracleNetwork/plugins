@@ -12,10 +12,6 @@ export type ImageThumbnailResultSchema = typeof ImageThumbnailResultSchema
  */
 export interface ImageThumbnailResultFields {
   /**
-   * The hashes of the timestamp & image thumbnail payloads used to create this result
-   */
-  sources: Hash[]
-  /**
    * The HTTP status code of the thumbnail generation request
    */
   status?: number

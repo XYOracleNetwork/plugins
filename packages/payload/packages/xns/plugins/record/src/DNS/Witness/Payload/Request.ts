@@ -1,4 +1,4 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -11,7 +11,7 @@ import { DNSSchema } from '../Schema.ts'
 /**
  * The fields of a DNSRequest payload
  */
-export type DNSRequest = PayloadWithSources<DNSRequestFields, DNSSchema>
+export type DNSRequest = PayloadWithOptionalSources<DNSRequestFields, DNSSchema>
 
 /**
  * Identity function for determining if an object is a DNSRequest payload

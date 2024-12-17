@@ -1,4 +1,4 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -14,7 +14,7 @@ export interface DiscountFields extends AmountFields { }
 /**
  * The result of a discount
  */
-export type Discount = PayloadWithSources<DiscountFields, DiscountSchema>
+export type Discount = PayloadWithOptionalSources<DiscountFields, DiscountSchema>
 
 /**
  * Identity function for determining if an object is an Discount
