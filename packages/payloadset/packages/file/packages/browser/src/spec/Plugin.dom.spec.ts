@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import '@xylabs/vitest-extended'
 
 import { webcrypto } from 'node:crypto'
