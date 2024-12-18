@@ -2,6 +2,8 @@ import { Token } from '@uniswap/sdk-core'
 import { Pool } from '@uniswap/v3-sdk'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
+import type { EnumValue } from '@xylabs/object'
+import { Enum } from '@xylabs/object'
 import type { IERC20Metadata } from '@xyo-network/open-zeppelin-typechain'
 import { IERC20Metadata__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { IUniswapV3Pool } from '@xyo-network/uniswap-typechain'
@@ -11,13 +13,15 @@ import type { Provider } from 'ethers'
 import { logErrors, logErrorsAsync } from '../logErrors.ts'
 import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.ts'
 
-export enum ChainId {
-  MAINNET = 1,
-  ROPSTEN = 3,
-  RINKEBY = 4,
-  GÖRLI = 5,
-  KOVAN = 42,
-}
+export const ChainId = Enum({
+  MAINNET: 1,
+  ROPSTEN: 3,
+  RINKEBY: 4,
+  GÖRLI: 5,
+  KOVAN: 42,
+})
+
+export type ChainId = EnumValue<typeof ChainId>
 
 // null is used as 'in-progress'
 const waitNotNull = async (closure: () => unknown) => {
