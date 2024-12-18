@@ -6,7 +6,7 @@ import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
-  isNftCollectionInfo,
+  isNftCollectionInfoWithSources,
   NftCollectionWitnessConfigSchema,
   NftCollectionWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
@@ -20,15 +20,15 @@ import {
 import { CryptoNftCollectionWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
-  const results = observation.filter(isNftCollectionInfo)
+  const results = observation.filter(isNftCollectionInfoWithSources)
   expect(results.length).toBeGreaterThan(0)
   const collectionInfo = results[0]
   expect(collectionInfo.address).toBeString()
   expect(collectionInfo.chainId).toBeNumber()
   expect(collectionInfo.name).toBeString()
   expect(collectionInfo.type).toBeOneOf(['ERC721', 'ERC1155', null])
-  expect(collectionInfo.sources).toBeArray()
-  expect(collectionInfo.sources?.length).toBeGreaterThan(0)
+  expect(collectionInfo.$sources).toBeArray()
+  expect(collectionInfo.$sources?.length).toBeGreaterThan(0)
 }
 
 /**

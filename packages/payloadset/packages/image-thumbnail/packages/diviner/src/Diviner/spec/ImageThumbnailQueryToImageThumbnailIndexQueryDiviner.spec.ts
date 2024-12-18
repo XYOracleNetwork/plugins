@@ -22,7 +22,6 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
     },
     {
       limit: 10,
-      offset: 10,
       order: 'asc',
       schema: ImageThumbnailDivinerQuerySchema,
       status: 200,
@@ -35,7 +34,6 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
       url: 'https://explore.xyo.network',
     },
     {
-      offset: 10,
       schema: ImageThumbnailDivinerQuerySchema,
       url: 'https://explore.xyo.network',
     },
@@ -125,7 +123,7 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
   ]
   const cases: [ImageThumbnailDivinerQuery, ImageThumbnailResultQuery][] = queries.map((query, i) => [query, expected[i]])
   beforeAll(async () => {
-    diviner = await ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.create()
+    diviner = await ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.create({ account: 'random' })
 
     await Promise.all(
       queries.map(async (query, i) => {

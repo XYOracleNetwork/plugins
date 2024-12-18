@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import type {
-  PayloadWithSources,
+  PayloadWithOptionalSources,
   WithSources,
 } from '@xyo-network/payload-model'
 import {
@@ -34,7 +34,7 @@ export interface EmailFields {
 /**
  * An email address
  */
-export type Email = PayloadWithSources<EmailFields, EmailAddressSchema>
+export type Email = PayloadWithOptionalSources<EmailFields, EmailAddressSchema>
 
 /**
  * Tries to create an Email from a string

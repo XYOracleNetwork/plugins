@@ -3,7 +3,7 @@ import '@xylabs/vitest-extended'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ImageThumbnailSchema, isImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
+import { ImageThumbnailSchema, isImageThumbnailResultIndexWithSources } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
@@ -37,20 +37,20 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     const [boundWitness, thumbnail, timestamp] = input
     const payloadDictionary = await PayloadBuilder.toDataHashMap([boundWitness, thumbnail, timestamp])
     expect(result).toBeArrayOfSize(1)
-    expect(result.filter(isImageThumbnailResultIndex)).toBeArrayOfSize(1)
-    const index = result.find(isImageThumbnailResultIndex)
+    expect(result.filter(isImageThumbnailResultIndexWithSources)).toBeArrayOfSize(1)
+    const index = result.find(isImageThumbnailResultIndexWithSources)
     const key = await PayloadBuilder.dataHash({ schema: UrlSchema, url: thumbnail.sourceUrl })
     expect(index).toBeDefined()
     if (index !== undefined) {
       expect(index.key).toBe(key)
-      expect(index.sources.sort()).toEqual(Object.keys(payloadDictionary).sort())
+      expect(index.$sources.sort()).toEqual(Object.keys(payloadDictionary).sort())
       expect(index.success).toBe(thumbnail.http?.status === 200)
       expect(index.timestamp).toBe(timestamp.timestamp)
       expect(index.status).toBe(thumbnail.http?.status)
     }
   }
   beforeAll(async () => {
-    diviner = await ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.create()
+    diviner = await ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.create({ account: 'random' })
   })
   describe('divine', () => {
     const cases: [ImageThumbnail, TimeStamp][] = [

@@ -16,8 +16,6 @@ export class BowserSystemInfoWitness<TParams extends BowserSystemInfoWitnessPara
   static override readonly defaultConfigSchema: Schema = BowserSystemInfoWitnessConfigSchema
 
   protected get bowser() {
-    // we do this to fix importing in node-esm
-
     return Bowser.parse(globalThis.navigator.userAgent)
   }
 

@@ -33,7 +33,7 @@ import type { Labels, ModuleState } from '@xyo-network/module-model'
 import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta } from '@xyo-network/payload-model'
+import type { WithStorageMeta } from '@xyo-network/payload-model'
 import {
   beforeAll,
   describe, expect, it,
@@ -181,7 +181,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     })
     it('has expected bound witnesses', async () => {
       const payloads = await stateArchivist.all()
-      const stateBoundWitnesses = payloads.filter(isBoundWitness) as WithMeta<BoundWitness>[]
+      const stateBoundWitnesses = payloads.filter(isBoundWitness) as WithStorageMeta<BoundWitness>[]
       expect(stateBoundWitnesses).toBeArrayOfSize(2)
       for (const stateBoundWitness of stateBoundWitnesses) {
         expect(stateBoundWitness).toBeObject()
@@ -191,7 +191,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     })
     it('has expected state', async () => {
       const payloads = await stateArchivist.all()
-      const statePayloads = payloads.filter(isModuleState) as WithMeta<ModuleState>[]
+      const statePayloads = payloads.filter(isModuleState) as WithStorageMeta<ModuleState>[]
       expect(statePayloads).toBeArrayOfSize(2)
       expect(statePayloads.at(-1)).toBeObject()
       const statePayload = assertEx(statePayloads.at(-1))
@@ -232,7 +232,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
         it.each(cases)('returns the most recent instance of that address using the default chainId', async (payload) => {
           const { address } = payload
           const query = { address, schema } as Query
-          const results = (await sut.divine([query])) as WithMeta<TemporalIndexingDivinerResultIndex>[]
+          const results = (await sut.divine([query])) as WithStorageMeta<TemporalIndexingDivinerResultIndex>[]
           const result = results.find(isTemporalIndexingDivinerResultIndex)
           await verifyIsExpectedNft(result, payload)
         })
@@ -245,7 +245,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
           const query = {
             address, chainId, schema,
           } as Query
-          const results = (await sut.divine([query])) as WithMeta<TemporalIndexingDivinerResultIndex>[]
+          const results = (await sut.divine([query])) as WithStorageMeta<TemporalIndexingDivinerResultIndex>[]
           const result = results.find(isTemporalIndexingDivinerResultIndex)
           await verifyIsExpectedNft(result, payload)
         })

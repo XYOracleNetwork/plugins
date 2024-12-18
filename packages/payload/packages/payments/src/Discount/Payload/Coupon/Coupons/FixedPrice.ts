@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -17,7 +17,7 @@ export interface FixedPriceCouponFields extends CouponFields, AmountFields { }
 /**
  * A coupon that provides a fixed total price
  */
-export type FixedPriceCoupon = PayloadWithSources<FixedPriceCouponFields, FixedPriceCouponSchema>
+export type FixedPriceCoupon = PayloadWithOptionalSources<FixedPriceCouponFields, FixedPriceCouponSchema>
 
 /**
  * Identity function for determining if an object is an FixedPriceCoupon

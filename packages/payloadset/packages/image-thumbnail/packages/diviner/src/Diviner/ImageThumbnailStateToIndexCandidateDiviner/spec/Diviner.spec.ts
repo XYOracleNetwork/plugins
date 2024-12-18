@@ -17,7 +17,7 @@ import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
-import type { WithMeta } from '@xyo-network/payload-model'
+import type { WithStorageMeta } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
@@ -121,7 +121,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
       it('return state and no results', async () => {
         const results = await sut.divine()
         expect(results.length).toBe(1)
-        const state = results.find(isModuleState<ImageThumbnailDivinerState>) as WithMeta<ModuleState<ImageThumbnailDivinerState>>
+        const state = results.find(isModuleState<ImageThumbnailDivinerState>) as WithStorageMeta<ModuleState<ImageThumbnailDivinerState>>
         expect(state).toBeDefined()
         expect(state?.state.offset).toBe(0)
       })
@@ -141,7 +141,7 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
         expect(results.length).toBe(expectedResults)
 
         // Validate expected state
-        const nextState = results.find(isModuleState<ImageThumbnailDivinerState>) as WithMeta<ModuleState<ImageThumbnailDivinerState>> | undefined
+        const nextState = results.find(isModuleState<ImageThumbnailDivinerState>) as WithStorageMeta<ModuleState<ImageThumbnailDivinerState>> | undefined
         expect(nextState).toBeDefined()
         expect(nextState?.state.offset).toBe(witnessedThumbnails.length)
 

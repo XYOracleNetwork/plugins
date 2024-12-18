@@ -22,7 +22,7 @@ describe.skip('AbstractModuleInstanceWitness', () => {
   })
 
   test('Witnessing [no config]', async () => {
-    const witness = await AbstractModuleInstanceWitness.create()
+    const witness = await AbstractModuleInstanceWitness.create({ account: 'random' })
     const [result] = await witness.observe()
     expect(await PayloadWrapper.wrap(result).getValid()).toBe(true)
   })

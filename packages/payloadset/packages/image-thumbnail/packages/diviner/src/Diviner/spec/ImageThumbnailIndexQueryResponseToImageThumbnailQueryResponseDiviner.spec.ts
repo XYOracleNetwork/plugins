@@ -13,6 +13,7 @@ import {
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import type { WithSources } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
   beforeAll,
@@ -33,12 +34,12 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       url: 'https://explore.xyo.network',
     },
   ]
-  const indexes: ImageThumbnailResultIndex[][] = [
+  const indexes: WithSources<ImageThumbnailResultIndex>[][] = [
     [
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 200,
         success: true,
         timestamp: 1_234_567_890,
@@ -48,7 +49,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 200,
         success: true,
         timestamp: 1_234_567_891,
@@ -56,7 +57,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 500,
         success: false,
         timestamp: 1_234_567_892,
