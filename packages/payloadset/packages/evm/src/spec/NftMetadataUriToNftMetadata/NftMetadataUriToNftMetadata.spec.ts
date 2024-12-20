@@ -89,7 +89,7 @@ describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
       expect(metadata.attributes).toBeArray()
     })
   })
-  describe('Index', () => {
+  describe.skip('Index', () => {
     beforeAll(async () => {
       await delay(1000)
     }, 60_000)

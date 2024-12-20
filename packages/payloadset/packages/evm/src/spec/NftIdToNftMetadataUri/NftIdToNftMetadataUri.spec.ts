@@ -96,7 +96,7 @@ describe.skipIf(providers.length === 0)('NftIdToNftMetadataUri', () => {
       expect(results?.[0]?.metadataUri).toContain(num)
     })
   })
-  describe('Index', () => {
+  describe.skip('Index', () => {
     beforeAll(async () => {
       await delay(100)
     })

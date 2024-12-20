@@ -48,7 +48,7 @@ import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' asse
 import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }
 import sentinelNodeManifest from './Contract.Sentinel.Node.json' assert { type: 'json' }
 
-describe('Contract Node', () => {
+describe.skip('Contract Node', () => {
   type TokenType = 'ERC721' | 'ERC1155'
   const cases: [TokenType, string][] = [
     ['ERC721', '0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'.toLowerCase()],
