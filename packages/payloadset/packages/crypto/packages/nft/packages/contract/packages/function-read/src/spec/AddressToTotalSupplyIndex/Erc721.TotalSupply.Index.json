@@ -122,9 +122,8 @@
                     "sourcePathExpression": "$.limit"
                   },
                   {
-                    "defaultValue": 0,
-                    "destinationField": "offset",
-                    "sourcePathExpression": "$.offset"
+                    "destinationField": "cursor",
+                    "sourcePathExpression": "$.cursor"
                   },
                   {
                     "defaultValue": "desc",
@@ -214,9 +213,7 @@
           {
             "config": {
               "archiving": {
-                "archivists": [
-                  "Archivist"
-                ]
+                "archivists": ["Archivist"]
               },
               "language": "javascript",
               "name": "Sentinel",
