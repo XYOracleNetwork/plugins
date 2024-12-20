@@ -2,7 +2,7 @@ import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { AsObjectFactory } from '@xylabs/object'
-import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import type { ArchivistInstance, ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { asBoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
@@ -13,7 +13,9 @@ import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin
 import { ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  type Payload, type Schema, SequenceConstants,
+} from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
@@ -97,28 +99,32 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
   protected override async divineHandler(payloads: Payload[] = []): Promise<ImageThumbnailStateToIndexCandidateDivinerResponse> {
     // Retrieve the last state from what was passed in
     const lastState = payloads.find(isModuleState<ImageThumbnailDivinerState>)
-    // If there is no last state, start from the beginning
-    if (!lastState) return [{ schema: ModuleStateSchema, state: { cursor: '0' } }]
-    // Otherwise, get the last offset
-    const { cursor } = lastState.state
-    // Get next batch of results starting from the offset
+      // If there is no last state, start from the beginning
+      ?? { schema: ModuleStateSchema, state: { cursor: SequenceConstants.minLocalSequence } }
+
+    // Get the last cursor
+    const cursor = lastState?.state?.cursor
+    // Get the archivist for the store
     const sourceArchivist = await this.getArchivistForStore()
     if (!sourceArchivist) return [lastState]
-    const next = await sourceArchivist.next({
-      limit: this.payloadDivinerLimit, order, cursor,
-    })
+
+    // Get the next batch of results
+    const nextOffset: ArchivistNextOptions = { limit: this.payloadDivinerLimit, order }
+    // Only use the cursor if it's a valid offset
+    if (cursor !== SequenceConstants.minLocalSequence) nextOffset.cursor = cursor
+    // Get next batch of results starting from the offset
+    const next = await sourceArchivist.next(nextOffset)
     if (next.length === 0) return [lastState]
+
     const batch = filterAs(next, asBoundWitness)
       .filter(exists)
       .filter(bw => payloadSchemasContainsAll(bw, payload_schemas))
     // Get source data
-    const indexCandidates: IndexCandidate[] = (
-      await Promise.all(
-        batch
-          .filter(isBoundWitness)
-          .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
-      )
-    )
+    const indexCandidates: IndexCandidate[] = (await Promise.all(
+      batch
+        .filter(isBoundWitness)
+        .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+    ))
       .filter(exists)
       .flat()
     const nextCursor = assertEx(next.at(-1)?._sequence, () => `${moduleName}: Expected next to have a sequence`)
