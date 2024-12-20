@@ -117,7 +117,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     console.log(`HTTPS [other/error]: ${JSON.stringify(result)}`)
-    expect(result[0]?.http?.code).toBe('ENOTFOUND')
+    expect(result[0]?.http?.code).toBe('EPROTO')
   }, 20_000)
   it.skip('HTTPS [medium/png]', async () => {
     const httpsPayload: UrlPayload = {
