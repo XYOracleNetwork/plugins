@@ -80,7 +80,8 @@ describe('parseEstimatesFromArray', () => {
       [...estimateB, ...estimateA],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
-      expect(await parseEstimatesFromArray(data)).toMatchSnapshot()
+      const parsed = await parseEstimatesFromArray(data)
+      expect(parsed).toMatchSnapshot()
     })
   })
   describe('with valid jagged data', () => {
@@ -92,12 +93,14 @@ describe('parseEstimatesFromArray', () => {
       [...estimateB, ...estimateA.slice(0, -1)],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
-      expect(await parseEstimatesFromArray(data)).toMatchSnapshot()
+      const parsed = await parseEstimatesFromArray(data)
+      expect(parsed).toMatchSnapshot()
     })
   })
   describe('with no data', () => {
     it('returns empty array', async () => {
-      expect(await parseEstimatesFromArray([])).toBeArrayOfSize(0)
+      const parsed = await parseEstimatesFromArray([])
+      expect(parsed).toBeArrayOfSize(0)
     })
   })
 })
