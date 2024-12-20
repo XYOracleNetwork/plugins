@@ -8,7 +8,7 @@ import type {
 import {
   ImageThumbnailResultSchema,
   isImageThumbnailDivinerQuery,
-  isImageThumbnailResultIndex,
+  isImageThumbnailResultIndexWithSources,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, Schema } from '@xyo-network/payload-model'
@@ -32,7 +32,7 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
   protected override async divineHandler(payloads: Payload[] = []): Promise<ImageThumbnailResult[]> {
     // Filter out the two operands
     const imageThumbnailDivinerQueries = payloads.filter(isImageThumbnailDivinerQuery)
-    const imageThumbnailResultIndexes = payloads.filter(isImageThumbnailResultIndex)
+    const imageThumbnailResultIndexes = payloads.filter(isImageThumbnailResultIndexWithSources)
 
     // If we have operands
     if (imageThumbnailDivinerQueries.length > 0 && imageThumbnailResultIndexes.length > 0) {
@@ -41,7 +41,7 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
         await Promise.all(
           imageThumbnailDivinerQueries.map(async (imageThumbnailDivinerQuery) => {
             const { url } = imageThumbnailDivinerQuery
-            const urlPayload = await new PayloadBuilder<Omit<ImageThumbnailResult, 'timestamp' | 'success' | 'sources'>>({ schema: UrlSchema })
+            const urlPayload = new PayloadBuilder<Omit<ImageThumbnailResult, 'timestamp' | 'success' | 'sources'>>({ schema: UrlSchema })
               .fields({ url })
               .build()
             const key = await PayloadBuilder.dataHash(urlPayload)
@@ -50,21 +50,17 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
         ),
       )
       // Map the indexes to responses using the dictionary
-      return (
-        await Promise.all(
-          imageThumbnailResultIndexes.map(async (imageThumbnailResultIndex) => {
-            const {
-              // eslint-disable-next-line @typescript-eslint/no-unused-vars
-              key, schema, ...commonFields
-            } = imageThumbnailResultIndex
-            const url = keyToUrlDictionary?.[key]
-            if (url) {
-              const fields: ImageThumbnailResultFields = { ...commonFields, url }
-              return await new PayloadBuilder<ImageThumbnailResult>({ schema: ImageThumbnailResultSchema }).fields(fields).build()
-            }
-          }),
-        )
-      ).filter(exists)
+      return imageThumbnailResultIndexes.map((imageThumbnailResultIndex) => {
+        const {
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          key, schema, $sources, ...commonFields
+        } = imageThumbnailResultIndex
+        const url = keyToUrlDictionary?.[key]
+        if (url) {
+          const fields: ImageThumbnailResultFields = { ...commonFields, url }
+          return new PayloadBuilder<ImageThumbnailResult>({ schema: ImageThumbnailResultSchema }).fields(fields).meta({ $sources }).build()
+        }
+      }).filter(exists)
     }
     return []
   }
