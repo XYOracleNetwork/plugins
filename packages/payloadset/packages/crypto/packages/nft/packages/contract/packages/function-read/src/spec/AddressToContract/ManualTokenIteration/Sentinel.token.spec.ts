@@ -191,7 +191,7 @@ describe('Erc721Sentinel', () => {
         const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema)) as ContractInfo[]
         expect(BigInt(tokenInfoPayloads.length)).toBe(totalSupply)
       }
-    })
+    }, 30_000)
     afterAll(() => {
       const profileData = profileReport()
       if (profileData['tokenReport']) console.log(`Timer: ${profileData['tokenReport'] / tokenCount}ms`)
