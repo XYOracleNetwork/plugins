@@ -1,6 +1,4 @@
 import { matchers } from '@xylabs/vitest-matchers'
-import { HDWallet } from '@xyo-network/account'
-import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import {
   describe, expect, it,
@@ -92,8 +90,6 @@ describe('parseEstimatesFromArray', () => {
       [...estimateB, ...estimateA],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
-      const account = await HDWallet.random()
-      const [bw] = await new BoundWitnessBuilder().signer(account).payloads([estimateB[1], estimateB[2]]).build()
       const parsed = await parseEstimatesFromArray(data)
       expect(parsed).toMatchSnapshot()
     })
