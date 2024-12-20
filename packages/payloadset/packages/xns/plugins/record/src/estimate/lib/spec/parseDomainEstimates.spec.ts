@@ -1,3 +1,5 @@
+import { HDWallet } from '@xyo-network/account'
+import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
 import {
@@ -12,16 +14,20 @@ expect.extend(matchers)
 describe('parseDomainEstimates', () => {
   const estimateA: DomainEstimate = [
     {
-      schema: 'network.xyo.boundwitness',
-      addresses: ['2486705072e91a1d80d97cdcccd5db47b584e4bd'],
+      addresses: ['93130bb7cf9b059ed6e29b50f29b569a2094bd5e'],
       payload_hashes: [
-        'dcc7ab18c86d90311bb1b59361f6698e2714294a91aa3126c554aa8483a7ae37',
-        '06882b9889a7649d7172e96c2c5046d5472685cf893c2e38dacd7ef154d7808d',
+        '49699c9d1cfb1a8643037c9557123a9e643a3dd938f619af39b94966ecfdd6ff',
+        'af31f9d6afd8f7cbbe5c3310f2a2da9e1af31d1b7cf8dae7d9786848de1e5bd7',
       ],
-      payload_schemas: ['network.xyo.ns.domain.registration.lease', 'network.xyo.hash.lease.estimate'],
+      payload_schemas: [
+        'network.xyo.hash.lease.estimate',
+        'network.xyo.ns.domain.registration.lease',
+      ],
       previous_hashes: [null],
-      $signatures: ['6d1f0d8d175f0bce32e5e474d263b0c6a815b698563a2d761464acea411bace051fe0fe720905688df8debfb13eed2979fd22f39d07922f06c8f5bebdafa5bb1'],
-      $sourceQuery: 'd5cd65081af158789b481415644549d72cb6c5925ba68918c4ac55e92bf1f0e2',
+      schema: 'network.xyo.boundwitness',
+      $signatures: [
+        '6595022e974dae953b6ea145e6c0ca75211afd713a88b6d989e9d00da4e183ad427df8a8175ba46688c5345349464645befe1f2250ecfdc6bdb3cf9c27b65931',
+      ],
     },
     {
       schema: 'network.xyo.hash.lease.estimate',
@@ -44,14 +50,20 @@ describe('parseDomainEstimates', () => {
   ]
   const estimateB: Estimate = [
     {
-      schema: 'network.xyo.boundwitness',
-      addresses: ['2486705072e91a1d80d97cdcccd5db47b584e4bd'],
+      addresses: ['6a2cb2545c71f84235346643a9f562a973d6adef'],
       payload_hashes: [
-        '90259bc9ecde9d4c0061bc92dbfcf32e0f7b2603e49443d9f3c67a6d7e82c7d5', '7037fc16e12c7cffec09ed1d2ef3f65737668864be38f4a1268026d17601b5ca'],
-      payload_schemas: ['network.xyo.ns.domain.registration.lease', 'network.xyo.hash.lease.estimate'],
+        'abb7ecb2cfc51e1a95f85477b3a4210a72886d5b22fcf32043736c48e2873f2c',
+        '3ed825d48507b899395ca943e1dd6ec9a7c948e1cd1573a6cfda66de83af4b11',
+      ],
+      payload_schemas: [
+        'network.xyo.hash.lease.estimate',
+        'network.xyo.ns.domain.registration.lease',
+      ],
       previous_hashes: [null],
-      $signatures: ['ec17e78d94d256a0e4e9877855d92ed7bca7f7685ac42b5df87e6395331726a24f6a9271f3f058e1d35e06a11022ff359ccddbfa243772a8e45addad967afb6f'],
-      $sourceQuery: '19b2b1e4e0e50747f2cb0134e61cda9523ff9f963a40f3fc9e8e9530834b360b',
+      schema: 'network.xyo.boundwitness',
+      $signatures: [
+        '2ff62a32daaa97f1b316dc07eaeae594a3d57c07bb03fa38c44dd803b192d13b47311a0954440233826a3ae10f6540d991947dad64c8a563e74ae78cd245657f',
+      ],
     },
     {
       schema: 'network.xyo.hash.lease.estimate',
@@ -80,6 +92,8 @@ describe('parseDomainEstimates', () => {
       [...estimateB, ...estimateA],
     ]
     it.each(cases)('parses estimates from array', async (...data) => {
+      // const signer = await HDWallet.random()
+      // const [bw] = await new BoundWitnessBuilder().signer(signer).payloads([estimateB[1], estimateB[2]]).build()
       expect(await parseDomainEstimates(data)).toMatchSnapshot()
     })
   })
