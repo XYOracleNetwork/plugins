@@ -1,6 +1,4 @@
 /* eslint-disable @stylistic/max-len */
-import '@xylabs/vitest-extended'
-
 import { matchers } from '@xylabs/vitest-matchers'
 import {
   describe, expect, it,

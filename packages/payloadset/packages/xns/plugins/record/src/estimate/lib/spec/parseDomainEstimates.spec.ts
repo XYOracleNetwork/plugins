@@ -1,5 +1,3 @@
-import { HDWallet } from '@xyo-network/account'
-import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
 import {
