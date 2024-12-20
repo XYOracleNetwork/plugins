@@ -62,14 +62,12 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 0,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
     } as unknown as ImageThumbnailResultQuery,
     {
       key: 'setInBeforeAll',
       limit: 10,
-      offset: 10,
       order: 'asc',
       schema: 'network.xyo.diviner.payload.query',
       status: 200,
@@ -78,28 +76,24 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
     {
       key: 'setInBeforeAll',
       limit: 10,
-      offset: 0,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
     } as unknown as ImageThumbnailResultQuery,
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 10,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
     } as unknown as ImageThumbnailResultQuery,
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 0,
       order: 'asc',
       schema: 'network.xyo.diviner.payload.query',
     } as unknown as ImageThumbnailResultQuery,
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 0,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
       status: 200,
@@ -107,7 +101,6 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 0,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
       success: true,
@@ -115,7 +108,6 @@ describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
     {
       key: 'setInBeforeAll',
       limit: 1,
-      offset: 0,
       order: 'desc',
       schema: 'network.xyo.diviner.payload.query',
       success: false,
