@@ -27,7 +27,7 @@ import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
+import { type Payload, type WithStorageMeta } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
@@ -77,7 +77,6 @@ describe('ImageThumbnailDiviner', () => {
     schema: 'network.xyo.image.thumbnail',
     sourceUrl,
   }
-  const witnessedThumbnails = [thumbnailHttpSuccess, thumbnailHttpFail, thumbnailCodeFail, thumbnailWitnessFail]
 
   let testCases: WithStorageMeta<Payload>[][] = []
   let archivist: MemoryArchivist
@@ -150,7 +149,7 @@ describe('ImageThumbnailDiviner', () => {
     it('has expected bound witnesses', async () => {
       const payloads = await stateArchivist.all()
       const stateBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)
-      expect(stateBoundWitnesses).toBeArrayOfSize(2)
+      expect(stateBoundWitnesses).toBeArrayOfSize(1)
       for (const stateBoundWitness of stateBoundWitnesses) {
         expect(stateBoundWitness).toBeObject()
         expect(stateBoundWitness.addresses).toBeArrayOfSize(1)
@@ -160,11 +159,12 @@ describe('ImageThumbnailDiviner', () => {
     it('has expected state', async () => {
       const payloads = await stateArchivist.all()
       const statePayloads = payloads.filter(isModuleState) as WithStorageMeta<ModuleState>[]
-      expect(statePayloads).toBeArrayOfSize(2)
+      expect(statePayloads).toBeArrayOfSize(1)
       expect(statePayloads.at(-1)).toBeObject()
       const statePayload = assertEx(statePayloads.at(-1))
       expect(statePayload.state).toBeObject()
-      expect(statePayload.state?.offset).toBe(witnessedThumbnails.length)
+      const lastCursor = PayloadBuilder.sortByStorageMeta(testCases.flat()).at(-1)?._sequence
+      expect(statePayload.state?.cursor).toBe(lastCursor)
     })
   })
   describe('diviner index', () => {
@@ -186,7 +186,7 @@ describe('ImageThumbnailDiviner', () => {
     it('has expected index', async () => {
       const payloads = await indexArchivist.all()
       const indexPayloads = payloads.filter(isImageThumbnailResultIndex)
-      expect(indexPayloads).toBeArrayOfSize(witnessedThumbnails.length)
+      expect(indexPayloads).toBeArrayOfSize(testCases.length)
     })
   })
   describe('with no thumbnail for the provided URL', () => {
