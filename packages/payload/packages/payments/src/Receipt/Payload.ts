@@ -1,4 +1,5 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -27,8 +28,12 @@ export type Receipt = PayloadWithSources<ReceiptFields, ReceiptSchema>
  * Identity function for determine if an object is a Receipt
  */
 export const isReceipt = isPayloadOfSchemaType<Receipt>(ReceiptSchema)
+export const asReceipt = AsObjectFactory.create<Receipt>(isReceipt)
+export const asOptionalReceipt = AsObjectFactory.createOptional<Receipt>(isReceipt)
 
 /**
  * Identity function for determine if an object is a Receipt with sources
  */
 export const isReceiptWithSources = isPayloadOfSchemaTypeWithSources<Receipt>(ReceiptSchema)
+export const asReceiptWithSources = AsObjectFactory.create<WithSources<Receipt>>(isReceiptWithSources)
+export const asOptionalReceiptWithSources = AsObjectFactory.createOptional<WithSources<Receipt>>(isReceiptWithSources)
