@@ -1,4 +1,5 @@
-import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithOptionalSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -20,8 +21,12 @@ export type Discount = PayloadWithOptionalSources<DiscountFields, DiscountSchema
  * Identity function for determining if an object is an Discount
  */
 export const isDiscount = isPayloadOfSchemaType<Discount>(DiscountSchema)
+export const asDiscount = AsObjectFactory.create<Discount>(isDiscount)
+export const asOptionalDiscount = AsObjectFactory.createOptional<Discount>(isDiscount)
 
 /**
  * Identity function for determining if an object is an Discount with sources
  */
 export const isDiscountWithSources = isPayloadOfSchemaTypeWithSources<Discount>(DiscountSchema)
+export const asDiscountWithSources = AsObjectFactory.create<WithSources<Discount>>(isDiscountWithSources)
+export const asOptionalDiscountWithSources = AsObjectFactory.createOptional<WithSources<Discount>>(isDiscountWithSources)

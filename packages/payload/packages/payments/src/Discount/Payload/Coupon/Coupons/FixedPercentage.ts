@@ -1,5 +1,7 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { Payload, PayloadWithOptionalSources } from '@xyo-network/payload-model'
+import type {
+  Payload, PayloadWithOptionalSources, WithSources,
+} from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -24,10 +26,12 @@ export type FixedPercentageCoupon = PayloadWithOptionalSources<Payload<FixedPerc
  * Identity function for determining if an object is an FixedPercentageCoupon
  */
 export const isFixedPercentageCoupon = isPayloadOfSchemaType<FixedPercentageCoupon>(FixedPercentageCouponSchema)
-export const asFixedPercentageCoupon = AsObjectFactory.create(isFixedPercentageCoupon)
+export const asFixedPercentageCoupon = AsObjectFactory.create<FixedPercentageCoupon>(isFixedPercentageCoupon)
+export const asOptionalFixedPercentageCoupon = AsObjectFactory.createOptional<FixedPercentageCoupon>(isFixedPercentageCoupon)
 
 /**
  * Identity function for determining if an object is an FixedPercentageCoupon with sources
 */
-export const isFixedPercentageCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedPercentageCoupon>(FixedPercentageCouponSchema)
-export const asFixedPercentageCouponWithSources = AsObjectFactory.create(isFixedPercentageCouponWithSources)
+export const isFixedPercentageCouponWithSources = isPayloadOfSchemaTypeWithSources<WithSources<FixedPercentageCoupon>>(FixedPercentageCouponSchema)
+export const asFixedPercentageCouponWithSources = AsObjectFactory.create<WithSources<FixedPercentageCoupon>>(isFixedPercentageCouponWithSources)
+export const asOptionalFixedPercentageCouponWithSources = AsObjectFactory.createOptional<WithSources<FixedPercentageCoupon>>(isFixedPercentageCouponWithSources)

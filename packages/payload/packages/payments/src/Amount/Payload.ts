@@ -1,4 +1,5 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -23,8 +24,12 @@ export type Amount = PayloadWithSources<AmountFields, AmountSchema>
  * Identity function for determining if an object is an Amount
  */
 export const isAmount = isPayloadOfSchemaType<Amount>(AmountSchema)
+export const asAmount = AsObjectFactory.create<Amount>(isAmount)
+export const asOptionalAmount = AsObjectFactory.createOptional<Amount>(isAmount)
 
 /**
  * Identity function for determining if an object is an Amount with sources
  */
 export const isAmountWithSources = isPayloadOfSchemaTypeWithSources<Amount>(AmountSchema)
+export const asAmountWithSources = AsObjectFactory.create<WithSources<Amount>>(isAmountWithSources)
+export const asOptionalAmountWithSources = AsObjectFactory.createOptional<WithSources<Amount>>(isAmountWithSources)

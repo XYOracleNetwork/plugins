@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
+import type { PayloadWithOptionalSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -23,10 +23,12 @@ export type FixedPriceCoupon = PayloadWithOptionalSources<FixedPriceCouponFields
  * Identity function for determining if an object is an FixedPriceCoupon
  */
 export const isFixedPriceCoupon = isPayloadOfSchemaType<FixedPriceCoupon>(FixedPriceCouponSchema)
-export const asFixedPriceCoupon = AsObjectFactory.create(isFixedPriceCoupon)
+export const asFixedPriceCoupon = AsObjectFactory.create<FixedPriceCoupon>(isFixedPriceCoupon)
+export const asOptionalFixedPriceCoupon = AsObjectFactory.createOptional<FixedPriceCoupon>(isFixedPriceCoupon)
 
 /**
  * Identity function for determining if an object is an FixedPriceCoupon with sources
 */
-export const isFixedPriceCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedPriceCoupon>(FixedPriceCouponSchema)
-export const asFixedPriceCouponWithSources = AsObjectFactory.create(isFixedPriceCouponWithSources)
+export const isFixedPriceCouponWithSources = isPayloadOfSchemaTypeWithSources<WithSources<FixedPriceCoupon>>(FixedPriceCouponSchema)
+export const asFixedPriceCouponWithSources = AsObjectFactory.create<WithSources<FixedPriceCoupon>>(isFixedPriceCouponWithSources)
+export const asOptionalFixedPriceCouponWithSources = AsObjectFactory.createOptional<WithSources<FixedPriceCoupon>>(isFixedPriceCouponWithSources)
