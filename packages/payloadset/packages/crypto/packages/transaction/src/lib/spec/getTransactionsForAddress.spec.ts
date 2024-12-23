@@ -7,7 +7,6 @@ import {
   test,
 } from 'vitest'
 
-// eslint-disable-next-line import-x/no-deprecated
 import { getTransactionsForAddress } from '../getTransactionsForAddress.ts'
 
 const validateAccessList = (accessList: AccessList) => {

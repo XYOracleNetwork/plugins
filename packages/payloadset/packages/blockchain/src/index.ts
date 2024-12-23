@@ -5,5 +5,4 @@ import type { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
 
 export const BlockchainPlugins: PayloadSetPluginFunc[] = [...EthereumPlugins]
 
-// eslint-disable-next-line import-x/no-default-export
 export default BlockchainPlugins

@@ -1,6 +1,5 @@
-import type { Hash } from '@xylabs/hex'
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { ImageThumbnailSchema } from '../Schema.ts'
 
@@ -11,10 +10,6 @@ export type ImageThumbnailResultSchema = typeof ImageThumbnailResultSchema
  * The result of an image thumbnail witness
  */
 export interface ImageThumbnailResultFields {
-  /**
-   * The hashes of the timestamp & image thumbnail payloads used to create this result
-   */
-  sources: Hash[]
   /**
    * The HTTP status code of the thumbnail generation request
    */
@@ -42,3 +37,5 @@ export type ImageThumbnailResult = Payload<ImageThumbnailResultFields, ImageThum
  * A type guard for ImageThumbnailResult
  */
 export const isImageThumbnailResult = isPayloadOfSchemaType<ImageThumbnailResult>(ImageThumbnailResultSchema)
+
+export const isImageThumbnailResultWithSources = isPayloadOfSchemaTypeWithSources<ImageThumbnailResult>(ImageThumbnailResultSchema)

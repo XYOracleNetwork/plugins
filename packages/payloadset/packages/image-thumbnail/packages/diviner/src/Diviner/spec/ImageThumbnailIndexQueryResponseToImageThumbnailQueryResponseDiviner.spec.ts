@@ -13,7 +13,7 @@ import {
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithMeta } from '@xyo-network/payload-model'
+import type { WithSources } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
   beforeAll,
@@ -34,12 +34,12 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       url: 'https://explore.xyo.network',
     },
   ]
-  const indexes: ImageThumbnailResultIndex[][] = [
+  const indexes: WithSources<ImageThumbnailResultIndex>[][] = [
     [
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 200,
         success: true,
         timestamp: 1_234_567_890,
@@ -49,7 +49,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 200,
         success: true,
         timestamp: 1_234_567_891,
@@ -57,7 +57,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
       {
         key: 'setInBeforeAll' as Hash,
         schema: ImageThumbnailResultIndexSchema,
-        sources: [],
+        $sources: [],
         status: 500,
         success: false,
         timestamp: 1_234_567_892,
@@ -66,7 +66,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
   ]
   let diviner: ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner
   beforeAll(async () => {
-    diviner = await ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.create()
+    diviner = await ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.create({ account: 'random' })
     await Promise.all(
       queries.map(async (query, i) => {
         await Promise.all(
@@ -84,7 +84,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const results = await diviner.divine([imageThumbnailDivinerQuery, ...imageThumbnailResultIndex])
         expect(results).toBeArrayOfSize(imageThumbnailResultIndex.length)
         expect(results.filter(isImageThumbnailResult)).toBeArrayOfSize(imageThumbnailResultIndex.length)
-        for (const [i, result] of (results.filter(isImageThumbnailResult) as WithMeta<ImageThumbnailResult>[]).entries()) {
+        for (const [i, result] of (results.filter(isImageThumbnailResult) as ImageThumbnailResult[]).entries()) {
           const index = imageThumbnailResultIndex[i]
           expect(result.url).toBe(imageThumbnailDivinerQuery.url)
           expect(result.success).toBe(index.success)
@@ -99,7 +99,7 @@ describe('ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner',
         const indexesLength = indexes.flat().length
         const results = await diviner.divine([...queries, ...indexes.flat()])
         expect(results).toBeArrayOfSize(indexesLength)
-        const resultsIndexes = results.filter(isImageThumbnailResult) as WithMeta<ImageThumbnailResult>[]
+        const resultsIndexes = results.filter(isImageThumbnailResult) as ImageThumbnailResult[]
         expect(resultsIndexes).toBeArrayOfSize(indexesLength)
         let resultsIterator = 0
         for (const [i, { url }] of queries.entries()) {

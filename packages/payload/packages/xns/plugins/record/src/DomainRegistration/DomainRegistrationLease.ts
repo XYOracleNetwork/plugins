@@ -1,7 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
 import type { DomainRegistrationFields } from './DomainRegistration.ts'
@@ -21,21 +20,18 @@ export type DomainRegistrationLease = Payload<DomainRegistrationLeaseFields, Dom
  * Identity function for DomainRegistrationLease payload
  */
 export const isDomainRegistrationLease = isPayloadOfSchemaType<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+export const asDomainRegistrationLease = AsObjectFactory.create<DomainRegistrationLease>(isDomainRegistrationLease)
+export const asOptionalDomainRegistrationLease = AsObjectFactory.createOptional<DomainRegistrationLease>(isDomainRegistrationLease)
 
 /**
  * Identity function for DomainRegistrationLease payload with sources
  */
-export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<WithSources<DomainRegistrationLease>>(DomainRegistrationLeaseSchema)
+export const asDomainRegistrationLeaseWithSources = AsObjectFactory.create<WithSources<DomainRegistrationLease>>(isDomainRegistrationLeaseWithSources)
+export const asOptionalDomainRegistrationLeaseWithSources = AsObjectFactory
+  .createOptional<WithSources<DomainRegistrationLease>>(isDomainRegistrationLeaseWithSources)
+
 /**
  * @deprecated Use isDomainRegistrationLeaseWithSources instead
  */
 export const isDomainRegistrationLeaseSources = isDomainRegistrationLeaseWithSources
-
-/**
- * Identity function for DomainRegistrationLease payload with meta
- */
-export const isDomainRegistrationLeaseWithMeta = isPayloadOfSchemaTypeWithMeta<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
-/**
- * @deprecated Use isDomainRegistrationLeaseWithMeta instead
- */
-export const isDomainRegistrationLeaseMeta = isDomainRegistrationLeaseWithMeta

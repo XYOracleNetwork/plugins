@@ -1,20 +1,20 @@
+import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import type { ArchivistInstance } from '@xyo-network/archivist-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { ArchivistInstance, ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
+import { asBoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { payloadSchemasContainsAll } from '@xyo-network/boundwitness-validator'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { BoundWitnessDivinerQueryPayload } from '@xyo-network/diviner-boundwitness-model'
-import { BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'
 import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type {
-  Payload, Schema, WithMeta, WithSources,
+import {
+  type Payload, type Schema, SequenceConstants,
 } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
@@ -53,6 +53,10 @@ const payload_schemas = [ImageThumbnailSchema, TimestampSchema]
  * Index candidate identity functions
  */
 const indexCandidateIdentityFunctions = [isImageThumbnail, isTimestamp] as const
+const isIndexCandidate = (x?: unknown | null): x is IndexCandidate => {
+  return indexCandidateIdentityFunctions.map(is => is(x)).some(Boolean)
+}
+const asIndexCandidate = AsObjectFactory.create(isIndexCandidate)
 
 /**
  * The default order to search Bound Witnesses to identify index candidates
@@ -88,36 +92,43 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map(is => results.find(is))
     if (filteredResults.includes(undefined)) return undefined
-    const indexCandidates: IndexCandidate[] = filteredResults.filter(exists) as WithMeta<IndexCandidate>[]
+    const indexCandidates: IndexCandidate[] = filterAs(filteredResults, asIndexCandidate)
     return [bw, ...indexCandidates]
   }
 
   protected override async divineHandler(payloads: Payload[] = []): Promise<ImageThumbnailStateToIndexCandidateDivinerResponse> {
     // Retrieve the last state from what was passed in
     const lastState = payloads.find(isModuleState<ImageThumbnailDivinerState>)
-    // If there is no last state, start from the beginning
-    if (!lastState) return [{ schema: ModuleStateSchema, state: { offset: 0 } }]
-    // Otherwise, get the last offset
-    const { offset } = lastState.state
-    // Get next batch of results starting from the offset
-    const boundWitnessDiviner = await this.getBoundWitnessDivinerForStore()
-    const query = await new PayloadBuilder<BoundWitnessDivinerQueryPayload>({ schema: BoundWitnessDivinerQuerySchema })
-      .fields({
-        limit: this.payloadDivinerLimit, offset, order, payload_schemas,
-      })
-      .build()
-    const batch = (await boundWitnessDiviner.divine([query])) as WithSources<WithMeta<BoundWitness>>[]
-    if (batch.length === 0) return [lastState]
-    // Get source data
+      // If there is no last state, start from the beginning
+      ?? { schema: ModuleStateSchema, state: { cursor: SequenceConstants.minLocalSequence } }
+
+    // Get the last cursor
+    const cursor = lastState?.state?.cursor
+    // Get the archivist for the store
     const sourceArchivist = await this.getArchivistForStore()
-    const indexCandidates: IndexCandidate[] = (
-      await Promise.all(
-        batch.filter(isBoundWitnessWithMeta).map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
-      )
-    )
+    if (!sourceArchivist) return [lastState]
+
+    // Get the next batch of results
+    const nextOffset: ArchivistNextOptions = { limit: this.payloadDivinerLimit, order }
+    // Only use the cursor if it's a valid offset
+    if (cursor !== SequenceConstants.minLocalSequence) nextOffset.cursor = cursor
+    // Get next batch of results starting from the offset
+    const next = await sourceArchivist.next(nextOffset)
+    if (next.length === 0) return [lastState]
+
+    const batch = filterAs(next, asBoundWitness)
+      .filter(exists)
+      .filter(bw => payloadSchemasContainsAll(bw, payload_schemas))
+    // Get source data
+    const indexCandidates: IndexCandidate[] = (await Promise.all(
+      batch
+        .filter(isBoundWitness)
+        .map(bw => ImageThumbnailStateToIndexCandidateDiviner.getPayloadsInBoundWitness(bw, sourceArchivist)),
+    ))
       .filter(exists)
       .flat()
-    const nextState = { schema: ModuleStateSchema, state: { ...lastState.state, offset: offset + batch.length } }
+    const nextCursor = assertEx(next.at(-1)?._sequence, () => `${moduleName}: Expected next to have a sequence`)
+    const nextState: ModuleState<ImageThumbnailDivinerState> = { schema: ModuleStateSchema, state: { ...lastState.state, cursor: nextCursor } }
     return [nextState, ...indexCandidates]
   }
 

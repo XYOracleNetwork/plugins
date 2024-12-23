@@ -12,7 +12,7 @@ import {
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Schema } from '@xyo-network/payload-model'
+import type { Schema, WithSources } from '@xyo-network/payload-model'
 import type { EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 
@@ -73,19 +73,19 @@ export class CryptoNftCollectionWitness<
         const nfts = await getNftCollectionNfts(address, provider, types, maxNfts)
         const metrics = getNftCollectionMetrics(nfts)
         const archivist = resolvedValue(archivistSettled)
-        const [sources] = await Promise.all([
+        const [$sources] = await Promise.all([
           // Hash all the payloads
           Promise.all(nfts.map(nft => PayloadBuilder.dataHash(nft))),
           // Insert them into the archivist if we have one
           archivist ? archivist.insert(nfts) : NoOp,
         ])
-        const payload: NftCollectionInfo = {
+        const payload: WithSources<NftCollectionInfo> = {
           address,
           chainId,
           metrics,
           name: resolvedValue(name, true),
           schema: NftCollectionSchema,
-          sources,
+          $sources,
           symbol: resolvedValue(symbol, true),
           total: Number(resolvedValue(total, true)),
           type: types.at(0),

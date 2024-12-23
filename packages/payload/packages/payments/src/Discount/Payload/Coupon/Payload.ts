@@ -1,10 +1,10 @@
+import { AsObjectFactory } from '@xylabs/object'
+
 import {
   type FixedAmountCoupon, type FixedPercentageCoupon, type FixedPriceCoupon,
-  isFixedAmountCoupon, isFixedAmountCouponWithMeta, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
-  isFixedPercentageCouponWithMeta,
+  isFixedAmountCoupon, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
   isFixedPercentageCouponWithSources,
   isFixedPriceCoupon,
-  isFixedPriceCouponWithMeta,
   isFixedPriceCouponWithSources,
 } from './Coupons/index.ts'
 
@@ -23,6 +23,7 @@ export const isCoupon = (x?: unknown | null) =>
   isFixedAmountCoupon(x)
   || isFixedPercentageCoupon(x)
   || isFixedPriceCoupon(x)
+export const asCoupon = AsObjectFactory.create(isCoupon)
 
 /**
  * Identity function for determining if an object is an Coupon with sources
@@ -31,11 +32,4 @@ export const isCouponWithSources = (x?: unknown | null) =>
   isFixedAmountCouponWithSources(x)
   || isFixedPercentageCouponWithSources(x)
   || isFixedPriceCouponWithSources(x)
-
-/**
- * Identity function for determining if an object is an Coupon with meta
- */
-export const isCouponWithMeta = (x?: unknown | null) =>
-  isFixedAmountCouponWithMeta(x)
-  || isFixedPercentageCouponWithMeta(x)
-  || isFixedPriceCouponWithMeta(x)
+export const asCouponWithSources = AsObjectFactory.create(isCouponWithSources)

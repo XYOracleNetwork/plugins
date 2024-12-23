@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/node-system-info-plugin",
-  "version": "3.1.2",
+  "version": "3.2.0-rc.8",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,23 +29,24 @@
   "module": "dist/node/index.mjs",
   "types": "dist/node/index.d.ts",
   "dependencies": {
-    "@xyo-network/abstract-witness": "^3.5.1",
-    "@xyo-network/module-model": "^3.5.1",
+    "@xyo-network/abstract-witness": "^3.6.0",
+    "@xyo-network/module-model": "^3.6.0",
     "@xyo-network/node-system-info-payload-plugin": "workspace:^",
-    "@xyo-network/payload-model": "^3.5.1",
-    "@xyo-network/payloadset-plugin": "^3.5.1",
-    "@xyo-network/witness-model": "^3.5.1",
-    "systeminformation": "^5.23.5"
+    "@xyo-network/payload-model": "^3.6.0",
+    "@xyo-network/payloadset-plugin": "^3.6.0",
+    "@xyo-network/witness-model": "^3.6.0",
+    "systeminformation": "^5.23.17"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
-    "@xylabs/vitest-extended": "^4.4.9",
-    "@xyo-network/payload-wrapper": "^3.5.1",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
+    "@xylabs/vitest-extended": "^4.4.26",
+    "@xyo-network/payload-wrapper": "^3.6.0",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "stableVersion": "3.1.2"
 }

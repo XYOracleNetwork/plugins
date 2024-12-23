@@ -52,9 +52,7 @@
           {
             "config": {
               "filter": {
-                "payload_schemas": [
-                  "network.xyo.evm.nft.index"
-                ]
+                "payload_schemas": ["network.xyo.evm.nft.index"]
               },
               "labels": {
                 "network.xyo.diviner.stage": "stateToIndexCandidateDiviner"
@@ -126,9 +124,8 @@
                     "sourcePathExpression": "$.limit"
                   },
                   {
-                    "defaultValue": 0,
-                    "destinationField": "offset",
-                    "sourcePathExpression": "$.offset"
+                    "destinationField": "cursor",
+                    "sourcePathExpression": "$.cursor"
                   },
                   {
                     "defaultValue": "desc",
@@ -299,15 +296,11 @@
                   "mod": "TotalSupplyToRangeQueryTransformDiviner"
                 },
                 {
-                  "input": [
-                    "TotalSupplyToRangeQueryTransformDiviner"
-                  ],
+                  "input": ["TotalSupplyToRangeQueryTransformDiviner"],
                   "mod": "RangeDiviner"
                 },
                 {
-                  "input": [
-                    "RangeDiviner"
-                  ],
+                  "input": ["RangeDiviner"],
                   "mod": "RangeToNftIndexTransformDiviner"
                 }
               ]
@@ -362,9 +355,7 @@
           {
             "config": {
               "archiving": {
-                "archivists": [
-                  "Archivist"
-                ]
+                "archivists": ["Archivist"]
               },
               "name": "Sentinel",
               "schema": "network.xyo.sentinel.config",

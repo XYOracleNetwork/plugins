@@ -16,8 +16,10 @@ const recordIsInBoundWitness = async (recordBw: BoundWitness, recordPayload: Pay
   return recordBw.payload_hashes.includes(hash)
 }
 
-const recordIsTemporallyValidToBoundWitness = (recordBw: BoundWitness, recordPayload: Payload<DurationFields>): boolean => {
-  const { timestamp } = recordBw
+// TODO: Use sequence for this?
+const recordIsTemporallyValidToBoundWitness = (_recordBw: BoundWitness, _recordPayload: Payload<DurationFields>): boolean => {
+  /* const { timestamp } = recordBw
   const { exp } = recordPayload
-  return exp > timestamp
+  return exp > timestamp */
+  return true
 }

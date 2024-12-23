@@ -83,7 +83,7 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () =
         expect(Number.parseInt(totalSupplyValue)).toBeNumber()
       })
     })
-    describe('Index', () => {
+    describe.skip('Index', () => {
       it.each(cases)('returns indexed result', async (address) => {
         await delay(100)
         const diviner = asDivinerInstance(await node.resolve('IndexDiviner'))

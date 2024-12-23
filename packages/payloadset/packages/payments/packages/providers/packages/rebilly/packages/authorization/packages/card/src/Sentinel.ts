@@ -110,9 +110,9 @@ export class RebillyPaymentCardAuthorizationSentinel<
       const response = await axios.post<CreateTokenResponse>(this.tokenEndpoint, data)
       assertEx(response.status === HttpStatusCode.Created, () => `Failed to tokenize payment card: ${response.status}`)
       const { id } = response.data
-      const sources = await PayloadBuilder.dataHashes([paymentCard, billingAddress])
+      const $sources = await PayloadBuilder.dataHashes([paymentCard, billingAddress])
       results.push({
-        id, schema: RebillyPaymentAuthorizationTokenSchema, sources,
+        id, schema: RebillyPaymentAuthorizationTokenSchema, $sources,
       })
     } catch (error) {
       this.logger?.error?.(`${moduleName}: Error creating payment token: ${error}`)

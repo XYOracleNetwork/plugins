@@ -1,3 +1,4 @@
+import { AsObjectFactory } from '@xylabs/object'
 import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
@@ -29,3 +30,4 @@ export type ImageThumbnail = Payload<
 >
 
 export const isImageThumbnail = isPayloadOfSchemaType<ImageThumbnail>(ImageThumbnailSchema)
+export const asImageThumbnail = AsObjectFactory.create(isImageThumbnail)

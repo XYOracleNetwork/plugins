@@ -5,10 +5,11 @@ import {
   asDivinerInstance, DivinerInstance, DivinerModuleEventData,
 } from '@xyo-network/diviner-model'
 import { creatableModule } from '@xyo-network/module-model'
+import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   Discount,
-  isDiscountWithMeta,
-  isSubtotalWithMeta,
+  isDiscount,
+  isSubtotal,
   PaymentTotalDivinerConfigSchema, PaymentTotalDivinerParams, Subtotal, Total, TotalSchema,
 } from '@xyo-network/payment-payload-plugins'
 
@@ -35,20 +36,20 @@ export class PaymentTotalDiviner<
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
     const subtotalDiviner = await this.getPaymentSubtotalDiviner()
     const subtotalResult = await subtotalDiviner.divine(payloads)
-    const subtotal = subtotalResult.find(isSubtotalWithMeta)
+    const subtotal = subtotalResult.find(isSubtotal)
     if (!subtotal) return []
     const discountDiviner = await this.getPaymentDiscountsDiviner()
     const discountResult = await discountDiviner.divine(payloads)
-    const discount = discountResult.find(isDiscountWithMeta)
+    const discount = discountResult.find(isDiscount)
     if (!discount) return []
     const { currency: subtotalCurrency } = subtotal
     const { currency: discountCurrency } = discount
     assertEx(subtotalCurrency === discountCurrency, () => `Subtotal currency ${subtotalCurrency} does not match discount currency ${discountCurrency}`)
     const amount = Math.max(0, subtotal.amount - discount.amount)
     const currency = subtotalCurrency
-    const sources = [subtotal.$hash, discount.$hash] as Hash[]
+    const $sources = [await PayloadBuilder.dataHash(subtotal), await PayloadBuilder.dataHash(discount)] as Hash[]
     const total: Total = {
-      amount, currency, sources, schema: TotalSchema,
+      amount, currency, $sources, schema: TotalSchema,
     }
     return [subtotal, discount, total] as TOut[]
   }

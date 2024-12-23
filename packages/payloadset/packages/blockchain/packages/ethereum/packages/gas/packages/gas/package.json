@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/gas-price-plugin",
-  "version": "3.1.2",
+  "version": "3.2.0-rc.8",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,35 +29,36 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xylabs/exists": "^4.4.9",
+    "@xylabs/exists": "^4.4.26",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:^",
-    "@xyo-network/diviner-abstract": "^3.5.1",
-    "@xyo-network/diviner-model": "^3.5.1",
+    "@xyo-network/diviner-abstract": "^3.6.0",
+    "@xyo-network/diviner-model": "^3.6.0",
     "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/ethgasstation-ethereum-gas-payload-plugin": "workspace:^",
     "@xyo-network/gas-price-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.5.1",
-    "@xyo-network/payload-builder": "^3.5.1",
-    "@xyo-network/payload-model": "^3.5.1",
-    "@xyo-network/payloadset-plugin": "^3.5.1",
+    "@xyo-network/module-model": "^3.6.0",
+    "@xyo-network/payload-builder": "^3.6.0",
+    "@xyo-network/payload-model": "^3.6.0",
+    "@xyo-network/payloadset-plugin": "^3.6.0",
     "regression": "^2.0.1"
   },
   "devDependencies": {
     "@types/regression": "^2.0.6",
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
-    "@xylabs/vitest-extended": "^4.4.9",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
+    "@xylabs/vitest-extended": "^4.4.26",
     "@xyo-network/blocknative-ethereum-gas-plugin": "workspace:^",
     "@xyo-network/etherchain-gas-ethereum-blockchain-plugins": "workspace:^",
     "@xyo-network/ethers-ethereum-gas-plugin": "workspace:^",
     "@xyo-network/etherscan-ethereum-gas-plugin": "workspace:^",
-    "@xyo-network/witness-blockchain-abstract": "^3.5.1",
+    "@xyo-network/witness-blockchain-abstract": "^3.6.0",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "stableVersion": "3.1.2"
 }

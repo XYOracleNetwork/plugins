@@ -1,7 +1,7 @@
 import type { Payload } from '@xyo-network/payload-model'
-import type { JsonFragment } from 'ethers'
+import type { Fragment, JsonFragment } from 'ethers'
 
-export type InterfaceAbi = ReadonlyArray<JsonFragment>
+export type InterfaceAbi = string | ReadonlyArray<Fragment | JsonFragment | string>
 
 export const EvmFunctionImplementedSchema = 'network.xyo.evm.function.implemented'
 export type EvmFunctionImplementedSchema = typeof EvmFunctionImplementedSchema

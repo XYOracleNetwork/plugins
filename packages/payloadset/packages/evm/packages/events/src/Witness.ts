@@ -4,7 +4,7 @@ import { hexFromBigInt } from '@xylabs/hex'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
-import type { EventLog } from 'ethers'
+import type { EventLog, InterfaceAbi } from 'ethers'
 import { Contract } from 'ethers'
 
 import type { EvmEventsWitnessParams } from './model.ts'
@@ -20,8 +20,8 @@ export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEvents
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmEventsWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = EvmEventsWitnessConfigSchema
 
-  get abi() {
-    return assertEx(this.config.abi, () => 'Missing abi')
+  get abi(): InterfaceAbi {
+    return assertEx(this.config.abi, () => 'Missing abi') as InterfaceAbi
   }
 
   protected override async observeHandler(inPayloads: EvmEvents[] = []): Promise<EvmEvent[]> {

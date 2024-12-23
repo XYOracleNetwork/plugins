@@ -12,6 +12,6 @@ import type { EscrowTerms } from '../../Terms/index.ts'
  * @returns The escrow intent
  */
 export const createEscrowIntentWithSecret = async (terms: EscrowTerms, secret: IdPayload, account: AccountInstance) => {
-  const result = await new BoundWitnessBuilder({ accounts: [account] }).payloads([terms, secret]).build()
+  const result = await new BoundWitnessBuilder().signers([account]).payloads([terms, secret]).build()
   return result
 }

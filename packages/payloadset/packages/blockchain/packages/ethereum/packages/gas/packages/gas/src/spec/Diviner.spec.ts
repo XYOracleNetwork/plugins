@@ -6,7 +6,7 @@ import { EthereumGasEthersWitness, EthereumGasEthersWitnessConfigSchema } from '
 import { EthereumGasEtherscanWitness, EthereumGasEtherscanWitnessConfigSchema } from '@xyo-network/etherscan-ethereum-gas-plugin'
 import type { EthereumGasPayload } from '@xyo-network/gas-price-payload-plugin'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   describe, expect, test,
@@ -32,7 +32,7 @@ describe('Diviner', () => {
     const payloads = await diviner.divine(data)
     expect(payloads).toBeArray()
     expect(payloads.length).toBe(1)
-    const gasPayload = payloads.pop() as WithMeta<EthereumGasPayload>
+    const gasPayload = payloads.pop() as EthereumGasPayload
     expect(gasPayload).toBeObject()
     expect(gasPayload.schema).toBe(EthereumGasSchema)
     expect(gasPayload.timestamp).toBeNumber()
@@ -90,7 +90,7 @@ describe('Diviner', () => {
     expect(payloads.length).toBe(1)
     payloads.map((payload) => {
       if (payload?.schema === EthereumGasSchema) {
-        const gasPayload = payload as WithMeta<EthereumGasPayload>
+        const gasPayload = payload as EthereumGasPayload
         expect(gasPayload).toBeObject()
         expect(gasPayload.schema).toBe(EthereumGasSchema)
         expect(gasPayload.timestamp).toBeNumber()

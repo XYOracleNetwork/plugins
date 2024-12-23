@@ -1,7 +1,6 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -12,7 +11,7 @@ import { DNSSchema } from '../Schema.ts'
 /**
  * The fields of a DNSRequest payload
  */
-export type DNSRequest = PayloadWithSources<DNSRequestFields, DNSSchema>
+export type DNSRequest = PayloadWithOptionalSources<DNSRequestFields, DNSSchema>
 
 /**
  * Identity function for determining if an object is a DNSRequest payload
@@ -23,11 +22,6 @@ export const isDNSRequest = isPayloadOfSchemaType<DNSRequest>(DNSSchema)
  * Identity function for determining if an object is a DNSRequest payload with sources
  */
 export const isDNSRequestWithSources = isPayloadOfSchemaTypeWithSources<DNSRequest>(DNSSchema)
-
-/**
- * Identity function for determining if an object is a DNSRequest payload with meta
- */
-export const isDNSRequestWithMeta = isPayloadOfSchemaTypeWithMeta<DNSRequest>(DNSSchema)
 
 /**
  * Helper for generating a DNSRequest payload for a given domain and record type

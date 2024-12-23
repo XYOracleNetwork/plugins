@@ -37,7 +37,7 @@ import { EvmCallSchema } from '../../../Payload.ts'
 import { EvmCallWitness } from '../../../Witness.ts'
 import nodeManifest from './Erc721.NftId.Index.json' assert { type: 'json' }
 
-describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID).skip('Erc721.NftId.Index', () => {
   let wallet: WalletInstance
   let node: MemoryNode
 

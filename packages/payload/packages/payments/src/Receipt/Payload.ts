@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -33,8 +32,3 @@ export const isReceipt = isPayloadOfSchemaType<Receipt>(ReceiptSchema)
  * Identity function for determine if an object is a Receipt with sources
  */
 export const isReceiptWithSources = isPayloadOfSchemaTypeWithSources<Receipt>(ReceiptSchema)
-
-/**
- * Identity function for determine if an object is a Receipt with meta
- */
-export const isReceiptWithMeta = isPayloadOfSchemaTypeWithMeta<Receipt>(ReceiptSchema)

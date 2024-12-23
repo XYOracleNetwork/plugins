@@ -1,24 +1,20 @@
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources, type WithMeta, type WithOptionalMeta,
-} from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 import { type SchemaPayload, SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
 /**
  * The payloads that can be used as conditions for a coupon
  */
-export type Condition = SchemaPayload | WithOptionalMeta<SchemaPayload> | WithMeta<SchemaPayload>
+export type Condition = SchemaPayload
 
 /**
  * Identity function for determining if an object is a Condition payload
  */
 export const isCondition = isPayloadOfSchemaType<Condition>(SchemaSchema)
+export const asCondition = AsObjectFactory.create(isCondition)
 
 /**
  * Identity function for determining if an object is a Condition payload with sources
- */
+*/
 export const isConditionWithSources = isPayloadOfSchemaTypeWithSources<Condition>(SchemaSchema)
-
-/**
- * Identity function for determining if an object is a Condition payload with meta
- */
-export const isConditionWithMeta = isPayloadOfSchemaTypeWithMeta<Condition>(SchemaSchema)
+export const asConditionWithSources = AsObjectFactory.create(isConditionWithSources)

@@ -27,7 +27,7 @@ export class EvmAbiImplementedDiviner<TParams extends EvmAbiImplementedDivinerPa
   static override readonly defaultConfigSchema: Schema = EvmAbiImplementedDivinerConfigSchema
 
   get abi() {
-    return assertEx(this.config?.abi, () => 'No ABI specified')
+    return assertEx(this.config?.abi, () => 'No ABI specified') as InterfaceAbi
   }
 
   protected override async divineHandler(inPayloads: EvmContract[] = []): Promise<EvmFunctionImplemented[]> {

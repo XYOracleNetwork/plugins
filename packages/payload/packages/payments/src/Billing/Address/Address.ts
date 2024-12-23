@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { BillingAddressSchema } from './Schema.ts'
 
@@ -43,8 +41,3 @@ export const isBillingAddress = isPayloadOfSchemaType<BillingAddress>(BillingAdd
  * Identity function for determine if an object is a BillingAddress with sources
  */
 export const isBillingAddressWithSources = isPayloadOfSchemaTypeWithSources<BillingAddress>(BillingAddressSchema)
-
-/**
- * Identity function for determine if an object is a BillingAddress with meta
- */
-export const isBillingAddressWithMeta = isPayloadOfSchemaTypeWithMeta<BillingAddress>(BillingAddressSchema)

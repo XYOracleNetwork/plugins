@@ -7,7 +7,6 @@ import { LocationCertaintySchema } from '@xyo-network/location-certainty-payload
 import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { CompositeModuleResolver } from '@xyo-network/module-resolver'
-import type { WithMeta } from '@xyo-network/payload-model'
 import {
   beforeEach,
   describe, expect, it,
@@ -83,7 +82,7 @@ describe.skip('MongoDBLocationCertaintyDiviner', () => {
   let payloadsArchivist: AbstractArchivist
   let sut: LocationCertaintyDiviner
   beforeEach(async () => {
-    payloadsArchivist = await MemoryArchivist.create()
+    payloadsArchivist = await MemoryArchivist.create({ account: 'random' })
     const params = {
       config: {
         schema: LocationCertaintyDivinerConfigSchema,
@@ -109,13 +108,13 @@ describe.skip('MongoDBLocationCertaintyDiviner', () => {
         ]
         const locationsResult = await sut.divine(locations)
         expect(locationsResult).toBeArrayOfSize(1)
-        const actual = locationsResult[0] as WithMeta<LocationCertaintyPayload>
+        const actual = locationsResult[0] as LocationCertaintyPayload
         expect(actual).toBeObject()
         expect(actual.schema).toBe(LocationCertaintySchema)
 
-        const locationsResult1 = (await sut.divine(sample1)) as WithMeta<LocationCertaintyPayload>[]
-        const locationsResult2 = (await sut.divine(sample2)) as WithMeta<LocationCertaintyPayload>[]
-        const locationsResult3 = (await sut.divine(sample3)) as WithMeta<LocationCertaintyPayload>[]
+        const locationsResult1 = (await sut.divine(sample1)) as LocationCertaintyPayload[]
+        const locationsResult2 = (await sut.divine(sample2)) as LocationCertaintyPayload[]
+        const locationsResult3 = (await sut.divine(sample3)) as LocationCertaintyPayload[]
         ;[locationsResult1, locationsResult2, locationsResult3].map(validateLocationResult)
       })
     })

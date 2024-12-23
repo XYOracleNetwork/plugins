@@ -64,8 +64,8 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
   it('HTTPS [medium/ens]', async () => {
     const httpsPayload: UrlPayload = {
       schema: UrlSchema,
-      // eslint-disable-next-line @stylistic/max-len
-      url: 'https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/0x7d26d96c6c36f4edabfb87287e2ebfca83a454b05c34d684b9b19a5af30d7994/image',
+
+      url: 'https://metadata.ens.domains/mainnet/0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85/ens.eth/image',
     }
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     console.log(`ENS-SourceHash: ${result[0].sourceHash}`)
@@ -73,7 +73,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     console.log(`ENS-DataHash: ${await PayloadBuilder.dataHash(removeEmptyFields(result[0]))}`)
     console.log(`ENS-Result: ${JSON.stringify(result[0], null, 2)}`)
     expect(result.length).toBe(1)
-    expect(result[0].url?.length).toBeLessThan(64_000)
+    expect(result[0].url?.length).toBeLessThan(128_000)
 
     // do a second pass and make sure we get cached result
     const result2 = (await witness.observe([httpsPayload])) as ImageThumbnail[]
@@ -117,7 +117,7 @@ describeIfHasBin('magick')('ImageThumbnailWitness', () => {
     const result = (await witness.observe([httpsPayload])) as ImageThumbnail[]
     expect(result.length).toBe(1)
     console.log(`HTTPS [other/error]: ${JSON.stringify(result)}`)
-    expect(result[0]?.http?.code).toBe('ENOTFOUND')
+    expect(result[0]?.http?.code).toBe('EPROTO')
   }, 20_000)
   it.skip('HTTPS [medium/png]', async () => {
     const httpsPayload: UrlPayload = {

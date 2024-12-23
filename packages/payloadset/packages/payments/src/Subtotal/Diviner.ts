@@ -52,9 +52,9 @@ export class PaymentSubtotalDiviner<
     // Run all appraisal validations
     if (!appraisalValidators.every(validator => validator(appraisals))) return []
     const amount = calculateSubtotal(appraisals)
-    const sources = [await PayloadBuilder.dataHash(validTerms), ...validTerms.appraisals]
+    const $sources = [await PayloadBuilder.dataHash(validTerms), ...validTerms.appraisals]
     return [{
-      amount, currency, schema: SubtotalSchema, sources,
+      amount, currency, schema: SubtotalSchema, $sources,
     }] as TOut[]
   }
 }

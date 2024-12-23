@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import type { JsonObject } from '@xylabs/object'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type {
   CryptoContractFunctionCall,
@@ -16,7 +17,7 @@ import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessParams } from '@xyo-network/witness-model'
-import type { Provider } from 'ethers'
+import type { InterfaceAbi, Provider } from 'ethers'
 import { Contract } from 'ethers'
 
 /** @deprecated use EvmCallWitness instead */
@@ -35,7 +36,7 @@ export class CryptoContractFunctionReadWitness<
   static override readonly defaultConfigSchema: Schema = CryptoContractFunctionReadWitnessConfigSchema
 
   get abi() {
-    return assertEx(this.config.abi, () => 'Missing abi')
+    return assertEx(this.config.abi, () => 'Missing abi') as InterfaceAbi
   }
 
   protected override async observeHandler(inPayloads: CryptoContractFunctionCall[] = []): Promise<CryptoContractFunctionCallResult[]> {
@@ -49,7 +50,7 @@ export class CryptoContractFunctionReadWitness<
           const provider = providers[Date.now() % providers.length] // pick a random provider
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
-          const mergedArgs = [...(args ?? this.config.args ?? [])]
+          const mergedArgs = [...(args ?? this.config.args ?? [])] as JsonObject[]
 
           const contract = new Contract(validatedAddress, this.abi, provider)
           try {

@@ -1,8 +1,6 @@
 import type { Hash } from '@xylabs/hex'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
-import type {
-  AsyncPayloadValidationFunction, Payload, WithMeta,
-} from '@xyo-network/payload-model'
+import type { AsyncPayloadValidationFunction, Payload } from '@xyo-network/payload-model'
 
 import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
@@ -24,7 +22,7 @@ const getLogPrefix = (party: EscrowParty) => {
  * @param dictionary Payload dictionary of the escrow terms
  * @returns A function that validates the escrow terms for the existence of the party secret signed by the party
  */
-export const getPartySecretSignedValidator = (dictionary: Record<Hash, WithMeta<Payload>>, party: EscrowParty): AsyncPayloadValidationFunction<EscrowTerms> => {
+export const getPartySecretSignedValidator = (dictionary: Record<Hash, Payload>, party: EscrowParty): AsyncPayloadValidationFunction<EscrowTerms> => {
   const partySecret: EscrowPartySecret = party === 'seller' ? 'sellerSecret' : 'buyerSecret'
   return async (terms: EscrowTerms): Promise<boolean> => {
     // Party-signed party secret BWs

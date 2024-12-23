@@ -1,12 +1,12 @@
 /* eslint-disable @stylistic/max-len */
-import '@xylabs/vitest-extended'
-
+import { matchers } from '@xylabs/vitest-matchers'
 import {
-  describe, expect,
-  it,
+  describe, expect, it,
 } from 'vitest'
 
 import { toXml } from '../toXml.ts'
+
+expect.extend(matchers)
 
 describe('toXml', () => {
   const cases = [

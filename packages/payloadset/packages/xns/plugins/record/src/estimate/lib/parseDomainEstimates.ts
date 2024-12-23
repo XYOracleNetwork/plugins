@@ -2,15 +2,14 @@ import { exists } from '@xylabs/exists'
 import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import {
   type HashLeaseEstimate, HashLeaseEstimateSchema,
-  isHashLeaseEstimateWithMeta,
+  isHashLeaseEstimate,
 } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type {
-  Payload, WithMeta, WithSources,
-} from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 import {
   type DomainEstimate,
-  type DomainRegistrationLease, DomainRegistrationLeaseSchema, isDomainRegistrationLeaseWithMeta,
+  type DomainRegistrationLease, DomainRegistrationLeaseSchema,
+  isDomainRegistrationLeaseWithSources,
 } from '@xyo-network/xns-record-payload-plugins'
 
 /**
@@ -32,14 +31,14 @@ export const parseDomainEstimates = async (payloads?: Payload[]): Promise<Domain
       bw,
       HashLeaseEstimateSchema,
       hashMap,
-      isHashLeaseEstimateWithMeta,
+      isHashLeaseEstimate,
     )
     if (!hashLeaseEstimate) return
-    const domainLease = getPayloadBySchemaFromBoundWitness<DomainRegistrationLease>(
+    const domainLease = getPayloadBySchemaFromBoundWitness<WithSources<DomainRegistrationLease>>(
       bw,
       DomainRegistrationLeaseSchema,
       hashMap,
-      isDomainRegistrationLeaseWithMeta,
+      isDomainRegistrationLeaseWithSources,
     )
     if (!domainLease) return
     return [bw, hashLeaseEstimate, domainLease]
@@ -68,8 +67,8 @@ const getPayloadBySchemaFromBoundWitness = <T extends Payload = Payload>(
   bw: BoundWitness,
   schema: string,
   hashMap: Awaited<ReturnType<typeof PayloadBuilder.toHashMap>>,
-  identity: (payload: Payload) => payload is WithMeta<T>,
-): WithMeta<T> | undefined => {
+  identity: (payload: Payload) => payload is T,
+): T | undefined => {
   const schemaIndex = bw.payload_schemas.indexOf(schema)
   if (schemaIndex === -1) return
   const hash = bw.payload_hashes[schemaIndex]

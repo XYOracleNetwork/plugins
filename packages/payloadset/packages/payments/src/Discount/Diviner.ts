@@ -1,3 +1,4 @@
+import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { Address, Hash } from '@xylabs/hex'
@@ -15,11 +16,12 @@ import { creatableModule } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import {
+  asCondition,
+  asCoupon,
   Condition,
   Coupon,
   Discount,
-  EscrowTerms, isConditionWithMeta, isCoupon,
-  isCouponWithMeta,
+  EscrowTerms, isCondition, isCoupon,
   isEscrowTerms, NO_DISCOUNT, PaymentDiscountDivinerConfigSchema, PaymentDiscountDivinerParams,
 } from '@xyo-network/payment-payload-plugins'
 
@@ -52,30 +54,30 @@ export class PaymentDiscountDiviner<
   }
 
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
-    const sources: Hash[] = []
+    const $sources: Hash[] = []
 
     // Parse terms
     const terms = payloads.find(isEscrowTerms) as EscrowTerms | undefined
-    if (!terms) return [{ ...NO_DISCOUNT, sources }] as TOut[]
-    sources.push(await PayloadBuilder.hash(terms))
+    if (!terms) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
+    $sources.push(await PayloadBuilder.hash(terms))
 
     // Parse appraisals
     const termsAppraisals = terms?.appraisals
     // If the escrow terms do not have appraisals, return no discount
-    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (!termsAppraisals || termsAppraisals.length === 0) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
     const hashMap = await PayloadBuilder.toAllHashMap(payloads) as Record<Hash, Payload>
     const appraisals = this.getEscrowAppraisals(terms, hashMap)
     // Add the appraisals that were found to the sources
-    sources.push(...termsAppraisals)
+    $sources.push(...termsAppraisals)
     // If not all appraisals are found, return no discount
-    if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (appraisals.length !== termsAppraisals.length) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
 
     // Parse coupons
     const [coupons, conditions] = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
     // NOTE: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
-    sources.push(...couponHashes)
+    $sources.push(...couponHashes)
 
     const currentCoupons = coupons.filter(this.isCouponCurrent)
     const conditionsMetCoupons = (
@@ -83,11 +85,11 @@ export class PaymentDiscountDiviner<
 
     const validCoupons = await this.filterToSigned(conditionsMetCoupons)
     // NOTE: Should we throw if not all coupons are valid?
-    if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, sources }] as TOut[]
+    if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
 
     // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic
     const discount = applyCoupons(appraisals, validCoupons)
-    return [{ ...discount, sources }] as TOut[]
+    return [{ ...discount, $sources }] as TOut[]
   }
 
   /**
@@ -161,7 +163,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingDiscounts)
-      discounts.push(...payloads.filter(isCouponWithMeta))
+      discounts.push(...filterAs(payloads, asCoupon))
     }
     // If not all discounts are found
     if (discounts.length !== discountsHashes.length) {
@@ -174,7 +176,7 @@ export class PaymentDiscountDiviner<
     }
 
     const conditionsHashes: Hash[] = discounts.flatMap(discount => discount.conditions ?? [])
-    const conditions: Condition[] = conditionsHashes.map(hash => hashMap[hash]).filter(exists).filter(isConditionWithMeta)
+    const conditions: Condition[] = conditionsHashes.map(hash => hashMap[hash]).filter(exists).filter(isCondition)
     const missingConditions = conditionsHashes.filter(hash => !hashMap[hash])
 
     // If not all conditions are found
@@ -182,7 +184,7 @@ export class PaymentDiscountDiviner<
       // Find any remaining from discounts archivist
       const discountsArchivist = await this.getDiscountsArchivist()
       const payloads = await discountsArchivist.get(missingConditions)
-      conditions.push(...payloads.filter(isConditionWithMeta))
+      conditions.push(...filterAs(payloads, asCondition))
     }
     // If not all conditions are found
     if (conditions.length !== conditionsHashes.length) {

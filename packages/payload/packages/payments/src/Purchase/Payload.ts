@@ -2,7 +2,6 @@ import type { Hash } from '@xylabs/hex'
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -34,8 +33,3 @@ export const isPurchase = isPayloadOfSchemaType<Purchase>(PurchaseSchema)
  * Identity function for determine if an object is a Purchase with sources
  */
 export const isPurchaseWithSources = isPayloadOfSchemaTypeWithSources<Purchase>(PurchaseSchema)
-
-/**
- * Identity function for determine if an object is a Purchase with meta
- */
-export const isPurchaseWithMeta = isPayloadOfSchemaTypeWithMeta<Purchase>(PurchaseSchema)

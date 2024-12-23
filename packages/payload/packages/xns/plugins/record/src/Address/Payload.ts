@@ -1,5 +1,5 @@
 import type { Address } from '@xylabs/hex'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import type { DomainFields } from '../Domain/index.ts'
@@ -20,4 +20,3 @@ export interface AddressRecordFields extends DomainFields {
 export type AddressRecord = Payload<AddressRecordFields, AddressRecordSchema>
 
 export const isAddressRecord = isPayloadOfSchemaType<AddressRecord>(AddressRecordSchema)
-export const isAddressRecordWithMeta = isPayloadOfSchemaType<WithMeta<AddressRecord>>(AddressRecordSchema)

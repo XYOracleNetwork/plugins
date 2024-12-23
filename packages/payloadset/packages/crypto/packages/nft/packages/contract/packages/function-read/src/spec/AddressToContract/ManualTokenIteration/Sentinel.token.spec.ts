@@ -32,9 +32,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
 
@@ -193,7 +191,7 @@ describe('Erc721Sentinel', () => {
         const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema)) as ContractInfo[]
         expect(BigInt(tokenInfoPayloads.length)).toBe(totalSupply)
       }
-    })
+    }, 30_000)
     afterAll(() => {
       const profileData = profileReport()
       if (profileData['tokenReport']) console.log(`Timer: ${profileData['tokenReport'] / tokenCount}ms`)

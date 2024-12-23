@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 // Polyfill TextDecoder
 import 'fast-text-encoding'
 import '@xylabs/vitest-extended'

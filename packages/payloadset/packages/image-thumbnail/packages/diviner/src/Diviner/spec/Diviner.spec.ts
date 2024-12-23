@@ -1,3 +1,4 @@
+/* eslint-disable max-statements */
 import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
@@ -6,7 +7,7 @@ import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { isBoundWitnessWithMeta } from '@xyo-network/boundwitness-model'
+import { isBoundWitnessWithStorageMeta } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -16,15 +17,17 @@ import type {
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import {
   ImageThumbnailDivinerQuerySchema,
-  isImageThumbnailResult,
   isImageThumbnailResultIndex,
+  isImageThumbnailResultWithSources,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { isModuleStateWithMeta } from '@xyo-network/module-model'
+import type { ModuleState } from '@xyo-network/module-model'
+import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { type Payload, type WithStorageMeta } from '@xyo-network/payload-model'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
@@ -74,10 +77,11 @@ describe('ImageThumbnailDiviner', () => {
     schema: 'network.xyo.image.thumbnail',
     sourceUrl,
   }
-  const witnessedThumbnails = [thumbnailHttpSuccess, thumbnailHttpFail, thumbnailCodeFail, thumbnailWitnessFail]
 
-  let sut: ImageThumbnailDiviner
+  let testCases: WithStorageMeta<Payload>[][] = []
+  let archivist: MemoryArchivist
   let node: MemoryNode
+  let sut: ImageThumbnailDiviner
 
   beforeAll(async () => {
     const wallet = await HDWallet.random()
@@ -101,32 +105,35 @@ describe('ImageThumbnailDiviner', () => {
     expect(mods.length).toBe(privateModules.length + publicModules.length + 1)
 
     // Insert previously witnessed payloads into thumbnail archivist
-    const httpSuccessTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [httpSuccessBoundWitness, httpSuccessPayloads] = await (
-      await new BoundWitnessBuilder().payloads([thumbnailHttpSuccess, httpSuccessTimestamp])
-    ).build()
-    const httpFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [httpFailBoundWitness, httpFailPayloads] = await (await new BoundWitnessBuilder().payloads([thumbnailHttpFail, httpFailTimestamp])).build()
+    const httpSuccessTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: 1 }
+    const [httpSuccessBoundWitness, httpSuccessPayloads] = await (new BoundWitnessBuilder().payloads([thumbnailHttpSuccess, httpSuccessTimestamp])).build()
 
-    const witnessFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [witnessFailBoundWitness, witnessFailPayloads] = await (
-      await new BoundWitnessBuilder().payloads([thumbnailWitnessFail, witnessFailTimestamp])
-    ).build()
+    const httpFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: 2 }
+    const [httpFailBoundWitness, httpFailPayloads] = await (new BoundWitnessBuilder().payloads([thumbnailHttpFail, httpFailTimestamp])).build()
 
-    const codeFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: Date.now() }
-    const [codeFailBoundWitness, codeFailPayloads] = await (await new BoundWitnessBuilder().payloads([thumbnailCodeFail, codeFailTimestamp])).build()
+    const witnessFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: 3 }
+    const [witnessFailBoundWitness, witnessFailPayloads] = await (new BoundWitnessBuilder().payloads([thumbnailWitnessFail, witnessFailTimestamp])).build()
 
-    const thumbnailArchivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('ImageThumbnailArchivist')))
-    await thumbnailArchivist.insert([
-      httpSuccessBoundWitness,
-      ...httpSuccessPayloads,
-      httpFailBoundWitness,
-      ...httpFailPayloads,
-      witnessFailBoundWitness,
-      ...witnessFailPayloads,
-      codeFailBoundWitness,
-      ...codeFailPayloads,
-    ])
+    const codeFailTimestamp: TimeStamp = { schema: TimestampSchema, timestamp: 4 }
+    const [codeFailBoundWitness, codeFailPayloads] = await (new BoundWitnessBuilder().payloads([thumbnailCodeFail, codeFailTimestamp])).build()
+
+    archivist = assertEx(asArchivistInstance<MemoryArchivist>(await node.resolve('ImageThumbnailArchivist')))
+    const testCasesToCreate = [
+      [httpSuccessBoundWitness, ...httpSuccessPayloads],
+      [httpFailBoundWitness, ...httpFailPayloads],
+      [witnessFailBoundWitness, ...witnessFailPayloads],
+      [codeFailBoundWitness, ...codeFailPayloads],
+    ]
+
+    for (const [bw, ...payloads] of testCasesToCreate) {
+      const createdTestCase = []
+      for (const payload of [bw, ...payloads]) {
+        await delay(2)
+        const [signedPayload] = await archivist.insert([payload])
+        createdTestCase.push(signedPayload)
+      }
+      testCases.push(createdTestCase)
+    }
 
     sut = assertEx(asDivinerInstance<ImageThumbnailDiviner>(await node.resolve('ImageThumbnailDiviner')))
 
@@ -141,8 +148,8 @@ describe('ImageThumbnailDiviner', () => {
     })
     it('has expected bound witnesses', async () => {
       const payloads = await stateArchivist.all()
-      const stateBoundWitnesses = payloads.filter(isBoundWitnessWithMeta)
-      expect(stateBoundWitnesses).toBeArrayOfSize(2)
+      const stateBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)
+      expect(stateBoundWitnesses).toBeArrayOfSize(1)
       for (const stateBoundWitness of stateBoundWitnesses) {
         expect(stateBoundWitness).toBeObject()
         expect(stateBoundWitness.addresses).toBeArrayOfSize(1)
@@ -151,12 +158,13 @@ describe('ImageThumbnailDiviner', () => {
     })
     it('has expected state', async () => {
       const payloads = await stateArchivist.all()
-      const statePayloads = payloads.filter(isModuleStateWithMeta)
-      expect(statePayloads).toBeArrayOfSize(2)
+      const statePayloads = payloads.filter(isModuleState) as WithStorageMeta<ModuleState>[]
+      expect(statePayloads).toBeArrayOfSize(1)
       expect(statePayloads.at(-1)).toBeObject()
       const statePayload = assertEx(statePayloads.at(-1))
       expect(statePayload.state).toBeObject()
-      expect(statePayload.state?.offset).toBe(witnessedThumbnails.length)
+      const lastCursor = PayloadBuilder.sortByStorageMeta(testCases.flat()).at(-1)?._sequence
+      expect(statePayload.state?.cursor).toBe(lastCursor)
     })
   })
   describe('diviner index', () => {
@@ -168,7 +176,7 @@ describe('ImageThumbnailDiviner', () => {
     // NOTE: We're not signing indexes for performance reasons
     it.skip('has expected bound witnesses', async () => {
       const payloads = await indexArchivist.all()
-      const indexBoundWitnesses = payloads.filter(isBoundWitnessWithMeta)
+      const indexBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)
       expect(indexBoundWitnesses).toBeArrayOfSize(1)
       const indexBoundWitness = indexBoundWitnesses[0]
       expect(indexBoundWitness).toBeObject()
@@ -178,7 +186,7 @@ describe('ImageThumbnailDiviner', () => {
     it('has expected index', async () => {
       const payloads = await indexArchivist.all()
       const indexPayloads = payloads.filter(isImageThumbnailResultIndex)
-      expect(indexPayloads).toBeArrayOfSize(witnessedThumbnails.length)
+      expect(indexPayloads).toBeArrayOfSize(testCases.length)
     })
   })
   describe('with no thumbnail for the provided URL', () => {
@@ -199,10 +207,10 @@ describe('ImageThumbnailDiviner', () => {
           schema, success: true, url,
         }
         const results = await sut.divine([query])
-        const result = results.find(isImageThumbnailResult)
+        const result = results.find(isImageThumbnailResultWithSources)
         expect(result).toBeDefined()
         const expected = await PayloadBuilder.dataHash(thumbnailHttpSuccess)
-        expect(result?.sources).toContain(expected)
+        expect(result?.$sources).toContain(expected)
       })
     })
     describe('with filter criteria', () => {
@@ -214,10 +222,10 @@ describe('ImageThumbnailDiviner', () => {
             schema, status, url,
           }
           const results = await sut.divine([query])
-          const result = results.find(isImageThumbnailResult)
+          const result = results.find(isImageThumbnailResultWithSources)
           expect(result).toBeDefined()
           const expected = await PayloadBuilder.dataHash(payload)
-          expect(result?.sources).toContain(expected)
+          expect(result?.$sources).toContain(expected)
         })
       })
       describe('for success (most recent)', () => {
@@ -228,10 +236,10 @@ describe('ImageThumbnailDiviner', () => {
             schema, success, url,
           }
           const results = await sut.divine([query])
-          const result = results.find(isImageThumbnailResult)
+          const result = results.find(isImageThumbnailResultWithSources)
           expect(result).toBeDefined()
           const expected = await PayloadBuilder.dataHash(payload)
-          expect(result?.sources).toContain(expected)
+          expect(result?.$sources).toContain(expected)
         })
       })
       describe('for failure (most recent)', () => {
@@ -242,10 +250,10 @@ describe('ImageThumbnailDiviner', () => {
             schema, success, url,
           }
           const results = await sut.divine([query])
-          const result = results.find(isImageThumbnailResult)
+          const result = results.find(isImageThumbnailResultWithSources)
           expect(result).toBeDefined()
           const expected = await PayloadBuilder.dataHash(payload)
-          expect(result?.sources).toContain(expected)
+          expect(result?.$sources).toContain(expected)
         })
       })
     })

@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import '@xylabs/vitest-extended'
 
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'

@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { SignatureSchema } from './Schema.ts'
 
@@ -36,8 +34,3 @@ export const isSignature = isPayloadOfSchemaType<Signature>(SignatureSchema)
  * Identity function for determine if an object is a Signature with sources
  */
 export const isSignatureWithSources = isPayloadOfSchemaTypeWithSources<Signature>(SignatureSchema)
-
-/**
- * Identity function for determine if an object is a Signature with meta
- */
-export const isSignatureWithMeta = isPayloadOfSchemaTypeWithMeta<Signature>(SignatureSchema)

@@ -11,7 +11,6 @@ import type { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
 
 import type { AddressTransactionHistoryWitnessConfig } from './Config.ts'
-// eslint-disable-next-line import-x/no-deprecated
 import { getTransactionsForAddress } from './lib/index.ts'
 
 export type AddressTransactionHistoryWitnessParams = WitnessParams<

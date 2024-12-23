@@ -70,7 +70,7 @@ describe('PaymentSubtotalDiviner', () => {
       const result = results.find(isSubtotal)
       expect(result).toBeDefined()
       expect(result).toMatchObject({ amount: total, schema: SubtotalSchema })
-      expect(result?.sources).toEqual([await PayloadBuilder.dataHash(terms), ...appraisalHashes])
+      expect(result?.$sources).toEqual([await PayloadBuilder.dataHash(terms), ...appraisalHashes])
     })
   })
   describe('with escrow terms containing invalid appraisals', () => {

@@ -12,7 +12,6 @@ import { MercatorBoundingBox } from '@xyo-network/sdk-geo'
 import type {
   WitnessConfig, WitnessModule, WitnessParams,
 } from '@xyo-network/witness-model'
-// eslint-disable-next-line import-x/no-named-as-default
 import type { GeoTIFFImage, TypedArray } from 'geotiff'
 import type GeoTIFF from 'geotiff'
 import { fromFile } from 'geotiff'
@@ -67,9 +66,9 @@ export const locationToQuadkey = (location: Location, zoom = 16) => {
     (location as QuadkeyLocation).quadkey
       ? Quadkey.fromString(zoom, (location as QuadkeyLocation).quadkey)
       : Quadkey.fromLngLat(
-        { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
-        zoom,
-      ),
+          { lat: (location as GeographicCoordinateSystemLocation).latitude, lng: (location as GeographicCoordinateSystemLocation).longitude },
+          zoom,
+        ),
   )
 }
 

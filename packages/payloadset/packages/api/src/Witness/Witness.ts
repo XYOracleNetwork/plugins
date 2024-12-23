@@ -102,7 +102,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           const validatedUri = assertEx(checkIpfsUrl(uri, this.ipfsGateway), () => 'Invalid URI')
 
           if (verb === 'get') {
-            return this.httpGet(validatedUri, (await PayloadBuilder.build(call)).$hash)
+            return this.httpGet(validatedUri, (await PayloadBuilder.dataHash(call)))
           }
 
           const observation: ApiCallResult = {

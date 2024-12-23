@@ -7,5 +7,4 @@ import type { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 
 export const EthereumGasPayloadPlugins: PayloadPluginFunc[] = [...EthereumGasEtherchainPayloadPlugins, EthereumGasEtherscanPayloadPlugin]
 
-// eslint-disable-next-line import-x/no-default-export
 export default EthereumGasPayloadPlugins

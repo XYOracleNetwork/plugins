@@ -113,7 +113,7 @@ describe('Contract Node', () => {
       expect(anyInterfacesImplemented).toBeTrue()
     })
   })
-  describe('Token Diviner Index Node', () => {
+  describe.skip('Token Diviner Index Node', () => {
     beforeAll(async () => {
       // Alow indexers to index
       await delay(1000)

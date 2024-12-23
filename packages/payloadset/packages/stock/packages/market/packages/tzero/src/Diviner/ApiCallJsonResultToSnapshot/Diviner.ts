@@ -4,7 +4,7 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerParams } from '@xyo-network/diviner-model'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type {
-  Payload, Schema, WithSources,
+  Payload, Schema, WithOptionalSources,
 } from '@xyo-network/payload-model'
 import type { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 
@@ -20,7 +20,7 @@ export class TZeroApiCallJsonResultToSnapshotDiviner<
   static override readonly configSchemas: Schema[] = [...super.configSchemas, TZeroApiCallJsonResultToSnapshotDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = TZeroApiCallJsonResultToSnapshotDivinerConfigSchema
 
-  protected override divineHandler(payloads?: Payload[]): Promisable<WithSources<Snapshot>[]> {
+  protected override divineHandler(payloads?: Payload[]): Promisable<WithOptionalSources<Snapshot>[]> {
     if (!payloads) return []
     if (payloads.length === 0) return []
     return payloads.map(tryMapToSnapshot).filter(exists)

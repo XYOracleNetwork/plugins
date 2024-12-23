@@ -36,7 +36,7 @@ import type { EvmCallResult } from '../../../Payload.ts'
 import { EvmCallWitness } from '../../../Witness.ts'
 import nodeManifest from './Erc721.NftIndex.Index.json' assert { type: 'json' }
 
-describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
+describe.runIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () => {
   let wallet: WalletInstance
   let node: MemoryNode
 
@@ -71,7 +71,7 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.NftIndex.Index', () => {
   const cases: readonly TestData[] = [
     ['0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D'], // BAYC
   ] as const
-  describe.skipIf(!process.env.INFURA_PROJECT_ID)('Sentinel', () => {
+  describe('Sentinel', () => {
     const totalSupply = 100
     describe('Sentinel', () => {
       it.each(cases)('returns NftIndexes', async (address) => {

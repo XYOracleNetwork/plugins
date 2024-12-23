@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -26,8 +25,3 @@ export const isSubtotal = isPayloadOfSchemaType<Subtotal>(SubtotalSchema)
  * Identity function for determining if an object is an Subtotal with sources
  */
 export const isSubtotalWithSources = isPayloadOfSchemaTypeWithSources<Subtotal>(SubtotalSchema)
-
-/**
- * Identity function for determining if an object is an Subtotal with meta
- */
-export const isSubtotalWithMeta = isPayloadOfSchemaTypeWithMeta<Subtotal>(SubtotalSchema)

@@ -1,8 +1,6 @@
 import type { JsonObject } from '@xylabs/object'
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { XmlSchema } from './Schema.ts'
 
@@ -27,8 +25,3 @@ export const isXml = isPayloadOfSchemaType<Xml>(XmlSchema)
  * Identity function for determine if an object is an Xml Payload with sources
  */
 export const isXmlWithSources = isPayloadOfSchemaTypeWithSources<Xml>(XmlSchema)
-
-/**
- * Identity function for determine if an object is an Xml Payload with meta
- */
-export const isXmlWithMeta = isPayloadOfSchemaTypeWithMeta<Xml>(XmlSchema)

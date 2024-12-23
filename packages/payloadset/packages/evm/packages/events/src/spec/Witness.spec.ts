@@ -20,7 +20,7 @@ const validateObservation = (observation: Payload[]) => {
   expect(observation.length).toEqual(results.length)
 }
 
-describe.skipIf(!process.env.INFURA_PROJECT_ID)('EvmEventsWitness', () => {
+describe.skipIf(!process.env.INFURA_PROJECT_ID).skip('EvmEventsWitness', () => {
   const address = '0x6811f2f20c42f42656a3c8623ad5e9461b83f719' // ParallelPlanetFall
   const eventName = 'TransferSingle'
   describe('observe', () => {

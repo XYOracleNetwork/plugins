@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 import '@xylabs/vitest-extended'
 
 import { IdSchema } from '@xyo-network/id-payload-plugin'

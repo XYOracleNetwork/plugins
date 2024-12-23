@@ -1,7 +1,7 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { Payload, PayloadWithOptionalSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -18,19 +18,16 @@ export interface FixedPercentageCouponFields extends CouponFields {
 /**
  * A coupon that provides a fixed discount amount
  */
-export type FixedPercentageCoupon = PayloadWithSources<FixedPercentageCouponFields, FixedPercentageCouponSchema>
+export type FixedPercentageCoupon = PayloadWithOptionalSources<Payload<FixedPercentageCouponFields, FixedPercentageCouponSchema>>
 
 /**
  * Identity function for determining if an object is an FixedPercentageCoupon
  */
 export const isFixedPercentageCoupon = isPayloadOfSchemaType<FixedPercentageCoupon>(FixedPercentageCouponSchema)
+export const asFixedPercentageCoupon = AsObjectFactory.create(isFixedPercentageCoupon)
 
 /**
  * Identity function for determining if an object is an FixedPercentageCoupon with sources
- */
+*/
 export const isFixedPercentageCouponWithSources = isPayloadOfSchemaTypeWithSources<FixedPercentageCoupon>(FixedPercentageCouponSchema)
-
-/**
- * Identity function for determining if an object is an FixedPercentageCoupon with meta
- */
-export const isFixedPercentageCouponWithMeta = isPayloadOfSchemaTypeWithMeta<FixedPercentageCoupon>(FixedPercentageCouponSchema)
+export const asFixedPercentageCouponWithSources = AsObjectFactory.create(isFixedPercentageCouponWithSources)

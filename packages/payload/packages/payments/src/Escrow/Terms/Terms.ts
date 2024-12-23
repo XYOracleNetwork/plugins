@@ -1,8 +1,7 @@
 import type { Address, Hash } from '@xylabs/hex'
+import { AsObjectFactory } from '@xylabs/object'
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { EscrowSchema } from '../Schema.ts'
 
@@ -70,13 +69,12 @@ export type EscrowTerms = Payload<Partial<EscrowTermsFields>, EscrowTermsSchema>
  * Identity function for determining if an object is an EscrowTerms
  */
 export const isEscrowTerms = isPayloadOfSchemaType<EscrowTerms>(EscrowTermsSchema)
+export const asEscrowTerms = AsObjectFactory.create<EscrowTerms>(isEscrowTerms)
+export const asOptionalEscrowTerms = AsObjectFactory.createOptional<EscrowTerms>(isEscrowTerms)
 
 /**
  * Identity function for determining if an object is an EscrowTerms with sources
  */
 export const isEscrowTermsWithSources = isPayloadOfSchemaTypeWithSources<EscrowTerms>(EscrowTermsSchema)
-
-/**
- * Identity function for determining if an object is an EscrowTerms with meta
- */
-export const isEscrowTermsWithMeta = isPayloadOfSchemaTypeWithMeta<EscrowTerms>(EscrowTermsSchema)
+export const asEscrowTermsWithSources = AsObjectFactory.create<EscrowTerms>(isEscrowTermsWithSources)
+export const asOptionalEscrowTermsWithSources = AsObjectFactory.createOptional<EscrowTerms>(isEscrowTermsWithSources)

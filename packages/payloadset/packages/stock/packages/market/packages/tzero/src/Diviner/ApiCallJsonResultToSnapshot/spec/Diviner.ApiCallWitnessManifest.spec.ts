@@ -13,8 +13,7 @@ import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import {
-  beforeAll, describe, expect,
-  it,
+  beforeAll, describe, expect, it,
 } from 'vitest'
 
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner.ts'
@@ -51,23 +50,23 @@ describe('tZero', () => {
 
       const data = report?.find(isSnapshot)
       expect(data).toBeDefined()
-      expect(data?.askPrice).toBeOneOf([null, expect.any(Number)])
-      expect(data?.askPriceRate).toBeOneOf([null, expect.any(Number)])
-      expect(data?.askQtyBookTotal).toBeOneOf([null, expect.any(Number)])
-      expect(data?.askQuantity).toBeOneOf([null, expect.any(Number)])
-      expect(data?.bidPrice).toBeOneOf([null, expect.any(Number)])
-      expect(data?.bidPriceRate).toBeOneOf([null, expect.any(Number)])
-      expect(data?.bidQtyBookTotal).toBeOneOf([null, expect.any(Number)])
-      expect(data?.bidQuantity).toBeOneOf([null, expect.any(Number)])
-      expect(data?.high).toBeOneOf([null, expect.any(Number)])
-      expect(data?.lastPrice).toBeOneOf([null, expect.any(Number)])
-      expect(data?.lastQuantity).toBeOneOf([null, expect.any(Number)])
-      expect(data?.low).toBeOneOf([null, expect.any(Number)])
-      expect(data?.open).toBeOneOf([null, expect.any(Number)])
-      expect(data?.prevClosePx).toEqual(expect.any(Number))
-      expect(data?.symbol).toEqual(expect.any(String))
-      expect(data?.timestamp).toEqual(expect.any(String))
-      expect(data?.volume).toEqual(expect.any(Number))
+      expect(data?.askPrice === null || typeof data?.askPrice === 'number').toBe(true)
+      expect(data?.askPriceRate === null || typeof data?.askPriceRate === 'number').toBe(true)
+      expect(data?.askQtyBookTotal === null || typeof data?.askQtyBookTotal === 'number').toBe(true)
+      expect(data?.askQuantity === null || typeof data?.askQuantity === 'number').toBe(true)
+      expect(data?.bidPrice === null || typeof data?.bidPrice === 'number').toBe(true)
+      expect(data?.bidPriceRate === null || typeof data?.bidPriceRate === 'number').toBe(true)
+      expect(data?.bidQtyBookTotal === null || typeof data?.bidQtyBookTotal === 'number').toBe(true)
+      expect(data?.bidQuantity === null || typeof data?.bidQuantity === 'number').toBe(true)
+      expect(data?.high === null || typeof data?.high === 'number').toBe(true)
+      expect(data?.lastPrice === null || typeof data?.lastPrice === 'number').toBe(true)
+      expect(data?.lastQuantity === null || typeof data?.lastQuantity === 'number').toBe(true)
+      expect(data?.low === null || typeof data?.low === 'number').toBe(true)
+      expect(data?.open === null || typeof data?.open === 'number').toBe(true)
+      expect(typeof data?.prevClosePx === 'number').toBe(true)
+      expect(typeof data?.symbol === 'string').toBe(true)
+      expect(typeof data?.timestamp === 'string').toBe(true)
+      expect(typeof data?.volume === 'number').toBe(true)
     })
   })
 })

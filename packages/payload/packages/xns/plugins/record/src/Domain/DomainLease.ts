@@ -1,7 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
 import type { DomainFields } from './Domain.ts'
@@ -23,13 +22,12 @@ export type DomainLease = Payload<DomainLeaseFields, DomainLeaseSchema>
  * Identity function for DomainLease payload
  */
 export const isDomainLease = isPayloadOfSchemaType<DomainLease>(DomainLeaseSchema)
+export const asDomainLease = AsObjectFactory.create<DomainLease>(isDomainLease)
+export const asOptionalDomainLease = AsObjectFactory.createOptional<DomainLease>(isDomainLease)
 
 /**
  * Identity function for DomainLease payload with sources
  */
-export const isDomainLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainLease>(DomainLeaseSchema)
-
-/**
- * Identity function for DomainLease payload with meta
- */
-export const isDomainLeaseWithMeta = isPayloadOfSchemaTypeWithMeta<DomainLease>(DomainLeaseSchema)
+export const isDomainLeaseWithSources = isPayloadOfSchemaTypeWithSources<WithSources<DomainLease>>(DomainLeaseSchema)
+export const asDomainLeaseWithSources = AsObjectFactory.create<WithSources<DomainLease>>(isDomainLeaseWithSources)
+export const asOptionalDomainLeaseWithSources = AsObjectFactory.createOptional<WithSources<DomainLease>>(isDomainLeaseWithSources)

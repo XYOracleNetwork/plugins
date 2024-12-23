@@ -1,22 +1,20 @@
 import { exists } from '@xylabs/exists'
 import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import {
-  type HashLeaseEstimate, HashLeaseEstimateSchema,
-  isHashLeaseEstimateWithMeta,
+  type HashLeaseEstimate, HashLeaseEstimateSchema, isHashLeaseEstimate,
 } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type {
-  Payload, WithMeta, WithOptionalMeta, WithSources,
-} from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 
 import {
-  type DomainRegistrationLease, DomainRegistrationLeaseSchema, isDomainRegistrationLeaseWithMeta,
+  type DomainRegistrationLease, DomainRegistrationLeaseSchema,
+  isDomainRegistrationLeaseWithSources,
 } from '../../DomainRegistration/index.ts'
 
 export type Estimate = [
-  WithOptionalMeta<BoundWitness>,
-  WithOptionalMeta<WithSources<HashLeaseEstimate>>,
-  WithOptionalMeta<WithSources<DomainRegistrationLease>>,
+  BoundWitness,
+  WithSources<HashLeaseEstimate>,
+  WithSources<DomainRegistrationLease>,
 ]
 
 /**
@@ -38,14 +36,14 @@ export const parseEstimatesFromArray = async (payloads?: Payload[]): Promise<Est
       bw,
       HashLeaseEstimateSchema,
       hashMap,
-      isHashLeaseEstimateWithMeta,
+      isHashLeaseEstimate,
     )
     if (!hashLeaseEstimate) return
-    const domainLease = getPayloadBySchemaFromBoundWitness<DomainRegistrationLease>(
+    const domainLease = getPayloadBySchemaFromBoundWitness<WithSources<DomainRegistrationLease>>(
       bw,
       DomainRegistrationLeaseSchema,
       hashMap,
-      isDomainRegistrationLeaseWithMeta,
+      isDomainRegistrationLeaseWithSources,
     )
     if (!domainLease) return
     return [bw, hashLeaseEstimate, domainLease]
@@ -74,8 +72,8 @@ const getPayloadBySchemaFromBoundWitness = <T extends Payload = Payload>(
   bw: BoundWitness,
   schema: string,
   hashMap: Awaited<ReturnType<typeof PayloadBuilder.toHashMap>>,
-  identity: (payload: Payload) => payload is WithMeta<T>,
-): WithMeta<T> | undefined => {
+  identity: (payload: Payload) => payload is T,
+): T | undefined => {
   const schemaIndex = bw.payload_schemas.indexOf(schema)
   if (schemaIndex === -1) return
   const hash = bw.payload_hashes[schemaIndex]

@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/payment-plugin",
-  "version": "3.1.2",
+  "version": "3.2.0-rc.8",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,36 +29,38 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.4.9",
-    "@xylabs/exists": "^4.4.9",
-    "@xylabs/hex": "^4.4.9",
-    "@xyo-network/archivist-model": "^3.5.1",
-    "@xyo-network/diviner-abstract": "^3.5.1",
-    "@xyo-network/diviner-boundwitness-model": "^3.5.1",
-    "@xyo-network/diviner-hash-lease": "^3.5.1",
-    "@xyo-network/diviner-model": "^3.5.1",
-    "@xyo-network/module-model": "^3.5.1",
-    "@xyo-network/payload-builder": "^3.5.1",
-    "@xyo-network/payload-model": "^3.5.1",
+    "@xylabs/array": "^4.4.26",
+    "@xylabs/assert": "^4.4.26",
+    "@xylabs/exists": "^4.4.26",
+    "@xylabs/hex": "^4.4.26",
+    "@xyo-network/archivist-model": "^3.6.0",
+    "@xyo-network/diviner-abstract": "^3.6.0",
+    "@xyo-network/diviner-boundwitness-model": "^3.6.0",
+    "@xyo-network/diviner-hash-lease": "^3.6.0",
+    "@xyo-network/diviner-model": "^3.6.0",
+    "@xyo-network/module-model": "^3.6.0",
+    "@xyo-network/payload-builder": "^3.6.0",
+    "@xyo-network/payload-model": "^3.6.0",
     "@xyo-network/payment-payload-plugins": "workspace:^",
-    "@xyo-network/schema-payload-plugin": "^3.5.1",
+    "@xyo-network/schema-payload-plugin": "^3.6.0",
     "@xyo-network/xns-record-payload-plugins": "workspace:^",
     "ajv": "^8.17.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
-    "@xylabs/vitest-extended": "^4.4.9",
-    "@xyo-network/account": "^3.5.1",
-    "@xyo-network/archivist-memory": "^3.5.1",
-    "@xyo-network/boundwitness-builder": "^3.5.1",
-    "@xyo-network/diviner-boundwitness-memory": "^3.5.1",
-    "@xyo-network/id-payload-plugin": "^3.5.1",
-    "@xyo-network/node-memory": "^3.5.1",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
+    "@xylabs/vitest-extended": "^4.4.26",
+    "@xyo-network/account": "^3.6.0",
+    "@xyo-network/archivist-memory": "^3.6.0",
+    "@xyo-network/boundwitness-builder": "^3.6.0",
+    "@xyo-network/diviner-boundwitness-memory": "^3.6.0",
+    "@xyo-network/id-payload-plugin": "^3.6.0",
+    "@xyo-network/node-memory": "^3.6.0",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "stableVersion": "3.1.2"
 }

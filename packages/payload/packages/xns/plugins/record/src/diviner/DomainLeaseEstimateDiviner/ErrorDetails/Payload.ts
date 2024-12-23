@@ -1,7 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithMeta, isPayloadOfSchemaTypeWithSources,
-} from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { DomainLeaseEstimateDivinerValidationErrorDetailsSchema } from '../Schema.ts'
 
@@ -46,9 +44,3 @@ export const isDomainLeaseEstimateDivinerValidationErrorDetails = isPayloadOfSch
  */
 export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithSources
   = isPayloadOfSchemaTypeWithSources<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)
-
-/**
- * Identity function for DomainLeaseEstimateDivinerValidationErrorDetails payload with meta
- */
-export const isDomainLeaseEstimateDivinerValidationErrorDetailsWithMeta
-  = isPayloadOfSchemaTypeWithMeta<DomainLeaseEstimateDivinerValidationErrorDetails>(DomainLeaseEstimateDivinerValidationErrorDetailsSchema)

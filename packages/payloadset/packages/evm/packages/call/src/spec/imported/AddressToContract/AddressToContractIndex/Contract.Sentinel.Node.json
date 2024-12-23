@@ -76,9 +76,7 @@
           },
           {
             "config": {
-              "args": [
-                "0x1"
-              ],
+              "args": ["0x1"],
               "functionName": "uri",
               "labels": {
                 "network.xyo.evm.interface": "Erc1155"
@@ -205,9 +203,7 @@
           {
             "config": {
               "archiving": {
-                "archivists": [
-                  "NftArchivist"
-                ]
+                "archivists": ["NftArchivist"]
               },
               "language": "javascript",
               "name": "NftInfoSentinel",
@@ -239,33 +235,23 @@
                   "mod": "Erc721ContractInfoDiviner"
                 },
                 {
-                  "input": [
-                    "Erc1155UriWitness"
-                  ],
+                  "input": ["Erc1155UriWitness"],
                   "mod": "Erc1155ContractInfoDiviner"
                 },
                 {
-                  "input": [
-                    "Erc721ContractInfoDiviner"
-                  ],
+                  "input": ["Erc721ContractInfoDiviner"],
                   "mod": "Erc721ContractInfoTransformDiviner"
                 },
                 {
-                  "input": [
-                    "Erc721ContractInfoDiviner"
-                  ],
+                  "input": ["Erc721ContractInfoDiviner"],
                   "mod": "TimestampWitness"
                 },
                 {
-                  "input": [
-                    "Erc1155ContractInfoDiviner"
-                  ],
+                  "input": ["Erc1155ContractInfoDiviner"],
                   "mod": "Erc1155ContractInfoTransformDiviner"
                 },
                 {
-                  "input": [
-                    "Erc1155ContractInfoDiviner"
-                  ],
+                  "input": ["Erc1155ContractInfoDiviner"],
                   "mod": "TimestampWitness"
                 }
               ]

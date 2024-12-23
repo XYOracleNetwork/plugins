@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
-import type { Payload, WithMeta } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import {
   describe, expect,
   test,
@@ -28,7 +28,7 @@ describe('Diviner', () => {
     expect(payloads.length).toBe(1)
     payloads.map((payload) => {
       if (payload?.schema === CryptoMarketAssetSchema) {
-        const assetPayload = payload as WithMeta<CryptoMarketAssetPayload>
+        const assetPayload = payload as CryptoMarketAssetPayload
         expect(assetPayload).toBeObject()
         expect(assetPayload?.assets).toBeObject()
         expect(assetPayload?.schema).toBe(CryptoMarketAssetSchema)

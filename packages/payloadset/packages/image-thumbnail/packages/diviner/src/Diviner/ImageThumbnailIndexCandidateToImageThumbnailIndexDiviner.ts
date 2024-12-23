@@ -15,7 +15,7 @@ import {
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
-  Payload, Schema, WithMeta, WithSources,
+  Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
@@ -49,8 +49,8 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const timestampIndex = curr.payload_schemas?.findIndex(schema => schema === TimestampSchema)
           const imageThumbnailHash = curr.payload_hashes?.[imageThumbnailIndex]
           const timestampHash = curr.payload_hashes?.[timestampIndex]
-          const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail) as WithMeta<ImageThumbnail> | undefined
-          const timestampPayload = [payloadDictionary[timestampHash]].find(isTimestamp) as WithMeta<TimeStamp>
+          const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail) as ImageThumbnail | undefined
+          const timestampPayload = [payloadDictionary[timestampHash]].find(isTimestamp) as TimeStamp
           if (imageThumbnailPayload && timestampPayload) acc.push([curr, imageThumbnailPayload, timestampPayload])
           return acc
         },
@@ -62,14 +62,15 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           const { timestamp } = timestampPayload
           const { status } = http ?? {}
           const success = !!imageThumbnailPayload.url // Call anything with a thumbnail url a success
-          const sources: Hash[] = await PayloadBuilder.dataHashes([bw, imageThumbnailPayload, timestampPayload])
+          const $sources: Hash[] = await PayloadBuilder.dataHashes([bw, imageThumbnailPayload, timestampPayload])
           const urlPayload = { schema: UrlSchema, url }
           const key: Hash = await PayloadBuilder.dataHash(urlPayload)
           const fields: ImageThumbnailResultIndexFields = {
-            key, sources, success, timestamp,
+            key, success, timestamp,
           }
           if (status) fields.status = status
-          const result = await new PayloadBuilder<WithSources<ImageThumbnailResultIndex>>({ schema: ImageThumbnailResultIndexSchema })
+          const result = new PayloadBuilder<WithSources<ImageThumbnailResultIndex>>({ schema: ImageThumbnailResultIndexSchema })
+            .meta({ $sources })
             .fields(fields)
             .build()
           return [result]

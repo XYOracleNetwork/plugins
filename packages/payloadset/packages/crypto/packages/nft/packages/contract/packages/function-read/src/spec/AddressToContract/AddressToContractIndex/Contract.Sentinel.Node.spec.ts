@@ -39,9 +39,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
-// eslint-disable-next-line import-x/no-deprecated
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
 import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }

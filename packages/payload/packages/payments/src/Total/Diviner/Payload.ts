@@ -1,7 +1,6 @@
 import type { PayloadWithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithMeta,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
@@ -26,8 +25,3 @@ export const isTotal = isPayloadOfSchemaType<Total>(TotalSchema)
  * Identity function for determining if an object is an Total with sources
  */
 export const isTotalWithSources = isPayloadOfSchemaTypeWithSources<Total>(TotalSchema)
-
-/**
- * Identity function for determining if an object is an Total with meta
- */
-export const isTotalWithMeta = isPayloadOfSchemaTypeWithMeta<Total>(TotalSchema)

@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/payload-plugins",
-  "version": "3.1.2",
+  "version": "3.2.0-rc.8",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -36,17 +36,18 @@
     "@xyo-network/location-certainty-payload-plugin": "workspace:^",
     "@xyo-network/location-payload-plugin": "workspace:^",
     "@xyo-network/module-instance-payload-plugin": "workspace:^",
-    "@xyo-network/payload-plugin": "^3.5.1",
+    "@xyo-network/payload-plugin": "^3.6.0",
     "@xyo-network/pentair-payload-plugin": "workspace:^",
     "@xyo-network/url-payload-plugin": "workspace:^",
     "@xyo-network/url-safety-payload-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^4.2.4",
-    "@xylabs/tsconfig": "^4.2.4",
+    "@xylabs/ts-scripts-yarn3": "^4.2.6",
+    "@xylabs/tsconfig": "^4.2.6",
     "typescript": "^5.7.2"
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "stableVersion": "3.1.2"
 }
