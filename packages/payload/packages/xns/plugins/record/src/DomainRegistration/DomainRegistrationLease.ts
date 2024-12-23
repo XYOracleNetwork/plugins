@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
@@ -26,9 +26,10 @@ export const asOptionalDomainRegistrationLease = AsObjectFactory.createOptional<
 /**
  * Identity function for DomainRegistrationLease payload with sources
  */
-export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
-export const asDomainRegistrationLeaseWithSources = AsObjectFactory.create<DomainRegistrationLease>(isDomainRegistrationLeaseWithSources)
-export const asOptionalDomainRegistrationLeaseWithSources = AsObjectFactory.createOptional<DomainRegistrationLease>(isDomainRegistrationLeaseWithSources)
+export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<WithSources<DomainRegistrationLease>>(DomainRegistrationLeaseSchema)
+export const asDomainRegistrationLeaseWithSources = AsObjectFactory.create<WithSources<DomainRegistrationLease>>(isDomainRegistrationLeaseWithSources)
+export const asOptionalDomainRegistrationLeaseWithSources = AsObjectFactory
+  .createOptional<WithSources<DomainRegistrationLease>>(isDomainRegistrationLeaseWithSources)
 
 /**
  * @deprecated Use isDomainRegistrationLeaseWithSources instead

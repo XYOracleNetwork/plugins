@@ -1,6 +1,6 @@
 import type { Address } from '@xylabs/hex'
 import { AsObjectFactory } from '@xylabs/object'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import type { DomainFields } from '../Domain/index.ts'
@@ -35,6 +35,6 @@ export const asOptionalDomainRegistration = AsObjectFactory.createOptional<Domai
 /**
  * Identity function for DomainRegistration payload with sources
  */
-export const isDomainRegistrationWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistration>(DomainRegistrationSchema)
-export const asDomainRegistrationWithSources = AsObjectFactory.create<DomainRegistration>(isDomainRegistrationWithSources)
-export const asOptionalDomainRegistrationWithSources = AsObjectFactory.createOptional<DomainRegistration>(isDomainRegistrationWithSources)
+export const isDomainRegistrationWithSources = isPayloadOfSchemaTypeWithSources<WithSources<DomainRegistration>>(DomainRegistrationSchema)
+export const asDomainRegistrationWithSources = AsObjectFactory.create<WithSources<DomainRegistration>>(isDomainRegistrationWithSources)
+export const asOptionalDomainRegistrationWithSources = AsObjectFactory.createOptional<WithSources<DomainRegistration>>(isDomainRegistrationWithSources)

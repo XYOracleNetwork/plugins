@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { Payload } from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 export type DomainSchema = 'network.xyo.ns.domain'
@@ -40,6 +40,6 @@ export const asOptionalDomain = AsObjectFactory.createOptional<Domain>(isDomain)
 /**
  * Identity function for Domain payload with sources
  */
-export const isDomainWithSources = isPayloadOfSchemaTypeWithSources<Domain>(DomainSchema)
-export const asDomainWithSources = AsObjectFactory.create<Domain>(isDomainWithSources)
-export const asOptionalDomainWithSources = AsObjectFactory.createOptional<Domain>(isDomainWithSources)
+export const isDomainWithSources = isPayloadOfSchemaTypeWithSources<WithSources<Domain>>(DomainSchema)
+export const asDomainWithSources = AsObjectFactory.create<WithSources<Domain>>(isDomainWithSources)
+export const asOptionalDomainWithSources = AsObjectFactory.createOptional<WithSources<Domain>>(isDomainWithSources)
