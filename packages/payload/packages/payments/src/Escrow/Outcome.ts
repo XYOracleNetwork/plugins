@@ -1,5 +1,6 @@
 import type { Hash } from '@xylabs/hex'
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -29,8 +30,12 @@ export type EscrowOutcome = PayloadWithSources<EscrowOutcomeFields, EscrowOutcom
  * Identity function for determining if an object is an EscrowOutcome
  */
 export const isEscrowOutcome = isPayloadOfSchemaType<EscrowOutcome>(EscrowOutcomeSchema)
+export const asEscrowOutcome = AsObjectFactory.create<EscrowOutcome>(isEscrowOutcome)
+export const asOptionalEscrowOutcome = AsObjectFactory.createOptional<EscrowOutcome>(isEscrowOutcome)
 
 /**
  * Identity function for determining if an object is an EscrowOutcome with sources
  */
 export const isEscrowOutcomeWithSources = isPayloadOfSchemaTypeWithSources<EscrowOutcome>(EscrowOutcomeSchema)
+export const asEscrowOutcomeWithSources = AsObjectFactory.createOptional<WithSources<EscrowOutcome>>(isEscrowOutcomeWithSources)
+export const asOptionalEscrowOutcomeWithSources = AsObjectFactory.createOptional<WithSources<EscrowOutcome>>(isEscrowOutcomeWithSources)
