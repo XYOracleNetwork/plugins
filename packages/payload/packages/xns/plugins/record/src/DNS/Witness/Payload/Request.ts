@@ -1,4 +1,5 @@
-import type { PayloadWithOptionalSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithOptionalSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -17,11 +18,15 @@ export type DNSRequest = PayloadWithOptionalSources<DNSRequestFields, DNSSchema>
  * Identity function for determining if an object is a DNSRequest payload
  */
 export const isDNSRequest = isPayloadOfSchemaType<DNSRequest>(DNSSchema)
+export const asDNSRequest = AsObjectFactory.create<DNSRequest>(isDNSRequest)
+export const asOptionalDNSRequest = AsObjectFactory.createOptional<DNSRequest>(isDNSRequest)
 
 /**
  * Identity function for determining if an object is a DNSRequest payload with sources
  */
-export const isDNSRequestWithSources = isPayloadOfSchemaTypeWithSources<DNSRequest>(DNSSchema)
+export const isDNSRequestWithSources = isPayloadOfSchemaTypeWithSources<WithSources<DNSRequest>>(DNSSchema)
+export const asDNSRequestWithSources = AsObjectFactory.create<WithSources<DNSRequest>>(isDNSRequestWithSources)
+export const asOptionalDNSRequestWithSources = AsObjectFactory.createOptional<WithSources<DNSRequest>>(isDNSRequestWithSources)
 
 /**
  * Helper for generating a DNSRequest payload for a given domain and record type
