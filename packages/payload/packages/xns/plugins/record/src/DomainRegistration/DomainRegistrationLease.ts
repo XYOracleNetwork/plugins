@@ -1,3 +1,4 @@
+import { AsObjectFactory } from '@xylabs/object'
 import type { Payload } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
@@ -19,11 +20,16 @@ export type DomainRegistrationLease = Payload<DomainRegistrationLeaseFields, Dom
  * Identity function for DomainRegistrationLease payload
  */
 export const isDomainRegistrationLease = isPayloadOfSchemaType<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+export const asDomainRegistrationLease = AsObjectFactory.create<DomainRegistrationLease>(isDomainRegistrationLease)
+export const asOptionalDomainRegistrationLease = AsObjectFactory.createOptional<DomainRegistrationLease>(isDomainRegistrationLease)
 
 /**
  * Identity function for DomainRegistrationLease payload with sources
  */
 export const isDomainRegistrationLeaseWithSources = isPayloadOfSchemaTypeWithSources<DomainRegistrationLease>(DomainRegistrationLeaseSchema)
+export const asDomainRegistrationLeaseWithSources = AsObjectFactory.create<DomainRegistrationLease>(isDomainRegistrationLeaseWithSources)
+export const asOptionalDomainRegistrationLeaseWithSources = AsObjectFactory.createOptional<DomainRegistrationLease>(isDomainRegistrationLeaseWithSources)
+
 /**
  * @deprecated Use isDomainRegistrationLeaseWithSources instead
  */
