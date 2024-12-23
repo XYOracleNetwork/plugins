@@ -35,11 +35,11 @@ export type Domain = Payload<DomainFields, DomainSchema>
  */
 export const isDomain = isPayloadOfSchemaType<Domain>(DomainSchema)
 export const asDomain = AsObjectFactory.create<Domain>(isDomain)
-export const asOptionalDomain = AsObjectFactory.create<Domain>(isDomain)
+export const asOptionalDomain = AsObjectFactory.createOptional<Domain>(isDomain)
 
 /**
  * Identity function for Domain payload with sources
  */
 export const isDomainWithSources = isPayloadOfSchemaTypeWithSources<Domain>(DomainSchema)
 export const asDomainWithSources = AsObjectFactory.create<Domain>(isDomainWithSources)
-export const asOptionalDomainWithSources = AsObjectFactory.create<Domain>(isDomainWithSources)
+export const asOptionalDomainWithSources = AsObjectFactory.createOptional<Domain>(isDomainWithSources)
