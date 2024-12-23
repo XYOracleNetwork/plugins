@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/xns-record-payload-plugins",
-  "version": "3.2.0-rc.8",
+  "version": "3.2.0-rc.9",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -29,6 +29,7 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
+    "@xylabs/array": "^4.4.26",
     "@xylabs/exists": "^4.4.26",
     "@xylabs/hex": "^4.4.26",
     "@xylabs/object": "^4.4.26",
