@@ -1,5 +1,6 @@
 import type { Hash } from '@xylabs/hex'
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -28,8 +29,12 @@ export type Purchase = PayloadWithSources<PurchaseFields, PurchaseSchema>
  * Identity function for determine if an object is a Purchase
  */
 export const isPurchase = isPayloadOfSchemaType<Purchase>(PurchaseSchema)
+export const asPurchase = AsObjectFactory.create<Purchase>(isPurchase)
+export const asOptionalPurchase = AsObjectFactory.createOptional<Purchase>(isPurchase)
 
 /**
  * Identity function for determine if an object is a Purchase with sources
  */
 export const isPurchaseWithSources = isPayloadOfSchemaTypeWithSources<Purchase>(PurchaseSchema)
+export const asPurchaseWithSources = AsObjectFactory.create<WithSources<Purchase>>(isPurchaseWithSources)
+export const asOptionalPurchaseWithSources = AsObjectFactory.createOptional<WithSources<Purchase>>(isPurchaseWithSources)
