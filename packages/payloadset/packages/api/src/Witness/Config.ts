@@ -3,29 +3,29 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessConfig } from '@xyo-network/witness-model'
 
 import type {
-  ApiCall, ApiUriCall, ApiUriTemplateCall, MimeTypes,
+  ApiCallPayload, ApiUriCallPayload, ApiUriTemplateCallPayload, MimeTypes,
 } from '../Payload/index.ts'
 import { ApiCallWitnessConfigSchema } from './Schema.ts'
 
 export type ApiCallWitnessConfigBase = WitnessConfig<{
   accept?: MimeTypes
   headers?: Record<string, string | undefined>
-  queries?: ApiCall['queries']
+  queries?: ApiCallPayload['queries']
   schema: ApiCallWitnessConfigSchema
   timeout?: number
-  verb?: ApiCall['verb']
+  verb?: ApiCallPayload['verb']
 }>
 
 export type ApiUriCallWitnessConfig = WitnessConfig<
   ApiCallWitnessConfigBase & {
-    uri: ApiUriCall['uri']
+    uri: ApiUriCallPayload['uri']
   }
 >
 
 export type ApiUriTemplateCallWitnessConfig = WitnessConfig<
   ApiCallWitnessConfigBase & {
     params?: Record<string, string>
-    uriTemplate: ApiUriTemplateCall['uriTemplate']
+    uriTemplate: ApiUriTemplateCallPayload['uriTemplate']
   }
 >
 

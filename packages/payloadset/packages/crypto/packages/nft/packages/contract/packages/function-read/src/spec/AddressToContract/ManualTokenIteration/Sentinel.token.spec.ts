@@ -7,6 +7,7 @@ import { HDWallet } from '@xyo-network/account'
 import type {
   ContractInfo,
   CryptoContractFunctionCall,
+  CryptoContractFunctionCallResult,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   ContractInfoSchema,
@@ -146,7 +147,7 @@ describe('Erc721Sentinel', () => {
       const report = await collectionSentinel?.report([collectionCallPayload])
       profile('collectionReport')
       profile('tokenCallSetup')
-      const info = report?.find(isPayloadOfSchemaType(ContractInfoSchema)) as ContractInfo | undefined
+      const info = report?.find(isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema))
 
       const totalSupply = info?.results?.totalSupply ? BigInt(hexFromHexString(info.results.totalSupply as string, { prefix: true })) : 0n
       expect(totalSupply).toBeGreaterThan(0n)
@@ -188,7 +189,7 @@ describe('Erc721Sentinel', () => {
         profile('tokenReport')
         const tokenReport = tokenReportArrays.flat()
         tokenCount = tokenReport.length
-        const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema)) as ContractInfo[]
+        const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType<CryptoContractFunctionCallResult>(CryptoContractFunctionCallResultSchema))
         expect(BigInt(tokenInfoPayloads.length)).toBe(totalSupply)
       }
     }, 30_000)

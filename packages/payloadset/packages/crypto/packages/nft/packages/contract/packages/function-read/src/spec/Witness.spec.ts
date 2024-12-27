@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
+import type { CryptoContractFunctionCall, CryptoContractFunctionCallResult } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
   CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
@@ -18,7 +18,7 @@ import {
 import { CryptoContractFunctionReadWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
-  const results = observation.filter(isPayloadOfSchemaType(CryptoContractFunctionCallResultSchema))
+  const results = observation.filter(isPayloadOfSchemaType<CryptoContractFunctionCallResult>(CryptoContractFunctionCallResultSchema))
   expect(results.length).toBeGreaterThan(0)
   expect(observation.length).toEqual(results.length)
 }

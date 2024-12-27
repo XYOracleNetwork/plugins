@@ -18,7 +18,7 @@ export class EvmCallResultToNftTokenUriDiviner<
 
   // TODO: Add support for ERC1155 with `uri` function in addition to current ERC721 `tokenURI` support
   protected override divineHandler(payloads: Payload[] = []): NftMetadataUri[] {
-    const evmCallResults = payloads.filter(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults[]
+    const evmCallResults = payloads.filter(isPayloadOfSchemaType<EvmCallResults>(EvmCallResultsSchema))
     const erc721CallResults = evmCallResults
       .filter((p): p is EvmTokenUriCallResults => {
         const casted = p as EvmTokenUriCallResults

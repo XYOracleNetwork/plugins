@@ -1,4 +1,4 @@
-import type { ApiUriCall } from '../types/index.ts'
-import { isApiCall } from './isApiCall.ts'
+import type { ApiUriCallPayload } from '../types/index.ts'
+import { isApiCallPayload } from './isApiCall.ts'
 
-export const isApiUriCall = (value?: unknown): value is ApiUriCall => isApiCall(value) && !!(value as ApiUriCall).uri
+export const isApiUriCallPayload = (value?: unknown): value is ApiUriCallPayload => isApiCallPayload(value) && !!(value as ApiUriCallPayload).uri

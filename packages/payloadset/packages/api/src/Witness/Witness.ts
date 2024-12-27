@@ -4,7 +4,6 @@ import { AxiosJson } from '@xylabs/axios'
 import type { Hash } from '@xylabs/hex'
 import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
@@ -15,11 +14,11 @@ import fillTemplate from 'es6-dynamic-template'
 
 import { checkIpfsUrl } from '../lib/index.ts'
 import type {
-  ApiCall,
   ApiCallBase64Result,
   ApiCallErrorResult,
   ApiCallJsonResult,
   ApiCallJsonResultType,
+  ApiCallPayload,
   ApiCallResult,
   ApiCallXmlResult,
   MimeTypes,
@@ -27,14 +26,14 @@ import type {
 import {
   ApiCallResultSchema,
   ApiCallSchema,
-  asApiUriCall,
+  asApiUriCallPayload,
   asApiUriTemplateCall,
 } from '../Payload/index.ts'
 import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config.ts'
 import type { ApiCallWitnessParams } from './Params.ts'
 import { ApiCallWitnessConfigSchema } from './Schema.ts'
 
-export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCall, ApiCallResult> {
+export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCallPayload, ApiCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ApiCallWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = ApiCallWitnessConfigSchema
 
@@ -50,8 +49,8 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     return this.config.timeout
   }
 
-  getFullUri(call?: ApiCall): string {
-    const { uri: callUri } = asApiUriCall(call) ?? {}
+  getFullUri(call?: ApiCallPayload): string {
+    const { uri: callUri } = asApiUriCallPayload(call) ?? {}
     const {
       uriTemplate: callUriTemplate, params: callParams, queries: callQueries,
     } = asApiUriTemplateCall(call) ?? {}
@@ -89,11 +88,11 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     }
   }
 
-  protected override async observeHandler(inPayloads: ApiCall[] = []): Promise<ApiCallResult[]> {
+  protected override async observeHandler(inPayloads: ApiCallPayload[] = []): Promise<ApiCallResult[]> {
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(ApiCallSchema)).map(async (call) => {
+        inPayloads.filter(isPayloadOfSchemaType<ApiCallPayload>(ApiCallSchema)).map(async (call) => {
           const { verb: callVerb } = call
           const { verb: configVerb } = this.config
           const verb = callVerb ?? configVerb ?? 'get'
@@ -106,7 +105,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
           }
 
           const observation: ApiCallResult = {
-            call: await PayloadHasher.hash(call),
+            call: await PayloadBuilder.hash(call),
             schema: ApiCallResultSchema,
           }
           return observation

@@ -1,6 +1,6 @@
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import { ApiCallSchema } from '../Schema.ts'
-import type { ApiCall } from '../types/index.ts'
+import type { ApiCallPayload } from '../types/index.ts'
 
-export const isApiCall = isPayloadOfSchemaType<ApiCall>(ApiCallSchema)
+export const isApiCallPayload = isPayloadOfSchemaType<ApiCallPayload>(ApiCallSchema)

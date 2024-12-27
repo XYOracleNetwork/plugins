@@ -116,7 +116,7 @@ describe('Erc721Sentinel - Token', () => {
       }
       profile(profiler, 'tokenReport')
       const report = await tokenSentinel?.report([tokenCallPayload])
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
+      const info = report?.find(isPayloadOfSchemaType<EvmCallResults>(EvmCallResultsSchema))
       console.log(`info: ${JSON.stringify(info, null, 2)}`)
       expect(info?.results?.['ownerOf']?.result).toBeString()
       expect(info?.results?.['tokenURI']?.result).toBeString()

@@ -4,7 +4,6 @@ import '@xylabs/vitest-extended'
 
 import { hexFrom } from '@xylabs/hex'
 import { HDWallet } from '@xyo-network/account'
-import type { ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -26,7 +25,7 @@ import {
 
 import type { EvmCallResults } from '../../../../Diviner.ts'
 import { EvmCallDiviner, EvmCallResultsSchema } from '../../../../Diviner.ts'
-import type { EvmCall } from '../../../../Payload.ts'
+import type { EvmCall, EvmCallResult } from '../../../../Payload.ts'
 import { EvmCallResultSchema, EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
 import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
@@ -132,7 +131,7 @@ describe.skip('Erc721Sentinel', () => {
       const report = await collectionSentinel?.report([collectionCallPayload])
       profile('collectionReport')
       profile('tokenCallSetup')
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
+      const info = report?.find(isPayloadOfSchemaType<EvmCallResults>(EvmCallResultsSchema))
 
       const totalSupply = info?.results?.totalSupply ? BigInt(hexFrom(info.results.totalSupply.result as string, { prefix: true })) : 0n
       expect(totalSupply).toBeGreaterThan(0n)
@@ -174,7 +173,7 @@ describe.skip('Erc721Sentinel', () => {
         profile('tokenReport')
         const tokenReport = tokenReportArrays.flat()
         tokenCount = tokenReport.length
-        const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType(EvmCallResultSchema)) as ContractInfo[]
+        const tokenInfoPayloads = tokenReport.filter(isPayloadOfSchemaType<EvmCallResult>(EvmCallResultSchema))
         expect(BigInt(tokenInfoPayloads.length)).toBe(totalSupply)
       }
     })

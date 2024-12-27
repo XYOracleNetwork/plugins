@@ -1,5 +1,5 @@
-import type { ApiUriTemplateCall } from '../types/index.ts'
-import { isApiCall } from './isApiCall.ts'
+import type { ApiUriTemplateCallPayload } from '../types/index.ts'
+import { isApiCallPayload } from './isApiCall.ts'
 
-export const isApiUriTemplateCall = (value?: unknown): value is ApiUriTemplateCall =>
-  isApiCall(value) && !!((value as ApiUriTemplateCall).uriTemplate || (value as ApiUriTemplateCall).params)
+export const isApiUriTemplateCallPayload = (value?: unknown): value is ApiUriTemplateCallPayload =>
+  isApiCallPayload(value) && !!((value as ApiUriTemplateCallPayload).uriTemplate || (value as ApiUriTemplateCallPayload).params)

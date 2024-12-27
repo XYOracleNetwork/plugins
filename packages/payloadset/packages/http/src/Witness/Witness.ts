@@ -94,7 +94,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(HttpCallSchema)).map(async (call) => {
+        inPayloads.filter(isPayloadOfSchemaType<HttpCall>(HttpCallSchema)).map(async (call) => {
           const { verb: callVerb } = call
           const { verb: configVerb } = this.config
           const verb = callVerb ?? configVerb ?? 'get'

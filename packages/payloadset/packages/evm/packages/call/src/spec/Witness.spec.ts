@@ -10,12 +10,12 @@ import {
 } from 'vitest'
 
 import { EvmCallWitnessConfigSchema } from '../model.ts'
-import type { EvmCall } from '../Payload.ts'
+import type { EvmCall, EvmCallResult } from '../Payload.ts'
 import { EvmCallResultSchema, EvmCallSchema } from '../Payload.ts'
 import { EvmCallWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {
-  const results = observation.filter(isPayloadOfSchemaType(EvmCallResultSchema))
+  const results = observation.filter(isPayloadOfSchemaType<EvmCallResult>(EvmCallResultSchema))
   expect(results.length).toBeGreaterThan(0)
   expect(observation.length).toEqual(results.length)
 }

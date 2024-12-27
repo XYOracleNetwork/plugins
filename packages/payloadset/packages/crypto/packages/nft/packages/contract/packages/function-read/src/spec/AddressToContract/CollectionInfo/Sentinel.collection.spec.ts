@@ -147,7 +147,7 @@ describe('Erc721Sentinel', () => {
       const report = await collectionSentinel?.report([collectionCallPayload])
       profile('collectionReport')
       profile('tokenCallSetup')
-      const info = report?.find(isPayloadOfSchemaType(ContractInfoSchema)) as ContractInfo | undefined
+      const info = report?.find(isPayloadOfSchemaType<ContractInfo>(ContractInfoSchema))
 
       expect(info?.results?.name).toBe('BoredApeYachtClub')
       expect(info?.results?.symbol).toBe('BAYC')

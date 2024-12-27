@@ -27,7 +27,7 @@ export class EvmContractWitness<TParams extends EvmContractWitnessParams = EvmCo
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(EvmAddressSchema)).map(async ({ address }) => {
+        inPayloads.filter(isPayloadOfSchemaType<EvmAddress>(EvmAddressSchema)).map(async ({ address }) => {
           const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
 
           const provider = await this.getProvider(true, true)

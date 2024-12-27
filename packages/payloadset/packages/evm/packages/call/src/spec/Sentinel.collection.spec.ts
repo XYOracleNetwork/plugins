@@ -112,7 +112,7 @@ describe('Erc721Sentinel - Collection', () => {
       const report = await collectionSentinel?.report([collectionCallPayload])
       profile(profiler, 'collectionReport')
       profile(profiler, 'tokenCallSetup')
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
+      const info = report?.find(isPayloadOfSchemaType<EvmCallResults>(EvmCallResultsSchema))
       console.log(`info: ${JSON.stringify(info, null, 2)}`)
 
       expect(info?.results?.name.result).toBeString()

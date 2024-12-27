@@ -128,7 +128,7 @@ describe.skip('Erc721Sentinel', () => {
       const report = await collectionSentinel?.report([collectionCallPayload])
       profile('collectionReport')
       profile('tokenCallSetup')
-      const info = report?.find(isPayloadOfSchemaType(EvmCallResultsSchema)) as EvmCallResults | undefined
+      const info = report?.find(isPayloadOfSchemaType<EvmCallResults>(EvmCallResultsSchema))
 
       expect(info?.results?.name?.result).toBe('BoredApeYachtClub')
       expect(info?.results?.symbol?.result).toBe('BAYC')

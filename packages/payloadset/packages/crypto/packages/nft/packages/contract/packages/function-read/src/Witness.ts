@@ -43,7 +43,7 @@ export class CryptoContractFunctionReadWitness<
     await this.started('throw')
     try {
       const observations = await Promise.all(
-        inPayloads.filter(isPayloadOfSchemaType(CryptoContractFunctionCallSchema)).map(async ({
+        inPayloads.filter(isPayloadOfSchemaType<CryptoContractFunctionCall>(CryptoContractFunctionCallSchema)).map(async ({
           functionName, args, address,
         }) => {
           const { providers } = this.params

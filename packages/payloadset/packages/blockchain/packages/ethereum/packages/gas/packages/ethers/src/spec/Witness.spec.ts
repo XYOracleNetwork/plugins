@@ -31,7 +31,7 @@ describe('EthereumGasEthersWitness', () => {
       provider,
     })
     const observed = await sut.observe()
-    const actual = observed.find(isPayloadOfSchemaType(EthereumGasEthersSchema))
+    const actual = observed.find(isPayloadOfSchemaType<EthereumGasEthersPayload>(EthereumGasEthersSchema))
     expect((actual as EthereumGasEthersPayload).gasPrice).toBeNumber()
     expect(actual?.schema).toBe(EthereumGasEthersSchema)
     const answerWrapper = PayloadWrapper.wrap(actual)

@@ -1,5 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
 
-import { isApiUriCall } from './isApiUriCall.ts'
+import { isApiUriCallPayload } from './isApiUriCall.ts'
 
-export const asApiUriCall = AsObjectFactory.create(isApiUriCall)
+export const asApiUriCallPayload = AsObjectFactory.create(isApiUriCallPayload)
