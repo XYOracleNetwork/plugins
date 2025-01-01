@@ -4395,6 +4395,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/assert@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/assert@npm:4.4.34"
+  checksum: 10/404a7198d58cdfe70da56019c3458e68a235596971901647330ffe381883de8aaf16f592aac479046c6ec2dc0612bc3534daa11ed08973ead5c821b712cec959
+  languageName: node
+  linkType: hard
+
 "@xylabs/axios@npm:^4.4.27, @xylabs/axios@npm:^4.4.32":
   version: 4.4.32
   resolution: "@xylabs/axios@npm:4.4.32"
@@ -4429,6 +4436,13 @@ __metadata:
   version: 4.4.32
   resolution: "@xylabs/error@npm:4.4.32"
   checksum: 10/f0d5435257e811dcab439be00d6144619da417fcf0c7617c3647b8e9ec78a2e06f4297166b4b55f3241eebc515d13d604f98d21bd2beee60f3bc2759de98fcb3
+  languageName: node
+  linkType: hard
+
+"@xylabs/error@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/error@npm:4.4.34"
+  checksum: 10/a64ce4f99a095d7abe438bf90faf9c5e51895322865d7af332a5b5c7dd2e10018e6b7cfe30793e1496b5b4f16fa4bb51612c06e530014daf3c9f3be8afaa9379
   languageName: node
   linkType: hard
 
@@ -4496,6 +4510,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@xylabs/logger@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/logger@npm:4.4.34"
+  dependencies:
+    "@xylabs/error": "npm:^4.4.34"
+  checksum: 10/8e65da2b92b74c2ab94beda76d440b246110e7dcd85a4bc1db4eb11877e58950dd033db076c0f394017a8a602a32c17c1b9eede8ba231fef361e91f158817e45
+  languageName: node
+  linkType: hard
+
 "@xylabs/object@npm:^4.4.27, @xylabs/object@npm:^4.4.32":
   version: 4.4.32
   resolution: "@xylabs/object@npm:4.4.32"
@@ -4505,6 +4528,18 @@ __metadata:
     "@xylabs/promise": "npm:^4.4.32"
     "@xylabs/typeof": "npm:^4.4.32"
   checksum: 10/50a04db14693456c069005f214bc5f1469d401beb3d56b013d388bac9c3818b7756f007692746c1b73404de90c985b74a1bfccf6c2194f39527656977dc9466c
+  languageName: node
+  linkType: hard
+
+"@xylabs/object@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/object@npm:4.4.34"
+  dependencies:
+    "@xylabs/assert": "npm:^4.4.34"
+    "@xylabs/logger": "npm:^4.4.34"
+    "@xylabs/promise": "npm:^4.4.34"
+    "@xylabs/typeof": "npm:^4.4.34"
+  checksum: 10/abc4357dc23a53650ecf911d20a7c82302145f65b16b15bd15c3a6c7f288eecf14495a5c01738e8f7e453adb41ecfed42e24ed1b3a5138cff23edc33bee446c0
   languageName: node
   linkType: hard
 
@@ -4528,6 +4563,15 @@ __metadata:
   dependencies:
     "@xylabs/typeof": "npm:^4.4.32"
   checksum: 10/ba33b3c19da21fa246ad4b314c15098a554ca69067c91b8e5b6fdae856e3f6f24dd1555f002846e577501d9ce3a717ba05a127eab415a07769e4ce0653c3f4c8
+  languageName: node
+  linkType: hard
+
+"@xylabs/promise@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/promise@npm:4.4.34"
+  dependencies:
+    "@xylabs/typeof": "npm:^4.4.34"
+  checksum: 10/3849c5b10af5c726106da516a98f0bb862aabfce767cf60b43352cc3134a35c361f411abc9a9bb52ae8f18ebce0d7b8eea12c604b77b7b061443853be00128fe
   languageName: node
   linkType: hard
 
@@ -4719,6 +4763,13 @@ __metadata:
   version: 4.4.32
   resolution: "@xylabs/typeof@npm:4.4.32"
   checksum: 10/d6372cd3542e587f580eadb07f41718bf8459f1a830d8d7ada957c60b20f9e48396dfb6e5e5011d8a8bb93e49ad9815f68680760cc0a59fcb1352b0e1d7fb319
+  languageName: node
+  linkType: hard
+
+"@xylabs/typeof@npm:^4.4.34":
+  version: 4.4.34
+  resolution: "@xylabs/typeof@npm:4.4.34"
+  checksum: 10/64b46733b9d97150e66ca07a63f42158f67628e62b8ac4bd1ea9e39bdd0a993a7948ef6be1ffb5a4fc03ab2c861a56ccfac2eda8ab5ebde1e4210081a8284a0c
   languageName: node
   linkType: hard
 
@@ -6354,6 +6405,7 @@ __metadata:
   resolution: "@xyo-network/email-payload-plugin@workspace:packages/payload/packages/email"
   dependencies:
     "@xylabs/assert": "npm:^4.4.32"
+    "@xylabs/object": "npm:^4.4.34"
     "@xylabs/ts-scripts-yarn3": "npm:^4.2.6"
     "@xylabs/tsconfig": "npm:^4.2.6"
     "@xylabs/vitest-extended": "npm:^4.4.32"

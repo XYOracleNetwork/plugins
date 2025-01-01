@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { AsObjectFactory } from '@xylabs/object'
 import type {
   PayloadWithOptionalSources,
   WithSources,
@@ -41,7 +42,7 @@ export type Email = PayloadWithOptionalSources<EmailFields, EmailAddressSchema>
  * @param address The Email address to use
  * @returns An Email if the address is valid, undefined otherwise
  */
-export const tryAsEmail = <T = Email | WithSources<Email>>(address: string): T | undefined => {
+export const tryToEmail = <T = Email | WithSources<Email>>(address: string): T | undefined => {
   return isValidEmail(address) ? ({ address, schema: EmailAddressSchema } as T) : undefined
 }
 
@@ -50,8 +51,8 @@ export const tryAsEmail = <T = Email | WithSources<Email>>(address: string): T |
  * @param address The Email address to use
  * @returns An Email if the address is valid, throws otherwise
  */
-export const asEmail = <T = Email | WithSources<Email>>(address: string): T => {
-  return assertEx(tryAsEmail<T>(address), 'Invalid email address')
+export const toEmail = <T = Email | WithSources<Email>>(address: string): T => {
+  return assertEx(tryToEmail<T>(address), () => 'Invalid email address')
 }
 
 /**
@@ -60,6 +61,8 @@ export const asEmail = <T = Email | WithSources<Email>>(address: string): T => {
 export const isEmail = (value: unknown): value is Email => {
   return isPayloadOfSchemaType<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }
+export const asEmail = AsObjectFactory.create<Email>(isEmail)
+export const asOptionalEmail = AsObjectFactory.createOptional<Email>(isEmail)
 
 /**
  * Identity function for determining if an object is an Email with sources
@@ -67,3 +70,5 @@ export const isEmail = (value: unknown): value is Email => {
 export const isEmailWithSources = (value: unknown): value is Email => {
   return isPayloadOfSchemaTypeWithSources<Email>(EmailAddressSchema)(value) && isValidEmail(value.address)
 }
+export const asEmailWithSources = AsObjectFactory.create<Email>(isEmailWithSources)
+export const asOptionalEmailWithSources = AsObjectFactory.createOptional<Email>(isEmailWithSources)
