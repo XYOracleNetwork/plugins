@@ -7,7 +7,7 @@ import {
 
 import type { AmountFields } from '../../Amount/index.ts'
 
-export const SubtotalSchema = 'network.xyo.Subtotals.subtotal' as const
+export const SubtotalSchema = 'network.xyo.payments.subtotal' as const
 export type SubtotalSchema = typeof SubtotalSchema
 
 export interface SubtotalFields extends AmountFields {}
