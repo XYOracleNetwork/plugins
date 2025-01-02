@@ -1,4 +1,5 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -20,8 +21,12 @@ export type Total = PayloadWithSources<TotalFields, TotalSchema>
  * Identity function for determining if an object is an Total
  */
 export const isTotal = isPayloadOfSchemaType<Total>(TotalSchema)
+export const asTotal = AsObjectFactory.create<Total>(isTotal)
+export const asOptionalTotal = AsObjectFactory.createOptional<Total>(isTotal)
 
 /**
  * Identity function for determining if an object is an Total with sources
  */
 export const isTotalWithSources = isPayloadOfSchemaTypeWithSources<Total>(TotalSchema)
+export const asTotalWithSources = AsObjectFactory.create<WithSources<Total>>(isTotalWithSources)
+export const asOptionalTotalWithSources = AsObjectFactory.createOptional<WithSources<Total>>(isTotalWithSources)

@@ -1,4 +1,5 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -27,8 +28,12 @@ export type Payment = PayloadWithSources<PaymentFields, PaymentSchema>
  * Identity function for determine if an object is a Payment
  */
 export const isPayment = isPayloadOfSchemaType<Payment>(PaymentSchema)
+export const asPayment = AsObjectFactory.create<Payment>(isPayment)
+export const asOptionalPayment = AsObjectFactory.createOptional<Payment>(isPayment)
 
 /**
  * Identity function for determine if an object is a Payment with sources
  */
 export const isPaymentWithSources = isPayloadOfSchemaTypeWithSources<Payment>(PaymentSchema)
+export const asPaymentWithSources = AsObjectFactory.create<WithSources<Payment>>(isPaymentWithSources)
+export const asOptionalPaymentWithSources = AsObjectFactory.createOptional<WithSources<Payment>>(isPaymentWithSources)
