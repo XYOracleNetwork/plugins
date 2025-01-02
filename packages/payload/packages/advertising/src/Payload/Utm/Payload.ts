@@ -1,4 +1,4 @@
-import type { PayloadWithSources } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
@@ -35,7 +35,7 @@ export interface UtmFields {
 /**
  * The fields of a Utm payload
  */
-export type Utm = PayloadWithSources<UtmFields, UtmSchema>
+export type Utm = Payload<UtmFields, UtmSchema>
 
 /**
  * Identity function for determining if an object is a Utm payload
