@@ -2,8 +2,8 @@ import { Token } from '@uniswap/sdk-core'
 import { Pool } from '@uniswap/v3-sdk'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
-import type { EnumValue } from '@xylabs/object'
-import { Enum } from '@xylabs/object'
+import type { EnumValue } from '@xylabs/enum'
+import { Enum } from '@xylabs/enum'
 import type { IERC20Metadata } from '@xyo-network/open-zeppelin-typechain'
 import { IERC20Metadata__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { IUniswapV3Pool } from '@xyo-network/uniswap-typechain'
@@ -111,13 +111,13 @@ export class EthersUniSwap3Pair {
       const tokenContract = await this.tokenContract(index)
       this._tokens[index]
         = this._tokens[index]
-        ?? new Token(
-          ChainId.MAINNET,
-          await tokenContract.getAddress(),
-          Number(await tokenContract.decimals()),
-          await tokenContract.symbol(),
-          await tokenContract.name(),
-        )
+          ?? new Token(
+            ChainId.MAINNET,
+            await tokenContract.getAddress(),
+            Number(await tokenContract.decimals()),
+            await tokenContract.symbol(),
+            await tokenContract.name(),
+          )
       return assertEx(this._tokens[index])
     })
   }
@@ -128,7 +128,7 @@ export class EthersUniSwap3Pair {
       this._tokenContracts[index] = this._tokenContracts[index] || null
       this._tokenContracts[index]
         = this._tokenContracts[index]
-        ?? IERC20Metadata__factory.connect(await (index === 0 ? this.poolContract().token0() : this.poolContract().token1()), this.provider)
+          ?? IERC20Metadata__factory.connect(await (index === 0 ? this.poolContract().token0() : this.poolContract().token1()), this.provider)
       return assertEx(this._tokenContracts[index])
     })
   }

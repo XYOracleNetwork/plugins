@@ -256,6 +256,6 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     expect(result).toBeDefined()
     expect(payload).toBeDefined()
     const expected = await PayloadBuilder.dataHash(assertEx(payload))
-    expect(result?.sources).toContain(expected)
+    expect(result?.$sources).toContain(expected)
   }
 })

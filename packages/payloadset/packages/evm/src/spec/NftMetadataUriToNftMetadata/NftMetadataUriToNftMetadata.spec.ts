@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
 import { HDWallet } from '@xyo-network/account'
-import type { ApiUriCall } from '@xyo-network/api-call-witness'
+import type { ApiUriCallPayload } from '@xyo-network/api-call-witness'
 import {
   ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallJsonResult,
 } from '@xyo-network/api-call-witness'
@@ -40,7 +40,7 @@ const providers = getProvidersFromEnv(maxProviders)
 
 describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
   let node: MemoryNode
-  const cases: ApiUriCall[] = [
+  const cases: ApiUriCallPayload[] = [
     {
       schema: ApiCallSchema,
       // BAYC

@@ -6,7 +6,7 @@ import {
 
 import type { Email } from '../Payload.ts'
 import {
-  asEmail, isEmail, tryAsEmail,
+  asEmail, isEmail, tryToEmail,
 } from '../Payload.ts'
 import { EmailAddressSchema } from '../Schema.ts'
 
@@ -54,27 +54,29 @@ describe('Email', () => {
       })
     })
   })
-  describe('tryAsEmail', () => {
+  describe('tryToEmail', () => {
     describe('with valid email returns payload', () => {
       it.each(validEmails)('%s', (address) => {
-        expect(tryAsEmail(address)).toBeObject()
+        expect(tryToEmail(address)).toBeObject()
       })
     })
     describe('with invalid email returns undefined', () => {
       it.each(invalidEmails)('%s', (address) => {
-        expect(tryAsEmail(address)).toBeUndefined()
+        expect(tryToEmail(address)).toBeUndefined()
       })
     })
   })
   describe('asEmail', () => {
     describe('with valid email returns Email', () => {
       it.each(validEmails)('%s', (address) => {
-        expect(asEmail(address)).toBeObject()
+        const email: Email = { address, schema }
+        expect(asEmail(email)).toBeObject()
       })
     })
     describe('with invalid email returns false', () => {
       it.each(invalidEmails)('%s', (address) => {
-        expect(() => asEmail(address)).toThrow('Invalid email address')
+        const email: Email = { address, schema }
+        expect(asEmail(email)).toBeUndefined()
       })
     })
   })

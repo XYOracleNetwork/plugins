@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
-import type { ApiUriTemplateCall } from '@xyo-network/api-call-witness'
+import type { ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
 import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -44,7 +44,7 @@ describe('tZero', () => {
 
     // eslint-disable-next-line complexity
     it('specifying symbol', async () => {
-      const call: ApiUriTemplateCall = { params: { symbol }, schema: ApiCallSchema }
+      const call: ApiUriTemplateCallPayload = { params: { symbol }, schema: ApiCallSchema }
 
       const report = await sentinel?.report([call])
 

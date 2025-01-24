@@ -74,11 +74,11 @@ export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafety
   protected override async observeHandler(payloads: UrlPayload[] = []): Promise<UrlSafetyPayload[]> {
     const urls: string[]
       = this.urls
-      ?? payloads
-        .filter((p): p is UrlPayload => p.schema === UrlSchema)
-        .map((p) => {
-          return p.url
-        })
+        ?? payloads
+          .filter((p): p is UrlPayload => p.schema === UrlSchema)
+          .map((p) => {
+            return p.url
+          })
 
     const matches = await checkUrlSafety(urls, { key: this.key })
 

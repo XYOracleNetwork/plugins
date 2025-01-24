@@ -13,7 +13,7 @@ import {
   it,
 } from 'vitest'
 
-import type { ApiCallJsonResult, ApiUriTemplateCall } from '../../Payload/index.ts'
+import type { ApiCallJsonResult, ApiUriTemplateCallPayload } from '../../Payload/index.ts'
 import { ApiCallResultSchema, ApiCallSchema } from '../../Payload/index.ts'
 import { ApiCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json' assert { type: 'json' }
@@ -107,7 +107,7 @@ describe('OpenSeaApi', () => {
       const sentinel = asSentinelInstance(await node.resolve('ApiCallSentinel'))
       expect(sentinel).toBeDefined()
 
-      const call: ApiUriTemplateCall = { params: { address }, schema: ApiCallSchema }
+      const call: ApiUriTemplateCallPayload = { params: { address }, schema: ApiCallSchema }
 
       const report = await sentinel?.report([call])
 
