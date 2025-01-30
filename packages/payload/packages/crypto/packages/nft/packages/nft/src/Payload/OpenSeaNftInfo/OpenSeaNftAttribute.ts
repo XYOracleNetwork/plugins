@@ -1,7 +1,7 @@
 import type { NftAttribute } from '../NftInfo/index.ts'
 import type { DisplayType } from './DisplayType.ts'
 
-export interface OpenSeaNftAttribute extends NftAttribute {
+export type OpenSeaNftAttribute = NftAttribute & {
   /**
    * A field indicating how you would like it to be displayed. For string traits, you don't have to worry about display_type.
    */

@@ -4,7 +4,7 @@ import type { OpenSeaNftAttribute } from './OpenSeaNftAttribute.ts'
 /**
  * https://docs.opensea.io/docs/metadata-standards
  */
-export interface OpenSeaNftMetadata extends NftMetadata {
+export type OpenSeaNftMetadata = NftMetadata & {
   /**
    * A URL to a multi-media attachment for the item. The file extensions GLTF, GLB, WEBM, MP4, M4V, OGV, and OGG are supported,
    * along with the audio-only extensions MP3, WAV, and OGA. Animation_url also supports HTML pages, allowing you to build rich

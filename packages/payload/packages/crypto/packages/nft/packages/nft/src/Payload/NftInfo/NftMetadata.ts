@@ -2,10 +2,11 @@ import type { JsonValue } from '@xylabs/object'
 
 import type { NftAttribute } from './NftAttribute.ts'
 
-export interface NftMetadata {
-  [key: string]: JsonValue | NftAttribute[] | undefined
+export type NftMetadata = {
   attributes?: NftAttribute[] | JsonValue
   description?: JsonValue
   image?: JsonValue
   name?: JsonValue
+} & {
+  [key: string]: JsonValue | NftAttribute[]
 }
