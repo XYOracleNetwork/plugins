@@ -6,6 +6,8 @@ import { typescriptConfig,
   rulesConfig,
   importConfig } from '@xylabs/eslint-config-flat'
 
+import sonarjs from 'eslint-plugin-sonarjs'
+
 export default [
   {
     ignores: ['.yarn/**', '**/dist/**', 'dist', 'build/**', 'node_modules/**', 'public', '.storybook', 'storybook-static', 'eslint.config.mjs'],
@@ -52,5 +54,9 @@ export default [
       ...importConfig.rules,
       'import-x/no-cycle': ['warn', { maxDepth: 5 }],
     },
+  },
+  {
+    plugins: { sonarjs },
+    rules: { 'sonarjs/deprecation': ['warn'] },
   },
 ]
