@@ -4,9 +4,9 @@ import { typescriptConfig,
   unicornConfig,
   workspacesConfig,
   rulesConfig,
-  sonarConfig,
   importConfig } from '@xylabs/eslint-config-flat'
 
+import sonarjs from 'eslint-plugin-sonarjs'
 
 export default [
   {
@@ -49,14 +49,14 @@ export default [
     },
   },
   {
-    ...sonarConfig,
-    rules: { 'sonarjs/function-return-type': ['off'] },
-  },
-  {
     ...importConfig,
     rules: {
       ...importConfig.rules,
       'import-x/no-cycle': ['warn', { maxDepth: 5 }],
     },
+  },
+  {
+    plugins: { sonarjs },
+    rules: { 'sonarjs/deprecation': ['warn'] },
   },
 ]
