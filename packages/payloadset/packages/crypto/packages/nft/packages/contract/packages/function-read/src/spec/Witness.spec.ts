@@ -30,6 +30,7 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => 
   const provider = getProviderFromEnv()
   describe('observe', () => {
     describe('with no address or chainId in query', () => {
+      // eslint-disable-next-line sonarjs/assertions-in-tests
       it('uses values from config', async () => {
         const witness = await CryptoContractFunctionReadWitness.create({
           config: { abi: ERC20__factory.abi, schema: CryptoContractFunctionReadWitnessConfigSchema },

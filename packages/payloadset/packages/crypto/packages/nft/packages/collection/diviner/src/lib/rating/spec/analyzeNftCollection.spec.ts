@@ -23,7 +23,7 @@ describe('analyzeNftCollection', () => {
       collections.map(async (collection) => {
         const rating = await analyzeNftCollection(collection)
         expect(rating).toBeObject()
-        Object.entries(rating).map(([key, score]) => {
+        for (let [key, score] of Object.entries(rating)) {
           expect(key).toBeString()
           const [total, possible] = score
           expect(total).toBeNumber()
@@ -31,7 +31,7 @@ describe('analyzeNftCollection', () => {
           expect(possible).toBeNumber()
           expect(possible).not.toBeNegative()
           expect(total).toBeLessThanOrEqual(possible)
-        })
+        }
       }),
     )
   })

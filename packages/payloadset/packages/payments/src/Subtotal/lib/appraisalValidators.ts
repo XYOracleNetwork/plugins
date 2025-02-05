@@ -7,8 +7,7 @@ const validateAppraisalAmount = (appraisals: HashLeaseEstimate[]): boolean => {
   // Ensure all appraisals are numeric
   if (appraisals.some(appraisal => typeof appraisal.price !== 'number')) return false
   // Ensure all appraisals are positive numbers
-  if (appraisals.some(appraisal => appraisal.price < 0)) return false
-  return true
+  return !(appraisals.some(appraisal => appraisal.price < 0))
 }
 
 const validateAppraisalCurrency = (appraisals: HashLeaseEstimate[]): boolean => {
@@ -16,9 +15,7 @@ const validateAppraisalCurrency = (appraisals: HashLeaseEstimate[]): boolean => 
   if (!appraisals.every(appraisal => appraisal.currency == 'USD')) return false
 
   // Check every object in the array to ensure they all are in a supported currency.
-  if (!appraisals.every(appraisal => isIso4217CurrencyCode(appraisal.currency))) return false
-
-  return true
+  return (appraisals.every(appraisal => isIso4217CurrencyCode(appraisal.currency)))
 }
 
 const validateAppraisalConsistentCurrency = (appraisals: HashLeaseEstimate[]): boolean => {
@@ -30,9 +27,7 @@ const validateAppraisalConsistentCurrency = (appraisals: HashLeaseEstimate[]): b
   if (!currency) return false
 
   // Check every object in the array to ensure they all have the same currency.
-  if (!appraisals.every(item => item.currency === currency)) return false
-
-  return true
+  return (appraisals.every(item => item.currency === currency))
 }
 
 const validateAppraisalWindow = (appraisals: HashLeaseEstimate[]): boolean => appraisals.every(validateDuration)

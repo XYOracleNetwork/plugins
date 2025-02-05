@@ -57,6 +57,7 @@ describe('CryptoWalletNftDiviner', () => {
       const result = await diviner.divine([evmCallResult])
       validateResult(evmCallResult, result)
     })
+    // eslint-disable-next-line sonarjs/assertions-in-tests
     it('replaced values in templatized results', async () => {
       const evmCallResult = {
         address: '0xEdB61f74B0d09B2558F1eeb79B247c1F363Ae452',

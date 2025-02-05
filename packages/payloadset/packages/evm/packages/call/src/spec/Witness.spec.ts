@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/assertions-in-tests */
 import '@xylabs/vitest-extended'
 
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'

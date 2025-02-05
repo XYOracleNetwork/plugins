@@ -13,6 +13,5 @@ export const validateDuration = (value: Partial<DurationFields>, windowMs = FIVE
   if (!value.nbf || value.nbf > now) return false
   // If already expired (include for a 5 minute buffer to allow for a reasonable
   // minimum amount of time for the transaction to be processed)
-  if (!value.exp || value.exp - now < windowMs) return false
-  return true
+  return !(!value.exp || value.exp - now < windowMs)
 }

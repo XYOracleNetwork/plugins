@@ -7,8 +7,7 @@ import type { DurationFields } from '../Duration.ts'
 // BW & Record Validations
 export const validateBoundWitnessAndDuration = async (recordBw: BoundWitness, recordPayload: Payload<DurationFields>): Promise<boolean> => {
   if (!(await recordIsInBoundWitness(recordBw, recordPayload))) return false
-  if (!recordIsTemporallyValidToBoundWitness(recordBw, recordPayload)) return false
-  return true
+  return (recordIsTemporallyValidToBoundWitness(recordBw, recordPayload))
 }
 
 const recordIsInBoundWitness = async (recordBw: BoundWitness, recordPayload: Payload): Promise<boolean> => {

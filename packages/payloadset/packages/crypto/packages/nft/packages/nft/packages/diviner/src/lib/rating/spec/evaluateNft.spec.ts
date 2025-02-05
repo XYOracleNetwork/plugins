@@ -127,7 +127,7 @@ describe('evaluateNft', () => {
   it.each(nfts)('evaluates the NFT', async (nft) => {
     const rating = await analyzeNft(nft)
     expect(rating).toBeObject()
-    Object.entries(rating).map(([key, score]) => {
+    for (let [key, score] of Object.entries(rating)) {
       expect(key).toBeString()
       const [total, possible] = score
       expect(total).toBeNumber()
@@ -135,6 +135,6 @@ describe('evaluateNft', () => {
       expect(possible).toBeNumber()
       expect(possible).not.toBeNegative()
       expect(total).toBeLessThanOrEqual(possible)
-    })
+    }
   })
 })

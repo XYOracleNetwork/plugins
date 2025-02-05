@@ -14,7 +14,7 @@ const otherValueExists = (value: [string, number | undefined]): value is [string
   return typeof possiblyNumber === 'number' && !Number.isNaN(possiblyNumber)
 }
 
-export const divineCoinGeckoPrices = async (payload: CoingeckoCryptoMarketPayload | undefined): Promise<CryptoMarketAssetPayload> => {
+export const divineCoinGeckoPrices = (payload: CoingeckoCryptoMarketPayload | undefined): CryptoMarketAssetPayload => {
   const assets: Record<string, AssetInfo>
     = payload && payload?.assets
       ? Object.fromEntries(
@@ -31,5 +31,5 @@ export const divineCoinGeckoPrices = async (payload: CoingeckoCryptoMarketPayloa
         )
       : {}
   const timestamp = Date.now()
-  return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
+  return new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }

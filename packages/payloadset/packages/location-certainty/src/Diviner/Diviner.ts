@@ -20,7 +20,7 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
   implements DivinerModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, LocationCertaintyDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = LocationCertaintyDivinerConfigSchema
-  static override targetSchema = LocationCertaintySchema
+  static override readonly targetSchema = LocationCertaintySchema
 
   /* Given an array of numbers, find the min/max/mean */
   private static calcHeuristic(heuristic: (number | null)[]): LocationCertaintyHeuristic {
@@ -92,7 +92,7 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
 
       const heuristics = LocationCertaintyDiviner.locationsToHeuristics(elevations, locations)
 
-      const result = await new PayloadBuilder<LocationCertaintyPayload>({ schema: LocationCertaintySchema })
+      const result = new PayloadBuilder<LocationCertaintyPayload>({ schema: LocationCertaintySchema })
         .fields({
           altitude: LocationCertaintyDiviner.calcHeuristic(heuristics.altitude),
           elevation: LocationCertaintyDiviner.calcHeuristic(heuristics.elevation),

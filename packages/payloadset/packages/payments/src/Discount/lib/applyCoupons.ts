@@ -16,9 +16,9 @@ import {
 export const applyCoupons = (appraisals: HashLeaseEstimate[], coupons: Coupon[]): Discount => {
   // Ensure all appraisals and coupons are in USD
   const allAppraisalsAreUSD = appraisals.every(appraisal => appraisal.currency === 'USD')
-  assertEx(allAppraisalsAreUSD, 'All appraisals must be in USD')
+  assertEx(allAppraisalsAreUSD, () => 'All appraisals must be in USD')
   const allCouponsAreUSD = coupons.map(coupon => (coupon as Partial<AmountFields>)?.currency).filter(exists).every(currency => currency === 'USD')
-  assertEx(allCouponsAreUSD, 'All coupons must be in USD')
+  assertEx(allCouponsAreUSD, () => 'All coupons must be in USD')
   const total = appraisals.reduce((acc, appraisal) => acc + appraisal.price, 0)
 
   // Calculated non-stackable discount coupons

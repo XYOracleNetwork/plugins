@@ -15,6 +15,7 @@ const secureWeb2Urls = [
   'https://media.niftygateway.com/video/upload/v1659986036/Julian/KennyScharfWestinghouse/WESTINGHOUSE_20-26X44.5X4.5B_x2mz3r.mp4',
 ]
 const insecureWeb2Urls = [
+  // eslint-disable-next-line sonarjs/no-clear-text-protocols
   'http://media.niftygateway.com/video/upload/v1659986036/Julian/KennyScharfWestinghouse/WESTINGHOUSE_20-26X44.5X4.5B_x2mz3r.mp4',
 ]
 const invalidUrls = ['', 'not a url', {}]

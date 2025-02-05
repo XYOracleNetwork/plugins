@@ -88,13 +88,13 @@ describe('Diviner', () => {
 
     expect(payloads).toBeArray()
     expect(payloads.length).toBe(1)
-    payloads.map((payload) => {
+    for (let payload of payloads) {
       if (payload?.schema === EthereumGasSchema) {
         const gasPayload = payload as EthereumGasPayload
         expect(gasPayload).toBeObject()
         expect(gasPayload.schema).toBe(EthereumGasSchema)
         expect(gasPayload.timestamp).toBeNumber()
       }
-    })
+    }
   })
 })

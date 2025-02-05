@@ -7,6 +7,7 @@ import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
  * @returns The average of the array of numbers or undefined if the
  * array is empty or undefined
  */
+// eslint-disable-next-line sonarjs/reduce-initial-value
 const listAverage = (x?: number[]) => (x?.length ? x.reduce((a, b) => a + b) / x.length : undefined)
 
 /**

@@ -75,7 +75,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
 
     if (url) {
       const queries = Object.entries({ ...configQueries, ...callQueries })
-      queries.map(([key, value]) => url?.searchParams.set(key, value))
+      for (let [key, value] of queries) url?.searchParams.set(key, value)
       return url.href
     }
 
@@ -120,7 +120,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     }
   }
 
-  // eslint-disable-next-line complexity
+  // eslint-disable-next-line complexity, sonarjs/cognitive-complexity
   private async httpGet(url: string, call: Hash, headers?: Record<string, string | undefined>): Promise<ApiCallResult> {
     const result: ApiCallResult = {
       call,

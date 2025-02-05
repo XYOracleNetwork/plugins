@@ -5,8 +5,7 @@ import type { DurationFields } from '../Duration.ts'
 // Record Validations
 export const validateDuration = (recordPayload: Payload<DurationFields>): boolean => {
   // if (!isValidAddress(recordPayload)) return false
-  if (!isWithinDelegatedTimeframe(recordPayload)) return false
-  return true
+  return isWithinDelegatedTimeframe(recordPayload)
 }
 
 export const isWithinDelegatedTimeframe = (recordPayload: Payload<DurationFields>, now = Date.now()): boolean => {

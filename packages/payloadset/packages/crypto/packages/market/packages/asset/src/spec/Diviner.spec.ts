@@ -26,7 +26,7 @@ describe('Diviner', () => {
     const payloads = await diviner.divine(data)
     expect(payloads).toBeArray()
     expect(payloads.length).toBe(1)
-    payloads.map((payload) => {
+    for (let payload of payloads) {
       if (payload?.schema === CryptoMarketAssetSchema) {
         const assetPayload = payload as CryptoMarketAssetPayload
         expect(assetPayload).toBeObject()
@@ -34,6 +34,6 @@ describe('Diviner', () => {
         expect(assetPayload?.schema).toBe(CryptoMarketAssetSchema)
         expect(assetPayload?.timestamp).toBeNumber()
       }
-    })
+    }
   })
 })

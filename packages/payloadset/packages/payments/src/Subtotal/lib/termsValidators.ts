@@ -7,8 +7,7 @@ export type ValidEscrowTerms = Required<EscrowTerms>
 
 const validateTermsAppraisals = (terms: EscrowTerms): terms is Required<EscrowTerms & { appraisals: Hash[] }> => {
   if (!terms.appraisals) return false
-  if (terms.appraisals.length === 0) return false
-  return true
+  return terms.appraisals.length > 0
 }
 const validateTermsWindow = (terms: EscrowTerms): boolean => validateDuration(terms)
 

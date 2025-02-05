@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/assertions-in-tests */
 import '@xylabs/vitest-extended'
 
 import { HDWallet } from '@xyo-network/account'

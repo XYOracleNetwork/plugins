@@ -30,8 +30,8 @@ export class PaymentSubtotalDiviner<
     TOut
   >,
 > extends AbstractDiviner<TParams, TIn, TOut, TEventData> {
-  static override configSchemas = [PaymentSubtotalDivinerConfigSchema]
-  static override defaultConfigSchema = PaymentSubtotalDivinerConfigSchema
+  static override readonly configSchemas = [PaymentSubtotalDivinerConfigSchema]
+  static override readonly defaultConfigSchema = PaymentSubtotalDivinerConfigSchema
 
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
     // Find the escrow terms

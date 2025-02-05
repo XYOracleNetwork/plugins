@@ -14,18 +14,18 @@ describe('getGasFromBlocknative', () => {
     const result = await getGasFromBlocknative()
     expect(result).toBeObject()
     expect(result?.blockPrices).toBeArrayOfSize(1)
-    result.blockPrices.map((blockPrice) => {
+    for (let blockPrice of result.blockPrices) {
       expect(blockPrice.baseFeePerGas).toBeNumber()
       expect(blockPrice.blockNumber).toBeNumber()
       expect(blockPrice.estimatedPrices).toBeArrayOfSize(5)
-      blockPrice.estimatedPrices.map((estimatedPrice) => {
+      for (let estimatedPrice of blockPrice.estimatedPrices) {
         expect(estimatedPrice?.confidence).toBeNumber()
         expect(estimatedPrice?.maxFeePerGas).toBeNumber()
         expect(estimatedPrice?.maxPriorityFeePerGas).toBeNumber()
         expect(estimatedPrice?.price).toBeNumber()
-      })
+      }
       expect(blockPrice.estimatedTransactionCount).toBeNumber()
-    })
+    }
     /* expect(result?.estimatedBaseFees).toBeArrayOfSize(5)
     for (let index = 0; index < result?.estimatedBaseFees.length; index++) {
       const blockNumber = `pending+${index + 1}` as PendingBlockNumber

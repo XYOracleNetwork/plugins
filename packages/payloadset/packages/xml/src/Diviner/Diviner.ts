@@ -24,7 +24,7 @@ export class XmlParsingDiviner<
 > extends AbstractDiviner<TParams, TIn, TOut, TEventData> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, XmlParsingDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = XmlParsingDivinerConfigSchema
-  static override targetSchema = XmlSchema
+  static override readonly targetSchema = XmlSchema
 
   protected override async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
     const results = await Promise.all(payloads.filter(hasStringDataField).map(toXml))

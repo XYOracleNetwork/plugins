@@ -25,8 +25,8 @@ export class RebillyPaymentCardAuthorizationSentinel<
   TParams extends RebillyPaymentCardAuthorizationSentinelParams = RebillyPaymentCardAuthorizationSentinelParams,
   TEventData extends SentinelModuleEventData<SentinelInstance<TParams>> = SentinelModuleEventData<SentinelInstance<TParams>>,
 > extends AbstractSentinel<TParams, TEventData> {
-  static override configSchemas = [RebillyPaymentCardAuthorizationSentinelConfigSchema]
-  static override defaultConfigSchema = RebillyPaymentCardAuthorizationSentinelConfigSchema
+  static override readonly configSchemas = [RebillyPaymentCardAuthorizationSentinelConfigSchema]
+  static override readonly defaultConfigSchema = RebillyPaymentCardAuthorizationSentinelConfigSchema
 
   protected _apiRoot: string | undefined = undefined
   protected _domain: string | undefined = undefined

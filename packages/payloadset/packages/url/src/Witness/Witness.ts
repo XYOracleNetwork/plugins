@@ -10,6 +10,7 @@ import type { UrlWitnessParams } from './Params.ts'
 export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> extends AbstractWitness<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, UrlWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = UrlWitnessConfigSchema
+  // eslint-disable-next-line sonarjs/public-static-readonly
   static hashUrl: ((url: string) => Promise<string>) | undefined = undefined
 
   get urls() {

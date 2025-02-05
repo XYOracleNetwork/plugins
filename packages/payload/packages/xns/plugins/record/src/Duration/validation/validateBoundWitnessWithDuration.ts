@@ -12,6 +12,5 @@ export const validateBoundWitnessWithDuration = async (recordBw: BoundWitness, r
   // Validate the record
   if (!validateDuration(recordPayload)) return false
   // Validate the record relative to the BW
-  if (!(await validateBoundWitnessAndDuration(recordBw, recordPayload))) return false
-  return true
+  return (await validateBoundWitnessAndDuration(recordBw, recordPayload))
 }

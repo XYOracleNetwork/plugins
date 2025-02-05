@@ -25,6 +25,7 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID).skip('EvmEventsWitness', () => {
   const eventName = 'TransferSingle'
   describe('observe', () => {
     describe('with no address or chainId in query', () => {
+      // eslint-disable-next-line sonarjs/assertions-in-tests
       it('uses values from config', async () => {
         const witness = await EvmEventsWitness.create({
           account: 'random',

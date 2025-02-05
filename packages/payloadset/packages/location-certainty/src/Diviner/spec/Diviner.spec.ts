@@ -115,7 +115,9 @@ describe.skip('MongoDBLocationCertaintyDiviner', () => {
         const locationsResult1 = (await sut.divine(sample1)) as LocationCertaintyPayload[]
         const locationsResult2 = (await sut.divine(sample2)) as LocationCertaintyPayload[]
         const locationsResult3 = (await sut.divine(sample3)) as LocationCertaintyPayload[]
-        ;[locationsResult1, locationsResult2, locationsResult3].map(validateLocationResult)
+        for (let r of [locationsResult1, locationsResult2, locationsResult3]) {
+          validateLocationResult(r)
+        }
       })
     })
   })

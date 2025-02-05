@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-hardcoded-ip */
 import '@xylabs/vitest-extended'
 
 import { filterAs } from '@xylabs/array'

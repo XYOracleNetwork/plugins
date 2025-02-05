@@ -20,5 +20,5 @@ export const divinePrices = async (
   const prices = [uniswapPayload, coinGeckoPayload].some(exists)
   const assets = prices ? average(coinGeckoPrices, uniswapPrices) : {}
   const timestamp = Date.now()
-  return await new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
+  return new PayloadBuilder<CryptoMarketAssetPayload>({ schema }).fields({ assets, timestamp }).build()
 }

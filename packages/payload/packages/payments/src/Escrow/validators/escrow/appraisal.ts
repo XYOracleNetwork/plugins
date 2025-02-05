@@ -109,6 +109,5 @@ export const getAppraisalsForAllAssetsValidator = (dictionary: Record<Hash, Payl
 const validateEstimate = (estimate: WithSources<HashLeaseEstimate>, exp: number): boolean => {
   if (!validateWithinWindow(estimate, exp)) return false
   if (estimate.currency !== 'USD') return false
-  if (estimate.price < 0) return false
-  return true
+  return (estimate.price >= 0)
 }

@@ -77,7 +77,9 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
 
     if (url) {
       const queries = Object.entries({ ...configQueries, ...callQueries })
-      queries.map(([key, value]) => url?.searchParams.set(key, value))
+      for (let [key, value] of queries) {
+        url?.searchParams.set(key, value)
+      }
       return url.href
     }
 
