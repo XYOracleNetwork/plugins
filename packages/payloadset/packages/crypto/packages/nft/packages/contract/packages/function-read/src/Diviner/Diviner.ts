@@ -23,7 +23,7 @@ export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPa
 export class CryptoContractDiviner<TParams extends CryptoContractDivinerParams = CryptoContractDivinerParams> extends AbstractDiviner<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoContractDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = CryptoContractDivinerConfigSchema
-  static override labels: CryptoContractDivinerLabels = { ...super.labels, ...CryptoContractDivinerLabels }
+  static override readonly labels: CryptoContractDivinerLabels = { ...super.labels, ...CryptoContractDivinerLabels }
 
   protected static findCallResult<TResult = string>(
     address: string,

@@ -16,7 +16,7 @@ import type { ImageThumbnailResultQuery } from './ImageThumbnailResultQuery.ts'
 export class ImageThumbnailQueryToImageThumbnailIndexQueryDiviner extends AbstractDiviner {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = DivinerConfigSchema
-  static override labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly labels: ImageThumbnailDivinerStageLabels = {
     ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'divinerQueryToIndexQueryDiviner',

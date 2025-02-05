@@ -12,7 +12,7 @@ import type { ValidSourceTypes } from './types/index.ts'
 const defaultMaskOptions = { maskStartEndHyphens: false }
 
 export class XnsNameHelper {
-  static ValidTLDs = ['.xyo'] as const
+  static readonly ValidTLDs = ['.xyo'] as const
 
   private _xnsName: Payload<DomainFields>
 

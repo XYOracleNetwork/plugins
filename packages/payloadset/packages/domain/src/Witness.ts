@@ -12,7 +12,7 @@ export type DomainWitnessParams = WitnessParams<AnyConfigSchema<DomainWitnessCon
 export class DomainWitness<TParams extends DomainWitnessParams = DomainWitnessParams> extends AbstractWitness<TParams> implements WitnessModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, DomainWitnessConfigSchema]
   static override readonly defaultConfigSchema: Schema = DomainWitnessConfigSchema
-  static dmarc = '_xyo'
+  static readonly dmarc = '_xyo'
 
   static generateDmarc(domain: string) {
     return `${DomainWitness.dmarc}.${domain}`

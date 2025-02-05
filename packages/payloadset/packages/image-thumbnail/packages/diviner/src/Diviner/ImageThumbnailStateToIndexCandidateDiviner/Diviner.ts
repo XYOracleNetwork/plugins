@@ -76,7 +76,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
 > extends AbstractDiviner<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, ImageThumbnailStateToIndexCandidateDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = ImageThumbnailStateToIndexCandidateDivinerConfigSchema
-  static override labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly labels: ImageThumbnailDivinerStageLabels = {
     ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'stateToIndexCandidateDiviner',

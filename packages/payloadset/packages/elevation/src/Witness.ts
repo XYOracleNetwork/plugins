@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { MercatorBoundingBox } from '@xylabs/geo'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'
@@ -8,7 +9,6 @@ import type {
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import { Quadkey } from '@xyo-network/quadkey'
-import { MercatorBoundingBox } from '@xyo-network/sdk-geo'
 import type {
   WitnessConfig, WitnessModule, WitnessParams,
 } from '@xyo-network/witness-model'

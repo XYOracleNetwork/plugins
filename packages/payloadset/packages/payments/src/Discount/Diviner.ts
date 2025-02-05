@@ -46,8 +46,8 @@ export class PaymentDiscountDiviner<
     TOut
   >,
 > extends AbstractDiviner<TParams, TIn, TOut, TEventData> {
-  static override configSchemas = [PaymentDiscountDivinerConfigSchema]
-  static override defaultConfigSchema = PaymentDiscountDivinerConfigSchema
+  static override readonly configSchemas = [PaymentDiscountDivinerConfigSchema]
+  static override readonly defaultConfigSchema = PaymentDiscountDivinerConfigSchema
 
   protected get couponAuthorities(): Address[] {
     return [...(this.config.couponAuthorities ?? []), ...(this.params.couponAuthorities ?? [])]

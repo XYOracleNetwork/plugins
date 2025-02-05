@@ -30,8 +30,8 @@ export class PaymentTotalDiviner<
     TOut
   >,
 > extends AbstractDiviner<TParams, TIn, TOut, TEventData> {
-  static override configSchemas = [PaymentTotalDivinerConfigSchema]
-  static override defaultConfigSchema: PaymentTotalDivinerConfigSchema = PaymentTotalDivinerConfigSchema
+  static override readonly configSchemas = [PaymentTotalDivinerConfigSchema]
+  static override readonly defaultConfigSchema: PaymentTotalDivinerConfigSchema = PaymentTotalDivinerConfigSchema
 
   protected async divineHandler(payloads: TIn[] = []): Promise<TOut[]> {
     const subtotalDiviner = await this.getPaymentSubtotalDiviner()

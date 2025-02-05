@@ -22,7 +22,7 @@ export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerPa
   implements DivinerModule, Module {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, CryptoMarketAssetDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = CryptoMarketAssetDivinerConfigSchema
-  static override targetSchema = CryptoMarketAssetSchema
+  static override readonly targetSchema = CryptoMarketAssetSchema
 
   protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
     const coinGeckoPayload = payloads?.find(payload => payload?.schema === CoingeckoCryptoMarketSchema) as CoingeckoCryptoMarketPayload

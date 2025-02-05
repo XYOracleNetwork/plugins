@@ -30,7 +30,7 @@ import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels.ts'
 export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends AbstractDiviner {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, DivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = DivinerConfigSchema
-  static override labels: ImageThumbnailDivinerStageLabels = {
+  static override readonly labels: ImageThumbnailDivinerStageLabels = {
     ...super.labels,
     ...ImageThumbnailDivinerLabels,
     'network.xyo.diviner.stage': 'indexCandidateToIndexDiviner',
