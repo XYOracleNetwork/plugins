@@ -9,8 +9,8 @@ import { sampleUniswapPayload } from '../../test/index.ts'
 import { divineUniswapPrices } from '../divineUniswapPrices.ts'
 
 describe('divineUniswapPrices', () => {
-  it('divines prices from Uniswap', async () => {
-    const result = await divineUniswapPrices(sampleUniswapPayload)
+  it('divines prices from Uniswap', () => {
+    const result = divineUniswapPrices(sampleUniswapPayload)
     expect(result).toBeObject()
     expect(result?.assets?.xyo?.value?.btc).toBe('6.54777e-7')
     expect(result?.assets?.xyo?.value?.eth).toBe('0.00000896773')

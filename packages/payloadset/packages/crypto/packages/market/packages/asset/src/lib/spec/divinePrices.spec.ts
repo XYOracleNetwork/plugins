@@ -9,8 +9,8 @@ import { sampleCoinGeckoPayload, sampleUniswapPayload } from '../../test/index.t
 import { divinePrices } from '../divinePrices.ts'
 
 describe('divinePrices', () => {
-  it('divines prices', async () => {
-    const result = await divinePrices(sampleCoinGeckoPayload, sampleUniswapPayload)
+  it('divines prices', () => {
+    const result = divinePrices(sampleCoinGeckoPayload, sampleUniswapPayload)
     expect(result).toBeObject()
     expect(result.timestamp).toBeNumber()
     expect(result.assets.xyo?.value.btc).toBe('6.415295e-7')

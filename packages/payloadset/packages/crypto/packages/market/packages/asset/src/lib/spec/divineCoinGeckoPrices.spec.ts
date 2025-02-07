@@ -11,8 +11,8 @@ import { divineCoinGeckoPrices } from '../divineCoinGeckoPrices.ts'
 
 describe('divineCoinGeckoPrices', () => {
   // eslint-disable-next-line complexity
-  it('divines prices from CoinGecko', async () => {
-    const result = await divineCoinGeckoPrices(sampleCoinGeckoPayload)
+  it('divines prices from CoinGecko', () => {
+    const result = divineCoinGeckoPrices(sampleCoinGeckoPayload)
     expect(result.assets).toBeObject()
     const assets = assertEx(result.assets)
     for (let [token, assetInfo] of Object.entries(assets)) {

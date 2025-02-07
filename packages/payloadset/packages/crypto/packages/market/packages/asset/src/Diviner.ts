@@ -24,10 +24,10 @@ export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerPa
   static override readonly defaultConfigSchema: Schema = CryptoMarketAssetDivinerConfigSchema
   static override readonly targetSchema = CryptoMarketAssetSchema
 
-  protected override async divineHandler(payloads?: Payload[]): Promise<Payload[]> {
+  protected override divineHandler(payloads?: Payload[]): Payload[] {
     const coinGeckoPayload = payloads?.find(payload => payload?.schema === CoingeckoCryptoMarketSchema) as CoingeckoCryptoMarketPayload
     const uniswapPayload = payloads?.find(payload => payload?.schema === UniswapCryptoMarketSchema) as UniswapCryptoMarketPayload
-    const result: CryptoMarketAssetPayload = await divinePrices(coinGeckoPayload, uniswapPayload)
+    const result: CryptoMarketAssetPayload = divinePrices(coinGeckoPayload, uniswapPayload)
     return [result]
   }
 }
