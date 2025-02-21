@@ -2,13 +2,6 @@ import type { Payload } from '@xyo-network/payload-model'
 import { type Domain, DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { MAX_DOMAIN_LENGTH, MIN_DOMAIN_LENGTH } from '../../Constants.ts'
-import {
-  domainCasingValidator,
-  domainModuleNameValidator,
-  domainTldValidator,
-  getDomainAllowedHyphensValidator,
-  getDomainLengthValidator,
-} from '../index.ts'
 
 const baseDomainFields: Payload<Domain> = {
   domain: '',
@@ -22,6 +15,10 @@ import {
   describe, expect,
   it, vi,
 } from 'vitest'
+
+import {
+  domainCasingValidator, domainModuleNameValidator, domainTldValidator, getDomainAllowedHyphensValidator, getDomainLengthValidator,
+} from '../validators.ts'
 
 describe('XNS Name', () => {
   describe('Validators', () => {

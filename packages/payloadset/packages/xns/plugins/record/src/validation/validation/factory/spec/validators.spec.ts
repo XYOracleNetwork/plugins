@@ -9,7 +9,7 @@ import {
 
 import {
   getDomainReservedFragmentsValidator, getDomainReservedNamesValidator, getDomainReservedStringsValidator,
-} from '../index.ts'
+} from '../validators.ts'
 
 const baseDomainFields: Domain = {
   domain: '',

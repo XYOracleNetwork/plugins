@@ -61,6 +61,8 @@ export default [
       ...sonarConfig.rules,
       'sonarjs/deprecation': ['warn'],
       'sonarjs/no-empty-test-file': ['off'],
+      'sonarjs/no-commented-code': ['off'],
+      'sonarjs/todo-tag': ['off'],
 
       //unicorn handles this
       'sonarjs/no-undefined-argument': ['off'],
