@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { CryptoCardsMovePayload } from './Payload.ts'
+import { CryptoCardsMovePayload } from './Payload.ts'
 import { CryptoCardsMoveSchema } from './Schema.ts'
 import { cryptoCardsMovePayloadTemplate } from './Template.ts'
 

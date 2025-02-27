@@ -1,17 +1,16 @@
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { DivinerModule, DivinerParams } from '@xyo-network/diviner-model'
-import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
+import { DivinerModule, DivinerParams } from '@xyo-network/diviner-model'
+import { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { ElevationWitness, ElevationWitnessConfigSchema } from '@xyo-network/elevation-plugin'
-import type { LocationCertaintyHeuristic, LocationCertaintyPayload } from '@xyo-network/location-certainty-payload-plugin'
-import { LocationCertaintySchema } from '@xyo-network/location-certainty-payload-plugin'
-import type { LocationPayload } from '@xyo-network/location-payload-plugin'
-import { LocationSchema } from '@xyo-network/location-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import {
+  LocationCertaintyHeuristic, LocationCertaintyPayload, LocationCertaintySchema,
+} from '@xyo-network/location-certainty-payload-plugin'
+import { LocationPayload, LocationSchema } from '@xyo-network/location-payload-plugin'
+import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 
-import type { LocationCertaintyDivinerConfig } from './Config.ts'
-import { LocationCertaintyDivinerConfigSchema } from './Config.ts'
+import { LocationCertaintyDivinerConfig, LocationCertaintyDivinerConfigSchema } from './Config.ts'
 
 export type LocationCertaintyDivinerParams = DivinerParams<AnyConfigSchema<LocationCertaintyDivinerConfig>>
 

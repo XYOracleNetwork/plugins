@@ -1,11 +1,10 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { UrlPayload } from '@xyo-network/url-payload-plugin'
-import { UrlSchema } from '@xyo-network/url-payload-plugin'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 
 import { UrlWitnessConfigSchema } from './Config.ts'
-import type { UrlWitnessParams } from './Params.ts'
+import { UrlWitnessParams } from './Params.ts'
 
 export class UrlWitness<TParams extends UrlWitnessParams = UrlWitnessParams> extends AbstractWitness<TParams> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, UrlWitnessConfigSchema]

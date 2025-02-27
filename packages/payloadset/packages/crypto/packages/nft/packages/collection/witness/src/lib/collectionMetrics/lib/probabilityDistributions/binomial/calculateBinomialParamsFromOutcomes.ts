@@ -1,4 +1,4 @@
-import type { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
 
 /**
  * Calculates the parameters of a binomial distribution given a list of outcomes

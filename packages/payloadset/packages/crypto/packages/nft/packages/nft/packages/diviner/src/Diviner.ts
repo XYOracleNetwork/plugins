@@ -1,21 +1,18 @@
-import type {
+import {
+  isNftInfo,
   NftInfo,
   NftScore,
   NftScoreDivinerConfig,
-} from '@xyo-network/crypto-nft-payload-plugin'
-import {
-  isNftInfo,
   NftScoreDivinerConfigSchema,
   NftScoreSchema,
 } from '@xyo-network/crypto-nft-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { DivinerParams } from '@xyo-network/diviner-model'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { DivinerParams } from '@xyo-network/diviner-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 
-import type { NftAnalysis } from './lib/index.ts'
-import { analyzeNft } from './lib/index.ts'
+import { analyzeNft, NftAnalysis } from './lib/index.ts'
 
 export type NftScoreDivinerParams = DivinerParams<AnyConfigSchema<NftScoreDivinerConfig>>
 

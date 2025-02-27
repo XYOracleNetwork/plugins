@@ -1,8 +1,7 @@
-import type { Hash } from '@xylabs/hex'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { Hash } from '@xylabs/hex'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import type { DomainFields } from '../Domain/index.ts'
+import { DomainFields } from '../Domain/index.ts'
 
 export type HashRecordSchema = 'network.xyo.ns.record.hash'
 export const HashRecordSchema: HashRecordSchema = 'network.xyo.ns.record.hash'

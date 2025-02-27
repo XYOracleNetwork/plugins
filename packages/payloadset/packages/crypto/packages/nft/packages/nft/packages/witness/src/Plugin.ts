@@ -1,7 +1,6 @@
 import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { PayloadSetSchema } from '@xyo-network/payload-model'
-import type { PayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
-import { createPayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
+import { createPayloadSetWitnessPlugin, PayloadSetWitnessPlugin } from '@xyo-network/payloadset-plugin'
 
 import { CryptoWalletNftWitness } from './Witness.ts'
 

@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { GeographicCoordinateSystemLocationSchema, QuadkeyLocationSchema } from './GeographicCoordinateSystemLocationSchema.ts'
+import { GeographicCoordinateSystemLocationSchema, QuadkeyLocationSchema } from './GeographicCoordinateSystemLocationSchema.ts'
 
 // Geographic Coordinate system (GCS) is the official name of lng/lat system
 export interface GeographicCoordinateSystemLocation {

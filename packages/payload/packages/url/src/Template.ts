@@ -1,4 +1,4 @@
-import type { UrlPayload } from './Payload.ts'
+import { UrlPayload } from './Payload.ts'
 import { UrlSchema } from './Schema.ts'
 
 export const urlPayloadTemplate = (): UrlPayload => ({

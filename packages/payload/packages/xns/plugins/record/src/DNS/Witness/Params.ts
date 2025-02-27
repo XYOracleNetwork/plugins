@@ -1,6 +1,6 @@
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { WitnessParams } from '@xyo-network/witness-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { WitnessParams } from '@xyo-network/witness-model'
 
-import type { DNSWitnessConfig } from './Config.ts'
+import { DNSWitnessConfig } from './Config.ts'
 
 export type DNSWitnessParams = WitnessParams<AnyConfigSchema<DNSWitnessConfig>>

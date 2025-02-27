@@ -14,7 +14,7 @@ import { CryptoPayloadPlugins } from '@xyo-network/crypto-payload-plugins'
 import { LocationCertaintyPayloadPlugin } from '@xyo-network/location-certainty-payload-plugin'
 import { LocationPayloadPlugin } from '@xyo-network/location-payload-plugin'
 import { ModuleInstancePayloadPlugin } from '@xyo-network/module-instance-payload-plugin'
-import type { PayloadPluginFunc } from '@xyo-network/payload-plugin'
+import { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 
 export const PayloadPlugins: PayloadPluginFunc[] = [
   LocationPayloadPlugin,

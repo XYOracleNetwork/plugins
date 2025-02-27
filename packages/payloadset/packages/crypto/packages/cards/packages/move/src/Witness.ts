@@ -1,8 +1,8 @@
-import type { Promisable } from '@xylabs/promise'
+import { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 
 import { CryptoCardsMoveWitnessConfigSchema } from './Schema.ts'
 

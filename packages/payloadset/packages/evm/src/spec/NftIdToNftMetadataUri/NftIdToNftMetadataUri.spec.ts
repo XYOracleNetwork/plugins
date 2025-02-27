@@ -14,18 +14,17 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { EvmCall } from '@xyo-network/evm-call-witness'
 import {
+  EvmCall,
   EvmCallDiviner, EvmCallSchema, EvmCallWitness,
 } from '@xyo-network/evm-call-witness'
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import type { MemoryNode } from '@xyo-network/node-memory'
+import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'

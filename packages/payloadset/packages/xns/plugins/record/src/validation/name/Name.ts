@@ -1,13 +1,14 @@
 import { assertEx } from '@xylabs/assert'
 import { isHash } from '@xylabs/hex'
-import type { Promisable } from '@xylabs/promise'
-import type { Payload } from '@xyo-network/payload-model'
-import type { DomainFields, TopLevelDomain } from '@xyo-network/xns-record-payload-plugins'
-import { DomainSchema } from '@xyo-network/xns-record-payload-plugins'
+import { Promisable } from '@xylabs/promise'
+import { Payload } from '@xyo-network/payload-model'
+import {
+  DomainFields, DomainSchema, TopLevelDomain,
+} from '@xyo-network/xns-record-payload-plugins'
 
 import { MAX_DOMAIN_LENGTH, XnsNameSimpleValidators } from '../validation/index.ts'
 import { removeDisallowedCharacters } from './lib/index.ts'
-import type { ValidSourceTypes } from './types/index.ts'
+import { ValidSourceTypes } from './types/index.ts'
 
 const defaultMaskOptions = { maskStartEndHyphens: false }
 

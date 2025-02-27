@@ -1,5 +1,5 @@
 import { IndexingDiviner } from '@xyo-network/diviner-indexing'
-import type { AttachableDivinerInstance } from '@xyo-network/diviner-model'
+import { AttachableDivinerInstance } from '@xyo-network/diviner-model'
 
 import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels.ts'
 

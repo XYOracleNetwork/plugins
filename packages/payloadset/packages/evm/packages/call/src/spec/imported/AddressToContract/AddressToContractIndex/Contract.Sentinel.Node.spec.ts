@@ -1,9 +1,8 @@
 /* eslint-disable max-statements */
 import '@xylabs/vitest-extended'
 
-import type { Address } from '@xylabs/hex'
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
+import { Address } from '@xylabs/hex'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isErc721ContractInfo, isErc1155ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
@@ -11,8 +10,7 @@ import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
-import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -22,13 +20,12 @@ import {
 } from '@xyo-network/diviner-temporal-indexing'
 import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import {
   ModuleFactory, resolveLocalNameToAddress, resolveLocalNameToInstance, resolvePathToAddress,
 } from '@xyo-network/module-model'
-import type { MemoryNode } from '@xyo-network/node-memory'
+import { MemoryNode } from '@xyo-network/node-memory'
 import {
   ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
 } from '@xyo-network/open-zeppelin-typechain'
@@ -41,8 +38,7 @@ import {
 } from 'vitest'
 
 import { EvmCallDiviner } from '../../../../Diviner.ts'
-import type { EvmCall } from '../../../../Payload.ts'
-import { EvmCallSchema } from '../../../../Payload.ts'
+import { EvmCall, EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
 import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
 import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }

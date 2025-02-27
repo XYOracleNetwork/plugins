@@ -1,10 +1,9 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { PentairScreenlogicPayload } from '@xyo-network/pentair-payload-plugin'
-import { PentairScreenlogicSchema } from '@xyo-network/pentair-payload-plugin'
-import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { PentairScreenlogicPayload, PentairScreenlogicSchema } from '@xyo-network/pentair-payload-plugin'
+import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import {
   FindUnits, SchedTypes, screenlogic,
 } from 'node-screenlogic'

@@ -1,13 +1,15 @@
 import { assertEx } from '@xylabs/assert'
-import type { Promisable } from '@xylabs/promise'
+import { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
+import {
+  isPayloadOfSchemaType, Payload, Schema,
+} from '@xyo-network/payload-model'
 
 import { EvmCallDivinerLabels } from './Labels.ts'
-import type { EvmCallResult } from './Payload.ts'
-import { asEvmCallSuccess, EvmCallResultSchema } from './Payload.ts'
+import {
+  asEvmCallSuccess, EvmCallResult, EvmCallResultSchema,
+} from './Payload.ts'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 

@@ -1,15 +1,14 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import type { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
-import type { EvmContract } from '@xyo-network/evm-contract-witness'
-import { EvmContractSchema } from '@xyo-network/evm-contract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
+import { EvmContract, EvmContractSchema } from '@xyo-network/evm-contract-witness'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { Interface } from 'ethers'
 
-import type { EvmFunctionImplemented, InterfaceAbi } from './Payload.ts'
-import { EvmFunctionImplementedSchema } from './Payload.ts'
+import {
+  EvmFunctionImplemented, EvmFunctionImplementedSchema, InterfaceAbi,
+} from './Payload.ts'
 
 export const EvmAbiImplementedDivinerConfigSchema = 'network.xyo.evm.abi.implemented.diviner.config'
 export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivinerConfigSchema

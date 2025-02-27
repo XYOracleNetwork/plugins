@@ -1,8 +1,8 @@
-import type { AccountInstance } from '@xyo-network/account-model'
+import { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import type { IdPayload } from '@xyo-network/id-payload-plugin'
+import { IdPayload } from '@xyo-network/id-payload-plugin'
 
-import type { EscrowTerms } from '../../Terms/index.ts'
+import { EscrowTerms } from '../../Terms/index.ts'
 
 /**
  * Creates an escrow intent (for a buyer or seller) using the supplied secret

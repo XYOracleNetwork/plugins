@@ -1,16 +1,16 @@
 import { findAs } from '@xylabs/array'
 import { exists } from '@xylabs/exists'
-import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
 import {
   asHashLeaseEstimate,
-  type HashLeaseEstimate, HashLeaseEstimateSchema,
+  HashLeaseEstimate, HashLeaseEstimateSchema,
 } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithSources } from '@xyo-network/payload-model'
+import { Payload, WithSources } from '@xyo-network/payload-model'
 
 import {
   asDomainRegistrationLeaseWithSources,
-  type DomainRegistrationLease, DomainRegistrationLeaseSchema,
+  DomainRegistrationLease, DomainRegistrationLeaseSchema,
 } from '../../DomainRegistration/index.ts'
 
 export type Estimate = [

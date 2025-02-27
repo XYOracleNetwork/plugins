@@ -1,19 +1,17 @@
 import '@xylabs/vitest-extended'
 
-import type { Hash } from '@xylabs/hex'
-import type {
+import { Hash } from '@xylabs/hex'
+import {
   ImageThumbnailDivinerQuery,
+  ImageThumbnailDivinerQuerySchema,
   ImageThumbnailResult,
   ImageThumbnailResultIndex,
-} from '@xyo-network/image-thumbnail-payload-plugin'
-import {
-  ImageThumbnailDivinerQuerySchema,
   ImageThumbnailResultIndexSchema,
   ImageThumbnailResultSchema,
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithSources } from '@xyo-network/payload-model'
+import { WithSources } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
   beforeAll,

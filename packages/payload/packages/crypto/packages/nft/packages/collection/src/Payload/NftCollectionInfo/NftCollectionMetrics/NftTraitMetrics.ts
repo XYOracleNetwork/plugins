@@ -1,4 +1,4 @@
-import type { BinomialDistributionParameters } from './BinomialDistributionParameters.ts'
+import { BinomialDistributionParameters } from './BinomialDistributionParameters.ts'
 
 export interface NftTraitMetrics {
   binomial: Pick<BinomialDistributionParameters, 'p'>

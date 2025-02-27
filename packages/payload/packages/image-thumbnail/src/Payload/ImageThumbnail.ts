@@ -1,6 +1,5 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { ImageThumbnailSchema } from '../Schema.ts'
 

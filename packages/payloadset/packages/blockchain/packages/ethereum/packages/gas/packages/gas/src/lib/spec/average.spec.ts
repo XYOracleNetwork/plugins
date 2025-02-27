@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
+import { FeeData } from '@xyo-network/gas-price-payload-plugin'
 import {
   describe, expect,
   it,

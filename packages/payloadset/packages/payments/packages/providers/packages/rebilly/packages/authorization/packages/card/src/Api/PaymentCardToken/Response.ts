@@ -1,4 +1,4 @@
-import type { PaymentMethod, RequestBillingAddress } from './Request.ts'
+import { PaymentMethod, RequestBillingAddress } from './Request.ts'
 
 export interface ResponseBillingAddress extends RequestBillingAddress {
   hash?: string | null

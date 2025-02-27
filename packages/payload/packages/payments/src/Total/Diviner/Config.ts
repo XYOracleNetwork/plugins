@@ -1,6 +1,6 @@
 // import type { Hash } from '@xylabs/hex'
-import type { DivinerConfig } from '@xyo-network/diviner-model'
-import type { ModuleIdentifier } from '@xyo-network/module-model'
+import { DivinerConfig } from '@xyo-network/diviner-model'
+import { ModuleIdentifier } from '@xyo-network/module-model'
 
 export const PaymentTotalDivinerConfigSchema = 'network.xyo.diviner.payments.total.config'
 export type PaymentTotalDivinerConfigSchema = typeof PaymentTotalDivinerConfigSchema

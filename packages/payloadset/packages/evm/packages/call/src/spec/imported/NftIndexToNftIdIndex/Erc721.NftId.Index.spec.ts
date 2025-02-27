@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
@@ -18,11 +17,10 @@ import {
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
 import { isNftId } from '@xyo-network/evm-nft-id-payload-plugin'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import type { MemoryNode } from '@xyo-network/node-memory'
+import { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'

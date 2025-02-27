@@ -1,4 +1,4 @@
-import type { JsonValue } from '@xylabs/object'
+import { JsonValue } from '@xylabs/object'
 
 export type NftAttribute = {
   display_type?: JsonValue

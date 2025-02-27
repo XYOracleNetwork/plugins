@@ -1,5 +1,5 @@
-import type { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
-import type {
+import { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import {
   FeeData, FeePerGas, PriorityFeePerGas,
 } from '@xyo-network/gas-price-payload-plugin'
 

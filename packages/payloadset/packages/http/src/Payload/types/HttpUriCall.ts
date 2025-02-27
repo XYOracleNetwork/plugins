@@ -1,7 +1,7 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { HttpCallSchema } from '../Schema.ts'
-import type { HttpCallFields } from './HttpCallFields.ts'
+import { HttpCallSchema } from '../Schema.ts'
+import { HttpCallFields } from './HttpCallFields.ts'
 
 export type HttpUriCall = Payload<
   HttpCallFields & {

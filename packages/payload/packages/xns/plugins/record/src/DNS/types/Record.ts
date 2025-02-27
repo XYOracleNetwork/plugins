@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import type { DNSResourceRecordTypeValue } from './ResourceRecord.ts'
+import { DNSResourceRecordTypeValue } from './ResourceRecord.ts'
 
 export interface DNSRecord {
   name: string // The domain name that was queried

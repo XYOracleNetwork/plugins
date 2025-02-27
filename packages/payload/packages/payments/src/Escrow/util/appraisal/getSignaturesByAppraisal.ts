@@ -1,8 +1,8 @@
-import type { Hash } from '@xylabs/hex'
-import { type BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import type { Payload } from '@xyo-network/payload-model'
+import { Hash } from '@xylabs/hex'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms/index.ts'
+import { EscrowTerms } from '../../Terms/index.ts'
 
 /**
  * Returns a dictionary of appraisals and their associated bound witnesses which are signed by

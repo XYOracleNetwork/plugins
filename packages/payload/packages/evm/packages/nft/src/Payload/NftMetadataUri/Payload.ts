@@ -1,7 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
-import type { NftIdFields } from '../NftId/index.ts'
+import { NftIdFields } from '../NftId/index.ts'
 import { NftMetadataUriSchema } from './Schema.ts'
 
 /**

@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { NftCollectionCount } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   describe, expect,
   it,

@@ -1,17 +1,16 @@
 import { AxiosJson } from '@xylabs/axios'
 import { exists } from '@xylabs/exists'
 import { isHexZero } from '@xylabs/hex'
-import type {
-  NftInfo, NftMetadata, TokenType,
+import {
+  NftInfo, NftMetadata, NftSchema, TokenType, toTokenType,
 } from '@xyo-network/crypto-nft-payload-plugin'
-import { NftSchema, toTokenType } from '@xyo-network/crypto-nft-payload-plugin'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import {
   ERC721Enumerable__factory, ERC721URIStorage__factory, ERC1155Supply__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
-import type { Provider } from 'ethers'
+import { Provider } from 'ethers'
 
 import { tokenTypes } from './tokenTypes.ts'
 import { tryCall } from './tryCall.ts'

@@ -1,38 +1,34 @@
 /* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
-import type { Hash } from '@xylabs/hex'
+import { Hash } from '@xylabs/hex'
 import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import type { AxiosError } from 'axios'
-import { Axios } from 'axios'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
+import { Axios, AxiosError } from 'axios'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
 import { checkIpfsUrl } from '../lib/index.ts'
-import type {
+import {
+  asHttpUriCall,
+  asHttpUriTemplateCall,
   HttpCall,
   HttpCallBase64Result,
   HttpCallErrorResult,
   HttpCallJsonResult,
   HttpCallJsonResultType,
   HttpCallResult,
+  HttpCallResultSchema,
+  HttpCallSchema,
   HttpCallXmlResult,
   MimeTypes,
 } from '../Payload/index.ts'
-import {
-  asHttpUriCall,
-  asHttpUriTemplateCall,
-  HttpCallResultSchema,
-  HttpCallSchema,
-} from '../Payload/index.ts'
-import type { HttpCallHtmlResult } from '../Payload/types/index.ts'
+import { HttpCallHtmlResult } from '../Payload/types/index.ts'
 import { asHttpUriCallWitnessConfig, asHttpUriTemplateCallWitnessConfig } from './Config.ts'
-import type { HttpCallWitnessParams } from './Params.ts'
+import { HttpCallWitnessParams } from './Params.ts'
 import { HttpCallWitnessConfigSchema } from './Schema.ts'
 
 export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWitnessParams> extends AbstractWitness<TParams, HttpCall, HttpCallResult> {

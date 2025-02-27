@@ -1,5 +1,5 @@
-import type { Hash } from '@xylabs/hex'
-import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
+import { Hash } from '@xylabs/hex'
+import { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
 import { validateDuration } from './durationValidators.ts'
 

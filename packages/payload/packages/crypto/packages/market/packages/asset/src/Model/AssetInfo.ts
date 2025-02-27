@@ -1,4 +1,4 @@
-import type { ValueBasis } from './ValueBasis.ts'
+import { ValueBasis } from './ValueBasis.ts'
 
 export interface AssetInfo {
   value: ValueBasis

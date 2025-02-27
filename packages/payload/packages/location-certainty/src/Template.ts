@@ -1,4 +1,4 @@
-import type { LocationCertaintyPayload } from './Payload.ts'
+import { LocationCertaintyPayload } from './Payload.ts'
 import { LocationCertaintySchema } from './Schema.ts'
 
 export const LocationCertaintyPayloadTemplate = (): Partial<LocationCertaintyPayload> => {

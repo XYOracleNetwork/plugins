@@ -1,8 +1,8 @@
 import { AsObjectFactory } from '@xylabs/object'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import type { WitnessConfig } from '@xyo-network/witness-model'
+import { WitnessConfig } from '@xyo-network/witness-model'
 
-import type {
+import {
   HttpCall, HttpUriCall, HttpUriTemplateCall, MimeTypes,
 } from '../Payload/index.ts'
 import { HttpCallWitnessConfigSchema } from './Schema.ts'

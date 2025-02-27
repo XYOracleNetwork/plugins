@@ -1,9 +1,7 @@
 import '@xylabs/vitest-extended'
 
-import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
-import type { UrlPayload } from '@xyo-network/url-payload-plugin'
-import { UrlSchema } from '@xyo-network/url-payload-plugin'
+import { ImageThumbnail, ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'
 import {
   describe, expect,

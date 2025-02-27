@@ -8,8 +8,7 @@ import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import { SentinelWrapper } from '@xyo-network/sentinel-wrapper'
-import type { UrlPayload } from '@xyo-network/url-payload-plugin'
-import { UrlSchema } from '@xyo-network/url-payload-plugin'
+import { UrlPayload, UrlSchema } from '@xyo-network/url-payload-plugin'
 import { isTimestamp, TimestampWitness } from '@xyo-network/witness-timestamp'
 import {
   beforeAll,

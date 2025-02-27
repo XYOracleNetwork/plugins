@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { IdSchema } from '@xyo-network/id-payload-plugin'
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import {
   describe, expect,

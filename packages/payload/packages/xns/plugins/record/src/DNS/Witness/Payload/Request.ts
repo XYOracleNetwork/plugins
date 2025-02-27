@@ -1,12 +1,12 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { PayloadWithOptionalSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources,
+  isPayloadOfSchemaTypeWithSources, PayloadWithOptionalSources, WithSources,
 } from '@xyo-network/payload-model'
 
-import type { DNSRequestFields, DNSResourceRecordTypeValue } from '../../types/index.ts'
-import { DNSResourceRecordTypes, getRequestFor } from '../../types/index.ts'
+import {
+  DNSRequestFields, DNSResourceRecordTypes, DNSResourceRecordTypeValue, getRequestFor,
+} from '../../types/index.ts'
 import { DNSSchema } from '../Schema.ts'
 
 /**

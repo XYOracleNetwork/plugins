@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { ElevationPayload } from './Payload.ts'
+import { ElevationPayload } from './Payload.ts'
 import { ElevationSchema } from './Schema.ts'
 import { elevationPayloadTemplate } from './Template.ts'
 

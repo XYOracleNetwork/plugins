@@ -6,7 +6,7 @@ export * from '@xyo-network/evm-call-witness'
 export * from '@xyo-network/evm-contract-witness'
 
 import { EthereumPlugins } from '@xyo-network/ethereum-blockchain-plugins'
-import type { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
+import { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
 
 export const EvmPlugins: PayloadSetPluginFunc[] = [...EthereumPlugins]
 

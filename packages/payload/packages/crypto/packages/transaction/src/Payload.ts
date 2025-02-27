@@ -1,4 +1,4 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
 import { AddressTransactionHistorySchema } from './Schema.ts'
 

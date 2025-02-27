@@ -1,13 +1,12 @@
 import '@xylabs/vitest-extended'
 
-import type { Address } from '@xylabs/hex'
-import type { ModuleIdentifier } from '@xyo-network/module-model'
+import { Address } from '@xylabs/hex'
+import { ModuleIdentifier } from '@xyo-network/module-model'
 import {
   describe, expect, test,
 } from 'vitest'
 
-import type { EscrowTerms } from '../../../../Terms/index.ts'
-import { EscrowTermsSchema } from '../../../../Terms/index.ts'
+import { EscrowTerms, EscrowTermsSchema } from '../../../../Terms/index.ts'
 import { moduleIdentifiersContainsOneOf } from '../moduleInstanceValidators.ts'
 
 describe('RegistrarSentinel', () => {

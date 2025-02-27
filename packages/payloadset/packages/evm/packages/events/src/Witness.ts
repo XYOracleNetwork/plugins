@@ -1,16 +1,16 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { hexFromBigInt } from '@xylabs/hex'
-import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
-import type { EventLog, InterfaceAbi } from 'ethers'
-import { Contract } from 'ethers'
+import {
+  Contract, EventLog, InterfaceAbi,
+} from 'ethers'
 
-import type { EvmEventsWitnessParams } from './model.ts'
-import { EvmEventsWitnessConfigSchema } from './model.ts'
-import type { EvmEvent, EvmEvents } from './Payload.ts'
-import { EvmEventSchema, EvmEventsSchema } from './Payload.ts'
+import { EvmEventsWitnessConfigSchema, EvmEventsWitnessParams } from './model.ts'
+import {
+  EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema,
+} from './Payload.ts'
 
 export class EvmEventsWitness<TParams extends EvmEventsWitnessParams = EvmEventsWitnessParams> extends AbstractEvmWitness<
   TParams,

@@ -1,6 +1,7 @@
-import type { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
-import type { ScaledScore } from '@xyo-network/crypto-nft-score-model'
-import { incrementTotal, PASS } from '@xyo-network/crypto-nft-score-model'
+import { NftInfoFields, OpenSeaNftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import {
+  incrementTotal, PASS, ScaledScore,
+} from '@xyo-network/crypto-nft-score-model'
 
 import {
   isSecure, isValidUrl, isWeb3,

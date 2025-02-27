@@ -1,5 +1,4 @@
-import type { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
-import { EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import { EthereumGasEthersPayload, EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 

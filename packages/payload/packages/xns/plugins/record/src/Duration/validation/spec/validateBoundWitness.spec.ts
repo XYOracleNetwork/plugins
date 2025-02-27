@@ -1,10 +1,9 @@
 import '@xylabs/vitest-extended'
 
-import type { Hash } from '@xylabs/hex'
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
+import { Hash } from '@xylabs/hex'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { BoundWitness } from '@xyo-network/boundwitness-model'
 import {
   beforeAll,
   describe, expect, it,

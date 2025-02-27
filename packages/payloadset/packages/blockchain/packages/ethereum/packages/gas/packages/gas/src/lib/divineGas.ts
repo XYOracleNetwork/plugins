@@ -1,7 +1,8 @@
-import type { EthereumGasPayload, FeeData } from '@xyo-network/gas-price-payload-plugin'
-import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
+import {
+  EthereumGasPayload, EthereumGasSchema, FeeData,
+} from '@xyo-network/gas-price-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
 import { average } from './average.ts'
 import {

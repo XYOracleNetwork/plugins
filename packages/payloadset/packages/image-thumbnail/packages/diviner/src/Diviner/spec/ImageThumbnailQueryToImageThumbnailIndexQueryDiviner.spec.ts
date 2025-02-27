@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { ImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { ImageThumbnailDivinerQuery, ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
@@ -10,8 +9,7 @@ import {
 } from 'vitest'
 
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.ts'
-import type { ImageThumbnailResultQuery } from '../ImageThumbnailResultQuery.ts'
-import { isImageThumbnailResultQuery } from '../ImageThumbnailResultQuery.ts'
+import { ImageThumbnailResultQuery, isImageThumbnailResultQuery } from '../ImageThumbnailResultQuery.ts'
 
 describe('ImageThumbnailQueryToImageThumbnailIndexQueryDiviner', () => {
   let diviner: ImageThumbnailQueryToImageThumbnailIndexQueryDiviner

@@ -1,8 +1,8 @@
-import type { Hash } from '@xylabs/hex'
-import { type HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
-import type { Payload, WithSources } from '@xyo-network/payload-model'
+import { Hash } from '@xylabs/hex'
+import { HashLeaseEstimate, isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
+import { Payload, WithSources } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms/index.ts'
+import { EscrowTerms } from '../../Terms/index.ts'
 
 /**
  * Returns a dictionary of asset hashes and their associated appraisals

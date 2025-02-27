@@ -4,13 +4,12 @@ import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
-import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
-import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import { HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import {
-  DiscountSchema, EscrowTermsSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
+  Coupon, DiscountSchema, EscrowTerms,
+  EscrowTermsSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
   isDiscount,
   PaymentDiscountDivinerConfigSchema,
 } from '@xyo-network/payment-payload-plugins'

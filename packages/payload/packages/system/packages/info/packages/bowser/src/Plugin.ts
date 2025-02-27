@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { BowserSystemInfoPayload } from './Payload.ts'
+import { BowserSystemInfoPayload } from './Payload.ts'
 import { BowserSystemInfoSchema } from './Schema.ts'
 import { bowserSystemInfoPayloadTemplate } from './Template.ts'
 

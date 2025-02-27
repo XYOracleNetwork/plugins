@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
-import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import { UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { UniswapCryptoMarketPayload, UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   describe, expect,

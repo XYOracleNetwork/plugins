@@ -1,6 +1,6 @@
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
-import type { Condition } from '../types/index.ts'
+import { Condition } from '../types/index.ts'
 
 /**
  * Returns a coupon condition that requires a minimum quantity of assets

@@ -2,19 +2,19 @@
 import '@xylabs/vitest-extended'
 
 import { HDWallet } from '@xyo-network/account'
-import type { AccountInstance } from '@xyo-network/account-model'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import type { Id } from '@xyo-network/id-payload-plugin'
-import { IdSchema } from '@xyo-network/id-payload-plugin'
+import { AccountInstance } from '@xyo-network/account-model'
+import { BoundWitness } from '@xyo-network/boundwitness-model'
+import { Id, IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 import {
   beforeAll,
   describe, expect, it,
 } from 'vitest'
 
-import type { EscrowParty, EscrowTerms } from '../../../../Terms/index.ts'
-import { EscrowTermsSchema } from '../../../../Terms/index.ts'
+import {
+  EscrowParty, EscrowTerms, EscrowTermsSchema,
+} from '../../../../Terms/index.ts'
 import { createEscrowIntentWithSecret } from '../../../../util/index.ts'
 import { getPartySecretSignedValidator } from '../getPartySecretSignedValidator.ts'
 

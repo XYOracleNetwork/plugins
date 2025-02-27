@@ -1,21 +1,18 @@
 import { exists } from '@xylabs/exists'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
-import type {
+import {
   ImageThumbnailResult,
   ImageThumbnailResultFields,
-} from '@xyo-network/image-thumbnail-payload-plugin'
-import {
   ImageThumbnailResultSchema,
   isImageThumbnailDivinerQuery,
   isImageThumbnailResultIndexWithSources,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 
-import type { ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
-import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
 
 /**
  * Transforms an ImageThumbnailIndex response into an ImageThumbnailResponse response

@@ -5,9 +5,8 @@
 // and Google/CloudFlare's DNS over HTTPS (DoH) standard
 // https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-json/
 
-import { type DNSQueryOpcode, DNSQueryOpcodes } from './OperationCodes.ts'
-import type { DNSRcode } from './ResponseCodes.ts'
-import { DNSRcodes } from './ResponseCodes.ts'
+import { DNSQueryOpcode, DNSQueryOpcodes } from './OperationCodes.ts'
+import { DNSRcode, DNSRcodes } from './ResponseCodes.ts'
 
 // NOTE: The RFC says `Boolean` but uses 0/1 for the values. DNS over HTTPS (DoH) uses `true`/`false`.
 export type NumericBoolean = 0 | 1 | true | false

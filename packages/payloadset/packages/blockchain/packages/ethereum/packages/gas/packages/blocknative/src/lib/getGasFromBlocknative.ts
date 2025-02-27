@@ -1,5 +1,5 @@
 import { axios } from '@xylabs/axios'
-import type { EthereumGasBlocknativeResponse } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
+import { EthereumGasBlocknativeResponse } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 
 const url = 'https://api.blocknative.com/gasprices/blockprices'
 

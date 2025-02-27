@@ -1,4 +1,4 @@
-import type { DurationFields } from '@xyo-network/xns-record-payload-plugins'
+import { DurationFields } from '@xyo-network/xns-record-payload-plugins'
 
 const FIVE_MINUTES = 1000 * 60 * 5
 

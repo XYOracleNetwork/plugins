@@ -23,7 +23,7 @@ import { IdPlugin } from '@xyo-network/id-plugin'
 import { LocationCertaintyPlugin } from '@xyo-network/location-certainty-plugin'
 import { LocationPlugin } from '@xyo-network/location-plugin'
 import { AbstractModuleInstancePlugin } from '@xyo-network/module-instance-plugin'
-import type { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
+import { PayloadSetPluginFunc } from '@xyo-network/payloadset-plugin'
 import { SchemaPlugin } from '@xyo-network/schema-plugin'
 import { SystemPlugins } from '@xyo-network/system-plugins'
 

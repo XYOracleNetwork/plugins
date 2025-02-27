@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { EvmAddressSchema } from './Schema.ts'
+import { EvmAddressSchema } from './Schema.ts'
 
 /**
  * The fields of an EVM address payload

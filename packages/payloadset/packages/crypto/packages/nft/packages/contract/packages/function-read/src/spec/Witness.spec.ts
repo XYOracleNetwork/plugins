@@ -1,14 +1,13 @@
 import '@xylabs/vitest-extended'
 
-import type { CryptoContractFunctionCall, CryptoContractFunctionCallResult } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
+  CryptoContractFunctionCall, CryptoContractFunctionCallResult,
   CryptoContractFunctionCallResultSchema,
   CryptoContractFunctionCallSchema,
   CryptoContractFunctionReadWitnessConfigSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   describe, expect,

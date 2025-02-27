@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { NodeSystemInfoPayload } from './Payload.ts'
+import { NodeSystemInfoPayload } from './Payload.ts'
 import { NodeSystemInfoSchema } from './Schema.ts'
 import { systemInfoNodeWitnessTemplate } from './Template.ts'
 

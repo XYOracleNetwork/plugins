@@ -1,7 +1,7 @@
-import type { DNSAnswer } from './Answer.ts'
-import type { DNSResponseHeader } from './Header.ts'
-import type { DNSRecord } from './Record.ts'
-import type { DNSQuestion } from './Request.ts'
+import { DNSAnswer } from './Answer.ts'
+import { DNSResponseHeader } from './Header.ts'
+import { DNSRecord } from './Record.ts'
+import { DNSQuestion } from './Request.ts'
 
 /* eslint-disable @typescript-eslint/member-ordering */
 export interface DNSResponseFields extends DNSResponseHeader {

@@ -1,10 +1,9 @@
 import '@xylabs/vitest-extended'
 
-import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
-import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import { HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import {
+  EscrowTerms,
   EscrowTermsSchema,
   isSubtotal,
   SubtotalSchema,

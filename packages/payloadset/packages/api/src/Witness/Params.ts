@@ -1,6 +1,6 @@
-import type { WitnessParams } from '@xyo-network/witness-model'
+import { WitnessParams } from '@xyo-network/witness-model'
 
-import type { ApiCallWitnessConfig } from './Config.ts'
+import { ApiCallWitnessConfig } from './Config.ts'
 
 export type ApiCallWitnessParams = WitnessParams<
   ApiCallWitnessConfig,

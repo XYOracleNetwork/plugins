@@ -5,8 +5,9 @@ import {
   it,
 } from 'vitest'
 
-import type { GraphqlQuery } from '../Witness.ts'
-import { ApiGraphqlWitness, GraphqlQuerySchema } from '../Witness.ts'
+import {
+  ApiGraphqlWitness, GraphqlQuery, GraphqlQuerySchema,
+} from '../Witness.ts'
 
 const endpoint = 'https://api.quicknode.com/graphql'
 

@@ -1,5 +1,5 @@
-import type { Payload } from '@xyo-network/payload-model'
-import { type Domain, DomainSchema } from '@xyo-network/xns-record-payload-plugins'
+import { Payload } from '@xyo-network/payload-model'
+import { Domain, DomainSchema } from '@xyo-network/xns-record-payload-plugins'
 
 import { MAX_DOMAIN_LENGTH, MIN_DOMAIN_LENGTH } from '../../Constants.ts'
 

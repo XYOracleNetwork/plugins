@@ -8,32 +8,29 @@ import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { isBoundWitness } from '@xyo-network/boundwitness-model'
-import type { NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
-import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
+import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import { NftInfo, NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
-import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
-import type { TemporalIndexingDivinerResultIndex } from '@xyo-network/diviner-temporal-indexing'
+import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   isTemporalIndexingDivinerResultIndex,
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
   TemporalIndexingDivinerIndexCandidateToIndexDiviner,
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
+  TemporalIndexingDivinerResultIndex,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import type { Labels, ModuleState } from '@xyo-network/module-model'
-import { isModuleState } from '@xyo-network/module-model'
-import type { MemoryNode } from '@xyo-network/node-memory'
+import {
+  isModuleState, Labels, ModuleState,
+} from '@xyo-network/module-model'
+import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithStorageMeta } from '@xyo-network/payload-model'
+import { WithStorageMeta } from '@xyo-network/payload-model'
 import {
   beforeAll,
   describe, expect, it,

@@ -1,11 +1,10 @@
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { EthereumGasEtherchainV2Payload } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
-import { EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { WitnessParams } from '@xyo-network/witness-model'
+import { EthereumGasEtherchainV2Payload, EthereumGasEtherchainV2Schema } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { WitnessParams } from '@xyo-network/witness-model'
 
-import type { EthereumGasEtherchainV2WitnessConfig } from './Config.ts'
+import { EthereumGasEtherchainV2WitnessConfig } from './Config.ts'
 import { getV2GasFromEtherchain } from './lib/index.ts'
 import { EthereumGasEtherchainV2WitnessConfigSchema } from './Schema.ts'
 

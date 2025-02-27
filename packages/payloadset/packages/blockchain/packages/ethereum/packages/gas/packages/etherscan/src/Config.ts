@@ -1,6 +1,6 @@
-import type { WitnessConfig } from '@xyo-network/witness-model'
+import { WitnessConfig } from '@xyo-network/witness-model'
 
-import type { EthereumGasEtherscanWitnessConfigSchema } from './Schema.ts'
+import { EthereumGasEtherscanWitnessConfigSchema } from './Schema.ts'
 
 export type EthereumGasEtherscanWitnessConfig = WitnessConfig<{
   apiKey: string

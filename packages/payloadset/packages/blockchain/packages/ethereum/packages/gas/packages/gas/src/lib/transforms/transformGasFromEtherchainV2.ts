@@ -1,5 +1,5 @@
-import type { EthereumGasEtherchainV2Payload } from '@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins'
-import type { FeeData, FeePerGas } from '@xyo-network/gas-price-payload-plugin'
+import { EthereumGasEtherchainV2Payload } from '@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins'
+import { FeeData, FeePerGas } from '@xyo-network/gas-price-payload-plugin'
 
 const getFeePerGas = (payload: EthereumGasEtherchainV2Payload): Partial<FeePerGas> => {
   const {

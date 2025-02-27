@@ -1,5 +1,5 @@
-import type { Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
-import type { EtherscanProvider } from 'ethers'
+import { Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import { EtherscanProvider } from 'ethers'
 
 /** @deprecated - no longer supported by EtherScan */
 export const getTransactionsForAddress = async (

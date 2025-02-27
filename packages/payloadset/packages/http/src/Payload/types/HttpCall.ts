@@ -1,4 +1,4 @@
-import type { HttpUriCall } from './HttpUriCall.ts'
-import type { HttpUriTemplateCall } from './HttpUriTemplateCall.ts'
+import { HttpUriCall } from './HttpUriCall.ts'
+import { HttpUriTemplateCall } from './HttpUriTemplateCall.ts'
 
 export type HttpCall = HttpUriCall | HttpUriTemplateCall

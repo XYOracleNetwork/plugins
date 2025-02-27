@@ -1,4 +1,4 @@
-import type { NodeSystemInfoPayload } from './Payload.ts'
+import { NodeSystemInfoPayload } from './Payload.ts'
 import { NodeSystemInfoSchema } from './Schema.ts'
 
 const defaultSystemInfoConfig = () => {

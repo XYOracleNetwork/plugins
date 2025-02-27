@@ -1,14 +1,14 @@
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 // eslint-disable-next-line workspaces/no-absolute-imports
-import { type EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
-import type { NftMetadataUri } from '@xyo-network/evm-nft-id-payload-plugin'
-import { NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { EvmCallResults, EvmCallResultsSchema } from '@xyo-network/evm-call-witness'
+import { NftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
+import {
+  isPayloadOfSchemaType, Payload, Schema,
+} from '@xyo-network/payload-model'
 
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config.ts'
-import type { EvmCallResultToNftTokenUriDivinerParams } from './Params.ts'
-import type { EvmTokenUriCallResults } from './Payload.ts'
+import { EvmCallResultToNftTokenUriDivinerParams } from './Params.ts'
+import { EvmTokenUriCallResults } from './Payload.ts'
 
 export class EvmCallResultToNftTokenUriDiviner<
   TParams extends EvmCallResultToNftTokenUriDivinerParams = EvmCallResultToNftTokenUriDivinerParams,

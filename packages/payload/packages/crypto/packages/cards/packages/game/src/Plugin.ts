@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { CryptoCardsGamePayload } from './Payload.ts'
+import { CryptoCardsGamePayload } from './Payload.ts'
 import { CryptoCardsGameSchema } from './Schema.ts'
 import { cryptoCardsGamePayloadTemplate } from './Template.ts'
 

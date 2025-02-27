@@ -1,6 +1,6 @@
 import { isModuleName } from '@xyo-network/module-model'
-import type { Payload } from '@xyo-network/payload-model'
-import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
+import { Payload } from '@xyo-network/payload-model'
+import { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
 import { MAX_DOMAIN_LENGTH, MIN_DOMAIN_LENGTH } from '../Constants.ts'
 

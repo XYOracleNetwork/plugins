@@ -3,17 +3,14 @@
 import '@xylabs/vitest-extended'
 
 import { HDWallet } from '@xyo-network/account'
-import type {
-  ContractInfo,
-  CryptoContractFunctionCall,
-} from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
+  ContractInfo,
   ContractInfoSchema,
+  CryptoContractFunctionCall,
   CryptoContractFunctionCallSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import {
@@ -23,7 +20,7 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
-import type { Provider } from 'ethers'
+import { Provider } from 'ethers'
 import {
   afterAll,
   describe, expect, it,

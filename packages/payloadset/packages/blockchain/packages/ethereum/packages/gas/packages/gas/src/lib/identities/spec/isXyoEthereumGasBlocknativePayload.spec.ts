@@ -25,8 +25,7 @@ describe('isEthereumGasBlocknativePayload', () => {
       expect(result).toBeFalse()
     })
     it('when payload is undefined', () => {
-      // eslint-disable-next-line unicorn/no-useless-undefined
-      const result = isEthereumGasBlocknativePayload(undefined)
+      const result = isEthereumGasBlocknativePayload()
       expect(result).toBeFalse()
     })
     it('when payload is null', () => {

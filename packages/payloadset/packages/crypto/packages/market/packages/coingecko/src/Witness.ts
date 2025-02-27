@@ -1,11 +1,10 @@
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import { CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { WitnessParams } from '@xyo-network/witness-model'
+import { CoingeckoCryptoMarketPayload, CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { WitnessParams } from '@xyo-network/witness-model'
 
-import type { CoingeckoCryptoMarketWitnessConfig } from './Config.ts'
+import { CoingeckoCryptoMarketWitnessConfig } from './Config.ts'
 import { pricesFromCoingecko } from './lib/index.ts'
 import { CoingeckoCryptoMarketWitnessConfigSchema } from './Schema.ts'
 

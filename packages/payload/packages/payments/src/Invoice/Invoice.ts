@@ -1,7 +1,7 @@
-import type { Discount } from '../Discount/index.ts'
-import type { Payment } from '../Payment/index.ts'
-import type { Subtotal } from '../Subtotal/index.ts'
-import type { Total } from '../Total/index.ts'
+import { Discount } from '../Discount/index.ts'
+import { Payment } from '../Payment/index.ts'
+import { Subtotal } from '../Subtotal/index.ts'
+import { Total } from '../Total/index.ts'
 
 /**
  * A tuple containing the subtotal, total, and payment for an invoice.

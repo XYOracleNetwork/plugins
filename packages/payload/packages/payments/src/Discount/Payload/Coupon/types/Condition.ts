@@ -1,6 +1,6 @@
 import { AsObjectFactory } from '@xylabs/object'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
-import { type SchemaPayload, SchemaSchema } from '@xyo-network/schema-payload-plugin'
+import { SchemaPayload, SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
 /**
  * The payloads that can be used as conditions for a coupon

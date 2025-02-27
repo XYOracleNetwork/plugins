@@ -1,7 +1,7 @@
 import { AsObjectFactory } from '@xylabs/object'
 
 import {
-  type FixedAmountCoupon, type FixedPercentageCoupon, type FixedPriceCoupon,
+  FixedAmountCoupon, FixedPercentageCoupon, FixedPriceCoupon,
   isFixedAmountCoupon, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
   isFixedPercentageCouponWithSources,
   isFixedPriceCoupon,

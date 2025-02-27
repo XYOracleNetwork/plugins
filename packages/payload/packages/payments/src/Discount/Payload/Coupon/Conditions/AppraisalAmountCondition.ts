@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-thenable */
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
-import type { Condition } from '../types/index.ts'
+import { Condition } from '../types/index.ts'
 
 /**
  * Creates a coupon condition that requires an appraisal amount below a certain value

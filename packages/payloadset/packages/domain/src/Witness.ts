@@ -1,12 +1,11 @@
-import type { Promisable } from '@xylabs/promise'
+import { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { DomainSchema } from '@xyo-network/domain-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 
-import type { DomainWitnessConfig } from './Config.ts'
-import { DomainWitnessConfigSchema } from './Config.ts'
+import { DomainWitnessConfig, DomainWitnessConfigSchema } from './Config.ts'
 
 export type DomainWitnessParams = WitnessParams<AnyConfigSchema<DomainWitnessConfig>>
 export class DomainWitness<TParams extends DomainWitnessParams = DomainWitnessParams> extends AbstractWitness<TParams> implements WitnessModule {

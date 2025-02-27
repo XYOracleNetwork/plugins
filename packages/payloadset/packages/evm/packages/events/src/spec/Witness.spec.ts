@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { ERC1155__factory } from '@xyo-network/open-zeppelin-typechain'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import {
   describe, expect,
@@ -10,8 +9,9 @@ import {
 } from 'vitest'
 
 import { EvmEventsWitnessConfigSchema } from '../model.ts'
-import type { EvmEvent, EvmEvents } from '../Payload.ts'
-import { EvmEventSchema, EvmEventsSchema } from '../Payload.ts'
+import {
+  EvmEvent, EvmEvents, EvmEventSchema, EvmEventsSchema,
+} from '../Payload.ts'
 import { EvmEventsWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {

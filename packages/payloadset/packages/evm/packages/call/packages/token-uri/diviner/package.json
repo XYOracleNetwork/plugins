@@ -29,21 +29,21 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xyo-network/diviner-abstract": "^3.9.16",
-    "@xyo-network/diviner-model": "^3.9.16",
+    "@xyo-network/diviner-abstract": "^3.9.17",
+    "@xyo-network/diviner-model": "^3.9.17",
     "@xyo-network/evm-call-witness": "workspace:^",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.9.16",
-    "@xyo-network/payload-model": "^3.9.16",
+    "@xyo-network/module-model": "^3.9.17",
+    "@xyo-network/payload-model": "^3.9.17",
     "ethers": "^6.13.5"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.24",
-    "@xylabs/tsconfig": "^5.0.24",
+    "@xylabs/ts-scripts-yarn3": "^5.0.25",
+    "@xylabs/tsconfig": "^5.0.25",
     "@xylabs/vitest-extended": "^4.5.1",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:^",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.6"
+    "vitest": "^3.0.7"
   },
   "publishConfig": {
     "access": "public"

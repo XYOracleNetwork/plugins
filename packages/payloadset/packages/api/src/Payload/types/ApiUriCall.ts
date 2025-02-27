@@ -1,7 +1,7 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { ApiCallSchema } from '../Schema.ts'
-import type { ApiCallFields } from './ApiCallFields.ts'
+import { ApiCallSchema } from '../Schema.ts'
+import { ApiCallFields } from './ApiCallFields.ts'
 
 export type ApiUriCallPayload = Payload<
   ApiCallFields & {

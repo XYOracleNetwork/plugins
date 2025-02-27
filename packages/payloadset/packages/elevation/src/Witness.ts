@@ -1,20 +1,19 @@
 import { assertEx } from '@xylabs/assert'
 import { MercatorBoundingBox } from '@xylabs/geo'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
-import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'
-import type {
+import { ElevationPayload, ElevationSchema } from '@xyo-network/elevation-payload-plugin'
+import {
   GeographicCoordinateSystemLocation, Location, LocationPayload, QuadkeyLocation,
 } from '@xyo-network/location-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
 import { Quadkey } from '@xyo-network/quadkey'
-import type {
+import {
   WitnessConfig, WitnessModule, WitnessParams,
 } from '@xyo-network/witness-model'
-import type { GeoTIFFImage, TypedArray } from 'geotiff'
-import type GeoTIFF from 'geotiff'
-import { fromFile } from 'geotiff'
+import GeoTIFF, {
+  fromFile, GeoTIFFImage, TypedArray,
+} from 'geotiff'
 
 export type ElevationWitnessConfigSchema = 'network.xyo.elevation.config'
 export const ElevationWitnessConfigSchema: ElevationWitnessConfigSchema = 'network.xyo.elevation.config'

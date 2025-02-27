@@ -1,5 +1,5 @@
-import type { NftCollectionMetrics, NftTraitMetrics } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import type { NftInfoFields, OpenSeaNftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
+import { NftCollectionMetrics, NftTraitMetrics } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import { NftInfoFields, OpenSeaNftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
 
 import { calculateAllPropertiesDistribution, calculateBinomialParamsFromProbability } from './lib/index.ts'
 

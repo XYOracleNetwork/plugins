@@ -12,25 +12,20 @@ import { isBoundWitnessWithStorageMeta } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import type {
+import {
   ImageThumbnail,
   ImageThumbnailDivinerQuery,
-} from '@xyo-network/image-thumbnail-payload-plugin'
-import {
   ImageThumbnailDivinerQuerySchema,
   isImageThumbnailResultIndex,
   isImageThumbnailResultWithSources,
 } from '@xyo-network/image-thumbnail-payload-plugin'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import type { ModuleState } from '@xyo-network/module-model'
-import { isModuleState } from '@xyo-network/module-model'
-import type { MemoryNode } from '@xyo-network/node-memory'
+import { isModuleState, ModuleState } from '@xyo-network/module-model'
+import { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { type Payload, type WithStorageMeta } from '@xyo-network/payload-model'
-import type { TimeStamp } from '@xyo-network/witness-timestamp'
-import { TimestampSchema } from '@xyo-network/witness-timestamp'
+import { Payload, WithStorageMeta } from '@xyo-network/payload-model'
+import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
   beforeAll,
   describe, expect,

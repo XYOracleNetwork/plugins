@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { DurationFields } from '../Duration.ts'
+import { DurationFields } from '../Duration.ts'
 
 // Record Validations
 export const validateDuration = (recordPayload: Payload<DurationFields>): boolean => {

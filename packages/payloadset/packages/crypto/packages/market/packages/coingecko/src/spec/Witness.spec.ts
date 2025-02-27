@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import { CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import { CoingeckoCryptoMarketPayload, CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import {
   describe, expect,

@@ -2,28 +2,31 @@ import { filterAs } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
 import { AsObjectFactory } from '@xylabs/object'
-import type { ArchivistInstance, ArchivistNextOptions } from '@xyo-network/archivist-model'
+import { ArchivistInstance, ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
-import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { asBoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import {
+  asBoundWitness, BoundWitness, isBoundWitness,
+} from '@xyo-network/boundwitness-model'
 import { payloadSchemasContainsAll } from '@xyo-network/boundwitness-validator'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerWrapper } from '@xyo-network/diviner-wrapper'
-import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ImageThumbnailSchema, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import type { ModuleState } from '@xyo-network/module-model'
-import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import {
-  type Payload, type Schema, SequenceConstants,
+  ImageThumbnail, ImageThumbnailSchema, isImageThumbnail,
+} from '@xyo-network/image-thumbnail-payload-plugin'
+import {
+  isModuleState, ModuleState, ModuleStateSchema,
+} from '@xyo-network/module-model'
+import {
+  Payload, Schema, SequenceConstants,
 } from '@xyo-network/payload-model'
-import type { TimeStamp } from '@xyo-network/witness-timestamp'
-import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
+import {
+  isTimestamp, TimeStamp, TimestampSchema,
+} from '@xyo-network/witness-timestamp'
 
-import type { ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels.ts'
-import { ImageThumbnailDivinerLabels } from '../ImageThumbnailDivinerLabels.ts'
-import type { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState.ts'
+import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from '../ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailDivinerState } from '../ImageThumbnailDivinerState.ts'
 import { ImageThumbnailStateToIndexCandidateDivinerConfigSchema } from './Config.ts'
-import type { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params.ts'
+import { ImageThumbnailStateToIndexCandidateDivinerParams } from './Params.ts'
 
 /**
  * All Payload types involved in index candidates for indexing

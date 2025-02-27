@@ -1,5 +1,5 @@
-import type { RebillyApiDomainSettings } from '@xyo-network/rebilly-payment-payload-plugin'
-import type { SentinelConfig } from '@xyo-network/sentinel-model'
+import { RebillyApiDomainSettings } from '@xyo-network/rebilly-payment-payload-plugin'
+import { SentinelConfig } from '@xyo-network/sentinel-model'
 
 import { RebillyPaymentCardAuthorizationSentinelSchema } from './Schema.ts'
 

@@ -1,7 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources,
+  isPayloadOfSchemaTypeWithSources, Payload,
 } from '@xyo-network/payload-model'
 
 import { UtmSchema } from './Schema.ts'

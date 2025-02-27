@@ -1,5 +1,4 @@
-import type { AxiosResponse } from 'axios'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { toByteArray } from 'base64-js'
 import { Builder, parseStringPromise } from 'xml2js'
 

@@ -1,7 +1,7 @@
-import type { ModuleIdentifier } from '@xyo-network/module-model'
-import type { WitnessConfig } from '@xyo-network/witness-model'
+import { ModuleIdentifier } from '@xyo-network/module-model'
+import { WitnessConfig } from '@xyo-network/witness-model'
 
-import type { DNSResourceRecordType } from '../types/index.ts'
+import { DNSResourceRecordType } from '../types/index.ts'
 import { DNSSchema } from './Schema.ts'
 
 export type DNSWitnessConfigSchema = `${DNSSchema}.witness.config`

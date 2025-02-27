@@ -1,6 +1,5 @@
-import type { PayloadDivinerPredicate } from '@xyo-network/diviner-payload-model'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { PayloadDivinerPredicate } from '@xyo-network/diviner-payload-model'
+import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
 
 import { ImageThumbnailDivinerSchema } from './Schema.ts'
 

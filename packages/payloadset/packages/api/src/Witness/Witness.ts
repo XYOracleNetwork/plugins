@@ -1,36 +1,32 @@
 /* eslint-disable max-statements */
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
-import type { Hash } from '@xylabs/hex'
+import { Hash } from '@xylabs/hex'
 import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
-import type { AxiosError } from 'axios'
-import { Axios } from 'axios'
+import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
+import { Axios, AxiosError } from 'axios'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
 import { checkIpfsUrl } from '../lib/index.ts'
-import type {
+import {
   ApiCallBase64Result,
   ApiCallErrorResult,
   ApiCallJsonResult,
   ApiCallJsonResultType,
   ApiCallPayload,
   ApiCallResult,
-  ApiCallXmlResult,
-  MimeTypes,
-} from '../Payload/index.ts'
-import {
   ApiCallResultSchema,
   ApiCallSchema,
+  ApiCallXmlResult,
   asApiUriCallPayload,
   asApiUriTemplateCall,
+  MimeTypes,
 } from '../Payload/index.ts'
 import { asApiUriCallWitnessConfig, asApiUriTemplateCallWitnessConfig } from './Config.ts'
-import type { ApiCallWitnessParams } from './Params.ts'
+import { ApiCallWitnessParams } from './Params.ts'
 import { ApiCallWitnessConfigSchema } from './Schema.ts'
 
 export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnessParams> extends AbstractWitness<TParams, ApiCallPayload, ApiCallResult> {
@@ -120,7 +116,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     }
   }
 
-  // eslint-disable-next-line complexity, sonarjs/cognitive-complexity
+  // eslint-disable-next-line complexity
   private async httpGet(url: string, call: Hash, headers?: Record<string, string | undefined>): Promise<ApiCallResult> {
     const result: ApiCallResult = {
       call,

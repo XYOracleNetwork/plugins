@@ -1,5 +1,5 @@
-import type { UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import type { WitnessConfig } from '@xyo-network/witness-model'
+import { UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { WitnessConfig } from '@xyo-network/witness-model'
 
 export type UniswapCryptoMarketWitnessConfig = WitnessConfig<{
   pools?: string[]

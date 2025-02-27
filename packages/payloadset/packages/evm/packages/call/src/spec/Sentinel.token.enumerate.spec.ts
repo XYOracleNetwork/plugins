@@ -14,8 +14,7 @@ import { Erc1822Witness } from '@xyo-network/erc1822-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
 import { EvmContractWitness } from '@xyo-network/evm-contract-witness'
 import { EvmTokenInterfaceImplementedDiviner } from '@xyo-network/evm-token-interface-diviner'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import {
@@ -23,8 +22,9 @@ import {
 } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { AdhocWitness } from '@xyo-network/witness-adhoc'
-import type { EvmAddress } from '@xyo-network/witness-evm-abstract'
-import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
+import {
+  EvmAddress, EvmAddressSchema, getProvidersFromEnv,
+} from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import {
   afterAll,

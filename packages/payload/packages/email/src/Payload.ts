@@ -1,12 +1,10 @@
 import { assertEx } from '@xylabs/assert'
 import { AsObjectFactory } from '@xylabs/object'
-import type {
-  PayloadWithOptionalSources,
-  WithSources,
-} from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
+  PayloadWithOptionalSources,
+  WithSources,
 } from '@xyo-network/payload-model'
 
 import { EmailAddressSchema } from './Schema.ts'

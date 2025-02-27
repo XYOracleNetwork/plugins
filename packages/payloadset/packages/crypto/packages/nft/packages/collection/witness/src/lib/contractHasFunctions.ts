@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import type { Interface, Provider } from 'ethers'
+import { Interface, Provider } from 'ethers'
 
 export const contractHasFunctions = async (provider: Provider, address: string, contractInterface: Interface, functionNames: string[]) => {
   try {

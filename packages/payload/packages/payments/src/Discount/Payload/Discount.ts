@@ -1,11 +1,10 @@
 import { AsObjectFactory } from '@xylabs/object'
-import type { PayloadWithOptionalSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources,
+  isPayloadOfSchemaTypeWithSources, PayloadWithOptionalSources, WithSources,
 } from '@xyo-network/payload-model'
 
-import type { AmountFields } from '../../Amount/index.ts'
+import { AmountFields } from '../../Amount/index.ts'
 
 export const DiscountSchema = 'network.xyo.payments.discount' as const
 export type DiscountSchema = typeof DiscountSchema

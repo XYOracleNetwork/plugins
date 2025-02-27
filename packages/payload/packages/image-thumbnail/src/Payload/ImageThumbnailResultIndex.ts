@@ -1,9 +1,9 @@
-import type { Hash } from '@xylabs/hex'
-import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import { Hash } from '@xylabs/hex'
+import {
+  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources, Payload,
+} from '@xyo-network/payload-model'
 
-import type { ImageThumbnailResultFields } from './ImageThumbnailResult.ts'
-import { ImageThumbnailResultSchema } from './ImageThumbnailResult.ts'
+import { ImageThumbnailResultFields, ImageThumbnailResultSchema } from './ImageThumbnailResult.ts'
 
 export const ImageThumbnailResultIndexSchema = `${ImageThumbnailResultSchema}.index` as const
 export type ImageThumbnailResultIndexSchema = typeof ImageThumbnailResultIndexSchema

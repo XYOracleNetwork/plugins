@@ -1,19 +1,15 @@
-import type { Address } from '@xylabs/hex'
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
-import { type HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
-import type { IdPayload } from '@xyo-network/id-payload-plugin'
-import { IdSchema } from '@xyo-network/id-payload-plugin'
+import { Address } from '@xylabs/hex'
+import { HDWallet, WalletInstance } from '@xyo-network/account'
+import { HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type {
-  BuyerCondition,
-  Condition, Coupon, EscrowTerms,
-} from '@xyo-network/payment-payload-plugins'
 import {
-  createConditionForMaximumAppraisalAmount,
-  createConditionForMinimumAssetQuantity, createConditionForRequiredBuyer, EscrowTermsSchema, FixedAmountCouponSchema,
+  BuyerCondition,
+  Condition, Coupon, createConditionForMaximumAppraisalAmount,
+  createConditionForMinimumAssetQuantity, createConditionForRequiredBuyer, EscrowTerms,
+  EscrowTermsSchema, FixedAmountCouponSchema,
 } from '@xyo-network/payment-payload-plugins'
-import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
+import { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import {
   beforeEach, describe, expect,
   it,

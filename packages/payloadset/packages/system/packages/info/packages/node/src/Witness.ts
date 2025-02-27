@@ -1,12 +1,11 @@
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { AnyConfigSchema } from '@xyo-network/module-model'
 import { defaultSystemInfoConfig, NodeSystemInfoSchema } from '@xyo-network/node-system-info-payload-plugin'
-import type { Payload, Schema } from '@xyo-network/payload-model'
-import type { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
+import { Payload, Schema } from '@xyo-network/payload-model'
+import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 import { get } from 'systeminformation'
 
-import type { NodeSystemInfoWitnessConfig } from './Config.ts'
-import { NodeSystemInfoWitnessConfigSchema } from './Config.ts'
+import { NodeSystemInfoWitnessConfig, NodeSystemInfoWitnessConfigSchema } from './Config.ts'
 
 export type NodeSystemInfoWitnessParams = WitnessParams<AnyConfigSchema<NodeSystemInfoWitnessConfig>>
 

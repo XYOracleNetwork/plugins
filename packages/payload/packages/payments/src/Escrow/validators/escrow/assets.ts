@@ -1,6 +1,6 @@
-import type { SyncPayloadValidationFunction } from '@xyo-network/payload-model'
+import { SyncPayloadValidationFunction } from '@xyo-network/payload-model'
 
-import type { EscrowTerms } from '../../Terms/index.ts'
+import { EscrowTerms } from '../../Terms/index.ts'
 
 const name = 'EscrowTerms.assets'
 

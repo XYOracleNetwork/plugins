@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { EthereumGasEtherscanPayload } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
-import { EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
+import { EthereumGasEtherscanPayload, EthereumGasEtherscanSchema } from '@xyo-network/etherscan-ethereum-gas-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import {
   describe, expect,

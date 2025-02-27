@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { ApiCallResult } from '@xyo-network/api-call-witness'
+import { ApiCallResult } from '@xyo-network/api-call-witness'
 import {
   describe, expect,
   it,

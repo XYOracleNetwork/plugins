@@ -1,11 +1,11 @@
 import { isHexZero } from '@xylabs/hex'
-import type { NftInfoFields, TokenType } from '@xyo-network/crypto-nft-payload-plugin'
+import { NftInfoFields, TokenType } from '@xyo-network/crypto-nft-payload-plugin'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import {
   ERC721__factory, ERC1155__factory, ERC1155Supply__factory,
 } from '@xyo-network/open-zeppelin-typechain'
-import type { Provider } from 'ethers'
+import { Provider } from 'ethers'
 import { LRUCache } from 'lru-cache'
 
 import { getNftMetadata } from './getNftMetadata.ts'

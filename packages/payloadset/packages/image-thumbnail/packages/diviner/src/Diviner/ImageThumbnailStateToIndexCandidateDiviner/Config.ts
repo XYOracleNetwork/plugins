@@ -1,5 +1,5 @@
-import type { DivinerConfig } from '@xyo-network/diviner-model'
-import type { SearchableStorage } from '@xyo-network/image-thumbnail-payload-plugin'
+import { DivinerConfig } from '@xyo-network/diviner-model'
+import { SearchableStorage } from '@xyo-network/image-thumbnail-payload-plugin'
 
 import { ImageThumbnailStateToIndexCandidateDivinerSchema } from './Schema.ts'
 

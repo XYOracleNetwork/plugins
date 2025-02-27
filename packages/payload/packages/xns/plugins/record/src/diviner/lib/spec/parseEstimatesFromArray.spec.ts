@@ -1,11 +1,10 @@
 import { matchers } from '@xylabs/vitest-matchers'
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 import {
   describe, expect, it,
 } from 'vitest'
 
-import type { Estimate } from '../parseEstimatesFromArray.ts'
-import { parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'
+import { Estimate, parseEstimatesFromArray } from '../parseEstimatesFromArray.ts'
 
 expect.extend(matchers)
 

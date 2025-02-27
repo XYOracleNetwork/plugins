@@ -25,8 +25,7 @@ describe('isEthereumGasEtherscanPayload', () => {
       expect(result).toBeFalse()
     })
     it('when payload is undefined', () => {
-      // eslint-disable-next-line unicorn/no-useless-undefined
-      const result = isEthereumGasEtherscanPayload(undefined)
+      const result = isEthereumGasEtherscanPayload()
       expect(result).toBeFalse()
     })
     it('when payload is null', () => {

@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
-import type { NodeSystemInfoSchema } from './Schema.ts'
+import { NodeSystemInfoSchema } from './Schema.ts'
 
 export type NodeSystemInfoPayload = Payload<{
   schema: NodeSystemInfoSchema

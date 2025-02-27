@@ -1,5 +1,5 @@
-import type { EthereumGasBlocknativePayload } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
-import type {
+import { EthereumGasBlocknativePayload } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
+import {
   FeeData, FeePerGas, PriorityFeePerGas,
 } from '@xyo-network/gas-price-payload-plugin'
 import regression from 'regression'

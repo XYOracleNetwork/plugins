@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import type { AbstractModuleInstancePayload } from './Payload.ts'
+import { AbstractModuleInstancePayload } from './Payload.ts'
 import { AbstractModuleInstanceSchema } from './Schema.ts'
 import { moduleInstancePayloadTemplate } from './Template.ts'
 

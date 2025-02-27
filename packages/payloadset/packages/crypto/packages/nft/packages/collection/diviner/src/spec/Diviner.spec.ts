@@ -3,13 +3,11 @@ import '@xylabs/vitest-extended'
 import { readFile, writeFile } from 'node:fs/promises'
 
 import { Account } from '@xyo-network/account'
-import type {
-  NftCollectionInfo,
-  NftCollectionScore,
-} from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionScore,
+  NftCollectionInfo,
   NftCollectionSchema,
+  NftCollectionScore,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import {

@@ -1,5 +1,5 @@
-import type { EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
-import type { Fragment, JsonFragment } from 'ethers'
+import { EvmWitnessConfig, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import { Fragment, JsonFragment } from 'ethers'
 
 export type InterfaceAbi = string | ReadonlyArray<Fragment | JsonFragment | string>
 

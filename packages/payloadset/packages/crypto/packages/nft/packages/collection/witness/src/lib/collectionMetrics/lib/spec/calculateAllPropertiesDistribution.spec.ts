@@ -3,7 +3,7 @@ import '@xylabs/vitest-extended'
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
-import type { NftInfo, OpenSeaNftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
+import { NftInfo, OpenSeaNftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
 import {
   describe, expect,
   test,

@@ -1,7 +1,7 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { Payload } from '@xyo-network/payload-model'
 
 import { NftSchema } from '../Schema.ts'
-import type { NftInfoFields } from './NftInfo/index.ts'
+import { NftInfoFields } from './NftInfo/index.ts'
 
 export type NftInfo = Payload<NftInfoFields, NftSchema>
 

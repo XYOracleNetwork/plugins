@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
-import { type DNSRequestHeader, StandardRequestHeader } from './Header.ts'
-import type { DNSResourceRecordTypeValue } from './ResourceRecord.ts'
-import { DNSResourceRecordTypes } from './ResourceRecord.ts'
+import { DNSRequestHeader, StandardRequestHeader } from './Header.ts'
+import { DNSResourceRecordTypes, DNSResourceRecordTypeValue } from './ResourceRecord.ts'
 
 export interface DNSQuestion {
   name: string // The domain name that was queried

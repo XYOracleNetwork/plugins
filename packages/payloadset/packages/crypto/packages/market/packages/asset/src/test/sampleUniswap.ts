@@ -1,5 +1,4 @@
-import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import { UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 export const sampleUniswapPayload: UniswapCryptoMarketPayload = {
   pairs: [

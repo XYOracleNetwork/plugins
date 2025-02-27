@@ -1,5 +1,4 @@
-import type { EthereumGasEthersPayload } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
-import { EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import { EthereumGasEthersPayload, EthereumGasEthersSchema } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
 
 export const sampleEthersGas: EthereumGasEthersPayload = {
   gasPrice: 13_547_863_640,

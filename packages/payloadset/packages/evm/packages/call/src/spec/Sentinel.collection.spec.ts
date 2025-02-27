@@ -7,8 +7,7 @@ import {
 } from '@xylabs/profile'
 import { HDWallet } from '@xyo-network/account'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import {
@@ -18,16 +17,16 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProviderFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
-import type { Provider } from 'ethers'
+import { Provider } from 'ethers'
 import {
   afterAll, describe, expect,
   it,
 } from 'vitest'
 
-import type { EvmCallResults } from '../Diviner.ts'
-import { EvmCallDiviner, EvmCallResultsSchema } from '../Diviner.ts'
-import type { EvmCall } from '../Payload.ts'
-import { EvmCallSchema } from '../Payload.ts'
+import {
+  EvmCallDiviner, EvmCallResults, EvmCallResultsSchema,
+} from '../Diviner.ts'
+import { EvmCall, EvmCallSchema } from '../Payload.ts'
 import { EvmCallWitness } from '../Witness.ts'
 import erc721SentinelManifest from './Erc721Sentinel.json' assert { type: 'json' }
 

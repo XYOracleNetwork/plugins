@@ -1,5 +1,5 @@
-import type { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
-import type { DomainFields } from '@xyo-network/xns-record-payload-plugins'
+import { Payload, PayloadValidationFunction } from '@xyo-network/payload-model'
+import { DomainFields } from '@xyo-network/xns-record-payload-plugins'
 
 export const getDomainReservedStringsValidator = (
   reservedStrings: string[],

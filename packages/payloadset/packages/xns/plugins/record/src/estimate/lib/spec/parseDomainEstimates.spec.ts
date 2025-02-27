@@ -1,5 +1,5 @@
-import type { Payload } from '@xyo-network/payload-model'
-import type { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
+import { Payload } from '@xyo-network/payload-model'
+import { DomainEstimate, Estimate } from '@xyo-network/xns-record-payload-plugins'
 import {
   describe, expect, it,
 } from 'vitest'

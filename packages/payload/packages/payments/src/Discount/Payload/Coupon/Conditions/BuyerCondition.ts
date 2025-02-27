@@ -1,7 +1,7 @@
-import type { Address } from '@xylabs/hex'
+import { Address } from '@xylabs/hex'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
-import type { Condition } from '../types/index.ts'
+import { Condition } from '../types/index.ts'
 
 export type BuyerCondition = Condition & {
   definition: {

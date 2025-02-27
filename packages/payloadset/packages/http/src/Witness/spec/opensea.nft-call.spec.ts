@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { HDWallet } from '@xyo-network/account'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
+import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
@@ -13,8 +12,9 @@ import {
   it,
 } from 'vitest'
 
-import type { HttpCallJsonResult, HttpUriTemplateCall } from '../../Payload/index.ts'
-import { HttpCallResultSchema, HttpCallSchema } from '../../Payload/index.ts'
+import {
+  HttpCallJsonResult, HttpCallResultSchema, HttpCallSchema, HttpUriTemplateCall,
+} from '../../Payload/index.ts'
 import { HttpCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json' assert { type: 'json' }
 

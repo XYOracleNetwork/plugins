@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
-import type { WitnessConfig } from '@xyo-network/witness-model'
-import type { JsonFragment } from 'ethers'
+import { Payload } from '@xyo-network/payload-model'
+import { WitnessConfig } from '@xyo-network/witness-model'
+import { JsonFragment } from 'ethers'
 
 export const CryptoContractFunctionReadWitnessConfigSchema = 'network.xyo.crypto.contract.function.read.config'
 export type CryptoContractFunctionReadWitnessConfigSchema = typeof CryptoContractFunctionReadWitnessConfigSchema

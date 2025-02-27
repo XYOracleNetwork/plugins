@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { HDWallet } from '@xyo-network/account'
-import type { ApiCallResult } from '@xyo-network/api-call-witness'
+import { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 import {
   describe, expect,

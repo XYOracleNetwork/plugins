@@ -1,5 +1,5 @@
 import { exists } from '@xylabs/exists'
-import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
+import { FeeData } from '@xyo-network/gas-price-payload-plugin'
 
 /**
  * Averages an array of numbers
