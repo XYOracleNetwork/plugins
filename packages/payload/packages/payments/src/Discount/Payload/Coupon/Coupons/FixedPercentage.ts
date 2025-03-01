@@ -2,7 +2,7 @@ import { AsObjectFactory } from '@xylabs/object'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
-  Payload, PayloadWithOptionalSources, WithSources,
+  Payload, WithSources,
 } from '@xyo-network/payload-model'
 
 import { CouponSchema } from '../Schema.ts'
@@ -18,7 +18,7 @@ export interface FixedPercentageCouponFields extends CouponFields {
 /**
  * A coupon that provides a fixed discount amount
  */
-export type FixedPercentageCoupon = PayloadWithOptionalSources<Payload<FixedPercentageCouponFields, FixedPercentageCouponSchema>>
+export type FixedPercentageCoupon = Payload<FixedPercentageCouponFields, FixedPercentageCouponSchema>
 
 /**
  * Identity function for determining if an object is an FixedPercentageCoupon

@@ -1,7 +1,7 @@
 import { Address } from '@xylabs/hex'
 import { HDWallet, WalletInstance } from '@xyo-network/account'
 import { HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
-import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
+import { Id, IdSchema } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   BuyerCondition,
@@ -49,8 +49,8 @@ describe('findUnfulfilledConditions', () => {
   }
   const appraisals = [appraisal1, appraisal2]
 
-  const asset1: IdPayload = { schema: IdSchema, salt: nbf.toString() }
-  const asset2: IdPayload = { schema: IdSchema, salt: exp.toString() }
+  const asset1: Id = { schema: IdSchema, salt: nbf.toString() }
+  const asset2: Id = { schema: IdSchema, salt: exp.toString() }
   const assets = [asset1, asset2]
 
   beforeEach(async () => {

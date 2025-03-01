@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
+import { Id, IdSchema } from '@xyo-network/id-payload-plugin'
 import { Payload } from '@xyo-network/payload-model'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import {
@@ -23,14 +23,14 @@ describe('IdWitness', () => {
       describe('with payloads supplied to observe', () => {
         it('without salt uses config salt', async () => {
           const witness = await IdWitness.create({ account: 'random', config })
-          const observations = (await witness.observe()) as IdPayload[]
+          const observations = (await witness.observe()) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(observation.salt).toBe(witness.config.salt)
         })
         it('with salt uses payload salt', async () => {
           const witness = await IdWitness.create({ account: 'random', config })
-          const observations = (await witness.observe([{ salt: payloadSalt, schema: IdSchema }] as IdPayload[])) as IdPayload[]
+          const observations = (await witness.observe([{ salt: payloadSalt, schema: IdSchema }] as Id[])) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(observation.salt).toBe(payloadSalt)
@@ -39,7 +39,7 @@ describe('IdWitness', () => {
       describe('with no payloads supplied to observe', () => {
         it('uses config salt', async () => {
           const witness = await IdWitness.create({ account: 'random', config })
-          const observations = (await witness.observe()) as IdPayload[]
+          const observations = (await witness.observe()) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(observation.salt).toBe(witness.config.salt)
@@ -50,14 +50,14 @@ describe('IdWitness', () => {
       describe('with payloads supplied to observe', () => {
         it('without salt uses random numeric string', async () => {
           const witness = await IdWitness.create({ account: 'random' })
-          const observations = (await witness.observe()) as IdPayload[]
+          const observations = (await witness.observe()) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(Number.parseInt(observation.salt)).toBeInteger()
         })
         it('with salt uses payload salt', async () => {
           const witness = await IdWitness.create({ account: 'random' })
-          const observations = (await witness.observe([{ salt: payloadSalt, schema: IdSchema } as Payload])) as IdPayload[]
+          const observations = (await witness.observe([{ salt: payloadSalt, schema: IdSchema } as Payload])) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(observation.salt).toBe(payloadSalt)
@@ -66,7 +66,7 @@ describe('IdWitness', () => {
       describe('with no payloads supplied to observe', () => {
         it('uses random numeric string', async () => {
           const witness = await IdWitness.create({ account: 'random' })
-          const observations = (await witness.observe()) as IdPayload[]
+          const observations = (await witness.observe()) as Id[]
           await validateObservationShape(observations)
           const [observation] = observations
           expect(Number.parseInt(observation.salt)).toBeInteger()
@@ -76,7 +76,7 @@ describe('IdWitness', () => {
   })
 })
 
-const validateObservationShape = async (observations: IdPayload[]) => {
+const validateObservationShape = async (observations: Id[]) => {
   expect(observations).toBeArrayOfSize(1)
   const [observation] = observations
   expect(observation.salt).toBeString()

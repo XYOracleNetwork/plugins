@@ -1,6 +1,6 @@
 import { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { IdPayload, IdSchema } from '@xyo-network/id-payload-plugin'
+import { Id, IdSchema } from '@xyo-network/id-payload-plugin'
 import { AnyConfigSchema } from '@xyo-network/module-model'
 import { Payload, Schema } from '@xyo-network/payload-model'
 import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
@@ -25,7 +25,7 @@ export class IdWitness<TParams extends IdWitnessParams = IdWitnessParams> extend
 
   protected override observeHandler(payloads: Payload[] = []): Promisable<Payload[]> {
     return payloads.length > 0
-      ? (payloads as IdPayload[]).map((fieldItems) => {
+      ? (payloads as Id[]).map((fieldItems) => {
           return {
             salt: fieldItems?.salt ?? this.salt,
             schema: IdSchema,

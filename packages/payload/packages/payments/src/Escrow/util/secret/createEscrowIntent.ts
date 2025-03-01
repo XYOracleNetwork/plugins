@@ -1,6 +1,6 @@
 import { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { IdPayload } from '@xyo-network/id-payload-plugin'
+import { Id } from '@xyo-network/id-payload-plugin'
 
 import { EscrowTerms } from '../../Terms/index.ts'
 
@@ -11,7 +11,7 @@ import { EscrowTerms } from '../../Terms/index.ts'
  * @param account The account to create the escrow intent with
  * @returns The escrow intent
  */
-export const createEscrowIntentWithSecret = async (terms: EscrowTerms, secret: IdPayload, account: AccountInstance) => {
+export const createEscrowIntentWithSecret = async (terms: EscrowTerms, secret: Id, account: AccountInstance) => {
   const result = await new BoundWitnessBuilder().signers([account]).payloads([terms, secret]).build()
   return result
 }

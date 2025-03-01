@@ -3,7 +3,7 @@ import { AsObjectFactory } from '@xylabs/object'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
-  PayloadWithOptionalSources,
+  Payload,
   WithSources,
 } from '@xyo-network/payload-model'
 
@@ -33,7 +33,7 @@ export interface EmailFields {
 /**
  * An email address
  */
-export type Email = PayloadWithOptionalSources<EmailFields, EmailAddressSchema>
+export type Email = Payload<EmailFields, EmailAddressSchema>
 
 /**
  * Tries to create an Email from a string

@@ -1,7 +1,7 @@
 import { AsObjectFactory } from '@xylabs/object'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources, PayloadWithOptionalSources, WithSources,
+  isPayloadOfSchemaTypeWithSources, Payload, WithSources,
 } from '@xyo-network/payload-model'
 
 import {
@@ -12,7 +12,7 @@ import { DNSSchema } from '../Schema.ts'
 /**
  * The fields of a DNSRequest payload
  */
-export type DNSRequest = PayloadWithOptionalSources<DNSRequestFields, DNSSchema>
+export type DNSRequest = Payload<DNSRequestFields, DNSSchema>
 
 /**
  * Identity function for determining if an object is a DNSRequest payload

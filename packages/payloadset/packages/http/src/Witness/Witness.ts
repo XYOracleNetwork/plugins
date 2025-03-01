@@ -4,7 +4,7 @@ import { AxiosJson } from '@xylabs/axios'
 import { Hash } from '@xylabs/hex'
 import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { PayloadHasher } from '@xyo-network/hash'
+import { ObjectHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
 import { Axios, AxiosError } from 'axios'
@@ -105,7 +105,7 @@ export class HttpCallWitness<TParams extends HttpCallWitnessParams = HttpCallWit
           }
 
           const observation: HttpCallResult = {
-            call: await PayloadHasher.hash(call),
+            call: await ObjectHasher.hash(call),
             schema: HttpCallResultSchema,
           }
           return observation

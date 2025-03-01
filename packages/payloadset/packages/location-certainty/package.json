@@ -29,26 +29,26 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xyo-network/diviner-abstract": "^3.9.17",
-    "@xyo-network/diviner-model": "^3.9.17",
+    "@xyo-network/diviner-abstract": "^3.9.23",
+    "@xyo-network/diviner-model": "^3.9.23",
     "@xyo-network/elevation-payload-plugin": "workspace:^",
     "@xyo-network/elevation-plugin": "workspace:^",
     "@xyo-network/location-certainty-payload-plugin": "workspace:^",
     "@xyo-network/location-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.9.17",
-    "@xyo-network/payload-builder": "^3.9.17",
-    "@xyo-network/payload-model": "^3.9.17",
-    "@xyo-network/payloadset-plugin": "^3.9.17"
+    "@xyo-network/module-model": "^3.9.23",
+    "@xyo-network/payload-builder": "^3.9.23",
+    "@xyo-network/payload-model": "^3.9.23",
+    "@xyo-network/payloadset-plugin": "^3.9.23"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.25",
-    "@xylabs/tsconfig": "^5.0.25",
+    "@xylabs/ts-scripts-yarn3": "^5.0.39",
+    "@xylabs/tsconfig": "^5.0.39",
     "@xylabs/vitest-extended": "^4.5.1",
-    "@xyo-network/archivist-abstract": "^3.9.17",
-    "@xyo-network/archivist-memory": "^3.9.17",
-    "@xyo-network/module-resolver": "^3.9.17",
+    "@xyo-network/archivist-abstract": "^3.9.23",
+    "@xyo-network/archivist-memory": "^3.9.23",
+    "@xyo-network/module-resolver": "^3.9.23",
     "fast-text-encoding": "^1.0.6",
-    "typescript": "^5.7.3",
+    "typescript": "^5.8.2",
     "vitest": "^3.0.7"
   },
   "publishConfig": {

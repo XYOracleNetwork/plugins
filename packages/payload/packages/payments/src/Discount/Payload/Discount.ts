@@ -1,7 +1,7 @@
 import { AsObjectFactory } from '@xylabs/object'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources, PayloadWithOptionalSources, WithSources,
+  isPayloadOfSchemaTypeWithSources, Payload, WithSources,
 } from '@xyo-network/payload-model'
 
 import { AmountFields } from '../../Amount/index.ts'
@@ -14,7 +14,7 @@ export interface DiscountFields extends AmountFields { }
 /**
  * The result of a discount
  */
-export type Discount = PayloadWithOptionalSources<DiscountFields, DiscountSchema>
+export type Discount = Payload<DiscountFields, DiscountSchema>
 
 /**
  * Identity function for determining if an object is an Discount
