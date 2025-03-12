@@ -1,10 +1,11 @@
 import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources, PayloadWithSources, WithSources,
+  isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
-import { SupportedCurrency } from '../Currency.ts'
+import type { SupportedCurrency } from '../Currency.ts'
 import { ReceiptSchema } from './Schema.ts'
 
 export interface ReceiptFields {

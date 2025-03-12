@@ -1,6 +1,5 @@
-import {
-  EstimatedBaseFee, EthereumGasBlocknativePayload, EthereumGasBlocknativeSchema,
-} from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
+import type { EstimatedBaseFee, EthereumGasBlocknativePayload } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
+import { EthereumGasBlocknativeSchema } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 
 export const sampleBlocknativeGas: EthereumGasBlocknativePayload = {
   blockPrices: [

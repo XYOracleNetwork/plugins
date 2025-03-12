@@ -1,8 +1,8 @@
-import { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/hex'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
-import { AsyncPayloadValidationFunction, Payload } from '@xyo-network/payload-model'
+import type { AsyncPayloadValidationFunction, Payload } from '@xyo-network/payload-model'
 
-import {
+import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
 } from '../../../Terms/index.ts'
 import { findEscrowPartySecretSignatures } from '../../../util/index.ts'

@@ -1,6 +1,5 @@
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources, Payload,
-} from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { ImageThumbnailSchema } from '../Schema.ts'
 

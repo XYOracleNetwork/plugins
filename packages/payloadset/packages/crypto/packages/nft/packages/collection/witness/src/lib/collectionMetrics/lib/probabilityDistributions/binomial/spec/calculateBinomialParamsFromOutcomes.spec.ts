@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import type { BinomialDistributionParameters } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   describe, expect,
   it,

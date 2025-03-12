@@ -1,5 +1,5 @@
 import { axios } from '@xylabs/axios'
-import { EthereumGasEtherchainV2Response } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
+import type { EthereumGasEtherchainV2Response } from '@xyo-network/etherchain-ethereum-gas-v2-payload-plugin'
 
 const url = 'https://beaconcha.in/api/v1/execution/gasnow'
 

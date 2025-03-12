@@ -1,8 +1,9 @@
-import { Hash } from '@xylabs/hex'
-import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
-import { Payload } from '@xyo-network/payload-model'
+import type { Hash } from '@xylabs/hex'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
+import type { Payload } from '@xyo-network/payload-model'
 
-import {
+import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
 } from '../../Terms/index.ts'
 /**

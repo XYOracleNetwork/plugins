@@ -1,12 +1,12 @@
 import { AsObjectFactory } from '@xylabs/object'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
-  Payload, WithSources,
 } from '@xyo-network/payload-model'
 
 import { CouponSchema } from '../Schema.ts'
-import { CouponFields } from '../types/index.ts'
+import type { CouponFields } from '../types/index.ts'
 
 export const FixedPercentageCouponSchema = `${CouponSchema}.fixed.percentage` as const
 export type FixedPercentageCouponSchema = typeof FixedPercentageCouponSchema

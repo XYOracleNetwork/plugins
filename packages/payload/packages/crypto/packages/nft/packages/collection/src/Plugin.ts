@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { NftCollectionInfo } from './Payload/index.ts'
+import type { NftCollectionInfo } from './Payload/index.ts'
 import { NftCollectionSchema } from './Schema.ts'
 import { cryptoNftCollectionPayloadTemplate } from './Template.ts'
 

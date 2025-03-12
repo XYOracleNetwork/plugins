@@ -1,13 +1,15 @@
-import { createServer, Server } from 'node:http'
+import type { Server } from 'node:http'
+import { createServer } from 'node:http'
 
 import { exists } from '@xylabs/exists'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { creatableModule } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { collectDefaultMetrics, Registry } from 'prom-client'
 
-import { PrometheusMetricValuePayload } from './Payload.ts'
+import type { PrometheusMetricValuePayload } from './Payload.ts'
 import { PrometheusMetricValueSchema } from './Schema.ts'
 
 export type PrometheusNodeWitnessConfigSchema = 'network.xyo.prometheus.node.witness.config'

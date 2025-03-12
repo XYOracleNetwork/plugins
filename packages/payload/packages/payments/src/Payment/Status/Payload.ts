@@ -1,7 +1,8 @@
 import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources, PayloadWithSources, WithSources,
+  isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
 import { PaymentStatusSchema } from './Schema.ts'

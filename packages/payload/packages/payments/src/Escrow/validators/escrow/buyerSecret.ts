@@ -1,10 +1,10 @@
 import { assertEx } from '@xylabs/assert'
-import { Hash } from '@xylabs/hex'
-import {
+import type { Hash } from '@xylabs/hex'
+import type {
   AsyncPayloadValidationFunction, Payload, SyncPayloadValidationFunction,
 } from '@xyo-network/payload-model'
 
-import { EscrowTerms } from '../../Terms/index.ts'
+import type { EscrowTerms } from '../../Terms/index.ts'
 import { getPartySecretSignedValidator } from '../common/index.ts'
 
 const name = 'EscrowTerms.buyerSecret'

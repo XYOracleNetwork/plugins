@@ -4,14 +4,14 @@ import '@xylabs/vitest-extended'
 import { writeFile } from 'node:fs/promises'
 
 import { Account } from '@xyo-network/account'
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
+import type { NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   isNftCollectionInfoWithSources,
   NftCollectionWitnessConfigSchema,
-  NftCollectionWitnessQuery,
   NftCollectionWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   beforeAll, describe, expect,

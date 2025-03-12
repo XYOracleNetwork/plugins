@@ -1,4 +1,4 @@
-import { Distribution } from './distribution.ts'
+import type { Distribution } from './distribution.ts'
 
 export const calculateAllPropertiesDistribution = <T>(array: T[]): Distribution<T> => {
   const distribution: Distribution<T> = {}

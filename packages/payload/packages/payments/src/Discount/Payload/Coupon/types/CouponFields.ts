@@ -1,5 +1,5 @@
-import { Hash } from '@xylabs/hex'
-import { DurationFields } from '@xyo-network/xns-record-payload-plugins'
+import type { Hash } from '@xylabs/hex'
+import type { DurationFields } from '@xyo-network/xns-record-payload-plugins'
 
 /**
  * The fields that are common across all coupons

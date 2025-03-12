@@ -1,17 +1,21 @@
 import { assertEx } from '@xylabs/assert'
 import { isHexZero } from '@xylabs/hex'
-import { JsonObject } from '@xylabs/object'
+import type { JsonObject } from '@xylabs/object'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
-import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
+import type { Schema } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
-import { Contract, InterfaceAbi } from 'ethers'
+import type { InterfaceAbi } from 'ethers'
+import { Contract } from 'ethers'
 
-import { EvmCallWitnessConfigSchema, EvmCallWitnessParams } from './model.ts'
-import {
-  EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema,
+import type { EvmCallWitnessParams } from './model.ts'
+import { EvmCallWitnessConfigSchema } from './model.ts'
+import type {
+  EvmCall, EvmCallResult,
   EvmCallSuccess,
 } from './Payload.ts'
+import { EvmCallResultSchema, EvmCallSchema } from './Payload.ts'
 
 export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnessParams> extends AbstractEvmWitness<TParams, EvmCall, EvmCallResult> {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EvmCallWitnessConfigSchema]

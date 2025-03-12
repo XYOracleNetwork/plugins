@@ -1,8 +1,9 @@
 import { exists } from '@xylabs/exists'
-import { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import { CryptoMarketAssetPayload, CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
+import type { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
+import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 import { average } from './average.ts'
 import { divineCoinGeckoPrices } from './divineCoinGeckoPrices.ts'

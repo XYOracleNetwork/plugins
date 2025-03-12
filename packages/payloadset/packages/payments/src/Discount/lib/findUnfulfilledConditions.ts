@@ -1,11 +1,12 @@
-import { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/hex'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
-import {
-  Condition, Coupon, isCondition,
-} from '@xyo-network/payment-payload-plugins'
-import { isSchemaPayload, SchemaPayload } from '@xyo-network/schema-payload-plugin'
-import { Ajv, ValidateFunction } from 'ajv'
+import type { Payload } from '@xyo-network/payload-model'
+import type { Condition, Coupon } from '@xyo-network/payment-payload-plugins'
+import { isCondition } from '@xyo-network/payment-payload-plugins'
+import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
+import { isSchemaPayload } from '@xyo-network/schema-payload-plugin'
+import type { ValidateFunction } from 'ajv'
+import { Ajv } from 'ajv'
 
 // TODO: Use our schema cache
 const ajv = new Ajv({ strict: false }) // Create the Ajv instance once

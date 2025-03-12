@@ -1,11 +1,14 @@
 import { assertEx } from '@xylabs/assert'
 import { exists } from '@xylabs/exists'
-import { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
-import {
+import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
+import type {
   AmountFields,
-  Coupon, Discount, DiscountSchema, FixedAmountCoupon,
+  Coupon, Discount, FixedAmountCoupon,
   FixedPercentageCoupon,
   FixedPriceCoupon,
+} from '@xyo-network/payment-payload-plugins'
+import {
+  DiscountSchema,
   isFixedAmountCoupon, isFixedPercentageCoupon,
   isFixedPriceCoupon,
   isStackable,

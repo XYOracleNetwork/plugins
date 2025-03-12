@@ -1,5 +1,6 @@
-import { PayloadDivinerQueryPayload, PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
-import { ImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
+import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
+import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
+import type { ImageThumbnailResultIndex } from '@xyo-network/image-thumbnail-payload-plugin'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 /**

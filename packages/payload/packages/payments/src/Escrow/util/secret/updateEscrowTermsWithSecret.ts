@@ -1,9 +1,9 @@
-import { AccountInstance } from '@xyo-network/account-model'
+import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { IdPayload } from '@xyo-network/id-payload-plugin'
+import type { IdPayload } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
-import {
+import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,
 } from '../../Terms/index.ts'
 import { getEscrowSecret } from './getEscrowSecret.ts'

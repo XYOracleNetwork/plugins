@@ -1,5 +1,5 @@
-import { NftAttribute } from '../NftInfo/index.ts'
-import { DisplayType } from './DisplayType.ts'
+import type { NftAttribute } from '../NftInfo/index.ts'
+import type { DisplayType } from './DisplayType.ts'
 
 export type OpenSeaNftAttribute = NftAttribute & {
   /**

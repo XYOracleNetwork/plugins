@@ -3,7 +3,7 @@ import '@xylabs/vitest-extended'
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
-import { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
+import type { NftCollectionInfo } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
   beforeAll,
   describe, expect, it,

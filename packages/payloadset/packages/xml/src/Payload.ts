@@ -1,7 +1,6 @@
-import { JsonObject } from '@xylabs/object'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources, Payload,
-} from '@xyo-network/payload-model'
+import type { JsonObject } from '@xylabs/object'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { XmlSchema } from './Schema.ts'
 

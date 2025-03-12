@@ -12,26 +12,25 @@ import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
-import { ImageThumbnail, isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
+import { isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import {
-  isModuleState, ModuleState, ModuleStateSchema,
-} from '@xyo-network/module-model'
+import type { ModuleState } from '@xyo-network/module-model'
+import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import {
-  asOptionalStorageMeta, Payload, WithStorageMeta,
-} from '@xyo-network/payload-model'
-import {
-  isTimestamp, TimeStamp, TimestampSchema,
-} from '@xyo-network/witness-timestamp'
+import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
+import { asOptionalStorageMeta } from '@xyo-network/payload-model'
+import type { TimeStamp } from '@xyo-network/witness-timestamp'
+import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
   beforeAll,
   describe, expect,
   it,
 } from 'vitest'
 
-import { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.ts'
+import type { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.ts'
 import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json' assert { type: 'json' }
 

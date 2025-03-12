@@ -1,15 +1,18 @@
 import { assertEx } from '@xylabs/assert'
 import { EthAddress } from '@xylabs/eth-address'
-import {
+import type {
   CryptoWalletNftWitnessConfig,
-  isNftWitnessQuery,
   NftInfo,
-  NftSchema,
-  NftWitnessConfigSchema,
   NftWitnessQuery,
 } from '@xyo-network/crypto-nft-payload-plugin'
-import { Schema } from '@xyo-network/payload-model'
-import { AbstractEvmWitness, EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import {
+  isNftWitnessQuery,
+  NftSchema,
+  NftWitnessConfigSchema,
+} from '@xyo-network/crypto-nft-payload-plugin'
+import type { Schema } from '@xyo-network/payload-model'
+import type { EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
+import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 
 import { getNftsOwnedByAddress, getNftsOwnedByAddressWithMetadata } from './lib/index.ts'
 

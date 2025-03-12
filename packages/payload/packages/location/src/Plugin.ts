@@ -1,6 +1,6 @@
 import { createPayloadPlugin } from '@xyo-network/payload-plugin'
 
-import { LocationPayload } from './GeographicCoordinateSystemLocationPayload.ts'
+import type { LocationPayload } from './GeographicCoordinateSystemLocationPayload.ts'
 import { LocationSchema } from './GeographicCoordinateSystemLocationSchema.ts'
 
 export const LocationPayloadPlugin = () =>

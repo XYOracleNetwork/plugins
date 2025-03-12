@@ -4,7 +4,7 @@ import { existsSync } from 'node:fs'
 import Path from 'node:path'
 
 import { assertEx } from '@xylabs/assert'
-import { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
+import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { Quadkey } from '@xyo-network/quadkey'
@@ -12,9 +12,8 @@ import {
   describe, expect, test,
 } from 'vitest'
 
-import {
-  ElevationWitness, ElevationWitnessConfig, ElevationWitnessConfigSchema,
-} from '../Witness.ts'
+import type { ElevationWitnessConfig } from '../Witness.ts'
+import { ElevationWitness, ElevationWitnessConfigSchema } from '../Witness.ts'
 
 const locations = [
   { quadkey: assertEx(Quadkey.fromLngLat({ lat: 32.7157, lng: -117.1611 }, 16)?.base16String), schema: LocationSchema }, // San Diego

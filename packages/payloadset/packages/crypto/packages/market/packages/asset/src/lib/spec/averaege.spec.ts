@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
-import {
-  AssetInfo, CryptoMarketAssetPayload, CryptoMarketAssetSchema,
-} from '@xyo-network/crypto-asset-payload-plugin'
+import type { AssetInfo, CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
+import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   describe, expect,

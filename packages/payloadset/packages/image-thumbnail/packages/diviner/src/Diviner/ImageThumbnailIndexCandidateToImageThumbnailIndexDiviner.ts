@@ -1,25 +1,28 @@
-import { Hash } from '@xylabs/hex'
-import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import type { Hash } from '@xylabs/hex'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { DivinerConfigSchema } from '@xyo-network/diviner-model'
-import {
+import type {
   ImageThumbnail,
   ImageThumbnailResultIndex,
   ImageThumbnailResultIndexFields,
+} from '@xyo-network/image-thumbnail-payload-plugin'
+import {
   ImageThumbnailResultIndexSchema,
   ImageThumbnailSchema,
   isImageThumbnail,
 } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import {
+import type {
   Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
-import {
-  isTimestamp, TimeStamp, TimestampSchema,
-} from '@xyo-network/witness-timestamp'
+import type { TimeStamp } from '@xyo-network/witness-timestamp'
+import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'
 
-import { ImageThumbnailDivinerLabels, ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
+import type { ImageThumbnailDivinerStageLabels } from './ImageThumbnailDivinerLabels.ts'
+import { ImageThumbnailDivinerLabels } from './ImageThumbnailDivinerLabels.ts'
 
 /**
  * Transforms candidates for image thumbnail indexing into their indexed representation

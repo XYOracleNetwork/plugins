@@ -1,10 +1,11 @@
-import { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { WitnessModule, WitnessParams } from '@xyo-network/witness-model'
 
-import { FileWitnessConfig, FileWitnessConfigSchema } from './Config.ts'
+import type { FileWitnessConfig } from './Config.ts'
+import { FileWitnessConfigSchema } from './Config.ts'
 import { FileSchema } from './Schema.ts'
 
 export type FileWitnessParams = WitnessParams<AnyConfigSchema<FileWitnessConfig>>

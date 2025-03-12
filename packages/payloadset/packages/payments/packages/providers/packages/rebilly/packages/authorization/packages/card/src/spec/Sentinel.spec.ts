@@ -1,11 +1,11 @@
 import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
-import { BoundWitness, isBoundWitness } from '@xyo-network/boundwitness-model'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import {
-  BillingAddress, BillingAddressSchema, PaymentCard, PaymentCardSchema,
-} from '@xyo-network/payment-payload-plugins'
+import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
+import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-payload-plugin'
 import {
   beforeAll, describe, expect,

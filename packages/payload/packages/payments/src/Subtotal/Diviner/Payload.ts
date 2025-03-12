@@ -1,10 +1,11 @@
 import { AsObjectFactory } from '@xylabs/object'
+import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
   isPayloadOfSchemaType,
-  isPayloadOfSchemaTypeWithSources, PayloadWithSources, WithSources,
+  isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
-import { AmountFields } from '../../Amount/index.ts'
+import type { AmountFields } from '../../Amount/index.ts'
 
 export const SubtotalSchema = 'network.xyo.payments.subtotal' as const
 export type SubtotalSchema = typeof SubtotalSchema

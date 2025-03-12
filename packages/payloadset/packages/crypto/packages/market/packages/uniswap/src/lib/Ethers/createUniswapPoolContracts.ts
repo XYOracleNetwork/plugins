@@ -1,4 +1,4 @@
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 import { logErrors } from '../logErrors.ts'
 import { EthersUniSwap3Pair } from './UniSwap3Pair.ts'

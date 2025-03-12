@@ -1,18 +1,19 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import {
-  UniswapCryptoMarketPayload,
   UniswapCryptoMarketSchema,
   UniswapCryptoMarketWitnessConfigSchema,
 } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import { WitnessParams } from '@xyo-network/witness-model'
-import { Provider } from 'ethers'
+import type { WitnessParams } from '@xyo-network/witness-model'
+import type { Provider } from 'ethers'
 
-import { UniswapCryptoMarketWitnessConfig } from './Config.ts'
+import type { UniswapCryptoMarketWitnessConfig } from './Config.ts'
+import type { EthersUniSwap3Pair } from './lib/index.ts'
 import {
-  createUniswapPoolContracts, EthersUniSwap3Pair,
+  createUniswapPoolContracts,
   pricesFromUniswap3, UniswapPoolContracts,
 } from './lib/index.ts'
 

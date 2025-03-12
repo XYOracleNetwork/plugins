@@ -2,13 +2,14 @@ import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
 import { HDWallet } from '@xyo-network/account'
-import {
-  ApiCallSchema, ApiCallWitness, ApiUriTemplateCallPayload,
-} from '@xyo-network/api-call-witness'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
+import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { asSentinelInstance, SentinelInstance } from '@xyo-network/sentinel-model'
+import type { SentinelInstance } from '@xyo-network/sentinel-model'
+import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import {

@@ -1,8 +1,7 @@
-import {
-  Address, hexFromHexString, isHexZero,
-} from '@xylabs/hex'
+import type { Address } from '@xylabs/hex'
+import { hexFromHexString, isHexZero } from '@xylabs/hex'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
-import { Provider } from 'ethers'
+import type { Provider } from 'ethers'
 
 export const ERC1967_PROXY_IMPLEMENTATION_STORAGE_SLOT = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc'
 export const ERC1967_PROXY_BEACON_STORAGE_SLOT = '0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50'

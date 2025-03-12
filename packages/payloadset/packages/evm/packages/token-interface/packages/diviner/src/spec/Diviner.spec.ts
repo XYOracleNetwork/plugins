@@ -10,7 +10,7 @@ import {
 } from 'vitest'
 
 import { EvmTokenInterfaceImplementedDiviner, EvmTokenInterfaceImplementedDivinerConfigSchema } from '../Diviner.ts'
-import { TokenInterface } from '../Payload.ts'
+import type { TokenInterface } from '../Payload.ts'
 
 describe.skipIf(!process.env.INFURA_PROJECT_ID)('EvmTokenInterfaceImplementedDiviner', () => {
   type TestData = readonly [string, TokenInterface[]]

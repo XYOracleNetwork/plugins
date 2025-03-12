@@ -1,7 +1,6 @@
 import { AsObjectFactory } from '@xylabs/object'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources, Payload, WithSources,
-} from '@xyo-network/payload-model'
+import type { Payload, WithSources } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 export const RebillyPaymentAuthorizationTokenSchema = 'network.xyo.payments.payment.authorization.token.rebilly'
 export type RebillyPaymentAuthorizationTokenSchema = typeof RebillyPaymentAuthorizationTokenSchema

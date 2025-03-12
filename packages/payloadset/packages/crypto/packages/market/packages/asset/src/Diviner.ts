@@ -1,12 +1,15 @@
-import { CoingeckoCryptoMarketPayload, CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
-import { CryptoMarketAssetPayload, CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
+import type { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import { CoingeckoCryptoMarketSchema } from '@xyo-network/coingecko-crypto-market-payload-plugin'
+import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
+import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import {
+import type {
   DivinerConfig, DivinerModule, DivinerParams,
 } from '@xyo-network/diviner-model'
-import { AnyConfigSchema, Module } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import type { AnyConfigSchema, Module } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { UniswapCryptoMarketSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 import { divinePrices } from './lib/index.ts'
 import { CryptoMarketAssetDivinerConfigSchema } from './Schema.ts'

@@ -1,6 +1,7 @@
 import { unlink, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
-import { Writable, WritableOptions } from 'node:stream'
+import type { WritableOptions } from 'node:stream'
+import { Writable } from 'node:stream'
 
 import ffmpeg from 'fluent-ffmpeg'
 import { v4 as uuid } from 'uuid'

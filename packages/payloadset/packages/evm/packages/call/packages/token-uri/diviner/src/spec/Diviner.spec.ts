@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { isNftMetadataUri, NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import {
   beforeAll,
   describe, expect, it,
@@ -9,7 +9,7 @@ import {
 
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from '../Config.ts'
 import { EvmCallResultToNftTokenUriDiviner } from '../Diviner.ts'
-import { EvmTokenUriCallResults } from '../Payload.ts'
+import type { EvmTokenUriCallResults } from '../Payload.ts'
 
 const validateResult = (evmCallResults: EvmTokenUriCallResults, actual: Payload[]) => {
   const results = actual.filter(isNftMetadataUri)

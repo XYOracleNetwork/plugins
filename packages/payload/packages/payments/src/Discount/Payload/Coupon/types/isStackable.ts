@@ -1,4 +1,4 @@
-import { CouponFields } from './CouponFields.ts'
+import type { CouponFields } from './CouponFields.ts'
 
 /**
  * Identity function for determining if coupon is stackable

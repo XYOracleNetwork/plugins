@@ -4,8 +4,9 @@ import {
   describe, expect, it,
 } from 'vitest'
 
+import type { Email } from '../Payload.ts'
 import {
-  asEmail, Email,
+  asEmail,
   isEmail, tryToEmail,
 } from '../Payload.ts'
 import { EmailAddressSchema } from '../Schema.ts'

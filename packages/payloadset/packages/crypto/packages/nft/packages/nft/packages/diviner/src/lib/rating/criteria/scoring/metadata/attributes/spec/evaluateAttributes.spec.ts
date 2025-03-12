@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { NftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
+import type { NftAttribute } from '@xyo-network/crypto-nft-payload-plugin'
 import {
   describe, expect,
   it,

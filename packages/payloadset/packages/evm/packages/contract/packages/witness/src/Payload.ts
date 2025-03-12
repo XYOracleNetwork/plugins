@@ -1,4 +1,5 @@
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 export const EvmContractSchema = 'network.xyo.evm.contract'
 export type EvmContractSchema = typeof EvmContractSchema

@@ -1,23 +1,24 @@
-// eslint.config.mjs
-
-import { typescriptConfig,
+import {
+  typescriptConfig,
   unicornConfig,
   workspacesConfig,
   rulesConfig,
   sonarConfig,
-  importConfig } from '@xylabs/eslint-config-flat'
-
+  importConfig,
+} from '@xylabs/eslint-config-flat'
 
 export default [
-  {
-    ignores: ['.yarn/**', '**/dist/**', 'dist', 'build/**', 'node_modules/**', 'public', '.storybook', 'storybook-static', 'eslint.config.mjs'],
-  },
+  { ignores: ['.yarn', 'dist', '**/dist/**', 'build', '**/build/**', 'node_modules/**', 'public', 'storybook-static', 'eslint.config.mjs', 'packages'] },
   unicornConfig,
   workspacesConfig,
   rulesConfig,
   typescriptConfig,
+  importConfig,
+  sonarConfig,
   {
     rules: {
+      'sonarjs/prefer-single-boolean-return': ['off'],
+      'import-x/no-unresolved': ['off'],
       'no-restricted-imports': [
         'warn',
         {
@@ -42,12 +43,6 @@ export default [
       ],
     },
   },
-  {
-    ...importConfig,
-    rules: {
-      ...importConfig.rules,
-      'import-x/no-cycle': ['warn', { maxDepth: 5 }],
-    },
-  },
-  sonarConfig,
 ]
+
+

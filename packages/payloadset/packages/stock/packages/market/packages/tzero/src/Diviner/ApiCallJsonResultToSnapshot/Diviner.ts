@@ -1,12 +1,12 @@
 import { exists } from '@xylabs/exists'
-import { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import { DivinerParams } from '@xyo-network/diviner-model'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
-import { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
+import type { DivinerParams } from '@xyo-network/diviner-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import type { Snapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
 
-import { TZeroStockMarketDivinerConfig } from './Config.ts'
+import type { TZeroStockMarketDivinerConfig } from './Config.ts'
 import { tryMapToSnapshot } from './lib/index.ts'
 import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema.ts'
 

@@ -1,4 +1,5 @@
-import { NftId, NftIdSchema } from './Payload/index.ts'
+import type { NftId } from './Payload/index.ts'
+import { NftIdSchema } from './Payload/index.ts'
 
 export const nftIdPayloadTemplate = (): NftId => ({
   address: '',

@@ -1,7 +1,7 @@
-import { Hash } from '@xylabs/hex'
-import { Payload } from '@xyo-network/payload-model'
+import type { Hash } from '@xylabs/hex'
+import type { Payload } from '@xyo-network/payload-model'
 
-import { HttpCallResultSchema } from '../Schema.ts'
+import type { HttpCallResultSchema } from '../Schema.ts'
 
 export type HttpCallHtmlResult = Payload<
   {

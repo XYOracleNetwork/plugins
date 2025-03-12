@@ -21,29 +21,29 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/neutral/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xyo-network/diviner-abstract": "^3.9.23",
-    "@xyo-network/diviner-model": "^3.9.23",
+    "@xyo-network/diviner-abstract": "^3.9.36",
+    "@xyo-network/diviner-model": "^3.9.36",
     "@xyo-network/evm-call-witness": "workspace:^",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.9.23",
-    "@xyo-network/payload-model": "^3.9.23",
+    "@xyo-network/module-model": "^3.9.36",
+    "@xyo-network/payload-model": "^3.9.36",
     "ethers": "^6.13.5"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
-    "@xylabs/vitest-extended": "^4.5.1",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/vitest-extended": "^4.6.0",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:^",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "publishConfig": {
     "access": "public"

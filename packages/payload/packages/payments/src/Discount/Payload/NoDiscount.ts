@@ -1,4 +1,5 @@
-import { Discount, DiscountSchema } from './Discount.ts'
+import type { Discount } from './Discount.ts'
+import { DiscountSchema } from './Discount.ts'
 
 export const NO_DISCOUNT: Discount = {
   schema: DiscountSchema,

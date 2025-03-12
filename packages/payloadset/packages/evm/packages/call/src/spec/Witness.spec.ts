@@ -2,7 +2,8 @@
 import '@xylabs/vitest-extended'
 
 import { ERC20__factory } from '@xyo-network/open-zeppelin-typechain'
-import { isPayloadOfSchemaType, Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import {
   describe, expect,
@@ -10,9 +11,8 @@ import {
 } from 'vitest'
 
 import { EvmCallWitnessConfigSchema } from '../model.ts'
-import {
-  EvmCall, EvmCallResult, EvmCallResultSchema, EvmCallSchema,
-} from '../Payload.ts'
+import type { EvmCall, EvmCallResult } from '../Payload.ts'
+import { EvmCallResultSchema, EvmCallSchema } from '../Payload.ts'
 import { EvmCallWitness } from '../Witness.ts'
 
 const validateObservation = (observation: Payload[]) => {

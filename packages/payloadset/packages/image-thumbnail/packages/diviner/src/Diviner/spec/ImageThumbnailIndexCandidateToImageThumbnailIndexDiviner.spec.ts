@@ -1,14 +1,14 @@
 import '@xylabs/vitest-extended'
 
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { BoundWitness } from '@xyo-network/boundwitness-model'
-import {
-  ImageThumbnail, ImageThumbnailSchema, isImageThumbnailResultIndexWithSources,
-} from '@xyo-network/image-thumbnail-payload-plugin'
+import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
+import { ImageThumbnailSchema, isImageThumbnailResultIndexWithSources } from '@xyo-network/image-thumbnail-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
-import { TimeStamp, TimestampSchema } from '@xyo-network/witness-timestamp'
+import type { TimeStamp } from '@xyo-network/witness-timestamp'
+import { TimestampSchema } from '@xyo-network/witness-timestamp'
 import {
   beforeAll,
   describe, expect, it,

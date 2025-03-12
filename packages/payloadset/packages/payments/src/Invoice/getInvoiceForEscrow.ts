@@ -1,10 +1,13 @@
-import { Hash } from '@xylabs/hex'
-import { DivinerInstance } from '@xyo-network/diviner-model'
+import type { Hash } from '@xylabs/hex'
+import type { DivinerInstance } from '@xyo-network/diviner-model'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Payload } from '@xyo-network/payload-model'
-import {
-  Discount, EscrowTerms, Invoice, isDiscount, isSubtotal, isTotal, Payment, PaymentSchema,
+import type { Payload } from '@xyo-network/payload-model'
+import type {
+  Discount, EscrowTerms, Invoice, Payment,
   Subtotal, Total,
+} from '@xyo-network/payment-payload-plugins'
+import {
+  isDiscount, isSubtotal, isTotal, PaymentSchema,
 } from '@xyo-network/payment-payload-plugins'
 
 /**

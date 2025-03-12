@@ -21,20 +21,20 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/neutral/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xyo-network/payload-plugin": "^3.9.23",
+    "@xyo-network/payload-plugin": "^3.9.36",
     "@xyo-network/xns-record-payload-plugins": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
     "typescript": "^5.8.2"
   },
   "publishConfig": {

@@ -1,12 +1,11 @@
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import {
-  isPayloadOfSchemaType, Payload, Schema,
-} from '@xyo-network/payload-model'
-import { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
-import { ExecutionResult } from 'graphql'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
+import type { ExecutionResult } from 'graphql'
 
 export const ApiGraphqlWitnessConfigSchema = 'network.xyo.api.witness.config'
 export type ApiGraphqlWitnessConfigSchema = typeof ApiGraphqlWitnessConfigSchema

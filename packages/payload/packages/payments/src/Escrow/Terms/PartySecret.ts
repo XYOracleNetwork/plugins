@@ -1,4 +1,4 @@
-import { EscrowTermsFields } from './Terms.ts'
+import type { EscrowTermsFields } from './Terms.ts'
 
 /**
  * The party's secret in an escrow transaction

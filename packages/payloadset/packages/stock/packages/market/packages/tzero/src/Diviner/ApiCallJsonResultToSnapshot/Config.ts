@@ -1,6 +1,6 @@
-import { DivinerConfig } from '@xyo-network/diviner-model'
+import type { DivinerConfig } from '@xyo-network/diviner-model'
 
-import { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema.ts'
+import type { TZeroApiCallJsonResultToSnapshotDivinerConfigSchema } from './Schema.ts'
 
 export type TZeroStockMarketDivinerConfig = DivinerConfig<{
   schema: TZeroApiCallJsonResultToSnapshotDivinerConfigSchema

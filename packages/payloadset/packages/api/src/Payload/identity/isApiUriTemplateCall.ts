@@ -1,4 +1,4 @@
-import { ApiUriTemplateCallPayload } from '../types/index.ts'
+import type { ApiUriTemplateCallPayload } from '../types/index.ts'
 import { isApiCallPayload } from './isApiCall.ts'
 
 export const isApiUriTemplateCallPayload = (value?: unknown): value is ApiUriTemplateCallPayload =>

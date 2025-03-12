@@ -1,5 +1,5 @@
-import { EthereumGasEthersResponse } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
-import { Provider } from 'ethers'
+import type { EthereumGasEthersResponse } from '@xyo-network/ethers-ethereum-gas-payload-plugin'
+import type { Provider } from 'ethers'
 
 const formatFeeDataValue = (value: bigint | null) => {
   return value ? Number(value) : null

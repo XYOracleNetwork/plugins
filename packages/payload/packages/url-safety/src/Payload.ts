@@ -1,7 +1,7 @@
-import { Payload } from '@xyo-network/payload-model'
-import { UrlPayload } from '@xyo-network/url-payload-plugin'
+import type { Payload } from '@xyo-network/payload-model'
+import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 
-import { UrlSafetySchema } from './Schema.ts'
+import type { UrlSafetySchema } from './Schema.ts'
 
 export type UrlSafetyThreatType = 'SOCIAL_ENGINEERING' | 'POTENTIALLY_HARMFUL_APPLICATION' | 'UNWANTED_SOFTWARE' | 'THREAT_TYPE_UNSPECIFIED'
 

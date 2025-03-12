@@ -1,6 +1,6 @@
-import { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
+import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
 
-import { CreatePaymentTokenRequest } from '../Api/index.ts'
+import type { CreatePaymentTokenRequest } from '../Api/index.ts'
 
 /**
  * Converts a payment card and billing address to a token request

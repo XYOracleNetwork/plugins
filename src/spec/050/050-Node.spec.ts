@@ -5,7 +5,7 @@ import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
 import { Account, HDWallet } from '@xyo-network/account'
-import { PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest-wrapper'
 import { MemoryNode } from '@xyo-network/node-memory'
 import { describe, it } from 'vitest'

@@ -1,6 +1,7 @@
-import { HashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
+import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
+import type { Coupon } from '@xyo-network/payment-payload-plugins'
 import {
-  Coupon,
   DiscountSchema, FixedAmountCouponSchema, FixedPercentageCouponSchema,
   FixedPriceCouponSchema,
 } from '@xyo-network/payment-payload-plugins'

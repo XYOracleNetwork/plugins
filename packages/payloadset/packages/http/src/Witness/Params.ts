@@ -1,6 +1,6 @@
-import { WitnessParams } from '@xyo-network/witness-model'
+import type { WitnessParams } from '@xyo-network/witness-model'
 
-import { HttpCallWitnessConfig } from './Config.ts'
+import type { HttpCallWitnessConfig } from './Config.ts'
 
 export type HttpCallWitnessParams = WitnessParams<
   HttpCallWitnessConfig,

@@ -1,6 +1,6 @@
-import { JsonValue } from '@xylabs/object'
+import type { JsonValue } from '@xylabs/object'
 
-import { NftAttribute } from './NftAttribute.ts'
+import type { NftAttribute } from './NftAttribute.ts'
 
 export type NftMetadata = {
   attributes?: NftAttribute[] | JsonValue

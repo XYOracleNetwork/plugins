@@ -1,5 +1,5 @@
 import { exists } from '@xylabs/exists'
-import {
+import type {
   AssetInfo, CryptoMarketAssetPayload, Currency, Token,
 } from '@xyo-network/crypto-asset-payload-plugin'
 

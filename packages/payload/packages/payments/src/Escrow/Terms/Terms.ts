@@ -1,8 +1,7 @@
-import { Address, Hash } from '@xylabs/hex'
+import type { Address, Hash } from '@xylabs/hex'
 import { AsObjectFactory } from '@xylabs/object'
-import {
-  isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources, Payload,
-} from '@xyo-network/payload-model'
+import type { Payload } from '@xyo-network/payload-model'
+import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 
 import { EscrowSchema } from '../Schema.ts'
 

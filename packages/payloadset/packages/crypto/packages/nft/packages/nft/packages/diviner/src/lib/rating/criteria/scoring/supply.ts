@@ -1,7 +1,6 @@
-import { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
-import {
-  FAIL, PASS, PassFailScoringFunction,
-} from '@xyo-network/crypto-nft-score-model'
+import type { NftInfoFields } from '@xyo-network/crypto-nft-payload-plugin'
+import type { PassFailScoringFunction } from '@xyo-network/crypto-nft-score-model'
+import { FAIL, PASS } from '@xyo-network/crypto-nft-score-model'
 
 export const scoreSupply: PassFailScoringFunction<NftInfoFields> = (nft: NftInfoFields) => {
   if (!nft.supply) return FAIL

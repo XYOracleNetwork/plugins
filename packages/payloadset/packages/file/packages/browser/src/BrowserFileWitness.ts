@@ -1,14 +1,15 @@
 import { assertEx } from '@xylabs/assert'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import { Schema } from '@xyo-network/payload-model'
+import type { Schema } from '@xyo-network/payload-model'
 import shajs from 'sha.js'
 
 import { FileWitnessConfigSchema } from './Config.ts'
-import { BrowserFileWitnessAdditionalParams } from './Params.ts'
-import { FilePayload } from './Payload.ts'
+import type { BrowserFileWitnessAdditionalParams } from './Params.ts'
+import type { FilePayload } from './Payload.ts'
 import { FileSchema } from './Schema.ts'
 import { generateDataUri } from './util/index.ts'
-import { FileWitness, FileWitnessParams } from './Witness.ts'
+import type { FileWitnessParams } from './Witness.ts'
+import { FileWitness } from './Witness.ts'
 
 type BrowserFileWitnessParams = FileWitnessParams & BrowserFileWitnessAdditionalParams
 

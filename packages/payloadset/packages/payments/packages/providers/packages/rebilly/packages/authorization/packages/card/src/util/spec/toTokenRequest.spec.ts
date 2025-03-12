@@ -1,6 +1,5 @@
-import {
-  BillingAddress, BillingAddressSchema, PaymentCard, PaymentCardSchema,
-} from '@xyo-network/payment-payload-plugins'
+import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
+import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 import {
   describe, expect,
   it,

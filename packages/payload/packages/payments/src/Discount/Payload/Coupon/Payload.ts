@@ -1,7 +1,9 @@
 import { AsObjectFactory } from '@xylabs/object'
 
-import {
+import type {
   FixedAmountCoupon, FixedPercentageCoupon, FixedPriceCoupon,
+} from './Coupons/index.ts'
+import {
   isFixedAmountCoupon, isFixedAmountCouponWithSources, isFixedPercentageCoupon,
   isFixedPercentageCouponWithSources,
   isFixedPriceCoupon,

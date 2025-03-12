@@ -2,12 +2,13 @@ import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
 import { HDWallet } from '@xyo-network/account'
+import type { ApiUriCallPayload } from '@xyo-network/api-call-witness'
 import {
-  ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, ApiUriCallPayload,
+  ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema,
   isApiCallJsonResult,
 } from '@xyo-network/api-call-witness'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
-import { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
+import type { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
@@ -19,11 +20,12 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
-import { MemoryNode } from '@xyo-network/node-memory'
-import { Payload } from '@xyo-network/payload-model'
+import type { MemoryNode } from '@xyo-network/node-memory'
+import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'

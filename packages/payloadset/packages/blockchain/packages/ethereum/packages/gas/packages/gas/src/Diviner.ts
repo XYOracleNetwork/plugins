@@ -1,10 +1,10 @@
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
-import {
+import type {
   DivinerConfig, DivinerModule, DivinerParams,
 } from '@xyo-network/diviner-model'
 import { EthereumGasSchema } from '@xyo-network/gas-price-payload-plugin'
-import { AnyConfigSchema } from '@xyo-network/module-model'
-import { Payload, Schema } from '@xyo-network/payload-model'
+import type { AnyConfigSchema } from '@xyo-network/module-model'
+import type { Payload, Schema } from '@xyo-network/payload-model'
 
 import { divineGas } from './lib/index.ts'
 import { EthereumGasDivinerConfigSchema } from './Schema.ts'

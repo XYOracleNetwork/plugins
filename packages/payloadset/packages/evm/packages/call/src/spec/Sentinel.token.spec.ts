@@ -7,7 +7,8 @@ import {
 } from '@xylabs/profile'
 import { HDWallet } from '@xyo-network/account'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { ManifestWrapper, PackageManifestPayload } from '@xyo-network/manifest'
+import type { PackageManifestPayload } from '@xyo-network/manifest'
+import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import {
@@ -22,10 +23,10 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import {
-  EvmCallDiviner, EvmCallResults, EvmCallResultsSchema,
-} from '../Diviner.ts'
-import { EvmCall, EvmCallSchema } from '../Payload.ts'
+import type { EvmCallResults } from '../Diviner.ts'
+import { EvmCallDiviner, EvmCallResultsSchema } from '../Diviner.ts'
+import type { EvmCall } from '../Payload.ts'
+import { EvmCallSchema } from '../Payload.ts'
 import { EvmCallWitness } from '../Witness.ts'
 import erc721TokenSentinelManifest from './Erc721TokenSentinel.json' assert { type: 'json' }
 

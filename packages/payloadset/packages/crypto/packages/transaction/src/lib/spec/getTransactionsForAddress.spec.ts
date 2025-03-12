@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
+import type { AccessList, Transaction } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import { EtherscanProvider } from 'ethers'
 import {
   describe, expect,

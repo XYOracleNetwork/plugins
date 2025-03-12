@@ -1,4 +1,4 @@
-import { HttpUriTemplateCall } from '../types/index.ts'
+import type { HttpUriTemplateCall } from '../types/index.ts'
 import { isHttpCall } from './isHttpCall.ts'
 
 export const isHttpUriTemplateCall = (value?: unknown): value is HttpUriTemplateCall =>

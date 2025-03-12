@@ -1,5 +1,5 @@
-import { Payload } from '@xyo-network/payload-model'
-import {
+import type { Payload } from '@xyo-network/payload-model'
+import type {
   SLChemData,
   SLCircuitNamesData,
   SLControllerConfigData,
@@ -14,7 +14,7 @@ import {
   SLWeatherForecastData,
 } from 'node-screenlogic'
 
-import { PentairScreenlogicSchema } from './Schema.ts'
+import type { PentairScreenlogicSchema } from './Schema.ts'
 
 export type PentairScreenlogicPayload = Payload<
   {

@@ -21,26 +21,26 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/neutral/index.d.ts",
+      "types": "./dist/types/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/neutral/index.d.ts",
+  "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.5.1",
-    "@xylabs/hex": "^4.5.1",
-    "@xyo-network/payload-model": "^3.9.23",
-    "@xyo-network/witness-evm-abstract": "^3.9.23",
+    "@xylabs/assert": "^4.6.0",
+    "@xylabs/hex": "^4.6.0",
+    "@xyo-network/payload-model": "^3.9.36",
+    "@xyo-network/witness-evm-abstract": "^3.9.36",
     "ethers": "^6.13.5"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^5.0.39",
-    "@xylabs/tsconfig": "^5.0.39",
-    "@xylabs/vitest-extended": "^4.5.1",
+    "@xylabs/ts-scripts-yarn3": "^6.0.5",
+    "@xylabs/tsconfig": "^6.0.5",
+    "@xylabs/vitest-extended": "^4.6.0",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "publishConfig": {
     "access": "public"

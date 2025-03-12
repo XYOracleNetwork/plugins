@@ -1,4 +1,4 @@
-import { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
+import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { isIso4217CurrencyCode } from '@xyo-network/payment-payload-plugins'
 
 import { validateDuration } from './durationValidators.ts'
