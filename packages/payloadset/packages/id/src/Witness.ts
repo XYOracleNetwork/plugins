@@ -24,7 +24,7 @@ export class IdWitness<TParams extends IdWitnessParams = IdWitnessParams> extend
     return this.config?.salt ?? `${Math.floor(Math.random() * 9_999_999)}`
   }
 
-  protected override observeHandler(payloads: Payload[] = []): Promisable<Payload[]> {
+  protected override observeHandler(payloads: Payload[] = []): Promisable<Id[]> {
     return payloads.length > 0
       ? (payloads as Id[]).map((fieldItems) => {
           return {

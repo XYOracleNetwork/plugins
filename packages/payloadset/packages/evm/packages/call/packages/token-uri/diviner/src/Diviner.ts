@@ -1,12 +1,11 @@
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 // eslint-disable-next-line workspaces/no-absolute-imports
-import type { EvmCallResults } from '@xyo-network/evm-call-witness'
+import { EvmCallResultsSchema, type EvmCallResults } from '@xyo-network/evm-call-witness'
 import type { NftMetadataUri } from '@xyo-network/evm-nft-id-payload-plugin'
 import { NftMetadataUriSchema } from '@xyo-network/evm-nft-id-payload-plugin'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
-import { EvmCallResultsSchema } from '../../../..'
 import { EvmCallResultToNftTokenUriDivinerConfigSchema } from './Config.ts'
 import type { EvmCallResultToNftTokenUriDivinerParams } from './Params.ts'
 import type { EvmTokenUriCallResults } from './Payload.ts'
