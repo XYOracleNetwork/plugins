@@ -39,7 +39,7 @@ import {
   describe, expect, it,
 } from 'vitest'
 
-import imageThumbnailDivinerManifest from './Witness.Index.json' assert { type: 'json' }
+import imageThumbnailDivinerManifest from './Witness.Index.json' with { type: 'json' }
 
 type Query = PayloadDivinerQueryPayload & { address: string; chainId?: number }
 

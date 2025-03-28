@@ -44,9 +44,9 @@ import { EvmCallDiviner } from '../../../../Diviner.ts'
 import type { EvmCall } from '../../../../Payload.ts'
 import { EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
-import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
-import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }
-import sentinelNodeManifest from './Contract.Sentinel.Node.json' assert { type: 'json' }
+import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' with { type: 'json' }
+import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' with { type: 'json' }
+import sentinelNodeManifest from './Contract.Sentinel.Node.json' with { type: 'json' }
 
 describe.skip('Contract Node', () => {
   type TokenType = 'ERC721' | 'ERC1155'

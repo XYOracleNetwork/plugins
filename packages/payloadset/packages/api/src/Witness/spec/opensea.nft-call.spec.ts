@@ -16,7 +16,7 @@ import {
 import type { ApiCallJsonResult, ApiUriTemplateCallPayload } from '../../Payload/index.ts'
 import { ApiCallResultSchema, ApiCallSchema } from '../../Payload/index.ts'
 import { ApiCallWitness } from '../Witness.ts'
-import openseaNftsManifest from './opensea.nft-call.json' assert { type: 'json' }
+import openseaNftsManifest from './opensea.nft-call.json' with { type: 'json' }
 
 describe('OpenSeaApi', () => {
   const address = '0xECA1bB9c8d3Fd8b926372f42c8D4c6c3ed0669B3' // Random Wallet

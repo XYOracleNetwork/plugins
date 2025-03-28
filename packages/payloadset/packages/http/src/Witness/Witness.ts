@@ -13,6 +13,8 @@ import { Axios } from 'axios'
 import { fromByteArray } from 'base64-js'
 import fillTemplate from 'es6-dynamic-template'
 
+declare module 'es6-dynamic-template' 
+
 import { checkIpfsUrl } from '../lib/index.ts'
 import type {
   HttpCall,

@@ -43,7 +43,7 @@ import { ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner }
   from '../ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.ts'
 import { ImageThumbnailQueryToImageThumbnailIndexQueryDiviner } from '../ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../ImageThumbnailStateToIndexCandidateDiviner/index.ts'
-import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json' assert { type: 'json' }
+import imageThumbnailDivinerManifest from './ImageThumbnailDivinerManifest.json' with { type: 'json' }
 
 /**
  * @group slow

@@ -29,24 +29,24 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.6.0",
-    "@xylabs/axios": "^4.6.0",
-    "@xyo-network/module-model": "^3.9.37",
-    "@xyo-network/payload-builder": "^3.9.37",
-    "@xyo-network/payload-model": "^3.9.37",
+    "@xylabs/assert": "^4.7.13",
+    "@xylabs/axios": "^4.7.13",
+    "@xyo-network/module-model": "^3.10.6",
+    "@xyo-network/payload-builder": "^3.10.6",
+    "@xyo-network/payload-model": "^3.10.6",
     "@xyo-network/payment-payload-plugins": "workspace:^",
     "@xyo-network/rebilly-payment-payload-plugin": "workspace:^",
-    "@xyo-network/sentinel-abstract": "^3.9.37",
-    "@xyo-network/sentinel-model": "^3.9.37",
-    "axios": "^1.8.3"
+    "@xyo-network/sentinel-abstract": "^3.10.6",
+    "@xyo-network/sentinel-model": "^3.10.6",
+    "axios": "^1.8.4"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.0.7",
-    "@xylabs/tsconfig": "^6.0.7",
-    "@xylabs/vitest-extended": "^4.6.0",
-    "@xyo-network/boundwitness-model": "^3.9.37",
+    "@xylabs/ts-scripts-yarn3": "^6.1.13",
+    "@xylabs/tsconfig": "^6.1.13",
+    "@xylabs/vitest-extended": "^4.7.13",
+    "@xyo-network/boundwitness-model": "^3.10.6",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.9"
   },
   "publishConfig": {
     "access": "public"

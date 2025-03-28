@@ -16,7 +16,7 @@ import {
 import type { HttpCallJsonResult, HttpUriTemplateCall } from '../../Payload/index.ts'
 import { HttpCallResultSchema, HttpCallSchema } from '../../Payload/index.ts'
 import { HttpCallWitness } from '../Witness.ts'
-import openseaNftsManifest from './opensea.nft-call.json' assert { type: 'json' }
+import openseaNftsManifest from './opensea.nft-call.json' with { type: 'json' }
 
 describe('OpenSeaHttp', () => {
   const address = '0xECA1bB9c8d3Fd8b926372f42c8D4c6c3ed0669B3' // Random Wallet

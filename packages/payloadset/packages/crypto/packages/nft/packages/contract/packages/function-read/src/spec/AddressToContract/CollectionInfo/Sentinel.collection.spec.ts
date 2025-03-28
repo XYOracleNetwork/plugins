@@ -31,7 +31,7 @@ import {
 
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
-import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
+import erc721SentinelManifest from '../Erc721Sentinel.json' with { type: 'json' }
 
 const profileData: Record<string, number[]> = {}
 

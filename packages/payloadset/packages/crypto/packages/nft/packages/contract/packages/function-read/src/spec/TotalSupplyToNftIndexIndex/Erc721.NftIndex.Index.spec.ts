@@ -35,7 +35,7 @@ import {
 
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
-import nodeManifest from './Erc721.NftIndex.Index.json' assert { type: 'json' }
+import nodeManifest from './Erc721.NftIndex.Index.json' with { type: 'json' }
 
 const maxProviders = 32
 

@@ -35,7 +35,7 @@ import {
 import { EvmCallDiviner } from '../../../Diviner.ts'
 import { EvmCallSchema } from '../../../Payload.ts'
 import { EvmCallWitness } from '../../../Witness.ts'
-import nodeManifest from './Erc721.NftId.Index.json' assert { type: 'json' }
+import nodeManifest from './Erc721.NftId.Index.json' with { type: 'json' }
 
 describe.skipIf(!process.env.INFURA_PROJECT_ID).skip('Erc721.NftId.Index', () => {
   let wallet: WalletInstance

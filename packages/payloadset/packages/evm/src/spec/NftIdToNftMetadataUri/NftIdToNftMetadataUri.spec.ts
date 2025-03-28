@@ -34,7 +34,7 @@ import {
   it,
 } from 'vitest'
 
-import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json' assert { type: 'json' }
+import nftIdToNftMetadataUri from './NftIdToNftMetadataUri.json' with { type: 'json' }
 
 const maxProviders = 2
 const providers = getProvidersFromEnv(maxProviders)

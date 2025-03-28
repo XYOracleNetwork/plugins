@@ -33,7 +33,7 @@ import {
 
 import { EvmCallDiviner } from '../Diviner.ts'
 import { EvmCallWitness } from '../Witness.ts'
-import erc721TokenEnumerateSentinelManifest from './Erc721TokenEnumerateSentinel.json' assert { type: 'json' }
+import erc721TokenEnumerateSentinelManifest from './Erc721TokenEnumerateSentinel.json' with { type: 'json' }
 
 const profiler = createProfiler()
 

@@ -33,7 +33,7 @@ import {
   EvmCallSchema, isEvmCallResult, isEvmCallSuccess,
 } from '../../../Payload.ts'
 import { EvmCallWitness } from '../../../Witness.ts'
-import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json' assert { type: 'json' }
+import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json' with { type: 'json' }
 
 describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () => {
   let wallet: WalletInstance

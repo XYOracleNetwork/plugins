@@ -41,9 +41,9 @@ import {
 import { EvmTokenInterfaceImplementedDiviner } from '../Diviner.ts'
 import type { TokenInterface } from '../Payload.ts'
 import { isEvmTokenInterfaceImplemented } from '../Payload.ts'
-import contractWitnessManifest from './Contract.Witness.Index.json' assert { type: 'json' }
-import tokenDivinerManifest from './Token.Diviner.Index.json' assert { type: 'json' }
-import tokenNodeManifest from './TokenNode.json' assert { type: 'json' }
+import contractWitnessManifest from './Contract.Witness.Index.json' with { type: 'json' }
+import tokenDivinerManifest from './Token.Diviner.Index.json' with { type: 'json' }
+import tokenNodeManifest from './TokenNode.json' with { type: 'json' }
 
 const maxProviders = 32
 

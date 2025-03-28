@@ -1,1 +1,1 @@
-declare module 'es6-dynamic-template'
+declare module 'es6-dynamic-template' 

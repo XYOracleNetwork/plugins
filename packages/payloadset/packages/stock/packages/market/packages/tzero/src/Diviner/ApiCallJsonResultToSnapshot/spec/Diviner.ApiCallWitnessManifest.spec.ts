@@ -17,7 +17,7 @@ import {
 } from 'vitest'
 
 import { TZeroApiCallJsonResultToSnapshotDiviner } from '../Diviner.ts'
-import tzeroMarketdataManifest from './ApiCallWitnessManifest.json' assert { type: 'json' }
+import tzeroMarketdataManifest from './ApiCallWitnessManifest.json' with { type: 'json' }
 
 describe('tZero', () => {
   const symbol = 'XYLB'

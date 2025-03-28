@@ -41,9 +41,9 @@ import {
 
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
-import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' assert { type: 'json' }
-import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' assert { type: 'json' }
-import sentinelNodeManifest from './Contract.Sentinel.Node.json' assert { type: 'json' }
+import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' with { type: 'json' }
+import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' with { type: 'json' }
+import sentinelNodeManifest from './Contract.Sentinel.Node.json' with { type: 'json' }
 
 const maxProviders = 32
 

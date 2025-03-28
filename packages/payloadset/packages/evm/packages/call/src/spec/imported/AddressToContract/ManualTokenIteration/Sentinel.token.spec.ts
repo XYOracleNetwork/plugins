@@ -28,7 +28,7 @@ import { EvmCallDiviner, EvmCallResultsSchema } from '../../../../Diviner.ts'
 import type { EvmCall, EvmCallResult } from '../../../../Payload.ts'
 import { EvmCallResultSchema, EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
-import erc721SentinelManifest from '../Erc721Sentinel.json' assert { type: 'json' }
+import erc721SentinelManifest from '../Erc721Sentinel.json' with { type: 'json' }
 
 const profileData: Record<string, number[]> = {}
 

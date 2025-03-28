@@ -32,7 +32,7 @@ import {
 
 import type { ImageThumbnailDivinerState } from '../../ImageThumbnailDivinerState.ts'
 import { ImageThumbnailStateToIndexCandidateDiviner } from '../Diviner.ts'
-import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json' assert { type: 'json' }
+import ImageThumbnailStateToIndexCandidateDivinerManifest from './ImageThumbnailStateToIndexCandidateDiviner.json' with { type: 'json' }
 
 /**
  * @group slow

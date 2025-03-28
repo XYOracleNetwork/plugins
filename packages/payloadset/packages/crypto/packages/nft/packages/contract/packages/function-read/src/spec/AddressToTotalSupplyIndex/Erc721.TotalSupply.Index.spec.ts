@@ -35,7 +35,7 @@ import {
 
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
-import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json' assert { type: 'json' }
+import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json' with { type: 'json' }
 
 const maxProviders = 32
 
