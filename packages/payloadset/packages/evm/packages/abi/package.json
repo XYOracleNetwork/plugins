@@ -29,7 +29,7 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.7.13",
+    "@xylabs/assert": "^4.7.15",
     "@xyo-network/diviner-abstract": "^3.10.6",
     "@xyo-network/diviner-model": "^3.10.6",
     "@xyo-network/evm-contract-witness": "workspace:^",
@@ -38,13 +38,13 @@
     "ethers": "^6.13.6"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.1.13",
-    "@xylabs/tsconfig": "^6.1.13",
-    "@xylabs/vitest-extended": "^4.7.13",
-    "@xyo-network/open-zeppelin-typechain": "^3.4.17",
+    "@xylabs/ts-scripts-yarn3": "^6.2.1",
+    "@xylabs/tsconfig": "^6.2.1",
+    "@xylabs/vitest-extended": "^4.7.15",
+    "@xyo-network/open-zeppelin-typechain": "^3.5.1",
     "@xyo-network/witness-evm-abstract": "^3.10.6",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.9"
+    "vitest": "^3.1.1"
   },
   "publishConfig": {
     "access": "public"
