@@ -17,6 +17,7 @@ import { CryptoMarketAssetDivinerConfigSchema } from './Schema.ts'
 export type CryptoMarketAssetDivinerConfig = DivinerConfig<{ schema: CryptoMarketAssetDivinerConfigSchema }>
 export type CryptoMarketAssetDivinerParams = DivinerParams<AnyConfigSchema<CryptoMarketAssetDivinerConfig>>
 
+const useUniswap = false
 export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerParams = CryptoMarketAssetDivinerParams>
   extends AbstractDiviner<TParams>
   implements DivinerModule, Module {
@@ -26,7 +27,7 @@ export class CryptoMarketAssetDiviner<TParams extends CryptoMarketAssetDivinerPa
 
   protected override divineHandler(payloads?: Payload[]): Payload[] {
     const coinGeckoPayload = payloads?.find(payload => payload?.schema === CoingeckoCryptoMarketSchema) as CoingeckoCryptoMarketPayload
-    const uniswapPayload = payloads?.find(payload => payload?.schema === UniswapCryptoMarketSchema) as UniswapCryptoMarketPayload
+    const uniswapPayload = useUniswap ? payloads?.find(payload => payload?.schema === UniswapCryptoMarketSchema) as UniswapCryptoMarketPayload : undefined
     const result: CryptoMarketAssetPayload = divinePrices(coinGeckoPayload, uniswapPayload)
     return [result]
   }
