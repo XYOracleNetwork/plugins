@@ -29,18 +29,18 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.7.15",
-    "@xylabs/hex": "^4.7.15",
+    "@xylabs/assert": "^4.8.0",
+    "@xylabs/hex": "^4.8.0",
     "@xyo-network/open-zeppelin-typechain": "^3.5.1",
-    "@xyo-network/payload-model": "^3.10.6",
-    "@xyo-network/witness-evm-abstract": "^3.10.6",
+    "@xyo-network/payload-model": "^3.11.0",
+    "@xyo-network/witness-evm-abstract": "^3.11.0",
     "ethers": "^6.13.6"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "^6.2.1",
     "@xylabs/tsconfig": "^6.2.1",
-    "@xylabs/vitest-extended": "^4.7.15",
-    "typescript": "^5.8.2",
+    "@xylabs/vitest-extended": "^4.8.0",
+    "typescript": "^5.8.3",
     "vitest": "^3.1.1"
   },
   "publishConfig": {
