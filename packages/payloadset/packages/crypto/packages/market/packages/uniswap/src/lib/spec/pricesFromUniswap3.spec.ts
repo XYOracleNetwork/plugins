@@ -2,8 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
-  describe, expect,
-  test,
+  describe, expect, test,
 } from 'vitest'
 
 import { createUniswapPoolContracts } from '../Ethers/index.ts'
