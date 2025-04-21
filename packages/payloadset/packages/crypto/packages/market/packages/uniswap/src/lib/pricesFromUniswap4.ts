@@ -25,6 +25,31 @@ const getPoolId = (
   )
 }
 
+
+function getPriceFromSqrtX96(
+  sqrtPriceX96: bigint,
+  decimalsA: number,
+  decimalsB: number
+): number {
+  const Q96 = 2n ** 96n;
+
+  // Scale to avoid floating point math by using a 1e18 factor
+  const numerator = sqrtPriceX96 * sqrtPriceX96 * 10n ** 18n;
+  const denominator = Q96 * Q96;
+
+  let price = numerator / denominator;
+
+  // Adjust for decimal differences
+  const decimalAdjustment = decimalsB - decimalsA;
+  if (decimalAdjustment > 0) {
+    price *= 10n ** BigInt(decimalAdjustment);
+  } else if (decimalAdjustment < 0) {
+    price /= 10n ** BigInt(-decimalAdjustment);
+  }
+
+  return Number(price) / 1e18;
+}
+
 const getExchangeRate = async (
   provider: Provider,
   tokenA: Token,
@@ -42,15 +67,17 @@ const getExchangeRate = async (
   const poolId: string = getPoolId(token0, token1, fee, 60, hookAddress);
   if (poolId === ZeroAddress) throw new Error("Invalid poolId");
   const response = await stateView.getSlot0(poolId);
+  const sqrtPriceX96 = response[0];
   console.log("response", response)
-  return ""
+  const price = getPriceFromSqrtX96(sqrtPriceX96, token1.decimals, token0.decimals);
+  return `${price}`;
 
 }
 
 // export const pricesFromUniswap4 = async (provider: Provider): Promise<UniswapCryptoPair[]> => {
 export const pricesFromUniswap4 = async (provider: Provider) => {
   const tokenA = new Token(CHAIN_ID, "0x55296f69f40ea6d20e478533c15a6b08b654e758", 18, 'XYO');
-  const tokenB = new Token(CHAIN_ID, "0xdac17f958d2ee523a2206206994597c13d831ec7", 18, 'USDT');
+  const tokenB = new Token(CHAIN_ID, "0xdac17f958d2ee523a2206206994597c13d831ec7", 6, 'USDT');
   const rate = await getExchangeRate(provider, tokenA, tokenB, 3000);
   return rate
 }
