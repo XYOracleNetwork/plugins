@@ -35,7 +35,6 @@ export const getExchangeRate = async (
   if (poolId === ZeroAddress) throw new Error("Invalid poolId")
   const response = await stateView.getSlot0(poolId)
   const sqrtPriceX96 = response[0]
-  console.log("response", response)
   const price = getPriceFromSqrtX96(sqrtPriceX96, token1.decimals, token0.decimals)
   return price
 }

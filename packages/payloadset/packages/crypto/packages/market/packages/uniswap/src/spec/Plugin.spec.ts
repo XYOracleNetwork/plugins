@@ -2,8 +2,7 @@ import '@xylabs/vitest-extended'
 
 import { PayloadSetPluginResolver } from '@xyo-network/payloadset-plugin'
 import {
-  describe, expect,
-  test,
+  describe, expect, test,
 } from 'vitest'
 
 import { UniswapCryptoMarketPlugin } from '../Plugin.ts'
