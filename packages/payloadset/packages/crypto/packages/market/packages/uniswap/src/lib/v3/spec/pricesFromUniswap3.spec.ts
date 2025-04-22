@@ -2,12 +2,11 @@ import '@xylabs/vitest-extended'
 
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
-  describe, expect,
-  test,
+  describe, expect, test,
 } from 'vitest'
 
-import { createUniswapPoolContracts } from '../Ethers/index.ts'
 import { pricesFromUniswap3 } from '../pricesFromUniswap3.ts'
+import { createUniswapPoolContracts } from '../createUniswapPoolContracts.ts'
 import { UniswapPoolContracts } from '../UniswapPoolContracts.ts'
 
 describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SECRET))('pricesFromUniswap3', () => {
