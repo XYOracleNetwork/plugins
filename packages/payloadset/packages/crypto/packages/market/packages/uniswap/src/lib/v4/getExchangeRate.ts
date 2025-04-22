@@ -1,4 +1,4 @@
-import { Token, Currency } from "@uniswap/sdk-core"
+import { Token } from "@uniswap/sdk-core"
 import { ZeroAddress } from "ethers/constants"
 import { Contract } from "ethers/contract"
 import { Provider } from "ethers/providers"
@@ -11,24 +11,31 @@ const STATE_VIEW_ABI = [{"inputs":[{"internalType":"contract IPoolManager","name
 
 /**
  * Returns the price of the token pair in the Uniswap V4 pool.
- * @param provider The EVM provider to use for the transaction.
  * @param tokenA The first token in the pair.
  * @param tokenB The second token in the pair.
  * @param fee The fee tier for the pool.
  * @param hookAddress The address of the hook contract. Default is ZeroAddress.
+ * @param provider The EVM provider to use for the transaction.
  * @returns The price of the token pair.
  */
-export const getExchangeRate = async (provider: Provider, tokenA: Token, tokenB: Token, fee: number, hookAddress: string = ZeroAddress): Promise<number> => {
+export const getExchangeRate = async (
+  tokenA: Token,
+  tokenB: Token,
+  fee: number,
+  hookAddress: string | undefined, 
+  provider: Provider
+): Promise<number> => {
+  const hooks = hookAddress || ZeroAddress
   const stateView = new Contract(STATE_VIEW_ADDRESS, STATE_VIEW_ABI, provider)
   const [token0, token1] = tokenA.sortsBefore(tokenB)
     ? [tokenA, tokenB]
     : [tokenB, tokenA]
-  const poolId: string = getPoolId(token0, token1, fee, 60, hookAddress)
+
+  const poolId: string = getPoolId(token0, token1, fee, 60, hooks)
   if (poolId === ZeroAddress) throw new Error("Invalid poolId")
   const response = await stateView.getSlot0(poolId)
   const sqrtPriceX96 = response[0]
   console.log("response", response)
   const price = getPriceFromSqrtX96(sqrtPriceX96, token1.decimals, token0.decimals)
   return price
-
 }
