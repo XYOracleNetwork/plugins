@@ -6,7 +6,6 @@ import {
 } from 'vitest'
 import { pricesFromUniswap4 } from '../pricesFromUniswap4.ts'
 
-
 describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SECRET))('pricesFromUniswap4', () => {
   test('pricesFromUniswap4', async () => {
     const provider = getProviderFromEnv()
