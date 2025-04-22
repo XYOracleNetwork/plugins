@@ -5,7 +5,7 @@ import {
   describe, expect, test,
 } from 'vitest'
 
-import { createUniswapPoolContracts } from '../Ethers/index.ts'
+import { createUniswapPoolContracts } from '../v3/index.ts'
 import { pricesFromUniswap3 } from '../pricesFromUniswap3.ts'
 import { UniswapPoolContracts } from '../UniswapPoolContracts.ts'
 
