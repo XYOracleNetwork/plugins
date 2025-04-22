@@ -4,8 +4,7 @@ import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import {
-  UniswapCryptoMarketSchema,
-  UniswapCryptoMarketWitnessConfigSchema,
+  UniswapCryptoMarketSchema,UniswapCryptoMarketWitnessConfigSchema,
 } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import type { WitnessParams } from '@xyo-network/witness-model'
 import type { Provider } from 'ethers'
@@ -13,8 +12,7 @@ import type { Provider } from 'ethers'
 import type { UniswapCryptoMarketWitnessConfig } from './Config.ts'
 import type { EthersUniSwap3Pair } from './lib/index.ts'
 import {
-  createUniswapPoolContracts,
-  pricesFromUniswap3, UniswapPoolContracts,
+  createUniswapPoolContracts,pricesFromUniswap3, UniswapPoolContracts,
 } from './lib/index.ts'
 
 export type UniswapCryptoMarketWitnessParams = WitnessParams<
