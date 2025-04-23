@@ -14,5 +14,6 @@ describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SE
     const provider = getProviderFromEnv()
     const pairs = await pricesFromUniswap3(createUniswapPoolContracts(provider, UniswapPoolContracts))
     expect(pairs.length).toBeGreaterThan(1)
+    // console.dir(pairs, { depth: null })
   })
 })
