@@ -10,7 +10,7 @@ import type { IUniswapV3Pool } from '@xyo-network/uniswap-typechain'
 import { IUniswapV3Pool__factory } from '@xyo-network/uniswap-typechain'
 import type { Provider } from 'ethers'
 
-import { logErrors, logErrorsAsync } from '../logErrors.ts'
+import { logErrors, logErrorsAsync } from './logErrors.ts'
 import { EthersUniswap3PoolSlot0Wrapper } from './Uniswap3PoolSlot0Wrapper.ts'
 
 export const ChainId = Enum({
