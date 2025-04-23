@@ -1,15 +1,5 @@
-import { Token } from "@uniswap/sdk-core"
-import { getAddress, ZeroAddress } from "ethers"
-
-type ChainId = 1
-
-type TokenRegistryEntry = {
-  address: string,
-  chainId: ChainId,
-  decimals: number,
-  symbol: string,
-  name?: string,
-}
+import { ZeroAddress } from "ethers"
+import { PoolIdType, TokenRegistryEntry } from "../types/index.ts"
 
 export const TokenRegistry: Record<string, TokenRegistryEntry> = {
   USDT: {
@@ -26,21 +16,8 @@ export const TokenRegistry: Record<string, TokenRegistryEntry> = {
   },
 } as const
 
-type TokenRegistryKey = keyof typeof TokenRegistry
-type TokenRegistryValue = typeof TokenRegistry[TokenRegistryKey]
 
-export const tokenRegistryValueToToken = (value: TokenRegistryValue): Token => {
-  const { address, chainId, decimals, symbol, name } = value
-  const normalizedAddress = getAddress(address.toLowerCase())
-  return new Token(chainId, normalizedAddress, decimals, symbol, name)
-}
 
-export type PoolIdType = {
-  fee: number,
-  hookAddress: string,
-  tickSpacing: number,
-  tokens: [TokenRegistryValue, TokenRegistryValue],
-}
 export const UniswapV4Pools: Record<string, PoolIdType> = {
   'XYO:USDT': {
     fee: 3000,

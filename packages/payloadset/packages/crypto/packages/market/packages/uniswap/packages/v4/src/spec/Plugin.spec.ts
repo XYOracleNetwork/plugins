@@ -7,7 +7,7 @@ import {
 
 import { UniswapV4CryptoMarketPlugin } from '../Plugin.ts'
 
-describe('CryptoMarketUniswapPlugin', () => {
+describe('UniswapV4CryptoMarketPlugin', () => {
   test('Add to Resolver', async () => {
     const plugin = UniswapV4CryptoMarketPlugin()
     const resolver = await new PayloadSetPluginResolver().register(plugin)

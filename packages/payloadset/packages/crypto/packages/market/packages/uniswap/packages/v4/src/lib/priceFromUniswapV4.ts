@@ -1,7 +1,8 @@
 import { Provider, ZeroAddress } from 'ethers'
 import { getExchangeRate } from './getExchangeRate.ts'
 import { UniswapCryptoPair, UniswapCryptoToken } from '@xyo-network/uniswap-crypto-market-payload-plugin'
-import { PoolIdType, tokenRegistryValueToToken } from './UniswapV4TokenContracts.ts'
+import { tokenRegistryValueToToken } from './tokenRegistryValueToToken.ts'
+import { PoolIdType } from '../types/index.ts'
 
 export const priceFromUniswapV4 = async (poolId: PoolIdType, provider: Provider): Promise<UniswapCryptoPair> => {
   const { tokens, fee, hookAddress = ZeroAddress } = poolId
