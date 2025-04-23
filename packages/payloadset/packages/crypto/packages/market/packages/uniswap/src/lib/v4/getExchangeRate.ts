@@ -4,8 +4,7 @@ import { Provider } from "ethers/providers"
 import { getPoolId } from "./getPoolId.ts"
 import { getPriceFromSqrtX96 } from "./getPriceFromSqrtX96.ts"
 import { IStateView__factory } from "@xyo-network/uniswap-typechain/v4-periphery"
-
-const STATE_VIEW_ADDRESS = "0x7ffe42c4a5deea5b0fec41c94c136cf115597227" // State view contract address
+import { UniswapV4ContractAddresses } from "./UniswapV4ContractAddresses.ts"
 
 /**
  * Returns the price of the token pair in the Uniswap V4 pool.
@@ -24,7 +23,7 @@ export const getExchangeRate = async (
   provider: Provider
 ): Promise<number> => {
   const hooks = hookAddress || ZeroAddress
-  const stateView = IStateView__factory.connect(STATE_VIEW_ADDRESS, provider)
+  const stateView = IStateView__factory.connect(UniswapV4ContractAddresses.Ethereum.StateView, provider)
   const [token0, token1] = tokenA.sortsBefore(tokenB)
     ? [tokenA, tokenB]
     : [tokenB, tokenA]
