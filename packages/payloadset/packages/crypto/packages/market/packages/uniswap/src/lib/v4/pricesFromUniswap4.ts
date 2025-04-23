@@ -10,12 +10,12 @@ export const pricesFromUniswap4 = async (contract: UniswapV4TokenContractIdentif
   const token0: UniswapCryptoToken = {
     address: tokenA.address,
     symbol: tokenA.symbol || '',
-    value: rate,
+    value: rate > 0 ? rate : 0,
   }
   const token1: UniswapCryptoToken = {
     address: tokenB.address,
     symbol: tokenB.symbol || '',
-    value: Number((1 / rate).toPrecision(6)),
+    value: rate > 0 ? Number((1 / rate).toPrecision(6)) : 0,
   }
   const pair: UniswapCryptoPair = {
     tokens: [ token0, token1 ]
