@@ -1,2 +1,2 @@
 export * from './TokenParameters.ts'
-export * from './HydratedPoolKey.ts'
+export * from './TokenPairPoolKey.ts'
