@@ -33,9 +33,7 @@ describe('UniswapV4CryptoMarketWitness', () => {
     const provider = getProviderFromEnv()
     const witness = await UniswapV4CryptoMarketWitness.create({
       account: 'random',
-      config: {
-        schema: UniswapV4CryptoMarketWitnessConfigSchema,
-      },
+      config: { schema: UniswapV4CryptoMarketWitnessConfigSchema },
       provider,
     })
     const [observation] = (await witness.observe()) as UniswapCryptoMarketPayload[]

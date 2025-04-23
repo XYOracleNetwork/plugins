@@ -1,4 +1,4 @@
-import { Token } from "@uniswap/sdk-core";
+import type { Token } from '@uniswap/sdk-core'
 
 /**
  * Sorts two tokens in ascending order by address to ensure consistent ordering.

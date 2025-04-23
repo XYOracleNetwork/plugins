@@ -70,7 +70,7 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
           }
           if (status) fields.status = status
           const result = new PayloadBuilder<WithSources<ImageThumbnailResultIndex>>({ schema: ImageThumbnailResultIndexSchema })
-            .fields({...fields}).meta({$sources})
+            .fields({ ...fields }).meta({ $sources })
             .build()
           return [result]
         }),

@@ -1,5 +1,6 @@
-import { ZeroAddress } from "ethers"
-import { TokenPairPoolKey, TokenParameters } from "../types/index.ts"
+import { ZeroAddress } from 'ethers'
+
+import type { TokenPairPoolKey, TokenParameters } from '../types/index.ts'
 
 export const TokenRegistry: Record<string, TokenParameters> = {
   USDT: {
@@ -22,5 +23,5 @@ export const UniswapV4DefaultPools: Record<string, TokenPairPoolKey> = {
     hookAddress: ZeroAddress,
     tickSpacing: 60,
     tokens: [TokenRegistry.XYO, TokenRegistry.USDT],
-  }
+  },
 } as const

@@ -1,5 +1,5 @@
 export * from '@xyo-network/xns-record-payload-plugins'
-import { PayloadPluginFunc } from '@xyo-network/payload-plugin'
+import type { PayloadPluginFunc } from '@xyo-network/payload-plugin'
 import {} from '@xyo-network/xns-record-payload-plugins'
 
 export const XnsRecordPayloadPlugins: PayloadPluginFunc[] = [

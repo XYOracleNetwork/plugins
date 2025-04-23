@@ -5,8 +5,8 @@ import {
   describe, expect, test,
 } from 'vitest'
 
-import { pricesFromUniswap3 } from '../pricesFromUniswap3.ts'
 import { createUniswapPoolContracts } from '../createUniswapPoolContracts.ts'
+import { pricesFromUniswap3 } from '../pricesFromUniswap3.ts'
 import { UniswapPoolContracts } from '../UniswapPoolContracts.ts'
 
 describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SECRET))('pricesFromUniswap3', () => {

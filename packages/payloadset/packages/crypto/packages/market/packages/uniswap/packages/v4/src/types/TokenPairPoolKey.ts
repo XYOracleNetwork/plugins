@@ -1,4 +1,4 @@
-import { TokenParameters } from "./TokenParameters.ts";
+import type { TokenParameters } from './TokenParameters.ts'
 
 // NOTE: We could import this type from @uniswap/v4-core, but
 // they are currently hardcoded the  ethers v5 which
@@ -14,8 +14,8 @@ import { TokenParameters } from "./TokenParameters.ts";
 // }
 
 export type TokenPairPoolKey = {
-  fee: number,
-  hookAddress: string,
-  tickSpacing: number,
-  tokens: [TokenParameters, TokenParameters],
+  fee: number
+  hookAddress: string
+  tickSpacing: number
+  tokens: [TokenParameters, TokenParameters]
 }
