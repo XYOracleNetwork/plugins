@@ -2,7 +2,7 @@ import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
-import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema, UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
+import { UniswapCryptoMarketPayload, UniswapCryptoMarketSchema, UniswapV4CryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import type { WitnessParams } from '@xyo-network/witness-model'
 import type { Provider } from 'ethers'
 
@@ -20,8 +20,8 @@ export type UniswapV4CryptoMarketWitnessParams = WitnessParams<
 export class UniswapV4CryptoMarketWitness<
   TParams extends UniswapV4CryptoMarketWitnessParams = UniswapV4CryptoMarketWitnessParams,
 > extends AbstractWitness<TParams> {
-  static override readonly configSchemas: Schema[] = [...super.configSchemas, UniswapCryptoMarketWitnessConfigSchema]
-  static override readonly defaultConfigSchema: Schema = UniswapCryptoMarketWitnessConfigSchema
+  static override readonly configSchemas: Schema[] = [...super.configSchemas, UniswapV4CryptoMarketWitnessConfigSchema]
+  static override readonly defaultConfigSchema: Schema = UniswapV4CryptoMarketWitnessConfigSchema
 
   protected get pools(): TokenPairPoolKey[] {
     return this.config?.poolKeys ?? Object.values(UniswapV4DefaultPools)
