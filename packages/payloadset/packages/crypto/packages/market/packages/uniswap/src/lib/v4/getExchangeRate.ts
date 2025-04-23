@@ -28,11 +28,9 @@ export const getExchangeRate = async (
   const [token0, token1] = tokenA.sortsBefore(tokenB)
     ? [tokenA, tokenB]
     : [tokenB, tokenA]
-
   const poolId: string = getPoolId(token0, token1, fee, 60, hooks)
   if (poolId === ZeroAddress) throw new Error("Invalid poolId")
   const response = await stateView.getSlot0(poolId)
-  const sqrtPriceX96 = response[0]
-  const price = getPriceFromSqrtX96(sqrtPriceX96, token1.decimals, token0.decimals)
+  const price = getPriceFromSqrtX96(response.sqrtPriceX96, token1.decimals, token0.decimals)
   return price
 }
