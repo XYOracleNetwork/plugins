@@ -5,6 +5,7 @@ import { getPoolId } from "./getPoolId.ts"
 import { getPriceFromSqrtX96 } from "./getPriceFromSqrtX96.ts"
 import { IStateView__factory } from "@xyo-network/uniswap-typechain/v4-periphery"
 import { UniswapV4ContractAddresses } from "./UniswapV4ContractAddresses.ts"
+import { sortTokens } from "./sortTokens.ts"
 
 /**
  * Returns the price of the token pair in the Uniswap V4 pool.
@@ -24,11 +25,8 @@ export const getExchangeRate = async (
 ): Promise<number> => {
   const hooks = hookAddress || ZeroAddress
   const stateView = IStateView__factory.connect(UniswapV4ContractAddresses.Ethereum.StateView, provider)
-  const [token0, token1] = tokenA.sortsBefore(tokenB)
-    ? [tokenA, tokenB]
-    : [tokenB, tokenA]
+  const [token0, token1] = sortTokens(tokenA, tokenB)
   const poolId: string = getPoolId(token0, token1, fee, 60, hooks)
-  console.log("poolId", poolId)
   if (poolId === ZeroAddress) throw new Error("Invalid poolId")
   const response = await stateView.getSlot0(poolId)
   const price = getPriceFromSqrtX96(response.sqrtPriceX96, token1.decimals, token0.decimals)
