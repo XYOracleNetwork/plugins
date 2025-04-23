@@ -1,2 +1,2 @@
-export * from './TokenRegistryEntry.ts'
-export * from './PoolIdType.ts'
+export * from './TokenParameters.ts'
+export * from './HydratedPoolKey.ts'

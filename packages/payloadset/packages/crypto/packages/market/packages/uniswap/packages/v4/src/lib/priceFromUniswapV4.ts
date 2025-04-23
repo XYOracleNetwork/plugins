@@ -2,9 +2,9 @@ import { Provider, ZeroAddress } from 'ethers'
 import { getExchangeRate } from './getExchangeRate.ts'
 import { UniswapCryptoPair, UniswapCryptoToken } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { tokenRegistryValueToToken } from './tokenRegistryValueToToken.ts'
-import { PoolIdType } from '../types/index.ts'
+import { HydratedPoolKey } from '../types/index.ts'
 
-export const priceFromUniswapV4 = async (poolId: PoolIdType, provider: Provider): Promise<UniswapCryptoPair> => {
+export const priceFromUniswapV4 = async (poolId: HydratedPoolKey, provider: Provider): Promise<UniswapCryptoPair> => {
   const { tokens, fee, hookAddress = ZeroAddress } = poolId
   const tokenA = tokenRegistryValueToToken(tokens[0])
   const tokenB = tokenRegistryValueToToken(tokens[1])

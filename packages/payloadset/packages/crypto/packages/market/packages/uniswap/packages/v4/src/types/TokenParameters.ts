@@ -1,4 +1,4 @@
-export type TokenRegistryEntry = {
+export type TokenParameters = {
   address: string,
   chainId: number,
   decimals: number,

@@ -1,7 +1,7 @@
 import { ZeroAddress } from "ethers"
-import { PoolIdType, TokenRegistryEntry } from "../types/index.ts"
+import { HydratedPoolKey, TokenParameters } from "../types/index.ts"
 
-export const TokenRegistry: Record<string, TokenRegistryEntry> = {
+export const TokenRegistry: Record<string, TokenParameters> = {
   USDT: {
     address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
     chainId: 1,
@@ -16,9 +16,7 @@ export const TokenRegistry: Record<string, TokenRegistryEntry> = {
   },
 } as const
 
-
-
-export const UniswapV4Pools: Record<string, PoolIdType> = {
+export const UniswapV4DefaultPools: Record<string, HydratedPoolKey> = {
   'XYO:USDT': {
     fee: 3000,
     hookAddress: ZeroAddress,
