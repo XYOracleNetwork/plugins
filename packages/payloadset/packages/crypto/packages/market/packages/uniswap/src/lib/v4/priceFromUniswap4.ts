@@ -3,7 +3,7 @@ import { getExchangeRate } from './getExchangeRate.ts'
 import { UniswapV4TokenContractIdentifier } from './UniswapV4TokenContractIdentifier.ts'
 import { UniswapCryptoPair, UniswapCryptoToken } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
-export const pricesFromUniswap4 = async (contract: UniswapV4TokenContractIdentifier, provider: Provider): Promise<UniswapCryptoPair> => {
+export const priceFromUniswap4 = async (contract: UniswapV4TokenContractIdentifier, provider: Provider): Promise<UniswapCryptoPair> => {
   const { tokenA, tokenB, fee, hookAddress = ZeroAddress } = contract
   const rate = await getExchangeRate(tokenA, tokenB, fee, hookAddress, provider)
   

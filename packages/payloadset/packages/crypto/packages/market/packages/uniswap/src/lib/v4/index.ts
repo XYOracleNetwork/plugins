@@ -1,1 +1,1 @@
-export * from './pricesFromUniswap4.ts'
+export * from './priceFromUniswap4.ts'
