@@ -7046,6 +7046,29 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/uniswap-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap"
   dependencies:
+    "@xylabs/ts-scripts-yarn3": "npm:^6.3.1"
+    "@xylabs/tsconfig": "npm:^6.3.1"
+    "@xylabs/vitest-extended": "npm:^4.8.7"
+    "@xyo-network/uniswap-v3-crypto-market-plugin": "workspace:^"
+    "@xyo-network/uniswap-v4-crypto-market-plugin": "workspace:^"
+    typescript: "npm:^5.8.3"
+    vitest: "npm:^3.1.1"
+  languageName: unknown
+  linkType: soft
+
+"@xyo-network/uniswap-typechain@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "@xyo-network/uniswap-typechain@npm:3.5.2"
+  dependencies:
+    ethers: "npm:^6.13.6"
+  checksum: 10/a42c1b9190af90481d0dee80e2652bcc3afe97250178dfc3ccbf35e5ba38831b97876a11bf9d775103232c147d14c3781585bc4f272495c12ad9bd1647fad80e
+  languageName: node
+  linkType: hard
+
+"@xyo-network/uniswap-v3-crypto-market-plugin@workspace:^, @xyo-network/uniswap-v3-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap/packages/v3":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/uniswap-v3-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap/packages/v3"
+  dependencies:
     "@uniswap/sdk-core": "npm:^7.7.2"
     "@uniswap/v3-sdk": "npm:^3.25.2"
     "@xylabs/assert": "npm:^4.8.7"
@@ -7071,14 +7094,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@xyo-network/uniswap-typechain@npm:^3.5.2":
-  version: 3.5.2
-  resolution: "@xyo-network/uniswap-typechain@npm:3.5.2"
+"@xyo-network/uniswap-v4-crypto-market-plugin@workspace:^, @xyo-network/uniswap-v4-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap/packages/v4":
+  version: 0.0.0-use.local
+  resolution: "@xyo-network/uniswap-v4-crypto-market-plugin@workspace:packages/payloadset/packages/crypto/packages/market/packages/uniswap/packages/v4"
   dependencies:
+    "@uniswap/sdk-core": "npm:^7.7.2"
+    "@uniswap/v3-sdk": "npm:^3.25.2"
+    "@xylabs/assert": "npm:^4.8.7"
+    "@xylabs/delay": "npm:^4.8.7"
+    "@xylabs/enum": "npm:^4.8.7"
+    "@xylabs/promise": "npm:^4.8.7"
+    "@xylabs/ts-scripts-yarn3": "npm:^6.3.1"
+    "@xylabs/tsconfig": "npm:^6.3.1"
+    "@xylabs/vitest-extended": "npm:^4.8.7"
+    "@xyo-network/abstract-witness": "npm:^3.13.0"
+    "@xyo-network/module-model": "npm:^3.13.0"
+    "@xyo-network/open-zeppelin-typechain": "npm:^3.5.2"
+    "@xyo-network/payload-model": "npm:^3.13.0"
+    "@xyo-network/payload-wrapper": "npm:^3.13.0"
+    "@xyo-network/payloadset-plugin": "npm:^3.13.0"
+    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:^"
+    "@xyo-network/uniswap-typechain": "npm:^3.5.2"
+    "@xyo-network/witness-blockchain-abstract": "npm:^3.13.0"
+    "@xyo-network/witness-model": "npm:^3.13.0"
     ethers: "npm:^6.13.6"
-  checksum: 10/a42c1b9190af90481d0dee80e2652bcc3afe97250178dfc3ccbf35e5ba38831b97876a11bf9d775103232c147d14c3781585bc4f272495c12ad9bd1647fad80e
-  languageName: node
-  linkType: hard
+    typescript: "npm:^5.8.3"
+    vitest: "npm:^3.1.1"
+  languageName: unknown
+  linkType: soft
 
 "@xyo-network/url-payload-plugin@workspace:^, @xyo-network/url-payload-plugin@workspace:packages/payload/packages/url":
   version: 0.0.0-use.local

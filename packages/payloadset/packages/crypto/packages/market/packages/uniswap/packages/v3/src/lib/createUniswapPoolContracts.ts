@@ -1,6 +1,6 @@
 import type { Provider } from 'ethers'
 
-import { logErrors } from '../logErrors.ts'
+import { logErrors } from './logErrors.ts'
 import { EthersUniSwap3Pair } from './UniSwap3Pair.ts'
 
 export const createUniswapPoolContracts = (provider: Provider, contracts: string[]) => {
