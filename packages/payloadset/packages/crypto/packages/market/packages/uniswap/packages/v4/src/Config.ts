@@ -3,6 +3,6 @@ import type { WitnessConfig } from '@xyo-network/witness-model'
 import { TokenPairPoolKey } from './types/index.ts'
 
 export type UniswapV4CryptoMarketWitnessConfig = WitnessConfig<{
-  pools?: Record<string, TokenPairPoolKey>
+  poolKeys?: TokenPairPoolKey[]
   schema: UniswapCryptoMarketWitnessConfigSchema
 }>
