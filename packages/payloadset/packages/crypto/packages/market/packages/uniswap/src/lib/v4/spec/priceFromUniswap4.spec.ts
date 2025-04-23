@@ -5,16 +5,14 @@ import {
   describe, expect, test,
 } from 'vitest'
 import { priceFromUniswap4 } from '../priceFromUniswap4.ts'
-import { Token } from '@uniswap/sdk-core'
+import { UniswapV4Pools } from '../UniswapV4TokenContracts.ts'
 
-describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SECRET))('pricesFromUniswap4', () => {
-  test('pricesFromUniswap4', async () => {
+describe.skipIf(!(process.env.INFURA_PROJECT_ID && process.env.INFURA_PROJECT_SECRET))('priceFromUniswap4', () => {
+  test('priceFromUniswap4', async () => {
     const provider = getProviderFromEnv()
-    const tokenA = new Token(1, "0x55296f69f40ea6d20e478533c15a6b08b654e758", 18, 'xyo')
-    const tokenB = new Token(1, "0xdac17f958d2ee523a2206206994597c13d831ec7", 6, 'usdt')
-    const tokenContractIdentifier = { tokenA, tokenB, fee: 3000 }
-    const pairs = await priceFromUniswap4(tokenContractIdentifier, provider)
+    const poolId = UniswapV4Pools['XYO:USDT']
+    const pairs = await priceFromUniswap4(poolId, provider)
     expect(pairs).toBeDefined()
-    // console.dir(pairs, { depth: null })
+    console.dir(pairs, { depth: null })
   })
 })
