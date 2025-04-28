@@ -5,7 +5,6 @@ import '@xylabs/vitest-extended'
 import {
   createProfiler, profile, profileReport,
 } from '@xylabs/profile'
-import { HDWallet } from '@xyo-network/account'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch-memory'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -22,6 +21,7 @@ import {
   ERC721__factory, ERC721Enumerable__factory, ERC721URIStorage__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { AdhocWitness } from '@xyo-network/witness-adhoc'
 import type { EvmAddress } from '@xyo-network/witness-evm-abstract'
 import { EvmAddressSchema, getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'

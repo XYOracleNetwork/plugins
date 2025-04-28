@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
-import { HDWallet } from '@xyo-network/account'
 import type { ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
 import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
@@ -11,6 +10,7 @@ import { ModuleFactory } from '@xyo-network/module-model'
 import type { SentinelInstance } from '@xyo-network/sentinel-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { isSnapshot } from '@xyo-network/tzero-stock-market-payload-plugin'
+import { HDWallet } from '@xyo-network/wallet'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import {
   beforeAll, describe, expect, it,

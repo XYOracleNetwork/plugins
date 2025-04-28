@@ -3,7 +3,6 @@
 import '@xylabs/vitest-extended'
 
 import { hexFrom } from '@xylabs/hex'
-import { HDWallet } from '@xyo-network/account'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -14,6 +13,7 @@ import {
 } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Semaphore } from 'async-mutex'

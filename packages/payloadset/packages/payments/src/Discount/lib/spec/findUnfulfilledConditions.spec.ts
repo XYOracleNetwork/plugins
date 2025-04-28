@@ -1,6 +1,4 @@
 import type { Address } from '@xylabs/hex'
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import type { Id } from '@xyo-network/id-payload-plugin'
@@ -16,6 +14,8 @@ import {
   EscrowTermsSchema, FixedAmountCouponSchema,
 } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
+import { HDWallet } from '@xyo-network/wallet'
+import type { WalletInstance } from '@xyo-network/wallet-model'
 import {
   beforeEach, describe, expect,
   it,

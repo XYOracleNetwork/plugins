@@ -3,7 +3,6 @@
 import '@xylabs/vitest-extended'
 
 import { hexFromHexString } from '@xylabs/hex'
-import { HDWallet } from '@xyo-network/account'
 import type {
   ContractInfo,
   CryptoContractFunctionCall,
@@ -24,6 +23,7 @@ import {
 } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import { Semaphore } from 'async-mutex'

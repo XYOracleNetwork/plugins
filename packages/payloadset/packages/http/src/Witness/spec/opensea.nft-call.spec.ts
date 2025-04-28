@@ -1,12 +1,12 @@
 import '@xylabs/vitest-extended'
 
-import { HDWallet } from '@xyo-network/account'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { asWitnessInstance } from '@xyo-network/witness-model'
 import {
   describe, expect,

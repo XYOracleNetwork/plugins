@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
-import { HDWallet } from '@xyo-network/account'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
@@ -27,6 +26,7 @@ import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import {

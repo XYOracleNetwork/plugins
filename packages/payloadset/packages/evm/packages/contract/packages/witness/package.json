@@ -30,17 +30,17 @@
   "types": "dist/types/index.d.ts",
   "dependencies": {
     "@xylabs/assert": "^4.8.7",
-    "@xyo-network/module-model": "^3.13.0",
-    "@xyo-network/payload-model": "^3.13.0",
-    "@xyo-network/witness-evm-abstract": "^3.13.0"
+    "@xyo-network/module-model": "^3.14.12",
+    "@xyo-network/payload-model": "^3.14.12",
+    "@xyo-network/witness-evm-abstract": "^3.14.12"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.3.1",
-    "@xylabs/tsconfig": "^6.3.1",
+    "@xylabs/ts-scripts-yarn3": "^6.3.5",
+    "@xylabs/tsconfig": "^6.3.5",
     "@xylabs/vitest-extended": "^4.8.7",
-    "ethers": "^6.13.6",
+    "ethers": "^6.13.7",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
+    "vitest": "^3.1.2"
   },
   "publishConfig": {
     "access": "public"

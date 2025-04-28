@@ -1,7 +1,5 @@
 import '@xylabs/vitest-extended'
 
-import type { WalletInstance } from '@xyo-network/account'
-import { HDWallet } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import type { CryptoContractFunctionCall } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import {
@@ -31,6 +29,8 @@ import {
   ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
+import type { WalletInstance } from '@xyo-network/wallet-model'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import type { Provider } from 'ethers'

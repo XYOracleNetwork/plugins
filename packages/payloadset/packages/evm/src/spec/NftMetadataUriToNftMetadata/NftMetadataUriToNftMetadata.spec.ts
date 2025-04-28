@@ -1,7 +1,6 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
-import { HDWallet } from '@xyo-network/account'
 import type { ApiUriCallPayload } from '@xyo-network/api-call-witness'
 import {
   ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema,
@@ -27,6 +26,7 @@ import { ModuleFactory } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import type { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
+import { HDWallet } from '@xyo-network/wallet'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'
 import { TimestampWitness } from '@xyo-network/witness-timestamp'
 import {
