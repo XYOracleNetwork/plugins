@@ -6407,8 +6407,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@xyo-network/plugins@workspace:."
   dependencies:
-    "@ethersproject/address": "npm:^5.8.0"
-    "@ethersproject/bignumber": "npm:^5.8.0"
     "@stylistic/eslint-plugin": "npm:^4.2.0"
     "@types/supertest": "npm:^6.0.3"
     "@typescript-eslint/eslint-plugin": "npm:^8.31.1"
@@ -6440,6 +6438,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^4.3.4"
     eslint-plugin-import: "npm:^2.31.0"
     eslint-plugin-sonarjs: "npm:^3.0.2"
+    ethers: "npm:^6.13.7"
     glob: "npm:^11.0.2"
     jsbi: "npm:^4.3.2"
     jsdom: "npm:^26.1.0"
