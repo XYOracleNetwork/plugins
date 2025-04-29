@@ -29,21 +29,21 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/promise": "^4.8.7",
-    "@xyo-network/abstract-witness": "^3.14.12",
+    "@xylabs/promise": "^4.8.9",
+    "@xyo-network/abstract-witness": "^3.14.15",
     "@xyo-network/module-instance-payload-plugin": "workspace:^",
-    "@xyo-network/module-model": "^3.14.12",
-    "@xyo-network/payload-model": "^3.14.12",
-    "@xyo-network/payloadset-plugin": "^3.14.12",
-    "@xyo-network/witness-model": "^3.14.12"
+    "@xyo-network/module-model": "^3.14.15",
+    "@xyo-network/payload-model": "^3.14.15",
+    "@xyo-network/payloadset-plugin": "^3.14.15",
+    "@xyo-network/witness-model": "^3.14.15"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.3.5",
-    "@xylabs/tsconfig": "^6.3.5",
-    "@xylabs/vitest-extended": "^4.8.7",
-    "@xyo-network/archivist-memory": "^3.14.12",
-    "@xyo-network/payload-wrapper": "^3.14.12",
-    "knip": "^5.50.5",
+    "@xylabs/ts-scripts-yarn3": "^6.4.6",
+    "@xylabs/tsconfig": "^6.4.6",
+    "@xylabs/vitest-extended": "^4.8.9",
+    "@xyo-network/archivist-memory": "^3.14.15",
+    "@xyo-network/payload-wrapper": "^3.14.15",
+    "knip": "^5.51.0",
     "typescript": "^5.8.3",
     "vitest": "^3.1.2"
   },
