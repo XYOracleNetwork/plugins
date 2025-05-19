@@ -1,7 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Schema } from '@xyo-network/payload-model'
-import shajs from 'sha.js'
 
 import { FileWitnessConfigSchema } from './Config.ts'
 import type { BrowserFileWitnessAdditionalParams } from './Params.ts'
@@ -46,7 +45,11 @@ export class BrowserFileWitness extends FileWitness<BrowserFileWitnessParams> {
     const file = assertEx(this.params.file, () => 'File is missing from params')
     const fileBinary = await this.readBinaryFile(file)
     const result = new Uint8Array(fileBinary)
-    const hash = shajs('sha256').update(result).digest('hex').padStart(64, '0')
+    const hashBuffer = await globalThis.crypto.subtle.digest('SHA-256', result)
+
+    // Convert ArrayBuffer to hex string
+    const hashArray = [...new Uint8Array(hashBuffer)]
+    const hash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('')
 
     return [
       {
