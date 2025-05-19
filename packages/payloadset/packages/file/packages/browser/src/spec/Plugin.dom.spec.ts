@@ -1,18 +1,8 @@
 import '@xylabs/vitest-extended'
 
-import { webcrypto } from 'node:crypto'
-import { TextEncoder } from 'node:util'
-
 import {
-  beforeEach,
-  describe, expect, test, vi,
+  beforeEach, describe, expect, test,
 } from 'vitest'
-
-// Force subtle from webcrypto to be used as subtle from @xylabs/platform
-vi.mock('@xylabs/platform', () => ({ subtle: webcrypto.subtle }))
-
-// Polyfill JSDOM
-globalThis.TextEncoder = TextEncoder
 
 import { BrowserFileWitness } from '../BrowserFileWitness.ts'
 import { FileWitnessConfigSchema } from '../Config.ts'
