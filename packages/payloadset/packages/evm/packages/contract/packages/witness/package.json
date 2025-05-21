@@ -29,19 +29,19 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/types/index.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.8.9",
-    "@xyo-network/module-model": "^3.14.16",
-    "@xyo-network/payload-model": "^3.14.16",
-    "@xyo-network/witness-evm-abstract": "^3.14.16"
+    "@xylabs/assert": "^4.10.0",
+    "@xyo-network/module-model": "^3.17.0",
+    "@xyo-network/payload-model": "^3.17.0",
+    "@xyo-network/witness-evm-abstract": "^3.17.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.4.6",
-    "@xylabs/tsconfig": "^6.4.6",
-    "@xylabs/vitest-extended": "^4.8.9",
-    "ethers": "^6.13.7",
-    "knip": "^5.51.0",
+    "@xylabs/ts-scripts-yarn3": "^6.5.7",
+    "@xylabs/tsconfig": "^6.5.7",
+    "@xylabs/vitest-extended": "^4.10.0",
+    "ethers": "^6.14.1",
+    "knip": "^5.57.0",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "vitest": "^3.1.4"
   },
   "publishConfig": {
     "access": "public"
