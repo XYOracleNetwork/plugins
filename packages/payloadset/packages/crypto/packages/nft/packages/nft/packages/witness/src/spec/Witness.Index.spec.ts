@@ -13,7 +13,7 @@ import type { NftInfo } from '@xyo-network/crypto-nft-payload-plugin'
 import { NftSchema } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import type { TemporalIndexingDivinerResultIndex } from '@xyo-network/diviner-temporal-indexing'
@@ -136,14 +136,14 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     const labels: Labels = { 'network.xyo.crypto.nft': 'diviner' }
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryArchivist)
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, labels)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, labels)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, labels)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, labels)
-    locator.register(TemporalIndexingDiviner, labels)
+    locator.register(MemoryArchivist.factory())
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory(), labels)
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory(), labels)
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory(), labels)
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory(), labels)
+    locator.register(TemporalIndexingDiviner.factory(), labels)
     const manifest = imageThumbnailDivinerManifest as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)

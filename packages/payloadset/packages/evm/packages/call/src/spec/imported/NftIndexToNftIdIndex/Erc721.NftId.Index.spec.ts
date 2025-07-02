@@ -5,7 +5,7 @@ import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-mem
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import { RangeDiviner } from '@xyo-network/diviner-range'
 import {
@@ -33,6 +33,7 @@ import {
 } from 'vitest'
 
 import { EvmCallDiviner } from '../../../Diviner.ts'
+import type { EvmCallWitnessParams } from '../../../model.ts'
 import { EvmCallSchema } from '../../../Payload.ts'
 import { EvmCallWitness } from '../../../Witness.ts'
 import nodeManifest from './Erc721.NftId.Index.json' with { type: 'json' }
@@ -45,24 +46,24 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID).skip('Erc721.NftId.Index', () =>
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
     wallet = await HDWallet.fromPhrase(mnemonic)
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TimestampWitness)
-    locator.register(EvmCallDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-    locator.register(TemporalIndexingDiviner)
-    locator.register(JsonPatchDiviner)
-    locator.register(JsonPathAggregateDiviner)
-    locator.register(RangeDiviner)
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TimestampWitness.factory())
+    locator.register(EvmCallDiviner.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
+    locator.register(JsonPatchDiviner.factory())
+    locator.register(JsonPathAggregateDiviner.factory())
+    locator.register(RangeDiviner.factory())
 
     locator.register(
       new ModuleFactory(EvmCallWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProvidersFromEnv,
-      }),
+      } as EvmCallWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     const manifest = new ManifestWrapper(nodeManifest as PackageManifestPayload, wallet, locator)

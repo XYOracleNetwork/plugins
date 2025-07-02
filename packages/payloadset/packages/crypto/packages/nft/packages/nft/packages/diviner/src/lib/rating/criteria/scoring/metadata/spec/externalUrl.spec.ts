@@ -11,7 +11,7 @@ import {
 } from './testHelpers.ts'
 
 const secure = ['https://lostpoets.xyz/']
-// eslint-disable-next-line sonarjs/no-clear-text-protocols
+
 const insecure = ['http://lvcidia.xyz/']
 const invalid = ['', 'not a url', {}]
 const missing = [undefined, null]

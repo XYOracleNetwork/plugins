@@ -52,7 +52,7 @@ export class ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDivine
       // Map the indexes to responses using the dictionary
       return imageThumbnailResultIndexes.map((imageThumbnailResultIndex) => {
         const {
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
           key, schema, $sources, ...commonFields
         } = imageThumbnailResultIndex
         const url = keyToUrlDictionary?.[key]

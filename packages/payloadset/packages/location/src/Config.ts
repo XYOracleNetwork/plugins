@@ -8,4 +8,4 @@ export type CurrentLocationWitnessConfig = WitnessConfig<{
   schema: CurrentLocationWitnessConfigSchema
 }>
 
-export type CurrentLocationWitnessParams = ModuleParams<AnyConfigSchema<CurrentLocationWitnessConfig>, { geolocation?: Geolocation }>
+export interface CurrentLocationWitnessParams extends ModuleParams<AnyConfigSchema<CurrentLocationWitnessConfig>> { geolocation?: Geolocation }

@@ -95,11 +95,11 @@ export class XnsNameHelper {
     const lowercaseXnsName = str.toLowerCase()
 
     // Remove everything except letters, numbers, and dashes
-    // eslint-disable-next-line sonarjs/slow-regex
+
     let formattedXnsName = lowercaseXnsName.replaceAll(/[^\dA-Za-z-]+$/g, '')
 
     // Remove leading and trailing dashes
-    // eslint-disable-next-line sonarjs/slow-regex, sonarjs/anchor-precedence
+
     if (options.maskStartEndHyphens) formattedXnsName = formattedXnsName.replaceAll(/^-+|-+$/g, '')
 
     // Filter out disallowed characters.

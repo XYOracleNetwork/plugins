@@ -12,12 +12,11 @@ export type AbstractModuleInstanceWitnessConfig = WitnessConfig<{
   schema: AbstractModuleInstanceWitnessConfigSchema
 }>
 
-export type AbstractModuleInstanceWitnessParams = WitnessParams<
-  AnyConfigSchema<AbstractModuleInstanceWitnessConfig>,
-  {
-    mod?: Module
-  }
->
+export interface AbstractModuleInstanceWitnessParams extends WitnessParams<
+  AnyConfigSchema<AbstractModuleInstanceWitnessConfig>>
+{
+  mod?: Module
+}
 
 export class AbstractModuleInstanceWitness<
   TParams extends AbstractModuleInstanceWitnessParams = AbstractModuleInstanceWitnessParams,

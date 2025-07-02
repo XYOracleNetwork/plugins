@@ -83,7 +83,7 @@ export interface RequestPaymentCardInstrument {
   pan: string
 }
 
-export type PaymentMethod =
+export type PaymentMethod
   // | 'ach'
   // | 'AdvCash'
   // | 'Alfa-click'
@@ -177,7 +177,7 @@ export type PaymentMethod =
   // | 'Pay4Fun'
   // | 'PayCash'
   // | 'Payeer'
-  'payment-card'
+  = 'payment-card'
 // | 'PaymentAsia-crypto'
 // | 'Paymero'
 // | 'Paynote'

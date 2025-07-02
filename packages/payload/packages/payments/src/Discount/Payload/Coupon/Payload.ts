@@ -13,10 +13,10 @@ import {
 /**
  * The type of coupons
  */
-export type Coupon =
-  FixedAmountCoupon
-  | FixedPercentageCoupon
-  | FixedPriceCoupon
+export type Coupon
+  = FixedAmountCoupon
+    | FixedPercentageCoupon
+    | FixedPriceCoupon
 
 /**
  * Identity function for determining if an object is an Coupon

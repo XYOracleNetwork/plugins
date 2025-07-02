@@ -33,7 +33,6 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => 
   // const address = '0xD3EaBb661771911f87c50cf105BDA74468C75b01'
   describe('observe', () => {
     describe('with no address or chainId in config', () => {
-      // eslint-disable-next-line sonarjs/assertions-in-tests
       it('uses values from config', async () => {
         const witness = await CryptoWalletNftWitness.create({
           account: 'random',
@@ -46,7 +45,6 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('CryptoWalletNftWitness', () => 
       }, 20_000)
     })
     describe('with address and chainId in query', () => {
-      // eslint-disable-next-line sonarjs/assertions-in-tests
       it('uses values from query', async () => {
         const witness = await CryptoWalletNftWitness.create({
           account: 'random',

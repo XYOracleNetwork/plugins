@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/assertions-in-tests */
 import '@xylabs/vitest-extended'
 
 import { Account } from '@xyo-network/account'

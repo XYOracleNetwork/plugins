@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-hardcoded-ip */
 import '@xylabs/vitest-extended'
 
 import { filterAs } from '@xylabs/array'
@@ -10,7 +9,7 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
@@ -75,10 +74,10 @@ describe('ImageThumbnailStateToIndexCandidateDiviner', () => {
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryArchivist)
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(ImageThumbnailStateToIndexCandidateDiviner)
+    locator.register(MemoryArchivist.factory())
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(ImageThumbnailStateToIndexCandidateDiviner.factory())
     const manifest = ImageThumbnailStateToIndexCandidateDivinerManifest as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     const node = await manifestWrapper.loadNodeFromIndex(0)

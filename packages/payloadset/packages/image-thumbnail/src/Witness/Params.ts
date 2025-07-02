@@ -3,9 +3,8 @@ import type { WitnessParams } from '@xyo-network/witness-model'
 
 import type { ImageThumbnailWitnessConfig } from './Config.ts'
 
-export type ImageThumbnailWitnessParams = WitnessParams<
-  AnyConfigSchema<ImageThumbnailWitnessConfig>,
-  {
-    loaders?: string[]
-  }
->
+export interface ImageThumbnailWitnessParams extends WitnessParams<
+  AnyConfigSchema<ImageThumbnailWitnessConfig>>
+{
+  loaders?: string[]
+}

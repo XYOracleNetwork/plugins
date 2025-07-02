@@ -22,13 +22,12 @@ export interface HttpHeaders {
   [key: string]: HttpHeaderValue
 }
 
-export type ApiGraphqlWitnessParams = WitnessParams<
-  AnyConfigSchema<ApiGraphqlWitnessConfig>,
-  {
-    endpoint?: string
-    headers?: HttpHeaders
-  }
->
+export interface ApiGraphqlWitnessParams extends WitnessParams<
+  AnyConfigSchema<ApiGraphqlWitnessConfig>>
+{
+  endpoint?: string
+  headers?: HttpHeaders
+}
 
 export const GraphqlQuerySchema = 'network.xyo.graphql.query'
 export type GraphqlQuerySchema = typeof GraphqlQuerySchema

@@ -12,7 +12,7 @@ describe('hashHttpUrl', () => {
     it('hashes http URLs', async () => {
       // TODO: Replace with a more static http URL
       const expected = '6da5620880159634213e197fafca1dde0272153be3e4590818533fab8d040770'
-      // eslint-disable-next-line sonarjs/no-clear-text-protocols
+
       const url = 'http://www.google.com/favicon.ico'
       const actual = await hashHttpUrl(url)
       expect(actual).toEqual(expected)

@@ -9,10 +9,9 @@ export type RebillyPaymentCardAuthorizationSentinelConfigSchema = typeof Rebilly
 /*
  * The Rebilly Payment Card Authorization Sentinel Config
  */
-export type RebillyPaymentCardAuthorizationSentinelConfig = SentinelConfig<{
+export interface RebillyPaymentCardAuthorizationSentinelConfig extends SentinelConfig<{
   /**
    * The config schema
    */
   schema: RebillyPaymentCardAuthorizationSentinelConfigSchema
-}> &
-Partial<RebillyApiDomainSettings>
+}>, Partial<RebillyApiDomainSettings> {}

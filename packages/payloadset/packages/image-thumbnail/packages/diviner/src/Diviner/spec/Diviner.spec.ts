@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-hardcoded-ip */
 /* eslint-disable max-statements */
 import '@xylabs/vitest-extended'
 
@@ -10,7 +9,7 @@ import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import { isBoundWitnessWithStorageMeta } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import type {
   ImageThumbnail,
   ImageThumbnailDivinerQuery,
@@ -87,14 +86,14 @@ describe('ImageThumbnailDiviner', () => {
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryArchivist)
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner)
-    locator.register(ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner)
-    locator.register(ImageThumbnailQueryToImageThumbnailIndexQueryDiviner)
-    locator.register(ImageThumbnailStateToIndexCandidateDiviner)
-    locator.register(ImageThumbnailDiviner)
+    locator.register(MemoryArchivist.factory())
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner.factory())
+    locator.register(ImageThumbnailIndexQueryResponseToImageThumbnailQueryResponseDiviner.factory())
+    locator.register(ImageThumbnailQueryToImageThumbnailIndexQueryDiviner.factory())
+    locator.register(ImageThumbnailStateToIndexCandidateDiviner.factory())
+    locator.register(ImageThumbnailDiviner.factory())
     const manifest = imageThumbnailDivinerManifest as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)

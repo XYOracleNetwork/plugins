@@ -25,6 +25,7 @@ import {
 
 import type { EvmCallResults } from '../Diviner.ts'
 import { EvmCallDiviner, EvmCallResultsSchema } from '../Diviner.ts'
+import type { EvmCallWitnessParams } from '../model.ts'
 import type { EvmCall } from '../Payload.ts'
 import { EvmCallSchema } from '../Payload.ts'
 import { EvmCallWitness } from '../Witness.ts'
@@ -50,13 +51,13 @@ describe('Erc721Sentinel - Token', () => {
       profile(profiler, 'setup')
       const wallet = await HDWallet.random()
       const locator = new ModuleFactoryLocator()
-      locator.register(EvmCallDiviner)
+      locator.register(EvmCallDiviner.factory())
 
       locator.register(
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721' },
       )
 
@@ -64,7 +65,7 @@ describe('Erc721Sentinel - Token', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
@@ -72,7 +73,7 @@ describe('Erc721Sentinel - Token', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721URIStorage__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'ERC721URIStorage' },
       )
 
@@ -80,7 +81,7 @@ describe('Erc721Sentinel - Token', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC1155__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc1155' },
       )
 

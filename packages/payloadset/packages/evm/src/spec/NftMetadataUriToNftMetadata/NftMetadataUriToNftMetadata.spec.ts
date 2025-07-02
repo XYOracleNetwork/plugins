@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/delay'
-import type { ApiUriCallPayload } from '@xyo-network/api-call-witness'
+import type { ApiCallWitnessParams, ApiUriCallPayload } from '@xyo-network/api-call-witness'
 import {
   ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema,
   isApiCallJsonResult,
@@ -10,7 +10,7 @@ import { asArchivistInstance } from '@xyo-network/archivist-model'
 import type { OpenSeaNftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
@@ -56,19 +56,19 @@ describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-    locator.register(TemporalIndexingDiviner)
-    locator.register(TimestampWitness)
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
+    locator.register(TimestampWitness.factory())
     locator.register(
       new ModuleFactory(ApiCallWitness, {
         config: { schema: ApiCallWitnessConfigSchema },
         ipfsGateway: '5d7b6582.beta.decentralnetworkservices.com',
-      }),
+      } as ApiCallWitnessParams),
     )
     const manifest = nftIdToNftMetadataUri as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)

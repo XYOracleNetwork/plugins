@@ -12,12 +12,11 @@ import type { EthereumGasEthersWitnessConfig } from './Config.ts'
 import { getGasFromEthers } from './lib/index.ts'
 import { EthereumGasEthersWitnessConfigSchema } from './Schema.ts'
 
-export type EthereumGasEthersWitnessParams = WitnessParams<
-  AnyConfigSchema<EthereumGasEthersWitnessConfig>,
-  {
-    provider?: Provider
-  }
->
+export interface EthereumGasEthersWitnessParams extends WitnessParams<
+  AnyConfigSchema<EthereumGasEthersWitnessConfig>>
+{
+  provider?: Provider
+}
 
 export class EthereumGasEthersWitness<
   TParams extends EthereumGasEthersWitnessParams = EthereumGasEthersWitnessParams,

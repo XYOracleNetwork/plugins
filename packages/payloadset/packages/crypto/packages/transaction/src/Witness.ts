@@ -5,7 +5,7 @@ import {
   AddressTransactionHistorySchema,
   AddressTransactionHistoryWitnessConfigSchema,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { type AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { WitnessParams } from '@xyo-network/witness-model'
 import type { EtherscanProvider } from 'ethers'
@@ -13,15 +13,15 @@ import type { EtherscanProvider } from 'ethers'
 import type { AddressTransactionHistoryWitnessConfig } from './Config.ts'
 import { getTransactionsForAddress } from './lib/index.ts'
 
-export type AddressTransactionHistoryWitnessParams = WitnessParams<
-  AnyConfigSchema<AddressTransactionHistoryWitnessConfig>,
-  {
-    provider?: EtherscanProvider
-  }
->
+export interface AddressTransactionHistoryWitnessParams extends WitnessParams<
+  AnyConfigSchema<AddressTransactionHistoryWitnessConfig>>
+{
+  provider?: EtherscanProvider
+}
 
 const schema = AddressTransactionHistorySchema
 
+@creatableModule()
 export class AddressTransactionHistoryWitness<
   TParams extends AddressTransactionHistoryWitnessParams = AddressTransactionHistoryWitnessParams,
 > extends AbstractWitness<TParams> {

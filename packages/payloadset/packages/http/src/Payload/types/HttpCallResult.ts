@@ -6,7 +6,7 @@ import type { HttpCallJsonResult } from './HttpCallJsonResult.ts'
 
 type NewType = JsonObject
 
-export type HttpCallResult<TJson extends JsonArray | JsonObject = JsonArray | NewType> =
-  | HttpCallBase64Result
-  | HttpCallJsonResult<TJson>
-  | HttpCallErrorResult
+export type HttpCallResult<TJson extends JsonArray | JsonObject = JsonArray | NewType>
+  = | HttpCallBase64Result
+    | HttpCallJsonResult<TJson>
+    | HttpCallErrorResult

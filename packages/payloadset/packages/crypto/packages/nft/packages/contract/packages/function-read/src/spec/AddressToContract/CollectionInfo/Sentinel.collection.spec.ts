@@ -30,6 +30,7 @@ import {
 } from 'vitest'
 
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
+import type { CryptoContractFunctionReadWitnessParams } from '../../../Witness.ts'
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721SentinelManifest from '../Erc721Sentinel.json' with { type: 'json' }
 
@@ -87,14 +88,14 @@ describe('Erc721Sentinel', () => {
       const wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
 
-      locator.register(CryptoContractDiviner)
+      locator.register(CryptoContractDiviner.factory())
 
       locator.register(
 
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC721__factory.abi },
           providers: getProviders(),
-        }),
+        } as CryptoContractFunctionReadWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721' },
       )
 
@@ -103,7 +104,7 @@ describe('Erc721Sentinel', () => {
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: getProviders(),
-        }),
+        } as CryptoContractFunctionReadWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
@@ -112,7 +113,7 @@ describe('Erc721Sentinel', () => {
         new ModuleFactory(CryptoContractFunctionReadWitness, {
           config: { abi: ERC1155__factory.abi },
           providers: getProviders(),
-        }),
+        } as CryptoContractFunctionReadWitnessParams),
         { 'network.xyo.evm.interface': 'Erc1155' },
       )
       profile('setup')

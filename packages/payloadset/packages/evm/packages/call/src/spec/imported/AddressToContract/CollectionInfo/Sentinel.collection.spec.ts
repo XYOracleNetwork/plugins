@@ -22,6 +22,7 @@ import {
 
 import type { EvmCallResults } from '../../../../Diviner.ts'
 import { EvmCallDiviner, EvmCallResultsSchema } from '../../../../Diviner.ts'
+import type { EvmCallWitnessParams } from '../../../../model.ts'
 import type { EvmCall } from '../../../../Payload.ts'
 import { EvmCallSchema } from '../../../../Payload.ts'
 import { EvmCallWitness } from '../../../../Witness.ts'
@@ -71,13 +72,13 @@ describe.skip('Erc721Sentinel', () => {
       const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
       const wallet = await HDWallet.fromPhrase(mnemonic)
       const locator = new ModuleFactoryLocator()
-      locator.register(EvmCallDiviner)
+      locator.register(EvmCallDiviner.factory())
 
       locator.register(
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721__factory.abi },
           providers: getProvidersFromEnv,
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721' },
       )
 
@@ -85,7 +86,7 @@ describe.skip('Erc721Sentinel', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: getProvidersFromEnv,
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
@@ -93,7 +94,7 @@ describe.skip('Erc721Sentinel', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC1155__factory.abi },
           providers: getProvidersFromEnv,
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc1155' },
       )
       profile('setup')

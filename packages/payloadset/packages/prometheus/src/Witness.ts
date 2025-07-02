@@ -51,9 +51,9 @@ export class PrometheusNodeWitness<TParams extends PrometheusNodeWitnessParams =
     return await super.startHandler()
   }
 
-  protected override async stopHandler(): Promise<boolean> {
+  protected override async stopHandler(): Promise<void> {
     this.server?.close()
-    return await super.stopHandler()
+    await super.stopHandler()
   }
 
   private async generateMetricValues(): Promise<PrometheusMetricValuePayload[]> {

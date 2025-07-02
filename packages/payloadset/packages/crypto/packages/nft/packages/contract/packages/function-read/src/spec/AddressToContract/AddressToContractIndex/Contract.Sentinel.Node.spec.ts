@@ -10,7 +10,7 @@ import {
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import type { PayloadDivinerQueryPayload } from '@xyo-network/diviner-payload-model'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
@@ -40,6 +40,7 @@ import {
 } from 'vitest'
 
 import { CryptoContractDiviner } from '../../../Diviner/index.ts'
+import type { CryptoContractFunctionReadWitnessParams } from '../../../Witness.ts'
 import { CryptoContractFunctionReadWitness } from '../../../Witness.ts'
 import erc721IndexNodeManifest from './Contract.Sentinel.Erc721.Index.json' with { type: 'json' }
 import erc1155IndexNodeManifest from './Contract.Sentinel.Erc1155.Index.json' with { type: 'json' }
@@ -71,28 +72,28 @@ describe.skip('Contract Node', () => {
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
     wallet = await HDWallet.fromPhrase(mnemonic)
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryArchivist)
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TimestampWitness)
+    locator.register(MemoryArchivist.factory())
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TimestampWitness.factory())
 
-    locator.register(CryptoContractDiviner)
+    locator.register(CryptoContractDiviner.factory())
 
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory(), CryptoContractDiviner.labels)
 
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory(), CryptoContractDiviner.labels)
 
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory(), CryptoContractDiviner.labels)
 
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory(), CryptoContractDiviner.labels)
 
-    locator.register(TemporalIndexingDiviner, CryptoContractDiviner.labels)
+    locator.register(TemporalIndexingDiviner.factory(), CryptoContractDiviner.labels)
     locator.register(
 
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721__factory.abi },
         providers: getProviders(),
-      }),
+      } as CryptoContractFunctionReadWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721' },
     )
     locator.register(
@@ -100,7 +101,7 @@ describe.skip('Contract Node', () => {
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProviders(),
-      }),
+      } as CryptoContractFunctionReadWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     locator.register(
@@ -108,11 +109,11 @@ describe.skip('Contract Node', () => {
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC1155__factory.abi },
         providers: getProviders(),
-      }),
+      } as CryptoContractFunctionReadWitnessParams),
       { 'network.xyo.evm.interface': 'Erc1155' },
     )
-    locator.register(JsonPatchDiviner)
-    locator.register(TemporalIndexingDiviner)
+    locator.register(JsonPatchDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
     const publicChildren: ModuleManifest[] = [
       ...(erc721IndexNodeManifest as PackageManifestPayload).nodes,
       ...(erc1155IndexNodeManifest as PackageManifestPayload).nodes,

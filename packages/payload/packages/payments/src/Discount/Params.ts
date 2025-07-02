@@ -4,11 +4,11 @@ import type { AnyConfigSchema } from '@xyo-network/module-model'
 
 import type { PaymentDiscountDivinerConfig } from './Config.ts'
 
-export type PaymentDiscountDivinerParams<
+export interface PaymentDiscountDivinerParams<
   TConfig extends AnyConfigSchema<PaymentDiscountDivinerConfig> = AnyConfigSchema<PaymentDiscountDivinerConfig>,
-> = DivinerParams<TConfig, {
+> extends DivinerParams<TConfig> {
   /**
      * The list of coupon authorities that can be used to get a discount
      */
   couponAuthorities?: Address[]
-}>
+}

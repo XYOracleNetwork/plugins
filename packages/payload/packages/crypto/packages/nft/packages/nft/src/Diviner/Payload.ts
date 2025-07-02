@@ -6,16 +6,16 @@ import { NftScoreSchema } from './Schema.ts'
 
 export type AttributesScoringCriteria = 'Attributes'
 
-export type MetadataScoringCriteria =
-  | 'Animation URL'
-  | 'Background Color'
-  | 'Description'
-  | 'External Url'
-  | 'Image'
-  | 'Image Data'
-  | 'Name'
-  | 'YouTube URL'
-  | AttributesScoringCriteria
+export type MetadataScoringCriteria
+  = | 'Animation URL'
+    | 'Background Color'
+    | 'Description'
+    | 'External Url'
+    | 'Image'
+    | 'Image Data'
+    | 'Name'
+    | 'YouTube URL'
+    | AttributesScoringCriteria
 
 export type ScoringCriteria = 'Contract Address' | 'Supply' | 'Token Id' | 'Type' | MetadataScoringCriteria
 

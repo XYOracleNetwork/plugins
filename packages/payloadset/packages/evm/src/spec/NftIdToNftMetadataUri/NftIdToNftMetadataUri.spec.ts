@@ -4,7 +4,7 @@ import { delay } from '@xylabs/delay'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
@@ -13,7 +13,7 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { EvmCall } from '@xyo-network/evm-call-witness'
+import type { EvmCall, EvmCallWitnessParams } from '@xyo-network/evm-call-witness'
 import {
   EvmCallDiviner, EvmCallSchema, EvmCallWitness,
 } from '@xyo-network/evm-call-witness'
@@ -51,21 +51,21 @@ describe.skipIf(providers.length === 0)('NftIdToNftMetadataUri', () => {
   beforeAll(async () => {
     const wallet = await HDWallet.random()
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-    locator.register(TemporalIndexingDiviner)
-    locator.register(TimestampWitness)
-    locator.register(EvmCallDiviner)
-    locator.register(EvmCallResultToNftTokenUriDiviner)
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
+    locator.register(TimestampWitness.factory())
+    locator.register(EvmCallDiviner.factory())
+    locator.register(EvmCallResultToNftTokenUriDiviner.factory())
     locator.register(
       new ModuleFactory(EvmCallWitness, {
         config: { abi: ERC721URIStorage__factory.abi },
         providers: () => getProvidersFromEnv(maxProviders),
-      }),
+      } as EvmCallWitnessParams),
       { 'network.xyo.evm.interface': 'ERC721TokenUri' },
     )
     const manifest = nftIdToNftMetadataUri as PackageManifestPayload

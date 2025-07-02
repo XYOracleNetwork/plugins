@@ -15,6 +15,7 @@ import {
 
 import type { HttpCallJsonResult, HttpUriTemplateCall } from '../../Payload/index.ts'
 import { HttpCallResultSchema, HttpCallSchema } from '../../Payload/index.ts'
+import type { HttpCallWitnessParams } from '../Params.ts'
 import { HttpCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json' with { type: 'json' }
 
@@ -87,7 +88,7 @@ describe('OpenSeaHttp', () => {
         new ModuleFactory(HttpCallWitness, {
           config: { uriTemplate: 'https://api.opensea.io/api/v2/chain/ethereum/account/${address}/nfts' },
           headers: { 'x-api-key': apiKey },
-        }),
+        } as HttpCallWitnessParams),
       )
 
       const manifest = new ManifestWrapper(openseaNftsManifest as PackageManifestPayload, wallet, locator)

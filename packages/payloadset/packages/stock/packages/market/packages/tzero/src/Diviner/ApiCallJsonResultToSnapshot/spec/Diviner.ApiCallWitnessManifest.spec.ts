@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { assertEx } from '@xylabs/assert'
-import type { ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
+import type { ApiCallWitnessParams, ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
 import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
@@ -27,8 +27,8 @@ describe('tZero', () => {
     beforeAll(async () => {
       const wallet = await HDWallet.random()
       const locator = new ModuleFactoryLocator()
-      locator.register(new ModuleFactory(ApiCallWitness, { headers: { 'x-apikey': apiKey } }))
-      locator.register(TZeroApiCallJsonResultToSnapshotDiviner)
+      locator.register(new ModuleFactory(ApiCallWitness, { config: {}, headers: { 'x-apikey': apiKey } } as ApiCallWitnessParams))
+      locator.register(TZeroApiCallJsonResultToSnapshotDiviner.factory())
       const manifest = new ManifestWrapper(tzeroMarketdataManifest as PackageManifestPayload, wallet, locator)
       const node = await manifest.loadNodeFromIndex(0)
       const mods = await node.resolve('*')

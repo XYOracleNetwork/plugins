@@ -21,12 +21,11 @@ import type { InterfaceAbi, Provider } from 'ethers'
 import { Contract } from 'ethers'
 
 /** @deprecated use EvmCallWitness instead */
-export type CryptoContractFunctionReadWitnessParams = WitnessParams<
-  AnyConfigSchema<CryptoContractFunctionReadWitnessConfig>,
-  {
-    providers: Provider[]
-  }
->
+export interface CryptoContractFunctionReadWitnessParams extends WitnessParams<
+  AnyConfigSchema<CryptoContractFunctionReadWitnessConfig>>
+{
+  providers: Provider[]
+}
 
 /** @deprecated use EvmCallWitness instead */
 export class CryptoContractFunctionReadWitness<

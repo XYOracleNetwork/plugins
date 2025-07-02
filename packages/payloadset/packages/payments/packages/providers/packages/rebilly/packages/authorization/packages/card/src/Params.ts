@@ -6,7 +6,10 @@ import type { RebillyPaymentCardAuthorizationSentinelConfig } from './Config.ts'
 
 export type RebillyPaymentCardAuthorizationParams = Partial<RebillyPublishableApiSettings & RebillyOrganizationSettings>
 
-export type RebillyPaymentCardAuthorizationSentinelParams<
+export interface RebillyPaymentCardAuthorizationSentinelParams<
   TConfig extends AnyConfigSchema<RebillyPaymentCardAuthorizationSentinelConfig> = AnyConfigSchema<RebillyPaymentCardAuthorizationSentinelConfig>,
-  TParams extends RebillyPaymentCardAuthorizationParams = RebillyPaymentCardAuthorizationParams,
-> = SentinelParams<TConfig, TParams>
+> extends SentinelParams<TConfig> {
+  domain?: string
+  organizationId?: string
+  publishableApiKey?: string
+}

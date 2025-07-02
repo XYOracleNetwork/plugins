@@ -7,7 +7,7 @@ import { ImageThumbnailDivinerSchema } from './Schema.ts'
 export type ImageThumbnailDivinerQuerySchema = `${ImageThumbnailDivinerSchema}.query`
 export const ImageThumbnailDivinerQuerySchema: ImageThumbnailDivinerQuerySchema = `${ImageThumbnailDivinerSchema}.query`
 
-export type ImageThumbnailDivinerQuery = Pick<PayloadDivinerPredicate, 'limit' | 'order'> &
-  Payload<{ status?: number; success?: boolean; url: string }, ImageThumbnailDivinerQuerySchema>
+export type ImageThumbnailDivinerQuery = Pick<PayloadDivinerPredicate, 'limit' | 'order'>
+  & Payload<{ status?: number; success?: boolean; url: string }, ImageThumbnailDivinerQuerySchema>
 
 export const isImageThumbnailDivinerQuery = isPayloadOfSchemaType<ImageThumbnailDivinerQuery>(ImageThumbnailDivinerQuerySchema)

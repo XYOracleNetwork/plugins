@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { type AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { UniswapCryptoMarketSchema, UniswapV4CryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
@@ -11,13 +11,13 @@ import type { UniswapV4CryptoMarketWitnessConfig } from './Config.ts'
 import { pricesFromUniswapV4, UniswapV4DefaultPools } from './lib/index.ts'
 import type { TokenPairPoolKey } from './types/index.ts'
 
-export type UniswapV4CryptoMarketWitnessParams = WitnessParams<
-  AnyConfigSchema<UniswapV4CryptoMarketWitnessConfig>,
-  {
-    provider?: Provider
-  }
->
+export interface UniswapV4CryptoMarketWitnessParams extends WitnessParams<
+  AnyConfigSchema<UniswapV4CryptoMarketWitnessConfig>>
+{
+  provider?: Provider
+}
 
+@creatableModule()
 export class UniswapV4CryptoMarketWitness<
   TParams extends UniswapV4CryptoMarketWitnessParams = UniswapV4CryptoMarketWitnessParams,
 > extends AbstractWitness<TParams> {
@@ -44,6 +44,5 @@ export class UniswapV4CryptoMarketWitness<
 
   protected override async startHandler() {
     await super.startHandler()
-    return true
   }
 }

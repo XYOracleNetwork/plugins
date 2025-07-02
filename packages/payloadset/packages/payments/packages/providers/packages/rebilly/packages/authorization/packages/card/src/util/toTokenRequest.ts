@@ -16,7 +16,7 @@ export const toTokenRequest = (paymentCard: PaymentCard, billingAddress: Billing
   // is to allow for missing fields to be omitted rather than set to undefined and for any new fields
   // that might be added later to be automatically picked up on. It is fine to pass this along since
   // the user is supplying this data about themselves.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
   const { schema: _, ...fields } = billingAddress
   return {
     billingAddress: { ...fields },

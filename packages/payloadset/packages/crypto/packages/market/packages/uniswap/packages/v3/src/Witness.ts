@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { type AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 import { UniswapCryptoMarketSchema, UniswapCryptoMarketWitnessConfigSchema } from '@xyo-network/uniswap-crypto-market-payload-plugin'
@@ -13,13 +13,13 @@ import {
   createUniswapPoolContracts, pricesFromUniswap3, UniswapPoolContracts,
 } from './lib/index.ts'
 
-export type UniswapCryptoMarketWitnessParams = WitnessParams<
-  AnyConfigSchema<UniswapCryptoMarketWitnessConfig>,
-  {
-    provider?: Provider
-  }
->
+export interface UniswapCryptoMarketWitnessParams extends WitnessParams<
+  AnyConfigSchema<UniswapCryptoMarketWitnessConfig>>
+{
+  provider?: Provider
+}
 
+@creatableModule()
 export class UniswapCryptoMarketWitness<
   TParams extends UniswapCryptoMarketWitnessParams = UniswapCryptoMarketWitnessParams,
 > extends AbstractWitness<TParams> {
@@ -51,6 +51,5 @@ export class UniswapCryptoMarketWitness<
       assertEx(this.provider, () => 'Provider Required'),
       this.config?.pools ?? UniswapPoolContracts,
     )
-    return true
   }
 }

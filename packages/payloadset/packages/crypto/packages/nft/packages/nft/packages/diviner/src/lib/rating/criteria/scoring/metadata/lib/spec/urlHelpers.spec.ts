@@ -10,7 +10,7 @@ import {
 } from '../urlHelpers.ts'
 
 const ipfsUrl = 'ipfs://QmRyBBrLYWy6zZRyDUR5JWLJ2mrbvHFtptosrM3jAwBXTc/'
-// eslint-disable-next-line sonarjs/no-clear-text-protocols
+
 const httpUrl = 'http://www.google.com'
 const httpsUrl = 'https://xyo.network'
 

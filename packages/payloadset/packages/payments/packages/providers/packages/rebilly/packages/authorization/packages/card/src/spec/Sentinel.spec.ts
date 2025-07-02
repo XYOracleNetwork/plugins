@@ -13,6 +13,7 @@ import {
 } from 'vitest'
 
 import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from '../Config.ts'
+import type { RebillyPaymentCardAuthorizationSentinelParams } from '../Params.ts'
 import { RebillyPaymentCardAuthorizationSentinel } from '../Sentinel.ts'
 
 const getTestPaymentCardRequest = (cardNumber: string, cvv: string): [PaymentCard, BillingAddress] => {
@@ -53,7 +54,7 @@ describe.skipIf(!process.env.REB_PUB_APIKEY)('RebillyPaymentCardAuthorizationSen
       domain,
       organizationId,
       publishableApiKey,
-    })
+    } as RebillyPaymentCardAuthorizationSentinelParams)
   })
 
   const cases = [

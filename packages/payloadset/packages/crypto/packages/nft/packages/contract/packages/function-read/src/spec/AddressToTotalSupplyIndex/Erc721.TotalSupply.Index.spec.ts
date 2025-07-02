@@ -7,7 +7,7 @@ import {
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
 import {
   TemporalIndexingDiviner,
@@ -34,6 +34,7 @@ import {
 } from 'vitest'
 
 import { CryptoContractDiviner } from '../../Diviner/index.ts'
+import type { CryptoContractFunctionReadWitnessParams } from '../../Witness.ts'
 import { CryptoContractFunctionReadWitness } from '../../Witness.ts'
 import erc721TotalSupplyIndexManifest from './Erc721.TotalSupply.Index.json' with { type: 'json' }
 
@@ -54,23 +55,23 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.TotalSupply.Index', () =
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
     wallet = await HDWallet.fromPhrase(mnemonic)
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TimestampWitness)
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TimestampWitness.factory())
 
-    locator.register(CryptoContractDiviner)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-    locator.register(TemporalIndexingDiviner)
+    locator.register(CryptoContractDiviner.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
 
     locator.register(
 
       new ModuleFactory(CryptoContractFunctionReadWitness, {
         config: { abi: ERC721Enumerable__factory.abi },
         providers: getProviders(),
-      }),
+      } as CryptoContractFunctionReadWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
     const manifest = new ManifestWrapper(erc721TotalSupplyIndexManifest as PackageManifestPayload, wallet, locator)

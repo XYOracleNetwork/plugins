@@ -3,7 +3,6 @@ import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import { FileSchema } from './Schema.ts'
 
-// eslint-disable-next-line sonarjs/redundant-type-aliases
 export type BinaryDataHash = string
 
 /** @description File location and optional data */

@@ -3,6 +3,7 @@ import '@xylabs/vitest-extended'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
+import type { ModuleParams } from '@xyo-network/module-model'
 import { ModuleFactory } from '@xyo-network/module-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
@@ -15,6 +16,7 @@ import {
 
 import type { ApiCallJsonResult, ApiUriTemplateCallPayload } from '../../Payload/index.ts'
 import { ApiCallResultSchema, ApiCallSchema } from '../../Payload/index.ts'
+import type { ApiCallWitnessConfig } from '../Config.ts'
 import { ApiCallWitness } from '../Witness.ts'
 import openseaNftsManifest from './opensea.nft-call.json' with { type: 'json' }
 
@@ -87,7 +89,7 @@ describe('OpenSeaApi', () => {
         new ModuleFactory(ApiCallWitness, {
           config: { uriTemplate: 'https://api.opensea.io/api/v2/chain/ethereum/account/${address}/nfts' },
           headers: { 'x-api-key': apiKey },
-        }),
+        } as ModuleParams<ApiCallWitnessConfig>),
       )
 
       const manifest = new ManifestWrapper(openseaNftsManifest as PackageManifestPayload, wallet, locator)

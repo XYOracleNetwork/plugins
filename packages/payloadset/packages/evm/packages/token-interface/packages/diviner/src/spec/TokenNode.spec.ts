@@ -8,9 +8,9 @@ import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import { MemoryPayloadDiviner } from '@xyo-network/diviner-payload-memory'
+import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import { PayloadDivinerQuerySchema } from '@xyo-network/diviner-payload-model'
-import { StatefulDiviner } from '@xyo-network/diviner-stateful'
+import { StatefulDiviner, StatefulDivinerParams } from '@xyo-network/diviner-stateful'
 import {
   TemporalIndexingDiviner,
   TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner,
@@ -18,13 +18,16 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { EvmContract } from '@xyo-network/evm-contract-witness'
+import type { EvmContract, EvmContractWitnessParams } from '@xyo-network/evm-contract-witness'
 import { EvmContractWitness, isEvmContract } from '@xyo-network/evm-contract-witness'
 import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
-import { ModuleFactory } from '@xyo-network/module-model'
+import {
+  creatableModule, CreatableModuleInstance, ModuleFactory, ModuleState,
+} from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
+import { Payload } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'
@@ -47,6 +50,21 @@ import tokenNodeManifest from './TokenNode.json' with { type: 'json' }
 
 const maxProviders = 32
 
+@creatableModule<CreatableModuleInstance<StatefulDivinerParams>>()
+class TestStatefulDiviner extends StatefulDiviner {
+  callCommitState(state: ModuleState) {
+    return this.commitState(state)
+  }
+
+  callRetrieveState() {
+    return this.retrieveState()
+  }
+
+  protected override divineHandler(payloads?: Payload[]): Promise<Payload[]> {
+    return Promise.resolve(payloads ?? [])
+  }
+}
+
 describe('Contract Node', () => {
   const chainId = 1
   const cases: [TokenInterface, string][] = [
@@ -66,20 +84,20 @@ describe('Contract Node', () => {
     const mnemonic = 'later puppy sound rebuild rebuild noise ozone amazing hope broccoli crystal grief'
     wallet = await HDWallet.fromPhrase(mnemonic)
     const locator = new ModuleFactoryLocator()
-    locator.register(MemoryArchivist)
-    locator.register(MemoryBoundWitnessDiviner)
-    locator.register(MemoryPayloadDiviner)
-    locator.register(TimestampWitness)
-    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner)
-    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner)
-    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner)
-    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner)
-    locator.register(TemporalIndexingDiviner)
-    locator.register(JsonPatchDiviner)
-    locator.register(StatefulDiviner)
-    locator.register(EvmTokenInterfaceImplementedDiviner)
+    locator.register(MemoryArchivist.factory())
+    locator.register(MemoryBoundWitnessDiviner.factory())
+    locator.register(GenericPayloadDiviner.factory())
+    locator.register(TimestampWitness.factory())
+    locator.register(TemporalIndexingDivinerDivinerQueryToIndexQueryDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexCandidateToIndexDiviner.factory())
+    locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory())
+    locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory())
+    locator.register(TemporalIndexingDiviner.factory())
+    locator.register(JsonPatchDiviner.factory())
+    locator.register(TestStatefulDiviner.factory())
+    locator.register(EvmTokenInterfaceImplementedDiviner.factory())
     locator.register(
-      new ModuleFactory(EvmContractWitness, { providers: getProviders }),
+      new ModuleFactory(EvmContractWitness, { providers: getProviders } as EvmContractWitnessParams),
     )
     const publicChildren: ModuleManifest[] = [...contractWitnessManifest.nodes, ...tokenDivinerManifest.nodes]
     const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)

@@ -9,8 +9,11 @@ import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch-memory'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { RangeDiviner } from '@xyo-network/diviner-range'
+import type { Erc1822WitnessParams } from '@xyo-network/erc1822-witness'
 import { Erc1822Witness } from '@xyo-network/erc1822-witness'
+import type { Erc1967WitnessParams } from '@xyo-network/erc1967-witness'
 import { Erc1967Witness } from '@xyo-network/erc1967-witness'
+import type { EvmContractWitnessParams } from '@xyo-network/evm-contract-witness'
 import { EvmContractWitness } from '@xyo-network/evm-contract-witness'
 import { EvmTokenInterfaceImplementedDiviner } from '@xyo-network/evm-token-interface-diviner'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
@@ -32,6 +35,7 @@ import {
 } from 'vitest'
 
 import { EvmCallDiviner } from '../Diviner.ts'
+import type { EvmCallWitnessParams } from '../model.ts'
 import { EvmCallWitness } from '../Witness.ts'
 import erc721TokenEnumerateSentinelManifest from './Erc721TokenEnumerateSentinel.json' with { type: 'json' }
 
@@ -53,27 +57,27 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
       profile(profiler, 'setup')
       const wallet = await HDWallet.random()
       const locator = new ModuleFactoryLocator()
-      locator.register(EvmCallDiviner)
-      locator.register(AdhocWitness)
+      locator.register(EvmCallDiviner.factory())
+      locator.register(AdhocWitness.factory())
       locator.register(
-        new ModuleFactory(Erc1822Witness, { providers: () => getProvidersFromEnv(maxProviders) }),
+        new ModuleFactory(Erc1822Witness, { providers: () => getProvidersFromEnv(maxProviders) } as Erc1822WitnessParams),
       )
       locator.register(
-        new ModuleFactory(Erc1967Witness, { providers: () => getProvidersFromEnv(maxProviders) }),
+        new ModuleFactory(Erc1967Witness, { providers: () => getProvidersFromEnv(maxProviders) } as Erc1967WitnessParams),
       )
-      locator.register(JsonPathAggregateDiviner)
-      locator.register(JsonPatchDiviner)
+      locator.register(JsonPathAggregateDiviner.factory())
+      locator.register(JsonPatchDiviner.factory())
       locator.register(
-        new ModuleFactory(EvmContractWitness, { providers: () => getProvidersFromEnv(maxProviders) }),
+        new ModuleFactory(EvmContractWitness, { providers: () => getProvidersFromEnv(maxProviders) } as EvmContractWitnessParams),
       )
-      locator.register(EvmTokenInterfaceImplementedDiviner)
-      locator.register(RangeDiviner)
+      locator.register(EvmTokenInterfaceImplementedDiviner.factory())
+      locator.register(RangeDiviner.factory())
 
       locator.register(
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721' },
       )
 
@@ -81,7 +85,7 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721Enumerable__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721Enumerable' },
       )
 
@@ -89,7 +93,7 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
         new ModuleFactory(EvmCallWitness, {
           config: { abi: ERC721URIStorage__factory.abi },
           providers: () => getProvidersFromEnv(maxProviders),
-        }),
+        } as EvmCallWitnessParams),
         { 'network.xyo.evm.interface': 'Erc721UriStorage' },
       )
 

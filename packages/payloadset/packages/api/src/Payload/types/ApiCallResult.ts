@@ -6,7 +6,7 @@ import type { ApiCallJsonResult } from './ApiCallJsonResult.ts'
 
 type NewType = JsonObject
 
-export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | NewType> =
-  | ApiCallBase64Result
-  | ApiCallJsonResult<TJson>
-  | ApiCallErrorResult
+export type ApiCallResult<TJson extends JsonArray | JsonObject = JsonArray | NewType>
+  = | ApiCallBase64Result
+    | ApiCallJsonResult<TJson>
+    | ApiCallErrorResult
