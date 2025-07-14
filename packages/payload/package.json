@@ -21,13 +21,13 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types/index.d.ts",
+      "types": "./dist/neutral/index.d.ts",
       "default": "./dist/neutral/index.mjs"
     },
     "./package.json": "./package.json"
   },
   "module": "dist/neutral/index.mjs",
-  "types": "dist/types/index.d.ts",
+  "types": "dist/neutral/index.d.ts",
   "dependencies": {
     "@xyo-network/blockchain-payload-plugins": "workspace:^",
     "@xyo-network/crypto-payload-plugins": "workspace:^",
@@ -36,14 +36,14 @@
     "@xyo-network/location-certainty-payload-plugin": "workspace:^",
     "@xyo-network/location-payload-plugin": "workspace:^",
     "@xyo-network/module-instance-payload-plugin": "workspace:^",
-    "@xyo-network/payload-plugin": "^4.0.1",
+    "@xyo-network/payload-plugin": "^4.1.1",
     "@xyo-network/pentair-payload-plugin": "workspace:^",
     "@xyo-network/url-payload-plugin": "workspace:^",
     "@xyo-network/url-safety-payload-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
-    "@xylabs/tsconfig": "^6.5.12",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.24",
+    "@xylabs/tsconfig": "^7.0.0-rc.24",
     "knip": "^5.61.3",
     "typescript": "^5.8.3"
   },

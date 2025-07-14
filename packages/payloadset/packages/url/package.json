@@ -22,34 +22,34 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/indexBrowser.d.ts",
+        "types": "./dist/browser/indexBrowser.d.ts",
         "default": "./dist/browser/indexBrowser.mjs"
       },
       "node": {
-        "types": "./dist/types/indexNode.d.ts",
+        "types": "./dist/node/indexNode.d.ts",
         "default": "./dist/node/indexNode.mjs"
       },
-      "types": "./dist/types/indexNode.d.ts",
+      "types": "./dist/node/indexNode.d.ts",
       "default": "./dist/node/indexNode.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "dist/node/indexNode.mjs",
-  "types": "dist/types/indexNode.d.ts",
+  "module": "dist/neutral/indexNode.mjs",
+  "types": "dist/neutral/indexNode.d.ts",
   "dependencies": {
-    "@xylabs/assert": "^4.12.31",
-    "@xylabs/crypto": "^4.12.31",
-    "@xyo-network/abstract-witness": "^4.0.1",
-    "@xyo-network/module-model": "^4.0.1",
-    "@xyo-network/payload-model": "^4.0.1",
-    "@xyo-network/payloadset-plugin": "^4.0.1",
+    "@xylabs/assert": "^4.13.15",
+    "@xylabs/crypto": "^4.13.15",
+    "@xyo-network/abstract-witness": "^4.1.1",
+    "@xyo-network/module-model": "^4.1.1",
+    "@xyo-network/payload-model": "^4.1.1",
+    "@xyo-network/payloadset-plugin": "^4.1.1",
     "@xyo-network/url-payload-plugin": "workspace:^",
-    "@xyo-network/witness-model": "^4.0.1"
+    "@xyo-network/witness-model": "^4.1.1"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
-    "@xylabs/tsconfig": "^6.5.12",
-    "@xylabs/vitest-extended": "^4.12.31",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.24",
+    "@xylabs/tsconfig": "^7.0.0-rc.24",
+    "@xylabs/vitest-extended": "^4.13.15",
     "knip": "^5.61.3",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"

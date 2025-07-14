@@ -22,20 +22,20 @@
   "exports": {
     ".": {
       "browser": {
-        "types": "./dist/types/index-browser.d.ts",
+        "types": "./dist/browser/index-browser.d.ts",
         "default": "./dist/browser/index-browser.mjs"
       },
       "node": {
-        "types": "./dist/types/index-node.d.ts",
+        "types": "./dist/node/index-node.d.ts",
         "default": "./dist/node/index-node.mjs"
       },
-      "types": "./dist/types/index-node.d.ts",
-      "default": "./dist/node/index-node.mjs"
+      "types": "./dist/neutral/index-node.d.ts",
+      "default": "./dist/neutral/index-node.mjs"
     },
     "./package.json": "./package.json"
   },
-  "module": "dist/node/index-node.mjs",
-  "types": "dist/types/index-node.d.ts",
+  "module": "dist/neutral/index-node.mjs",
+  "types": "dist/neutral/index-node.d.ts",
   "dependencies": {
     "@xyo-network/blockchain-plugins": "workspace:^",
     "@xyo-network/crypto-plugins": "workspace:^",
@@ -48,7 +48,7 @@
     "@xyo-network/location-certainty-plugin": "workspace:^",
     "@xyo-network/location-plugin": "workspace:^",
     "@xyo-network/module-instance-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^4.0.1",
+    "@xyo-network/payloadset-plugin": "^4.1.1",
     "@xyo-network/prometheus-node-plugin": "workspace:^",
     "@xyo-network/schema-plugin": "workspace:^",
     "@xyo-network/system-plugins": "workspace:^",
@@ -56,8 +56,8 @@
     "@xyo-network/url-safety-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^6.5.12",
-    "@xylabs/tsconfig": "^6.5.12",
+    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.24",
+    "@xylabs/tsconfig": "^7.0.0-rc.24",
     "knip": "^5.61.3",
     "typescript": "^5.8.3"
   },
