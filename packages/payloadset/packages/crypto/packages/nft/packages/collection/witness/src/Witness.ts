@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
-import { EthAddress } from '@xylabs/eth-address'
+import { EthAddressWrapper } from '@xylabs/eth-address'
+import { asEthAddress } from '@xylabs/hex'
 import type {
   NftCollectionInfo,
   NftCollectionWitnessConfig,
@@ -54,10 +55,10 @@ export class CryptoNftCollectionWitness<
       queries.map<Promise<NftCollectionInfo>>(async (query) => {
         const chainId = assertEx(query?.chainId || this.config.chainId, () => 'params.chainId is required')
         const provider = await this.getProvider(true, true)
-        const address = assertEx(
-          EthAddress.parse(assertEx(query?.address || this.config.address, () => 'params.address is required')),
+        const address = asEthAddress(assertEx(
+          EthAddressWrapper.parse(assertEx(query?.address || this.config.address, () => 'params.address is required')),
           () => 'Failed to parse params.address',
-        ).toString()
+        ).toString(), true)
 
         const erc721Enumerable = ERC721Enumerable__factory.connect(address, provider)
 

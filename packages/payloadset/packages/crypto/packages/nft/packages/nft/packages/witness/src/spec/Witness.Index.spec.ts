@@ -4,6 +4,7 @@ import { distinct } from '@xylabs/array'
 import { assertEx } from '@xylabs/assert'
 import { delay } from '@xylabs/delay'
 import { exists } from '@xylabs/exists'
+import type { Address } from '@xylabs/hex'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
@@ -212,7 +213,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     })
   })
   describe('with no Nft for the provided Address', () => {
-    const address = '0x9000000000000000000000000000000000000000'
+    const address = '0x9000000000000000000000000000000000000000' as Address
     const schema = PayloadDivinerQuerySchema
     it('returns nothing', async () => {
       const query: Query = { address, schema }

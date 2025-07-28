@@ -10,7 +10,7 @@ import { matchers } from './matchers/index.ts'
 expect.extend(matchers)
 
 describe('parseDomainEstimates', () => {
-  const estimateA: DomainEstimate = [
+  const estimateA = [
     {
       addresses: ['93130bb7cf9b059ed6e29b50f29b569a2094bd5e'],
       payload_hashes: [
@@ -45,8 +45,8 @@ describe('parseDomainEstimates', () => {
       $sources: ['fccd06633e70c2168c8eb0eb5e25b22e34c1c417a46d5073034ec977dfc1995d', 'd7f40698fb0b0261834ef694ed275b4e6547e329cedc1c56708f098a5608b93a'],
       tld: 'xyo',
     },
-  ]
-  const estimateB: Estimate = [
+  ] as DomainEstimate
+  const estimateB = [
     {
       addresses: ['6a2cb2545c71f84235346643a9f562a973d6adef'],
       payload_hashes: [
@@ -81,7 +81,7 @@ describe('parseDomainEstimates', () => {
       $sources: ['407ed63c0c36fadae7ae8d16a42b678551e0ea6aa5357b76f0ffc1bce3ba2f22', 'ced04c0a3f65bbefde58ba0d15767fcee20b6e25d3820f90c55f44f18effa70f'],
       tld: 'xyo',
     },
-  ]
+  ] as Estimate
   describe('with valid symmetric data', () => {
     const cases: Payload[][] = [
       [...estimateA],

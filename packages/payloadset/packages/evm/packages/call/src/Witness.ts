@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { isHexZero } from '@xylabs/hex'
+import { asEthAddress, isHexZero } from '@xylabs/hex'
 import type { JsonObject } from '@xylabs/object'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
@@ -34,7 +34,7 @@ export class EvmCallWitness<TParams extends EvmCallWitnessParams = EvmCallWitnes
         inPayloads.filter(isPayloadOfSchemaType<EvmCall>(EvmCallSchema)).map(async ({
           functionName, args, address, block: payloadBlock,
         }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address')
+          const validatedAddress = asEthAddress(assertEx(address ?? this.config.address, () => 'Missing address'), true)
           const validatedFunctionName = assertEx(functionName ?? this.config.functionName, () => 'Missing address')
           const mergedArgs = [...(args ?? this.config.args ?? [])] as JsonObject[]
 

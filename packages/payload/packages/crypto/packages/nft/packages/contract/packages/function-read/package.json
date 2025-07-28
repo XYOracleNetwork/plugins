@@ -29,17 +29,16 @@
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
   "dependencies": {
-    "@xyo-network/diviner-model": "^4.1.7",
-    "@xyo-network/module-model": "^4.1.7",
-    "@xyo-network/payload-model": "^4.1.7",
-    "@xyo-network/payload-plugin": "^4.1.7",
-    "@xyo-network/witness-model": "^4.1.7",
+    "@xyo-network/diviner-model": "^4.3.0",
+    "@xyo-network/module-model": "^4.3.0",
+    "@xyo-network/payload-model": "^4.3.0",
+    "@xyo-network/payload-plugin": "^4.3.0",
+    "@xyo-network/witness-model": "^4.3.0",
     "ethers": "^6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.0-rc.24",
-    "@xylabs/tsconfig": "^7.0.0-rc.24",
-    "knip": "^5.62.0",
+    "@xylabs/ts-scripts-yarn3": "^7.0.1",
+    "@xylabs/tsconfig": "^7.0.1",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

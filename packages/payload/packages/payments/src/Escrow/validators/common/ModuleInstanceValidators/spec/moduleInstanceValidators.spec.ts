@@ -11,12 +11,12 @@ import { EscrowTermsSchema } from '../../../../Terms/index.ts'
 import { moduleIdentifiersContainsOneOf } from '../moduleInstanceValidators.ts'
 
 describe('RegistrarSentinel', () => {
-  const appraisalAuthority1: Address = 'address1'
-  const appraisalAuthority2: Address = 'address2'
-  const buyer1: Address = 'address3'
-  const escrowAgent: Address = 'address4'
-  const paymentAuthority1: Address = 'address5'
-  const seller1: Address = 'address6'
+  const appraisalAuthority1 = 'address1' as Address
+  const appraisalAuthority2 = 'address2' as Address
+  const buyer1 = 'address3' as Address
+  const escrowAgent = 'address4' as Address
+  const paymentAuthority1 = 'address5' as Address
+  const seller1 = 'address6' as Address
   const escrowTermsExample: EscrowTerms = {
     appraisalAuthorities: [appraisalAuthority1, appraisalAuthority2],
     buyer: [buyer1],

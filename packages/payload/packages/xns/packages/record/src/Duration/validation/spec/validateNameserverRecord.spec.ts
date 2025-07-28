@@ -41,7 +41,7 @@ describe('validateBoundWitnessWithDuration', () => {
   })
   describe('returns false', () => {
     it('with invalid boundwitness', async () => {
-      const invalidHash: Hash = '0440a9ee15736ba6e6618083da25a57f5e9d8a516e61b9b2ae330f050f88f2de'
+      const invalidHash = '0440a9ee15736ba6e6618083da25a57f5e9d8a516e61b9b2ae330f050f88f2de' as Hash
       const payload_hashes = [invalidHash]
       const invalid = { ...recordBw, payload_hashes }
       expect(await validateBoundWitnessWithDuration(invalid, recordPayload)).toBeFalse()

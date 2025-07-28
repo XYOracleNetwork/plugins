@@ -1,18 +1,20 @@
-import type { Address } from '@xylabs/hex'
-import { hexFromHexString, isHexZero } from '@xylabs/hex'
+import type { Address, EthAddress } from '@xylabs/hex'
+import {
+  asEthAddress, hexFromHexString, isHexZero,
+} from '@xylabs/hex'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Provider } from 'ethers'
 
-export const ERC1967_PROXY_IMPLEMENTATION_STORAGE_SLOT = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc'
-export const ERC1967_PROXY_BEACON_STORAGE_SLOT = '0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50'
-export const ERC1967_PROXY_ADMIN_STORAGE_SLOT = '0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103'
-export const ERC1967_PROXY_ROLLBACK_STORAGE_SLOT = '0x4910fdfa16fed3260ed0e7147f7cc6da11a60208b5b9406d12a635614ffd9143'
+export const ERC1967_PROXY_IMPLEMENTATION_STORAGE_SLOT = '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc' as EthAddress
+export const ERC1967_PROXY_BEACON_STORAGE_SLOT = '0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50' as EthAddress
+export const ERC1967_PROXY_ADMIN_STORAGE_SLOT = '0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103' as EthAddress
+export const ERC1967_PROXY_ROLLBACK_STORAGE_SLOT = '0x4910fdfa16fed3260ed0e7147f7cc6da11a60208b5b9406d12a635614ffd9143' as EthAddress
 
 export interface Erc1967DataSlots {
-  admin?: Address
-  beacon?: Address
-  implementation?: Address
-  rollback?: Address
+  admin?: EthAddress
+  beacon?: EthAddress
+  implementation?: EthAddress
+  rollback?: EthAddress
 }
 
 export interface Erc1967SlotStatus {
@@ -27,7 +29,7 @@ export interface Erc1967SlotStatus {
 const readAddressFromSlot = async (provider: Provider, address: string, slot: string, block?: number) => {
   try {
     const slotValue = await provider.getStorage(address, slot, block)
-    return hexFromHexString(slotValue, { prefix: true })
+    return asEthAddress(hexFromHexString(slotValue, { prefix: true }))
   } catch {
     return
   }

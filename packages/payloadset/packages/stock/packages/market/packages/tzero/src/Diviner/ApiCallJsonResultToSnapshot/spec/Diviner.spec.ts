@@ -1,5 +1,6 @@
 import '@xylabs/vitest-extended'
 
+import type { Hash } from '@xylabs/hex'
 import type { ApiCallResult } from '@xyo-network/api-call-witness'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { HDWallet } from '@xyo-network/wallet'
@@ -16,7 +17,7 @@ describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
   describe('with API Response', () => {
     const cases: ApiCallResult[] = [
       {
-        call: 'bae563e08bfa3030815cba08fad61237355e147aa41f9912b7321dadcb9a0085',
+        call: 'bae563e08bfa3030815cba08fad61237355e147aa41f9912b7321dadcb9a0085' as Hash,
         contentType: 'application/json',
         data: {
           askPrice: 0.25,
@@ -52,7 +53,7 @@ describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
   describe('with non API Response', () => {
     const cases: ApiCallResult[] = [
       {
-        call: 'a04445ce5b67bca9bf1da8d2f85eea60c9baf566342cf29ffd3bdfbb01c8fcfe',
+        call: 'a04445ce5b67bca9bf1da8d2f85eea60c9baf566342cf29ffd3bdfbb01c8fcfe' as Hash,
         http: { status: 404 },
         schema: 'network.xyo.api.call.result',
       },

@@ -1,4 +1,5 @@
 import { assertEx } from '@xylabs/assert'
+import { asEthAddress } from '@xylabs/hex'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type {
@@ -33,7 +34,7 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
     try {
       const observations = await Promise.all(
         inPayloads.filter(isPayloadOfSchemaType<EvmAddress>(EvmAddressSchema)).map(async ({ address }) => {
-          const validatedAddress = assertEx(address ?? this.config.address, () => 'Missing address').toLowerCase()
+          const validatedAddress = asEthAddress(assertEx(address ?? this.config.address, () => 'Missing address'), true)
 
           const provider = await this.getProvider(true, true)
 

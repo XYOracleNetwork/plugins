@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
+import type { EthAddress } from '@xylabs/hex'
 
 interface OpenSeaNFT {
   /*
@@ -9,7 +10,7 @@ interface OpenSeaNFT {
   /*
    * The unique public blockchain identifier for the contract
    */
-  contract: string
+  contract: EthAddress
   /**
    * @deprecated
    */

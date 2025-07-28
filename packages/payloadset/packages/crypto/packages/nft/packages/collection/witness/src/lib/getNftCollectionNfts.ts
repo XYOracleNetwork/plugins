@@ -1,5 +1,6 @@
 import { AxiosJson } from '@xylabs/axios'
 import { exists } from '@xylabs/exists'
+import type { EthAddress } from '@xylabs/hex'
 import { isHexZero } from '@xylabs/hex'
 import type {
   NftInfo, NftMetadata, TokenType,
@@ -26,7 +27,7 @@ export const getNftCollectionNfts = async (
   /**
    * The address of the NFT contract to search for
    */
-  contractAddress: string,
+  contractAddress: EthAddress,
   /**
    * The chain ID (1 = Ethereum Mainnet, 4 = Rinkeby, etc.) of the chain to search for NFTs on
    */
