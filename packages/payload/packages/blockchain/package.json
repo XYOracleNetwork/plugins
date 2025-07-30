@@ -28,13 +28,17 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xyo-network/ethereum-blockchain-payload-plugins": "workspace:^",
-    "@xyo-network/payload-plugin": "^4.3.0"
+    "@xyo-network/payload-plugin": "^5.0.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

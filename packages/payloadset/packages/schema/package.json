@@ -28,19 +28,23 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
-    "@xylabs/delay": "^4.15.1",
-    "@xyo-network/abstract-witness": "^4.3.0",
-    "@xyo-network/module-model": "^4.3.0",
-    "@xyo-network/payload-model": "^4.3.0",
-    "@xyo-network/payloadset-plugin": "^4.3.0",
-    "@xyo-network/schema-payload-plugin": "^4.3.0",
-    "@xyo-network/witness-model": "^4.3.0"
+    "@xylabs/delay": "^5.0.0",
+    "@xyo-network/abstract-witness": "^5.0.0",
+    "@xyo-network/module-model": "^5.0.0",
+    "@xyo-network/payload-model": "^5.0.0",
+    "@xyo-network/payloadset-plugin": "^5.0.0",
+    "@xyo-network/schema-payload-plugin": "^5.0.0",
+    "@xyo-network/witness-model": "^5.0.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
-    "@xylabs/vitest-extended": "^4.15.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
+    "@xylabs/vitest-extended": "^5.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

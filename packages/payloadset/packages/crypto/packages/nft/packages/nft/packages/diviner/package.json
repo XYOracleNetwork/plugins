@@ -28,24 +28,28 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xyo-network/crypto-nft-payload-plugin": "workspace:^",
     "@xyo-network/crypto-nft-score-model": "workspace:^",
-    "@xyo-network/diviner-abstract": "^4.3.0",
-    "@xyo-network/diviner-model": "^4.3.0",
-    "@xyo-network/module-model": "^4.3.0",
-    "@xyo-network/payload-builder": "^4.3.0",
-    "@xyo-network/payload-model": "^4.3.0",
-    "@xyo-network/payloadset-plugin": "^4.3.0",
+    "@xyo-network/diviner-abstract": "^5.0.0",
+    "@xyo-network/diviner-model": "^5.0.0",
+    "@xyo-network/module-model": "^5.0.0",
+    "@xyo-network/payload-builder": "^5.0.0",
+    "@xyo-network/payload-model": "^5.0.0",
+    "@xyo-network/payloadset-plugin": "^5.0.0",
     "ethers": "^6.15.0",
     "svg-parser": "^2.0.4"
   },
   "devDependencies": {
     "@types/svg-parser": "^2.0.6",
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
-    "@xylabs/vitest-extended": "^4.15.1",
-    "@xyo-network/payload-wrapper": "^4.3.0",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
+    "@xylabs/vitest-extended": "^5.0.0",
+    "@xyo-network/payload-wrapper": "^5.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

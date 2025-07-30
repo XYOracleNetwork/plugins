@@ -28,22 +28,26 @@
   },
   "module": "dist/browser/index.mjs",
   "types": "dist/browser/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@scure/base": "^1.2.6",
-    "@xylabs/assert": "^4.15.1",
-    "@xylabs/promise": "^4.15.1",
-    "@xyo-network/abstract-witness": "^4.3.0",
-    "@xyo-network/module-model": "^4.3.0",
-    "@xyo-network/payload-builder": "^4.3.0",
-    "@xyo-network/payload-model": "^4.3.0",
-    "@xyo-network/payloadset-plugin": "^4.3.0",
-    "@xyo-network/witness-model": "^4.3.0"
+    "@xylabs/assert": "^5.0.0",
+    "@xylabs/promise": "^5.0.0",
+    "@xyo-network/abstract-witness": "^5.0.0",
+    "@xyo-network/module-model": "^5.0.0",
+    "@xyo-network/payload-builder": "^5.0.0",
+    "@xyo-network/payload-model": "^5.0.0",
+    "@xyo-network/payloadset-plugin": "^5.0.0",
+    "@xyo-network/witness-model": "^5.0.0"
   },
   "devDependencies": {
     "@types/sha.js": "^2.4.4",
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
-    "@xylabs/vitest-extended": "^4.15.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
+    "@xylabs/vitest-extended": "^5.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

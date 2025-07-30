@@ -36,6 +36,10 @@
   },
   "module": "dist/neutral/index-node.mjs",
   "types": "dist/neutral/index-node.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xyo-network/blockchain-plugins": "workspace:^",
     "@xyo-network/crypto-plugins": "workspace:^",
@@ -48,7 +52,7 @@
     "@xyo-network/location-certainty-plugin": "workspace:^",
     "@xyo-network/location-plugin": "workspace:^",
     "@xyo-network/module-instance-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^4.3.0",
+    "@xyo-network/payloadset-plugin": "^5.0.0",
     "@xyo-network/prometheus-node-plugin": "workspace:^",
     "@xyo-network/schema-plugin": "workspace:^",
     "@xyo-network/system-plugins": "workspace:^",
@@ -56,8 +60,8 @@
     "@xyo-network/url-safety-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

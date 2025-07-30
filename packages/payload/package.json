@@ -28,6 +28,10 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
     "@xyo-network/blockchain-payload-plugins": "workspace:^",
     "@xyo-network/crypto-payload-plugins": "workspace:^",
@@ -36,14 +40,14 @@
     "@xyo-network/location-certainty-payload-plugin": "workspace:^",
     "@xyo-network/location-payload-plugin": "workspace:^",
     "@xyo-network/module-instance-payload-plugin": "workspace:^",
-    "@xyo-network/payload-plugin": "^4.3.0",
+    "@xyo-network/payload-plugin": "^5.0.0",
     "@xyo-network/pentair-payload-plugin": "workspace:^",
     "@xyo-network/url-payload-plugin": "workspace:^",
     "@xyo-network/url-safety-payload-plugin": "workspace:^"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
     "typescript": "^5.8.3"
   },
   "publishConfig": {

@@ -28,21 +28,25 @@
   },
   "module": "dist/neutral/index.mjs",
   "types": "dist/neutral/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
   "dependencies": {
-    "@xylabs/assert": "^4.15.1",
-    "@xyo-network/diviner-abstract": "^4.3.0",
-    "@xyo-network/diviner-model": "^4.3.0",
+    "@xylabs/assert": "^5.0.0",
+    "@xyo-network/diviner-abstract": "^5.0.0",
+    "@xyo-network/diviner-model": "^5.0.0",
     "@xyo-network/evm-contract-witness": "workspace:^",
-    "@xyo-network/module-model": "^4.3.0",
-    "@xyo-network/payload-model": "^4.3.0",
+    "@xyo-network/module-model": "^5.0.0",
+    "@xyo-network/payload-model": "^5.0.0",
     "ethers": "^6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.1",
-    "@xylabs/tsconfig": "^7.0.1",
-    "@xylabs/vitest-extended": "^4.15.1",
+    "@xylabs/ts-scripts-yarn3": "^7.0.2",
+    "@xylabs/tsconfig": "^7.0.2",
+    "@xylabs/vitest-extended": "^5.0.0",
     "@xyo-network/open-zeppelin-typechain": "^3.5.4",
-    "@xyo-network/witness-evm-abstract": "^4.3.0",
+    "@xyo-network/witness-evm-abstract": "^5.0.0",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   },

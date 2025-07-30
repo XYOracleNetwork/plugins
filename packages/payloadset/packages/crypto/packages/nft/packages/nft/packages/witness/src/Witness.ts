@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { EthAddress } from '@xylabs/eth-address'
+import { EthAddressWrapper } from '@xylabs/eth-address'
 import type {
   CryptoWalletNftWitnessConfig,
   NftInfo,
@@ -48,7 +48,7 @@ export class CryptoWalletNftWitness<TParams extends CryptoWalletNftWitnessParams
         queries.map(async (query) => {
           const provider = await this.getProvider(true, true)
           const addressValue = assertEx(query?.address ?? this.config.address, () => 'params.address is required')
-          const parsedAddressValue = EthAddress.parse(addressValue)
+          const parsedAddressValue = EthAddressWrapper.parse(addressValue)
           const address = assertEx(parsedAddressValue?.toString(), () => 'Failed to parse params.address')
           const network = await provider.getNetwork()
           const chainId = assertEx(network.chainId, () => 'params.chainId is required')
