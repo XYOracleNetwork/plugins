@@ -33,30 +33,30 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "^5.0.0",
-    "@xylabs/axios": "^5.0.0",
-    "@xylabs/hex": "^5.0.0",
-    "@xylabs/object": "^5.0.0",
-    "@xylabs/url": "^5.0.0",
-    "@xyo-network/abstract-witness": "^5.0.0",
-    "@xyo-network/payload-builder": "^5.0.0",
-    "@xyo-network/payload-model": "^5.0.0",
-    "@xyo-network/witness-model": "^5.0.0",
-    "axios": "^1.11.0",
-    "base64-js": "^1.5.1",
-    "es6-dynamic-template": "^2.0.0"
+    "@xylabs/assert": "~5.0.7",
+    "@xylabs/axios": "~5.0.7",
+    "@xylabs/hex": "~5.0.7",
+    "@xylabs/object": "~5.0.7",
+    "@xylabs/url": "~5.0.7",
+    "@xyo-network/abstract-witness": "~5.0.2",
+    "@xyo-network/payload-builder": "~5.0.2",
+    "@xyo-network/payload-model": "~5.0.2",
+    "@xyo-network/witness-model": "~5.0.2",
+    "axios": "~1.11.0",
+    "base64-js": "~1.5.1",
+    "es6-dynamic-template": "~2.0.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "@xylabs/vitest-extended": "^5.0.0",
-    "@xyo-network/manifest": "^5.0.0",
-    "@xyo-network/module-factory-locator": "^5.0.0",
-    "@xyo-network/module-model": "^5.0.0",
-    "@xyo-network/sentinel-model": "^5.0.0",
-    "@xyo-network/wallet": "^5.0.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/vitest-extended": "~5.0.7",
+    "@xyo-network/manifest": "~5.0.2",
+    "@xyo-network/module-factory-locator": "~5.0.2",
+    "@xyo-network/module-model": "~5.0.2",
+    "@xyo-network/sentinel-model": "~5.0.2",
+    "@xyo-network/wallet": "~5.0.2",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "publishConfig": {
     "access": "public"

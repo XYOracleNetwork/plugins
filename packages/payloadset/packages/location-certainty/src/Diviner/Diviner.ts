@@ -69,9 +69,9 @@ export class LocationCertaintyDiviner<TParam extends LocationCertaintyDivinerPar
         prev.variance.push(altitude !== undefined && altitude !== null ? altitude - elevation : null)
         return prev
       },
-    {
-      altitude: [], elevation: [], variance: [],
-    },
+      {
+        altitude: [], elevation: [], variance: [],
+      },
     )
     return heuristics
   }

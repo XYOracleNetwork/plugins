@@ -33,23 +33,23 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/object": "^5.0.0",
-    "@xyo-network/diviner-abstract": "^5.0.0",
-    "@xyo-network/diviner-model": "^5.0.0",
-    "@xyo-network/module-model": "^5.0.0",
-    "@xyo-network/payload-model": "^5.0.0",
-    "xml2js": "^0.6.2"
+    "@xylabs/object": "~5.0.7",
+    "@xyo-network/diviner-abstract": "~5.0.2",
+    "@xyo-network/diviner-model": "~5.0.2",
+    "@xyo-network/module-model": "~5.0.2",
+    "@xyo-network/payload-model": "~5.0.2",
+    "xml2js": "~0.6.2"
   },
   "devDependencies": {
-    "@types/xml2js": "^0.4.14",
-    "@xylabs/assert": "^5.0.0",
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "@xylabs/vitest-extended": "^5.0.0",
-    "@xylabs/vitest-matchers": "^5.0.0",
-    "@xyo-network/api-call-witness": "workspace:^",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@types/xml2js": "~0.4.14",
+    "@xylabs/assert": "~5.0.7",
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/vitest-extended": "~5.0.7",
+    "@xylabs/vitest-matchers": "~5.0.7",
+    "@xyo-network/api-call-witness": "workspace:~",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "publishConfig": {
     "access": "public"

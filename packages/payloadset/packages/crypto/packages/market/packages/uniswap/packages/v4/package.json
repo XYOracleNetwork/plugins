@@ -33,25 +33,25 @@
     "src"
   ],
   "dependencies": {
-    "@uniswap/sdk-core": "^7.7.2",
-    "@xylabs/assert": "^5.0.0",
-    "@xyo-network/abstract-witness": "^5.0.0",
-    "@xyo-network/module-model": "^5.0.0",
-    "@xyo-network/payload-model": "^5.0.0",
-    "@xyo-network/payloadset-plugin": "^5.0.0",
-    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:^",
-    "@xyo-network/uniswap-typechain": "^3.5.4",
-    "@xyo-network/witness-model": "^5.0.0",
-    "ethers": "^6.15.0"
+    "@uniswap/sdk-core": "~7.7.2",
+    "@xylabs/assert": "~5.0.7",
+    "@xyo-network/abstract-witness": "~5.0.2",
+    "@xyo-network/module-model": "~5.0.2",
+    "@xyo-network/payload-model": "~5.0.2",
+    "@xyo-network/payloadset-plugin": "~5.0.2",
+    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~",
+    "@xyo-network/uniswap-typechain": "~4.0.0",
+    "@xyo-network/witness-model": "~5.0.2",
+    "ethers": "~6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "@xylabs/vitest-extended": "^5.0.0",
-    "@xyo-network/payload-wrapper": "^5.0.0",
-    "@xyo-network/witness-blockchain-abstract": "^5.0.0",
-    "typescript": "^5.8.3",
-    "vitest": "^3.2.4"
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/vitest-extended": "~5.0.7",
+    "@xyo-network/payload-wrapper": "~5.0.2",
+    "@xyo-network/witness-blockchain-abstract": "~5.0.2",
+    "typescript": "~5.9.2",
+    "vitest": "~3.2.4"
   },
   "publishConfig": {
     "access": "public"

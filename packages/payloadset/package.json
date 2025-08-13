@@ -41,28 +41,28 @@
     "src"
   ],
   "dependencies": {
-    "@xyo-network/blockchain-plugins": "workspace:^",
-    "@xyo-network/crypto-plugins": "workspace:^",
-    "@xyo-network/domain-plugin": "workspace:^",
-    "@xyo-network/elevation-plugin": "workspace:^",
-    "@xyo-network/file-plugins": "workspace:^",
-    "@xyo-network/http-call-witness": "workspace:^",
-    "@xyo-network/id-plugin": "workspace:^",
-    "@xyo-network/image-thumbnail-plugin": "workspace:^",
-    "@xyo-network/location-certainty-plugin": "workspace:^",
-    "@xyo-network/location-plugin": "workspace:^",
-    "@xyo-network/module-instance-plugin": "workspace:^",
-    "@xyo-network/payloadset-plugin": "^5.0.0",
-    "@xyo-network/prometheus-node-plugin": "workspace:^",
-    "@xyo-network/schema-plugin": "workspace:^",
-    "@xyo-network/system-plugins": "workspace:^",
-    "@xyo-network/url-plugin": "workspace:^",
-    "@xyo-network/url-safety-plugin": "workspace:^"
+    "@xyo-network/blockchain-plugins": "workspace:~",
+    "@xyo-network/crypto-plugins": "workspace:~",
+    "@xyo-network/domain-plugin": "workspace:~",
+    "@xyo-network/elevation-plugin": "workspace:~",
+    "@xyo-network/file-plugins": "workspace:~",
+    "@xyo-network/http-call-witness": "workspace:~",
+    "@xyo-network/id-plugin": "workspace:~",
+    "@xyo-network/image-thumbnail-plugin": "workspace:~",
+    "@xyo-network/location-certainty-plugin": "workspace:~",
+    "@xyo-network/location-plugin": "workspace:~",
+    "@xyo-network/module-instance-plugin": "workspace:~",
+    "@xyo-network/payloadset-plugin": "~5.0.2",
+    "@xyo-network/prometheus-node-plugin": "workspace:~",
+    "@xyo-network/schema-plugin": "workspace:~",
+    "@xyo-network/system-plugins": "workspace:~",
+    "@xyo-network/url-plugin": "workspace:~",
+    "@xyo-network/url-safety-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "^7.0.2",
-    "@xylabs/tsconfig": "^7.0.2",
-    "typescript": "^5.8.3"
+    "@xylabs/ts-scripts-yarn3": "~7.1.0",
+    "@xylabs/tsconfig": "~7.1.0",
+    "typescript": "~5.9.2"
   },
   "publishConfig": {
     "access": "public"
