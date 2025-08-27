@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/crypto-plugins",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -35,11 +35,11 @@
   "dependencies": {
     "@xyo-network/crypto-cards-plugins": "workspace:~",
     "@xyo-network/crypto-market-plugins": "workspace:~",
-    "@xyo-network/payloadset-plugin": "~5.0.2"
+    "@xyo-network/payloadset-plugin": "~5.1.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
     "typescript": "~5.9.2"
   },
   "publishConfig": {

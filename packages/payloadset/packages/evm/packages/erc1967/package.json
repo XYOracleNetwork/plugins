@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/erc1967-witness",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -33,17 +33,17 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.7",
-    "@xylabs/hex": "~5.0.7",
-    "@xyo-network/open-zeppelin-typechain": "~4.0.0",
-    "@xyo-network/payload-model": "~5.0.2",
-    "@xyo-network/witness-evm-abstract": "~5.0.2",
+    "@xylabs/assert": "~5.0.11",
+    "@xylabs/hex": "~5.0.11",
+    "@xyo-network/open-zeppelin-typechain": "~4.0.1",
+    "@xyo-network/payload-model": "~5.1.0",
+    "@xyo-network/witness-evm-abstract": "~5.1.0",
     "ethers": "~6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
-    "@xylabs/vitest-extended": "~5.0.7",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
+    "@xylabs/vitest-extended": "~5.0.11",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },

@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/crypto-contract-function-read-payload-plugin",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -33,16 +33,16 @@
     "src"
   ],
   "dependencies": {
-    "@xyo-network/diviner-model": "~5.0.2",
-    "@xyo-network/module-model": "~5.0.2",
-    "@xyo-network/payload-model": "~5.0.2",
-    "@xyo-network/payload-plugin": "~5.0.2",
-    "@xyo-network/witness-model": "~5.0.2",
+    "@xyo-network/diviner-model": "~5.1.0",
+    "@xyo-network/module-model": "~5.1.0",
+    "@xyo-network/payload-model": "~5.1.0",
+    "@xyo-network/payload-plugin": "~5.1.0",
+    "@xyo-network/witness-model": "~5.1.0",
     "ethers": "~6.15.0"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
     "typescript": "~5.9.2"
   },
   "publishConfig": {

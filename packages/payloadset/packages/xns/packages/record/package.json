@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/xns-record-payloadset-plugins",
-  "version": "5.0.1",
+  "version": "5.1.0",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -33,22 +33,22 @@
     "src"
   ],
   "dependencies": {
-    "@xylabs/array": "~5.0.7",
-    "@xylabs/assert": "~5.0.7",
-    "@xylabs/exists": "~5.0.7",
-    "@xylabs/hex": "~5.0.7",
-    "@xylabs/promise": "~5.0.7",
-    "@xyo-network/boundwitness-model": "~5.0.2",
-    "@xyo-network/diviner-hash-lease": "~5.0.2",
-    "@xyo-network/module-model": "~5.0.2",
-    "@xyo-network/payload-builder": "~5.0.2",
-    "@xyo-network/payload-model": "~5.0.2",
+    "@xylabs/array": "~5.0.11",
+    "@xylabs/assert": "~5.0.11",
+    "@xylabs/exists": "~5.0.11",
+    "@xylabs/hex": "~5.0.11",
+    "@xylabs/promise": "~5.0.11",
+    "@xyo-network/boundwitness-model": "~5.1.0",
+    "@xyo-network/diviner-hash-lease": "~5.1.0",
+    "@xyo-network/module-model": "~5.1.0",
+    "@xyo-network/payload-builder": "~5.1.0",
+    "@xyo-network/payload-model": "~5.1.0",
     "@xyo-network/xns-record-payload-plugins": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.0",
-    "@xylabs/tsconfig": "~7.1.0",
-    "@xylabs/vitest-extended": "~5.0.7",
+    "@xylabs/ts-scripts-yarn3": "~7.1.7",
+    "@xylabs/tsconfig": "~7.1.7",
+    "@xylabs/vitest-extended": "~5.0.11",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
   },
