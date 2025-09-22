@@ -85,7 +85,7 @@ describe.skipIf(providers.length === 0)('NftIdToNftMetadataUri', () => {
       const report = await tokenSentinel?.report([tokenCallPayload])
       const results = report?.filter(isNftMetadataUri) ?? []
       expect(results.length).toBe(1)
-      expect(results?.[0]?.address).toBe(address)
+      expect(results?.[0]?.address).toBe(address.toLowerCase())
       expect(results?.[0]?.chainId).toBe(chainId)
       expect(results?.[0]?.tokenId).toBe(tokenId)
       expect(results?.[0]?.schema).toBe(NftMetadataUriSchema)
