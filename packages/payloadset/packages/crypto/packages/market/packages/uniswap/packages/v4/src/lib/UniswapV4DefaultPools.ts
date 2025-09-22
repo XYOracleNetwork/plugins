@@ -15,6 +15,12 @@ export const TokenRegistry: Record<string, TokenParameters> = {
     decimals: 18,
     symbol: 'XYO',
   },
+  XL1: {
+    address: '0xf72ae3e0da743033abd7a407557d684c1ae66aed',
+    chainId: 1,
+    decimals: 18,
+    symbol: 'XL1',
+  },
 } as const
 
 export const UniswapV4DefaultPools: Record<string, TokenPairPoolKey> = {
@@ -23,5 +29,11 @@ export const UniswapV4DefaultPools: Record<string, TokenPairPoolKey> = {
     hookAddress: ZeroAddress,
     tickSpacing: 60,
     tokens: [TokenRegistry.XYO, TokenRegistry.USDT],
+  },
+  'XL1:USDT': {
+    fee: 3000,
+    hookAddress: ZeroAddress,
+    tickSpacing: 60,
+    tokens: [TokenRegistry.XL1, TokenRegistry.USDT],
   },
 } as const
