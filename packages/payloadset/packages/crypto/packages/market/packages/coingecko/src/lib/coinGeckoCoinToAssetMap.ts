@@ -12,6 +12,7 @@ export const coingeckoCoinToAssetMap: Record<string, AssetSymbol> = {
   'tether': 'usdt',
   'usd-coin': 'usdc',
   'wrapped-bitcoin': 'wbtc',
+  'xl1': 'xl1',
   'xrp': 'xrp',
   'xyo-network': 'xyo',
 }
