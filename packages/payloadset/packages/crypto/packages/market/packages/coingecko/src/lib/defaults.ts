@@ -12,6 +12,7 @@ export const defaultCoins: CryptoAsset[] = [
   { name: 'tether' },
   { name: 'usd-coin' },
   { name: 'wrapped-bitcoin' },
+  { name: 'xl1' },
   { name: 'xrp' },
   { name: 'xyo-network' },
 ]
