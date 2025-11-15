@@ -1,5 +1,6 @@
 import { assertEx } from '@xylabs/assert'
 import { AxiosJson } from '@xylabs/axios'
+import { Axios } from 'axios'
 
 interface QuickNodeAsset {
   chain: string
@@ -25,7 +26,7 @@ interface QuickNodeFetchNftsResult {
 export const getAssetsFromWallet = async (address: string, maxNfts = 10, timeout = 2000) => {
   const endpoint = assertEx(process.env.QUICKNODE_API_URI, () => 'No endpoint found')
 
-  const axios = new AxiosJson({ timeout })
+  const axios = new Axios(AxiosJson.axiosConfig({ timeout }))
 
   const assets: QuickNodeAsset[] = []
   let done = false

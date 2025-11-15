@@ -30,7 +30,10 @@
   "types": "dist/neutral/index.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "!**/*.bench.*",
+    "!**/*.spec.*",
+    "!**/*.test.*"
   ],
   "dependencies": {
     "@xyo-network/blockchain-payload-plugins": "workspace:~",
@@ -40,14 +43,14 @@
     "@xyo-network/location-certainty-payload-plugin": "workspace:~",
     "@xyo-network/location-payload-plugin": "workspace:~",
     "@xyo-network/module-instance-payload-plugin": "workspace:~",
-    "@xyo-network/payload-plugin": "~5.1.2",
+    "@xyo-network/payload-plugin": "~5.1.23",
     "@xyo-network/pentair-payload-plugin": "workspace:~",
     "@xyo-network/url-payload-plugin": "workspace:~",
     "@xyo-network/url-safety-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/ts-scripts-yarn3": "~7.1.7",
-    "@xylabs/tsconfig": "~7.1.7",
+    "@xylabs/ts-scripts-yarn3": "~7.2.8",
+    "@xylabs/tsconfig": "~7.2.8",
     "typescript": "~5.9.2"
   },
   "publishConfig": {

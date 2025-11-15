@@ -5,6 +5,7 @@ import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
+import { Axios } from 'axios'
 import type { ExecutionResult } from 'graphql'
 
 export const ApiGraphqlWitnessConfigSchema = 'network.xyo.api.witness.config'
@@ -80,7 +81,7 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
   protected override async observeHandler(payloads?: GraphqlQuery[]): Promise<GraphqlResult[]> {
     await this.started('throw')
     const queries = payloads?.filter(isGraphqlQuery) ?? []
-    const axios = new AxiosJson({ headers: this.headers, timeout: this.timeout })
+    const axios = new Axios(AxiosJson.axiosConfig({ headers: this.headers, timeout: this.timeout }))
     const observations = await Promise.all(
       queries.map(async ({ query, variables }) => {
         const httpResult = await axios.post(this.endpoint, { query, variables })
