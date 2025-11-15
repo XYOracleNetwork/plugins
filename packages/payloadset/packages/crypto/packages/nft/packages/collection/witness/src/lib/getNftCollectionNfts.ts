@@ -12,6 +12,7 @@ import {
   ERC721Enumerable__factory, ERC721URIStorage__factory, ERC1155Supply__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
+import { Axios } from 'axios'
 import type { Provider } from 'ethers'
 
 import { tokenTypes } from './tokenTypes.ts'
@@ -54,7 +55,7 @@ export const getNftCollectionNfts = async (
         ? erc1822Status.implementation
         : erc1967Status.implementation
 
-    const axios = new AxiosJson({ timeout: 2000 })
+    const axios = new Axios(AxiosJson.axiosConfig({ timeout: 2000 }))
     const enumerable = ERC721Enumerable__factory.connect(implementation, provider)
     const storage = ERC721URIStorage__factory.connect(implementation, provider)
     const supply1155 = ERC1155Supply__factory.connect(implementation, provider)

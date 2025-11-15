@@ -3735,9 +3735,12 @@ __metadata:
     "@xyo-network/payloadset-plugin": "npm:~5.1.23"
     "@xyo-network/witness-blockchain-abstract": "npm:~5.1.23"
     "@xyo-network/witness-evm-abstract": "npm:~5.1.23"
+    axios: "npm:~1.13.2"
     ethers: "npm:~6.15.0"
     typescript: "npm:~5.9.2"
     vitest: "npm:~3.2.4"
+  peerDependencies:
+    axios: ~1.13.2
   languageName: unknown
   linkType: soft
 
@@ -3871,11 +3874,14 @@ __metadata:
     "@xyo-network/witness-blockchain": "npm:~5.1.23"
     "@xyo-network/witness-blockchain-abstract": "npm:~5.1.23"
     "@xyo-network/witness-evm-abstract": "npm:~5.1.23"
+    axios: "npm:~1.13.2"
     ethers: "npm:~6.15.0"
     lru-cache: "npm:~11.1.0"
     parse-data-url: "npm:~6.0.0"
     typescript: "npm:~5.9.2"
     vitest: "npm:~3.2.4"
+  peerDependencies:
+    axios: ~1.13.2
   languageName: unknown
   linkType: soft
 
