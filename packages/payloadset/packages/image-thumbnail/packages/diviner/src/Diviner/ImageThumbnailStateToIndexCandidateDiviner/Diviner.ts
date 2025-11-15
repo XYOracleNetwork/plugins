@@ -86,7 +86,7 @@ export class ImageThumbnailStateToIndexCandidateDiviner<
   }
 
   protected static async getPayloadsInBoundWitness(bw: BoundWitness, archivist: ArchivistInstance): Promise<IndexCandidate[] | undefined> {
-    const indexes = payload_schemas.map(schema => bw.payload_schemas?.findIndex(s => s === schema))
+    const indexes = payload_schemas.map(schema => bw.payload_schemas?.indexOf(schema))
     const hashes = indexes.map(index => bw.payload_hashes?.[index])
     const results = await archivist.get(hashes)
     const filteredResults = indexCandidateIdentityFunctions.map(is => results.find(is))

@@ -45,8 +45,8 @@ export class ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner extends Ab
       // eslint-disable-next-line unicorn/no-array-reduce
       const tuples: [BoundWitness, ImageThumbnail, TimeStamp][] = bws.reduce<[BoundWitness, ImageThumbnail, TimeStamp][]>(
         (acc, curr) => {
-          const imageThumbnailIndex = curr.payload_schemas?.findIndex(schema => schema === ImageThumbnailSchema)
-          const timestampIndex = curr.payload_schemas?.findIndex(schema => schema === TimestampSchema)
+          const imageThumbnailIndex = curr.payload_schemas?.indexOf(ImageThumbnailSchema)
+          const timestampIndex = curr.payload_schemas?.indexOf(TimestampSchema)
           const imageThumbnailHash = curr.payload_hashes?.[imageThumbnailIndex]
           const timestampHash = curr.payload_hashes?.[timestampIndex]
           const imageThumbnailPayload = [payloadDictionary[imageThumbnailHash]].find(isImageThumbnail) as ImageThumbnail | undefined
