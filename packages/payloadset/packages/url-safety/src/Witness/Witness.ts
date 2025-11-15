@@ -5,6 +5,7 @@ import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { UrlSafetyPayload, UrlSafetyThreatType } from '@xyo-network/url-safety-payload-plugin'
 import { UrlSafetySchema } from '@xyo-network/url-safety-payload-plugin'
+import { Axios } from 'axios'
 
 import { UrlSafetyWitnessConfigSchema } from './Config.ts'
 import type { UrlSafetyWitnessParams } from './Params.ts'
@@ -35,7 +36,7 @@ const checkUrlSafety = async (
     key?: string
   },
 ): Promise<GoogleSafeBrowsingMatchPayload[]> => {
-  const axios = new AxiosJson()
+  const axios = new Axios(AxiosJson.axiosConfig())
   const endPoint = config?.endPoint ?? 'https://safebrowsing.googleapis.com/v4/threatMatches:find'
   const key = config?.key
   const mutatedUrls = urls.map(url => url.replace('ipfs://', 'https://cloudflare-ipfs.com/'))
@@ -96,7 +97,7 @@ export class UrlSafetyWitness<TParams extends UrlSafetyWitnessParams = UrlSafety
         },
         { schema: UrlSafetySchema, url },
       )
-      payload.threatTypes = payload.threatTypes?.sort()
+      payload.threatTypes = payload.threatTypes?.toSorted()
       return payload
     })
   }

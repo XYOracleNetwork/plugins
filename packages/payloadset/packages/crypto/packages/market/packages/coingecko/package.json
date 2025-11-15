@@ -46,8 +46,12 @@
     "@xylabs/tsconfig": "~7.2.8",
     "@xylabs/vitest-extended": "~5.0.33",
     "@xyo-network/payload-wrapper": "~5.1.23",
+    "axios": "~1.13.2",
     "typescript": "~5.9.2",
     "vitest": "~3.2.4"
+  },
+  "peerDependencies": {
+    "axios": "~1.13.2"
   },
   "publishConfig": {
     "access": "public"
