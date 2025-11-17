@@ -1,7 +1,7 @@
 /* eslint-disable max-statements */
 
 import { assertEx } from '@xylabs/assert'
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import type { Hash } from '@xylabs/hex'
 import { URL } from '@xylabs/url'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
@@ -130,7 +130,7 @@ export class ApiCallWitness<TParams extends ApiCallWitnessParams = ApiCallWitnes
     try {
       switch (this.accept) {
         case 'application/json': {
-          const axios = new AxiosJson({ headers: { ...this.getHeaders(headers), Accept: 'application/json' }, timeout: this.timeout })
+          const axios = new Axios(axiosJsonConfig({ headers: { ...this.getHeaders(headers), Accept: 'application/json' }, timeout: this.timeout }))
           const response = await axios.get<ApiCallJsonResultType>(url)
           if (response.status >= 200 && response.status < 300) {
             const jsonResult = result as ApiCallJsonResult

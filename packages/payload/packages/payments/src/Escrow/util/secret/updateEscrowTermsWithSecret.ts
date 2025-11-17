@@ -1,6 +1,6 @@
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import type { IdPayload } from '@xyo-network/id-payload-plugin'
+import type { Id } from '@xyo-network/id-payload-plugin'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 
 import type {
@@ -21,7 +21,7 @@ export const updateEscrowTermsWithSecret = async (
   terms: EscrowTerms,
   escrowParty: EscrowParty,
   account: AccountInstance | AccountInstance[],
-  secret?: IdPayload,
+  secret?: Id,
 ) => {
   if (!secret) secret = getEscrowSecret()
   const signers = Array.isArray(account) ? account : [account]

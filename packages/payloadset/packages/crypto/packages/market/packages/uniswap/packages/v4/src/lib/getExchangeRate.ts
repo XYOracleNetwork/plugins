@@ -1,6 +1,8 @@
 import type { Token } from '@uniswap/sdk-core'
 import { IStateView__factory } from '@xyo-network/uniswap-typechain/v4-periphery'
+// eslint-disable-next-line import-x/no-internal-modules
 import { ZeroAddress } from 'ethers/constants'
+// eslint-disable-next-line import-x/no-internal-modules
 import type { Provider } from 'ethers/providers'
 
 import { getPoolId } from './getPoolId.ts'

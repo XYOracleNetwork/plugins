@@ -1,4 +1,4 @@
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import { exists } from '@xylabs/exists'
 import type { EthAddress } from '@xylabs/hex'
 import { isHexZero } from '@xylabs/hex'
@@ -55,7 +55,7 @@ export const getNftCollectionNfts = async (
         ? erc1822Status.implementation
         : erc1967Status.implementation
 
-    const axios = new Axios(AxiosJson.axiosConfig({ timeout: 2000 }))
+    const axios = new Axios(axiosJsonConfig({ timeout: 2000 }))
     const enumerable = ERC721Enumerable__factory.connect(implementation, provider)
     const storage = ERC721URIStorage__factory.connect(implementation, provider)
     const supply1155 = ERC1155Supply__factory.connect(implementation, provider)

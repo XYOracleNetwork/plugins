@@ -75,7 +75,7 @@ export class PaymentDiscountDiviner<
     // Parse coupons
     const [coupons, conditions] = await this.getEscrowDiscounts(terms, hashMap)
     // Add the coupons that were found to the sources
-    // NOTE: Should we throw if not all coupons are found?
+    // TODO: Should we throw if not all coupons are found?
     const couponHashes = await PayloadBuilder.hashes(coupons)
     $sources.push(...couponHashes)
 
@@ -84,7 +84,7 @@ export class PaymentDiscountDiviner<
       await Promise.all(currentCoupons.map(async coupon => await areConditionsFulfilled(coupon, conditions, payloads) ? coupon : undefined))).filter(exists)
 
     const validCoupons = await this.filterToSigned(conditionsMetCoupons)
-    // NOTE: Should we throw if not all coupons are valid?
+    // TODO: Should we throw if not all coupons are valid?
     if (validCoupons.length === 0) return [{ ...NO_DISCOUNT, $sources }] as TOut[]
 
     // TODO: Call paymentSubtotalDiviner to get the subtotal to centralize the logic

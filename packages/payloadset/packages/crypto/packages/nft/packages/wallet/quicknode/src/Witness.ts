@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
@@ -81,7 +81,7 @@ export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGrap
   protected override async observeHandler(payloads?: GraphqlQuery[]): Promise<GraphqlResult[]> {
     await this.started('throw')
     const queries = payloads?.filter(isGraphqlQuery) ?? []
-    const axios = new Axios(AxiosJson.axiosConfig({ headers: this.headers, timeout: this.timeout }))
+    const axios = new Axios(axiosJsonConfig({ headers: this.headers, timeout: this.timeout }))
     const observations = await Promise.all(
       queries.map(async ({ query, variables }) => {
         const httpResult = await axios.post(this.endpoint, { query, variables })

@@ -1,4 +1,4 @@
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
@@ -36,7 +36,7 @@ const checkUrlSafety = async (
     key?: string
   },
 ): Promise<GoogleSafeBrowsingMatchPayload[]> => {
-  const axios = new Axios(AxiosJson.axiosConfig())
+  const axios = new Axios(axiosJsonConfig())
   const endPoint = config?.endPoint ?? 'https://safebrowsing.googleapis.com/v4/threatMatches:find'
   const key = config?.key
   const mutatedUrls = urls.map(url => url.replace('ipfs://', 'https://cloudflare-ipfs.com/'))

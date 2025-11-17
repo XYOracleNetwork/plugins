@@ -1,5 +1,5 @@
 import { assertEx } from '@xylabs/assert'
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
 import { isBillingAddress, isPaymentCard } from '@xyo-network/payment-payload-plugins'
@@ -8,7 +8,7 @@ import { RebillyPaymentAuthorizationTokenSchema } from '@xyo-network/rebilly-pay
 import { AbstractSentinel } from '@xyo-network/sentinel-abstract'
 import type { SentinelInstance, SentinelModuleEventData } from '@xyo-network/sentinel-model'
 import type { AxiosRequestConfig } from 'axios'
-import { HttpStatusCode } from 'axios'
+import { Axios, HttpStatusCode } from 'axios'
 
 import type { CreateTokenResponse } from './Api/index.ts'
 import { RebillyPaymentCardAuthorizationSentinelConfigSchema } from './Config.ts'
@@ -104,7 +104,7 @@ export class RebillyPaymentCardAuthorizationSentinel<
     if (!paymentCard) return results
     const billingAddress = payloads?.find(isBillingAddress)
     if (!billingAddress) return results
-    const axios = new AxiosJson({ headers: this.headers })
+    const axios = new Axios(axiosJsonConfig({ headers: this.headers }))
     try {
       const data = toTokenRequest(paymentCard, billingAddress)
       const response = await axios.post<CreateTokenResponse>(this.tokenEndpoint, data)

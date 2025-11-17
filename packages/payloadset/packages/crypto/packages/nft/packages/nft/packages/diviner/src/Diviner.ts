@@ -21,6 +21,7 @@ export type NftScoreDivinerParams = DivinerParams<AnyConfigSchema<NftScoreDivine
 
 const toNftScorePayload = (nftInfo: NftInfo, scores: NftAnalysis): NftScore => {
   const {
+    // eslint-disable-next-line sonarjs/deprecation
     address, chainId, type,
   } = nftInfo
   return {

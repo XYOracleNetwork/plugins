@@ -41,7 +41,7 @@ describe('Diviner', () => {
   })
   test.skip('diviner calibration', async () => {
     const provider = getProviderFromEnv()
-    // NOTE: This test is for obtaining concurrent witnessed
+    // This test is for obtaining concurrent witnessed
     // results for diviner weighting/calibration
     const blocknativeGas = (
       await (

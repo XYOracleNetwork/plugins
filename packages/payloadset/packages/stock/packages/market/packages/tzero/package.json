@@ -36,8 +36,8 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/exists": "~5.0.33",
-    "@xylabs/promise": "~5.0.33",
+    "@xylabs/exists": "~5.0.37",
+    "@xylabs/promise": "~5.0.37",
     "@xyo-network/api-call-witness": "workspace:~",
     "@xyo-network/diviner-abstract": "~5.1.23",
     "@xyo-network/diviner-model": "~5.1.23",
@@ -46,19 +46,19 @@
     "@xyo-network/tzero-stock-market-payload-plugin": "workspace:~"
   },
   "devDependencies": {
-    "@xylabs/assert": "~5.0.33",
-    "@xylabs/hex": "~5.0.33",
-    "@xylabs/object": "~5.0.33",
+    "@xylabs/assert": "~5.0.37",
+    "@xylabs/hex": "~5.0.37",
+    "@xylabs/object": "~5.0.37",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.33",
+    "@xylabs/vitest-extended": "~5.0.37",
     "@xyo-network/manifest": "~5.1.23",
     "@xyo-network/module-factory-locator": "~5.1.23",
     "@xyo-network/sentinel-model": "~5.1.23",
     "@xyo-network/wallet": "~5.1.23",
     "@xyo-network/witness-model": "~5.1.23",
-    "typescript": "~5.9.2",
-    "vitest": "~3.2.4"
+    "typescript": "~5.9.3",
+    "vitest": "~4.0.10"
   },
   "publishConfig": {
     "access": "public"

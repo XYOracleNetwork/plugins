@@ -5,7 +5,7 @@ import { parse } from 'svg-parser'
 
 const MaxPossibleImageDataScore = 1
 
-// NOTE: There is probably a deeper check we can do
+// TODO: There is probably a deeper check we can do
 // here, but this is a good start
 const isValidImageData = (image_data: string): boolean => {
   // If it doesn't start with an svg tag, it's not an svg

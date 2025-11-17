@@ -1,6 +1,9 @@
 import type { Token } from '@uniswap/sdk-core'
+// eslint-disable-next-line import-x/no-internal-modules
 import { AbiCoder } from 'ethers/abi'
+// eslint-disable-next-line import-x/no-internal-modules
 import { ZeroAddress } from 'ethers/constants'
+// eslint-disable-next-line import-x/no-internal-modules
 import { keccak256 } from 'ethers/crypto'
 
 import { sortTokens } from './sortTokens.ts'

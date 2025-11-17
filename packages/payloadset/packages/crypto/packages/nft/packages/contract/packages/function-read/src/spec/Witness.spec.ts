@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/deprecation */
 import '@xylabs/vitest-extended'
 
 import type { CryptoContractFunctionCall, CryptoContractFunctionCallResult } from '@xyo-network/crypto-contract-function-read-payload-plugin'

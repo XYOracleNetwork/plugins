@@ -1,4 +1,5 @@
 import { Token } from '@uniswap/sdk-core'
+// eslint-disable-next-line import-x/no-internal-modules
 import { getAddress } from 'ethers/address'
 
 import type { TokenParameters } from '../types/index.ts'

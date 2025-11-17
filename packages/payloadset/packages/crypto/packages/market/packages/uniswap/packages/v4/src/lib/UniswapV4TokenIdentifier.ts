@@ -1,7 +1,7 @@
 export interface UniswapV4TokenIdentifier {
-  chainId: number
   address: string
+  chainId: number
   decimals: number
-  symbol?: string
   name?: string
+  symbol?: string
 }

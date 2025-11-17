@@ -17,6 +17,8 @@ export default [
   sonarConfig,
   {
     rules: {
+      'no-warning-comments': ['warn', { terms: ['note'], location: 'anywhere' }],
+      '@typescript-eslint/strict-boolean-expressions': ['off'],
       'sonarjs/prefer-single-boolean-return': ['off'],
       'import-x/no-unresolved': ['off'],
       'no-restricted-imports': [

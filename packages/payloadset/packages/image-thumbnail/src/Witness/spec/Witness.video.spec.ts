@@ -90,7 +90,7 @@ describe.skip('ImageThumbnailWitness', () => {
       describe('Flash Video', () => {
         const cases: MimeWithUrl[] = [
           ['video/x-flv', 'https://filesamples.com/samples/video/flv/sample_640x360.flv'],
-          // NOTE: Because of restrictions in the FLV file format, Adobe Systems created new file formats
+          // Because of restrictions in the FLV file format, Adobe Systems created new file formats
           // in 2007, based on the ISO base media file format (MPEG-4 Part 12). In this way, the F4V format
           // shares a common base with the MP4 format, which is why F4V is sometimes informally called "Flash MP4".
           // https://en.m.wikipedia.org/wiki/Flash_Video#History

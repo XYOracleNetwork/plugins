@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import type { NftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { ERC721URIStorage__factory, ERC1155URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'
@@ -108,7 +108,7 @@ export const getNftMetadata = async (
         console.log(`tokenMetadataUri [uri1155]: ${uri1155}`)
         console.log(`tokenMetadataUri [defaultUri]: ${defaultUri}`)
       } */
-      const axios = new Axios(AxiosJson.axiosConfig({ timeout: 5000 }))
+      const axios = new Axios(axiosJsonConfig({ timeout: 5000 }))
       try {
         if (tokenMetadataUri && tokenMetadataUri.length > 0) {
           checkedMetaDataUri = tokenMetadataUri ? checkIpfsUrl(tokenMetadataUri, ipfsGateway) : tokenMetadataUri

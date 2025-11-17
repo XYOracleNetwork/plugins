@@ -26,14 +26,14 @@ export type TokenParameters = {
   decimals: number
 
   /**
-   * A short uppercase identifier for the token (e.g. 'USDT', 'WETH').
-   * Used for display, logging, and lookup convenience.
-   */
-  symbol: string
-
-  /**
    * (Optional) The full human-readable name of the token (e.g. 'Tether USD').
    * Useful for UIs or token metadata enrichment.
    */
   name?: string
+
+  /**
+   * A short uppercase identifier for the token (e.g. 'USDT', 'WETH').
+   * Used for display, logging, and lookup convenience.
+   */
+  symbol: string
 }

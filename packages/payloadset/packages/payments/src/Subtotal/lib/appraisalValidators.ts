@@ -11,7 +11,7 @@ const validateAppraisalAmount = (appraisals: HashLeaseEstimate[]): boolean => {
 }
 
 const validateAppraisalCurrency = (appraisals: HashLeaseEstimate[]): boolean => {
-  // NOTE: Only supporting USD for now, the remaining checks are for future-proofing.
+  // Only supporting USD for now, the remaining checks are for future-proofing.
   if (!appraisals.every(appraisal => appraisal.currency == 'USD')) return false
 
   // Check every object in the array to ensure they all are in a supported currency.

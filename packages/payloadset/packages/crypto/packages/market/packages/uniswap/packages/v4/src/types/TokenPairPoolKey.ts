@@ -1,6 +1,6 @@
 import type { TokenParameters } from './TokenParameters.ts'
 
-// NOTE: We could import this type from @uniswap/v4-core, but
+// TODO: We could import this type from @uniswap/v4-core, but
 // they are currently hardcoded the  ethers v5 which
 // causes many issues since we are using ethers v6.  Moreover,
 // we would have to hit the ERC20 contract to get the decimals

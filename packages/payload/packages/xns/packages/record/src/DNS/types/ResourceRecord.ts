@@ -95,7 +95,7 @@ export type DNSResourceRecordType
     | 'IPN'
     | 'TA'
     | 'DLV'
-  // NOTE: Custom types here
+  // Custom types here
     | 'XYOA'
     | 'XYOH'
 
@@ -195,7 +195,7 @@ export const DNSResourceRecordTypes: Readonly<Record<DNSResourceRecordType, numb
   'TA': 32_768, // DNSSEC Trust Authorities
   'DLV': 32_769, // DNSSEC Lookaside Validation (OBSOLETE)
 
-  // NOTE: Custom types here chosen within the Private Use Range
+  // Custom types here chosen within the Private Use Range
   // https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4
   // https://www.rfc-editor.org/rfc/rfc5226
   // as, per the RFC, the Private Use Range is reserved

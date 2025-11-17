@@ -43,6 +43,7 @@ describe('ImageThumbnailIndexCandidateToImageThumbnailIndexDiviner', () => {
     expect(index).toBeDefined()
     if (index !== undefined) {
       expect(index.key).toBe(key)
+      // eslint-disable-next-line sonarjs/no-alphabetical-sort
       expect(index.$sources.toSorted()).toEqual(Object.keys(payloadDictionary).toSorted())
       expect(index.success).toBe(thumbnail.http?.status === 200)
       expect(index.timestamp).toBe(timestamp.timestamp)

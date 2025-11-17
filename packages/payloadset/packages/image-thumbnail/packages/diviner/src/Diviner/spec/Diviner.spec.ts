@@ -173,7 +173,7 @@ describe('ImageThumbnailDiviner', () => {
       const mod = await node.resolve('ImageThumbnailDivinerIndexArchivist')
       indexArchivist = assertEx(asArchivistInstance<MemoryArchivist>(mod))
     })
-    // NOTE: We're not signing indexes for performance reasons
+    // We're not signing indexes for performance reasons
     it.skip('has expected bound witnesses', async () => {
       const payloads = await indexArchivist.all()
       const indexBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)

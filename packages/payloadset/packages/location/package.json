@@ -36,7 +36,7 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.33",
+    "@xylabs/assert": "~5.0.37",
     "@xyo-network/abstract-witness": "~5.1.23",
     "@xyo-network/location-payload-plugin": "workspace:~",
     "@xyo-network/module-model": "~5.1.23",
@@ -47,9 +47,9 @@
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig-dom": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.33",
-    "typescript": "~5.9.2",
-    "vitest": "~3.2.4"
+    "@xylabs/vitest-extended": "~5.0.37",
+    "typescript": "~5.9.3",
+    "vitest": "~4.0.10"
   },
   "publishConfig": {
     "access": "public"

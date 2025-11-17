@@ -10,7 +10,7 @@ import { DNSQueryOpcodes } from './OperationCodes.ts'
 import type { DNSRcode } from './ResponseCodes.ts'
 import { DNSRcodes } from './ResponseCodes.ts'
 
-// NOTE: The RFC says `Boolean` but uses 0/1 for the values. DNS over HTTPS (DoH) uses `true`/`false`.
+// The RFC says `Boolean` but uses 0/1 for the values. DNS over HTTPS (DoH) uses `true`/`false`.
 export type NumericBoolean = 0 | 1 | true | false
 export type NumericBooleanFalsy = 0 | false
 export type NumericBooleanTruthy = 1 | true

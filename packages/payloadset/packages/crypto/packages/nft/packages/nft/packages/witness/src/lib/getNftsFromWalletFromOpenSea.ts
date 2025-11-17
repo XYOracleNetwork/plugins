@@ -1,6 +1,7 @@
 import { assertEx } from '@xylabs/assert'
-import { AxiosJson } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/axios'
 import type { EthAddress } from '@xylabs/hex'
+import { Axios } from 'axios'
 
 interface OpenSeaNFT {
   /*
@@ -56,7 +57,7 @@ interface OpenSeaNFT {
 export const getNftsFromWalletFromOpenSea = async (address: string, maxNfts = 200, timeout = 2000) => {
   const apiKey = assertEx(process.env.OPENSEA_API_KEY, () => 'No opensea key found')
 
-  const axios = new AxiosJson({ headers: { 'x-api-key': apiKey }, timeout })
+  const axios = new Axios(axiosJsonConfig({ headers: { 'x-api-key': apiKey }, timeout }))
 
   const nfts = (await axios.get<{ nfts: OpenSeaNFT[] }>(`https://api.opensea.io/api/v2/chain/ethereum/account/${address}/nfts?limit=${maxNfts}`)).data
     .nfts

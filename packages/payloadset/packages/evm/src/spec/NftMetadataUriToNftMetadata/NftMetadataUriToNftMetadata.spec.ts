@@ -101,7 +101,7 @@ describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
       const archivist = asArchivistInstance(archivistModule)
       expect(archivist).toBeDefined()
       expect(archivist?.all).toBeDefined()
-      const allPayload = (await archivist?.all?.()) ?? []
+      const allPayload = (await archivist?.next({ limit: 20_000 })) ?? []
       console.log('uri', uri)
       console.log(JSON.stringify(allPayload, null, 2))
       expect(allPayload).toBeArrayOfSize(1)

@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/deprecation */
 /* eslint-disable max-statements */
 
 import '@xylabs/vitest-extended'
