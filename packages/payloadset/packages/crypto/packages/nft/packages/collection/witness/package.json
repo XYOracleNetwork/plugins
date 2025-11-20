@@ -51,6 +51,7 @@
     "@xyo-network/payloadset-plugin": "~5.2.1",
     "@xyo-network/witness-blockchain-abstract": "~5.2.1",
     "@xyo-network/witness-evm-abstract": "~5.2.1",
+    "axios": "^1.13.2",
     "ethers": "~6.15.0"
   },
   "devDependencies": {
@@ -60,12 +61,8 @@
     "@xylabs/vitest-extended": "~5.0.39",
     "@xyo-network/account": "~5.2.1",
     "@xyo-network/account-model": "~5.2.1",
-    "axios": "~1.13.2",
     "typescript": "~5.9.3",
     "vitest": "~4.0.10"
-  },
-  "peerDependencies": {
-    "axios": "~1.13.2"
   },
   "publishConfig": {
     "access": "public"
