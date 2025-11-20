@@ -36,24 +36,24 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.37",
-    "@xylabs/geo": "~5.0.37",
-    "@xyo-network/abstract-witness": "~5.1.23",
+    "@xylabs/assert": "~5.0.39",
+    "@xylabs/geo": "~5.0.39",
+    "@xyo-network/abstract-witness": "~5.2.1",
     "@xyo-network/elevation-payload-plugin": "workspace:~",
     "@xyo-network/location-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "~5.1.23",
-    "@xyo-network/payload-model": "~5.1.23",
-    "@xyo-network/payloadset-plugin": "~5.1.23",
-    "@xyo-network/quadkey": "~5.1.23",
-    "@xyo-network/witness-model": "~5.1.23",
-    "geotiff": "~2.1.4-beta.0"
+    "@xyo-network/module-model": "~5.2.1",
+    "@xyo-network/payload-model": "~5.2.1",
+    "@xyo-network/payloadset-plugin": "~5.2.1",
+    "@xyo-network/quadkey": "~5.2.1",
+    "@xyo-network/witness-model": "~5.2.1",
+    "geotiff": "~2.1.4-beta.1"
   },
   "devDependencies": {
     "@types/node": "~24.10.1",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.37",
-    "@xyo-network/payload-wrapper": "~5.1.23",
+    "@xylabs/vitest-extended": "~5.0.39",
+    "@xyo-network/payload-wrapper": "~5.2.1",
     "fast-text-encoding": "~1.0.6",
     "typescript": "~5.9.3",
     "vitest": "~4.0.10"

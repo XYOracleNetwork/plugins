@@ -36,22 +36,22 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/assert": "~5.0.37",
-    "@xylabs/exists": "~5.0.37",
+    "@xylabs/assert": "~5.0.39",
+    "@xylabs/exists": "~5.0.39",
     "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:~",
     "@xyo-network/crypto-asset-payload-plugin": "workspace:~",
-    "@xyo-network/diviner-abstract": "~5.1.23",
-    "@xyo-network/diviner-model": "~5.1.23",
-    "@xyo-network/module-model": "~5.1.23",
-    "@xyo-network/payload-builder": "~5.1.23",
-    "@xyo-network/payload-model": "~5.1.23",
-    "@xyo-network/payloadset-plugin": "~5.1.23",
+    "@xyo-network/diviner-abstract": "~5.2.1",
+    "@xyo-network/diviner-model": "~5.2.1",
+    "@xyo-network/module-model": "~5.2.1",
+    "@xyo-network/payload-builder": "~5.2.1",
+    "@xyo-network/payload-model": "~5.2.1",
+    "@xyo-network/payloadset-plugin": "~5.2.1",
     "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.37",
+    "@xylabs/vitest-extended": "~5.0.39",
     "typescript": "~5.9.3",
     "vitest": "~4.0.10"
   },
