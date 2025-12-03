@@ -6,7 +6,7 @@ import { delay } from '@xylabs/delay'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { isBoundWitnessWithStorageMeta } from '@xyo-network/boundwitness-model'
+import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
@@ -26,7 +26,9 @@ import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithStorageMeta } from '@xyo-network/payload-model'
+import {
+  isStorageMeta, type Payload, type WithStorageMeta,
+} from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { TimestampSchema } from '@xyo-network/witness-timestamp'
@@ -148,7 +150,7 @@ describe('ImageThumbnailDiviner', () => {
     })
     it('has expected bound witnesses', async () => {
       const payloads = await stateArchivist.all()
-      const stateBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)
+      const stateBoundWitnesses = payloads.filter(x => isBoundWitness(x) && isStorageMeta(x))
       expect(stateBoundWitnesses).toBeArrayOfSize(1)
       for (const stateBoundWitness of stateBoundWitnesses) {
         expect(stateBoundWitness).toBeObject()
@@ -176,7 +178,7 @@ describe('ImageThumbnailDiviner', () => {
     // We're not signing indexes for performance reasons
     it.skip('has expected bound witnesses', async () => {
       const payloads = await indexArchivist.all()
-      const indexBoundWitnesses = payloads.filter(isBoundWitnessWithStorageMeta)
+      const indexBoundWitnesses = payloads.filter(x => isBoundWitness(x) && isStorageMeta(x))
       expect(indexBoundWitnesses).toBeArrayOfSize(1)
       const indexBoundWitness = indexBoundWitnesses[0]
       expect(indexBoundWitness).toBeObject()

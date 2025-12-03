@@ -28,7 +28,7 @@ export class Erc1822Witness<TParams extends Erc1822WitnessParams = Erc1822Witnes
   static override readonly defaultConfigSchema: Schema = Erc1822WitnessConfigSchema
 
   protected override async observeHandler(inPayloads: EvmAddress[] = []): Promise<Erc1822Status[]> {
-    await this.started('throw')
+    await this.startedAsync('throw')
     // calling it here to make sure we rests the cache
     await this.getProviders()
     try {

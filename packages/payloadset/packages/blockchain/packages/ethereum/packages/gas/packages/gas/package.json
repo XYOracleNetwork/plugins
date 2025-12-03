@@ -36,33 +36,33 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/exists": "~5.0.39",
+    "@xylabs/exists": "~5.0.49",
     "@xyo-network/blocknative-ethereum-gas-payload-plugin": "workspace:~",
-    "@xyo-network/diviner-abstract": "~5.2.1",
-    "@xyo-network/diviner-model": "~5.2.1",
+    "@xyo-network/diviner-abstract": "~5.2.14",
+    "@xyo-network/diviner-model": "~5.2.14",
     "@xyo-network/etherchain-gas-ethereum-blockchain-payload-plugins": "workspace:~",
     "@xyo-network/ethers-ethereum-gas-payload-plugin": "workspace:~",
     "@xyo-network/etherscan-ethereum-gas-payload-plugin": "workspace:~",
     "@xyo-network/ethgasstation-ethereum-gas-payload-plugin": "workspace:~",
     "@xyo-network/gas-price-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "~5.2.1",
-    "@xyo-network/payload-builder": "~5.2.1",
-    "@xyo-network/payload-model": "~5.2.1",
-    "@xyo-network/payloadset-plugin": "~5.2.1",
+    "@xyo-network/module-model": "~5.2.14",
+    "@xyo-network/payload-builder": "~5.2.14",
+    "@xyo-network/payload-model": "~5.2.14",
+    "@xyo-network/payloadset-plugin": "~5.2.14",
     "regression": "~2.0.1"
   },
   "devDependencies": {
     "@types/regression": "~2.0.6",
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.39",
+    "@xylabs/vitest-extended": "~5.0.49",
     "@xyo-network/blocknative-ethereum-gas-plugin": "workspace:~",
     "@xyo-network/etherchain-gas-ethereum-blockchain-plugins": "workspace:~",
     "@xyo-network/ethers-ethereum-gas-plugin": "workspace:~",
     "@xyo-network/etherscan-ethereum-gas-plugin": "workspace:~",
-    "@xyo-network/witness-blockchain-abstract": "~5.2.1",
+    "@xyo-network/witness-blockchain-abstract": "~5.2.14",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.10"
+    "vitest": "~4.0.15"
   },
   "publishConfig": {
     "access": "public"

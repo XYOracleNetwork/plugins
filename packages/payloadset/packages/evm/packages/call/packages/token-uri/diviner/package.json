@@ -36,20 +36,20 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xyo-network/diviner-abstract": "~5.2.1",
-    "@xyo-network/diviner-model": "~5.2.1",
+    "@xyo-network/diviner-abstract": "~5.2.14",
+    "@xyo-network/diviner-model": "~5.2.14",
     "@xyo-network/evm-call-witness": "workspace:~",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:~",
-    "@xyo-network/module-model": "~5.2.1",
-    "@xyo-network/payload-model": "~5.2.1"
+    "@xyo-network/module-model": "~5.2.14",
+    "@xyo-network/payload-model": "~5.2.14"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.2.8",
     "@xylabs/tsconfig": "~7.2.8",
-    "@xylabs/vitest-extended": "~5.0.39",
+    "@xylabs/vitest-extended": "~5.0.49",
     "@xyo-network/evm-nft-id-payload-plugin": "workspace:~",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.10"
+    "vitest": "~4.0.15"
   },
   "publishConfig": {
     "access": "public"
