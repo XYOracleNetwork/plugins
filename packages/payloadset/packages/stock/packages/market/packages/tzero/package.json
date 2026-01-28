@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/tzero-stock-market-plugin",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -38,12 +38,12 @@
   "dependencies": {
     "@xylabs/exists": "~5.0.64",
     "@xylabs/promise": "~5.0.64",
-    "@xyo-network/api-call-witness": "workspace:~",
+    "@xyo-network/api-call-witness": "5.3.1",
     "@xyo-network/diviner-abstract": "~5.3.2",
     "@xyo-network/diviner-model": "~5.3.2",
     "@xyo-network/module-model": "~5.3.2",
     "@xyo-network/payload-model": "~5.3.2",
-    "@xyo-network/tzero-stock-market-payload-plugin": "workspace:~"
+    "@xyo-network/tzero-stock-market-payload-plugin": "5.3.1"
   },
   "devDependencies": {
     "@xylabs/assert": "~5.0.64",

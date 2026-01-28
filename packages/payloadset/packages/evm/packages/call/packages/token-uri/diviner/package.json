@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/diviner-evm-call-result-to-token-uri",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -38,8 +38,8 @@
   "dependencies": {
     "@xyo-network/diviner-abstract": "~5.3.2",
     "@xyo-network/diviner-model": "~5.3.2",
-    "@xyo-network/evm-call-witness": "workspace:~",
-    "@xyo-network/evm-nft-id-payload-plugin": "workspace:~",
+    "@xyo-network/evm-call-witness": "5.3.1",
+    "@xyo-network/evm-nft-id-payload-plugin": "5.3.1",
     "@xyo-network/module-model": "~5.3.2",
     "@xyo-network/payload-model": "~5.3.2"
   },
@@ -47,7 +47,7 @@
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
     "@xylabs/vitest-extended": "~5.0.64",
-    "@xyo-network/evm-nft-id-payload-plugin": "workspace:~",
+    "@xyo-network/evm-nft-id-payload-plugin": "5.3.1",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
   },

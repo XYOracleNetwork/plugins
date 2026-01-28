@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/crypto-asset-plugin",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -38,15 +38,15 @@
   "dependencies": {
     "@xylabs/assert": "~5.0.64",
     "@xylabs/exists": "~5.0.64",
-    "@xyo-network/coingecko-crypto-market-payload-plugin": "workspace:~",
-    "@xyo-network/crypto-asset-payload-plugin": "workspace:~",
+    "@xyo-network/coingecko-crypto-market-payload-plugin": "5.3.1",
+    "@xyo-network/crypto-asset-payload-plugin": "5.3.1",
     "@xyo-network/diviner-abstract": "~5.3.2",
     "@xyo-network/diviner-model": "~5.3.2",
     "@xyo-network/module-model": "~5.3.2",
     "@xyo-network/payload-builder": "~5.3.2",
     "@xyo-network/payload-model": "~5.3.2",
     "@xyo-network/payloadset-plugin": "~5.3.2",
-    "@xyo-network/uniswap-crypto-market-payload-plugin": "workspace:~"
+    "@xyo-network/uniswap-crypto-market-payload-plugin": "5.3.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

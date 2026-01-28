@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/payload-plugins",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -36,17 +36,17 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xyo-network/blockchain-payload-plugins": "workspace:~",
-    "@xyo-network/crypto-payload-plugins": "workspace:~",
-    "@xyo-network/elevation-payload-plugin": "workspace:~",
-    "@xyo-network/image-thumbnail-payload-plugin": "workspace:~",
-    "@xyo-network/location-certainty-payload-plugin": "workspace:~",
-    "@xyo-network/location-payload-plugin": "workspace:~",
-    "@xyo-network/module-instance-payload-plugin": "workspace:~",
+    "@xyo-network/blockchain-payload-plugins": "5.3.1",
+    "@xyo-network/crypto-payload-plugins": "5.3.1",
+    "@xyo-network/elevation-payload-plugin": "5.3.1",
+    "@xyo-network/image-thumbnail-payload-plugin": "5.3.1",
+    "@xyo-network/location-certainty-payload-plugin": "5.3.1",
+    "@xyo-network/location-payload-plugin": "5.3.1",
+    "@xyo-network/module-instance-payload-plugin": "5.3.1",
     "@xyo-network/payload-plugin": "~5.3.2",
-    "@xyo-network/pentair-payload-plugin": "workspace:~",
-    "@xyo-network/url-payload-plugin": "workspace:~",
-    "@xyo-network/url-safety-payload-plugin": "workspace:~"
+    "@xyo-network/pentair-payload-plugin": "5.3.1",
+    "@xyo-network/url-payload-plugin": "5.3.1",
+    "@xyo-network/url-safety-payload-plugin": "5.3.1"
   },
   "devDependencies": {
     "@xylabs/ts-scripts-yarn3": "~7.3.2",

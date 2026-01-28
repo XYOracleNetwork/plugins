@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/plugins",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -49,8 +49,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@xyo-network/payload-plugins": "workspace:~",
-    "@xyo-network/payloadset-plugins": "workspace:~"
+    "@xyo-network/payload-plugins": "5.3.1",
+    "@xyo-network/payloadset-plugins": "5.3.1"
   },
   "devDependencies": {
     "@ethersproject/address": "~5.8.0",

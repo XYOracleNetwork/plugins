@@ -1,6 +1,6 @@
 {
   "name": "@xyo-network/evm-plugins",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
   "bugs": {
@@ -36,12 +36,12 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xyo-network/erc1822-witness": "workspace:~",
-    "@xyo-network/erc1967-witness": "workspace:~",
-    "@xyo-network/ethereum-blockchain-plugins": "workspace:~",
-    "@xyo-network/evm-abi-diviner": "workspace:~",
-    "@xyo-network/evm-call-witness": "workspace:~",
-    "@xyo-network/evm-contract-witness": "workspace:~",
+    "@xyo-network/erc1822-witness": "5.3.1",
+    "@xyo-network/erc1967-witness": "5.3.1",
+    "@xyo-network/ethereum-blockchain-plugins": "5.3.1",
+    "@xyo-network/evm-abi-diviner": "5.3.1",
+    "@xyo-network/evm-call-witness": "5.3.1",
+    "@xyo-network/evm-contract-witness": "5.3.1",
     "@xyo-network/payloadset-plugin": "~5.3.2"
   },
   "devDependencies": {
@@ -49,16 +49,16 @@
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
     "@xylabs/vitest-extended": "~5.0.64",
-    "@xyo-network/api-call-witness": "workspace:~",
+    "@xyo-network/api-call-witness": "5.3.1",
     "@xyo-network/archivist-model": "~5.3.2",
-    "@xyo-network/crypto-nft-payload-plugin": "workspace:~",
+    "@xyo-network/crypto-nft-payload-plugin": "5.3.1",
     "@xyo-network/diviner-boundwitness-memory": "~5.3.2",
-    "@xyo-network/diviner-evm-call-result-to-token-uri": "workspace:~",
+    "@xyo-network/diviner-evm-call-result-to-token-uri": "5.3.1",
     "@xyo-network/diviner-model": "~5.3.2",
     "@xyo-network/diviner-payload-generic": "~5.3.2",
     "@xyo-network/diviner-payload-model": "~5.3.2",
     "@xyo-network/diviner-temporal-indexing": "~5.3.2",
-    "@xyo-network/evm-nft-id-payload-plugin": "workspace:~",
+    "@xyo-network/evm-nft-id-payload-plugin": "5.3.1",
     "@xyo-network/manifest": "~5.3.2",
     "@xyo-network/module-factory-locator": "~5.3.2",
     "@xyo-network/module-model": "~5.3.2",
