@@ -1,5 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 /**
  * ERC20 Token Interfaces
@@ -24,7 +24,7 @@ export type TokenInterface = ERC20TokenInterfaces | ERC721TokenInterfaces | ERC1
 /**
  * The schema for the EVM Token Interface Implemented payload
  */
-export const EvmTokenInterfaceImplementedSchema = 'network.xyo.evm.token.interface.implemented'
+export const EvmTokenInterfaceImplementedSchema = asSchema('network.xyo.evm.token.interface.implemented', true)
 /**
  * The schema for the EVM Token Interface Implemented payload
  */

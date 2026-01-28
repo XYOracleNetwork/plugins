@@ -113,16 +113,16 @@ describe.skip('Contract Node', () => {
       new ModuleFactory(Erc1967Witness, { providers: getProvidersFromEnv } as Erc1967WitnessParams),
     )
 
-    const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator)
+    const manifest = new ManifestWrapper(sentinelNodeManifest as unknown as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
 
-    const manifest721 = new ManifestWrapper(erc721IndexNodeManifest as PackageManifestPayload, wallet721, locator)
+    const manifest721 = new ManifestWrapper(erc721IndexNodeManifest as unknown as PackageManifestPayload, wallet721, locator)
     const node721 = await manifest721.loadNodeFromIndex(0)
 
     await node.register(node721)
     await node.attach(node721.address, true)
 
-    const manifest1155 = new ManifestWrapper(erc1155IndexNodeManifest as PackageManifestPayload, wallet1155, locator)
+    const manifest1155 = new ManifestWrapper(erc1155IndexNodeManifest as unknown as PackageManifestPayload, wallet1155, locator)
     const node1155 = await manifest1155.loadNodeFromIndex(0)
 
     await node.register(node1155)

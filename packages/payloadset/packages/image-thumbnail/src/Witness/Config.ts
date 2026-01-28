@@ -1,7 +1,8 @@
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { asSchema } from '@xyo-network/payload-model'
 import type { WitnessConfig } from '@xyo-network/witness-model'
 
-export const ImageThumbnailWitnessConfigSchema = `${ImageThumbnailSchema}.witness.config` as const
+export const ImageThumbnailWitnessConfigSchema = asSchema(`${ImageThumbnailSchema}.witness.config`, true)
 export type ImageThumbnailWitnessConfigSchema = typeof ImageThumbnailWitnessConfigSchema
 
 export type ImageThumbnailEncoding = 'PNG' | 'JPG' | 'GIF'

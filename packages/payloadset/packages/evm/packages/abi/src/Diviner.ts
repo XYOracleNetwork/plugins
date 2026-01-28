@@ -5,13 +5,13 @@ import type { EvmContract } from '@xyo-network/evm-contract-witness'
 import { EvmContractSchema } from '@xyo-network/evm-contract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { Interface } from 'ethers'
 
 import type { EvmFunctionImplemented, InterfaceAbi } from './Payload.ts'
 import { EvmFunctionImplementedSchema } from './Payload.ts'
 
-export const EvmAbiImplementedDivinerConfigSchema = 'network.xyo.evm.abi.implemented.diviner.config'
+export const EvmAbiImplementedDivinerConfigSchema = asSchema('network.xyo.evm.abi.implemented.diviner.config', true)
 export type EvmAbiImplementedDivinerConfigSchema = typeof EvmAbiImplementedDivinerConfigSchema
 
 export type EvmAbiImplementedDivinerConfig = DivinerConfig<{ abi?: InterfaceAbi; schema: EvmAbiImplementedDivinerConfigSchema }>

@@ -33,7 +33,7 @@ import type { Labels, ModuleState } from '@xyo-network/module-model'
 import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { WithStorageMeta } from '@xyo-network/payload-model'
+import { asSchema, type WithStorageMeta } from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
 import {
   beforeAll,
@@ -145,7 +145,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     locator.register(TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner.factory(), labels)
     locator.register(TemporalIndexingDivinerStateToIndexCandidateDiviner.factory(), labels)
     locator.register(TemporalIndexingDiviner.factory(), labels)
-    const manifest = imageThumbnailDivinerManifest as PackageManifestPayload
+    const manifest = imageThumbnailDivinerManifest as unknown as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     await node.start()
@@ -159,7 +159,7 @@ describe.skip('CryptoWalletNftWitness Index', () => {
     const payloads = (
       await Promise.all(
         data.map(async (nft) => {
-          const timestamp = { schema: 'network.xyo.timestamp', timestamp: Date.now() }
+          const timestamp = { schema: asSchema('network.xyo.timestamp', true), timestamp: Date.now() }
           const [bw, payloads] = await new BoundWitnessBuilder().payloads([nft, timestamp]).build()
           return [bw, ...payloads]
         }),

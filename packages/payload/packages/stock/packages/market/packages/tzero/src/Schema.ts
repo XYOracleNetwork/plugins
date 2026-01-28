@@ -1,2 +1,4 @@
-export type TZeroStockMarketSchema = 'network.xyo.stock.market.tzero'
-export const TZeroStockMarketSchema: TZeroStockMarketSchema = 'network.xyo.stock.market.tzero'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type TZeroStockMarketSchema = typeof TZeroStockMarketSchema
+export const TZeroStockMarketSchema = asSchema('network.xyo.stock.market.tzero', true)

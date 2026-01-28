@@ -1,12 +1,14 @@
 import { AsObjectFactory } from '@xylabs/object'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
 import type { DomainRegistrationFields } from './DomainRegistration.ts'
 import { DomainRegistrationSchema } from './DomainRegistration.ts'
 
-export const DomainRegistrationLeaseSchema = `${DomainRegistrationSchema}.lease` as const
+export const DomainRegistrationLeaseSchema = asSchema(`${DomainRegistrationSchema}.lease`, true)
 export type DomainRegistrationLeaseSchema = typeof DomainRegistrationLeaseSchema
 
 export interface DomainRegistrationLeaseFields extends DomainRegistrationFields, DurationFields {}

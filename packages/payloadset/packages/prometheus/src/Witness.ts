@@ -5,15 +5,17 @@ import { exists } from '@xylabs/exists'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import { creatableModule } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { collectDefaultMetrics, Registry } from 'prom-client'
 
 import type { PrometheusMetricValuePayload } from './Payload.ts'
 import { PrometheusMetricValueSchema } from './Schema.ts'
 
-export type PrometheusNodeWitnessConfigSchema = 'network.xyo.prometheus.node.witness.config'
-export const PrometheusNodeWitnessConfigSchema: PrometheusNodeWitnessConfigSchema = 'network.xyo.prometheus.node.witness.config'
+export type PrometheusNodeWitnessConfigSchema = typeof PrometheusNodeWitnessConfigSchema
+export const PrometheusNodeWitnessConfigSchema = asSchema('network.xyo.prometheus.node.witness.config', true)
 
 export type PrometheusNodeWitnessConfig = WitnessConfig<{
   port?: number

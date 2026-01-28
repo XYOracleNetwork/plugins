@@ -1,2 +1,4 @@
-export type PrometheusMetricValueSchema = 'network.xyo.prometheus.metric.value'
-export const PrometheusMetricValueSchema: PrometheusMetricValueSchema = 'network.xyo.prometheus.metric.value'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type PrometheusMetricValueSchema = typeof PrometheusMetricValueSchema
+export const PrometheusMetricValueSchema = asSchema('network.xyo.prometheus.metric.value', true)

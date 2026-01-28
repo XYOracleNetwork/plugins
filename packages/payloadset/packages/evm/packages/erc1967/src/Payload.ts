@@ -1,8 +1,8 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { asSchema, type Payload } from '@xyo-network/payload-model'
 
 import type { Erc1967SlotStatus } from './lib/index.ts'
 
-export const Erc1967StatusSchema = 'network.xyo.erc1967.status'
+export const Erc1967StatusSchema = asSchema('network.xyo.erc1967.status', true)
 export type Erc1967StatusSchema = typeof Erc1967StatusSchema
 
 export type Erc1967Status = Payload<

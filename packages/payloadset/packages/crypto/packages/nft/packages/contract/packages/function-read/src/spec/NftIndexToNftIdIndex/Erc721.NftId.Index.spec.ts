@@ -78,7 +78,7 @@ describe.skipIf(!process.env.INFURA_PROJECT_ID)('Erc721.NftId.Index', () => {
       } as CryptoContractFunctionReadWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
-    const manifest = new ManifestWrapper(nodeManifest as PackageManifestPayload, wallet, locator)
+    const manifest = new ManifestWrapper(nodeManifest as unknown as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
   })
   type TestData = readonly [string]

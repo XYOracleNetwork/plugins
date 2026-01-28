@@ -1,5 +1,5 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import type { ContractInfoFields } from './ContractInfo.ts'
 import { ContractInfoSchema } from './ContractInfo.ts'
@@ -7,7 +7,7 @@ import { ContractInfoSchema } from './ContractInfo.ts'
 /**
  * The schema for the ERC1155 contract info
  */
-export const Erc1155ContractInfoSchema = `${ContractInfoSchema}.erc1155`
+export const Erc1155ContractInfoSchema = asSchema(`${ContractInfoSchema}.erc1155`, true)
 /**
  * The schema for the ERC1155 contract info
  */

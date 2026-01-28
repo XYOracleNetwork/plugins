@@ -1,7 +1,9 @@
+import { asSchema } from '@xyo-network/payload-model'
+
 import { NftSchema } from '../Schema.ts'
 
-export type NftWitnessConfigSchema = `${NftSchema}.witness.config`
-export const NftWitnessConfigSchema: NftWitnessConfigSchema = `${NftSchema}.witness.config`
+export type NftWitnessConfigSchema = typeof NftWitnessConfigSchema
+export const NftWitnessConfigSchema = asSchema(`${NftSchema}.witness.config`, true)
 
-export type NftWitnessQuerySchema = `${NftSchema}.witness.query`
-export const NftWitnessQuerySchema: NftWitnessQuerySchema = `${NftSchema}.witness.query`
+export type NftWitnessQuerySchema = typeof NftWitnessQuerySchema
+export const NftWitnessQuerySchema = asSchema(`${NftSchema}.witness.query`, true)

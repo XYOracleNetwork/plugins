@@ -99,8 +99,8 @@ describe('Contract Node', () => {
     locator.register(
       new ModuleFactory(EvmContractWitness, { providers: getProviders } as EvmContractWitnessParams),
     )
-    const publicChildren: ModuleManifest[] = [...contractWitnessManifest.nodes, ...tokenDivinerManifest.nodes]
-    const manifest = new ManifestWrapper(tokenNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
+    const publicChildren = [...contractWitnessManifest.nodes, ...tokenDivinerManifest.nodes] as unknown as ModuleManifest[]
+    const manifest = new ManifestWrapper(tokenNodeManifest as unknown as PackageManifestPayload, wallet, locator, publicChildren)
     node = assertEx((await manifest.loadNodes()).at(0), () => 'Node not loaded')
     const mods = await node.resolve('*')
     expect(mods).toBeDefined()

@@ -1,13 +1,14 @@
 import { AsObjectFactory } from '@xylabs/object'
 import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
+  asSchema,
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
 import type { Iso4217AlphabeticalCode } from './Iso4217Currency.ts'
 
-export const AmountSchema = 'network.xyo.payments.amount' as const
+export const AmountSchema = asSchema('network.xyo.payments.amount', true)
 export type AmountSchema = typeof AmountSchema
 
 export interface AmountFields {

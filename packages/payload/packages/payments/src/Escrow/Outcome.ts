@@ -2,13 +2,14 @@ import type { Hash } from '@xylabs/hex'
 import { AsObjectFactory } from '@xylabs/object'
 import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
+  asSchema,
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
 import { EscrowSchema } from './Schema.ts'
 
-export const EscrowOutcomeSchema = `${EscrowSchema}.outcome` as const
+export const EscrowOutcomeSchema = asSchema(`${EscrowSchema}.outcome`, true)
 export type EscrowOutcomeSchema = typeof EscrowOutcomeSchema
 
 /**

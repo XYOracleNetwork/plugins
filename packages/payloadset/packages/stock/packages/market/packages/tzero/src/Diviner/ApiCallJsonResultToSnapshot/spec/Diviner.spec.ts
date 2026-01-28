@@ -2,6 +2,7 @@ import '@xylabs/vitest-extended'
 
 import type { Hash } from '@xylabs/hex'
 import type { ApiCallResult } from '@xyo-network/api-call-witness'
+import { asSchema } from '@xyo-network/payload-model'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { HDWallet } from '@xyo-network/wallet'
 import {
@@ -38,7 +39,7 @@ describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
           timestamp: '2024-05-29T17:41:16.944090431-04:00',
           volume: 1002,
         },
-        schema: 'network.xyo.api.call.result',
+        schema: asSchema('network.xyo.api.call.result', true),
       },
     ]
     it.each(cases)('with API Response', async (payload) => {
@@ -55,7 +56,7 @@ describe('TZeroApiCallJsonResultToSnapshotDiviner', () => {
       {
         call: 'a04445ce5b67bca9bf1da8d2f85eea60c9baf566342cf29ffd3bdfbb01c8fcfe' as Hash,
         http: { status: 404 },
-        schema: 'network.xyo.api.call.result',
+        schema: asSchema('network.xyo.api.call.result', true),
       },
     ]
     it.each(cases)('with non API Response', async (payload) => {

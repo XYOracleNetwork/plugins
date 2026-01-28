@@ -29,7 +29,7 @@ describe('tZero', () => {
       const locator = new ModuleFactoryLocator()
       locator.register(new ModuleFactory(ApiCallWitness, { config: {}, headers: { 'x-apikey': apiKey } } as ApiCallWitnessParams))
       locator.register(TZeroApiCallJsonResultToSnapshotDiviner.factory())
-      const manifest = new ManifestWrapper(tzeroMarketdataManifest as PackageManifestPayload, wallet, locator)
+      const manifest = new ManifestWrapper(tzeroMarketdataManifest as unknown as PackageManifestPayload, wallet, locator)
       const node = await manifest.loadNodeFromIndex(0)
       const mods = await node.resolve('*')
       expect(mods.length).toBeGreaterThan(1)

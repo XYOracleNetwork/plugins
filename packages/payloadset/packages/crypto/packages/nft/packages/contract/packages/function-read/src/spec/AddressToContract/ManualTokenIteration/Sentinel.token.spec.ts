@@ -119,7 +119,7 @@ describe('Erc721Sentinel', () => {
       )
       profile('setup')
       profile('manifest')
-      const manifest = new ManifestWrapper(erc721SentinelManifest as PackageManifestPayload, wallet, locator)
+      const manifest = new ManifestWrapper(erc721SentinelManifest as unknown as PackageManifestPayload, wallet, locator)
       profile('manifest-load')
       const node = await manifest.loadNodeFromIndex(0)
       profile('manifest-load')

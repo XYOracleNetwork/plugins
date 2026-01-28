@@ -1,14 +1,16 @@
 import { delay } from '@xylabs/delay'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import type {
   WitnessConfig, WitnessModule, WitnessParams,
 } from '@xyo-network/witness-model'
 
-export type SchemaWitnessConfigSchema = 'network.xyo.schema.witness.config'
-export const SchemaWitnessConfigSchema: SchemaWitnessConfigSchema = 'network.xyo.schema.witness.config'
+export type SchemaWitnessConfigSchema = typeof SchemaWitnessConfigSchema
+export const SchemaWitnessConfigSchema = asSchema('network.xyo.schema.witness.config', true)
 
 export type SchemaWitnessConfig = WitnessConfig<{ schema: SchemaWitnessConfigSchema }>
 

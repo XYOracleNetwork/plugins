@@ -1,9 +1,11 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import { ImageThumbnailSchema } from '../Schema.ts'
 
-export const ImageThumbnailResultSchema = `${ImageThumbnailSchema}.result` as const
+export const ImageThumbnailResultSchema = asSchema(`${ImageThumbnailSchema}.result`, true)
 export type ImageThumbnailResultSchema = typeof ImageThumbnailResultSchema
 
 /**

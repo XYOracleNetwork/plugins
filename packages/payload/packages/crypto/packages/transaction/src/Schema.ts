@@ -1,5 +1,7 @@
-export type AddressTransactionHistorySchema = 'network.xyo.crypto.address.transaction'
-export const AddressTransactionHistorySchema: AddressTransactionHistorySchema = 'network.xyo.crypto.address.transaction'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type AddressTransactionHistoryWitnessConfigSchema = `${AddressTransactionHistorySchema}.witness.config`
-export const AddressTransactionHistoryWitnessConfigSchema: AddressTransactionHistoryWitnessConfigSchema = `${AddressTransactionHistorySchema}.witness.config`
+export type AddressTransactionHistorySchema = typeof AddressTransactionHistorySchema
+export const AddressTransactionHistorySchema = asSchema('network.xyo.crypto.address.transaction', true)
+
+export type AddressTransactionHistoryWitnessConfigSchema = typeof AddressTransactionHistoryWitnessConfigSchema
+export const AddressTransactionHistoryWitnessConfigSchema = asSchema(`${AddressTransactionHistorySchema}.witness.config`, true)

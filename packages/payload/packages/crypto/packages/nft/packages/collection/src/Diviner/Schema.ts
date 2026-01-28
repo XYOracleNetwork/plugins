@@ -1,4 +1,6 @@
+import { asSchema } from '@xyo-network/payload-model'
+
 import { NftCollectionSchema } from '../Schema.ts'
 
-export type NftCollectionScoreSchema = `${NftCollectionSchema}.score`
-export const NftCollectionScoreSchema: NftCollectionScoreSchema = `${NftCollectionSchema}.score`
+export type NftCollectionScoreSchema = typeof NftCollectionScoreSchema
+export const NftCollectionScoreSchema = asSchema(`${NftCollectionSchema}.score`, true)

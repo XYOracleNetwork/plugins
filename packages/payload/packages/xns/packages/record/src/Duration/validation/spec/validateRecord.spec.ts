@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { Payload } from '@xyo-network/payload-model'
+import { asSchema, type Payload } from '@xyo-network/payload-model'
 import {
   describe, expect, it,
 } from 'vitest'
@@ -9,7 +9,7 @@ import type { DurationFields } from '../../Duration.ts'
 import { validateDuration } from '../validateDuration.ts'
 
 describe('validateRecord', () => {
-  const schema = 'network.xyo.test'
+  const schema = asSchema('network.xyo.test', true)
   const recordPayload = {
     domain: 'foo.xyo',
     exp: Date.now() + 1_000_000,

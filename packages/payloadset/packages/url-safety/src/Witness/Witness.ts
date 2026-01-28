@@ -1,6 +1,8 @@
 import { axiosJsonConfig } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { UrlSafetyPayload, UrlSafetyThreatType } from '@xyo-network/url-safety-payload-plugin'
@@ -10,8 +12,8 @@ import { Axios } from 'axios'
 import { UrlSafetyWitnessConfigSchema } from './Config.ts'
 import type { UrlSafetyWitnessParams } from './Params.ts'
 
-export type GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'
-export const GoogleSafeBrowsingMatchSchema: GoogleSafeBrowsingMatchSchema = 'com.google.safebrowsing.match'
+export type GoogleSafeBrowsingMatchSchema = typeof GoogleSafeBrowsingMatchSchema
+export const GoogleSafeBrowsingMatchSchema = asSchema('com.google.safebrowsing.match', true)
 
 export interface GoogleSafeBrowsingMatch {
   cacheDuration: string

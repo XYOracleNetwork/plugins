@@ -1,2 +1,4 @@
-export type DNSSchema = 'network.xyo.dns'
-export const DNSSchema: DNSSchema = 'network.xyo.dns'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type DNSSchema = typeof DNSSchema
+export const DNSSchema = asSchema('network.xyo.dns', true)

@@ -1,2 +1,4 @@
-export type CurrentLocationSchema = 'network.xyo.location.current'
-export const CurrentLocationSchema: CurrentLocationSchema = 'network.xyo.location.current'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type CurrentLocationSchema = typeof CurrentLocationSchema
+export const CurrentLocationSchema = asSchema('network.xyo.location.current', true)

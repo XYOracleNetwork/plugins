@@ -3,7 +3,7 @@ import type { Promisable } from '@xylabs/promise'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import { EvmCallDivinerLabels } from './Labels.ts'
 import type { EvmCallResult } from './Payload.ts'
@@ -11,7 +11,7 @@ import { asEvmCallSuccess, EvmCallResultSchema } from './Payload.ts'
 
 export type FindCallResult<TResult = string, TPayload = Payload> = [TResult, TPayload] | [undefined, TPayload] | [undefined, undefined]
 
-export const EvmCallDivinerConfigSchema = 'network.xyo.evm.call.diviner.config'
+export const EvmCallDivinerConfigSchema = asSchema('network.xyo.evm.call.diviner.config', true)
 export type EvmCallDivinerConfigSchema = typeof EvmCallDivinerConfigSchema
 
 export type EvmCallDivinerConfig = DivinerConfig<{
@@ -19,7 +19,7 @@ export type EvmCallDivinerConfig = DivinerConfig<{
 }>
 export type EvmCallDivinerParams = DivinerParams<EvmCallDivinerConfig>
 
-export const EvmCallResultsSchema = 'network.xyo.evm.call.results'
+export const EvmCallResultsSchema = asSchema('network.xyo.evm.call.results', true)
 export type EvmCallResultsSchema = typeof EvmCallResultsSchema
 
 export type EvmCallResults = Payload<

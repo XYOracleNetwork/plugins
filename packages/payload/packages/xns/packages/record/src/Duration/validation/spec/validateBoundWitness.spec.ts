@@ -3,6 +3,7 @@ import '@xylabs/vitest-extended'
 import type { Hash } from '@xylabs/hex'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
+import { asSchema } from '@xyo-network/payload-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'
 import {
@@ -16,7 +17,7 @@ describe('validateBoundWitness', () => {
   let nameserver: WalletInstance
   let domainOwner: WalletInstance
   let recordBw: BoundWitness
-  const schema = 'network.xyo.test'
+  const schema = asSchema('network.xyo.test', true)
   beforeAll(async () => {
     nameserver = await HDWallet.fromPhrase('camp notable brick vast absent express leader safe obey crater yard gun multiply crouch devote')
     domainOwner = await HDWallet.fromPhrase('carbon donate rib engage earth vibrant cover fruit way hair poverty grunt fish husband initial')

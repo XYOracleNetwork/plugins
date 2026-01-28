@@ -1,12 +1,14 @@
 import { AsObjectFactory } from '@xylabs/object'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import type { DurationFields } from '../Duration/index.ts'
 import type { DomainFields } from './Domain.ts'
 
-export type DomainLeaseSchema = 'network.xyo.ns.domain.lease'
-export const DomainLeaseSchema: DomainLeaseSchema = 'network.xyo.ns.domain.lease'
+export type DomainLeaseSchema = typeof DomainLeaseSchema
+export const DomainLeaseSchema = asSchema('network.xyo.ns.domain.lease', true)
 
 /**
  * A domain is leased for a duration

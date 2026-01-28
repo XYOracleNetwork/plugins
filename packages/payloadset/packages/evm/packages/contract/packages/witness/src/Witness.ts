@@ -1,16 +1,18 @@
 import { assertEx } from '@xylabs/assert'
 import { creatableModule } from '@xyo-network/module-model'
-import { isPayloadOfSchemaType, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, Schema,
+} from '@xyo-network/payload-model'
 import {
   AbstractEvmWitness, EvmAddress, EvmAddressSchema, EvmWitnessConfig, EvmWitnessParams,
 } from '@xyo-network/witness-evm-abstract'
 
 import { EvmContract, EvmContractSchema } from './Payload.ts'
 
-export const EvmContractWitnessConfigSchema = 'network.xyo.evm.contract.witness.config'
+export const EvmContractWitnessConfigSchema = asSchema('network.xyo.evm.contract.witness.config', true)
 export type EvmContractWitnessConfigSchema = typeof EvmContractWitnessConfigSchema
 
-export type EvmContractWitnessConfig = EvmWitnessConfig<{ address?: string }, string>
+export type EvmContractWitnessConfig = EvmWitnessConfig<{ address?: string }, EvmContractWitnessConfigSchema>
 
 export type EvmContractWitnessParams = EvmWitnessParams<EvmContractWitnessConfig>
 

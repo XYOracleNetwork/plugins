@@ -1,2 +1,4 @@
-export type AbstractModuleInstanceSchema = 'network.xyo.module.instance'
-export const AbstractModuleInstanceSchema: AbstractModuleInstanceSchema = 'network.xyo.module.instance'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type AbstractModuleInstanceSchema = typeof AbstractModuleInstanceSchema
+export const AbstractModuleInstanceSchema = asSchema('network.xyo.module.instance', true)

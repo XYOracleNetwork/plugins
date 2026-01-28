@@ -1,2 +1,4 @@
-export type CryptoMarketAssetSchema = 'network.xyo.crypto.asset'
-export const CryptoMarketAssetSchema: CryptoMarketAssetSchema = 'network.xyo.crypto.asset'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type CryptoMarketAssetSchema = typeof CryptoMarketAssetSchema
+export const CryptoMarketAssetSchema = asSchema('network.xyo.crypto.asset', true)

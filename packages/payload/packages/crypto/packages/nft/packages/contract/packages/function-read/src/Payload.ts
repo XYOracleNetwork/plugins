@@ -1,8 +1,8 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { asSchema, type Payload } from '@xyo-network/payload-model'
 import type { WitnessConfig } from '@xyo-network/witness-model'
 import type { JsonFragment } from 'ethers'
 
-export const CryptoContractFunctionReadWitnessConfigSchema = 'network.xyo.crypto.contract.function.read.config'
+export const CryptoContractFunctionReadWitnessConfigSchema = asSchema('network.xyo.crypto.contract.function.read.config', true)
 export type CryptoContractFunctionReadWitnessConfigSchema = typeof CryptoContractFunctionReadWitnessConfigSchema
 
 export type Abi = string | ReadonlyArray<JsonFragment | string>
@@ -15,7 +15,7 @@ export type CryptoContractFunctionReadWitnessConfig = WitnessConfig<{
   schema: CryptoContractFunctionReadWitnessConfigSchema
 }>
 
-export const CryptoContractFunctionCallSchema = 'network.xyo.crypto.contract.function.call'
+export const CryptoContractFunctionCallSchema = asSchema('network.xyo.crypto.contract.function.call', true)
 export type CryptoContractFunctionCallSchema = typeof CryptoContractFunctionCallSchema
 
 export type CryptoContractFunctionCall = Payload<
@@ -27,7 +27,7 @@ export type CryptoContractFunctionCall = Payload<
   CryptoContractFunctionCallSchema
 >
 
-export const CryptoContractFunctionCallResultSchema = 'network.xyo.crypto.contract.function.call.result'
+export const CryptoContractFunctionCallResultSchema = asSchema('network.xyo.crypto.contract.function.call.result', true)
 export type CryptoContractFunctionCallResultSchema = typeof CryptoContractFunctionCallResultSchema
 
 export type CryptoContractFunctionCallResultBase = Payload<

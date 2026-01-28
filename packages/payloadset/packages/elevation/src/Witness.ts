@@ -7,7 +7,9 @@ import type {
   GeographicCoordinateSystemLocation, Location, LocationPayload, QuadkeyLocation,
 } from '@xyo-network/location-payload-plugin'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 import { Quadkey } from '@xyo-network/quadkey'
 import type {
   WitnessConfig, WitnessModule, WitnessParams,
@@ -16,8 +18,8 @@ import type { GeoTIFFImage, TypedArray } from 'geotiff'
 import type GeoTIFF from 'geotiff'
 import { fromFile } from 'geotiff'
 
-export type ElevationWitnessConfigSchema = 'network.xyo.elevation.config'
-export const ElevationWitnessConfigSchema: ElevationWitnessConfigSchema = 'network.xyo.elevation.config'
+export type ElevationWitnessConfigSchema = typeof ElevationWitnessConfigSchema
+export const ElevationWitnessConfigSchema = asSchema('network.xyo.elevation.config', true)
 
 export interface TiffImages {
   northEast?: Promise<GeoTIFFImage>

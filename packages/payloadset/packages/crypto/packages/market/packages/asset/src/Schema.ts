@@ -1,5 +1,7 @@
-export type CryptoMarketAssetDivinerQuerySchema = 'network.xyo.crypto.asset.diviner.query'
-export const CryptoMarketAssetDivinerQuerySchema: CryptoMarketAssetDivinerQuerySchema = 'network.xyo.crypto.asset.diviner.query'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type CryptoMarketAssetDivinerConfigSchema = 'network.xyo.crypto.asset.diviner.config'
-export const CryptoMarketAssetDivinerConfigSchema: CryptoMarketAssetDivinerConfigSchema = 'network.xyo.crypto.asset.diviner.config'
+export type CryptoMarketAssetDivinerQuerySchema = typeof CryptoMarketAssetDivinerQuerySchema
+export const CryptoMarketAssetDivinerQuerySchema = asSchema('network.xyo.crypto.asset.diviner.query', true)
+
+export type CryptoMarketAssetDivinerConfigSchema = typeof CryptoMarketAssetDivinerConfigSchema
+export const CryptoMarketAssetDivinerConfigSchema = asSchema('network.xyo.crypto.asset.diviner.config', true)

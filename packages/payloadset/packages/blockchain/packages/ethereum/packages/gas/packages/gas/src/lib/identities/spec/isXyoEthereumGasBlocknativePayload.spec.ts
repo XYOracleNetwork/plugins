@@ -1,5 +1,6 @@
 import '@xylabs/vitest-extended'
 
+import { asSchema } from '@xyo-network/payload-model'
 import {
   describe, expect,
   it,
@@ -17,7 +18,7 @@ describe('isEthereumGasBlocknativePayload', () => {
   })
   describe('returns false', () => {
     it('when payload schema is not EthereumGasBlocknativeSchema', () => {
-      const result = isEthereumGasBlocknativePayload({ schema: 'network.xyo.debug' })
+      const result = isEthereumGasBlocknativePayload({ schema: asSchema('network.xyo.debug', true) })
       expect(result).toBeFalse()
     })
     it('when payload is missing', () => {

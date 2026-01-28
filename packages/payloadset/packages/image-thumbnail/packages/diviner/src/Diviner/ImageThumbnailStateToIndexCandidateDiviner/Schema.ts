@@ -1,5 +1,6 @@
 import { ImageThumbnailDivinerSchema } from '@xyo-network/image-thumbnail-payload-plugin'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type ImageThumbnailStateToIndexCandidateDivinerSchema = `${ImageThumbnailDivinerSchema}.stage.stateToIndexCandidateDiviner`
-export const ImageThumbnailStateToIndexCandidateDivinerSchema: ImageThumbnailStateToIndexCandidateDivinerSchema
-  = `${ImageThumbnailDivinerSchema}.stage.stateToIndexCandidateDiviner`
+export type ImageThumbnailStateToIndexCandidateDivinerSchema = typeof ImageThumbnailStateToIndexCandidateDivinerSchema
+export const ImageThumbnailStateToIndexCandidateDivinerSchema
+  = asSchema(`${ImageThumbnailDivinerSchema}.stage.stateToIndexCandidateDiviner`, true)

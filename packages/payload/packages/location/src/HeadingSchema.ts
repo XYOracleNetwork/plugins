@@ -1,2 +1,4 @@
-export type LocationHeadingSchema = 'network.xyo.location.heading'
-export const LocationHeadingSchema: LocationHeadingSchema = 'network.xyo.location.heading'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type LocationHeadingSchema = typeof LocationHeadingSchema
+export const LocationHeadingSchema = asSchema('network.xyo.location.heading', true)

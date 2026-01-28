@@ -1,10 +1,10 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 /**
  * The schema for the contract info
  */
-export const ContractInfoSchema = 'network.xyo.crypto.contract.info'
+export const ContractInfoSchema = asSchema('network.xyo.crypto.contract.info', true)
 /**
  * The schema for the contract info
  */

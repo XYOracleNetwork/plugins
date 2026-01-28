@@ -1,8 +1,10 @@
-export type GeographicCoordinateSystemLocationSchema = 'network.xyo.location.gcs'
-export const GeographicCoordinateSystemLocationSchema: GeographicCoordinateSystemLocationSchema = 'network.xyo.location.gcs'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type QuadkeyLocationSchema = 'network.xyo.location.quadkey'
-export const QuadkeyLocationSchema: QuadkeyLocationSchema = 'network.xyo.location.quadkey'
+export type GeographicCoordinateSystemLocationSchema = typeof GeographicCoordinateSystemLocationSchema
+export const GeographicCoordinateSystemLocationSchema = asSchema('network.xyo.location.gcs', true)
 
-export type LocationSchema = 'network.xyo.location'
-export const LocationSchema: LocationSchema = 'network.xyo.location'
+export type QuadkeyLocationSchema = typeof QuadkeyLocationSchema
+export const QuadkeyLocationSchema = asSchema('network.xyo.location.quadkey', true)
+
+export type LocationSchema = typeof LocationSchema
+export const LocationSchema = asSchema('network.xyo.location', true)

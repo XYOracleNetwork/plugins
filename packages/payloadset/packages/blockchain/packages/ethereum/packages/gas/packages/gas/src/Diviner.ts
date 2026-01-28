@@ -17,7 +17,7 @@ export class EthereumGasDiviner<TParams extends EthereumGasDivinerParams = Ether
   implements DivinerModule {
   static override readonly configSchemas: Schema[] = [...super.configSchemas, EthereumGasDivinerConfigSchema]
   static override readonly defaultConfigSchema: Schema = EthereumGasDivinerConfigSchema
-  static override readonly targetSchema: string = EthereumGasSchema
+  static override readonly targetSchema: Schema = EthereumGasSchema
 
   protected override divineHandler(payloads?: Payload[]): Payload[] {
     const cost = divineGas(payloads ?? [])

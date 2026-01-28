@@ -1,13 +1,14 @@
 import { AsObjectFactory } from '@xylabs/object'
 import type { PayloadWithSources, WithSources } from '@xyo-network/payload-model'
 import {
+  asSchema,
   isPayloadOfSchemaType,
   isPayloadOfSchemaTypeWithSources,
 } from '@xyo-network/payload-model'
 
 import type { AmountFields } from '../../Amount/index.ts'
 
-export const TotalSchema = 'network.xyo.payments.total' as const
+export const TotalSchema = asSchema('network.xyo.payments.total', true)
 export type TotalSchema = typeof TotalSchema
 
 export interface TotalFields extends AmountFields {}

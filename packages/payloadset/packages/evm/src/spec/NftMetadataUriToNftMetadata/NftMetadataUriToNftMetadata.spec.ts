@@ -70,7 +70,7 @@ describe.skipIf(providers.length === 0)('NftMetadataUriToNftMetadata', () => {
         ipfsGateway: '5d7b6582.beta.decentralnetworkservices.com',
       } as ApiCallWitnessParams),
     )
-    const manifest = nftIdToNftMetadataUri as PackageManifestPayload
+    const manifest = nftIdToNftMetadataUri as unknown as PackageManifestPayload
     const manifestWrapper = new ManifestWrapper(manifest, wallet, locator)
     node = await manifestWrapper.loadNodeFromIndex(0)
     const mods = await node.resolve('*')

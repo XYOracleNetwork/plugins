@@ -1,5 +1,7 @@
-export type EthereumGasDivinerQuerySchema = 'network.xyo.blockchain.ethereum.gas.diviner.query'
-export const EthereumGasDivinerQuerySchema: EthereumGasDivinerQuerySchema = 'network.xyo.blockchain.ethereum.gas.diviner.query'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type EthereumGasDivinerConfigSchema = 'network.xyo.blockchain.ethereum.gas.diviner.config'
-export const EthereumGasDivinerConfigSchema: EthereumGasDivinerConfigSchema = 'network.xyo.blockchain.ethereum.gas.diviner.config'
+export type EthereumGasDivinerQuerySchema = typeof EthereumGasDivinerQuerySchema
+export const EthereumGasDivinerQuerySchema = asSchema('network.xyo.blockchain.ethereum.gas.diviner.query', true)
+
+export type EthereumGasDivinerConfigSchema = typeof EthereumGasDivinerConfigSchema
+export const EthereumGasDivinerConfigSchema = asSchema('network.xyo.blockchain.ethereum.gas.diviner.config', true)

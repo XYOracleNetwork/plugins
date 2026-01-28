@@ -21,6 +21,7 @@ import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
+import { asSchema } from '@xyo-network/payload-model'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'
@@ -65,7 +66,7 @@ describe.runIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () =
       } as EvmCallWitnessParams),
       { 'network.xyo.evm.interface': 'Erc721Enumerable' },
     )
-    const manifest = new ManifestWrapper(nodeManifest as PackageManifestPayload, wallet, locator)
+    const manifest = new ManifestWrapper(nodeManifest as unknown as PackageManifestPayload, wallet, locator)
     node = await manifest.loadNodeFromIndex(0)
   })
   type TestData = readonly [string]
@@ -84,7 +85,7 @@ describe.runIf(process.env.INFURA_PROJECT_ID).skip('Erc721.NftIndex.Index', () =
           chainId,
           functionName: 'totalSupply',
           result: `${totalSupply}`,
-          schema: 'network.xyo.evm.call.result',
+          schema: asSchema('network.xyo.evm.call.result', true),
         }
 
         const observations = (await sentinel?.report([input])) ?? []

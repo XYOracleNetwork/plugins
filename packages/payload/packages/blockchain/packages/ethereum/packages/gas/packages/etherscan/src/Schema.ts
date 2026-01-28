@@ -1,2 +1,4 @@
-export type EthereumGasEtherscanSchema = 'network.xyo.blockchain.ethereum.gas.etherscan'
-export const EthereumGasEtherscanSchema: EthereumGasEtherscanSchema = 'network.xyo.blockchain.ethereum.gas.etherscan'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type EthereumGasEtherscanSchema = typeof EthereumGasEtherscanSchema
+export const EthereumGasEtherscanSchema = asSchema('network.xyo.blockchain.ethereum.gas.etherscan', true)

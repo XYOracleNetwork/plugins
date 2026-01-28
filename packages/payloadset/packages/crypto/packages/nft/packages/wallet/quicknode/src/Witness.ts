@@ -3,12 +3,12 @@ import { axiosJsonConfig } from '@xylabs/axios'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 import { Axios } from 'axios'
 import type { ExecutionResult } from 'graphql'
 
-export const ApiGraphqlWitnessConfigSchema = 'network.xyo.api.witness.config'
+export const ApiGraphqlWitnessConfigSchema = asSchema('network.xyo.api.witness.config', true)
 export type ApiGraphqlWitnessConfigSchema = typeof ApiGraphqlWitnessConfigSchema
 
 export type ApiGraphqlWitnessConfig = WitnessConfig<{
@@ -30,7 +30,7 @@ export interface ApiGraphqlWitnessParams extends WitnessParams<
   headers?: HttpHeaders
 }
 
-export const GraphqlQuerySchema = 'network.xyo.graphql.query'
+export const GraphqlQuerySchema = asSchema('network.xyo.graphql.query', true)
 export type GraphqlQuerySchema = typeof GraphqlQuerySchema
 
 export type GraphqlQuery = Payload<
@@ -41,7 +41,7 @@ export type GraphqlQuery = Payload<
   GraphqlQuerySchema
 >
 
-export const GraphqlResultSchema = 'network.xyo.graphql.result'
+export const GraphqlResultSchema = asSchema('network.xyo.graphql.result', true)
 export type GraphqlResultSchema = typeof GraphqlResultSchema
 
 export type GraphqlResult<TData = Record<string, unknown>, TExtensions = Record<string, unknown>> = Payload<

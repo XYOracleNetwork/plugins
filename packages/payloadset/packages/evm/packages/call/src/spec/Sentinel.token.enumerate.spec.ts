@@ -99,7 +99,7 @@ describe.skip('Erc721Sentinel-Enumerate', () => {
 
       profile(profiler, 'setup')
       profile(profiler, 'manifest')
-      const manifest = new ManifestWrapper(erc721TokenEnumerateSentinelManifest as PackageManifestPayload, wallet, locator)
+      const manifest = new ManifestWrapper(erc721TokenEnumerateSentinelManifest as unknown as PackageManifestPayload, wallet, locator)
       profile(profiler, 'manifest-load')
       const node = await manifest.loadNodeFromIndex(0)
       profile(profiler, 'manifest-load')

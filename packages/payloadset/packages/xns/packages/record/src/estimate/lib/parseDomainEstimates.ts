@@ -5,7 +5,9 @@ import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { asHashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
-import type { Payload, WithSources } from '@xyo-network/payload-model'
+import type {
+  Payload, Schema, WithSources,
+} from '@xyo-network/payload-model'
 import type {
   DomainEstimate,
   DomainRegistrationLease,
@@ -65,7 +67,7 @@ const hasEstimatePayloads = (bw: BoundWitness): boolean => {
  */
 const getPayloadBySchemaFromBoundWitness = <T extends Payload = Payload>(
   bw: BoundWitness,
-  schema: string,
+  schema: Schema,
   hashMap: Awaited<ReturnType<typeof PayloadBuilder.toHashMap>>,
   identity: (payload: Payload) => T,
 ): T | undefined => {

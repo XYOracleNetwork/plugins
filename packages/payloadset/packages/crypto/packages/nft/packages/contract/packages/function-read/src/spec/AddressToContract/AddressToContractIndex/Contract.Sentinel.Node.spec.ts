@@ -116,10 +116,10 @@ describe.skip('Contract Node', () => {
     locator.register(JsonPatchDiviner.factory())
     locator.register(TemporalIndexingDiviner.factory())
     const publicChildren: ModuleManifest[] = [
-      ...(erc721IndexNodeManifest as PackageManifestPayload).nodes,
-      ...(erc1155IndexNodeManifest as PackageManifestPayload).nodes,
+      ...(erc721IndexNodeManifest as unknown as PackageManifestPayload).nodes,
+      ...(erc1155IndexNodeManifest as unknown as PackageManifestPayload).nodes,
     ]
-    const manifest = new ManifestWrapper(sentinelNodeManifest as PackageManifestPayload, wallet, locator, publicChildren)
+    const manifest = new ManifestWrapper(sentinelNodeManifest as unknown as PackageManifestPayload, wallet, locator, publicChildren)
     node = await manifest.loadNodeFromIndex(0)
   })
   describe('Sentinel', () => {

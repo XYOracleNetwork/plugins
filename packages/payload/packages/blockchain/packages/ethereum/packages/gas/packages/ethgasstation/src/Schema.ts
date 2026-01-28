@@ -1,6 +1,8 @@
-export type EthereumGasEthgasstationWitnessConfigSchema = 'network.xyo.blockchain.ethereum.gas.ethgasstation.witness.config'
-export const EthereumGasEthgasstationWitnessConfigSchema: EthereumGasEthgasstationWitnessConfigSchema
-  = 'network.xyo.blockchain.ethereum.gas.ethgasstation.witness.config'
+import { asSchema } from '@xyo-network/payload-model'
 
-export type EthereumGasEthgasstationSchema = 'network.xyo.blockchain.ethereum.gas.ethgasstation'
-export const EthereumGasEthgasstationSchema: EthereumGasEthgasstationSchema = 'network.xyo.blockchain.ethereum.gas.ethgasstation'
+export type EthereumGasEthgasstationWitnessConfigSchema = typeof EthereumGasEthgasstationWitnessConfigSchema
+export const EthereumGasEthgasstationWitnessConfigSchema
+  = asSchema('network.xyo.blockchain.ethereum.gas.ethgasstation.witness.config', true)
+
+export type EthereumGasEthgasstationSchema = typeof EthereumGasEthgasstationSchema
+export const EthereumGasEthgasstationSchema = asSchema('network.xyo.blockchain.ethereum.gas.ethgasstation', true)

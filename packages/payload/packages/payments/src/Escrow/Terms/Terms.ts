@@ -1,11 +1,13 @@
 import type { Address, Hash } from '@xylabs/hex'
 import { AsObjectFactory } from '@xylabs/object'
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
 import { EscrowSchema } from '../Schema.ts'
 
-export const EscrowTermsSchema = `${EscrowSchema}.terms` as const
+export const EscrowTermsSchema = asSchema(`${EscrowSchema}.terms`, true)
 export type EscrowTermsSchema = typeof EscrowTermsSchema
 
 // TODO: Include escrow agent in escrow terms

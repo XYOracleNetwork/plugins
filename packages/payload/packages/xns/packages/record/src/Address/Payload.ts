@@ -1,11 +1,11 @@
 import type { Address } from '@xylabs/hex'
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
 import type { DomainFields } from '../Domain/index.ts'
 
-export type AddressRecordSchema = 'network.xyo.ns.record.address'
-export const AddressRecordSchema: AddressRecordSchema = 'network.xyo.ns.record.address'
+export type AddressRecordSchema = typeof AddressRecordSchema
+export const AddressRecordSchema = asSchema('network.xyo.ns.record.address', true)
 
 export interface AddressRecordFields extends DomainFields {
   /**

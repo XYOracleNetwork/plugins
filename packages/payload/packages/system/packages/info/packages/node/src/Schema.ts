@@ -1,2 +1,4 @@
-export type NodeSystemInfoSchema = 'network.xyo.system.info.node'
-export const NodeSystemInfoSchema: NodeSystemInfoSchema = 'network.xyo.system.info.node'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type NodeSystemInfoSchema = typeof NodeSystemInfoSchema
+export const NodeSystemInfoSchema = asSchema('network.xyo.system.info.node', true)

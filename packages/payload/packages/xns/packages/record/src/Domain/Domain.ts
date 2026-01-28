@@ -1,9 +1,11 @@
 import { AsObjectFactory } from '@xylabs/object'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
+import {
+  asSchema, isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources,
+} from '@xyo-network/payload-model'
 
-export type DomainSchema = 'network.xyo.ns.domain'
-export const DomainSchema: DomainSchema = 'network.xyo.ns.domain'
+export type DomainSchema = typeof DomainSchema
+export const DomainSchema = asSchema('network.xyo.ns.domain', true)
 
 /**
  * The supported TLDs for XNS

@@ -1,7 +1,7 @@
 import { assertEx } from '@xylabs/assert'
 import { asEthAddress } from '@xylabs/hex'
 import type { Schema } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type {
   EvmAddress,
   EvmWitnessConfig, EvmWitnessParams,
@@ -12,7 +12,7 @@ import { getErc1822SlotStatus } from './lib/index.ts'
 import type { Erc1822Status } from './Payload.ts'
 import { Erc1822StatusSchema } from './Payload.ts'
 
-export const Erc1822WitnessConfigSchema = 'network.xyo.erc1822.witness.config'
+export const Erc1822WitnessConfigSchema = asSchema('network.xyo.erc1822.witness.config', true)
 export type Erc1822WitnessConfigSchema = typeof Erc1822WitnessConfigSchema
 
 export type Erc1822WitnessConfig = EvmWitnessConfig<{ address?: string }, Erc1822WitnessConfigSchema>

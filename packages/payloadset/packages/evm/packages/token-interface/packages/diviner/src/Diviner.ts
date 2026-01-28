@@ -14,14 +14,14 @@ import {
   IERC1155MetadataURI__factory,
   IERC1155Receiver__factory,
 } from '@xyo-network/open-zeppelin-typechain'
-import type { Schema } from '@xyo-network/payload-model'
+import { asSchema, type Schema } from '@xyo-network/payload-model'
 import type { JsonFragment } from 'ethers'
 import { Interface } from 'ethers'
 
 import type { EvmTokenInterfaceImplemented, TokenInterface } from './Payload.ts'
 import { EvmTokenInterfaceImplementedSchema } from './Payload.ts'
 
-export const EvmTokenInterfaceImplementedDivinerConfigSchema = `${EvmTokenInterfaceImplementedSchema}.diviner.config`
+export const EvmTokenInterfaceImplementedDivinerConfigSchema = asSchema(`${EvmTokenInterfaceImplementedSchema}.diviner.config`, true)
 export type EvmTokenInterfaceImplementedDivinerConfigSchema = typeof EvmTokenInterfaceImplementedDivinerConfigSchema
 
 export type EvmTokenInterfaceImplementedDivinerConfig = DivinerConfig<{

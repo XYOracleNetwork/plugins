@@ -1,8 +1,9 @@
 import type { DivinerConfig } from '@xyo-network/diviner-model'
+import { asSchema } from '@xyo-network/payload-model'
 
 import { ImageThumbnailDivinerSchema } from './Schema.ts'
 
-export const ImageThumbnailDivinerConfigSchema = `${ImageThumbnailDivinerSchema}.config` as const
+export const ImageThumbnailDivinerConfigSchema = asSchema(`${ImageThumbnailDivinerSchema}.config`, true)
 export type ImageThumbnailDivinerConfigSchema = typeof ImageThumbnailDivinerConfigSchema
 
 /**

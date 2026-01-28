@@ -1,2 +1,4 @@
-export type CoingeckoCryptoMarketSchema = 'network.xyo.crypto.market.coingecko'
-export const CoingeckoCryptoMarketSchema: CoingeckoCryptoMarketSchema = 'network.xyo.crypto.market.coingecko'
+import { asSchema } from '@xyo-network/payload-model'
+
+export type CoingeckoCryptoMarketSchema = typeof CoingeckoCryptoMarketSchema
+export const CoingeckoCryptoMarketSchema = asSchema('network.xyo.crypto.market.coingecko', true)

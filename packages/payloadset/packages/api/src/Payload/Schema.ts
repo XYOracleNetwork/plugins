@@ -1,5 +1,7 @@
-export const ApiCallSchema = 'network.xyo.api.call'
+import { asSchema } from '@xyo-network/payload-model'
+
+export const ApiCallSchema = asSchema('network.xyo.api.call', true)
 export type ApiCallSchema = typeof ApiCallSchema
 
-export const ApiCallResultSchema = `${ApiCallSchema}.result`
+export const ApiCallResultSchema = asSchema(`${ApiCallSchema}.result`, true)
 export type ApiCallResultSchema = typeof ApiCallResultSchema

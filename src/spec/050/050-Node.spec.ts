@@ -8,6 +8,7 @@ import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest-wrapper'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
+import { asSchema } from '@xyo-network/payload'
 import { HDWallet } from '@xyo-network/wallet'
 import { describe, it } from 'vitest'
 
@@ -24,7 +25,7 @@ describe('Node', () => {
         {
           config: {
             name: 'Node',
-            schema: 'network.xyo.node.config',
+            schema: asSchema('network.xyo.node.config', true),
           },
           modules: {
             private: [],
@@ -32,7 +33,7 @@ describe('Node', () => {
           },
         },
       ],
-      schema: 'network.xyo.manifest.package',
+      schema: asSchema('network.xyo.manifest.package', true),
     }
     const wrapper = new ManifestWrapper(manifest, wallet, new ModuleFactoryLocator())
     const [node] = await wrapper.loadNodes()
@@ -46,14 +47,14 @@ describe('Node', () => {
         {
           config: {
             name: 'Node',
-            schema: 'network.xyo.node.config',
+            schema: asSchema('network.xyo.node.config', true),
           },
           modules: {
             private: [
               {
                 config: {
                   name: 'PrivateArchivist',
-                  schema: 'network.xyo.archivist.config',
+                  schema: asSchema('network.xyo.archivist.config', true),
                 },
               },
             ],
@@ -61,14 +62,14 @@ describe('Node', () => {
               {
                 config: {
                   name: 'PublicArchivist',
-                  schema: 'network.xyo.archivist.config',
+                  schema: asSchema('network.xyo.archivist.config', true),
                 },
               },
             ],
           },
         },
       ],
-      schema: 'network.xyo.manifest.package',
+      schema: asSchema('network.xyo.manifest.package', true),
     }
     const wrapper = new ManifestWrapper(manifest, wallet, new ModuleFactoryLocator())
     const [node] = await wrapper.loadNodes()

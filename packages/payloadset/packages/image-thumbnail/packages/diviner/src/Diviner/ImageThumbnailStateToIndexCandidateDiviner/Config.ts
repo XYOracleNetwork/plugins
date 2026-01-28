@@ -1,11 +1,12 @@
 import type { DivinerConfig } from '@xyo-network/diviner-model'
 import type { SearchableStorage } from '@xyo-network/image-thumbnail-payload-plugin'
+import { asSchema } from '@xyo-network/payload-model'
 
 import { ImageThumbnailStateToIndexCandidateDivinerSchema } from './Schema.ts'
 
-export type ImageThumbnailStateToIndexCandidateDivinerConfigSchema = `${ImageThumbnailStateToIndexCandidateDivinerSchema}.config`
-export const ImageThumbnailStateToIndexCandidateDivinerConfigSchema: ImageThumbnailStateToIndexCandidateDivinerConfigSchema
-  = `${ImageThumbnailStateToIndexCandidateDivinerSchema}.config`
+export type ImageThumbnailStateToIndexCandidateDivinerConfigSchema = typeof ImageThumbnailStateToIndexCandidateDivinerConfigSchema
+export const ImageThumbnailStateToIndexCandidateDivinerConfigSchema
+  = asSchema(`${ImageThumbnailStateToIndexCandidateDivinerSchema}.config`, true)
 
 export type ImageThumbnailStateToIndexCandidateDivinerConfig = DivinerConfig<{
   payloadDivinerLimit?: number

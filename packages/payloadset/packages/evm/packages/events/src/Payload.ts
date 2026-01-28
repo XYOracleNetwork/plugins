@@ -1,6 +1,6 @@
-import type { Payload } from '@xyo-network/payload-model'
+import { asSchema, type Payload } from '@xyo-network/payload-model'
 
-export const EvmEventsSchema = 'network.xyo.evm.events'
+export const EvmEventsSchema = asSchema('network.xyo.evm.events', true)
 export type EvmEventsSchema = typeof EvmEventsSchema
 
 export type EvmEvents = Payload<
@@ -13,7 +13,7 @@ export type EvmEvents = Payload<
   EvmEventsSchema
 >
 
-export const EvmEventSchema = 'network.xyo.evm.event'
+export const EvmEventSchema = asSchema('network.xyo.evm.event', true)
 export type EvmEventSchema = typeof EvmEventSchema
 
 export type EvmEvent = Payload<

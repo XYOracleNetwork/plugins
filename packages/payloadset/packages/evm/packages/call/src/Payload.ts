@@ -1,7 +1,7 @@
 import type { Payload } from '@xyo-network/payload-model'
-import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 
-export const EvmCallSchema = 'network.xyo.evm.call'
+export const EvmCallSchema = asSchema('network.xyo.evm.call', true)
 export type EvmCallSchema = typeof EvmCallSchema
 
 export type EvmCall = Payload<
@@ -14,7 +14,7 @@ export type EvmCall = Payload<
   EvmCallSchema
 >
 
-export const EvmCallResultSchema = 'network.xyo.evm.call.result'
+export const EvmCallResultSchema = asSchema('network.xyo.evm.call.result', true)
 export type EvmCallResultSchema = typeof EvmCallResultSchema
 
 export type EvmCallResultBase = Payload<

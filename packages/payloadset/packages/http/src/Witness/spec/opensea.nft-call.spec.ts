@@ -91,7 +91,7 @@ describe('OpenSeaHttp', () => {
         } as HttpCallWitnessParams),
       )
 
-      const manifest = new ManifestWrapper(openseaNftsManifest as PackageManifestPayload, wallet, locator)
+      const manifest = new ManifestWrapper(openseaNftsManifest as unknown as PackageManifestPayload, wallet, locator)
 
       const node = await manifest.loadNodeFromIndex(0)
 

@@ -2,8 +2,9 @@
 import type { Address } from '@xylabs/hex'
 import type { DivinerConfig } from '@xyo-network/diviner-model'
 import type { ModuleIdentifier } from '@xyo-network/module-model'
+import { asSchema } from '@xyo-network/payload-model'
 
-export const PaymentDiscountDivinerConfigSchema = 'network.xyo.diviner.payments.discount.config'
+export const PaymentDiscountDivinerConfigSchema = asSchema('network.xyo.diviner.payments.discount.config', true)
 export type PaymentDiscountDivinerConfigSchema = typeof PaymentDiscountDivinerConfigSchema
 
 /**

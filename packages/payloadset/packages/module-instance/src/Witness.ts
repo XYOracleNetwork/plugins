@@ -2,11 +2,13 @@ import type { Promisable } from '@xylabs/promise'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AbstractModuleInstancePayload } from '@xyo-network/module-instance-payload-plugin'
 import type { AnyConfigSchema, Module } from '@xyo-network/module-model'
-import type { Payload, Schema } from '@xyo-network/payload-model'
+import {
+  asSchema, type Payload, type Schema,
+} from '@xyo-network/payload-model'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
 
-export type AbstractModuleInstanceWitnessConfigSchema = 'network.xyo.module.instance.config'
-export const AbstractModuleInstanceWitnessConfigSchema: AbstractModuleInstanceWitnessConfigSchema = 'network.xyo.module.instance.config'
+export type AbstractModuleInstanceWitnessConfigSchema = typeof AbstractModuleInstanceWitnessConfigSchema
+export const AbstractModuleInstanceWitnessConfigSchema = asSchema('network.xyo.module.instance.config', true)
 
 export type AbstractModuleInstanceWitnessConfig = WitnessConfig<{
   schema: AbstractModuleInstanceWitnessConfigSchema
