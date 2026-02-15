@@ -11,8 +11,8 @@ import {
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerParams } from '@xyo-network/diviner-model'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, Schema } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import type { NftAnalysis } from './lib/index.ts'
 import { analyzeNft } from './lib/index.ts'

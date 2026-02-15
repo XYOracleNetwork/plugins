@@ -1,6 +1,5 @@
 import type { Hash } from '@xylabs/sdk-js'
 import type { DivinerInstance } from '@xyo-network/diviner-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type {
   Discount, EscrowTerms, Invoice, Payment,
@@ -9,6 +8,7 @@ import type {
 import {
   isDiscount, isSubtotal, isTotal, PaymentSchema,
 } from '@xyo-network/payment-payload-plugins'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 /**
  * Validates the escrow terms to ensure they are valid for a purchase

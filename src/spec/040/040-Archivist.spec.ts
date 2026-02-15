@@ -1,9 +1,9 @@
 import '@xylabs/vitest-extended'
 
-import { Account } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
-import { asSchema } from '@xyo-network/payload'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import {
+  Account, asSchema, PayloadBuilder,
+} from '@xyo-network/sdk-js'
 import { describe, it } from 'vitest'
 
 describe('Archivist', () => {

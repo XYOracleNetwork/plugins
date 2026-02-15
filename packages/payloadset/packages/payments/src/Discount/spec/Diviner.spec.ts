@@ -6,7 +6,6 @@ import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-mem
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Coupon, EscrowTerms } from '@xyo-network/payment-payload-plugins'
 import {
   DiscountSchema,
@@ -14,6 +13,7 @@ import {
   isDiscount,
   PaymentDiscountDivinerConfigSchema,
 } from '@xyo-network/payment-payload-plugins'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import {
   beforeAll, beforeEach, describe, expect, it, vi,

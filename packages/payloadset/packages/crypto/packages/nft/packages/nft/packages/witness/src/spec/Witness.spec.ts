@@ -6,7 +6,7 @@ import {
   NftWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-payload-plugin'
 import type { Payload } from '@xyo-network/payload-model'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWrapper } from '@xyo-network/sdk-js'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain'
 import {
   describe, expect,

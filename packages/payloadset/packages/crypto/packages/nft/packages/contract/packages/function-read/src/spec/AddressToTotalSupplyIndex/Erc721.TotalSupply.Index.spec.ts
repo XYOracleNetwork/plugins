@@ -17,12 +17,12 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper } from '@xyo-network/sdk-js'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'

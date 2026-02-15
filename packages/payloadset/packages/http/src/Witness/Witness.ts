@@ -4,10 +4,9 @@ import {
   assertEx, axiosJsonConfig, URL,
 } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import { ObjectHasher } from '@xyo-network/hash'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import { ObjectHasher, PayloadBuilder } from '@xyo-network/sdk-js'
 import type { AxiosError } from 'axios'
 import { Axios } from 'axios'
 import { fromByteArray } from 'base64-js'

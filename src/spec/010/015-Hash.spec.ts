@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { ObjectHasher } from '@xyo-network/hash'
+import { ObjectHasher } from '@xyo-network/sdk-js'
 import { describe, it } from 'vitest'
 
 describe('PayloadHasher', () => {

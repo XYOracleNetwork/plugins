@@ -12,14 +12,14 @@ import {
   CryptoContractFunctionCallSchema,
 } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import {
   ERC721__factory, ERC721Enumerable__factory, ERC1155__factory,
 } from '@xyo-network/open-zeppelin-typechain'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper } from '@xyo-network/sdk-js'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'

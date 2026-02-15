@@ -4,13 +4,13 @@ import {
   asDivinerInstance, DivinerInstance, DivinerModuleEventData,
 } from '@xyo-network/diviner-model'
 import { creatableModule } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   Discount,
   isDiscount,
   isSubtotal,
   PaymentTotalDivinerConfigSchema, PaymentTotalDivinerParams, Subtotal, Total, TotalSchema,
 } from '@xyo-network/payment-payload-plugins'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import { PaymentDiscountDiviner, PaymentDiscountDivinerInputType } from '../Discount/index.ts'
 import { PaymentSubtotalDiviner, PaymentSubtotalDivinerInputType } from '../Subtotal/index.ts'

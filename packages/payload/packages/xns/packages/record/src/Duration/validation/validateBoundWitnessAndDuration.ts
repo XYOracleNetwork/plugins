@@ -1,6 +1,6 @@
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import type { DurationFields } from '../Duration.ts'
 

@@ -1,11 +1,10 @@
 import '@xylabs/vitest-extended'
 
 import { delay } from '@xylabs/sdk-js'
-import { Account } from '@xyo-network/account'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { Account, PayloadBuilder } from '@xyo-network/sdk-js'
 import { MemorySentinel } from '@xyo-network/sentinel-memory'
 import { SentinelWrapper } from '@xyo-network/sentinel-wrapper'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'

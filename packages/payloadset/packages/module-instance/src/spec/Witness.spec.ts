@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWrapper } from '@xyo-network/sdk-js'
 import {
   describe, expect,
   test,

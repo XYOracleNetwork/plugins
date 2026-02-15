@@ -2,7 +2,6 @@ import '@xylabs/vitest-extended'
 
 import { writeFile } from 'node:fs/promises'
 
-import { Account } from '@xyo-network/account'
 import type { AccountInstance } from '@xyo-network/account-model'
 import type { NftCollectionWitnessQuery } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import {
@@ -11,6 +10,7 @@ import {
   NftCollectionWitnessQuerySchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import type { Payload } from '@xyo-network/payload-model'
+import { Account } from '@xyo-network/sdk-js'
 import { getProvidersFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   beforeAll, describe, expect,

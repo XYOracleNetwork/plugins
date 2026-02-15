@@ -2,7 +2,7 @@ import '@xylabs/vitest-extended'
 
 import type { ImageThumbnailDivinerQuery } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailDivinerQuerySchema } from '@xyo-network/image-thumbnail-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
   beforeAll,

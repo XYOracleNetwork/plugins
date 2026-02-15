@@ -2,7 +2,7 @@ import { exists } from '@xylabs/sdk-js'
 import type { CoingeckoCryptoMarketPayload } from '@xyo-network/coingecko-crypto-market-payload-plugin'
 import type { CryptoMarketAssetPayload } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import type { UniswapCryptoMarketPayload } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 import { average } from './average.ts'

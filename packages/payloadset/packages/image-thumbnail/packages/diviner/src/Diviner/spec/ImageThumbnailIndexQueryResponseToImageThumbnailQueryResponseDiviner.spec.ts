@@ -12,8 +12,8 @@ import {
   ImageThumbnailResultSchema,
   isImageThumbnailResult,
 } from '@xyo-network/image-thumbnail-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { WithSources } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import {
   beforeAll,

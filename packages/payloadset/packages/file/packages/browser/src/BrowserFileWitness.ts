@@ -1,6 +1,6 @@
 import { assertEx } from '@xylabs/sdk-js'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Schema } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import { FileWitnessConfigSchema } from './Config.ts'
 import type { BrowserFileWitnessAdditionalParams } from './Params.ts'

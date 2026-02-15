@@ -1,9 +1,8 @@
 import '@xylabs/vitest-extended'
 
 import { BowserSystemInfoSchema } from '@xyo-network/bowser-system-info-payload-plugin'
-import { PayloadValidator } from '@xyo-network/payload-validator'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
 import { SchemaNameValidator } from '@xyo-network/schema-name-validator'
+import { PayloadValidator, PayloadWrapper } from '@xyo-network/sdk-js'
 import {
   describe, expect,
   test,

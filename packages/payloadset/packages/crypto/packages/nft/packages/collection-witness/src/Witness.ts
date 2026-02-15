@@ -12,8 +12,8 @@ import {
   NftCollectionWitnessConfigSchema,
 } from '@xyo-network/crypto-nft-collection-payload-plugin'
 import { ERC721Enumerable__factory } from '@xyo-network/open-zeppelin-typechain'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Schema, WithSources } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import type { EvmWitnessParams } from '@xyo-network/witness-evm-abstract'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'
 

@@ -13,10 +13,10 @@ import {
   ImageThumbnailSchema,
   isImageThumbnail,
 } from '@xyo-network/image-thumbnail-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
   Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'

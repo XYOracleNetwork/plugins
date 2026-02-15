@@ -5,8 +5,8 @@ import type { AccountInstance } from '@xyo-network/account-model'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import type { Id } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import {
   beforeAll,

@@ -3,10 +3,10 @@ import '@xylabs/vitest-extended'
 import { assertEx } from '@xylabs/sdk-js'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { BillingAddress, PaymentCard } from '@xyo-network/payment-payload-plugins'
 import { BillingAddressSchema, PaymentCardSchema } from '@xyo-network/payment-payload-plugins'
 import { isRebillyPaymentAuthorizationTokenWithSources } from '@xyo-network/rebilly-payment-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import {
   beforeAll, describe, expect,
   it,

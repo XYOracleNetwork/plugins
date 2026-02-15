@@ -12,7 +12,6 @@ import {
   asDivinerInstance, DivinerInstance, DivinerModuleEventData,
 } from '@xyo-network/diviner-model'
 import { creatableModule } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import {
   asCondition,
@@ -23,6 +22,7 @@ import {
   EscrowTerms, isCondition, isCoupon,
   isEscrowTerms, NO_DISCOUNT, PaymentDiscountDivinerConfigSchema, PaymentDiscountDivinerParams,
 } from '@xyo-network/payment-payload-plugins'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import { applyCoupons, areConditionsFulfilled } from './lib/index.ts'
 

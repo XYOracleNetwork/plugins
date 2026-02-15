@@ -3,7 +3,6 @@ import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import type { Id } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
   BuyerCondition,
   Condition, Coupon, EscrowTerms,
@@ -14,6 +13,7 @@ import {
   EscrowTermsSchema, FixedAmountCouponSchema,
 } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'
 import {

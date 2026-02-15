@@ -6,7 +6,7 @@ import type { LocationCertaintyPayload } from '@xyo-network/location-certainty-p
 import { LocationCertaintySchema } from '@xyo-network/location-certainty-payload-plugin'
 import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
-import { CompositeModuleResolver } from '@xyo-network/module-resolver'
+import { CompositeModuleResolver } from '@xyo-network/sdk-js'
 import {
   beforeEach,
   describe, expect, it,

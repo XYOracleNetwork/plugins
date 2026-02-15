@@ -1,7 +1,7 @@
 import '@xylabs/vitest-extended'
 
 import { EthereumGasBlocknativeSchema } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWrapper } from '@xyo-network/sdk-js'
 import {
   describe, expect,
   it,

@@ -2,11 +2,11 @@ import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { HashLeaseEstimate, isHashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { DivinerInstance, DivinerModuleEventData } from '@xyo-network/diviner-model'
 import { creatableModule } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { Payload } from '@xyo-network/payload-model'
 import {
   EscrowTerms, isEscrowTerms, PaymentSubtotalDivinerConfigSchema, PaymentSubtotalDivinerParams, Subtotal, SubtotalSchema,
 } from '@xyo-network/payment-payload-plugins'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import {
   appraisalValidators, termsValidators, ValidEscrowTerms,

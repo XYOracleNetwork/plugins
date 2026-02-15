@@ -19,14 +19,14 @@ import {
 } from '@xyo-network/diviner-temporal-indexing'
 import type { EvmContract, EvmContractWitnessParams } from '@xyo-network/evm-contract-witness'
 import { EvmContractWitness, isEvmContract } from '@xyo-network/evm-contract-witness'
-import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import {
   creatableModule, CreatableModuleInstance, ModuleFactory, ModuleState,
 } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import { Payload } from '@xyo-network/payload-model'
+import type { ModuleManifest, PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper } from '@xyo-network/sdk-js'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import type { WalletInstance } from '@xyo-network/wallet-model'

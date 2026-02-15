@@ -1,8 +1,7 @@
 import '@xylabs/vitest-extended'
 
-import { Account } from '@xyo-network/account'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
-import { asSchema } from '@xyo-network/payload'
+import { Account, asSchema } from '@xyo-network/sdk-js'
 import { describe, it } from 'vitest'
 
 describe('BoundWitness', () => {

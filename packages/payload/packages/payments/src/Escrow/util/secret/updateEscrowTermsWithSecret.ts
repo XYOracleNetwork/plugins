@@ -1,7 +1,7 @@
 import type { AccountInstance } from '@xyo-network/account-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { Id } from '@xyo-network/id-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import type {
   EscrowParty, EscrowPartySecret, EscrowTerms,

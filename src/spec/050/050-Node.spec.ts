@@ -3,12 +3,12 @@ import '@xylabs/vitest-extended'
 import { readFile } from 'node:fs/promises'
 import Path from 'node:path'
 
-import { Account } from '@xyo-network/account'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest-wrapper'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { MemoryNode } from '@xyo-network/node-memory'
-import { asSchema } from '@xyo-network/payload'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import {
+  Account, asSchema, ManifestWrapper,
+} from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import { describe, it } from 'vitest'
 

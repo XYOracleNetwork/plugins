@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWrapper } from '@xyo-network/sdk-js'
 import {
   describe, expect,
   it,

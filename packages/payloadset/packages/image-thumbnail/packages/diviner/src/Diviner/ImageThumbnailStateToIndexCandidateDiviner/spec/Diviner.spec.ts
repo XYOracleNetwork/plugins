@@ -10,16 +10,15 @@ import { asDivinerInstance } from '@xyo-network/diviner-model'
 import { GenericPayloadDiviner } from '@xyo-network/diviner-payload-generic'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { isImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import type { ModuleState } from '@xyo-network/module-model'
 import { isModuleState, ModuleStateSchema } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import {
   asSchema,
   isStorageMeta, type Payload, type WithStorageMeta,
 } from '@xyo-network/payload-model'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper, PayloadBuilder } from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import type { TimeStamp } from '@xyo-network/witness-timestamp'
 import { isTimestamp, TimestampSchema } from '@xyo-network/witness-timestamp'

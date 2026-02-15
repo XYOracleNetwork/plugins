@@ -3,10 +3,10 @@ import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { asHashLeaseEstimate, HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type {
   Payload, Schema, WithSources,
 } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import type {
   DomainEstimate,
   DomainRegistrationLease,

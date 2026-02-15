@@ -4,7 +4,7 @@ import {
   AddressTransactionHistoryWitnessConfigSchema,
   isAddressTransactionHistoryPayload,
 } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
-import { PayloadWrapper } from '@xyo-network/payload-wrapper'
+import { PayloadWrapper } from '@xyo-network/sdk-js'
 import { EtherscanProvider } from 'ethers'
 import {
   describe, expect,

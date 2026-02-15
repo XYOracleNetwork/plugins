@@ -19,12 +19,12 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import { ModuleFactory } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
 import type { Payload } from '@xyo-network/payload-model'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper } from '@xyo-network/sdk-js'
 import { asSentinelInstance } from '@xyo-network/sentinel-model'
 import { HDWallet } from '@xyo-network/wallet'
 import { getProvidersFromEnv } from '@xyo-network/witness-evm-abstract'

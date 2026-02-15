@@ -1,10 +1,10 @@
 import type { Hash } from '@xylabs/sdk-js'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload } from '@xyo-network/payload-model'
 import type { Condition, Coupon } from '@xyo-network/payment-payload-plugins'
 import { isCondition } from '@xyo-network/payment-payload-plugins'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { isSchemaPayload } from '@xyo-network/schema-payload-plugin'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import type { ValidateFunction } from 'ajv'
 import { Ajv } from 'ajv'
 

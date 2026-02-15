@@ -4,7 +4,7 @@ import type {
   Currency, Token, ValueBasis,
 } from '@xyo-network/crypto-asset-payload-plugin'
 import { CryptoMarketAssetSchema } from '@xyo-network/crypto-asset-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 import type {
   UniswapCryptoMarketPayload, UniswapCryptoPair, UniswapCryptoToken,
 } from '@xyo-network/uniswap-crypto-market-payload-plugin'

@@ -7,8 +7,8 @@ import { LocationCertaintySchema } from '@xyo-network/location-certainty-payload
 import type { LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, Schema } from '@xyo-network/payload-model'
+import { PayloadBuilder } from '@xyo-network/sdk-js'
 
 import type { LocationCertaintyDivinerConfig } from './Config.ts'
 import { LocationCertaintyDivinerConfigSchema } from './Config.ts'

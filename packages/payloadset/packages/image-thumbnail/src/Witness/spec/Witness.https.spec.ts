@@ -1,9 +1,8 @@
 import '@xylabs/vitest-extended'
 
-import { removeEmptyFields } from '@xyo-network/hash'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'
 import { ImageThumbnailSchema } from '@xyo-network/image-thumbnail-payload-plugin'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
+import { PayloadBuilder, removeEmptyFields } from '@xyo-network/sdk-js'
 import type { UrlPayload } from '@xyo-network/url-payload-plugin'
 import { UrlSchema } from '@xyo-network/url-payload-plugin'
 import hasbin from 'hasbin'

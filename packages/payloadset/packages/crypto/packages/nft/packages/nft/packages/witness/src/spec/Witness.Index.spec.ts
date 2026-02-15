@@ -25,14 +25,13 @@ import {
   TemporalIndexingDivinerIndexQueryResponseToDivinerQueryResponseDiviner,
   TemporalIndexingDivinerStateToIndexCandidateDiviner,
 } from '@xyo-network/diviner-temporal-indexing'
-import type { PackageManifestPayload } from '@xyo-network/manifest'
-import { ManifestWrapper } from '@xyo-network/manifest'
 import { ModuleFactoryLocator } from '@xyo-network/module-factory-locator'
 import type { Labels, ModuleState } from '@xyo-network/module-model'
 import { isModuleState } from '@xyo-network/module-model'
 import type { MemoryNode } from '@xyo-network/node-memory'
-import { PayloadBuilder } from '@xyo-network/payload-builder'
 import { asSchema, type WithStorageMeta } from '@xyo-network/payload-model'
+import type { PackageManifestPayload } from '@xyo-network/sdk-js'
+import { ManifestWrapper, PayloadBuilder } from '@xyo-network/sdk-js'
 import { HDWallet } from '@xyo-network/wallet'
 import {
   beforeAll,
