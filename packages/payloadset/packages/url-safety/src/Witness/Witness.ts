@@ -1,4 +1,4 @@
-import { axiosJsonConfig } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import {
   asSchema, type Payload, type Schema,

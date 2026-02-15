@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { axiosJsonConfig } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/sdk-js'
 import type { NftMetadata } from '@xyo-network/crypto-nft-payload-plugin'
 import { ERC721URIStorage__factory, ERC1155URIStorage__factory } from '@xyo-network/open-zeppelin-typechain'
 import { checkIpfsUrl } from '@xyo-network/witness-blockchain-abstract'

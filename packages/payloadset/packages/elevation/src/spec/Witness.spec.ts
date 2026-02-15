@@ -3,7 +3,7 @@ import '@xylabs/vitest-extended'
 import { existsSync } from 'node:fs'
 import Path from 'node:path'
 
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { LocationSchema } from '@xyo-network/location-payload-plugin'
 import { PayloadWrapper } from '@xyo-network/payload-wrapper'

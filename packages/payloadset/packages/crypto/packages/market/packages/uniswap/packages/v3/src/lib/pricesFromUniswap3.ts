@@ -1,4 +1,4 @@
-import { fulfilled } from '@xylabs/promise'
+import { fulfilled } from '@xylabs/sdk-js'
 import type { UniswapCryptoPair } from '@xyo-network/uniswap-crypto-market-payload-plugin'
 
 import { logErrorsAsync } from './logErrors.ts'

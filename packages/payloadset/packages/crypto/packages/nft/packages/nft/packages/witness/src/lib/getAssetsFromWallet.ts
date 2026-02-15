@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { axiosJsonConfig } from '@xylabs/axios'
+import { assertEx, axiosJsonConfig } from '@xylabs/sdk-js'
 import { Axios } from 'axios'
 
 interface QuickNodeAsset {

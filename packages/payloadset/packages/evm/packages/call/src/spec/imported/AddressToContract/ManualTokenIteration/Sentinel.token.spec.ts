@@ -2,7 +2,7 @@
 
 import '@xylabs/vitest-extended'
 
-import { hexFrom } from '@xylabs/hex'
+import { hexFrom } from '@xylabs/sdk-js'
 import { asDivinerInstance } from '@xyo-network/diviner-model'
 import type { PackageManifestPayload } from '@xyo-network/manifest'
 import { ManifestWrapper } from '@xyo-network/manifest'

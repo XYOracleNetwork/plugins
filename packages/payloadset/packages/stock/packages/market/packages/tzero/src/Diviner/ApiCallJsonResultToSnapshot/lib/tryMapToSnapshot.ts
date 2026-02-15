@@ -1,4 +1,4 @@
-import type { JsonObject } from '@xylabs/object'
+import type { JsonObject } from '@xylabs/sdk-js'
 import { isApiCallJsonResult } from '@xyo-network/api-call-witness'
 import type { Snapshot, SnapshotFields } from '@xyo-network/tzero-stock-market-payload-plugin'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'

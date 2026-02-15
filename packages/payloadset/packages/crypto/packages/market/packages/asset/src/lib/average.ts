@@ -1,4 +1,4 @@
-import { exists } from '@xylabs/exists'
+import { exists } from '@xylabs/sdk-js'
 import type {
   AssetInfo, CryptoMarketAssetPayload, Currency, Token,
 } from '@xyo-network/crypto-asset-payload-plugin'

@@ -1,4 +1,4 @@
-import type { AnyObject } from '@xylabs/object'
+import type { AnyObject } from '@xylabs/sdk-js'
 import type { Payload } from '@xyo-network/payload-model'
 
 import type { ScoringFunction } from './scoringFunction.ts'

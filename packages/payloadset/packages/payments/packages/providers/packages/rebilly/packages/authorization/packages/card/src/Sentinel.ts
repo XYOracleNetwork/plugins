@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { axiosJsonConfig } from '@xylabs/axios'
+import { assertEx, axiosJsonConfig } from '@xylabs/sdk-js'
 import { PayloadBuilder } from '@xyo-network/payload-builder'
 import type { Payload, WithSources } from '@xyo-network/payload-model'
 import { isBillingAddress, isPaymentCard } from '@xyo-network/payment-payload-plugins'

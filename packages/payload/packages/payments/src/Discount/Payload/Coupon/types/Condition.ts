@@ -1,4 +1,4 @@
-import { AsObjectFactory } from '@xylabs/object'
+import { AsObjectFactory } from '@xylabs/sdk-js'
 import { isPayloadOfSchemaType, isPayloadOfSchemaTypeWithSources } from '@xyo-network/payload-model'
 import type { SchemaPayload } from '@xyo-network/schema-payload-plugin'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'

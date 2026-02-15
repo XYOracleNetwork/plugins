@@ -1,7 +1,7 @@
 /* eslint-disable max-statements */
 import '@xylabs/vitest-extended'
 
-import type { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/sdk-js'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { isErc721ContractInfo, isErc1155ContractInfo } from '@xyo-network/crypto-contract-function-read-payload-plugin'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'

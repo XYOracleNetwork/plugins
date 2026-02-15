@@ -1,8 +1,8 @@
 /* eslint-disable max-statements */
-import { assertEx } from '@xylabs/assert'
-import { axiosJsonConfig } from '@xylabs/axios'
-import type { Hash } from '@xylabs/hex'
-import { URL } from '@xylabs/url'
+import type { Hash } from '@xylabs/sdk-js'
+import {
+  assertEx, axiosJsonConfig, URL,
+} from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { ObjectHasher } from '@xyo-network/hash'
 import { PayloadBuilder } from '@xyo-network/payload-builder'

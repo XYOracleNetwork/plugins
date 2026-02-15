@@ -1,4 +1,4 @@
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { Id } from '@xyo-network/id-payload-plugin'
 import { IdSchema } from '@xyo-network/id-payload-plugin'

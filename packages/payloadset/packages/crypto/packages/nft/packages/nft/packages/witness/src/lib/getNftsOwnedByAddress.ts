@@ -1,4 +1,4 @@
-import { isHexZero } from '@xylabs/hex'
+import { isHexZero } from '@xylabs/sdk-js'
 import type { NftInfoFields, TokenType } from '@xyo-network/crypto-nft-payload-plugin'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'

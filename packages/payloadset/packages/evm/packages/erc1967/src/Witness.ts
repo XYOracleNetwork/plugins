@@ -1,4 +1,4 @@
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import type { Schema } from '@xyo-network/payload-model'
 import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type {

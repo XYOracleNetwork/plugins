@@ -1,9 +1,9 @@
 import { Token } from '@uniswap/sdk-core'
 import { Pool } from '@uniswap/v3-sdk'
-import { assertEx } from '@xylabs/assert'
-import { delay } from '@xylabs/delay'
-import type { EnumValue } from '@xylabs/enum'
-import { Enum } from '@xylabs/enum'
+import type { EnumValue } from '@xylabs/sdk-js'
+import {
+  assertEx, delay, Enum,
+} from '@xylabs/sdk-js'
 import type { IERC20Metadata } from '@xyo-network/open-zeppelin-typechain'
 import { IERC20Metadata__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { IUniswapV3Pool } from '@xyo-network/uniswap-typechain'

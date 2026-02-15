@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { exists } from '@xylabs/exists'
+import { assertEx, exists } from '@xylabs/sdk-js'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import type {
   AmountFields,

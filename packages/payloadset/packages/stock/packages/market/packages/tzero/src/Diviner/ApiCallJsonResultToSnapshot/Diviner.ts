@@ -1,5 +1,5 @@
-import { exists } from '@xylabs/exists'
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
+import { exists } from '@xylabs/sdk-js'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerParams } from '@xyo-network/diviner-model'
 import { type AnyConfigSchema, creatableModule } from '@xyo-network/module-model'

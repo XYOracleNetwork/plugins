@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
+import { assertEx } from '@xylabs/sdk-js'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { isBoundWitness } from '@xyo-network/boundwitness-model'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'

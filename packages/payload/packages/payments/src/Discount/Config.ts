@@ -1,5 +1,5 @@
-// import type { Hash } from '@xylabs/hex'
-import type { Address } from '@xylabs/hex'
+// import type { Hash } from '@xylabs/sdk-js'
+import type { Address } from '@xylabs/sdk-js'
 import type { DivinerConfig } from '@xyo-network/diviner-model'
 import type { ModuleIdentifier } from '@xyo-network/module-model'
 import { asSchema } from '@xyo-network/payload-model'

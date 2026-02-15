@@ -1,4 +1,4 @@
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { LocationHeadingPayload, LocationPayload } from '@xyo-network/location-payload-plugin'
 import { LocationHeadingSchema, LocationSchema } from '@xyo-network/location-payload-plugin'

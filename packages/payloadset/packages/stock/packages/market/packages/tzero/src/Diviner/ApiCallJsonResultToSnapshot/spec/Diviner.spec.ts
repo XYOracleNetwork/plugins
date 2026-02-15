@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
 import type { ApiCallResult } from '@xyo-network/api-call-witness'
 import { asSchema } from '@xyo-network/payload-model'
 import { SnapshotSchema } from '@xyo-network/tzero-stock-market-payload-plugin'

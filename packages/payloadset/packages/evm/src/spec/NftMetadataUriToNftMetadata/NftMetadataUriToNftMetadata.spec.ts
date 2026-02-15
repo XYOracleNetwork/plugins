@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { delay } from '@xylabs/delay'
+import { delay } from '@xylabs/sdk-js'
 import type { ApiCallWitnessParams, ApiUriCallPayload } from '@xyo-network/api-call-witness'
 import {
   ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema,

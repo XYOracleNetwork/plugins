@@ -1,4 +1,4 @@
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { isHashLeaseEstimateWithSources } from '@xyo-network/diviner-hash-lease'
 import type { Payload, WithSources } from '@xyo-network/payload-model'

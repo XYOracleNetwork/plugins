@@ -2,7 +2,7 @@
 import { Buffer } from 'node:buffer'
 import { promises as dnsPromises } from 'node:dns'
 
-import { exists } from '@xylabs/exists'
+import { exists } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { ObjectHasher } from '@xyo-network/hash'
 import type { ImageThumbnail } from '@xyo-network/image-thumbnail-payload-plugin'

@@ -1,5 +1,5 @@
 {
-  "name": "@xyo-network/diviner-evm-call-result-to-token-uri",
+  "name": "@xyo-network/crypto-nft-collection-witness-plugin",
   "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
@@ -36,20 +36,35 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xyo-network/diviner-abstract": "~5.3.2",
-    "@xyo-network/diviner-model": "~5.3.2",
-    "@xyo-network/evm-call-witness": "5.3.1",
-    "@xyo-network/evm-nft-id-payload-plugin": "5.3.1",
-    "@xyo-network/module-model": "~5.3.2",
-    "@xyo-network/payload-model": "~5.3.2"
+    "@xylabs/eth-address": "~5.0.79",
+    "@xyo-network/crypto-nft-collection-payload-plugin": "5.3.1",
+    "@xyo-network/crypto-nft-payload-plugin": "5.3.1",
+    "@xyo-network/erc1822-witness": "5.3.1",
+    "@xyo-network/erc1967-witness": "5.3.1",
+    "@xyo-network/open-zeppelin-typechain": "~4.1.1",
+    "@xyo-network/payload-builder": "~5.3.5",
+    "@xyo-network/payload-model": "~5.3.5",
+    "@xyo-network/payloadset-plugin": "~5.3.5",
+    "@xyo-network/witness-blockchain-abstract": "~5.3.5",
+    "@xyo-network/witness-evm-abstract": "~5.3.5"
   },
   "devDependencies": {
+    "@types/node": "~25.2.3",
+    "@xylabs/sdk-js": "^5.0.79",
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "@xylabs/vitest-extended": "~5.0.64",
-    "@xyo-network/evm-nft-id-payload-plugin": "5.3.1",
+    "@xylabs/vitest-extended": "~5.0.79",
+    "@xyo-network/account": "~5.3.5",
+    "@xyo-network/account-model": "~5.3.5",
+    "axios": "^1.13.5",
+    "ethers": "^6.16.0",
     "typescript": "~5.9.3",
     "vitest": "~4.0.18"
+  },
+  "peerDependencies": {
+    "@xylabs/sdk-js": "^5",
+    "axios": "^1.13.5",
+    "ethers": "^6.16.0"
   },
   "publishConfig": {
     "access": "public"

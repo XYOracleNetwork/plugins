@@ -1,4 +1,4 @@
-import type { JsonArray, JsonObject } from '@xylabs/object'
+import type { JsonArray, JsonObject } from '@xylabs/sdk-js'
 
 import type { HttpCallBase64Result } from './HttpCallBase64Result.ts'
 import type { HttpCallErrorResult } from './HttpCallErrorResult.ts'

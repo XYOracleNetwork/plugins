@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'

@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { URL } from '@xylabs/url'
+import { assertEx, URL } from '@xylabs/sdk-js'
 
 const allowIpfsIoRepair = true
 

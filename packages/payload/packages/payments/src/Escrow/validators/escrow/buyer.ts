@@ -1,4 +1,4 @@
-import { asAddress } from '@xylabs/hex'
+import { asAddress } from '@xylabs/sdk-js'
 import type { SyncPayloadValidationFunction } from '@xyo-network/payload-model'
 
 import type { EscrowTerms } from '../../Terms/index.ts'

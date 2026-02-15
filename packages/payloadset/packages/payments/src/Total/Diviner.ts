@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { Hash } from '@xylabs/hex'
+import { assertEx, Hash } from '@xylabs/sdk-js'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import {
   asDivinerInstance, DivinerInstance, DivinerModuleEventData,

@@ -1,4 +1,4 @@
-import { delay } from '@xylabs/delay'
+import { delay } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AnyConfigSchema } from '@xyo-network/module-model'
 import {

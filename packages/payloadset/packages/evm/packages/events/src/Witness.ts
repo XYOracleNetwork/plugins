@@ -1,6 +1,6 @@
-import { assertEx } from '@xylabs/assert'
-import { exists } from '@xylabs/exists'
-import { hexFromBigInt } from '@xylabs/hex'
+import {
+  assertEx, exists, hexFromBigInt,
+} from '@xylabs/sdk-js'
 import type { Schema } from '@xyo-network/payload-model'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import { AbstractEvmWitness } from '@xyo-network/witness-evm-abstract'

@@ -1,4 +1,4 @@
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AbstractModuleInstancePayload } from '@xyo-network/module-instance-payload-plugin'
 import type { AnyConfigSchema, Module } from '@xyo-network/module-model'

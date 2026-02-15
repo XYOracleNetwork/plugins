@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
 import { MercatorBoundingBox } from '@xylabs/geo'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { ElevationPayload } from '@xyo-network/elevation-payload-plugin'
 import { ElevationSchema } from '@xyo-network/elevation-payload-plugin'

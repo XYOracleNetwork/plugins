@@ -1,4 +1,4 @@
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import { DomainSchema } from '@xyo-network/domain-payload-plugin'
 import type { AnyConfigSchema } from '@xyo-network/module-model'

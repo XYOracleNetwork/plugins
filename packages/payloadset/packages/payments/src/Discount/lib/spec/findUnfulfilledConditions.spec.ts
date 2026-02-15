@@ -1,4 +1,4 @@
-import type { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/sdk-js'
 import type { HashLeaseEstimate } from '@xyo-network/diviner-hash-lease'
 import { HashLeaseEstimateSchema } from '@xyo-network/diviner-hash-lease'
 import type { Id } from '@xyo-network/id-payload-plugin'

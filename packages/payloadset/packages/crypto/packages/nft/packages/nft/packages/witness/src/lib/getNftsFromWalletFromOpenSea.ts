@@ -1,6 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import { axiosJsonConfig } from '@xylabs/axios'
-import type { EthAddress } from '@xylabs/hex'
+import type { EthAddress } from '@xylabs/sdk-js'
+import { assertEx, axiosJsonConfig } from '@xylabs/sdk-js'
 import { Axios } from 'axios'
 
 interface OpenSeaNFT {

@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'
 import { asSchema, type Payload } from '@xyo-network/payload-model'

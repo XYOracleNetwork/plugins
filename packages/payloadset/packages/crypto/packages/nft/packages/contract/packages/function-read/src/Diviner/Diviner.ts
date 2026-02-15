@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import type { Promisable } from '@xylabs/promise'
+import type { Promisable } from '@xylabs/sdk-js'
+import { assertEx } from '@xylabs/sdk-js'
 import type {
   ContractInfo,
   CryptoContractDivinerParams,

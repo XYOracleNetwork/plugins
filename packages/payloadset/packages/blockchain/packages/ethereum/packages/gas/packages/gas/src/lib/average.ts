@@ -1,4 +1,4 @@
-import { exists } from '@xylabs/exists'
+import { exists } from '@xylabs/sdk-js'
 import type { FeeData } from '@xyo-network/gas-price-payload-plugin'
 
 /**

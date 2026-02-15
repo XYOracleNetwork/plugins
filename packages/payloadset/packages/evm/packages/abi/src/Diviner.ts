@@ -1,4 +1,4 @@
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import type { DivinerConfig, DivinerParams } from '@xyo-network/diviner-model'
 import type { EvmContract } from '@xyo-network/evm-contract-witness'

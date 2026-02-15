@@ -1,7 +1,6 @@
-import { filterAs } from '@xylabs/array'
-import { assertEx } from '@xylabs/assert'
-import { exists } from '@xylabs/exists'
-import { AsObjectFactory } from '@xylabs/object'
+import {
+  AsObjectFactory, assertEx, exists, filterAs,
+} from '@xylabs/sdk-js'
 import type { ArchivistInstance, ArchivistNextOptions } from '@xyo-network/archivist-model'
 import { ArchivistWrapper } from '@xyo-network/archivist-wrapper'
 import type { BoundWitness } from '@xyo-network/boundwitness-model'

@@ -1,7 +1,7 @@
-import type { EthAddress } from '@xylabs/hex'
+import type { EthAddress } from '@xylabs/sdk-js'
 import {
   asEthAddress, hexFromHexString, isHexZero,
-} from '@xylabs/hex'
+} from '@xylabs/sdk-js'
 import type { Provider } from 'ethers'
 
 export const ERC1822_PROXY_LOGIC_SLOT = '0xc5f16f0fcc639fa48a6947836d9850f504798523bf8c9a3a87d5876cf622bcf7'

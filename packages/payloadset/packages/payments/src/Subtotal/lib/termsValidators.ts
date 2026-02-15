@@ -1,4 +1,4 @@
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
 import type { EscrowTerms } from '@xyo-network/payment-payload-plugins'
 
 import { validateDuration } from './durationValidators.ts'

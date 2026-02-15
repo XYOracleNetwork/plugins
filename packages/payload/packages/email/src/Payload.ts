@@ -1,5 +1,4 @@
-import { assertEx } from '@xylabs/assert'
-import { AsObjectFactory } from '@xylabs/object'
+import { AsObjectFactory, assertEx } from '@xylabs/sdk-js'
 import type {
   Payload,
   WithSources,

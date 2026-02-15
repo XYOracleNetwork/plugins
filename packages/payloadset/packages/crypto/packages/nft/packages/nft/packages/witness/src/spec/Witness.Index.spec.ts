@@ -1,10 +1,9 @@
 import '@xylabs/vitest-extended'
 
-import { distinct } from '@xylabs/array'
-import { assertEx } from '@xylabs/assert'
-import { delay } from '@xylabs/delay'
-import { exists } from '@xylabs/exists'
-import type { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/sdk-js'
+import {
+  assertEx, delay, distinct, exists,
+} from '@xylabs/sdk-js'
 import { MemoryArchivist } from '@xyo-network/archivist-memory'
 import { asArchivistInstance } from '@xyo-network/archivist-model'
 import { BoundWitnessBuilder } from '@xyo-network/boundwitness-builder'

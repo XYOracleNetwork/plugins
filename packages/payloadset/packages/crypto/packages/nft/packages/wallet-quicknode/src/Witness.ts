@@ -1,7 +1,6 @@
-import { assertEx } from '@xylabs/assert'
-import { axiosJsonConfig } from '@xylabs/axios'
+import { assertEx, axiosJsonConfig } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
-import type { AnyConfigSchema } from '@xyo-network/module-model'
+import { type AnyConfigSchema, creatableModule } from '@xyo-network/module-model'
 import type { Payload, Schema } from '@xyo-network/payload-model'
 import { asSchema, isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessConfig, WitnessParams } from '@xyo-network/witness-model'
@@ -58,6 +57,7 @@ export type GraphqlResult<TData = Record<string, unknown>, TExtensions = Record<
 
 export const isGraphqlQuery = isPayloadOfSchemaType<GraphqlQuery>(GraphqlQuerySchema)
 
+creatableModule()
 export class ApiGraphqlWitness<TParams extends ApiGraphqlWitnessParams = ApiGraphqlWitnessParams> extends AbstractWitness<
   TParams,
   GraphqlQuery,

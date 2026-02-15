@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import {
   ApiCallResultSchema, ApiCallSchema, ApiCallWitness, ApiCallWitnessConfigSchema, isApiCallXmlResult,
 } from '@xyo-network/api-call-witness'

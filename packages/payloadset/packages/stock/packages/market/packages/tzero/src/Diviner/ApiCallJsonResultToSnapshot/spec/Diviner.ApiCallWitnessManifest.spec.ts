@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import type { ApiCallWitnessParams, ApiUriTemplateCallPayload } from '@xyo-network/api-call-witness'
 import { ApiCallSchema, ApiCallWitness } from '@xyo-network/api-call-witness'
 import type { PackageManifestPayload } from '@xyo-network/manifest'

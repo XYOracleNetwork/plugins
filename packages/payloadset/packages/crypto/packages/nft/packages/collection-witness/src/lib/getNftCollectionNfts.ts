@@ -1,7 +1,7 @@
-import { axiosJsonConfig } from '@xylabs/axios'
-import { exists } from '@xylabs/exists'
-import type { EthAddress } from '@xylabs/hex'
-import { isHexZero } from '@xylabs/hex'
+import type { EthAddress } from '@xylabs/sdk-js'
+import {
+  axiosJsonConfig, exists, isHexZero,
+} from '@xylabs/sdk-js'
 import type {
   NftInfo, NftMetadata, TokenType,
 } from '@xyo-network/crypto-nft-payload-plugin'

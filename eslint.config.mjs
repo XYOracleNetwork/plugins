@@ -7,8 +7,54 @@ import {
   importConfig,
 } from '@xylabs/eslint-config-flat'
 
+const disallowedImports = [
+  '@xylabs/api',
+  '@xylabs/array',
+  '@xylabs/arraybuffer',
+  '@xylabs/assert',
+  '@xylabs/axios',
+  '@xylabs/base',
+  '@xylabs/bignumber',
+  '@xylabs/buffer',
+  '@xylabs/creatable',
+  '@xylabs/decimal-precision',
+  '@xylabs/delay',
+  '@xylabs/enum',
+  '@xylabs/error',
+  '@xylabs/eth-address',
+  '@xylabs/events',
+  '@xylabs/exists',
+  '@xylabs/forget',
+  '@xylabs/function-name',
+  '@xylabs/hex',
+  '@xylabs/log',
+  '@xylabs/logger',
+  '@xylabs/object',
+  '@xylabs/platform',
+  '@xylabs/profile',
+  '@xylabs/promise',
+  '@xylabs/retry',
+  '@xylabs/set',
+  '@xylabs/static-implements',
+  '@xylabs/storage',
+  '@xylabs/telemetry',
+  '@xylabs/telemetry-exporter',
+  '@xylabs/timer',
+  '@xylabs/typeof',
+  '@xylabs/url',
+]
+
 export default [
-  { ignores: ['.yarn', 'dist', '**/dist/**', 'build', '**/build/**', 'node_modules/**', 'public', 'storybook-static', 'eslint.config.mjs'] },
+  {
+    ignores: ['dist',
+      '**/packages/*/dist',
+      'build',
+      '**/packages/*/build',, '.yarn',
+      'node_modules',
+      '**/packages/*/node_modules',
+      'docs',
+      '.dependency-cruiser.mjs'],
+  },
   unicornConfig,
   workspacesConfig,
   rulesConfig,
@@ -21,30 +67,35 @@ export default [
       '@typescript-eslint/strict-boolean-expressions': ['off'],
       'sonarjs/prefer-single-boolean-return': ['off'],
       'import-x/no-unresolved': ['off'],
+    },
+  },
+  {
+    files: ['**/packages/*/src/**/*.{js,ts}'],
+    ignores: ['**/*.spec.{js,ts}', 'packages/sdk/src/test/**/*', 'packages/cli/src/**/*'],
+    rules: {
       'no-restricted-imports': [
-        'warn',
+        'error',
         {
-          paths: [
-            ...rulesConfig.rules['no-restricted-imports'][1].paths,
-            '@types/node',
-            '@xyo-network/archivist',
-            '@xyo-network/bridge',
-            '@xyo-network/core',
-            '@xyo-network/diviner',
-            '@xyo-network/module',
-            '@xyo-network/modules',
-            '@xyo-network/node',
-            '@xyo-network/sdk',
-            '@xyo-network/plugins',
-            '@xyo-network/protocol',
-            '@xyo-network/sentinel',
-            '@xyo-network/witness',
-            '@xyo-network/core-payload-plugins',
+          patterns: [
+            ...disallowedImports,
+          ],
+        },
+      ],
+    },
+  },
+  {
+    files: ['**/packages/*/src/**/*.{jsx,tsx}'],
+    ignores: ['**/*.spec.{jsx,tsx}'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            'node:*',
+            ...disallowedImports,
           ],
         },
       ],
     },
   },
 ]
-
-

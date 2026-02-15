@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/deprecation */
 import '@xylabs/vitest-extended'
 
-import { delay } from '@xylabs/delay'
+import { delay } from '@xylabs/sdk-js'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'

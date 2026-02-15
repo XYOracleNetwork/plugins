@@ -1,4 +1,4 @@
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
 import { BoundWitnessValidator } from '@xyo-network/boundwitness-validator'
 import type { AsyncPayloadValidationFunction, Payload } from '@xyo-network/payload-model'
 

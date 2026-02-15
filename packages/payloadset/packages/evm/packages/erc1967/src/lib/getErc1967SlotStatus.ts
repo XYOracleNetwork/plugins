@@ -1,7 +1,7 @@
-import type { Address, EthAddress } from '@xylabs/hex'
+import type { Address, EthAddress } from '@xylabs/sdk-js'
 import {
   asEthAddress, hexFromHexString, isHexZero,
-} from '@xylabs/hex'
+} from '@xylabs/sdk-js'
 import { UpgradeableBeacon__factory } from '@xyo-network/open-zeppelin-typechain'
 import type { Provider } from 'ethers'
 

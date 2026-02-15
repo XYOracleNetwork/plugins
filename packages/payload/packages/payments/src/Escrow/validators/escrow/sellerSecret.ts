@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import type { Hash } from '@xylabs/hex'
+import type { Hash } from '@xylabs/sdk-js'
+import { assertEx } from '@xylabs/sdk-js'
 import type {
   AsyncPayloadValidationFunction, Payload, SyncPayloadValidationFunction,
 } from '@xyo-network/payload-model'

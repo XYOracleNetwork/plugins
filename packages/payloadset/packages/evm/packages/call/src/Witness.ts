@@ -1,6 +1,7 @@
-import { assertEx } from '@xylabs/assert'
-import { asEthAddress, isHexZero } from '@xylabs/hex'
-import type { JsonObject } from '@xylabs/object'
+import type { JsonObject } from '@xylabs/sdk-js'
+import {
+  asEthAddress, assertEx, isHexZero,
+} from '@xylabs/sdk-js'
 import { getErc1822SlotStatus } from '@xyo-network/erc1822-witness'
 import { getErc1967SlotStatus } from '@xyo-network/erc1967-witness'
 import type { Schema } from '@xyo-network/payload-model'

@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import { delay } from '@xylabs/delay'
+import { delay } from '@xylabs/sdk-js'
 import { MemoryBoundWitnessDiviner } from '@xyo-network/diviner-boundwitness-memory'
 import { EvmCallResultToNftTokenUriDiviner } from '@xyo-network/diviner-evm-call-result-to-token-uri'
 import { asDivinerInstance } from '@xyo-network/diviner-model'

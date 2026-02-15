@@ -1,4 +1,4 @@
-import type { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/sdk-js'
 import { SchemaSchema } from '@xyo-network/schema-payload-plugin'
 
 import type { Condition } from '../types/index.ts'

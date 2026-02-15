@@ -1,4 +1,4 @@
-import { AsObjectFactory } from '@xylabs/object'
+import { AsObjectFactory } from '@xylabs/sdk-js'
 import { isPayloadOfSchemaType } from '@xyo-network/payload-model'
 import type { WitnessConfig } from '@xyo-network/witness-model'
 

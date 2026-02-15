@@ -1,5 +1,5 @@
-import { assertEx } from '@xylabs/assert'
-import type { JsonObject } from '@xylabs/object'
+import type { JsonObject } from '@xylabs/sdk-js'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type {
   CryptoContractFunctionCall,

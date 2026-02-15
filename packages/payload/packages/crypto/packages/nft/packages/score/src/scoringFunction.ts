@@ -1,4 +1,4 @@
-import type { AnyObject, EmptyObject } from '@xylabs/object'
+import type { AnyObject, EmptyObject } from '@xylabs/sdk-js'
 
 import type { PassFailScore, Score } from './score.ts'
 

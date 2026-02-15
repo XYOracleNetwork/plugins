@@ -1,4 +1,4 @@
-import { assertEx } from '@xylabs/assert'
+import { assertEx } from '@xylabs/sdk-js'
 import { AbstractWitness } from '@xyo-network/abstract-witness'
 import type { AddressTransactionHistoryPayload } from '@xyo-network/crypto-address-transaction-history-payload-plugin'
 import {

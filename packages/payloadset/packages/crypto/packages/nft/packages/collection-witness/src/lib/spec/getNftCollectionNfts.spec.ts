@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { EthAddress } from '@xylabs/hex'
+import type { EthAddress } from '@xylabs/sdk-js'
 import { getProviderFromEnv } from '@xyo-network/witness-blockchain-abstract'
 import {
   describe, expect, it,

@@ -3,7 +3,7 @@
 
 import '@xylabs/vitest-extended'
 
-import { hexFromHexString } from '@xylabs/hex'
+import { hexFromHexString } from '@xylabs/sdk-js'
 import type {
   ContractInfo,
   CryptoContractFunctionCall,

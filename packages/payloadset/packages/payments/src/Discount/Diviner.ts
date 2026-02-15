@@ -1,7 +1,6 @@
-import { filterAs } from '@xylabs/array'
-import { assertEx } from '@xylabs/assert'
-import { exists } from '@xylabs/exists'
-import { Address, Hash } from '@xylabs/hex'
+import {
+  Address, assertEx, exists, filterAs, Hash,
+} from '@xylabs/sdk-js'
 import { ArchivistInstance, asArchivistInstance } from '@xyo-network/archivist-model'
 import { AbstractDiviner } from '@xyo-network/diviner-abstract'
 import { BoundWitnessDivinerQueryPayload, BoundWitnessDivinerQuerySchema } from '@xyo-network/diviner-boundwitness-model'

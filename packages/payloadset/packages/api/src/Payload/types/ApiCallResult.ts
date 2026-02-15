@@ -1,4 +1,4 @@
-import type { JsonArray, JsonObject } from '@xylabs/object'
+import type { JsonArray, JsonObject } from '@xylabs/sdk-js'
 
 import type { ApiCallBase64Result } from './ApiCallBase64Result.ts'
 import type { ApiCallErrorResult } from './ApiCallErrorResult.ts'

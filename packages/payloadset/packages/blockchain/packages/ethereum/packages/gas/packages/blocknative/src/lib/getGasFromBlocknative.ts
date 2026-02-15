@@ -1,4 +1,4 @@
-import { axiosJson } from '@xylabs/axios'
+import { axiosJson } from '@xylabs/sdk-js'
 import type { EthereumGasBlocknativeResponse } from '@xyo-network/blocknative-ethereum-gas-payload-plugin'
 
 const url = 'https://api.blocknative.com/gasprices/blockprices'

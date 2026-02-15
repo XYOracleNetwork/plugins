@@ -1,6 +1,6 @@
 import '@xylabs/vitest-extended'
 
-import type { Address } from '@xylabs/hex'
+import type { Address } from '@xylabs/sdk-js'
 import type { ModuleIdentifier } from '@xyo-network/module-model'
 import {
   describe, expect, test,

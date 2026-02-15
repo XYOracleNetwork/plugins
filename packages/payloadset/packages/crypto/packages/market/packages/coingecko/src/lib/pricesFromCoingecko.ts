@@ -1,4 +1,4 @@
-import { axiosJsonConfig } from '@xylabs/axios'
+import { axiosJsonConfig } from '@xylabs/sdk-js'
 import type {
   AssetSymbol, CryptoAsset, CryptoAssetPrices,
 } from '@xyo-network/coingecko-crypto-market-payload-plugin'
