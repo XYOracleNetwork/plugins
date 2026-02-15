@@ -36,7 +36,6 @@
     "!**/*.test.*"
   ],
   "dependencies": {
-    "@xylabs/eth-address": "~5.0.79",
     "@xyo-network/crypto-nft-collection-payload-plugin": "5.3.1",
     "@xyo-network/crypto-nft-payload-plugin": "5.3.1",
     "@xyo-network/erc1822-witness": "5.3.1",
@@ -59,12 +58,14 @@
     "axios": "^1.13.5",
     "ethers": "^6.16.0",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.18"
+    "vitest": "~4.0.18",
+    "zod": "^4.3.6"
   },
   "peerDependencies": {
     "@xylabs/sdk-js": "^5",
     "axios": "^1.13.5",
-    "ethers": "^6.16.0"
+    "ethers": "^6.16.0",
+    "zod": "^4"
   },
   "publishConfig": {
     "access": "public"

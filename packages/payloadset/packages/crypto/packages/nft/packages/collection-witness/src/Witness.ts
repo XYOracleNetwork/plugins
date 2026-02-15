@@ -1,5 +1,6 @@
-import { EthAddressWrapper } from '@xylabs/sdk-js'
-import { asEthAddress, assertEx } from '@xylabs/sdk-js'
+import {
+  asEthAddress, assertEx, EthAddressWrapper,
+} from '@xylabs/sdk-js'
 import type {
   NftCollectionInfo,
   NftCollectionWitnessConfig,

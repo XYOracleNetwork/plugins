@@ -1,5 +1,5 @@
 {
-  "name": "@xyo-network/tzero-stock-market-plugin",
+  "name": "@xyo-network/plugins",
   "version": "5.3.1",
   "description": "Typescript/Javascript Plugins for XYO Platform",
   "homepage": "https://xyo.network",
@@ -35,31 +35,37 @@
     "!**/*.spec.*",
     "!**/*.test.*"
   ],
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "scripts": {
+    "build": "xy build && xy statics",
+    "build-tests": "tsc --noEmit --lib dom,esnext",
+    "build-typedoc-site": "typedoc",
+    "compile": "./scripts/clear-scrollback-buffer.sh && yarn xy compile",
+    "coverage": "yarn vitest --coverage --forceExit",
+    "deploy": "xy deploy",
+    "lint-pkg": "npmPkgJsonLint .",
+    "test": "vitest run"
+  },
   "dependencies": {
-    "@xyo-network/api-call-witness": "5.3.1",
-    "@xyo-network/diviner-abstract": "~5.3.5",
-    "@xyo-network/diviner-model": "~5.3.5",
-    "@xyo-network/module-model": "~5.3.5",
-    "@xyo-network/payload-model": "~5.3.5",
-    "@xyo-network/tzero-stock-market-payload-plugin": "5.3.1"
+    "@xyo-network/payload-plugins": "5.3.1",
+    "@xyo-network/payloadset-plugins": "5.3.1"
   },
   "devDependencies": {
-    "@xylabs/sdk-js": "^5.0.79",
     "@xylabs/ts-scripts-yarn3": "~7.3.2",
     "@xylabs/tsconfig": "~7.3.2",
-    "@xylabs/vitest-extended": "~5.0.79",
-    "@xyo-network/manifest": "~5.3.5",
-    "@xyo-network/module-factory-locator": "~5.3.5",
-    "@xyo-network/sentinel-model": "~5.3.5",
-    "@xyo-network/wallet": "~5.3.5",
-    "@xyo-network/witness-model": "~5.3.5",
     "typescript": "~5.9.3",
-    "vitest": "~4.0.18",
     "zod": "^4.3.6"
   },
   "peerDependencies": {
     "@xylabs/sdk-js": "^5",
     "zod": "^4"
+  },
+  "packageManager": "yarn@4.9.2",
+  "volta": {
+    "node": "22.14.0",
+    "yarn": "1.22.22"
   },
   "publishConfig": {
     "access": "public"
