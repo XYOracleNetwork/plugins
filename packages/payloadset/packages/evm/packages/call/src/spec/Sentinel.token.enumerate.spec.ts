@@ -4,7 +4,7 @@ import '@xylabs/vitest-extended'
 
 import {
   createProfiler, profile, profileReport,
-} from '@xylabs/profile'
+} from '@xylabs/sdk-js'
 import { JsonPatchDiviner } from '@xyo-network/diviner-jsonpatch-memory'
 import { JsonPathAggregateDiviner } from '@xyo-network/diviner-jsonpath-aggregate-memory'
 import { asDivinerInstance } from '@xyo-network/diviner-model'

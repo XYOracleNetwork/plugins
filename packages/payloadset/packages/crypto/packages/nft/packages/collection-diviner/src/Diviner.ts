@@ -22,11 +22,10 @@ export type NftCollectionScoreDivinerParams = DivinerParams<AnyConfigSchema<NftC
 
 const toNftCollectionScore = (nftCollectionInfo: NftCollectionInfo, scores: NftCollectionAnalysis): NftCollectionScore => {
   const {
-    // eslint-disable-next-line sonarjs/deprecation
-    name, symbol, address, chainId, type,
+    name, symbol, address, chainId, types,
   } = nftCollectionInfo
   const metadata: NftCollectionMetadata = {
-    address, chainId, name, symbol, type,
+    address, chainId, name, symbol, types,
   }
   return {
     ...metadata, schema: NftCollectionScoreSchema, scores,

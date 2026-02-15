@@ -26,8 +26,12 @@ const validateObservation = (observation: Payload[]) => {
   expect(collectionInfo.address).toBeString()
   expect(collectionInfo.chainId).toBeNumber()
   expect(collectionInfo.name).toBeString()
-  // eslint-disable-next-line sonarjs/deprecation
-  expect(collectionInfo.type).toBeOneOf(['ERC721', 'ERC1155', null])
+
+  expect((collectionInfo.types ?? []).some((t) => {
+    return ['ERC721',
+      'ERC1155',
+      null].includes(t)
+  })).toBeTruthy()
   expect(collectionInfo.$sources).toBeArray()
   expect(collectionInfo.$sources?.length).toBeGreaterThan(0)
 }

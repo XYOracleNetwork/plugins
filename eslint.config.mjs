@@ -7,7 +7,7 @@ import {
   importConfig,
 } from '@xylabs/eslint-config-flat'
 
-const disallowedImports = [
+const disallowedImportsXyLabs = [
   '@xylabs/api',
   '@xylabs/array',
   '@xylabs/arraybuffer',
@@ -70,29 +70,29 @@ export default [
     },
   },
   {
-    files: ['**/packages/*/src/**/*.{js,ts}'],
-    ignores: ['**/*.spec.{js,ts}', 'packages/sdk/src/test/**/*', 'packages/cli/src/**/*'],
+    files: ['**/packages/*/src/**/*.{js,ts}', 'src/**/*.{js,ts}'],
+    ignores: [],
     rules: {
       'no-restricted-imports': [
         'error',
         {
           patterns: [
-            ...disallowedImports,
+            ...disallowedImportsXyLabs,
           ],
         },
       ],
     },
   },
   {
-    files: ['**/packages/*/src/**/*.{jsx,tsx}'],
-    ignores: ['**/*.spec.{jsx,tsx}'],
+    files: ['**/packages/*/src/**/*.{jsx,tsx}', 'src/**/*.{jsx,tsx}'],
+    ignores: [],
     rules: {
       'no-restricted-imports': [
         'error',
         {
           patterns: [
             'node:*',
-            ...disallowedImports,
+            ...disallowedImportsXyLabs,
           ],
         },
       ],
